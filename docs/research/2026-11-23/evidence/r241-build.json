@@ -1,0 +1,50 @@
+{
+  "build_job": {
+    "command": [
+      "bash",
+      "/src/scripts/research/build/build_handoff_modules.sh"
+    ],
+    "elapsed_seconds": 275.80351066496223,
+    "exit_code": 0,
+    "start_utc": "2026-11-22T22:13:49.635126+00:00"
+  },
+  "build_log_sha256": "a9dbe9129cfb202183874b3cf87f812fcbe78f6dab26ac17e2b3214df7e53f27",
+  "hardware_tested": false,
+  "installed": false,
+  "kernel_module_symvers_sha256": "8e71a956b3c79112228f92cd234a13a39aa7a3193a5d1222d1dab5123043d9d0",
+  "kernel_release": "6.12.114-tb371fc-research1",
+  "loaded": false,
+  "modules": [
+    {
+      "name": "tcpm.ko",
+      "sha256": "f9c52a69113c2188b1c4332de612a048f2b99f7b28c945296ef1d1c134da2e4f",
+      "size": 121688,
+      "vermagic": "6.12.114-tb371fc-research1 SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "name": "r233_pmic_tcpm.ko",
+      "sha256": "13054da40756858cd1309e1789594609cd0cad658def3c7e3026681f34eba176",
+      "size": 37912,
+      "vermagic": "6.12.114-tb371fc-research1 SMP preempt mod_unload modversions aarch64"
+    }
+  ],
+  "offline_models_job": {
+    "command": [
+      "env",
+      "CC=clang",
+      "bash",
+      "/src/experimental/community-handoff/test-offline.sh"
+    ],
+    "elapsed_seconds": 8.89461991400458,
+    "exit_code": 0,
+    "start_utc": "2026-11-22T22:24:12.298324+00:00"
+  },
+  "offline_models_log_sha256": "ddb2b48d852ca408c5deb15b4d53a818d035f0466142c28b7a611a3a10cf662e",
+  "offline_models_pass_marker": true,
+  "scope": "R241 diagnostic source compilation against the new research ABI only",
+  "source_checksum_manifest_sha256": "9150035f31f6c628d6f121ea7129550275014418fb0d16c0e800dee9b093172f",
+  "warnings": [
+    "/work/r241-research1/qcom_pmic_typec_port.c:213:20: warning: unused function 'rp_sel_to_name' [-Wunused-function]",
+    "/work/r241-research1/qcom_pmic_typec_port.c:408:13: warning: unused function 'qcom_pmic_set_cc_debounce' [-Wunused-function]"
+  ]
+}

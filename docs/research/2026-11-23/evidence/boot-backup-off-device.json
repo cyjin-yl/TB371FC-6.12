@@ -1,0 +1,60 @@
+{
+  "archive_bytes": 93319878,
+  "archive_file": "current-boot.tar.gz",
+  "archive_sha256": "6fb0d1964bef82d0b1bcb91282da48a6223910f5987ab1c8466d5746e7ead8e2",
+  "completed_utc": "2026-11-22T22:49:04.379746+00:00",
+  "off_device_copy_verified": true,
+  "physical_mainline_boot_tested": false,
+  "pristine_factory_images": false,
+  "receiver_sha256": "9ee90610a2d0f307ecdf30897593fc4ddb3c8658ee5803451cca68a217fad4d8",
+  "restore_tested": false,
+  "schema_version": 1,
+  "scope": "current boot partition backups",
+  "source_capture_completed_utc": "2026-11-22T22:42:13.808577+00:00",
+  "source_capture_started_utc": "2026-11-22T22:42:09.569045+00:00",
+  "source_manifest_sha256": "12d63dd3386abdfdf64ea89fbd70326dc63a0247b760b4edaae2185b82621774",
+  "started_utc": "2026-11-22T22:48:46.768151+00:00",
+  "status": "verified_off_device_current_copies",
+  "verified_partitions": [
+    {
+      "bytes": 100663296,
+      "name": "boot_a",
+      "sha256": "78ba0f4f75bec85a80155a9e9ea8fa19546bbd88598a7923a16b069404899a9a"
+    },
+    {
+      "bytes": 100663296,
+      "name": "boot_b",
+      "sha256": "dedaae8f49d8c052302cc5329652383b8e35cb571fd3510e15b3444ab9b45573"
+    },
+    {
+      "bytes": 104857600,
+      "name": "recovery_a",
+      "sha256": "94649360140db672e861729927011984e9714459b4e19c9aab02b7ab79466668"
+    },
+    {
+      "bytes": 104857600,
+      "name": "recovery_b",
+      "sha256": "2c62c4c7c85ed751f3ca2273191fdddb6a20c62504f0ccb5a45456c08c6f5a72"
+    },
+    {
+      "bytes": 65536,
+      "name": "vbmeta_a",
+      "sha256": "58f6a16ac40bed13555f9b8b0e67319b9921b9b9759d6dba5275053bbac53c05"
+    },
+    {
+      "bytes": 65536,
+      "name": "vbmeta_b",
+      "sha256": "7366d06e2b8689ab0ca429050fbdae0b8f08af0957debdbcb4706a9e52021e63"
+    },
+    {
+      "bytes": 25165824,
+      "name": "dtbo_a",
+      "sha256": "d82c51b5b85c8a9c7d8a163d4fc24e61f7abbd93f5728a7235dcfb809e3b8b17"
+    },
+    {
+      "bytes": 25165824,
+      "name": "dtbo_b",
+      "sha256": "d45cd003d9a355c4d7e27c97de0ab9742927233b385dc866e4ea6c9412c19bf5"
+    }
+  ]
+}

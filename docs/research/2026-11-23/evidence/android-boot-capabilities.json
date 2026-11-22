@@ -1,0 +1,56 @@
+{
+  "capture_utc": "2026-11-22T22:53:35.384568+00:00",
+  "entry_scalars": {
+    "/proc/sys/kernel/kexec_load_disabled": {
+      "unavailable": "FileNotFoundError"
+    },
+    "/proc/sys/kernel/modules_disabled": 0,
+    "/sys/kernel/kexec_crash_loaded": {
+      "unavailable": "FileNotFoundError"
+    },
+    "/sys/kernel/kexec_loaded": {
+      "unavailable": "FileNotFoundError"
+    }
+  },
+  "kernel_config": {
+    "compressed_sha256": "20dcd5ebdb9908d83ee68593b56fc5723bdf287905284b16d1e6753c4a34da59",
+    "decompressed_sha256": "23d3db565be3cd6cfc07bb90541d971dc70e6a6ce3516360155b8fd15590e726",
+    "values": {
+      "CONFIG_ARM64": "y",
+      "CONFIG_CRASH_DUMP": "n",
+      "CONFIG_IKCONFIG": "y",
+      "CONFIG_IKCONFIG_PROC": "y",
+      "CONFIG_KEXEC": "n",
+      "CONFIG_KEXEC_CORE": "not_present_in_config",
+      "CONFIG_KEXEC_FILE": "not_present_in_config",
+      "CONFIG_MODULES": "y",
+      "CONFIG_MODULE_SIG": "y",
+      "CONFIG_MODULE_SIG_FORCE": "y",
+      "CONFIG_MODULE_UNLOAD": "y",
+      "CONFIG_MODVERSIONS": "y",
+      "CONFIG_PROC_VMCORE": "not_present_in_config",
+      "CONFIG_PSTORE": "n",
+      "CONFIG_PSTORE_RAM": "not_present_in_config",
+      "CONFIG_RANDOMIZE_BASE": "y",
+      "CONFIG_RELOCATABLE": "y",
+      "CONFIG_SECURITY_SELINUX": "y",
+      "CONFIG_USB_CONFIGFS": "y",
+      "CONFIG_USB_CONFIGFS_ACM": "n",
+      "CONFIG_USB_CONFIGFS_F_FS": "y",
+      "CONFIG_USB_CONFIGFS_NCM": "y"
+    }
+  },
+  "kernel_release": "4.19.157-perf+",
+  "kexec_load_performed": false,
+  "mmc_block_nodes": [
+    "mmcblk0",
+    "mmcblk0p1",
+    "mmcblk0p2",
+    "mmcblk0p3"
+  ],
+  "module_load_performed": false,
+  "physical_mainline_boot_tested": false,
+  "schema_version": 1,
+  "scope": "passive entry prerequisites, not boot/restore validation",
+  "script_sha256": "ef5edd54f7b72088346a2c6b1eb3c281401d2ca8fa01605cafba54b27a23c2bd"
+}

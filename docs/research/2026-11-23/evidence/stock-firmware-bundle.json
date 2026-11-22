@@ -1,0 +1,2694 @@
+{
+  "groups": {
+    "a650": {
+      "bytes": 102540,
+      "files": 7
+    },
+    "adsp": {
+      "bytes": 15502768,
+      "files": 20
+    },
+    "bluetooth": {
+      "bytes": 345144,
+      "files": 4
+    },
+    "cdsp": {
+      "bytes": 6079158,
+      "files": 11
+    },
+    "novatek_candidates": {
+      "bytes": 1966080,
+      "files": 8
+    },
+    "slpi": {
+      "bytes": 7261168,
+      "files": 22
+    },
+    "tfa9894_candidates": {
+      "bytes": 52490,
+      "files": 2
+    },
+    "venus": {
+      "bytes": 946108,
+      "files": 13
+    },
+    "wlan": {
+      "bytes": 4670960,
+      "files": 3
+    },
+    "wlan_board_candidates": {
+      "bytes": 1620412,
+      "files": 28
+    }
+  },
+  "implementation": {
+    "path": "scripts/research/stock_firmware_bundle.py",
+    "sha256": "9ca9ccbdc628ff1a1b365ef4b5deb092ed8405acd1bcb79c8c0454f700bd18f1"
+  },
+  "kernel_contract_reference": {
+    "path": "docs/research/2026-11-23/evidence/firmware-kernel-contract.json",
+    "sha256": "26ab16aa3e71f2317e736aa0877572616fb13c64f29ff5ea3381278bc931644a"
+  },
+  "observed_at_utc": "2026-11-22T23:39:01.990557+00:00",
+  "off_device_receipt": {
+    "all_inspected_loader_file_sets_complete": true,
+    "archive_bytes": 15747897,
+    "archive_file": "stock-firmware.tar.gz",
+    "archive_members_verified": true,
+    "archive_sha256": "fc331d84ed585457b4183b08f799a49d9839d3114bf5ec2f281a725b87fe5f92",
+    "canonical_firmware_tree_generated": false,
+    "completed_utc": "2026-11-22T23:39:01.990557+00:00",
+    "file_count": 118,
+    "firmware_loaded": false,
+    "gzip_integrity_verified": true,
+    "mdt_layouts": {
+      "vendor/firmware/a650_zap.elf": {
+        "captured_segments_not_requested_by_this_metadata": [
+          "vendor/firmware/a650_zap.b00",
+          "vendor/firmware/a650_zap.b01",
+          "vendor/firmware/a650_zap.b02"
+        ],
+        "elf_machine": 164,
+        "format": "ELF32 little endian",
+        "loadable_zero_file_size_indices": [],
+        "loader_file_set_complete": true,
+        "metadata_hash_source": "embedded at hash program-header offset",
+        "metadata_path": "vendor/firmware/a650_zap.elf",
+        "missing_required_files": [],
+        "program_header_count": 3,
+        "program_headers": [
+          {
+            "alignment": 0,
+            "file_offset": 0,
+            "file_size": 148,
+            "flags": 117440512,
+            "index": 0,
+            "memory_size": 0,
+            "physical_address": 0,
+            "type": 0
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4096,
+            "file_size": 6712,
+            "flags": 35651584,
+            "index": 1,
+            "memory_size": 8192,
+            "physical_address": 24576,
+            "type": 0
+          },
+          {
+            "alignment": 1048576,
+            "file_offset": 12288,
+            "file_size": 1676,
+            "flags": 134217735,
+            "index": 2,
+            "memory_size": 1676,
+            "physical_address": 20480,
+            "type": 1
+          }
+        ],
+        "required_split_files": [],
+        "scope": "Required-file and byte-length checks only; no signature, load, memory reservation, ABI or hardware test",
+        "size_mismatches": [],
+        "split_payload_required": false
+      },
+      "vendor/firmware/a650_zap.mdt": {
+        "captured_segments_not_requested_by_this_metadata": [
+          "vendor/firmware/a650_zap.b00",
+          "vendor/firmware/a650_zap.b01"
+        ],
+        "elf_machine": 164,
+        "format": "ELF32 little endian",
+        "loadable_zero_file_size_indices": [],
+        "loader_file_set_complete": true,
+        "metadata_hash_source": "packed immediately after metadata header",
+        "metadata_path": "vendor/firmware/a650_zap.mdt",
+        "missing_required_files": [],
+        "program_header_count": 3,
+        "program_headers": [
+          {
+            "alignment": 0,
+            "file_offset": 0,
+            "file_size": 148,
+            "flags": 117440512,
+            "index": 0,
+            "memory_size": 0,
+            "physical_address": 0,
+            "type": 0
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4096,
+            "file_size": 6712,
+            "flags": 35651584,
+            "index": 1,
+            "memory_size": 8192,
+            "physical_address": 24576,
+            "type": 0
+          },
+          {
+            "alignment": 1048576,
+            "file_offset": 12288,
+            "file_size": 1676,
+            "flags": 134217735,
+            "index": 2,
+            "memory_size": 1676,
+            "physical_address": 20480,
+            "type": 1
+          }
+        ],
+        "required_split_files": [
+          {
+            "index": 2,
+            "path": "vendor/firmware/a650_zap.b02",
+            "reason": "loadable payload",
+            "sha256": "a415e5452fa8f597670a6e51010e97bfabca7d20fbce8044caed64d9d5873113",
+            "size_bytes": 1676
+          }
+        ],
+        "scope": "Required-file and byte-length checks only; no signature, load, memory reservation, ABI or hardware test",
+        "size_mismatches": [],
+        "split_payload_required": true
+      },
+      "vendor/firmware_mnt/image/adsp.mdt": {
+        "captured_segments_not_requested_by_this_metadata": [
+          "vendor/firmware_mnt/image/adsp.b00",
+          "vendor/firmware_mnt/image/adsp.b01"
+        ],
+        "elf_machine": 164,
+        "format": "ELF32 little endian",
+        "loadable_zero_file_size_indices": [
+          19
+        ],
+        "loader_file_set_complete": true,
+        "metadata_hash_source": "packed immediately after metadata header",
+        "metadata_path": "vendor/firmware_mnt/image/adsp.mdt",
+        "missing_required_files": [],
+        "program_header_count": 20,
+        "program_headers": [
+          {
+            "alignment": 0,
+            "file_offset": 0,
+            "file_size": 692,
+            "flags": 117440512,
+            "index": 0,
+            "memory_size": 0,
+            "physical_address": 0,
+            "type": 0
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4096,
+            "file_size": 7528,
+            "flags": 35651584,
+            "index": 1,
+            "memory_size": 8192,
+            "physical_address": 2334130176,
+            "type": 0
+          },
+          {
+            "alignment": 1048576,
+            "file_offset": 12288,
+            "file_size": 82680,
+            "flags": 134217733,
+            "index": 2,
+            "memory_size": 86016,
+            "physical_address": 2303721472,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 98304,
+            "file_size": 358784,
+            "flags": 134217734,
+            "index": 3,
+            "memory_size": 360448,
+            "physical_address": 2303807488,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 458752,
+            "file_size": 1966540,
+            "flags": 134217733,
+            "index": 4,
+            "memory_size": 1970176,
+            "physical_address": 2304167936,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 2428928,
+            "file_size": 2487860,
+            "flags": 134217734,
+            "index": 5,
+            "memory_size": 5103616,
+            "physical_address": 2306138112,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4919296,
+            "file_size": 38696,
+            "flags": 134217732,
+            "index": 6,
+            "memory_size": 40960,
+            "physical_address": 2311241728,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4960256,
+            "file_size": 28972,
+            "flags": 134217733,
+            "index": 7,
+            "memory_size": 28992,
+            "physical_address": 2311282688,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4989248,
+            "file_size": 126736,
+            "flags": 134217734,
+            "index": 8,
+            "memory_size": 130752,
+            "physical_address": 2311311680,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 5120000,
+            "file_size": 64424,
+            "flags": 134217733,
+            "index": 9,
+            "memory_size": 65536,
+            "physical_address": 2311442432,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 5185536,
+            "file_size": 602112,
+            "flags": 134217732,
+            "index": 10,
+            "memory_size": 602112,
+            "physical_address": 2311507968,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 5787648,
+            "file_size": 6896588,
+            "flags": 134217733,
+            "index": 11,
+            "memory_size": 6897664,
+            "physical_address": 2312110080,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 12685312,
+            "file_size": 280880,
+            "flags": 134217734,
+            "index": 12,
+            "memory_size": 10555392,
+            "physical_address": 2319007744,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 12967936,
+            "file_size": 20,
+            "flags": 134217734,
+            "index": 13,
+            "memory_size": 4096,
+            "physical_address": 2329563136,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 12972032,
+            "file_size": 104184,
+            "flags": 134217732,
+            "index": 14,
+            "memory_size": 106496,
+            "physical_address": 2329567232,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 13078528,
+            "file_size": 1346476,
+            "flags": 134217734,
+            "index": 15,
+            "memory_size": 1347584,
+            "physical_address": 2329673728,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 14426112,
+            "file_size": 79592,
+            "flags": 134217733,
+            "index": 16,
+            "memory_size": 81920,
+            "physical_address": 2331021312,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 14508032,
+            "file_size": 1021612,
+            "flags": 134217732,
+            "index": 17,
+            "memory_size": 1021612,
+            "physical_address": 2331103232,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 15532032,
+            "file_size": 172,
+            "flags": 134217732,
+            "index": 18,
+            "memory_size": 172,
+            "physical_address": 2332127232,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 15536128,
+            "file_size": 0,
+            "flags": 134217732,
+            "index": 19,
+            "memory_size": 1998848,
+            "physical_address": 2332131328,
+            "type": 1
+          }
+        ],
+        "required_split_files": [
+          {
+            "index": 2,
+            "path": "vendor/firmware_mnt/image/adsp.b02",
+            "reason": "loadable payload",
+            "sha256": "f85a8ef97191c49f2d0b8f713b6009963b81e225ce0dabb1189cd92f7d0c5600",
+            "size_bytes": 82680
+          },
+          {
+            "index": 3,
+            "path": "vendor/firmware_mnt/image/adsp.b03",
+            "reason": "loadable payload",
+            "sha256": "11d886ebfc13ea7a11410470d6ff884d720379b0d3fe78af793538dfc2def040",
+            "size_bytes": 358784
+          },
+          {
+            "index": 4,
+            "path": "vendor/firmware_mnt/image/adsp.b04",
+            "reason": "loadable payload",
+            "sha256": "4359682ac1abdcfe413d52cb30eea69fae0e36fbec6f55b4d77489bb667e7292",
+            "size_bytes": 1966540
+          },
+          {
+            "index": 5,
+            "path": "vendor/firmware_mnt/image/adsp.b05",
+            "reason": "loadable payload",
+            "sha256": "f63badc1a2492c064efdec96d8285cbc3f6c744979adb6a5a773361ab80cd133",
+            "size_bytes": 2487860
+          },
+          {
+            "index": 6,
+            "path": "vendor/firmware_mnt/image/adsp.b06",
+            "reason": "loadable payload",
+            "sha256": "08cfc45db65000403bac68390c87c3383c05b16dbf622e732ae42721f3ccd79d",
+            "size_bytes": 38696
+          },
+          {
+            "index": 7,
+            "path": "vendor/firmware_mnt/image/adsp.b07",
+            "reason": "loadable payload",
+            "sha256": "4a3c57349f55e357678092e1cf1b5d4f3f08197e508be1882e3e4a707dcaca96",
+            "size_bytes": 28972
+          },
+          {
+            "index": 8,
+            "path": "vendor/firmware_mnt/image/adsp.b08",
+            "reason": "loadable payload",
+            "sha256": "20175c2c1b2b429818dcda95460c53143d5ad299c3f99cbd0d6a1c5fdf50fbfc",
+            "size_bytes": 126736
+          },
+          {
+            "index": 9,
+            "path": "vendor/firmware_mnt/image/adsp.b09",
+            "reason": "loadable payload",
+            "sha256": "565aaaa031b54649bc587b9f05e0d080e3f60803047d6e53c68b9252e0f7ccfe",
+            "size_bytes": 64424
+          },
+          {
+            "index": 10,
+            "path": "vendor/firmware_mnt/image/adsp.b10",
+            "reason": "loadable payload",
+            "sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+            "size_bytes": 602112
+          },
+          {
+            "index": 11,
+            "path": "vendor/firmware_mnt/image/adsp.b11",
+            "reason": "loadable payload",
+            "sha256": "047b890fde8b8cb9444607ee7ef2d3212e6cf891976fc2743daa30dcee9f1fa4",
+            "size_bytes": 6896588
+          },
+          {
+            "index": 12,
+            "path": "vendor/firmware_mnt/image/adsp.b12",
+            "reason": "loadable payload",
+            "sha256": "8816fe73433a146cea5365b74ef0ee2c2833ed9c895e5a39a8a9dba5f55fe48b",
+            "size_bytes": 280880
+          },
+          {
+            "index": 13,
+            "path": "vendor/firmware_mnt/image/adsp.b13",
+            "reason": "loadable payload",
+            "sha256": "271c5783def587733c57edd67523fd9890a97b12fd2ee0ad4237226454bb6b85",
+            "size_bytes": 20
+          },
+          {
+            "index": 14,
+            "path": "vendor/firmware_mnt/image/adsp.b14",
+            "reason": "loadable payload",
+            "sha256": "15f4ec05645cbfc96a203969aa771df863a28f348abe82663f96d09204113eff",
+            "size_bytes": 104184
+          },
+          {
+            "index": 15,
+            "path": "vendor/firmware_mnt/image/adsp.b15",
+            "reason": "loadable payload",
+            "sha256": "85839996e8abe7eeebc44cc9e0af3d8b6fcdd25db47e53563e00407433ed9be4",
+            "size_bytes": 1346476
+          },
+          {
+            "index": 16,
+            "path": "vendor/firmware_mnt/image/adsp.b16",
+            "reason": "loadable payload",
+            "sha256": "7f134e39357e679f6d84289ed0128d5dd538de494da89e159d13cbb9abf31052",
+            "size_bytes": 79592
+          },
+          {
+            "index": 17,
+            "path": "vendor/firmware_mnt/image/adsp.b17",
+            "reason": "loadable payload",
+            "sha256": "215f026fd6b54d2d882db118b6b7742443edd3d19157b91c1021cb1920b6d2c8",
+            "size_bytes": 1021612
+          },
+          {
+            "index": 18,
+            "path": "vendor/firmware_mnt/image/adsp.b18",
+            "reason": "loadable payload",
+            "sha256": "d8c9e88d16aeb6666185a6318ac7e273342e31a54770ff29ca7b5f5a79f2f564",
+            "size_bytes": 172
+          }
+        ],
+        "scope": "Required-file and byte-length checks only; no signature, load, memory reservation, ABI or hardware test",
+        "size_mismatches": [],
+        "split_payload_required": true
+      },
+      "vendor/firmware_mnt/image/cdsp.mdt": {
+        "captured_segments_not_requested_by_this_metadata": [
+          "vendor/firmware_mnt/image/cdsp.b00",
+          "vendor/firmware_mnt/image/cdsp.b01"
+        ],
+        "elf_machine": 164,
+        "format": "ELF32 little endian",
+        "loadable_zero_file_size_indices": [
+          7,
+          10,
+          12
+        ],
+        "loader_file_set_complete": true,
+        "metadata_hash_source": "packed immediately after metadata header",
+        "metadata_path": "vendor/firmware_mnt/image/cdsp.mdt",
+        "missing_required_files": [],
+        "program_header_count": 13,
+        "program_headers": [
+          {
+            "alignment": 0,
+            "file_offset": 0,
+            "file_size": 468,
+            "flags": 117440512,
+            "index": 0,
+            "memory_size": 0,
+            "physical_address": 0,
+            "type": 0
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4096,
+            "file_size": 7192,
+            "flags": 35651584,
+            "index": 1,
+            "memory_size": 8192,
+            "physical_address": 2294284288,
+            "type": 0
+          },
+          {
+            "alignment": 1048576,
+            "file_offset": 12288,
+            "file_size": 235676,
+            "flags": 134217733,
+            "index": 2,
+            "memory_size": 720896,
+            "physical_address": 2273312768,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 249856,
+            "file_size": 105980,
+            "flags": 134217733,
+            "index": 3,
+            "memory_size": 106496,
+            "physical_address": 2274033664,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 356352,
+            "file_size": 1076,
+            "flags": 134217733,
+            "index": 4,
+            "memory_size": 4096,
+            "physical_address": 2274140160,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 360448,
+            "file_size": 2795116,
+            "flags": 134217735,
+            "index": 5,
+            "memory_size": 5210112,
+            "physical_address": 2274144256,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 3158016,
+            "file_size": 83418,
+            "flags": 134217734,
+            "index": 6,
+            "memory_size": 86016,
+            "physical_address": 2279354368,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 3244032,
+            "file_size": 0,
+            "flags": 134217732,
+            "index": 7,
+            "memory_size": 163840,
+            "physical_address": 2279440384,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 3244032,
+            "file_size": 2779840,
+            "flags": 134217735,
+            "index": 8,
+            "memory_size": 3264512,
+            "physical_address": 2279604224,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 6025216,
+            "file_size": 3576,
+            "flags": 134217734,
+            "index": 9,
+            "memory_size": 4096,
+            "physical_address": 2282868736,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 6029312,
+            "file_size": 0,
+            "flags": 134217732,
+            "index": 10,
+            "memory_size": 925696,
+            "physical_address": 2282872832,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 6029312,
+            "file_size": 59156,
+            "flags": 134217735,
+            "index": 11,
+            "memory_size": 274432,
+            "physical_address": 2283798528,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 6090752,
+            "file_size": 0,
+            "flags": 134217735,
+            "index": 12,
+            "memory_size": 10211328,
+            "physical_address": 2284072960,
+            "type": 1
+          }
+        ],
+        "required_split_files": [
+          {
+            "index": 2,
+            "path": "vendor/firmware_mnt/image/cdsp.b02",
+            "reason": "loadable payload",
+            "sha256": "dd688282e63724ca96a4849b2c495683f4ba951a84899a24fa52ef35791289a9",
+            "size_bytes": 235676
+          },
+          {
+            "index": 3,
+            "path": "vendor/firmware_mnt/image/cdsp.b03",
+            "reason": "loadable payload",
+            "sha256": "613dd6c2c9a606d32849231c14cc249d9dd9dac2d588e84206053ce6d1a4756a",
+            "size_bytes": 105980
+          },
+          {
+            "index": 4,
+            "path": "vendor/firmware_mnt/image/cdsp.b04",
+            "reason": "loadable payload",
+            "sha256": "ceb11f87af22fd6f54154295b870d089c4f98a76ff1cd69cfbab193d9857a449",
+            "size_bytes": 1076
+          },
+          {
+            "index": 5,
+            "path": "vendor/firmware_mnt/image/cdsp.b05",
+            "reason": "loadable payload",
+            "sha256": "8c3c65ebd31375d9a161a7e9487ee37aa5eff73989e975800721ec754d4f6097",
+            "size_bytes": 2795116
+          },
+          {
+            "index": 6,
+            "path": "vendor/firmware_mnt/image/cdsp.b06",
+            "reason": "loadable payload",
+            "sha256": "a3d4e8a59934bab0eb2950b791280194979ee4170abe4268733c31ac385089ed",
+            "size_bytes": 83418
+          },
+          {
+            "index": 8,
+            "path": "vendor/firmware_mnt/image/cdsp.b08",
+            "reason": "loadable payload",
+            "sha256": "63e298d9daaa458a8339af3f1d1612cbc5785c1f691ecd0ff73b2b8cba41bc03",
+            "size_bytes": 2779840
+          },
+          {
+            "index": 9,
+            "path": "vendor/firmware_mnt/image/cdsp.b09",
+            "reason": "loadable payload",
+            "sha256": "28fbbdb4d8b39670ba687abd3f6a18ddfa0c2ff05d9ed4e1362907072aa2dccd",
+            "size_bytes": 3576
+          },
+          {
+            "index": 11,
+            "path": "vendor/firmware_mnt/image/cdsp.b11",
+            "reason": "loadable payload",
+            "sha256": "b90eebdf7fcf3372f3eea85cca724cbe716d2edccbbe21854c8b9306164b9ae8",
+            "size_bytes": 59156
+          }
+        ],
+        "scope": "Required-file and byte-length checks only; no signature, load, memory reservation, ABI or hardware test",
+        "size_mismatches": [],
+        "split_payload_required": true
+      },
+      "vendor/firmware_mnt/image/slpi.mdt": {
+        "captured_segments_not_requested_by_this_metadata": [
+          "vendor/firmware_mnt/image/slpi.b00",
+          "vendor/firmware_mnt/image/slpi.b01"
+        ],
+        "elf_machine": 164,
+        "format": "ELF32 little endian",
+        "loadable_zero_file_size_indices": [
+          21
+        ],
+        "loader_file_set_complete": true,
+        "metadata_hash_source": "packed immediately after metadata header",
+        "metadata_path": "vendor/firmware_mnt/image/slpi.mdt",
+        "missing_required_files": [],
+        "program_header_count": 22,
+        "program_headers": [
+          {
+            "alignment": 0,
+            "file_offset": 0,
+            "file_size": 756,
+            "flags": 117440512,
+            "index": 0,
+            "memory_size": 0,
+            "physical_address": 0,
+            "type": 0
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4096,
+            "file_size": 7624,
+            "flags": 35651584,
+            "index": 1,
+            "memory_size": 8192,
+            "physical_address": 2303721472,
+            "type": 0
+          },
+          {
+            "alignment": 1048576,
+            "file_offset": 12288,
+            "file_size": 82872,
+            "flags": 134217733,
+            "index": 2,
+            "memory_size": 86016,
+            "physical_address": 2281701376,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 98304,
+            "file_size": 247232,
+            "flags": 134217734,
+            "index": 3,
+            "memory_size": 249856,
+            "physical_address": 2281787392,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 348160,
+            "file_size": 2078252,
+            "flags": 134217733,
+            "index": 4,
+            "memory_size": 2080768,
+            "physical_address": 2282037248,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 2428928,
+            "file_size": 1733164,
+            "flags": 134217734,
+            "index": 5,
+            "memory_size": 6037504,
+            "physical_address": 2284118016,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4165632,
+            "file_size": 63634,
+            "flags": 134217732,
+            "index": 6,
+            "memory_size": 65536,
+            "physical_address": 2290155520,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4231168,
+            "file_size": 28972,
+            "flags": 134217733,
+            "index": 7,
+            "memory_size": 28992,
+            "physical_address": 2290221056,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4260160,
+            "file_size": 167668,
+            "flags": 134217734,
+            "index": 8,
+            "memory_size": 171712,
+            "physical_address": 2290250048,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4431872,
+            "file_size": 111388,
+            "flags": 134217733,
+            "index": 9,
+            "memory_size": 114688,
+            "physical_address": 2290421760,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4546560,
+            "file_size": 57580,
+            "flags": 134217732,
+            "index": 10,
+            "memory_size": 57580,
+            "physical_address": 2290536448,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4608000,
+            "file_size": 27572,
+            "flags": 134217732,
+            "index": 11,
+            "memory_size": 27572,
+            "physical_address": 2290597888,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4636672,
+            "file_size": 82,
+            "flags": 134217732,
+            "index": 12,
+            "memory_size": 82,
+            "physical_address": 2290626560,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4640768,
+            "file_size": 125836,
+            "flags": 134217732,
+            "index": 13,
+            "memory_size": 125836,
+            "physical_address": 2290630656,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4767744,
+            "file_size": 260,
+            "flags": 134217732,
+            "index": 14,
+            "memory_size": 260,
+            "physical_address": 2290757632,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4771840,
+            "file_size": 1994428,
+            "flags": 134217733,
+            "index": 15,
+            "memory_size": 1994752,
+            "physical_address": 2291138560,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 6766592,
+            "file_size": 24580,
+            "flags": 134217734,
+            "index": 16,
+            "memory_size": 6328320,
+            "physical_address": 2293133312,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 6795264,
+            "file_size": 14816,
+            "flags": 134217732,
+            "index": 17,
+            "memory_size": 16384,
+            "physical_address": 2299461632,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 6811648,
+            "file_size": 52064,
+            "flags": 134217734,
+            "index": 18,
+            "memory_size": 206088,
+            "physical_address": 2299478016,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 6866184,
+            "file_size": 53164,
+            "flags": 134217734,
+            "index": 19,
+            "memory_size": 53168,
+            "physical_address": 2299684104,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 6919352,
+            "file_size": 380844,
+            "flags": 134217733,
+            "index": 20,
+            "memory_size": 383816,
+            "physical_address": 2299737272,
+            "type": 1
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 7303168,
+            "file_size": 0,
+            "flags": 134217733,
+            "index": 21,
+            "memory_size": 3600384,
+            "physical_address": 2300121088,
+            "type": 1
+          }
+        ],
+        "required_split_files": [
+          {
+            "index": 2,
+            "path": "vendor/firmware_mnt/image/slpi.b02",
+            "reason": "loadable payload",
+            "sha256": "fd87e93666a2331477d10437550a11bcdc6e528bbdf29c349a35e362f7e89afd",
+            "size_bytes": 82872
+          },
+          {
+            "index": 3,
+            "path": "vendor/firmware_mnt/image/slpi.b03",
+            "reason": "loadable payload",
+            "sha256": "4b768e122a60ec71dda5d0ef490309062a29fac4a1f409202fc0076778455a6e",
+            "size_bytes": 247232
+          },
+          {
+            "index": 4,
+            "path": "vendor/firmware_mnt/image/slpi.b04",
+            "reason": "loadable payload",
+            "sha256": "a1ea273715b88cc3ca471546c05731bdd85d292d4428809decf99469e4bdf0fe",
+            "size_bytes": 2078252
+          },
+          {
+            "index": 5,
+            "path": "vendor/firmware_mnt/image/slpi.b05",
+            "reason": "loadable payload",
+            "sha256": "d264bde8290f492f7754a8ea58f637eebb8fdeadb1e8e5ce0affa51cf678222c",
+            "size_bytes": 1733164
+          },
+          {
+            "index": 6,
+            "path": "vendor/firmware_mnt/image/slpi.b06",
+            "reason": "loadable payload",
+            "sha256": "2f80599e66d0206c1a8b3b4b968e3d836a3c40d5570ab8aa240344641e469614",
+            "size_bytes": 63634
+          },
+          {
+            "index": 7,
+            "path": "vendor/firmware_mnt/image/slpi.b07",
+            "reason": "loadable payload",
+            "sha256": "4d59b5a16bae0a961d074c4440b1f1eb001908e71b8500f70573a758bcf2f00a",
+            "size_bytes": 28972
+          },
+          {
+            "index": 8,
+            "path": "vendor/firmware_mnt/image/slpi.b08",
+            "reason": "loadable payload",
+            "sha256": "97eb9589d0fb7c9e7993470d2652288054e2d863fc901453a41907002082b2e8",
+            "size_bytes": 167668
+          },
+          {
+            "index": 9,
+            "path": "vendor/firmware_mnt/image/slpi.b09",
+            "reason": "loadable payload",
+            "sha256": "718bbbb7e73d7fb513f0e7ff03550a566c399128d354baf6d8f9d739385d6fd4",
+            "size_bytes": 111388
+          },
+          {
+            "index": 10,
+            "path": "vendor/firmware_mnt/image/slpi.b10",
+            "reason": "loadable payload",
+            "sha256": "c1beb7c5a6f1b7c2647dcf2f9191d50d043311111d6f00f67391d46cfae9ab1a",
+            "size_bytes": 57580
+          },
+          {
+            "index": 11,
+            "path": "vendor/firmware_mnt/image/slpi.b11",
+            "reason": "loadable payload",
+            "sha256": "8adeefc0beeb2d837dcc4592bb2ada15e170d120e0dc0c5bb91f650e43632778",
+            "size_bytes": 27572
+          },
+          {
+            "index": 12,
+            "path": "vendor/firmware_mnt/image/slpi.b12",
+            "reason": "loadable payload",
+            "sha256": "521a113f30343622d1b99cf1047a724dce74b0522dc185a8a782c8ce98861e02",
+            "size_bytes": 82
+          },
+          {
+            "index": 13,
+            "path": "vendor/firmware_mnt/image/slpi.b13",
+            "reason": "loadable payload",
+            "sha256": "fb13f16cfbfbf46bc2ad57b3e6c7ef4d6b1f7036b3f09b49560a4361a7be230b",
+            "size_bytes": 125836
+          },
+          {
+            "index": 14,
+            "path": "vendor/firmware_mnt/image/slpi.b14",
+            "reason": "loadable payload",
+            "sha256": "bbfeb50f39a19b2e9a054ac79b2bf129ce05f968420417554a48d8e6e19e99f8",
+            "size_bytes": 260
+          },
+          {
+            "index": 15,
+            "path": "vendor/firmware_mnt/image/slpi.b15",
+            "reason": "loadable payload",
+            "sha256": "c09424927c186ccf316e8536b4fdee1bcb6bf1661f68b820f27976ee2fc804f9",
+            "size_bytes": 1994428
+          },
+          {
+            "index": 16,
+            "path": "vendor/firmware_mnt/image/slpi.b16",
+            "reason": "loadable payload",
+            "sha256": "1fd042948b7120a85cca9a2030d79dc545bcdd4354051e261b0bedb7727396cb",
+            "size_bytes": 24580
+          },
+          {
+            "index": 17,
+            "path": "vendor/firmware_mnt/image/slpi.b17",
+            "reason": "loadable payload",
+            "sha256": "9f22e08889bd3198735d7fb9b8778bcb585586db93eeb3b0eefacbb5d13b1fa7",
+            "size_bytes": 14816
+          },
+          {
+            "index": 18,
+            "path": "vendor/firmware_mnt/image/slpi.b18",
+            "reason": "loadable payload",
+            "sha256": "5579b534b638bab659518a93f8a6354392f8ba69de2240060778cf7a3d064b4e",
+            "size_bytes": 52064
+          },
+          {
+            "index": 19,
+            "path": "vendor/firmware_mnt/image/slpi.b19",
+            "reason": "loadable payload",
+            "sha256": "d52980ec965cbf97985743a16f6e8d54c70067805a9217fc58862138bc67f9d6",
+            "size_bytes": 53164
+          },
+          {
+            "index": 20,
+            "path": "vendor/firmware_mnt/image/slpi.b20",
+            "reason": "loadable payload",
+            "sha256": "0d208706a046ae412d33b5caecb5eb40bda87dca5c8f5ecf3f358d08ad0a528a",
+            "size_bytes": 380844
+          }
+        ],
+        "scope": "Required-file and byte-length checks only; no signature, load, memory reservation, ABI or hardware test",
+        "size_mismatches": [],
+        "split_payload_required": true
+      },
+      "vendor/firmware_mnt/image/venus.mdt": {
+        "captured_segments_not_requested_by_this_metadata": [
+          "vendor/firmware_mnt/image/venus.b00",
+          "vendor/firmware_mnt/image/venus.b01"
+        ],
+        "elf_machine": 94,
+        "format": "ELF32 little endian",
+        "loadable_zero_file_size_indices": [
+          12,
+          14,
+          16,
+          18
+        ],
+        "loader_file_set_complete": true,
+        "metadata_hash_source": "packed immediately after metadata header",
+        "metadata_path": "vendor/firmware_mnt/image/venus.mdt",
+        "missing_required_files": [],
+        "program_header_count": 20,
+        "program_headers": [
+          {
+            "alignment": 0,
+            "file_offset": 0,
+            "file_size": 692,
+            "flags": 117440512,
+            "index": 0,
+            "memory_size": 0,
+            "physical_address": 0,
+            "type": 0
+          },
+          {
+            "alignment": 4096,
+            "file_offset": 4096,
+            "file_size": 7528,
+            "flags": 35651584,
+            "index": 1,
+            "memory_size": 8192,
+            "physical_address": 262144000,
+            "type": 0
+          },
+          {
+            "alignment": 1048576,
+            "file_offset": 1048576,
+            "file_size": 300,
+            "flags": 134217733,
+            "index": 2,
+            "memory_size": 300,
+            "physical_address": 256901120,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1048876,
+            "file_size": 20,
+            "flags": 134217733,
+            "index": 3,
+            "memory_size": 20,
+            "physical_address": 256901896,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1048896,
+            "file_size": 20,
+            "flags": 134217733,
+            "index": 4,
+            "memory_size": 20,
+            "physical_address": 256901960,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1048916,
+            "file_size": 20,
+            "flags": 134217733,
+            "index": 5,
+            "memory_size": 20,
+            "physical_address": 256902024,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1048936,
+            "file_size": 20,
+            "flags": 134217733,
+            "index": 6,
+            "memory_size": 20,
+            "physical_address": 256902088,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1048956,
+            "file_size": 24,
+            "flags": 134217733,
+            "index": 7,
+            "memory_size": 24,
+            "physical_address": 256902152,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1048980,
+            "file_size": 16,
+            "flags": 134217733,
+            "index": 8,
+            "memory_size": 16,
+            "physical_address": 256902280,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1048996,
+            "file_size": 887728,
+            "flags": 134217733,
+            "index": 9,
+            "memory_size": 887728,
+            "physical_address": 256905216,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1936724,
+            "file_size": 41488,
+            "flags": 134217734,
+            "index": 10,
+            "memory_size": 41488,
+            "physical_address": 257851392,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1978212,
+            "file_size": 0,
+            "flags": 134217728,
+            "index": 11,
+            "memory_size": 0,
+            "physical_address": 256901120,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1978212,
+            "file_size": 0,
+            "flags": 134217734,
+            "index": 12,
+            "memory_size": 26256,
+            "physical_address": 257916928,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1978212,
+            "file_size": 0,
+            "flags": 134217728,
+            "index": 13,
+            "memory_size": 0,
+            "physical_address": 256901120,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1978212,
+            "file_size": 0,
+            "flags": 134217734,
+            "index": 14,
+            "memory_size": 16384,
+            "physical_address": 257949696,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1978212,
+            "file_size": 0,
+            "flags": 134217728,
+            "index": 15,
+            "memory_size": 0,
+            "physical_address": 256901120,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1978212,
+            "file_size": 0,
+            "flags": 134217734,
+            "index": 16,
+            "memory_size": 8192,
+            "physical_address": 257966080,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1978212,
+            "file_size": 0,
+            "flags": 134217728,
+            "index": 17,
+            "memory_size": 0,
+            "physical_address": 256901120,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1978212,
+            "file_size": 0,
+            "flags": 134217734,
+            "index": 18,
+            "memory_size": 4165632,
+            "physical_address": 257974272,
+            "type": 1
+          },
+          {
+            "alignment": 1,
+            "file_offset": 1978212,
+            "file_size": 32,
+            "flags": 134217734,
+            "index": 19,
+            "memory_size": 32,
+            "physical_address": 262139904,
+            "type": 1
+          }
+        ],
+        "required_split_files": [
+          {
+            "index": 2,
+            "path": "vendor/firmware_mnt/image/venus.b02",
+            "reason": "loadable payload",
+            "sha256": "da84bbff77270766a2f6d61bc6b42902fb59a942b950117a5b5c106ccbacbb49",
+            "size_bytes": 300
+          },
+          {
+            "index": 3,
+            "path": "vendor/firmware_mnt/image/venus.b03",
+            "reason": "loadable payload",
+            "sha256": "5c810efcddb8df1e523c99097d5609a278f722e56b7ce575e5ba1f04726e22f4",
+            "size_bytes": 20
+          },
+          {
+            "index": 4,
+            "path": "vendor/firmware_mnt/image/venus.b04",
+            "reason": "loadable payload",
+            "sha256": "03350ef9fd20590d448d92ea0c53456f2b8a797e0e910426b8c0d75df46ab218",
+            "size_bytes": 20
+          },
+          {
+            "index": 5,
+            "path": "vendor/firmware_mnt/image/venus.b05",
+            "reason": "loadable payload",
+            "sha256": "7a1b9d5dff73c70276f9b18b6440f9a8d674b446ece36dc3f44dead3da04e5a8",
+            "size_bytes": 20
+          },
+          {
+            "index": 6,
+            "path": "vendor/firmware_mnt/image/venus.b06",
+            "reason": "loadable payload",
+            "sha256": "c047e67c4b16a8630345deae029a22c3b245c35df5485e7e172b23a2380a6bd9",
+            "size_bytes": 20
+          },
+          {
+            "index": 7,
+            "path": "vendor/firmware_mnt/image/venus.b07",
+            "reason": "loadable payload",
+            "sha256": "1881c2584c0e18865c5f1575905251e46795a98a1cbacb78a5ad4b8448cdfbbc",
+            "size_bytes": 24
+          },
+          {
+            "index": 8,
+            "path": "vendor/firmware_mnt/image/venus.b08",
+            "reason": "loadable payload",
+            "sha256": "17b5bbea81099abafc9cf970586f97ee4d198e01dd80a7d63ef129f6407cc808",
+            "size_bytes": 16
+          },
+          {
+            "index": 9,
+            "path": "vendor/firmware_mnt/image/venus.b09",
+            "reason": "loadable payload",
+            "sha256": "d049c579fe219e1bbed41f34be7ef1b4635bac952d4af29e380c2cbb9d2e4f77",
+            "size_bytes": 887728
+          },
+          {
+            "index": 10,
+            "path": "vendor/firmware_mnt/image/venus.b10",
+            "reason": "loadable payload",
+            "sha256": "10a6fec4d1c7c7d61ae71358e5986151d3348d174fe9ab9c36627df0762abe8e",
+            "size_bytes": 41488
+          },
+          {
+            "index": 19,
+            "path": "vendor/firmware_mnt/image/venus.b19",
+            "reason": "loadable payload",
+            "sha256": "43b09596e1496809aaa964b34c146580f0566c86bc9d7218a1288fd15fb93424",
+            "size_bytes": 32
+          }
+        ],
+        "scope": "Required-file and byte-length checks only; no signature, load, memory reservation, ABI or hardware test",
+        "size_mismatches": [],
+        "split_payload_required": true
+      }
+    },
+    "off_device_copy_verified": true,
+    "private_archive_mode": "0o600",
+    "private_directory_mode": "0o700",
+    "receiver_sha256": "9ca9ccbdc628ff1a1b365ef4b5deb092ed8405acd1bcb79c8c0454f700bd18f1",
+    "schema_version": 1,
+    "scope": "Private fixed stock-firmware transfer and structural evidence",
+    "source_manifest": {
+      "collector_sha256": "9ca9ccbdc628ff1a1b365ef4b5deb092ed8405acd1bcb79c8c0454f700bd18f1",
+      "completed_utc": "2026-11-22T23:38:36.300335+00:00",
+      "file_count": 118,
+      "files": [
+        {
+          "archive_path": "vendor/bt_firmware/image/htbtfw10.tlv",
+          "group": "bluetooth",
+          "regular_file": true,
+          "sha256": "c6ac59eaa877786f0c883ce087816d8882e06f4850afd36ec1fcc5c2e0b72c5c",
+          "size_bytes": 129964,
+          "source_path": "/vendor/bt_firmware/image/htbtfw10.tlv",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/bt_firmware/image/htbtfw20.tlv",
+          "group": "bluetooth",
+          "regular_file": true,
+          "sha256": "07b0be73dea31551200487f15fdc049edbb923555d38b7e7b0436a773bfbb2ea",
+          "size_bytes": 205772,
+          "source_path": "/vendor/bt_firmware/image/htbtfw20.tlv",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/bt_firmware/image/htnv10.bin",
+          "group": "bluetooth",
+          "regular_file": true,
+          "sha256": "c7dabb873d4f3e60e698c9ec1521a0ede4f48fe58936aec2c9f0ebc0166c8d28",
+          "size_bytes": 3569,
+          "source_path": "/vendor/bt_firmware/image/htnv10.bin",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/bt_firmware/image/htnv20.bin",
+          "group": "bluetooth",
+          "regular_file": true,
+          "sha256": "21492a18750319b594a6287e2393d39deac28bf54edb91c660b5918b397c9451",
+          "size_bytes": 5839,
+          "source_path": "/vendor/bt_firmware/image/htnv20.bin",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/a650_gmu.bin",
+          "group": "a650",
+          "regular_file": true,
+          "sha256": "df79fa8482fcc7587bb239b9c9e2b24bce4729893b990fe3f82b30da8175b01c",
+          "size_bytes": 41548,
+          "source_path": "/vendor/firmware/a650_gmu.bin",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/a650_sqe.fw",
+          "group": "a650",
+          "regular_file": true,
+          "sha256": "b4c27420fd6a5c6b511b254cc0fad8cdd40eea38ceb3418f895a1084f4460487",
+          "size_bytes": 31632,
+          "source_path": "/vendor/firmware/a650_sqe.fw",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/a650_zap.b00",
+          "group": "a650",
+          "regular_file": true,
+          "sha256": "ec9b9d5a67456384809624b14a00d15d36297e5f2e75728504cd872bc95e0947",
+          "size_bytes": 148,
+          "source_path": "/vendor/firmware/a650_zap.b00",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/a650_zap.b01",
+          "group": "a650",
+          "regular_file": true,
+          "sha256": "134aa6dd25db423d3f6e5f04923c9cf0efbdd647bf706962dc69922872dde89e",
+          "size_bytes": 6712,
+          "source_path": "/vendor/firmware/a650_zap.b01",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/a650_zap.b02",
+          "group": "a650",
+          "regular_file": true,
+          "sha256": "a415e5452fa8f597670a6e51010e97bfabca7d20fbce8044caed64d9d5873113",
+          "size_bytes": 1676,
+          "source_path": "/vendor/firmware/a650_zap.b02",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/a650_zap.elf",
+          "group": "a650",
+          "regular_file": true,
+          "sha256": "9fa3242134d6070c4facba48bb5c5ef2206d92995035aec7daff01198e853299",
+          "size_bytes": 13964,
+          "source_path": "/vendor/firmware/a650_zap.elf",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/a650_zap.mdt",
+          "group": "a650",
+          "regular_file": true,
+          "sha256": "61269235aed0949659580859c8694eaf5a9744aaa0ffa6ef1f5125ab3bf8083a",
+          "size_bytes": 6860,
+          "source_path": "/vendor/firmware/a650_zap.mdt",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/novatek_ts_fw_boe.bin",
+          "group": "novatek_candidates",
+          "regular_file": true,
+          "sha256": "04a199ea24a8f0c0a0281b4c4cf8c8bad4946f0040353f496166e8842d12b185",
+          "size_bytes": 245760,
+          "source_path": "/vendor/firmware/novatek_ts_fw_boe.bin",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/novatek_ts_fw_boe_6.bin",
+          "group": "novatek_candidates",
+          "regular_file": true,
+          "sha256": "6611efef1126dad4ef588311a7bbbf54503d03afdf7d972d4bf14c44567bf3c4",
+          "size_bytes": 245760,
+          "source_path": "/vendor/firmware/novatek_ts_fw_boe_6.bin",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/novatek_ts_mp_boe.bin",
+          "group": "novatek_candidates",
+          "regular_file": true,
+          "sha256": "5391d0aee8c23af65362b1bc7cb65acad2c46f416db4e8f7decb7c37287a7223",
+          "size_bytes": 245760,
+          "source_path": "/vendor/firmware/novatek_ts_mp_boe.bin",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/novatek_ts_mp_boe_6.bin",
+          "group": "novatek_candidates",
+          "regular_file": true,
+          "sha256": "d7a0d94249a1837e77b9a48f39084bcb2ac14a9da47b9be18accd94961a5e315",
+          "size_bytes": 245760,
+          "source_path": "/vendor/firmware/novatek_ts_mp_boe_6.bin",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/novatek_ts_tm_fw.bin",
+          "group": "novatek_candidates",
+          "regular_file": true,
+          "sha256": "1d15b14f4a5136a1769f63dee2d3c28ba82249806cda6a2f68bc659509a043f4",
+          "size_bytes": 245760,
+          "source_path": "/vendor/firmware/novatek_ts_tm_fw.bin",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/novatek_ts_tm_fw_6.bin",
+          "group": "novatek_candidates",
+          "regular_file": true,
+          "sha256": "9e8642c6c0d2f27a99d64e318b9fefa41c507356008ead7c15bc4aba18c36574",
+          "size_bytes": 245760,
+          "source_path": "/vendor/firmware/novatek_ts_tm_fw_6.bin",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/novatek_ts_tm_mp.bin",
+          "group": "novatek_candidates",
+          "regular_file": true,
+          "sha256": "cd9584682939b3201fd06fc8f700ec29b03ef9a755f38b592cc3537381cb52ae",
+          "size_bytes": 245760,
+          "source_path": "/vendor/firmware/novatek_ts_tm_mp.bin",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/novatek_ts_tm_mp_6.bin",
+          "group": "novatek_candidates",
+          "regular_file": true,
+          "sha256": "5ffcc04d0823e7c12186e97db9fb2d5ffc9380f1b616558ddc5a3a418e549ce0",
+          "size_bytes": 245760,
+          "source_path": "/vendor/firmware/novatek_ts_tm_mp_6.bin",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/tfa98xx_QS.cnt",
+          "group": "tfa9894_candidates",
+          "regular_file": true,
+          "sha256": "a3f641609cbb617ea2c3169e5a9edc6c04f89a342e99fd96dacc44f216cdfa81",
+          "size_bytes": 26245,
+          "source_path": "/vendor/firmware/tfa98xx_QS.cnt",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware/tfa98xx_YC.cnt",
+          "group": "tfa9894_candidates",
+          "regular_file": true,
+          "sha256": "8e7d4a1c4d9587382150cd949e202100d64e17447719a6b6efdb7611ffb952f5",
+          "size_bytes": 26245,
+          "source_path": "/vendor/firmware/tfa98xx_YC.cnt",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b00",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "5262e8ee3823407c5b00609b8168a4278bde55b1de4117927a7d2f8b6939346a",
+          "size_bytes": 692,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b00",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b01",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "fce8078d98f186ef75aa6a3a0624a5db2b5e3acc910f7f16ceef571600019010",
+          "size_bytes": 7528,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b01",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b02",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "f85a8ef97191c49f2d0b8f713b6009963b81e225ce0dabb1189cd92f7d0c5600",
+          "size_bytes": 82680,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b02",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b03",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "11d886ebfc13ea7a11410470d6ff884d720379b0d3fe78af793538dfc2def040",
+          "size_bytes": 358784,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b03",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b04",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "4359682ac1abdcfe413d52cb30eea69fae0e36fbec6f55b4d77489bb667e7292",
+          "size_bytes": 1966540,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b04",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b05",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "f63badc1a2492c064efdec96d8285cbc3f6c744979adb6a5a773361ab80cd133",
+          "size_bytes": 2487860,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b05",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b06",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "08cfc45db65000403bac68390c87c3383c05b16dbf622e732ae42721f3ccd79d",
+          "size_bytes": 38696,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b06",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b07",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "4a3c57349f55e357678092e1cf1b5d4f3f08197e508be1882e3e4a707dcaca96",
+          "size_bytes": 28972,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b07",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b08",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "20175c2c1b2b429818dcda95460c53143d5ad299c3f99cbd0d6a1c5fdf50fbfc",
+          "size_bytes": 126736,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b08",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b09",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "565aaaa031b54649bc587b9f05e0d080e3f60803047d6e53c68b9252e0f7ccfe",
+          "size_bytes": 64424,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b09",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b10",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+          "size_bytes": 602112,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b10",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b11",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "047b890fde8b8cb9444607ee7ef2d3212e6cf891976fc2743daa30dcee9f1fa4",
+          "size_bytes": 6896588,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b11",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b12",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "8816fe73433a146cea5365b74ef0ee2c2833ed9c895e5a39a8a9dba5f55fe48b",
+          "size_bytes": 280880,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b12",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b13",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "271c5783def587733c57edd67523fd9890a97b12fd2ee0ad4237226454bb6b85",
+          "size_bytes": 20,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b13",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b14",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "15f4ec05645cbfc96a203969aa771df863a28f348abe82663f96d09204113eff",
+          "size_bytes": 104184,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b14",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b15",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "85839996e8abe7eeebc44cc9e0af3d8b6fcdd25db47e53563e00407433ed9be4",
+          "size_bytes": 1346476,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b15",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b16",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "7f134e39357e679f6d84289ed0128d5dd538de494da89e159d13cbb9abf31052",
+          "size_bytes": 79592,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b16",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b17",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "215f026fd6b54d2d882db118b6b7742443edd3d19157b91c1021cb1920b6d2c8",
+          "size_bytes": 1021612,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b17",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.b18",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "d8c9e88d16aeb6666185a6318ac7e273342e31a54770ff29ca7b5f5a79f2f564",
+          "size_bytes": 172,
+          "source_path": "/vendor/firmware_mnt/image/adsp.b18",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/adsp.mdt",
+          "group": "adsp",
+          "regular_file": true,
+          "sha256": "560d2e96806a1fd78ab768f74b48464cc5c783553ac7b7d1e29e4e4f9a0472a8",
+          "size_bytes": 8220,
+          "source_path": "/vendor/firmware_mnt/image/adsp.mdt",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/cdsp.b00",
+          "group": "cdsp",
+          "regular_file": true,
+          "sha256": "1002e62ed09cc28e8f9f9020141df6b2dcd2cd3c1c12c7588e0cebe561560301",
+          "size_bytes": 468,
+          "source_path": "/vendor/firmware_mnt/image/cdsp.b00",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/cdsp.b01",
+          "group": "cdsp",
+          "regular_file": true,
+          "sha256": "7cc6d8807928ab3342f6c520cfb50b308e0992c0720e48429d0f0067e077851a",
+          "size_bytes": 7192,
+          "source_path": "/vendor/firmware_mnt/image/cdsp.b01",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/cdsp.b02",
+          "group": "cdsp",
+          "regular_file": true,
+          "sha256": "dd688282e63724ca96a4849b2c495683f4ba951a84899a24fa52ef35791289a9",
+          "size_bytes": 235676,
+          "source_path": "/vendor/firmware_mnt/image/cdsp.b02",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/cdsp.b03",
+          "group": "cdsp",
+          "regular_file": true,
+          "sha256": "613dd6c2c9a606d32849231c14cc249d9dd9dac2d588e84206053ce6d1a4756a",
+          "size_bytes": 105980,
+          "source_path": "/vendor/firmware_mnt/image/cdsp.b03",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/cdsp.b04",
+          "group": "cdsp",
+          "regular_file": true,
+          "sha256": "ceb11f87af22fd6f54154295b870d089c4f98a76ff1cd69cfbab193d9857a449",
+          "size_bytes": 1076,
+          "source_path": "/vendor/firmware_mnt/image/cdsp.b04",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/cdsp.b05",
+          "group": "cdsp",
+          "regular_file": true,
+          "sha256": "8c3c65ebd31375d9a161a7e9487ee37aa5eff73989e975800721ec754d4f6097",
+          "size_bytes": 2795116,
+          "source_path": "/vendor/firmware_mnt/image/cdsp.b05",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/cdsp.b06",
+          "group": "cdsp",
+          "regular_file": true,
+          "sha256": "a3d4e8a59934bab0eb2950b791280194979ee4170abe4268733c31ac385089ed",
+          "size_bytes": 83418,
+          "source_path": "/vendor/firmware_mnt/image/cdsp.b06",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/cdsp.b08",
+          "group": "cdsp",
+          "regular_file": true,
+          "sha256": "63e298d9daaa458a8339af3f1d1612cbc5785c1f691ecd0ff73b2b8cba41bc03",
+          "size_bytes": 2779840,
+          "source_path": "/vendor/firmware_mnt/image/cdsp.b08",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/cdsp.b09",
+          "group": "cdsp",
+          "regular_file": true,
+          "sha256": "28fbbdb4d8b39670ba687abd3f6a18ddfa0c2ff05d9ed4e1362907072aa2dccd",
+          "size_bytes": 3576,
+          "source_path": "/vendor/firmware_mnt/image/cdsp.b09",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/cdsp.b11",
+          "group": "cdsp",
+          "regular_file": true,
+          "sha256": "b90eebdf7fcf3372f3eea85cca724cbe716d2edccbbe21854c8b9306164b9ae8",
+          "size_bytes": 59156,
+          "source_path": "/vendor/firmware_mnt/image/cdsp.b11",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/cdsp.mdt",
+          "group": "cdsp",
+          "regular_file": true,
+          "sha256": "db68c13910322d48b6deea45148abf825ba49ad0c91582dd197db9b352d9fd39",
+          "size_bytes": 7660,
+          "source_path": "/vendor/firmware_mnt/image/cdsp.mdt",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/amss20.bin",
+          "group": "wlan",
+          "regular_file": true,
+          "sha256": "23971cf2acadd3eeffa44575ec5573859f95388e7aa38a4a6734ec75d6b90e53",
+          "size_bytes": 4384928,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/amss20.bin",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e01",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "9334c3579a7c420dd5c5acf30f0788117cb7e647af0071d1033e1393f39bb7cc",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e01",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e02",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "37a00fc7d7b0947063fa8690d3f0be1b706d72efabf5f150203a9266369df321",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e02",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e03",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "7cc6e1d378f3d9132326869d25c140807e56cd35366d4852b2ecb225a474b489",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e03",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e04",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "92e838d6ea59b8325cff6c4c456f6fbf4a748f332d0a18671c0130716d10c21e",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e04",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e05",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "5ff5e0c8e0b00e1f39408bbb098e1327130bd2c2a32f9922923dae0a45711203",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e05",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e06",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "ec226ee938ee9c91769143bb9748db41aec7387fde9508c5a8d887712adbb0ca",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e06",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e07",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "fb20588940c27a51abcf1b3071f2d36f847bf34f313af16a14223ef2ac504510",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e07",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e08",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "bd0d759a45b64747ad948e1d56593b131298237edb394cddb8a8b952bac2d1cd",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e08",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e09",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "bd51547e9721508e2ce2d89c63fd7b76becec1093efca1aa4e24905a8a947e7d",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e09",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e0a",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "cd0c36cdbf48d526a4081867bb22556774326ebd9fb8cf88b88f08b237a651a1",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e0a",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e0b",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "a1090da1ac2adc1700d6d501d95baf19677f64aa02a64de1ccffde40c1c85862",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e0b",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e0c",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "bafbe173b75a0215696c59c2cc03b047628c599ab12022066c8c318595883409",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e0c",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e0d",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "f87b5fa15583de183e3e1a0334910af2710c9e686c7996f01161a8351cdb40d3",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e0d",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e0e",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "4a9d9ddac71b88e4bdd8af811bfdccd11a7d9305664519744ce870e00b5e284b",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e0e",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e0f",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "c51daf7b8cfcc30526fe91e107d0d70793b393c074596fb8546468c4dd939323",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e0f",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e10",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "89dd8e8afaf204efdf2d3f6030dcdd9f8c856f39922af33a4cd24cbcca3151fd",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e10",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e11",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "d6642cacc9700dec743d8bfc4130078db4407e83b638d3a40f65b81e71254ef2",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e11",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e12",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "2f6adfed42c24b4651b430e1c2a78f0226abdd139326abfbbb337789380ad5be",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e12",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e13",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "0e91608e8d3cac469c4754140fda608a28b282055191df690ef0b383edee4dcf",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e13",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e14",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "bb57e28b3bee7d2b9e57b2969d78f10a22270e294a8bf0585fa4452be598b65a",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e14",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e15",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "6d027542e2787dcf9a3409ca3e52751dd0631499aec7a882822057c0b9784425",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e15",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e16",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "42d5932c909c09b2820c126882ebcba3e1a332ab9c13896d4f1e1b860d73040f",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e16",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e17",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "7bba8df5233a5ef0a5701c5a6c686bc561c1ab2c029d22ef2d38a227587890e4",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e17",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e18",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "8d454f0caa111a7dd6c948b15d30a9f24ed3f0b233ba66ced7920ea6adf3d58c",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e18",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e19",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "5837bd4057cac5aff732f2bb919801310b7c1ad688fc5555297a3fcd6f697dbe",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e19",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e1a",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "135bac70790299fdcab97e81e3c571b0a3c5e5c3d5cef196ea80ad95e336bb24",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e1a",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.e25",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "febd1d3638810986edee2b31b48d909c8b518dd1d9f6a5a98a11c56879a32e44",
+          "size_bytes": 57868,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.e25",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/bdwlan.elf",
+          "group": "wlan_board_candidates",
+          "regular_file": true,
+          "sha256": "4e4cb97e7834b8840a328b70565de8996aeef9b6323226f70e90a567895c83ad",
+          "size_bytes": 57976,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/bdwlan.elf",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/m3.bin",
+          "group": "wlan",
+          "regular_file": true,
+          "sha256": "b1da77a2508789ce7fa1557425d3c6933b4d51f2c44f10298f58071f7a5b2448",
+          "size_bytes": 266684,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/m3.bin",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/qca6390/regdb.bin",
+          "group": "wlan",
+          "regular_file": true,
+          "sha256": "108943027fd252c3104e716f43c7b5aea07b81200e170160f423b5281688d478",
+          "size_bytes": 19348,
+          "source_path": "/vendor/firmware_mnt/image/qca6390/regdb.bin",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b00",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "bc3477fbadec0ce1da37679400137b38d028c2779f2e68f05ae8e513d80a00c9",
+          "size_bytes": 756,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b00",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b01",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "a4f60c8126ac37a77ddad2ebe2edd96bb5fc7dfa867f9d03a6882b7cabd5d19c",
+          "size_bytes": 7624,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b01",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b02",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "fd87e93666a2331477d10437550a11bcdc6e528bbdf29c349a35e362f7e89afd",
+          "size_bytes": 82872,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b02",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b03",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "4b768e122a60ec71dda5d0ef490309062a29fac4a1f409202fc0076778455a6e",
+          "size_bytes": 247232,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b03",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b04",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "a1ea273715b88cc3ca471546c05731bdd85d292d4428809decf99469e4bdf0fe",
+          "size_bytes": 2078252,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b04",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b05",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "d264bde8290f492f7754a8ea58f637eebb8fdeadb1e8e5ce0affa51cf678222c",
+          "size_bytes": 1733164,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b05",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b06",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "2f80599e66d0206c1a8b3b4b968e3d836a3c40d5570ab8aa240344641e469614",
+          "size_bytes": 63634,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b06",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b07",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "4d59b5a16bae0a961d074c4440b1f1eb001908e71b8500f70573a758bcf2f00a",
+          "size_bytes": 28972,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b07",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b08",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "97eb9589d0fb7c9e7993470d2652288054e2d863fc901453a41907002082b2e8",
+          "size_bytes": 167668,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b08",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b09",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "718bbbb7e73d7fb513f0e7ff03550a566c399128d354baf6d8f9d739385d6fd4",
+          "size_bytes": 111388,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b09",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b10",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "c1beb7c5a6f1b7c2647dcf2f9191d50d043311111d6f00f67391d46cfae9ab1a",
+          "size_bytes": 57580,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b10",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b11",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "8adeefc0beeb2d837dcc4592bb2ada15e170d120e0dc0c5bb91f650e43632778",
+          "size_bytes": 27572,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b11",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b12",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "521a113f30343622d1b99cf1047a724dce74b0522dc185a8a782c8ce98861e02",
+          "size_bytes": 82,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b12",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b13",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "fb13f16cfbfbf46bc2ad57b3e6c7ef4d6b1f7036b3f09b49560a4361a7be230b",
+          "size_bytes": 125836,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b13",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b14",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "bbfeb50f39a19b2e9a054ac79b2bf129ce05f968420417554a48d8e6e19e99f8",
+          "size_bytes": 260,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b14",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b15",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "c09424927c186ccf316e8536b4fdee1bcb6bf1661f68b820f27976ee2fc804f9",
+          "size_bytes": 1994428,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b15",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b16",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "1fd042948b7120a85cca9a2030d79dc545bcdd4354051e261b0bedb7727396cb",
+          "size_bytes": 24580,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b16",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b17",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "9f22e08889bd3198735d7fb9b8778bcb585586db93eeb3b0eefacbb5d13b1fa7",
+          "size_bytes": 14816,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b17",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b18",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "5579b534b638bab659518a93f8a6354392f8ba69de2240060778cf7a3d064b4e",
+          "size_bytes": 52064,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b18",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b19",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "d52980ec965cbf97985743a16f6e8d54c70067805a9217fc58862138bc67f9d6",
+          "size_bytes": 53164,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b19",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.b20",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "0d208706a046ae412d33b5caecb5eb40bda87dca5c8f5ecf3f358d08ad0a528a",
+          "size_bytes": 380844,
+          "source_path": "/vendor/firmware_mnt/image/slpi.b20",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/slpi.mdt",
+          "group": "slpi",
+          "regular_file": true,
+          "sha256": "ec60ea4eee3af0a69c7e81032880ab329374af8e8f4cf3a30786e697d982f0ae",
+          "size_bytes": 8380,
+          "source_path": "/vendor/firmware_mnt/image/slpi.mdt",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/venus.b00",
+          "group": "venus",
+          "regular_file": true,
+          "sha256": "d69abde8c51511f3456007fbce0c8d4ce832ec08a1bb7f125816a4a9a53b8ccf",
+          "size_bytes": 692,
+          "source_path": "/vendor/firmware_mnt/image/venus.b00",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/venus.b01",
+          "group": "venus",
+          "regular_file": true,
+          "sha256": "30ebf041d3b802a121411ecdcc2ed6b6f91eec5bf567e1725b5504663ac22838",
+          "size_bytes": 7528,
+          "source_path": "/vendor/firmware_mnt/image/venus.b01",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/venus.b02",
+          "group": "venus",
+          "regular_file": true,
+          "sha256": "da84bbff77270766a2f6d61bc6b42902fb59a942b950117a5b5c106ccbacbb49",
+          "size_bytes": 300,
+          "source_path": "/vendor/firmware_mnt/image/venus.b02",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/venus.b03",
+          "group": "venus",
+          "regular_file": true,
+          "sha256": "5c810efcddb8df1e523c99097d5609a278f722e56b7ce575e5ba1f04726e22f4",
+          "size_bytes": 20,
+          "source_path": "/vendor/firmware_mnt/image/venus.b03",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/venus.b04",
+          "group": "venus",
+          "regular_file": true,
+          "sha256": "03350ef9fd20590d448d92ea0c53456f2b8a797e0e910426b8c0d75df46ab218",
+          "size_bytes": 20,
+          "source_path": "/vendor/firmware_mnt/image/venus.b04",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/venus.b05",
+          "group": "venus",
+          "regular_file": true,
+          "sha256": "7a1b9d5dff73c70276f9b18b6440f9a8d674b446ece36dc3f44dead3da04e5a8",
+          "size_bytes": 20,
+          "source_path": "/vendor/firmware_mnt/image/venus.b05",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/venus.b06",
+          "group": "venus",
+          "regular_file": true,
+          "sha256": "c047e67c4b16a8630345deae029a22c3b245c35df5485e7e172b23a2380a6bd9",
+          "size_bytes": 20,
+          "source_path": "/vendor/firmware_mnt/image/venus.b06",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/venus.b07",
+          "group": "venus",
+          "regular_file": true,
+          "sha256": "1881c2584c0e18865c5f1575905251e46795a98a1cbacb78a5ad4b8448cdfbbc",
+          "size_bytes": 24,
+          "source_path": "/vendor/firmware_mnt/image/venus.b07",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/venus.b08",
+          "group": "venus",
+          "regular_file": true,
+          "sha256": "17b5bbea81099abafc9cf970586f97ee4d198e01dd80a7d63ef129f6407cc808",
+          "size_bytes": 16,
+          "source_path": "/vendor/firmware_mnt/image/venus.b08",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/venus.b09",
+          "group": "venus",
+          "regular_file": true,
+          "sha256": "d049c579fe219e1bbed41f34be7ef1b4635bac952d4af29e380c2cbb9d2e4f77",
+          "size_bytes": 887728,
+          "source_path": "/vendor/firmware_mnt/image/venus.b09",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/venus.b10",
+          "group": "venus",
+          "regular_file": true,
+          "sha256": "10a6fec4d1c7c7d61ae71358e5986151d3348d174fe9ab9c36627df0762abe8e",
+          "size_bytes": 41488,
+          "source_path": "/vendor/firmware_mnt/image/venus.b10",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/venus.b19",
+          "group": "venus",
+          "regular_file": true,
+          "sha256": "43b09596e1496809aaa964b34c146580f0566c86bc9d7218a1288fd15fb93424",
+          "size_bytes": 32,
+          "source_path": "/vendor/firmware_mnt/image/venus.b19",
+          "source_recheck_match": true,
+          "symlink": false
+        },
+        {
+          "archive_path": "vendor/firmware_mnt/image/venus.mdt",
+          "group": "venus",
+          "regular_file": true,
+          "sha256": "67f1f37279b7be7c336b9b813cbd936ff00d2ffab210cd8e1aab1531bb748155",
+          "size_bytes": 8220,
+          "source_path": "/vendor/firmware_mnt/image/venus.mdt",
+          "source_recheck_match": true,
+          "symlink": false
+        }
+      ],
+      "firmware_loaded": false,
+      "schema_version": 1,
+      "scope": "Private firmware evidence; no loading or vendor-signature authentication",
+      "source_open_mode": "O_RDONLY|O_NOFOLLOW",
+      "source_recheck_match": true,
+      "source_roots": [
+        "/vendor/firmware",
+        "/vendor/firmware_mnt/image",
+        "/vendor/bt_firmware/image"
+      ],
+      "started_utc": "2026-11-22T23:38:35.494503+00:00",
+      "status": "verified_fixed_vendor_capture",
+      "total_payload_bytes": 38546828,
+      "user_configuration_read": false,
+      "vendor_signature_authentication_performed": false
+    },
+    "source_manifest_sha256": "d1bf375a24a065489013567d03746900967bf8eb00455f0067b79d8350dd5ca9",
+    "started_utc": "2026-11-22T23:38:59.848799+00:00",
+    "status": "verified_off_device_fixed_vendor_capture",
+    "tablet_linux_tested": false,
+    "total_payload_bytes": 38546828,
+    "vendor_signature_authentication_performed": false,
+    "video_decode_tested": false
+  },
+  "prior_capture_consistency": {
+    "a650_files_matching_prior_capture": 7,
+    "evidence_reference": "docs/research/2026-11-23/evidence/android-gpu.json",
+    "evidence_sha256": "67492d703071ebe5fa6abbdbc344103ecc427a88b85bc1ce55b7b54e0cdcae61",
+    "package_script_reference": "scripts/package-stock-firmware.sh",
+    "package_script_sha256": "ced35def0866fbae3f9ff052eb4775c9c9f001b138d9881506924209ad98a6ba",
+    "tfa_qs_yc_match_pinned_package_script_hashes": true
+  },
+  "private_receipt": {
+    "path_on_doesvm": "/tank/shared/projects/tb371fc-linux/private/stock-firmware-20261123/receipt.json",
+    "sha256": "56206d9f998bddcb82a708aa70061f5feea0813e72fdf5370683cdf83a9b03ba",
+    "size_bytes": 87314
+  },
+  "private_transfer_command_record": {
+    "path": "/tank/shared/projects/tb371fc-linux/private/stock-firmware-20261123/transfer-command.json",
+    "sha256": "b48dcc5df382f52ef95e20e10e1bfdbc25e7be0b51945fa3bcc647b8516d736b",
+    "size_bytes": 3968
+  },
+  "publication": {
+    "binary_payloads_private": true,
+    "private_blobs_in_git": false,
+    "public_contents": "Original filenames, sizes, SHA256, ELF program-header relationships, command-result metadata and source-contract references"
+  },
+  "result": {
+    "all_hardware_firmware_contracts_satisfied": false,
+    "all_inspected_mdt_required_file_sets_complete": true,
+    "all_owned_transfer_processes_finished": true,
+    "archive_members_and_gzip_verified": true,
+    "bluetooth_runtime_rom_revision_matched": false,
+    "canonical_firmware_tree_generated": false,
+    "firmware_loaded": false,
+    "fixed_source_files_captured": 118,
+    "off_device_byte_copy_verified": true,
+    "source_recheck_all_match": true,
+    "tablet_linux_tested": false,
+    "total_payload_bytes": 38546828,
+    "vendor_signature_authentication_performed": false,
+    "video_decode_tested": false,
+    "wlan_mainline_board_database_selected": false
+  },
+  "schema_version": 1,
+  "scope": "Fixed stock-firmware capture, private transfer and structural loader checks; not hardware acceptance",
+  "source_capture": {
+    "archive_bytes": 15747897,
+    "archive_file": "stock-firmware.tar.gz",
+    "archive_sha256": "fc331d84ed585457b4183b08f799a49d9839d3114bf5ec2f281a725b87fe5f92",
+    "capture_directory": "/data/local/tmp/tb371fc-stock-firmware-20261123",
+    "collector_sha256": "9ca9ccbdc628ff1a1b365ef4b5deb092ed8405acd1bcb79c8c0454f700bd18f1",
+    "file_count": 118,
+    "manifest_sha256": "d1bf375a24a065489013567d03746900967bf8eb00455f0067b79d8350dd5ca9",
+    "status": "captured",
+    "total_payload_bytes": 38546828
+  },
+  "structural_boundary_checks": {
+    "fixed_allowlist_count": 118,
+    "missing_required_segment_rejected_as_incomplete": true,
+    "packed_hash_does_not_require_separate_b01": true,
+    "unlisted_source_rejected": true,
+    "wrong_segment_length_rejected_as_incomplete": true,
+    "zero_file_size_load_segment_needs_no_file": true
+  },
+  "transport": {
+    "capture_exit_code": 0,
+    "client_options": [
+      "-oBatchMode=yes",
+      "-oStrictHostKeyChecking=yes",
+      "-K15",
+      "-I60"
+    ],
+    "exact_command_record": "Retained only in the private transfer record",
+    "method": "Existing owner-authorized Dropbear SSH connection to doesvm",
+    "new_private_keys_or_host_trust_created": false,
+    "owned_receiver_processes_remaining": 0,
+    "owned_source_transfer_processes_remaining": 0,
+    "pipeline_exit_code": 0,
+    "pipeline_pipefail_enabled": true,
+    "source_reader_open_mode": "read-only"
+  }
+}

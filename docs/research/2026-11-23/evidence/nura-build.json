@@ -1,0 +1,2079 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-11-22T23:31:23.703560+00:00",
+  "scope": "Generic ARM builder and qemu-aarch64 userspace experiment; no TB371FC hardware acceptance",
+  "source": {
+    "pmbootstrap": {
+      "url": "https://gitlab.nura.eco/nura/pmbootstrap.git",
+      "commit": "e0dfe2cda7f3a0b70cdcc96f3060100839322aa4",
+      "version": "3.12.1"
+    },
+    "pmaports": {
+      "url": "https://gitlab.nura.eco/nura/pmaports.git",
+      "commit": "d7e3e81fd579f01d4742157257897e2b07fade5c",
+      "device_recipe": "device/community/device-qemu-aarch64",
+      "device_recipe_version": "16-r1"
+    },
+    "fixed_initial_media_does_not_freeze_later_apk_repositories": true
+  },
+  "environment": {
+    "device": "doesvm",
+    "ct_id": 102,
+    "container": "tb371fc-build-20261123",
+    "container_architecture": "x86_64",
+    "guest_architecture": "aarch64",
+    "guest_role": "Native ARM build environment",
+    "acceleration": "TCG, not KVM",
+    "virtual_cpus": 2,
+    "guest_memory_mib": 2048,
+    "host_binfmt_registration_changed": false,
+    "physical_devices_exposed": false,
+    "network": "QEMU user networking; no guest port forwarding",
+    "bootstrap_http_server": "Container loopback 127.0.0.1:18083; only verified public media",
+    "guest_work_path": "/work/pmwork",
+    "guest_work_backing_path_in_container": "/work/pmwork/guest-share/pmwork"
+  },
+  "completed_job_records": {
+    "nura-archive-integrity-01": {
+      "command": [
+        "gzip",
+        "-t",
+        "/work/pmwork/artifacts/nura-qemu-aarch64-userspace-20261123.tar.gz"
+      ],
+      "start_utc": "2026-11-22T23:30:47.438079+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 6.301346528984141,
+      "metadata_file": {
+        "path_in_container": "/work/nura-archive-integrity-01.json",
+        "size_bytes": 227,
+        "sha256": "f6fc1c17ff3286fad743eb4d0d2c7d33b1e467742d1bc1ce79e124a91fd00aa5"
+      },
+      "log": {
+        "path_in_container": "/work/nura-archive-integrity-01.log",
+        "size_bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "excerpt_tail": ""
+      }
+    },
+    "nura-arm-vm-01": {
+      "command": [
+        "qemu-system-aarch64",
+        "-machine",
+        "virt-10.0,gic-version=3",
+        "-cpu",
+        "cortex-a72",
+        "-smp",
+        "2",
+        "-m",
+        "2048",
+        "-accel",
+        "tcg,thread=multi",
+        "-kernel",
+        "/work/pmwork/boot/alpine/Image",
+        "-initrd",
+        "/work/pmwork/boot/alpine/initramfs-virt",
+        "-append",
+        "console=ttyAMA0 ip=dhcp alpine_repo=https://dl-cdn.alpinelinux.org/alpine/v3.24/main modloop=http://10.0.2.2:18083/modloop-virt",
+        "-display",
+        "none",
+        "-monitor",
+        "none",
+        "-no-reboot",
+        "-chardev",
+        "socket,id=serial0,path=/work/pmwork/console.sock,server=on,wait=on,logfile=/work/pmwork/console.log",
+        "-serial",
+        "chardev:serial0",
+        "-netdev",
+        "user,id=net0",
+        "-device",
+        "virtio-net-pci,netdev=net0",
+        "-fsdev",
+        "local,id=work,path=/work/pmwork/guest-share,security_model=none",
+        "-device",
+        "virtio-9p-pci,fsdev=work,mount_tag=work",
+        "-fsdev",
+        "local,id=pmbsrc,path=/work/pmbootstrap,security_model=none,readonly=on",
+        "-device",
+        "virtio-9p-pci,fsdev=pmbsrc,mount_tag=pmbsrc",
+        "-fsdev",
+        "local,id=ports,path=/work/pmaports,security_model=none,readonly=on",
+        "-device",
+        "virtio-9p-pci,fsdev=ports,mount_tag=ports"
+      ],
+      "start_utc": "2026-11-22T21:52:58.147739+00:00",
+      "exit_code": 1,
+      "elapsed_seconds": 93.0263215220184,
+      "metadata_file": {
+        "path_in_container": "/work/nura-arm-vm-01.json",
+        "size_bytes": 1356,
+        "sha256": "72c7ffaa2619054de74d2c513fac43ac290b1294d314b190c84008e63b503d21"
+      },
+      "log": {
+        "path_in_container": "/work/nura-arm-vm-01.log",
+        "size_bytes": 320,
+        "sha256": "756af0e9d94d0b58aa6809714f7d473099109caeb4823d3ad7c3a6b189079912",
+        "excerpt_tail": "qemu-system-aarch64: -chardev socket,id=serial0,path=/work/pmwork/console.sock,server=on,wait=on,logfile=/work/pmwork/console.log: info: QEMU waiting for connection on: disconnected:unix:/work/pmwork/console.sock,server=on\nqemu-system-aarch64: -device virtio-net-pci,netdev=net0: failed to find romfile \"efi-virtio.rom\"\n"
+      }
+    },
+    "nura-arm-vm-02": {
+      "command": [
+        "qemu-system-aarch64",
+        "-machine",
+        "virt-10.0,gic-version=3",
+        "-cpu",
+        "cortex-a72",
+        "-smp",
+        "2",
+        "-m",
+        "2048",
+        "-accel",
+        "tcg,thread=multi",
+        "-kernel",
+        "/work/pmwork/boot/alpine/Image",
+        "-initrd",
+        "/work/pmwork/boot/alpine/initramfs-virt",
+        "-append",
+        "console=ttyAMA0 ip=dhcp alpine_repo=https://dl-cdn.alpinelinux.org/alpine/v3.24/main modloop=http://10.0.2.2:18083/modloop-virt",
+        "-display",
+        "none",
+        "-monitor",
+        "none",
+        "-no-reboot",
+        "-chardev",
+        "socket,id=serial0,path=/work/pmwork/console.sock,server=on,wait=on,logfile=/work/pmwork/console-02.log",
+        "-serial",
+        "chardev:serial0",
+        "-netdev",
+        "user,id=net0",
+        "-device",
+        "virtio-net-device,netdev=net0",
+        "-fsdev",
+        "local,id=work,path=/work/pmwork/guest-share,security_model=none",
+        "-device",
+        "virtio-9p-pci,fsdev=work,mount_tag=work",
+        "-fsdev",
+        "local,id=pmbsrc,path=/work/pmbootstrap,security_model=none,readonly=on",
+        "-device",
+        "virtio-9p-pci,fsdev=pmbsrc,mount_tag=pmbsrc",
+        "-fsdev",
+        "local,id=ports,path=/work/pmaports,security_model=none,readonly=on",
+        "-device",
+        "virtio-9p-pci,fsdev=ports,mount_tag=ports"
+      ],
+      "start_utc": "2026-11-22T21:56:05.689107+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 264.0049735160428,
+      "metadata_file": {
+        "path_in_container": "/work/nura-arm-vm-02.json",
+        "size_bytes": 1363,
+        "sha256": "767ef184af5eaaf84180e9c2791007f584876afe8632efb17086b66ee2e8a36d"
+      },
+      "log": {
+        "path_in_container": "/work/nura-arm-vm-02.log",
+        "size_bytes": 297,
+        "sha256": "0f54fb9c08e963e97a2b41390f91006c7ecc21130b5e66753a34a04e62016afa",
+        "excerpt_tail": "qemu-system-aarch64: -chardev socket,id=serial0,path=/work/pmwork/console.sock,server=on,wait=on,logfile=/work/pmwork/console-02.log: info: QEMU waiting for connection on: disconnected:unix:/work/pmwork/console.sock,server=on\nqemu-system-aarch64: terminating on signal 15 from pid 61059 (python3)\n"
+      }
+    },
+    "nura-arm-vm-03": {
+      "command": [
+        "qemu-system-aarch64",
+        "-machine",
+        "virt-10.0,gic-version=3",
+        "-cpu",
+        "cortex-a72",
+        "-smp",
+        "2",
+        "-m",
+        "2048",
+        "-accel",
+        "tcg,thread=multi",
+        "-kernel",
+        "/work/pmwork/boot/alpine/Image",
+        "-initrd",
+        "/work/pmwork/boot/alpine/initramfs-virt",
+        "-append",
+        "console=ttyAMA0 ip=dhcp alpine_repo=http://10.0.2.2:18083/apks modloop=http://10.0.2.2:18083/modloop-virt",
+        "-display",
+        "none",
+        "-monitor",
+        "none",
+        "-no-reboot",
+        "-chardev",
+        "socket,id=serial0,path=/work/pmwork/console.sock,server=on,wait=on,logfile=/work/pmwork/console-03.log",
+        "-serial",
+        "chardev:serial0",
+        "-netdev",
+        "user,id=net0",
+        "-device",
+        "virtio-net-device,netdev=net0",
+        "-fsdev",
+        "local,id=work,path=/work/pmwork/guest-share,security_model=none",
+        "-device",
+        "virtio-9p-pci,fsdev=work,mount_tag=work",
+        "-fsdev",
+        "local,id=pmbsrc,path=/work/pmbootstrap,security_model=none,readonly=on",
+        "-device",
+        "virtio-9p-pci,fsdev=pmbsrc,mount_tag=pmbsrc",
+        "-fsdev",
+        "local,id=ports,path=/work/pmaports,security_model=none,readonly=on",
+        "-device",
+        "virtio-9p-pci,fsdev=ports,mount_tag=ports"
+      ],
+      "start_utc": "2026-11-22T22:01:47.580843+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 5312.967556454008,
+      "metadata_file": {
+        "path_in_container": "/work/nura-arm-vm-03.json",
+        "size_bytes": 1341,
+        "sha256": "107ada01e280f05473bb88781505c57d8a82caaabf11f7e1b262e16a32ec13ef"
+      },
+      "log": {
+        "path_in_container": "/work/nura-arm-vm-03.log",
+        "size_bytes": 297,
+        "sha256": "4975d20e48d9ed94572df8378a3a15b4ad2fbf687023cdda6e1ebf61d1f7731d",
+        "excerpt_tail": "qemu-system-aarch64: -chardev socket,id=serial0,path=/work/pmwork/console.sock,server=on,wait=on,logfile=/work/pmwork/console-03.log: info: QEMU waiting for connection on: disconnected:unix:/work/pmwork/console.sock,server=on\nqemu-system-aarch64: terminating on signal 15 from pid 64217 (python3)\n"
+      }
+    },
+    "nura-bootstrap-media-01": {
+      "command": [
+        "python3",
+        "/work/pmwork/fetch_media.py",
+        "--output",
+        "/work/pmwork/boot/alpine"
+      ],
+      "start_utc": "2026-11-22T21:48:08.556572+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 22.503996065002866,
+      "metadata_file": {
+        "path_in_container": "/work/nura-bootstrap-media-01.json",
+        "size_bytes": 230,
+        "sha256": "9f17cd2fbdf9dbb5728a8ca40ccfc8a2a61025dec247b845357b00157dcf28de"
+      },
+      "log": {
+        "path_in_container": "/work/nura-bootstrap-media-01.log",
+        "size_bytes": 3225,
+        "sha256": "f7b9276a546430b50433c666471c0be7dbaed4619b7ded742814b9419b2839d2",
+        "excerpt_tail": "GNUPG:] SIG_ID WA6GVdRN7VXdbWbYB6cnEkbo4eM 2026-11-05 1793878999\n[GNUPG:] GOODSIG 293ACD0907D9495A Natanael Copa <ncopa@alpinelinux.org>\n[GNUPG:] NOTATION_NAME manu\n[GNUPG:] NOTATION_FLAGS 0 1\n[GNUPG:] NOTATION_DATA 2,2.5+1.12,2,2\n[GNUPG:] VALIDSIG 0482D84022F52DF1C4E7CD43293ACD0907D9495A 2026-11-05 1793878999 0 4 0 1 10 00 0482D84022F52DF1C4E7CD43293ACD0907D9495A\n[GNUPG:] TRUST_UNDEFINED 0 pgp\ngpg: Signature made Thu Nov  5 11:43:19 2026 UTC\ngpg:                using RSA key 0482D84022F52DF1C4E7CD43293ACD0907D9495A\ngpg: Good signature from \"Natanael Copa <ncopa@alpinelinux.org>\" [unknown]\ngpg: Signature notation: manu=2,2.5+1.12,2,2\ngpg: WARNING: This key is not certified with a trusted signature!\ngpg:          There is no indication that the signature belongs to the owner.\nPrimary key fingerprint: 0482 D840 22F5 2DF1 C4E7  CD43 293A CD09 07D9 495A\n{\n  \"alpine_version\": \"3.24.4\",\n  \"architecture\": \"aarch64\",\n  \"role\": \"Generic ARM virtual-machine bootstrap medium; not a TB371FC image\",\n  \"sources\": {\n    \"alpine-virt-3.24.4-aarch64.iso\": {\n      \"url\": \"https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso\",\n      \"sha256\": \"cf88d8ba67389d20d9ed307366b52e487c15d7d3ee3233b62b95f709daa1d430\"\n    },\n    \"alpine-virt-3.24.4-aarch64.iso.sha256\": {\n      \"url\": \"https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso.sha256\",\n      \"sha256\": \"b5a7203e9ff214241df52a29a32b0f730f314ad552aacae6aaa69028544dbe87\"\n    },\n    \"alpine-virt-3.24.4-aarch64.iso.asc\": {\n      \"url\": \"https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso.asc\",\n      \"sha256\": \"85651b6c09c16780bb12ff69ac835feddf4a4b5c2e35200ffabf081b3ef7860e\"\n    },\n    \"ncopa.asc\": {\n      \"url\": \"https://alpinelinux.org/keys/ncopa.asc\",\n      \"sha256\": \"75a9a7e0cc35bfa946ce40c26133b3ed29a204fbd98a3b33331b659d927b3027\"\n    }\n  },\n  \"verified_signer_fingerprint\": \"0482D84022F52DF1C4E7CD43293ACD0907D9495A\",\n  \"signature_verification_exit_code\": 0,\n  \"extracted_boot_files\": {\n    \"vmlinuz-virt\": {\n      \"size_bytes\": 10412544,\n      \"sha256\": \"cd05fed9e617b5df93dc62ece9b78c422fd94e9b432a2f7c092714b139d5eef4\"\n    },\n    \"initramfs-virt\": {\n      \"size_bytes\": 10167867,\n      \"sha256\": \"a0aca3b06df6b029711099e78cf01635f53331754d14af608f87bf9254630bac\"\n    },\n    \"modloop-virt\": {\n      \"size_bytes\": 17788928,\n      \"sha256\": \"a726889467d1d4fefa4ba1ed710f28b9db1fbd019ca3eba2d4c6c65b33536343\"\n    }\n  }\n}\n"
+      }
+    },
+    "nura-bootstrap-media-02": {
+      "command": [
+        "python3",
+        "/work/pmwork/fetch_media.py",
+        "--output",
+        "/work/pmwork/boot/alpine"
+      ],
+      "start_utc": "2026-11-22T21:50:34.951355+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 1.1505184299894609,
+      "metadata_file": {
+        "path_in_container": "/work/nura-bootstrap-media-02.json",
+        "size_bytes": 230,
+        "sha256": "7b7926e1a06c18588f6ddb2b8c3b6658edbf2b5d2b4e354761efb1d6b60aed0c"
+      },
+      "log": {
+        "path_in_container": "/work/nura-bootstrap-media-02.log",
+        "size_bytes": 3358,
+        "sha256": "092db707d362105dba8621a40e0ba5637b9a91886212cc90d8bf49c22d37f2e2",
+        "excerpt_tail": "43293ACD0907D9495A 2026-11-05 1793878999 0 4 0 1 10 00 0482D84022F52DF1C4E7CD43293ACD0907D9495A\n[GNUPG:] TRUST_UNDEFINED 0 pgp\ngpg: Signature made Thu Nov  5 11:43:19 2026 UTC\ngpg:                using RSA key 0482D84022F52DF1C4E7CD43293ACD0907D9495A\ngpg: Good signature from \"Natanael Copa <ncopa@alpinelinux.org>\" [unknown]\ngpg: Signature notation: manu=2,2.5+1.12,2,2\ngpg: WARNING: This key is not certified with a trusted signature!\ngpg:          There is no indication that the signature belongs to the owner.\nPrimary key fingerprint: 0482 D840 22F5 2DF1 C4E7  CD43 293A CD09 07D9 495A\n{\n  \"alpine_version\": \"3.24.4\",\n  \"architecture\": \"aarch64\",\n  \"role\": \"Generic ARM virtual-machine bootstrap medium; not a TB371FC image\",\n  \"sources\": {\n    \"alpine-virt-3.24.4-aarch64.iso\": {\n      \"url\": \"https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso\",\n      \"sha256\": \"cf88d8ba67389d20d9ed307366b52e487c15d7d3ee3233b62b95f709daa1d430\"\n    },\n    \"alpine-virt-3.24.4-aarch64.iso.sha256\": {\n      \"url\": \"https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso.sha256\",\n      \"sha256\": \"b5a7203e9ff214241df52a29a32b0f730f314ad552aacae6aaa69028544dbe87\"\n    },\n    \"alpine-virt-3.24.4-aarch64.iso.asc\": {\n      \"url\": \"https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso.asc\",\n      \"sha256\": \"85651b6c09c16780bb12ff69ac835feddf4a4b5c2e35200ffabf081b3ef7860e\"\n    },\n    \"ncopa.asc\": {\n      \"url\": \"https://alpinelinux.org/keys/ncopa.asc\",\n      \"sha256\": \"75a9a7e0cc35bfa946ce40c26133b3ed29a204fbd98a3b33331b659d927b3027\"\n    }\n  },\n  \"verified_signer_fingerprint\": \"0482D84022F52DF1C4E7CD43293ACD0907D9495A\",\n  \"signature_verification_exit_code\": 0,\n  \"extracted_boot_files\": {\n    \"vmlinuz-virt\": {\n      \"size_bytes\": 10412544,\n      \"sha256\": \"cd05fed9e617b5df93dc62ece9b78c422fd94e9b432a2f7c092714b139d5eef4\"\n    },\n    \"initramfs-virt\": {\n      \"size_bytes\": 10167867,\n      \"sha256\": \"a0aca3b06df6b029711099e78cf01635f53331754d14af608f87bf9254630bac\"\n    },\n    \"modloop-virt\": {\n      \"size_bytes\": 17788928,\n      \"sha256\": \"a726889467d1d4fefa4ba1ed710f28b9db1fbd019ca3eba2d4c6c65b33536343\"\n    }\n  },\n  \"arm64_image\": {\n    \"method\": \"Declared EFI zboot gzip payload, then ARM64 Image magic check\",\n    \"payload_offset\": 51832,\n    \"payload_size\": 10353483,\n    \"size_bytes\": 36306944,\n    \"sha256\": \"a2cecb9b6fdbd83e87bd43c8040de67300d5b8dde1fc50c34714faa272888f17\"\n  }\n}\n"
+      }
+    },
+    "nura-bootstrap-media-03": {
+      "command": [
+        "python3",
+        "/work/pmwork/fetch_media.py",
+        "--output",
+        "/work/pmwork/boot/alpine"
+      ],
+      "start_utc": "2026-11-22T22:00:28.663723+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 5.870232568006031,
+      "metadata_file": {
+        "path_in_container": "/work/nura-bootstrap-media-03.json",
+        "size_bytes": 229,
+        "sha256": "4e7ac0a8e91a9b464bb5a077f6b70ac106ca0e6f3cf2656e5128ef1c9bd89de6"
+      },
+      "log": {
+        "path_in_container": "/work/nura-bootstrap-media-03.log",
+        "size_bytes": 3609,
+        "sha256": "89aeead2292e1862ecc6adaa3f09b604ed7762a98de04609924df8eb487b0a44",
+        "excerpt_tail": "gpg: Good signature from \"Natanael Copa <ncopa@alpinelinux.org>\" [unknown]\ngpg: Signature notation: manu=2,2.5+1.12,2,2\ngpg: WARNING: This key is not certified with a trusted signature!\ngpg:          There is no indication that the signature belongs to the owner.\nPrimary key fingerprint: 0482 D840 22F5 2DF1 C4E7  CD43 293A CD09 07D9 495A\n{\n  \"alpine_version\": \"3.24.4\",\n  \"architecture\": \"aarch64\",\n  \"role\": \"Generic ARM virtual-machine bootstrap medium; not a TB371FC image\",\n  \"sources\": {\n    \"alpine-virt-3.24.4-aarch64.iso\": {\n      \"url\": \"https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso\",\n      \"sha256\": \"cf88d8ba67389d20d9ed307366b52e487c15d7d3ee3233b62b95f709daa1d430\"\n    },\n    \"alpine-virt-3.24.4-aarch64.iso.sha256\": {\n      \"url\": \"https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso.sha256\",\n      \"sha256\": \"b5a7203e9ff214241df52a29a32b0f730f314ad552aacae6aaa69028544dbe87\"\n    },\n    \"alpine-virt-3.24.4-aarch64.iso.asc\": {\n      \"url\": \"https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso.asc\",\n      \"sha256\": \"85651b6c09c16780bb12ff69ac835feddf4a4b5c2e35200ffabf081b3ef7860e\"\n    },\n    \"ncopa.asc\": {\n      \"url\": \"https://alpinelinux.org/keys/ncopa.asc\",\n      \"sha256\": \"75a9a7e0cc35bfa946ce40c26133b3ed29a204fbd98a3b33331b659d927b3027\"\n    }\n  },\n  \"verified_signer_fingerprint\": \"0482D84022F52DF1C4E7CD43293ACD0907D9495A\",\n  \"signature_verification_exit_code\": 0,\n  \"extracted_boot_files\": {\n    \"vmlinuz-virt\": {\n      \"size_bytes\": 10412544,\n      \"sha256\": \"cd05fed9e617b5df93dc62ece9b78c422fd94e9b432a2f7c092714b139d5eef4\"\n    },\n    \"initramfs-virt\": {\n      \"size_bytes\": 10167867,\n      \"sha256\": \"a0aca3b06df6b029711099e78cf01635f53331754d14af608f87bf9254630bac\"\n    },\n    \"modloop-virt\": {\n      \"size_bytes\": 17788928,\n      \"sha256\": \"a726889467d1d4fefa4ba1ed710f28b9db1fbd019ca3eba2d4c6c65b33536343\"\n    }\n  },\n  \"arm64_image\": {\n    \"method\": \"Declared EFI zboot gzip payload, then ARM64 Image magic check\",\n    \"payload_offset\": 51832,\n    \"payload_size\": 10353483,\n    \"size_bytes\": 36306944,\n    \"sha256\": \"a2cecb9b6fdbd83e87bd43c8040de67300d5b8dde1fc50c34714faa272888f17\"\n  },\n  \"bootstrap_repository\": {\n    \"relative_path\": \"apks/aarch64\",\n    \"file_count\": 96,\n    \"manifest_sha256\": \"3840f292ba94bcbe8d0897f27cef22c1507b7139cd6167d4128b60f93a77b32b\",\n    \"source\": \"Files extracted from the verified fixed-version ISO\"\n  }\n}\n"
+      }
+    },
+    "nura-cache-complete-01": {
+      "command": [
+        "python3",
+        "/work/pmwork/serial_command.py",
+        "--socket",
+        "/work/pmwork/console.sock",
+        "--record",
+        "/work/pmwork/guest-cache-complete-01.json",
+        "--timeout",
+        "1800",
+        "--command",
+        "python3 /work/complete_package_cache.py"
+      ],
+      "start_utc": "2026-11-22T23:00:39.329459+00:00",
+      "exit_code": -15,
+      "elapsed_seconds": 274.3008278369671,
+      "metadata_file": {
+        "path_in_container": "/work/nura-cache-complete-01.json",
+        "size_bytes": 393,
+        "sha256": "c49051483a1d826885517ab9195cc50e123d3756138e8f6200ea20b77c71856f"
+      },
+      "log": {
+        "path_in_container": "/work/nura-cache-complete-01.log",
+        "size_bytes": 159,
+        "sha256": "82d26952884c0dcb1dc00cf28909afe3692278b5728a7e0863daab9a7d3ed10d",
+        "excerpt_tail": "\nlocalhost:~# ( python3 /work/complete_package_cache.py ); nura_status=$?; printf\n\n '\\n__NURA_DONE_0058a973325641bf9516a5ed15172b7c__:%s\\n' \"$nura_status\"\n"
+      }
+    },
+    "nura-cache-complete-02": {
+      "command": [
+        "python3",
+        "/work/pmwork/serial_command.py",
+        "--socket",
+        "/work/pmwork/console.sock",
+        "--record",
+        "/work/pmwork/guest-cache-complete-02.json",
+        "--timeout",
+        "1800",
+        "--interrupt",
+        "--command",
+        "python3 /work/complete_package_cache.py --record /work/cache-completion-02.json"
+      ],
+      "start_utc": "2026-11-22T23:05:13.842745+00:00",
+      "exit_code": 1,
+      "elapsed_seconds": 118.75870646297699,
+      "metadata_file": {
+        "path_in_container": "/work/nura-cache-complete-02.json",
+        "size_bytes": 451,
+        "sha256": "b6b900735db5b767daab117e3fc8d31bc8a2be1e1b74abace840d7dae4dd893a"
+      },
+      "log": {
+        "path_in_container": "/work/nura-cache-complete-02.log",
+        "size_bytes": 13435,
+        "sha256": "c2c8b822b82492caf0cfb9b186129fadf3742b519668dcb49f76647649f2a920",
+        "excerpt_tail": "work/pmwork/chroot_native/mnt/pmbootstrap/rust\n[23:07:10] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/packages\n[23:07:10] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/netboot\n[23:07:10] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/go\n[23:07:10] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/git\n[23:07:10] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/ccache\n[23:07:11] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/abuild-config\n[23:07:11] % umount /work/pmwork/chroot_native/mnt/appstream-data\n[23:07:11] % umount /work/pmwork/chroot_native/etc/apk/keys\n[23:07:11] % umount /work/pmwork/chroot_native/dev/shm\n[23:07:11] % umount /work/pmwork/chroot_native/dev/pts\n[23:07:11] % umount /work/pmwork/chroot_native/dev\n[23:07:11] Shutdown complete\n[23:07:11] DONE!\nTraceback (most recent call last):\n  File \"/work/complete_package_cache.py\", line 101, in <module>\n    main()\n    ~~~~^^\n  File \"/work/complete_package_cache.py\", line 81, in main\n    subprocess.run(command, check=True)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/subprocess.py\", line 578, in run\n    raise CalledProcessError(retcode, process.args,\n                             output=stdout, stderr=stderr)\nsubprocess.CalledProcessError: Command '['python3', '/work/pmbootstrap/pmbootstrap.py', '--as-root', '--config', '/work/pmos.cfg', '--timeout', '180', '--details-to-stdout', 'chroot', '--output', 'stdout', '--', 'apk', '--arch', 'aarch64', 'fetch', '--output', '/var/cache/apk', 'linux-firmware-none=20261019-r0', 'postmarketos-base-apk=79-r0', 'postmarketos-base-fwupd=79-r0', 'postmarketos-base-mesa=79-r0', 'postmarketos-base-nftables=79-r0', 'postmarketos-base-nofde=62-r0', 'postmarketos-base-ui-wifi-wpa_supplicant=66-r0', 'postmarketos-bootsplash-openrc=3-r0', 'postmarketos-ui-console=1-r0', 'pyc=3.14.10-r1', 'python3-pyc=3.14.10-r1']' returned non-zero exit status 2.\n\n__NURA_DONE_ba9e70593752496b81df95bbd6d17d79__:1\n{\n  \"start_utc\": \"2026-11-22T23:05:14.061603+00:00\",\n  \"transport\": \"Private QEMU serial Unix socket\",\n  \"socket\": \"/work/pmwork/console.sock\",\n  \"guest_command\": \"python3 /work/complete_package_cache.py --record /work/cache-completion-02.json\",\n  \"guest_login\": null,\n  \"interrupt_previous_guest_command\": true,\n  \"guest_exit_code\": 1,\n  \"elapsed_seconds\": 118.50858874799451,\n  \"serial_log\": \"/work/pmwork/guest-cache-complete-02.serial.log\",\n  \"serial_log_sha256\": \"9b9d640ea99ff548491bffb65cdd76eb04bee82e53c173123a86d83cfbc6f39f\"\n}\n"
+      }
+    },
+    "nura-cache-complete-03": {
+      "command": [
+        "python3",
+        "/work/pmwork/serial_command.py",
+        "--socket",
+        "/work/pmwork/console.sock",
+        "--record",
+        "/work/pmwork/guest-cache-complete-03.json",
+        "--timeout",
+        "1800",
+        "--command",
+        "python3 /work/complete_package_cache.py --record /work/cache-completion-03.json"
+      ],
+      "start_utc": "2026-11-22T23:14:15.838675+00:00",
+      "exit_code": 1,
+      "elapsed_seconds": 137.44240198202897,
+      "metadata_file": {
+        "path_in_container": "/work/nura-cache-complete-03.json",
+        "size_bytes": 432,
+        "sha256": "1a2a759bdff10134b78bf428e8edf4c4e7bc04d50fbb349eefd4cbc8c0bcf74c"
+      },
+      "log": {
+        "path_in_container": "/work/nura-cache-complete-03.log",
+        "size_bytes": 14429,
+        "sha256": "806274965a1b13899e836842c3da4241a9d0623857a02014f045e54191d63360",
+        "excerpt_tail": "pmbootstrap/go\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/git\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/ccache\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/abuild-config\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/appstream-data\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/etc/apk/keys\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/dev/shm\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/dev/pts\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/dev\n[23:16:32] Shutdown complete\n[23:16:32] DONE!\nTraceback (most recent call last):\n  File \"/work/complete_package_cache.py\", line 119, in <module>\n    main()\n    ~~~~^^\n  File \"/work/complete_package_cache.py\", line 99, in main\n    subprocess.run(command, check=True)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/subprocess.py\", line 578, in run\n    raise CalledProcessError(retcode, process.args,\n                             output=stdout, stderr=stderr)\nsubprocess.CalledProcessError: Command '['python3', '/work/pmbootstrap/pmbootstrap.py', '--as-root', '--config', '/work/pmos.cfg', '--timeout', '180', '--details-to-stdout', 'chroot', '--rootfs', '--output', 'stdout', '--', '/bin/sh', '-c', \"set -eu; apk --arch aarch64 --cache-dir /var/cache/apk fetch --output /var/cache/apk postmarketos-ui-console=1-r0; printf '%s\\\\n' NURA_CACHE_SINGLE_PROBE_OK; apk --arch aarch64 --cache-dir /var/cache/apk fetch --output /var/cache/apk linux-firmware-none=20261019-r0 postmarketos-base-apk=79-r0 postmarketos-base-fwupd=79-r0 postmarketos-base-mesa=79-r0 postmarketos-base-nftables=79-r0 postmarketos-base-nofde=62-r0 postmarketos-base-ui-wifi-wpa_supplicant=66-r0 postmarketos-bootsplash-openrc=3-r0 pyc=3.14.10-r1 python3-pyc=3.14.10-r1\"]' returned non-zero exit status 2.\n\n__NURA_DONE_c42b87c5691e4291a07f46153cfafb43__:1\n{\n  \"start_utc\": \"2026-11-22T23:14:16.222004+00:00\",\n  \"transport\": \"Private QEMU serial Unix socket\",\n  \"socket\": \"/work/pmwork/console.sock\",\n  \"guest_command\": \"python3 /work/complete_package_cache.py --record /work/cache-completion-03.json\",\n  \"guest_login\": null,\n  \"interrupt_previous_guest_command\": false,\n  \"guest_exit_code\": 1,\n  \"elapsed_seconds\": 137.0429822629667,\n  \"serial_log\": \"/work/pmwork/guest-cache-complete-03.serial.log\",\n  \"serial_log_sha256\": \"3d811ff61d24116d4394e0df23b58219390efc6bbb5d03f31af7e8c7d8abe73c\"\n}\n"
+      }
+    },
+    "nura-cleanup-01": {
+      "command": [
+        "python3",
+        "/work/pmwork/stop_builder.py"
+      ],
+      "start_utc": "2026-11-22T23:30:16.737022+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 3.9161942689679563,
+      "metadata_file": {
+        "path_in_container": "/work/nura-cleanup-01.json",
+        "size_bytes": 183,
+        "sha256": "c585f3cfca34d9fdfd07eb960db39e4e96f2fd935a79112e919979d22d9e1182"
+      },
+      "log": {
+        "path_in_container": "/work/nura-cleanup-01.log",
+        "size_bytes": 2331,
+        "sha256": "d2a8073bcfe4a0d0c9a852fe8c4282c399afb37bff6840e4ff96e4722335cdfa",
+        "excerpt_tail": "{\n  \"started_at_utc\": \"2026-11-22T23:30:16.830169+00:00\",\n  \"reason\": \"Target chroots stopped and rootfs archive exported; release only owned infrastructure\",\n  \"artifact_retained\": {\n    \"path\": \"/work/pmwork/artifacts/nura-qemu-aarch64-userspace-20261123.tar.gz\",\n    \"size_bytes\": 307393454,\n    \"sha256\": \"eb8786e4fb51b25f077d5ade55e89123eb702d8c99076bbce5c11083f112ed46\"\n  },\n  \"signal\": \"SIGTERM\",\n  \"processes\": [\n    {\n      \"pid\": 56144,\n      \"role\": \"loopback_verified_media_server\",\n      \"argv\": [\n        \"python3\",\n        \"-u\",\n        \"-m\",\n        \"http.server\",\n        \"18083\",\n        \"--bind\",\n        \"127.0.0.1\",\n        \"--directory\",\n        \"/work/pmwork/boot/alpine\"\n      ],\n      \"exited\": true\n    },\n    {\n      \"pid\": 61157,\n      \"role\": \"generic_arm_builder_vm_03\",\n      \"argv\": [\n        \"qemu-system-aarch64\",\n        \"-machine\",\n        \"virt-10.0,gic-version=3\",\n        \"-cpu\",\n        \"cortex-a72\",\n        \"-smp\",\n        \"2\",\n        \"-m\",\n        \"2048\",\n        \"-accel\",\n        \"tcg,thread=multi\",\n        \"-kernel\",\n        \"/work/pmwork/boot/alpine/Image\",\n        \"-initrd\",\n        \"/work/pmwork/boot/alpine/initramfs-virt\",\n        \"-append\",\n        \"console=ttyAMA0 ip=dhcp alpine_repo=http://10.0.2.2:18083/apks modloop=http://10.0.2.2:18083/modloop-virt\",\n        \"-display\",\n        \"none\",\n        \"-monitor\",\n        \"none\",\n        \"-no-reboot\",\n        \"-chardev\",\n        \"socket,id=serial0,path=/work/pmwork/console.sock,server=on,wait=on,logfile=/work/pmwork/console-03.log\",\n        \"-serial\",\n        \"chardev:serial0\",\n        \"-netdev\",\n        \"user,id=net0\",\n        \"-device\",\n        \"virtio-net-device,netdev=net0\",\n        \"-fsdev\",\n        \"local,id=work,path=/work/pmwork/guest-share,security_model=none\",\n        \"-device\",\n        \"virtio-9p-pci,fsdev=work,mount_tag=work\",\n        \"-fsdev\",\n        \"local,id=pmbsrc,path=/work/pmbootstrap,security_model=none,readonly=on\",\n        \"-device\",\n        \"virtio-9p-pci,fsdev=pmbsrc,mount_tag=pmbsrc\",\n        \"-fsdev\",\n        \"local,id=ports,path=/work/pmaports,security_model=none,readonly=on\",\n        \"-device\",\n        \"virtio-9p-pci,fsdev=ports,mount_tag=ports\"\n      ],\n      \"exited\": true\n    }\n  ],\n  \"all_owned_processes_exited\": true,\n  \"finished_at_utc\": \"2026-11-22T23:30:20.639155+00:00\"\n}\n"
+      }
+    },
+    "nura-guest-boot-01": {
+      "command": [
+        "python3",
+        "/work/pmwork/serial_command.py",
+        "--socket",
+        "/work/pmwork/console.sock",
+        "--record",
+        "/work/pmwork/guest-boot-01.json",
+        "--timeout",
+        "600",
+        "--login-root",
+        "--command",
+        "set -eu; uname -a; cat /etc/os-release; modprobe 9pnet_virtio; mkdir -p /work; mount -t 9p -o trans=virtio,version=9p2000.L work /work; mkdir -p /work/pmbootstrap /work/pmaports; mount -t 9p -o trans=virtio,version=9p2000.L,ro pmbsrc /work/pmbootstrap; mount -t 9p -o trans=virtio,version=9p2000.L,ro ports /work/pmaports; cat /work/pmos.cfg"
+      ],
+      "start_utc": "2026-11-22T21:54:29.991003+00:00",
+      "exit_code": 1,
+      "elapsed_seconds": 1.1901474329642951,
+      "metadata_file": {
+        "path_in_container": "/work/nura-guest-boot-01.json",
+        "size_bytes": 703,
+        "sha256": "61043693ff415b79355b36b2c20e81268e0c7d4a971407c83b19009bad804c9d"
+      },
+      "log": {
+        "path_in_container": "/work/nura-guest-boot-01.log",
+        "size_bytes": 773,
+        "sha256": "59037c41f00867cbe159086aafce64f5e15fcab8b83a8e8cf58cd3d18d94de2a",
+        "excerpt_tail": "\n{\n  \"start_utc\": \"2026-11-22T21:54:30.288086+00:00\",\n  \"transport\": \"Private QEMU serial Unix socket\",\n  \"socket\": \"/work/pmwork/console.sock\",\n  \"guest_command\": \"set -eu; uname -a; cat /etc/os-release; modprobe 9pnet_virtio; mkdir -p /work; mount -t 9p -o trans=virtio,version=9p2000.L work /work; mkdir -p /work/pmbootstrap /work/pmaports; mount -t 9p -o trans=virtio,version=9p2000.L,ro pmbsrc /work/pmbootstrap; mount -t 9p -o trans=virtio,version=9p2000.L,ro ports /work/pmaports; cat /work/pmos.cfg\",\n  \"guest_login\": \"root\",\n  \"error\": \"ARM guest serial connection closed\",\n  \"elapsed_seconds\": 0.8855979960062541,\n  \"serial_log\": \"/work/pmwork/guest-boot-01.serial.log\",\n  \"serial_log_sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"\n}\n"
+      }
+    },
+    "nura-guest-boot-02": {
+      "command": [
+        "python3",
+        "/work/pmwork/serial_command.py",
+        "--socket",
+        "/work/pmwork/console.sock",
+        "--record",
+        "/work/pmwork/guest-boot-02.json",
+        "--timeout",
+        "600",
+        "--login-root",
+        "--command",
+        "set -eu; uname -a; cat /etc/os-release; modprobe 9pnet_virtio; mkdir -p /work; mount -t 9p -o trans=virtio,version=9p2000.L work /work; mkdir -p /work/pmbootstrap /work/pmaports; mount -t 9p -o trans=virtio,version=9p2000.L,ro pmbsrc /work/pmbootstrap; mount -t 9p -o trans=virtio,version=9p2000.L,ro ports /work/pmaports; cat /work/pmos.cfg"
+      ],
+      "start_utc": "2026-11-22T21:56:19.394971+00:00",
+      "exit_code": 1,
+      "elapsed_seconds": 249.1494646970532,
+      "metadata_file": {
+        "path_in_container": "/work/nura-guest-boot-02.json",
+        "size_bytes": 702,
+        "sha256": "d2724c4ef28898004dae47d638215f9f88424d04da74980d4d361f0e5cd6ac56"
+      },
+      "log": {
+        "path_in_container": "/work/nura-guest-boot-02.log",
+        "size_bytes": 16705,
+        "sha256": "b0bb6b4a2e96e19c42a8392af8b523eeaef1c44b03f31ae9bbba43dfc2ba6313",
+        "excerpt_tail": "1803] Loaded X.509 cert 'alpinelinux.org: Alpine Linux kernel key: 87fa969a47f3e2a6aa35859eb932a17c95abcd82'\n[    2.046432] Demotion targets for Node 0: null\n[    2.049633] Key type .fscrypt registered\n[    2.049663] Key type fscrypt-provisioning registered\n[    2.101249] clk: Disabling unused clocks\n[    2.101940] PM: genpd: Disabling unused power domains\n[    2.173392] Freeing unused kernel memory: 2048K\n[    2.175296] Run /init as init process\n[    2.379640] Alpine Init 3.14.1-r0\nAlpine Init 3.14.1-r0\n[    2.391515] Loading boot drivers...\n * Loading boot drivers: [    2.488677] loop: module loaded\n[    2.504834] squashfs: version 4.0 (2009/01/31) Phillip Lougher\n[    2.513878] Loading boot drivers: ok.\nok.\n * Mounting boot media: [    2.537264] Mounting boot media...\n[    9.947117] Mounting boot media: ok.\nok.\n * Obtaining IP via DHCP (eth0): [   10.871337] Obtaining IP via DHCP (eth0)...\nudhcpc: started, v1.37.0\n[   10.971610] NET: Registered PF_PACKET protocol family\nudhcpc: broadcasting discover\nudhcpc: broadcasting select for 10.0.2.15, server 10.0.2.2\nudhcpc: lease of 10.0.2.15 obtained from 10.0.2.2, lease time 86400\nok.\n[   11.194474] Obtaining IP via DHCP (eth0): ok.\n[   11.525868] Installing packages to root filesystem...\n * Installing packages to root filesystem: [fetch https://dl-cdn.alpinelinux.org/alpine...]WARNING: updating and opening https://dl-cdn.alpinelinux.org/alpine/v3.24/main/aarch64/APKINDEX.tar.gz: TLS: server certificate not trusted\nOK: 0 B in 0 packages\nok.\n[   12.561189] Installing packages to root filesystem: ok.\n/sbin/init not found in new root\nLaunching initramfs emergency recovery shell.\nType exit to continue boot.\nsh: can't access tty; job control turned off\n~ # \n{\n  \"start_utc\": \"2026-11-22T21:56:19.429962+00:00\",\n  \"transport\": \"Private QEMU serial Unix socket\",\n  \"socket\": \"/work/pmwork/console.sock\",\n  \"guest_command\": \"set -eu; uname -a; cat /etc/os-release; modprobe 9pnet_virtio; mkdir -p /work; mount -t 9p -o trans=virtio,version=9p2000.L work /work; mkdir -p /work/pmbootstrap /work/pmaports; mount -t 9p -o trans=virtio,version=9p2000.L,ro pmbsrc /work/pmbootstrap; mount -t 9p -o trans=virtio,version=9p2000.L,ro ports /work/pmaports; cat /work/pmos.cfg\",\n  \"guest_login\": \"root\",\n  \"error\": \"ARM guest serial connection closed\",\n  \"elapsed_seconds\": 248.98714830394601,\n  \"serial_log\": \"/work/pmwork/guest-boot-02.serial.log\",\n  \"serial_log_sha256\": \"f17ce1f6bf6f12f001fa78343788e754a92cb4b072a8a017b783c4bed6f9673e\"\n}\n"
+      }
+    },
+    "nura-guest-bootstrap-01": {
+      "command": [
+        "python3",
+        "/work/pmwork/serial_command.py",
+        "--socket",
+        "/work/pmwork/console.sock",
+        "--record",
+        "/work/pmwork/guest-bootstrap-01.json",
+        "--timeout",
+        "1800",
+        "--login-root",
+        "--command",
+        "set -eu; uname -a; cat /etc/os-release; modprobe 9pnet_virtio; mkdir -p /work; mount -t 9p -o trans=virtio,version=9p2000.L work /work; mkdir -p /work/pmbootstrap /work/pmaports; mount -t 9p -o trans=virtio,version=9p2000.L,ro pmbsrc /work/pmbootstrap; mount -t 9p -o trans=virtio,version=9p2000.L,ro ports /work/pmaports; cat /work/pmos.cfg; sh /work/guest-bootstrap.sh"
+      ],
+      "start_utc": "2026-11-22T22:02:10.048921+00:00",
+      "exit_code": 1,
+      "elapsed_seconds": 436.3276130090235,
+      "metadata_file": {
+        "path_in_container": "/work/nura-guest-bootstrap-01.json",
+        "size_bytes": 737,
+        "sha256": "3d5b545cfd87dd2481737e98aec94f25087421f66b6018c80968a90cb0ae1a05"
+      },
+      "log": {
+        "path_in_container": "/work/nura-guest-bootstrap-01.log",
+        "size_bytes": 53990,
+        "sha256": "0f5d05ca4964be0c4a6e66f29fc784034a3c8e286a1dc7e44ab0403297558581",
+        "excerpt_tail": "v\n[22:09:25] ERROR: pmaports: could not find remote name for any URL '['https://gitlab.postmarketos.org/postmarketOS/pmaports.git', 'git@gitlab.postmarketos.org:postmarketOS/pmaports.git']' in git repository: /work/pmaports\n[22:09:25] See also: <https://postmarketos.org/troubleshooting>\n[22:09:25] Traceback (most recent call last):\n  File \"/work/pmbootstrap/pmb/__init__.py\", line 66, in main\n    args = parse.arguments()\n  File \"/work/pmbootstrap/pmb/parse/arguments.py\", line 1273, in arguments\n    pmb.helpers.args.init(args)\n    ~~~~~~~~~~~~~~~~~~~~~^^^^^^\n  File \"/work/pmbootstrap/pmb/helpers/args.py\", line 122, in init\n    pmb.helpers.git.parse_channels_cfg(pkgrepo_default_path())\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work/pmbootstrap/pmb/meta/__init__.py\", line 41, in __call__\n    self.cache.cache[key] = self.func(*args, **kwargs)\n                            ~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File \"/work/pmbootstrap/pmb/helpers/git.py\", line 270, in parse_channels_cfg\n    remote = get_upstream_remote(aports)\n  File \"/work/pmbootstrap/pmb/helpers/git.py\", line 160, in get_upstream_remote\n    raise RuntimeError(\n        f\"{name_repo}: could not find remote name for any URL '{urls}' in git repository: {aports}\"\n    )\nRuntimeError: pmaports: could not find remote name for any URL '['https://gitlab.postmarketos.org/postmarketOS/pmaports.git', 'git@gitlab.postmarketos.org:postmarketOS/pmaports.git']' in git repository: /work/pmaports\n\n\nBefore you report this error, ensure that pmbootstrap is up to date.\nFind the latest version here: https://gitlab.postmarketos.org/postmarketOS/pmbootstrap/-/tags\nYour version: 3.12.1\n\n__NURA_DONE_e7ba85c8547a4a7e9b028f773651cc4e__:1\n{\n  \"start_utc\": \"2026-11-22T22:02:10.370838+00:00\",\n  \"transport\": \"Private QEMU serial Unix socket\",\n  \"socket\": \"/work/pmwork/console.sock\",\n  \"guest_command\": \"set -eu; uname -a; cat /etc/os-release; modprobe 9pnet_virtio; mkdir -p /work; mount -t 9p -o trans=virtio,version=9p2000.L work /work; mkdir -p /work/pmbootstrap /work/pmaports; mount -t 9p -o trans=virtio,version=9p2000.L,ro pmbsrc /work/pmbootstrap; mount -t 9p -o trans=virtio,version=9p2000.L,ro ports /work/pmaports; cat /work/pmos.cfg; sh /work/guest-bootstrap.sh\",\n  \"guest_login\": \"root\",\n  \"guest_exit_code\": 1,\n  \"elapsed_seconds\": 435.79537220299244,\n  \"serial_log\": \"/work/pmwork/guest-bootstrap-01.serial.log\",\n  \"serial_log_sha256\": \"e111f5044fa0c0eacb9fe11e54547a43d0f36f469b37a47eefe849c724c775a6\"\n}\n"
+      }
+    },
+    "nura-guest-bootstrap-02": {
+      "command": [
+        "python3",
+        "/work/pmwork/serial_command.py",
+        "--socket",
+        "/work/pmwork/console.sock",
+        "--record",
+        "/work/pmwork/guest-bootstrap-02.json",
+        "--timeout",
+        "1800",
+        "--command",
+        "sh /work/guest-bootstrap-02.sh"
+      ],
+      "start_utc": "2026-11-22T22:21:13.796611+00:00",
+      "exit_code": 2,
+      "elapsed_seconds": 186.31744032900315,
+      "metadata_file": {
+        "path_in_container": "/work/nura-guest-bootstrap-02.json",
+        "size_bytes": 378,
+        "sha256": "61f68849c634d7c802b5f8fa122d0159b88e90d1d4df674123bd574bdf18843e"
+      },
+      "log": {
+        "path_in_container": "/work/nura-guest-bootstrap-02.log",
+        "size_bytes": 2538,
+        "sha256": "1758d0e5c7fdd8066fc55262941081a4361a1e608c85780115e9fc35877b943a",
+        "excerpt_tail": "\nlocalhost:~# ( sh /work/guest-bootstrap-02.sh ); nura_status=$?; printf '\\n__NUR\n\nA_DONE_65c9964d2a424e66b8cf56603c4d6b72__:%s\\n' \"$nura_status\"\n[fetch http://10.0.2.2:18083/apks/aarch64/AP...][fetch https://dl-cdn.alpinelinux.org/alpine...][fetch https://dl-cdn.alpinelinux.org/alpine...][syncing disks...]OK: 84.8 MiB in 105 packages\n[fetch https://dl-cdn.alpinelinux.org/alpine...][fetch https://dl-cdn.alpinelinux.org/alpine...]v3.24.4-159-gd76eb1f5547 [https://dl-cdn.alpinelinux.org/alpine/v3.24/main]\nv3.24.4-158-g75e10f2ea64 [https://dl-cdn.alpinelinux.org/alpine/v3.24/community]\nOK: 28576 distinct packages available\n[fetch https://dl-cdn.alpinelinux.org/alpine...][fetch https://dl-cdn.alpinelinux.org/alpine...][syncing disks...]OK: 84.8 MiB in 105 packages\nPython 3.14.10\n3.12.1\nSun Nov 22 22:21:55 UTC 2026\nLinux localhost 6.18.60-0-virt #1-Alpine SMP PREEMPT_DYNAMIC 2026-11-01 07:26:31 aarch64 Linux\n[22:22:28] $ /work/pmbootstrap/pmbootstrap.py --as-root --config /work/pmos.cfg --timeout 180 --details-to-stdout work_migrate\n[22:22:28] pmbootstrap v3.12.1 (Python 3.14.10 (main, Oct 27 2026, 09:35:01) [GCC 15.2.0])\n[22:22:28] NOTE: Timeout enabled, commands will be killed after 180.0 seconds of not writing any output. Reason: timeout was explicitly set via the --timeout or -t argument\nusage: pmbootstrap chroot [-h] [--add ADD] [--user]\n                          [--output {LOG,STDOUT,INTERACTIVE,TUI,NULL}]\n                          [--image] [--usb] [-x] [-i] [-r |\n                          -b [{armhf,armv7,s390x,riscv64,x86_64,x86,aarch64,loongarch64,ppc64le,device}] |\n                          -s SUFFIX]\n                          [command ...]\npmbootstrap chroot: error: argument --output: invalid from_string value: 'STDOUT'\n\n__NURA_DONE_65c9964d2a424e66b8cf56603c4d6b72__:2\n{\n  \"start_utc\": \"2026-11-22T22:21:13.989062+00:00\",\n  \"transport\": \"Private QEMU serial Unix socket\",\n  \"socket\": \"/work/pmwork/console.sock\",\n  \"guest_command\": \"sh /work/guest-bootstrap-02.sh\",\n  \"guest_login\": null,\n  \"interrupt_previous_guest_command\": false,\n  \"guest_exit_code\": 2,\n  \"elapsed_seconds\": 186.11635877902154,\n  \"serial_log\": \"/work/pmwork/guest-bootstrap-02.serial.log\",\n  \"serial_log_sha256\": \"dad7762165eb65addba8a8f9876a30cfb2e7217ff120e3f98d1d2dad7fb5c58d\"\n}\n"
+      }
+    },
+    "nura-media-http-01": {
+      "command": [
+        "python3",
+        "-u",
+        "-m",
+        "http.server",
+        "18083",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "/work/pmwork/boot/alpine"
+      ],
+      "start_utc": "2026-11-22T21:50:34.951156+00:00",
+      "exit_code": -15,
+      "elapsed_seconds": 5981.882398231013,
+      "metadata_file": {
+        "path_in_container": "/work/nura-media-http-01.json",
+        "size_bytes": 282,
+        "sha256": "0a9fd8959346a3a96569611ed86bc769ca564e47b1758572dc6847628dca67e9"
+      },
+      "log": {
+        "path_in_container": "/work/nura-media-http-01.log",
+        "size_bytes": 3025,
+        "sha256": "4a7f1a2d9f82fc81b1385849f812c0b3e831ac510f2afed57620f324bef61fe2",
+        "excerpt_tail": "r31.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:23] \"GET /apks/aarch64/alpine-baselayout-3.7.2-r1.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:24] \"GET /apks/aarch64/bridge-1.5-r5.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:24] \"GET /apks/aarch64/ifupdown-ng-0.13.0-r0.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:24] \"GET /apks/aarch64/openrc-user-0.63.2-r0.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:24] \"GET /apks/aarch64/libcap2-2.78-r0.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:24] \"GET /apks/aarch64/openrc-0.63.2-r0.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:24] \"GET /apks/aarch64/alpine-conf-3.22.0-r0.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:24] \"GET /apks/aarch64/alpine-keys-2.6-r0.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:24] \"GET /apks/aarch64/alpine-release-3.24.4-r0.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:24] \"GET /apks/aarch64/libcrypto3-3.5.9-r0.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:25] \"GET /apks/aarch64/libssl3-3.5.9-r0.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:25] \"GET /apks/aarch64/ssl_client-1.37.0-r31.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:25] \"GET /apks/aarch64/zlib-1.3.2-r1.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:25] \"GET /apks/aarch64/libapk-3.0.9-r0.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:25] \"GET /apks/aarch64/ca-certificates-bundle-20261020-r0.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:25] \"GET /apks/aarch64/apk-tools-3.0.9-r0.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:25] \"GET /apks/aarch64/mdev-conf-4.10-r0.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:25] \"GET /apks/aarch64/busybox-mdev-openrc-1.37.0-r31.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:25] \"GET /apks/aarch64/busybox-openrc-1.37.0-r31.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:25] \"GET /apks/aarch64/busybox-suid-1.37.0-r31.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:25] \"GET /apks/aarch64/scanelf-1.3.9-r1.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:26] \"GET /apks/aarch64/musl-utils-1.2.6-r3.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:26] \"GET /apks/aarch64/openssl-3.5.9-r0.apk HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:29] \"GET /modloop-virt HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:02:39] \"GET /apks/aarch64/APKINDEX.tar.gz HTTP/1.1\" 200 -\n127.0.0.1 - - [22/Nov/2026 22:21:14] \"GET /apks/aarch64/APKINDEX.tar.gz HTTP/1.1\" 200 -\n"
+      }
+    },
+    "nura-native-chroot-03": {
+      "command": [
+        "python3",
+        "/work/pmwork/serial_command.py",
+        "--socket",
+        "/work/pmwork/console.sock",
+        "--record",
+        "/work/pmwork/guest-native-chroot-03.json",
+        "--timeout",
+        "1800",
+        "--command",
+        "export PMB_CHANNELS_CFG=/work/pmaports/channels.cfg PYTHONDONTWRITEBYTECODE=1; python3 /work/pmbootstrap/pmbootstrap.py --as-root --config /work/pmos.cfg --timeout 180 --details-to-stdout chroot --output stdout -- /bin/sh -c 'set -eu; test \"$(uname -m)\" = aarch64; uname -m; apk --version; cat /etc/alpine-release'"
+      ],
+      "start_utc": "2026-11-22T22:26:11.721013+00:00",
+      "exit_code": 2,
+      "elapsed_seconds": 244.6675366180134,
+      "metadata_file": {
+        "path_in_container": "/work/nura-native-chroot-03.json",
+        "size_bytes": 667,
+        "sha256": "6a32fe11d6bcc611c2cf6dc8f293c7d14ca4dd4d58babb59f54120febce6f0e7"
+      },
+      "log": {
+        "path_in_container": "/work/nura-native-chroot-03.log",
+        "size_bytes": 19258,
+        "sha256": "7bbbd1e20e5de3c9fc2102ce12048b89c58d116be6d25718cba30bcc19a699da",
+        "excerpt_tail": "try/index ;\n[22:30:12] (native) % chown pmos:pmos /mnt/pmbootstrap/rust/registry/index\n[22:30:13] (native) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/sccache /home/pmos/.cache/sccache ;\n[22:30:13] (native) % chown pmos:pmos /mnt/pmbootstrap/sccache\n[22:30:13] (chroot_native) update /etc/apk/repositories\n[22:30:13] % rm /work/pmwork/chroot_native/etc/apk/repositories\n[22:30:13] % sh -c echo /mnt/pmbootstrap/packages/edge >> /work/pmwork/chroot_native/etc/apk/repositories\n[22:30:13] % sh -c echo https://mirror.postmarketos.org/postmarketos/main >> /work/pmwork/chroot_native/etc/apk/repositories\n[22:30:13] % sh -c echo https://dl-cdn.alpinelinux.org/edge/main >> /work/pmwork/chroot_native/etc/apk/repositories\n[22:30:13] % sh -c echo https://dl-cdn.alpinelinux.org/edge/community >> /work/pmwork/chroot_native/etc/apk/repositories\n[22:30:14] % sh -c echo https://dl-cdn.alpinelinux.org/edge/testing >> /work/pmwork/chroot_native/etc/apk/repositories\n[22:30:14] (native) % /bin/sh -c set -eu; test \"$(uname -m)\" = aarch64; uname -m; apk --version; cat /etc/alpine-release\n[22:30:14] (native) % /bin/sh -c set -eu; test \"$(uname -m)\" = aarch64; uname -m; apk --version; cat /etc/alpine-release\naarch64\napk-tools 3.0.10-r1, compiled for aarch64.\ncat: can't open '/etc/alpine-release': No such file or directory\n[22:30:15] ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n[22:30:15] NOTE: The failed command's output is above the ^^^ line in the log file: /work/pmwork/log.txt\n[22:30:15] ERROR: Command failed (exit code 1): (native) % /bin/sh -c set -eu; test \"$(uname -m)\" = aarch64; uname -m; apk --version; cat /etc/alpine-release\n\n__NURA_DONE_e70126973fec46cfbcf4a8a5c917a63f__:2\n{\n  \"start_utc\": \"2026-11-22T22:26:12.755004+00:00\",\n  \"transport\": \"Private QEMU serial Unix socket\",\n  \"socket\": \"/work/pmwork/console.sock\",\n  \"guest_command\": \"export PMB_CHANNELS_CFG=/work/pmaports/channels.cfg PYTHONDONTWRITEBYTECODE=1; python3 /work/pmbootstrap/pmbootstrap.py --as-root --config /work/pmos.cfg --timeout 180 --details-to-stdout chroot --output stdout -- /bin/sh -c 'set -eu; test \\\"$(uname -m)\\\" = aarch64; uname -m; apk --version; cat /etc/alpine-release'\",\n  \"guest_login\": null,\n  \"interrupt_previous_guest_command\": false,\n  \"guest_exit_code\": 2,\n  \"elapsed_seconds\": 243.62176898302278,\n  \"serial_log\": \"/work/pmwork/guest-native-chroot-03.serial.log\",\n  \"serial_log_sha256\": \"88b5022bd006b8eb0bda72ac0e3975f5923e7c5665e968d751b7ff43f04856f1\"\n}\n"
+      }
+    },
+    "nura-rootfs-export-01": {
+      "command": [
+        "python3",
+        "/work/pmwork/export_rootfs.py",
+        "--install-record",
+        "/work/pmwork/guest-install-01.json",
+        "--output",
+        "/work/pmwork/artifacts/nura-qemu-aarch64-userspace-20261123.tar.gz"
+      ],
+      "start_utc": "2026-11-22T22:54:15.686399+00:00",
+      "exit_code": 1,
+      "elapsed_seconds": 17.12820327898953,
+      "metadata_file": {
+        "path_in_container": "/work/nura-rootfs-export-01.json",
+        "size_bytes": 339,
+        "sha256": "a904525ba00a15b1b0326a2d11db3f1ce6dbea4d292c50a10091812d807f0be7"
+      },
+      "log": {
+        "path_in_container": "/work/nura-rootfs-export-01.log",
+        "size_bytes": 71,
+        "sha256": "567fee35e471f467d4b9b87a3e9923c4296514f4c387c4968d64de4968651030",
+        "excerpt_tail": "Expected one retained APK for linux-firmware-none-20261019-r0; found 0\n"
+      }
+    },
+    "nura-rootfs-export-02": {
+      "command": [
+        "python3",
+        "/work/pmwork/export_rootfs.py",
+        "--install-record",
+        "/work/pmwork/guest-install-01.json",
+        "--output",
+        "/work/pmwork/artifacts/nura-qemu-aarch64-userspace-20261123.tar.gz"
+      ],
+      "start_utc": "2026-11-22T23:18:07.437393+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 213.546765802952,
+      "metadata_file": {
+        "path_in_container": "/work/nura-rootfs-export-02.json",
+        "size_bytes": 338,
+        "sha256": "3274abbbef383a12ed3dd56651d94ee518931cb58a7492e7cda03f44200bb95c"
+      },
+      "log": {
+        "path_in_container": "/work/nura-rootfs-export-02.log",
+        "size_bytes": 5818,
+        "sha256": "91d8b8eee1965adba84702f85a5ae152b435182900a33d36d3c58be8f75fa823",
+        "excerpt_tail": "sted\": false,\n  \"retained_cache_manifest\": {\n    \"path\": \"/work/pmwork/guest-share/target-package-cache.json\",\n    \"size_bytes\": 192437,\n    \"sha256\": \"2c5af8effe7285a79c5303e5cda6a1be5a472b619a35b1f2be2b434be7ba8e4a\"\n  },\n  \"bootstrap_apk_static\": {\n    \"path\": \"/work/pmwork/guest-share/pmwork/apk.static\",\n    \"size_bytes\": 5075216,\n    \"sha256\": \"e00d54b995904dd09b6777f1d292351c11f0cbc16e05b29f443290e60549b85e\"\n  },\n  \"turnip_library\": {\n    \"path\": \"/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/usr/lib/libvulkan_freedreno.so\",\n    \"size_bytes\": 14037504,\n    \"sha256\": \"c06ac286b5b7da9131b0f17cba0088366463c8002e4c8ed70b76593413be3320\",\n    \"elf_machine\": 183,\n    \"elf_class\": 64\n  },\n  \"msm_dri_loader\": {\n    \"entry_path\": \"/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/usr/lib/dri/msm_dri.so\",\n    \"link_target\": \"libdril_dri.so\",\n    \"path\": \"/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/usr/lib/dri/libdril_dri.so\",\n    \"size_bytes\": 132936,\n    \"sha256\": \"89b92591f2a3ea32800dbf72c158a5c3c6ee4ff4c25200d509b40766f70228d5\",\n    \"elf_machine\": 183,\n    \"elf_class\": 64,\n    \"scope\": \"DRI loader entry present; hardware driver initialization was not tested\"\n  },\n  \"target_boot_files\": {\n    \"boot/initramfs\": {\n      \"path\": \"/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/boot/initramfs\",\n      \"size_bytes\": 13164501,\n      \"sha256\": \"54be13030b52ad6e91fdc4e92805b17eeadfe5192c9a70a9ccaa39e9e4d8e99e\"\n    },\n    \"boot/EFI/BOOT/BOOTAA64.EFI\": {\n      \"path\": \"/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/boot/EFI/BOOT/BOOTAA64.EFI\",\n      \"size_bytes\": 128000,\n      \"sha256\": \"8589a8298b1a61a394fa93a88e51a4a7a7d91e04510a02cf8dfeb8be8ce0eb70\"\n    },\n    \"boot/loader/entries/pmos.conf\": {\n      \"path\": \"/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/boot/loader/entries/pmos.conf\",\n      \"size_bytes\": 219,\n      \"sha256\": \"24d1d3a70e856fae81d87c2dce4bae57841b7e936cf6e59248fc2750699fb973\"\n    },\n    \"boot/vmlinuz\": {\n      \"path\": \"/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/boot/vmlinuz\",\n      \"size_bytes\": 19972608,\n      \"sha256\": \"16f54aa9866fa09c07f4c7bc6d79021d5c3fa5a40bf24dca47fbc606690c8166\"\n    }\n  },\n  \"target_kernel_packages\": [\n    \"linux-postmarketos-stable-7.3.5-r0\"\n  ],\n  \"target_module_directories\": [\n    \"7.3.5\"\n  ],\n  \"gpu_acceleration_tested\": false,\n  \"target_rootfs_booted\": false,\n  \"tablet_boot_tested\": false,\n  \"bit_for_bit_rebuild_demonstrated\": false\n}\n"
+      }
+    },
+    "nura-target-install-01": {
+      "command": [
+        "python3",
+        "/work/pmwork/serial_command.py",
+        "--socket",
+        "/work/pmwork/console.sock",
+        "--record",
+        "/work/pmwork/guest-install-01.json",
+        "--timeout",
+        "3600",
+        "--command",
+        "sh /work/guest-install-01.sh"
+      ],
+      "start_utc": "2026-11-22T22:32:27.800447+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 1165.4808637960232,
+      "metadata_file": {
+        "path_in_container": "/work/nura-target-install-01.json",
+        "size_bytes": 374,
+        "sha256": "7be47fb81ea2412f1f0924512582cc796497c9c6a2ea16e020f973f1f0091896"
+      },
+      "log": {
+        "path_in_container": "/work/nura-target-install-01.log",
+        "size_bytes": 52744,
+        "sha256": "aeb64b9de5d97e3e1643f0ef97e793f87fa49ef722ab2efb207166da5ec52adf",
+        "excerpt_tail": "9] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/packages\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/netboot\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/go\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/git\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/ccache\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/abuild-config\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/appstream-data\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/etc/apk/keys\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/dev/shm\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/dev/pts\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/dev\n[22:51:49] % umount /work/pmwork/chroot_native/var/cache/distfiles\n[22:51:50] % umount /work/pmwork/chroot_native/var/cache/apk\n[22:51:50] % umount /work/pmwork/chroot_native/sys\n[22:51:50] % umount /work/pmwork/chroot_native/proc\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/sccache\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/rust\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/packages\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/netboot\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/go\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/git\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/ccache\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/abuild-config\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/appstream-data\n[22:51:50] % umount /work/pmwork/chroot_native/etc/apk/keys\n[22:51:51] % umount /work/pmwork/chroot_native/dev/shm\n[22:51:51] % umount /work/pmwork/chroot_native/dev/pts\n[22:51:51] % umount /work/pmwork/chroot_native/dev\n[22:51:51] Shutdown complete\n[22:51:51] DONE!\n\n__NURA_DONE_c74f67eda67846f0afd5aa61887dcf85__:0\n{\n  \"start_utc\": \"2026-11-22T22:32:28.040285+00:00\",\n  \"transport\": \"Private QEMU serial Unix socket\",\n  \"socket\": \"/work/pmwork/console.sock\",\n  \"guest_command\": \"sh /work/guest-install-01.sh\",\n  \"guest_login\": null,\n  \"interrupt_previous_guest_command\": false,\n  \"guest_exit_code\": 0,\n  \"elapsed_seconds\": 1164.405794063001,\n  \"serial_log\": \"/work/pmwork/guest-install-01.serial.log\",\n  \"serial_log_sha256\": \"9ba8d922b03b2587a86d63a8602bb9527e243e1f07930a8f7913708d6310758d\"\n}\n"
+      }
+    }
+  },
+  "serial_command_records": {
+    "guest-boot-01": {
+      "start_utc": "2026-11-22T21:54:30.288086+00:00",
+      "transport": "Private QEMU serial Unix socket",
+      "socket": "/work/pmwork/console.sock",
+      "guest_command": "set -eu; uname -a; cat /etc/os-release; modprobe 9pnet_virtio; mkdir -p /work; mount -t 9p -o trans=virtio,version=9p2000.L work /work; mkdir -p /work/pmbootstrap /work/pmaports; mount -t 9p -o trans=virtio,version=9p2000.L,ro pmbsrc /work/pmbootstrap; mount -t 9p -o trans=virtio,version=9p2000.L,ro ports /work/pmaports; cat /work/pmos.cfg",
+      "guest_login": "root",
+      "error": "ARM guest serial connection closed",
+      "elapsed_seconds": 0.8855979960062541,
+      "serial_log": "/work/pmwork/guest-boot-01.serial.log",
+      "serial_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "metadata_file": {
+        "path_in_container": "/work/pmwork/guest-boot-01.json",
+        "size_bytes": 772,
+        "sha256": "7648eb655f95f5b9865eca0fa0f15a77214abe56522e2de7499df726df7c1c32"
+      },
+      "log": {
+        "path_in_container": "/work/pmwork/guest-boot-01.serial.log",
+        "size_bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "excerpt_tail": ""
+      }
+    },
+    "guest-boot-02": {
+      "start_utc": "2026-11-22T21:56:19.429962+00:00",
+      "transport": "Private QEMU serial Unix socket",
+      "socket": "/work/pmwork/console.sock",
+      "guest_command": "set -eu; uname -a; cat /etc/os-release; modprobe 9pnet_virtio; mkdir -p /work; mount -t 9p -o trans=virtio,version=9p2000.L work /work; mkdir -p /work/pmbootstrap /work/pmaports; mount -t 9p -o trans=virtio,version=9p2000.L,ro pmbsrc /work/pmbootstrap; mount -t 9p -o trans=virtio,version=9p2000.L,ro ports /work/pmaports; cat /work/pmos.cfg",
+      "guest_login": "root",
+      "error": "ARM guest serial connection closed",
+      "elapsed_seconds": 248.98714830394601,
+      "serial_log": "/work/pmwork/guest-boot-02.serial.log",
+      "serial_log_sha256": "f17ce1f6bf6f12f001fa78343788e754a92cb4b072a8a017b783c4bed6f9673e",
+      "metadata_file": {
+        "path_in_container": "/work/pmwork/guest-boot-02.json",
+        "size_bytes": 772,
+        "sha256": "1aef136dcab03f43181f7496a50f3d307515d5c0cc103feb966892b0511a76e1"
+      },
+      "log": {
+        "path_in_container": "/work/pmwork/guest-boot-02.serial.log",
+        "size_bytes": 16170,
+        "sha256": "f17ce1f6bf6f12f001fa78343788e754a92cb4b072a8a017b783c4bed6f9673e",
+        "excerpt_tail": " 0000:00:01.0: enabling device (0000 -> 0003)\n[    1.163534] virtio-pci 0000:00:02.0: enabling device (0000 -> 0003)\n[    1.168284] virtio-pci 0000:00:03.0: enabling device (0000 -> 0003)\n[    1.174411] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled\n[    1.196096] hv_vmbus: registering driver hyperv_keyboard\n[    1.204489] rtc-pl031 9010000.pl031: registered as rtc0\n[    1.205381] rtc-pl031 9010000.pl031: setting system clock to 2026-11-22T21:56:21 UTC (1795384581)\n[    1.221271] NET: Registered PF_INET6 protocol family\n[    1.238793] Segment Routing with IPv6\n[    1.239160] In-situ OAM (IOAM) with IPv6\n[    1.274120] registered taskstats version 1\n[    1.279028] Loading compiled-in X.509 certificates\n[    1.797069] Freeing initrd memory: 9928K\n[    2.001803] Loaded X.509 cert 'alpinelinux.org: Alpine Linux kernel key: 87fa969a47f3e2a6aa35859eb932a17c95abcd82'\n[    2.046432] Demotion targets for Node 0: null\n[    2.049633] Key type .fscrypt registered\n[    2.049663] Key type fscrypt-provisioning registered\n[    2.101249] clk: Disabling unused clocks\n[    2.101940] PM: genpd: Disabling unused power domains\n[    2.173392] Freeing unused kernel memory: 2048K\n[    2.175296] Run /init as init process\n[    2.379640] Alpine Init 3.14.1-r0\nAlpine Init 3.14.1-r0\n[    2.391515] Loading boot drivers...\n * Loading boot drivers: [    2.488677] loop: module loaded\n[    2.504834] squashfs: version 4.0 (2009/01/31) Phillip Lougher\n[    2.513878] Loading boot drivers: ok.\nok.\n * Mounting boot media: [    2.537264] Mounting boot media...\n[    9.947117] Mounting boot media: ok.\nok.\n * Obtaining IP via DHCP (eth0): [   10.871337] Obtaining IP via DHCP (eth0)...\nudhcpc: started, v1.37.0\n[   10.971610] NET: Registered PF_PACKET protocol family\nudhcpc: broadcasting discover\nudhcpc: broadcasting select for 10.0.2.15, server 10.0.2.2\nudhcpc: lease of 10.0.2.15 obtained from 10.0.2.2, lease time 86400\nok.\n[   11.194474] Obtaining IP via DHCP (eth0): ok.\n[   11.525868] Installing packages to root filesystem...\n * Installing packages to root filesystem: [fetch https://dl-cdn.alpinelinux.org/alpine...]WARNING: updating and opening https://dl-cdn.alpinelinux.org/alpine/v3.24/main/aarch64/APKINDEX.tar.gz: TLS: server certificate not trusted\nOK: 0 B in 0 packages\nok.\n[   12.561189] Installing packages to root filesystem: ok.\n/sbin/init not found in new root\nLaunching initramfs emergency recovery shell.\nType exit to continue boot.\nsh: can't access tty; job control turned off\n~ # "
+      }
+    },
+    "guest-bootstrap-01": {
+      "start_utc": "2026-11-22T22:02:10.370838+00:00",
+      "transport": "Private QEMU serial Unix socket",
+      "socket": "/work/pmwork/console.sock",
+      "guest_command": "set -eu; uname -a; cat /etc/os-release; modprobe 9pnet_virtio; mkdir -p /work; mount -t 9p -o trans=virtio,version=9p2000.L work /work; mkdir -p /work/pmbootstrap /work/pmaports; mount -t 9p -o trans=virtio,version=9p2000.L,ro pmbsrc /work/pmbootstrap; mount -t 9p -o trans=virtio,version=9p2000.L,ro ports /work/pmaports; cat /work/pmos.cfg; sh /work/guest-bootstrap.sh",
+      "guest_login": "root",
+      "guest_exit_code": 1,
+      "elapsed_seconds": 435.79537220299244,
+      "serial_log": "/work/pmwork/guest-bootstrap-01.serial.log",
+      "serial_log_sha256": "e111f5044fa0c0eacb9fe11e54547a43d0f36f469b37a47eefe849c724c775a6",
+      "metadata_file": {
+        "path_in_container": "/work/pmwork/guest-bootstrap-01.json",
+        "size_bytes": 781,
+        "sha256": "b0bbf9c4859e4add12194102d7d2a4b00c7aa765cd69ccd4849e1344f80336e3"
+      },
+      "log": {
+        "path_in_container": "/work/pmwork/guest-bootstrap-01.serial.log",
+        "size_bytes": 53674,
+        "sha256": "e111f5044fa0c0eacb9fe11e54547a43d0f36f469b37a47eefe849c724c775a6",
+        "excerpt_tail": "g libcap-ng (0.8.5-r2)\n (72/77) Installing setpriv (2.42.3-r1)\n (73/77) Installing lscpu (2.42.3-r1)\n (74/77) Installing logger (2.42.3-r1)\n (75/77) Installing partx (2.42.3-r1)\n (76/77) Installing fstrim (2.42.3-r1)\n (77/77) Installing findmnt (2.42.3-r1)\n Executing busybox-1.37.0-r31.trigger\nExecuting ca-certificates-20261020-r0.trigger\n[syncing disks...]OK: 84.8 MiB in 105 packages\nPython 3.14.10\n3.12.1\nSun Nov 22 22:03:44 UTC 2026\nLinux localhost 6.18.60-0-virt #1-Alpine SMP PREEMPT_DYNAMIC 2026-11-01 07:26:31 aarch64 Linux\n[22:04:01] $ /work/pmbootstrap/pmbootstrap.py --as-root --config /work/pmos.cfg --details-to-stdout work_migrate\n[22:04:01] pmbootstrap v3.12.1 (Python 3.14.10 (main, Oct 27 2026, 09:35:01) [GCC 15.2.0])\n[22:09:24] % cd /work/pmaports; git remote -v\n[22:09:25] ERROR: pmaports: could not find remote name for any URL '['https://gitlab.postmarketos.org/postmarketOS/pmaports.git', 'git@gitlab.postmarketos.org:postmarketOS/pmaports.git']' in git repository: /work/pmaports\n[22:09:25] See also: <https://postmarketos.org/troubleshooting>\n[22:09:25] Traceback (most recent call last):\n  File \"/work/pmbootstrap/pmb/__init__.py\", line 66, in main\n    args = parse.arguments()\n  File \"/work/pmbootstrap/pmb/parse/arguments.py\", line 1273, in arguments\n    pmb.helpers.args.init(args)\n    ~~~~~~~~~~~~~~~~~~~~~^^^^^^\n  File \"/work/pmbootstrap/pmb/helpers/args.py\", line 122, in init\n    pmb.helpers.git.parse_channels_cfg(pkgrepo_default_path())\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work/pmbootstrap/pmb/meta/__init__.py\", line 41, in __call__\n    self.cache.cache[key] = self.func(*args, **kwargs)\n                            ~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File \"/work/pmbootstrap/pmb/helpers/git.py\", line 270, in parse_channels_cfg\n    remote = get_upstream_remote(aports)\n  File \"/work/pmbootstrap/pmb/helpers/git.py\", line 160, in get_upstream_remote\n    raise RuntimeError(\n        f\"{name_repo}: could not find remote name for any URL '{urls}' in git repository: {aports}\"\n    )\nRuntimeError: pmaports: could not find remote name for any URL '['https://gitlab.postmarketos.org/postmarketOS/pmaports.git', 'git@gitlab.postmarketos.org:postmarketOS/pmaports.git']' in git repository: /work/pmaports\n\n\nBefore you report this error, ensure that pmbootstrap is up to date.\nFind the latest version here: https://gitlab.postmarketos.org/postmarketOS/pmbootstrap/-/tags\nYour version: 3.12.1\n\n__NURA_DONE_e7ba85c8547a4a7e9b028f773651cc4e__:1"
+      }
+    },
+    "guest-bootstrap-02": {
+      "start_utc": "2026-11-22T22:21:13.989062+00:00",
+      "transport": "Private QEMU serial Unix socket",
+      "socket": "/work/pmwork/console.sock",
+      "guest_command": "sh /work/guest-bootstrap-02.sh",
+      "guest_login": null,
+      "interrupt_previous_guest_command": false,
+      "guest_exit_code": 2,
+      "elapsed_seconds": 186.11635877902154,
+      "serial_log": "/work/pmwork/guest-bootstrap-02.serial.log",
+      "serial_log_sha256": "dad7762165eb65addba8a8f9876a30cfb2e7217ff120e3f98d1d2dad7fb5c58d",
+      "metadata_file": {
+        "path_in_container": "/work/pmwork/guest-bootstrap-02.json",
+        "size_bytes": 484,
+        "sha256": "9eb82b8e9a3e3a7277a0f11fffd3e12ce6136b04880b23c30e1d9607be4603f1"
+      },
+      "log": {
+        "path_in_container": "/work/pmwork/guest-bootstrap-02.serial.log",
+        "size_bytes": 2076,
+        "sha256": "dad7762165eb65addba8a8f9876a30cfb2e7217ff120e3f98d1d2dad7fb5c58d",
+        "excerpt_tail": "\nlocalhost:~# ( sh /work/guest-bootstrap-02.sh ); nura_status=$?; printf '\\n__NUR\n\nA_DONE_65c9964d2a424e66b8cf56603c4d6b72__:%s\\n' \"$nura_status\"\n[fetch http://10.0.2.2:18083/apks/aarch64/AP...][fetch https://dl-cdn.alpinelinux.org/alpine...][fetch https://dl-cdn.alpinelinux.org/alpine...][syncing disks...]OK: 84.8 MiB in 105 packages\n[fetch https://dl-cdn.alpinelinux.org/alpine...][fetch https://dl-cdn.alpinelinux.org/alpine...]v3.24.4-159-gd76eb1f5547 [https://dl-cdn.alpinelinux.org/alpine/v3.24/main]\nv3.24.4-158-g75e10f2ea64 [https://dl-cdn.alpinelinux.org/alpine/v3.24/community]\nOK: 28576 distinct packages available\n[fetch https://dl-cdn.alpinelinux.org/alpine...][fetch https://dl-cdn.alpinelinux.org/alpine...][syncing disks...]OK: 84.8 MiB in 105 packages\nPython 3.14.10\n3.12.1\nSun Nov 22 22:21:55 UTC 2026\nLinux localhost 6.18.60-0-virt #1-Alpine SMP PREEMPT_DYNAMIC 2026-11-01 07:26:31 aarch64 Linux\n[22:22:28] $ /work/pmbootstrap/pmbootstrap.py --as-root --config /work/pmos.cfg --timeout 180 --details-to-stdout work_migrate\n[22:22:28] pmbootstrap v3.12.1 (Python 3.14.10 (main, Oct 27 2026, 09:35:01) [GCC 15.2.0])\n[22:22:28] NOTE: Timeout enabled, commands will be killed after 180.0 seconds of not writing any output. Reason: timeout was explicitly set via the --timeout or -t argument\nusage: pmbootstrap chroot [-h] [--add ADD] [--user]\n                          [--output {LOG,STDOUT,INTERACTIVE,TUI,NULL}]\n                          [--image] [--usb] [-x] [-i] [-r |\n                          -b [{armhf,armv7,s390x,riscv64,x86_64,x86,aarch64,loongarch64,ppc64le,device}] |\n                          -s SUFFIX]\n                          [command ...]\npmbootstrap chroot: error: argument --output: invalid from_string value: 'STDOUT'\n\n__NURA_DONE_65c9964d2a424e66b8cf56603c4d6b72__:2"
+      }
+    },
+    "guest-cache-complete-02": {
+      "start_utc": "2026-11-22T23:05:14.061603+00:00",
+      "transport": "Private QEMU serial Unix socket",
+      "socket": "/work/pmwork/console.sock",
+      "guest_command": "python3 /work/complete_package_cache.py --record /work/cache-completion-02.json",
+      "guest_login": null,
+      "interrupt_previous_guest_command": true,
+      "guest_exit_code": 1,
+      "elapsed_seconds": 118.50858874799451,
+      "serial_log": "/work/pmwork/guest-cache-complete-02.serial.log",
+      "serial_log_sha256": "9b9d640ea99ff548491bffb65cdd76eb04bee82e53c173123a86d83cfbc6f39f",
+      "metadata_file": {
+        "path_in_container": "/work/pmwork/guest-cache-complete-02.json",
+        "size_bytes": 537,
+        "sha256": "ab6e0a7aabccad8df3b53f242d35844a8c3b54511a800f958606cbfd740f7da5"
+      },
+      "log": {
+        "path_in_container": "/work/pmwork/guest-cache-complete-02.serial.log",
+        "size_bytes": 13081,
+        "sha256": "9b9d640ea99ff548491bffb65cdd76eb04bee82e53c173123a86d83cfbc6f39f",
+        "excerpt_tail": "0,\n         \"autoclear\": true,\n         \"ro\": true,\n         \"back-file\": \"/lib/modloop-virt\",\n         \"dio\": false,\n         \"log-sec\": 512\n      }\n   ]\n}\n[23:07:10] % rm /work/pmwork/chroot_native/in-pmbootstrap\n[23:07:10] % umount /work/pmwork/chroot_native/var/cache/distfiles\n[23:07:10] % umount /work/pmwork/chroot_native/var/cache/apk\n[23:07:10] % umount /work/pmwork/chroot_native/sys\n[23:07:10] % umount /work/pmwork/chroot_native/proc\n[23:07:10] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/sccache\n[23:07:10] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/rust\n[23:07:10] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/packages\n[23:07:10] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/netboot\n[23:07:10] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/go\n[23:07:10] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/git\n[23:07:10] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/ccache\n[23:07:11] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/abuild-config\n[23:07:11] % umount /work/pmwork/chroot_native/mnt/appstream-data\n[23:07:11] % umount /work/pmwork/chroot_native/etc/apk/keys\n[23:07:11] % umount /work/pmwork/chroot_native/dev/shm\n[23:07:11] % umount /work/pmwork/chroot_native/dev/pts\n[23:07:11] % umount /work/pmwork/chroot_native/dev\n[23:07:11] Shutdown complete\n[23:07:11] DONE!\nTraceback (most recent call last):\n  File \"/work/complete_package_cache.py\", line 101, in <module>\n    main()\n    ~~~~^^\n  File \"/work/complete_package_cache.py\", line 81, in main\n    subprocess.run(command, check=True)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/subprocess.py\", line 578, in run\n    raise CalledProcessError(retcode, process.args,\n                             output=stdout, stderr=stderr)\nsubprocess.CalledProcessError: Command '['python3', '/work/pmbootstrap/pmbootstrap.py', '--as-root', '--config', '/work/pmos.cfg', '--timeout', '180', '--details-to-stdout', 'chroot', '--output', 'stdout', '--', 'apk', '--arch', 'aarch64', 'fetch', '--output', '/var/cache/apk', 'linux-firmware-none=20261019-r0', 'postmarketos-base-apk=79-r0', 'postmarketos-base-fwupd=79-r0', 'postmarketos-base-mesa=79-r0', 'postmarketos-base-nftables=79-r0', 'postmarketos-base-nofde=62-r0', 'postmarketos-base-ui-wifi-wpa_supplicant=66-r0', 'postmarketos-bootsplash-openrc=3-r0', 'postmarketos-ui-console=1-r0', 'pyc=3.14.10-r1', 'python3-pyc=3.14.10-r1']' returned non-zero exit status 2.\n\n__NURA_DONE_ba9e70593752496b81df95bbd6d17d79__:1"
+      }
+    },
+    "guest-cache-complete-03": {
+      "start_utc": "2026-11-22T23:14:16.222004+00:00",
+      "transport": "Private QEMU serial Unix socket",
+      "socket": "/work/pmwork/console.sock",
+      "guest_command": "python3 /work/complete_package_cache.py --record /work/cache-completion-03.json",
+      "guest_login": null,
+      "interrupt_previous_guest_command": false,
+      "guest_exit_code": 1,
+      "elapsed_seconds": 137.0429822629667,
+      "serial_log": "/work/pmwork/guest-cache-complete-03.serial.log",
+      "serial_log_sha256": "3d811ff61d24116d4394e0df23b58219390efc6bbb5d03f31af7e8c7d8abe73c",
+      "metadata_file": {
+        "path_in_container": "/work/pmwork/guest-cache-complete-03.json",
+        "size_bytes": 537,
+        "sha256": "a8b26eff4fee376691aeb4bb24d102f4c2e8a2b1820fd3692f62c53c2fb32afc"
+      },
+      "log": {
+        "path_in_container": "/work/pmwork/guest-cache-complete-03.serial.log",
+        "size_bytes": 14046,
+        "sha256": "3d811ff61d24116d4394e0df23b58219390efc6bbb5d03f31af7e8c7d8abe73c",
+        "excerpt_tail": "/cache/apk\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/sys\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/proc\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/sccache\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/rust\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/packages\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/netboot\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/go\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/git\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/ccache\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/abuild-config\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/appstream-data\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/etc/apk/keys\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/dev/shm\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/dev/pts\n[23:16:31] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/dev\n[23:16:32] Shutdown complete\n[23:16:32] DONE!\nTraceback (most recent call last):\n  File \"/work/complete_package_cache.py\", line 119, in <module>\n    main()\n    ~~~~^^\n  File \"/work/complete_package_cache.py\", line 99, in main\n    subprocess.run(command, check=True)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/subprocess.py\", line 578, in run\n    raise CalledProcessError(retcode, process.args,\n                             output=stdout, stderr=stderr)\nsubprocess.CalledProcessError: Command '['python3', '/work/pmbootstrap/pmbootstrap.py', '--as-root', '--config', '/work/pmos.cfg', '--timeout', '180', '--details-to-stdout', 'chroot', '--rootfs', '--output', 'stdout', '--', '/bin/sh', '-c', \"set -eu; apk --arch aarch64 --cache-dir /var/cache/apk fetch --output /var/cache/apk postmarketos-ui-console=1-r0; printf '%s\\\\n' NURA_CACHE_SINGLE_PROBE_OK; apk --arch aarch64 --cache-dir /var/cache/apk fetch --output /var/cache/apk linux-firmware-none=20261019-r0 postmarketos-base-apk=79-r0 postmarketos-base-fwupd=79-r0 postmarketos-base-mesa=79-r0 postmarketos-base-nftables=79-r0 postmarketos-base-nofde=62-r0 postmarketos-base-ui-wifi-wpa_supplicant=66-r0 postmarketos-bootsplash-openrc=3-r0 pyc=3.14.10-r1 python3-pyc=3.14.10-r1\"]' returned non-zero exit status 2.\n\n__NURA_DONE_c42b87c5691e4291a07f46153cfafb43__:1"
+      }
+    },
+    "guest-install-01": {
+      "start_utc": "2026-11-22T22:32:28.040285+00:00",
+      "transport": "Private QEMU serial Unix socket",
+      "socket": "/work/pmwork/console.sock",
+      "guest_command": "sh /work/guest-install-01.sh",
+      "guest_login": null,
+      "interrupt_previous_guest_command": false,
+      "guest_exit_code": 0,
+      "elapsed_seconds": 1164.405794063001,
+      "serial_log": "/work/pmwork/guest-install-01.serial.log",
+      "serial_log_sha256": "9ba8d922b03b2587a86d63a8602bb9527e243e1f07930a8f7913708d6310758d",
+      "metadata_file": {
+        "path_in_container": "/work/pmwork/guest-install-01.json",
+        "size_bytes": 479,
+        "sha256": "3318ee63a0562ddf853323c64abdb056423d7d12d9dd91c16cd7a5bd095d71bc"
+      },
+      "log": {
+        "path_in_container": "/work/pmwork/guest-install-01.serial.log",
+        "size_bytes": 53160,
+        "sha256": "9ba8d922b03b2587a86d63a8602bb9527e243e1f07930a8f7913708d6310758d",
+        "excerpt_tail": "t_native/in-pmbootstrap\n[22:51:48] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/var/cache/distfiles\n[22:51:48] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/var/cache/apk\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/sys\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/proc\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/sccache\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/rust\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/packages\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/netboot\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/go\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/git\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/ccache\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/pmbootstrap/abuild-config\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/mnt/appstream-data\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/etc/apk/keys\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/dev/shm\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/dev/pts\n[22:51:49] % umount /work/pmwork/chroot_rootfs_qemu-aarch64/dev\n[22:51:49] % umount /work/pmwork/chroot_native/var/cache/distfiles\n[22:51:50] % umount /work/pmwork/chroot_native/var/cache/apk\n[22:51:50] % umount /work/pmwork/chroot_native/sys\n[22:51:50] % umount /work/pmwork/chroot_native/proc\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/sccache\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/rust\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/packages\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/netboot\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/go\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/git\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/ccache\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/pmbootstrap/abuild-config\n[22:51:50] % umount /work/pmwork/chroot_native/mnt/appstream-data\n[22:51:50] % umount /work/pmwork/chroot_native/etc/apk/keys\n[22:51:51] % umount /work/pmwork/chroot_native/dev/shm\n[22:51:51] % umount /work/pmwork/chroot_native/dev/pts\n[22:51:51] % umount /work/pmwork/chroot_native/dev\n[22:51:51] Shutdown complete\n[22:51:51] DONE!\n\n__NURA_DONE_c74f67eda67846f0afd5aa61887dcf85__:0"
+      }
+    },
+    "guest-native-chroot-03": {
+      "start_utc": "2026-11-22T22:26:12.755004+00:00",
+      "transport": "Private QEMU serial Unix socket",
+      "socket": "/work/pmwork/console.sock",
+      "guest_command": "export PMB_CHANNELS_CFG=/work/pmaports/channels.cfg PYTHONDONTWRITEBYTECODE=1; python3 /work/pmbootstrap/pmbootstrap.py --as-root --config /work/pmos.cfg --timeout 180 --details-to-stdout chroot --output stdout -- /bin/sh -c 'set -eu; test \"$(uname -m)\" = aarch64; uname -m; apk --version; cat /etc/alpine-release'",
+      "guest_login": null,
+      "interrupt_previous_guest_command": false,
+      "guest_exit_code": 2,
+      "elapsed_seconds": 243.62176898302278,
+      "serial_log": "/work/pmwork/guest-native-chroot-03.serial.log",
+      "serial_log_sha256": "88b5022bd006b8eb0bda72ac0e3975f5923e7c5665e968d751b7ff43f04856f1",
+      "metadata_file": {
+        "path_in_container": "/work/pmwork/guest-native-chroot-03.json",
+        "size_bytes": 774,
+        "sha256": "63c446e143eab191a24aa91adf800d039120bb937ad868628fd91c5be25dc6ad"
+      },
+      "log": {
+        "path_in_container": "/work/pmwork/guest-native-chroot-03.serial.log",
+        "size_bytes": 18683,
+        "sha256": "88b5022bd006b8eb0bda72ac0e3975f5923e7c5665e968d751b7ff43f04856f1",
+        "excerpt_tail": "pmbootstrap/rust/git/db\n[22:30:09] (native) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/rust/git/db /home/pmos/.cargo/git/db ;\n[22:30:10] (native) % chown pmos:pmos /mnt/pmbootstrap/rust/git/db\n[22:30:10] (native) % busybox su pmos -c HOME=/home/pmos mkdir -p /home/pmos/.cargo/registry ;\n[22:30:10] (native) % mkdir -p /mnt/pmbootstrap/rust/registry/cache\n[22:30:11] (native) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/rust/registry/cache /home/pmos/.cargo/registry/cache ;\n[22:30:11] (native) % chown pmos:pmos /mnt/pmbootstrap/rust/registry/cache\n[22:30:11] (native) % mkdir -p /mnt/pmbootstrap/rust/registry/index\n[22:30:12] (native) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/rust/registry/index /home/pmos/.cargo/registry/index ;\n[22:30:12] (native) % chown pmos:pmos /mnt/pmbootstrap/rust/registry/index\n[22:30:13] (native) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/sccache /home/pmos/.cache/sccache ;\n[22:30:13] (native) % chown pmos:pmos /mnt/pmbootstrap/sccache\n[22:30:13] (chroot_native) update /etc/apk/repositories\n[22:30:13] % rm /work/pmwork/chroot_native/etc/apk/repositories\n[22:30:13] % sh -c echo /mnt/pmbootstrap/packages/edge >> /work/pmwork/chroot_native/etc/apk/repositories\n[22:30:13] % sh -c echo https://mirror.postmarketos.org/postmarketos/main >> /work/pmwork/chroot_native/etc/apk/repositories\n[22:30:13] % sh -c echo https://dl-cdn.alpinelinux.org/edge/main >> /work/pmwork/chroot_native/etc/apk/repositories\n[22:30:13] % sh -c echo https://dl-cdn.alpinelinux.org/edge/community >> /work/pmwork/chroot_native/etc/apk/repositories\n[22:30:14] % sh -c echo https://dl-cdn.alpinelinux.org/edge/testing >> /work/pmwork/chroot_native/etc/apk/repositories\n[22:30:14] (native) % /bin/sh -c set -eu; test \"$(uname -m)\" = aarch64; uname -m; apk --version; cat /etc/alpine-release\n[22:30:14] (native) % /bin/sh -c set -eu; test \"$(uname -m)\" = aarch64; uname -m; apk --version; cat /etc/alpine-release\naarch64\napk-tools 3.0.10-r1, compiled for aarch64.\ncat: can't open '/etc/alpine-release': No such file or directory\n[22:30:15] ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n[22:30:15] NOTE: The failed command's output is above the ^^^ line in the log file: /work/pmwork/log.txt\n[22:30:15] ERROR: Command failed (exit code 1): (native) % /bin/sh -c set -eu; test \"$(uname -m)\" = aarch64; uname -m; apk --version; cat /etc/alpine-release\n\n__NURA_DONE_e70126973fec46cfbcf4a8a5c917a63f__:2\n"
+      }
+    }
+  },
+  "recorded_files": {
+    "boot/alpine/media.json": {
+      "path_in_container": "/work/pmwork/boot/alpine/media.json",
+      "size_bytes": 2160,
+      "sha256": "78d2504bc7d348b10c6db1961f63dd3bccba8291435f9834c88451a67b36796a",
+      "record": {
+        "alpine_version": "3.24.4",
+        "architecture": "aarch64",
+        "role": "Generic ARM virtual-machine bootstrap medium; not a TB371FC image",
+        "sources": {
+          "alpine-virt-3.24.4-aarch64.iso": {
+            "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso",
+            "sha256": "cf88d8ba67389d20d9ed307366b52e487c15d7d3ee3233b62b95f709daa1d430"
+          },
+          "alpine-virt-3.24.4-aarch64.iso.sha256": {
+            "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso.sha256",
+            "sha256": "b5a7203e9ff214241df52a29a32b0f730f314ad552aacae6aaa69028544dbe87"
+          },
+          "alpine-virt-3.24.4-aarch64.iso.asc": {
+            "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso.asc",
+            "sha256": "85651b6c09c16780bb12ff69ac835feddf4a4b5c2e35200ffabf081b3ef7860e"
+          },
+          "ncopa.asc": {
+            "url": "https://alpinelinux.org/keys/ncopa.asc",
+            "sha256": "75a9a7e0cc35bfa946ce40c26133b3ed29a204fbd98a3b33331b659d927b3027"
+          }
+        },
+        "verified_signer_fingerprint": "0482D84022F52DF1C4E7CD43293ACD0907D9495A",
+        "signature_verification_exit_code": 0,
+        "extracted_boot_files": {
+          "vmlinuz-virt": {
+            "size_bytes": 10412544,
+            "sha256": "cd05fed9e617b5df93dc62ece9b78c422fd94e9b432a2f7c092714b139d5eef4"
+          },
+          "initramfs-virt": {
+            "size_bytes": 10167867,
+            "sha256": "a0aca3b06df6b029711099e78cf01635f53331754d14af608f87bf9254630bac"
+          },
+          "modloop-virt": {
+            "size_bytes": 17788928,
+            "sha256": "a726889467d1d4fefa4ba1ed710f28b9db1fbd019ca3eba2d4c6c65b33536343"
+          }
+        },
+        "arm64_image": {
+          "method": "Declared EFI zboot gzip payload, then ARM64 Image magic check",
+          "payload_offset": 51832,
+          "payload_size": 10353483,
+          "size_bytes": 36306944,
+          "sha256": "a2cecb9b6fdbd83e87bd43c8040de67300d5b8dde1fc50c34714faa272888f17"
+        },
+        "bootstrap_repository": {
+          "relative_path": "apks/aarch64",
+          "file_count": 96,
+          "manifest_sha256": "3840f292ba94bcbe8d0897f27cef22c1507b7139cd6167d4128b60f93a77b32b",
+          "source": "Files extracted from the verified fixed-version ISO"
+        }
+      }
+    },
+    "boot/alpine/gpg-verify.log": {
+      "path_in_container": "/work/pmwork/boot/alpine/gpg-verify.log",
+      "size_bytes": 946,
+      "sha256": "adceeb1093e8b73b411f43b6333b9fe61d3cf31d81f0a6683d3019f14aafbb4b"
+    },
+    "boot/alpine/bootstrap-apks.json": {
+      "path_in_container": "/work/pmwork/boot/alpine/bootstrap-apks.json",
+      "size_bytes": 13762,
+      "sha256": "3840f292ba94bcbe8d0897f27cef22c1507b7139cd6167d4128b60f93a77b32b"
+    },
+    "vm-command-02.json": {
+      "path_in_container": "/work/pmwork/vm-command-02.json",
+      "size_bytes": 1151,
+      "sha256": "171b9806106d43208c77e7b460bf62cc6279d9915719c32f8e6dcb3966885212",
+      "command_record": [
+        "qemu-system-aarch64",
+        "-machine",
+        "virt-10.0,gic-version=3",
+        "-cpu",
+        "cortex-a72",
+        "-smp",
+        "2",
+        "-m",
+        "2048",
+        "-accel",
+        "tcg,thread=multi",
+        "-kernel",
+        "/work/pmwork/boot/alpine/Image",
+        "-initrd",
+        "/work/pmwork/boot/alpine/initramfs-virt",
+        "-append",
+        "console=ttyAMA0 ip=dhcp alpine_repo=https://dl-cdn.alpinelinux.org/alpine/v3.24/main modloop=http://10.0.2.2:18083/modloop-virt",
+        "-display",
+        "none",
+        "-monitor",
+        "none",
+        "-no-reboot",
+        "-chardev",
+        "socket,id=serial0,path=/work/pmwork/console.sock,server=on,wait=on,logfile=/work/pmwork/console-02.log",
+        "-serial",
+        "chardev:serial0",
+        "-netdev",
+        "user,id=net0",
+        "-device",
+        "virtio-net-device,netdev=net0",
+        "-fsdev",
+        "local,id=work,path=/work/pmwork/guest-share,security_model=none",
+        "-device",
+        "virtio-9p-pci,fsdev=work,mount_tag=work",
+        "-fsdev",
+        "local,id=pmbsrc,path=/work/pmbootstrap,security_model=none,readonly=on",
+        "-device",
+        "virtio-9p-pci,fsdev=pmbsrc,mount_tag=pmbsrc",
+        "-fsdev",
+        "local,id=ports,path=/work/pmaports,security_model=none,readonly=on",
+        "-device",
+        "virtio-9p-pci,fsdev=ports,mount_tag=ports"
+      ]
+    },
+    "vm-command-03.json": {
+      "path_in_container": "/work/pmwork/vm-command-03.json",
+      "size_bytes": 1129,
+      "sha256": "1e6ff152f13968a6b31fd1bf9d7b5abd894b4840ebe8b75c7a166cf2e3392069",
+      "command_record": [
+        "qemu-system-aarch64",
+        "-machine",
+        "virt-10.0,gic-version=3",
+        "-cpu",
+        "cortex-a72",
+        "-smp",
+        "2",
+        "-m",
+        "2048",
+        "-accel",
+        "tcg,thread=multi",
+        "-kernel",
+        "/work/pmwork/boot/alpine/Image",
+        "-initrd",
+        "/work/pmwork/boot/alpine/initramfs-virt",
+        "-append",
+        "console=ttyAMA0 ip=dhcp alpine_repo=http://10.0.2.2:18083/apks modloop=http://10.0.2.2:18083/modloop-virt",
+        "-display",
+        "none",
+        "-monitor",
+        "none",
+        "-no-reboot",
+        "-chardev",
+        "socket,id=serial0,path=/work/pmwork/console.sock,server=on,wait=on,logfile=/work/pmwork/console-03.log",
+        "-serial",
+        "chardev:serial0",
+        "-netdev",
+        "user,id=net0",
+        "-device",
+        "virtio-net-device,netdev=net0",
+        "-fsdev",
+        "local,id=work,path=/work/pmwork/guest-share,security_model=none",
+        "-device",
+        "virtio-9p-pci,fsdev=work,mount_tag=work",
+        "-fsdev",
+        "local,id=pmbsrc,path=/work/pmbootstrap,security_model=none,readonly=on",
+        "-device",
+        "virtio-9p-pci,fsdev=pmbsrc,mount_tag=pmbsrc",
+        "-fsdev",
+        "local,id=ports,path=/work/pmaports,security_model=none,readonly=on",
+        "-device",
+        "virtio-9p-pci,fsdev=ports,mount_tag=ports"
+      ]
+    },
+    "vm-02-stop.json": {
+      "path_in_container": "/work/pmwork/vm-02-stop.json",
+      "size_bytes": 252,
+      "sha256": "14beabf932d3162f0870c830d3a6244164b790cd6fc542890597da4d448fb1b6"
+    },
+    "guest-bootstrap-01.sh": {
+      "path_in_container": "/work/pmwork/guest-bootstrap-01.sh",
+      "size_bytes": 1442,
+      "sha256": "525713f346d5b11140c3f8d298a03a3f3f1feee1e2f2613494aca4b8d3bf451e"
+    },
+    "serial-command-before-interrupt.py": {
+      "path_in_container": "/work/pmwork/serial-command-before-interrupt.py",
+      "size_bytes": 3657,
+      "sha256": "9dfc6097ff41d953dcf441c0235e9bd4cb837bdbb504af4cc2f422798098a3bc"
+    },
+    "serial_command.py": {
+      "path_in_container": "/work/pmwork/serial_command.py",
+      "size_bytes": 3957,
+      "sha256": "488bb7da71a3840d654c215c3b1f7c75336817fc33ed7185004d974badd99c8b"
+    },
+    "fetch_media.py": {
+      "path_in_container": "/work/pmwork/fetch_media.py",
+      "size_bytes": 10086,
+      "sha256": "af8b7b5d904d48d4145156507f58d3290704e73fce808916b476c83aee34ace4"
+    },
+    "export_rootfs.py": {
+      "path_in_container": "/work/pmwork/export_rootfs.py",
+      "size_bytes": 11767,
+      "sha256": "9da8a2a93d666464f4dd413bffd4ef8166661af8cf360771dc7e3a225a166189"
+    },
+    "guest-share/guest-bootstrap.sh": {
+      "path_in_container": "/work/pmwork/guest-share/guest-bootstrap.sh",
+      "size_bytes": 2278,
+      "sha256": "21c2f4d8db11e655ad81239970f171692395f095723ac4d1b8aac392aa8dff79"
+    },
+    "guest-share/guest-bootstrap-02.sh": {
+      "path_in_container": "/work/pmwork/guest-share/guest-bootstrap-02.sh",
+      "size_bytes": 2153,
+      "sha256": "c7cd8172f8785883d9e68964cd888851b684ee6e83cbfc6554e222fec658bb09"
+    },
+    "guest-share/guest-install.sh": {
+      "path_in_container": "/work/pmwork/guest-share/guest-install.sh",
+      "size_bytes": 2777,
+      "sha256": "cff215303b15446a1c47efe54c5fd5b79a3de3665a0815ab925e1d10def1ddf3"
+    },
+    "guest-share/guest-install-01.sh": {
+      "path_in_container": "/work/pmwork/guest-share/guest-install-01.sh",
+      "size_bytes": 2777,
+      "sha256": "cff215303b15446a1c47efe54c5fd5b79a3de3665a0815ab925e1d10def1ddf3"
+    },
+    "guest-share/complete_package_cache.py": {
+      "path_in_container": "/work/pmwork/guest-share/complete_package_cache.py",
+      "size_bytes": 5273,
+      "sha256": "947b895d4c6ce6bade369fd47336fc0143eacb2cffeb6a821e6ee2544996bff6"
+    },
+    "cache-completion-01-stop.json": {
+      "path_in_container": "/work/pmwork/cache-completion-01-stop.json",
+      "size_bytes": 308,
+      "sha256": "a9aa081a9d59177bf1412be5476df400c6cc53061bad4818ca5f1574f23a84c3",
+      "record": {
+        "time_utc": "2026-11-22T23:05:13.628053+00:00",
+        "owned_controller_pid": 64147,
+        "signal": "SIGTERM",
+        "next_guest_action": "Ctrl-C through the same private serial console",
+        "reason": "Replace O(n^2) 9p metadata scanning with one cache index per snapshot; no VM or host process group termination"
+      }
+    },
+    "complete_package_cache-01.py": {
+      "path_in_container": "/work/pmwork/complete_package_cache-01.py",
+      "size_bytes": 4019,
+      "sha256": "71432c58d6d89dcccf1e2a57d3b62d144c39275a0cc33da32dd6f937eaf9290a"
+    },
+    "complete_package_cache-02.py": {
+      "path_in_container": "/work/pmwork/complete_package_cache-02.py",
+      "size_bytes": 4306,
+      "sha256": "e28dce685e7932d3438fff3f12af4827f488e528d2bd4d69d1da11a7d30a5891"
+    },
+    "export-rootfs-01.py": {
+      "path_in_container": "/work/pmwork/export-rootfs-01.py",
+      "size_bytes": 8103,
+      "sha256": "4fa580c2e8c210f4e5ed6ee97e9f1d04789563ec01b6daa0f5910c0ed6d0e0f8"
+    },
+    "guest-share/pmos.cfg": {
+      "path_in_container": "/work/pmwork/guest-share/pmos.cfg",
+      "size_bytes": 313,
+      "sha256": "0397cd0e9a523ad0a82f2541a587acac63fa45586eea3abbbc9ba2ad30145f87",
+      "configuration": "[pmbootstrap]\naports = /work/pmaports\nbuild_pkgs_on_install = False\ndevice = qemu-aarch64\nhostname = nura-qemu-research\njobs = 2\nservice_manager = openrc\nuser = research\nwork = /work/pmwork\n\n[providers]\n\n[mirrors]\nalpine = https://dl-cdn.alpinelinux.org/\npmaports = https://mirror.postmarketos.org/postmarketos/\n\n"
+    },
+    "guest-share/arm-builder-packages.txt": {
+      "path_in_container": "/work/pmwork/guest-share/arm-builder-packages.txt",
+      "size_bytes": 2084,
+      "sha256": "948ce066b5cd1c6d00962207b2137ce1b5232d1b37cd276dcb1a57e397e73663",
+      "packages": [
+        "acl-libs-2.3.2-r1",
+        "agetty-2.42.3-r1",
+        "agetty-openrc-0.63.2-r0",
+        "alpine-base-3.24.4-r0",
+        "alpine-baselayout-3.7.2-r1",
+        "alpine-baselayout-data-3.7.2-r1",
+        "alpine-conf-3.22.0-r0",
+        "alpine-keys-2.6-r0",
+        "alpine-release-3.24.4-r0",
+        "apk-tools-3.0.9-r0",
+        "blkid-2.42.3-r1",
+        "bridge-1.5-r5",
+        "brotli-libs-1.2.1-r0",
+        "busybox-1.37.0-r31",
+        "busybox-binsh-1.37.0-r31",
+        "busybox-mdev-openrc-1.37.0-r31",
+        "busybox-openrc-1.37.0-r31",
+        "busybox-suid-1.37.0-r31",
+        "c-ares-1.34.9-r0",
+        "ca-certificates-20261020-r0",
+        "ca-certificates-bundle-20261020-r0",
+        "cfdisk-2.42.3-r1",
+        "device-mapper-libs-2.03.35-r3",
+        "dmesg-2.42.3-r1",
+        "findmnt-2.42.3-r1",
+        "flock-2.42.3-r1",
+        "fstrim-2.42.3-r1",
+        "gdbm-1.26-r0",
+        "git-2.54.1-r0",
+        "git-init-template-2.54.1-r0",
+        "hexdump-2.42.3-r1",
+        "ifupdown-ng-0.13.0-r0",
+        "kpartx-0.13.0-r0",
+        "libapk-3.0.9-r0",
+        "libblkid-2.42.3-r1",
+        "libbz2-1.0.8-r6",
+        "libcap-ng-0.8.5-r2",
+        "libcap2-2.78-r0",
+        "libcrypto3-3.5.9-r0",
+        "libcurl-8.23.0-r0",
+        "libeconf-0.8.3-r0",
+        "libexpat-2.10.0-r0",
+        "libfdisk-2.42.3-r1",
+        "libffi-3.5.2-r1",
+        "libgcc-15.2.0-r5",
+        "libidn2-2.3.8-r0",
+        "libintl-1.0-r0",
+        "libmount-2.42.3-r1",
+        "libncursesw-6.6_p20260516-r0",
+        "libpanelw-6.6_p20260516-r0",
+        "libproc2-4.0.6-r0",
+        "libpsl-0.21.5-r3",
+        "libsmartcols-2.42.3-r1",
+        "libssl3-3.5.9-r0",
+        "libstdc++-15.2.0-r5",
+        "libunistring-1.4.2-r0",
+        "libuuid-2.42.3-r1",
+        "libxxhash-0.8.3-r1",
+        "linux-pam-1.7.1-r2",
+        "logger-2.42.3-r1",
+        "losetup-2.42.3-r1",
+        "lsblk-2.42.3-r1",
+        "lscpu-2.42.3-r1",
+        "lz4-libs-1.10.0-r1",
+        "mcookie-2.42.3-r1",
+        "mdev-conf-4.10-r0",
+        "mount-2.42.3-r1",
+        "mpdecimal-4.0.1-r0",
+        "musl-1.2.6-r3",
+        "musl-utils-1.2.6-r3",
+        "ncurses-terminfo-base-6.6_p20260516-r0",
+        "nghttp2-libs-1.70.0-r0",
+        "openrc-0.63.2-r0",
+        "openrc-user-0.63.2-r0",
+        "openssl-3.5.9-r0",
+        "partx-2.42.3-r1",
+        "pcre2-10.49-r0",
+        "popt-1.19-r4",
+        "procps-ng-4.0.6-r0",
+        "pyc-3.14.10-r1",
+        "python3-3.14.10-r1",
+        "python3-pyc-3.14.10-r1",
+        "python3-pycache-pyc0-3.14.10-r1",
+        "readline-8.3.3-r1",
+        "rsync-3.5.2-r1",
+        "rsync-openrc-3.5.2-r1",
+        "runuser-2.42.3-r1",
+        "scanelf-1.3.9-r1",
+        "setarch-2.42.3-r1",
+        "setpriv-2.42.3-r1",
+        "sfdisk-2.42.3-r1",
+        "skalibs-libs-2.15.0.0-r0",
+        "sqlite-libs-3.53.4-r0",
+        "ssl_client-1.37.0-r31",
+        "tar-1.35-r5",
+        "umount-2.42.3-r1",
+        "util-linux-2.42.3-r1",
+        "util-linux-misc-2.42.3-r1",
+        "util-linux-openrc-2.42.3-r1",
+        "utmps-libs-0.1.3.3-r0",
+        "uuidgen-2.42.3-r1",
+        "wipefs-2.42.3-r1",
+        "xz-libs-5.8.4-r0",
+        "zlib-1.3.2-r1",
+        "zstd-libs-1.5.7-r2"
+      ],
+      "line_count": 105
+    },
+    "guest-share/rootfs-export.json": {
+      "path_in_container": "/work/pmwork/guest-share/rootfs-export.json",
+      "size_bytes": 5457,
+      "sha256": "85aa1f9d979e92ee3c6efa40d344fdea224d6ab5b6be3dc10b65ef5b907aa0e5",
+      "record": {
+        "observed_at_utc": "2026-11-22T23:21:32.951977+00:00",
+        "scope": "Generic qemu-aarch64 userspace tree, not a TB371FC boot/install image",
+        "export_environment": {
+          "architecture": "x86_64",
+          "python": "3.13.5 (main, Aug 10 2026, 12:06:59) [GCC 14.2.0]",
+          "tools": {
+            "tar": "tar (GNU tar) 1.35",
+            "gzip": "gzip 1.13",
+            "qemu-system-aarch64": "QEMU emulator version 10.0.13 (Debian 1:10.0.13+ds-0+deb13u1)"
+          }
+        },
+        "source_rootfs": "/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64",
+        "successful_guest_install_record": {
+          "path": "/work/pmwork/guest-install-01.json",
+          "size_bytes": 479,
+          "sha256": "3318ee63a0562ddf853323c64abdb056423d7d12d9dd91c16cd7a5bd095d71bc"
+        },
+        "artifact": {
+          "path": "/work/pmwork/artifacts/nura-qemu-aarch64-userspace-20261123.tar.gz",
+          "size_bytes": 307393454,
+          "sha256": "eb8786e4fb51b25f077d5ade55e89123eb702d8c99076bbce5c11083f112ed46"
+        },
+        "archive_command": [
+          "tar",
+          "--sort=name",
+          "--numeric-owner",
+          "--acls",
+          "--xattrs",
+          "--format=posix",
+          "--pax-option=delete=atime,delete=ctime",
+          "--one-file-system",
+          "--use-compress-program=gzip -n -1",
+          "-C",
+          "/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64",
+          "-cf",
+          "/work/pmwork/artifacts/nura-qemu-aarch64-userspace-20261123.tar.gz.partial",
+          "."
+        ],
+        "archive_exit_code": 0,
+        "synthetic_accounts_locked": {
+          "root": true,
+          "research": true
+        },
+        "repository_configuration": {
+          "path": "/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/etc/apk/repositories",
+          "before_sha256": "3ea6492d517c572486cd6fb0888fc1304f42f1da353327bf4fff9cf1f12bafa5",
+          "after_sha256": "d8558fa6b7a80a87cfc7c638cdcf0361b6f4ad04704d986efd8d07894dc3083a",
+          "removed_build_repository": "/mnt/pmbootstrap/packages/edge",
+          "public_repositories": [
+            "https://mirror.postmarketos.org/postmarketos/main",
+            "https://dl-cdn.alpinelinux.org/edge/main",
+            "https://dl-cdn.alpinelinux.org/edge/community",
+            "https://dl-cdn.alpinelinux.org/edge/testing"
+          ]
+        },
+        "target_package_inventory": {
+          "path": "/work/pmwork/guest-share/target-packages.txt",
+          "size_bytes": 8700,
+          "sha256": "76764f419b983efde5e49bb1fc1ba6e4ef393989368ebc4c60d4ce37014cdb9f"
+        },
+        "target_package_count": 382,
+        "all_target_packages_cached": false,
+        "offline_cache_complete": false,
+        "cached_target_package_count": 371,
+        "missing_target_packages": [
+          "linux-firmware-none-20261019-r0",
+          "postmarketos-base-apk-79-r0",
+          "postmarketos-base-fwupd-79-r0",
+          "postmarketos-base-mesa-79-r0",
+          "postmarketos-base-nftables-79-r0",
+          "postmarketos-base-nofde-62-r0",
+          "postmarketos-base-ui-wifi-wpa_supplicant-66-r0",
+          "postmarketos-bootsplash-openrc-3-r0",
+          "postmarketos-ui-console-1-r0",
+          "pyc-3.14.10-r1",
+          "python3-pyc-3.14.10-r1"
+        ],
+        "require_complete_cache_requested": false,
+        "independent_offline_rebuild_tested": false,
+        "retained_cache_manifest": {
+          "path": "/work/pmwork/guest-share/target-package-cache.json",
+          "size_bytes": 192437,
+          "sha256": "2c5af8effe7285a79c5303e5cda6a1be5a472b619a35b1f2be2b434be7ba8e4a"
+        },
+        "bootstrap_apk_static": {
+          "path": "/work/pmwork/guest-share/pmwork/apk.static",
+          "size_bytes": 5075216,
+          "sha256": "e00d54b995904dd09b6777f1d292351c11f0cbc16e05b29f443290e60549b85e"
+        },
+        "turnip_library": {
+          "path": "/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/usr/lib/libvulkan_freedreno.so",
+          "size_bytes": 14037504,
+          "sha256": "c06ac286b5b7da9131b0f17cba0088366463c8002e4c8ed70b76593413be3320",
+          "elf_machine": 183,
+          "elf_class": 64
+        },
+        "msm_dri_loader": {
+          "entry_path": "/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/usr/lib/dri/msm_dri.so",
+          "link_target": "libdril_dri.so",
+          "path": "/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/usr/lib/dri/libdril_dri.so",
+          "size_bytes": 132936,
+          "sha256": "89b92591f2a3ea32800dbf72c158a5c3c6ee4ff4c25200d509b40766f70228d5",
+          "elf_machine": 183,
+          "elf_class": 64,
+          "scope": "DRI loader entry present; hardware driver initialization was not tested"
+        },
+        "target_boot_files": {
+          "boot/initramfs": {
+            "path": "/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/boot/initramfs",
+            "size_bytes": 13164501,
+            "sha256": "54be13030b52ad6e91fdc4e92805b17eeadfe5192c9a70a9ccaa39e9e4d8e99e"
+          },
+          "boot/EFI/BOOT/BOOTAA64.EFI": {
+            "path": "/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/boot/EFI/BOOT/BOOTAA64.EFI",
+            "size_bytes": 128000,
+            "sha256": "8589a8298b1a61a394fa93a88e51a4a7a7d91e04510a02cf8dfeb8be8ce0eb70"
+          },
+          "boot/loader/entries/pmos.conf": {
+            "path": "/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/boot/loader/entries/pmos.conf",
+            "size_bytes": 219,
+            "sha256": "24d1d3a70e856fae81d87c2dce4bae57841b7e936cf6e59248fc2750699fb973"
+          },
+          "boot/vmlinuz": {
+            "path": "/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/boot/vmlinuz",
+            "size_bytes": 19972608,
+            "sha256": "16f54aa9866fa09c07f4c7bc6d79021d5c3fa5a40bf24dca47fbc606690c8166"
+          }
+        },
+        "target_kernel_packages": [
+          "linux-postmarketos-stable-7.3.5-r0"
+        ],
+        "target_module_directories": [
+          "7.3.5"
+        ],
+        "gpu_acceleration_tested": false,
+        "target_rootfs_booted": false,
+        "tablet_boot_tested": false,
+        "bit_for_bit_rebuild_demonstrated": false
+      }
+    },
+    "guest-share/target-packages.txt": {
+      "path_in_container": "/work/pmwork/guest-share/target-packages.txt",
+      "size_bytes": 8700,
+      "sha256": "76764f419b983efde5e49bb1fc1ba6e4ef393989368ebc4c60d4ce37014cdb9f",
+      "packages": [
+        "abseil-cpp-raw-logging-internal-20260817.0-r0",
+        "abseil-cpp-strings-20260817.0-r0",
+        "abseil-cpp-strings-internal-20260817.0-r0",
+        "abseil-cpp-throw-delegate-20260817.0-r0",
+        "acl-libs-2.3.2-r1",
+        "agetty-2.42.4-r3",
+        "agetty-openrc-0.63.2-r1",
+        "alpine-baselayout-3.7.2-r1",
+        "alpine-baselayout-data-3.7.2-r1",
+        "alpine-conf-3.22.0-r0",
+        "alpine-keys-2.6-r0",
+        "alpine-release-3.25.0_alpha20260805-r0",
+        "alsa-lib-1.2.16.1-r0",
+        "apk-tools-3.0.10-r1",
+        "avahi-0.9_rc5-r1",
+        "avahi-libs-0.9_rc5-r1",
+        "avahi-openrc-0.9_rc5-r1",
+        "beebzzr-0_git20251214-r0",
+        "blkid-2.42.4-r3",
+        "bluez-5.87-r0",
+        "bluez-openrc-5.87-r0",
+        "boot-deploy-0.25.0-r0",
+        "bridge-1.5-r5",
+        "brotli-libs-1.2.1-r0",
+        "btrfs-progs-6.17.1-r1",
+        "btrfs-progs-openrc-6.17.1-r1",
+        "btrfs-progs-udev-6.17.1-r1",
+        "buffyboard-3.6.0-r0",
+        "busctl-255.24-r2",
+        "busybox-1.38.0-r8",
+        "busybox-binsh-1.38.0-r8",
+        "busybox-extras-1.38.0-r8",
+        "busybox-mdev-openrc-1.38.0-r8",
+        "busybox-openrc-1.38.0-r8",
+        "bzip2-1.0.8-r6",
+        "c-ares-1.34.9-r0",
+        "ca-certificates-bundle-20261020-r0",
+        "cairo-1.18.4-r1",
+        "cfdisk-2.42.4-r3",
+        "chrony-4.9-r0",
+        "chrony-common-4.9-r0",
+        "chrony-openrc-4.9-r0",
+        "cryptsetup-2.8.8-r0",
+        "cryptsetup-libs-2.8.8-r0",
+        "cryptsetup-openrc-2.8.8-r0",
+        "dbus-1.16.4-r0",
+        "dbus-daemon-launch-helper-1.16.4-r0",
+        "dbus-libs-1.16.4-r0",
+        "dbus-openrc-1.16.4-r0",
+        "device-mapper-2.03.44-r0",
+        "device-mapper-libs-2.03.44-r0",
+        "device-mapper-udev-2.03.44-r0",
+        "device-qemu-aarch64-16-r1",
+        "device-qemu-aarch64-kernel-stable-16-r1",
+        "devicepkg-utils-0.3.3-r0",
+        "dmesg-2.42.4-r3",
+        "dnsmasq-2.93-r0",
+        "dnsmasq-common-2.93-r0",
+        "dnsmasq-openrc-2.93-r0",
+        "dosfstools-4.2-r2",
+        "duktape-libs-2.7.0-r3",
+        "e2fsprogs-1.47.4-r0",
+        "e2fsprogs-extra-1.47.4-r0",
+        "e2fsprogs-libs-1.47.4-r0",
+        "elogind-255.24-r2",
+        "elogind-common-255.24-r2",
+        "elogind-openrc-255.24-r2",
+        "esystemd-262-r0",
+        "esystemd-sysusers-262-r0",
+        "esystemd-sysusers-openrc-262-r0",
+        "esystemd-tmpfiles-262-r0",
+        "esystemd-tmpfiles-openrc-262-r0",
+        "eudev-9999.3.2.14-r7",
+        "eudev-libs-3.2.14-r8",
+        "eudev-openrc-9999.3.2.14-r7",
+        "evtest-1.36-r0",
+        "f2fs-tools-1.17.0-r0",
+        "f2fs-tools-libs-1.17.0-r0",
+        "file-5.48-r0",
+        "findmnt-2.42.4-r3",
+        "flock-2.42.4-r3",
+        "font-droid-20200215-r5",
+        "font-terminus-4.49.1-r4",
+        "fontconfig-2.18.4-r0",
+        "freetype-2.14.3-r0",
+        "fribidi-1.0.18-r0",
+        "fstrim-2.42.4-r3",
+        "fwupd-2.1.10-r0",
+        "fwupd-efi-1.9-r0",
+        "fwupd-openrc-2.1.10-r0",
+        "fwupd-polkit-2.1.10-r0",
+        "generate-kernel-cmdline-1.0-r1",
+        "glib-2.90.1-r0",
+        "gmp-6.3.0-r4",
+        "gnutls-3.8.14-r0",
+        "graphite2-1.3.15-r0",
+        "harfbuzz-14.2.1-r0",
+        "haveged-1.9.27-r0",
+        "haveged-openrc-1.9.27-r0",
+        "hexdump-2.42.4-r3",
+        "hwdata-pci-0.413-r0",
+        "hwdata-usb-0.413-r0",
+        "ifupdown-ng-0.13.0-r0",
+        "ifupdown-ng-iproute2-0.13.0-r0",
+        "ifupdown-ng-wifi-0.13.0-r0",
+        "inih-62-r0",
+        "iproute2-7.3.0-r0",
+        "iproute2-minimal-7.3.0-r0",
+        "iproute2-ss-7.3.0-r0",
+        "iproute2-tc-7.3.0-r0",
+        "iskey-3.6.0-r0",
+        "jansson-2.15.1-r0",
+        "json-c-0.19-r1",
+        "kmod-34.3-r0",
+        "kmod-libs-34.3-r0",
+        "lcms2-2.19.1-r0",
+        "libapk-3.0.10-r1",
+        "libblkid-2.42.4-r3",
+        "libbpf-1.8.0-r0",
+        "libbsd-0.12.2-r0",
+        "libbz2-1.0.8-r6",
+        "libcamera-99990.8.0-r1",
+        "libcamera-ipa-99990.8.0-r1",
+        "libcap-ng-0.9.6-r0",
+        "libcap2-2.78-r1",
+        "libcom_err-1.47.4-r0",
+        "libcrypto3-3.5.9-r1",
+        "libcurl-8.23.0-r0",
+        "libdaemon-0.14-r6",
+        "libdisplay-info-0.3.0-r1",
+        "libdrm-2.4.134-r0",
+        "libeconf-0.8.4-r0",
+        "libedit-20260512.3.1-r0",
+        "libelf-0.195-r0",
+        "libelogind-255.24-r2",
+        "libevdev-1.13.6-r0",
+        "libevent-2.1.13-r0",
+        "libexpat-2.10.0-r0",
+        "libfdisk-2.42.4-r3",
+        "libffi-3.8.1-r0",
+        "libgcc-15.2.0-r9",
+        "libice-1.1.2-r0",
+        "libidn2-2.3.8-r0",
+        "libinput-1.32.0-r0",
+        "libinput-libs-1.32.0-r0",
+        "libinput-tools-1.32.0-r0",
+        "libinput-udev-1.32.0-r0",
+        "libintl-1.0-r0",
+        "libjpeg-turbo-3.1.3-r0",
+        "liblastlog2-2.42.4-r3",
+        "libmagic-5.48-r0",
+        "libmbim-1.34.0-r1",
+        "libmbim-udev-1.34.0-r1",
+        "libmd-1.3.0-r0",
+        "libmm-glib-1.25.95_git20261005-r0",
+        "libmnl-1.0.5-r2",
+        "libmount-2.42.4-r3",
+        "libncursesw-6.6_p20261114-r0",
+        "libndp-1.9-r1",
+        "libnftnl-1.3.2-r0",
+        "libnl3-3.12.0-r0",
+        "libnm-1.58.1-r1",
+        "libpanelw-6.6_p20261114-r0",
+        "libpciaccess-0.19-r0",
+        "libpisp-1.8.0-r0",
+        "libpng-1.6.59-r0",
+        "libpsl-0.21.5-r3",
+        "libqmi-1.38.0_git20261005-r0",
+        "libqrtr-glib-1.4.0-r0",
+        "libseccomp-2.6.1-r0",
+        "libselinux-3.11-r3",
+        "libsharpyuv-1.6.0-r0",
+        "libsm-1.2.6-r0",
+        "libsmartcols-2.42.4-r3",
+        "libssl3-3.5.9-r1",
+        "libstdc++-15.2.0-r9",
+        "libtasn1-4.21.0-r0",
+        "libucontext-1.5.2-r0",
+        "libunistring-1.4.2-r0",
+        "libunwind-1.8.3-r0",
+        "libusb-1.0.30-r0",
+        "libuuid-2.42.4-r3",
+        "libuv-1.52.1-r0",
+        "libwebp-1.6.0-r0",
+        "libweston-16.0.0-r0",
+        "libx11-1.8.14-r0",
+        "libxau-1.0.12-r0",
+        "libxcb-1.17.0-r2",
+        "libxdmcp-1.1.5-r1",
+        "libxext-1.3.7-r0",
+        "libxft-2.3.9-r0",
+        "libxkbcommon-1.13.2-r0",
+        "libxml2-2.13.9-r3",
+        "libxmlb-0.3.30-r0",
+        "libxmu-1.3.1-r0",
+        "libxrender-0.9.13-r0",
+        "libxshmfence-1.3.3-r0",
+        "libxt-1.3.1-r0",
+        "libxtables-1.8.13-r0",
+        "libyuv-0.0.1985-r0",
+        "linux-firmware-none-20261019-r0",
+        "linux-pam-1.7.1-r5",
+        "linux-postmarketos-stable-7.3.5-r0",
+        "llvm23-libs-23.1.6-r0",
+        "logbookd-0.2.4-r4",
+        "logbookd-openrc-0.2.4-r4",
+        "logger-2.42.4-r3",
+        "losetup-2.42.4-r3",
+        "lsblk-2.42.4-r3",
+        "lscpu-2.42.4-r3",
+        "lua5.4-libs-5.4.9-r0",
+        "lz4-1.10.0-r1",
+        "lzo-2.10-r5",
+        "mcookie-2.42.4-r3",
+        "mdev-conf-4.10-r0",
+        "merge-usr-1.0.3_git20260616-r0",
+        "mesa-26.3.1-r0",
+        "mesa-dri-gallium-26.3.1-r0",
+        "mesa-egl-26.3.1-r0",
+        "mesa-gbm-26.3.1-r0",
+        "mesa-gles-26.3.1-r0",
+        "mesa-vulkan-freedreno-26.3.1-r0",
+        "mount-2.42.4-r3",
+        "mpdecimal-4.0.1-r0",
+        "mtdev-1.1.7-r0",
+        "musl-1.2.6-r6",
+        "musl-fts-1.2.7-r7",
+        "musl-utils-1.2.6-r6",
+        "ncurses-terminfo-base-6.6_p20261114-r0",
+        "nettle-3.10.2-r0",
+        "networkmanager-1.58.1-r1",
+        "networkmanager-bluetooth-1.58.1-r1",
+        "networkmanager-cli-1.58.1-r1",
+        "networkmanager-openrc-1.58.1-r1",
+        "networkmanager-tui-1.58.1-r1",
+        "networkmanager-wifi-1.58.1-r1",
+        "networkmanager-wwan-1.58.1-r1",
+        "newt-0.52.25-r1",
+        "nftables-1.1.7-r1",
+        "nftables-openrc-1.1.7-r1",
+        "nghttp2-libs-1.71.0-r0",
+        "nspr-4.38.2-r0",
+        "nss-3.133-r0",
+        "openrc-0.63.2-r1",
+        "openrc-user-pam-0.63.2-r1",
+        "openssh-keygen-10.6_p2-r0",
+        "openssh-nftrules-10.6_p2-r0",
+        "openssh-server-common-10.6_p2-r0",
+        "openssh-server-common-openrc-10.6_p2-r0",
+        "openssh-server-pam-10.6_p2-r0",
+        "p11-kit-0.26.2-r1",
+        "pango-1.58.2-r0",
+        "parted-3.8-r0",
+        "partx-2.42.4-r3",
+        "pcre2-10.49-r0",
+        "pcsc-lite-libs-2.5.2-r0",
+        "pipewire-1.6.11-r0",
+        "pipewire-libs-1.6.11-r0",
+        "pipewire-openrc-1.6.11-r0",
+        "pipewire-spa-libcamera-1.6.11-r0",
+        "pipewire-udev-1.6.11-r0",
+        "pipewire-webrtc-1.6.11-r0",
+        "pixman-0.46.4-r0",
+        "pkgconf-3.0.11-r0",
+        "plymouth-26.134.222-r1",
+        "plymouth-drm-26.134.222-r1",
+        "plymouth-openrc-plugin-0.4.0_git20250822-r2",
+        "polkit-128-r0",
+        "polkit-common-128-r0",
+        "polkit-noelogind-libs-128-r0",
+        "polkit-openrc-128-r0",
+        "popt-1.19-r4",
+        "postmarketos-artwork-icons-26.06-r3",
+        "postmarketos-base-79-r0",
+        "postmarketos-base-apk-79-r0",
+        "postmarketos-base-fwupd-79-r0",
+        "postmarketos-base-mesa-79-r0",
+        "postmarketos-base-nftables-79-r0",
+        "postmarketos-base-nftables-openrc-79-r0",
+        "postmarketos-base-nofde-62-r0",
+        "postmarketos-base-openrc-79-r0",
+        "postmarketos-base-ssh-79-r0",
+        "postmarketos-base-sudo-79-r0",
+        "postmarketos-base-udev-79-r0",
+        "postmarketos-base-ui-66-r0",
+        "postmarketos-base-ui-bluez-openrc-66-r0",
+        "postmarketos-base-ui-elogind-66-r0",
+        "postmarketos-base-ui-networkmanager-66-r0",
+        "postmarketos-base-ui-openrc-66-r0",
+        "postmarketos-base-ui-udev-66-r0",
+        "postmarketos-base-ui-wifi-wpa_supplicant-66-r0",
+        "postmarketos-base-ui-wifi-wpa_supplicant-openrc-66-r0",
+        "postmarketos-baselayout-79-r0",
+        "postmarketos-bootsplash-3-r0",
+        "postmarketos-bootsplash-openrc-3-r0",
+        "postmarketos-buffybox-iskey-1-r0",
+        "postmarketos-config-nftables-2-r0",
+        "postmarketos-config-nftables-networkmanager-2-r0",
+        "postmarketos-initramfs-3.12.7-r0",
+        "postmarketos-keys-1-r1",
+        "postmarketos-mkinitfs-2.12.2-r0",
+        "postmarketos-plymouth-themes-1.2.3-r0",
+        "postmarketos-qemu-common-3-r1",
+        "postmarketos-release-79-r0",
+        "postmarketos-ui-console-1-r0",
+        "postmarketos-ui-console-openrc-1-r0",
+        "postmarketos-zram-4-r0",
+        "postmarketos-zram-openrc-4-r0",
+        "py3-libevdev-0.13.1-r1",
+        "py3-libevdev-pyc-0.13.1-r1",
+        "py3-ruamel.yaml-0.19.1-r0",
+        "py3-ruamel.yaml-pyc-0.19.1-r0",
+        "py3-ruamel.yaml.clib-0.2.15-r3",
+        "py3-udev-0.24.4-r0",
+        "py3-udev-pyc-0.24.4-r0",
+        "py3-yaml-6.0.3-r2",
+        "py3-yaml-pyc-6.0.3-r2",
+        "pyc-3.14.10-r1",
+        "python3-3.14.10-r1",
+        "python3-pyc-3.14.10-r1",
+        "python3-pycache-pyc0-3.14.10-r1",
+        "readline-8.3.3-r1",
+        "roc-toolkit-libs-0.4.0-r1",
+        "routewrangler-0.3.1-r1",
+        "routewrangler-openrc-0.3.1-r1",
+        "runuser-2.42.4-r3",
+        "scanelf-1.3.11-r0",
+        "setarch-2.42.4-r3",
+        "setpriv-2.42.4-r3",
+        "sfdisk-2.42.4-r3",
+        "shadow-4.20.3-r2",
+        "skalibs-libs-2.16.0.0-r0",
+        "slang-2.3.3-r3",
+        "sleep-inhibitor-1.25-r2",
+        "sleep-inhibitor-openrc-1.25-r2",
+        "sleep-inhibitor-pyc-1.25-r2",
+        "speexdsp-1.2.1-r2",
+        "spirv-tools-1.4.357.0-r0",
+        "sqlite-libs-3.54.1-r0",
+        "ssl_client-1.38.0-r8",
+        "sudo-1.9.17_p2-r4",
+        "systemd-boot-262.2-r0",
+        "tzdata-2026f-r0",
+        "udev-init-scripts-35-r1",
+        "udev-init-scripts-openrc-35-r1",
+        "umount-2.42.4-r3",
+        "unudhcpd-0.5.0-r1",
+        "unudhcpd-openrc-0.5.0-r1",
+        "userspace-rcu-0.15.3-r0",
+        "util-linux-2.42.4-r3",
+        "util-linux-login-2.42.4-r3",
+        "util-linux-misc-2.42.4-r3",
+        "util-linux-openrc-2.42.4-r3",
+        "utmps-libs-0.1.3.4-r1",
+        "uuidgen-2.42.4-r3",
+        "vulkan-loader-1.4.360-r0",
+        "vulkan-tools-1.4.360-r0",
+        "wayland-libs-client-1.26.0-r0",
+        "wayland-libs-cursor-1.26.0-r0",
+        "wayland-libs-server-1.26.0-r0",
+        "webrtc-audio-processing-2-2.1-r3",
+        "weston-16.0.0-r0",
+        "wipefs-2.42.4-r3",
+        "wireless-regdb-2025.10.07-r0",
+        "wireless-tools-30_pre9-r5",
+        "wireless-tools-libs-30_pre9-r5",
+        "wireplumber-0.5.19-r0",
+        "wireplumber-libs-0.5.19-r0",
+        "wireplumber-openrc-0.5.19-r0",
+        "wpa_supplicant-2.11-r5",
+        "wpa_supplicant-openrc-2.11-r5",
+        "xdg-utils-1.2.1-r1",
+        "xfsprogs-7.3.0-r0",
+        "xfsprogs-extra-7.3.0-r0",
+        "xkeyboard-config-99992.48-r0",
+        "xprop-1.2.8-r0",
+        "xset-1.2.5-r1",
+        "xz-5.8.4-r0",
+        "xz-libs-5.8.4-r0",
+        "yaml-0.2.5-r2",
+        "zlib-1.4-r0",
+        "zstd-libs-1.5.7-r2"
+      ],
+      "line_count": 382
+    },
+    "guest-share/target-package-cache.json": {
+      "path_in_container": "/work/pmwork/guest-share/target-package-cache.json",
+      "size_bytes": 192437,
+      "sha256": "2c5af8effe7285a79c5303e5cda6a1be5a472b619a35b1f2be2b434be7ba8e4a",
+      "summary": {
+        "scope": "Retained download cache for this native ARM pmbootstrap work directory",
+        "file_count": 379,
+        "apk_file_count": 371,
+        "target_package_count": 382,
+        "cached_target_package_count": 371,
+        "all_target_packages_cached": false,
+        "offline_cache_complete": false,
+        "missing_target_packages": [
+          "linux-firmware-none-20261019-r0",
+          "postmarketos-base-apk-79-r0",
+          "postmarketos-base-fwupd-79-r0",
+          "postmarketos-base-mesa-79-r0",
+          "postmarketos-base-nftables-79-r0",
+          "postmarketos-base-nofde-62-r0",
+          "postmarketos-base-ui-wifi-wpa_supplicant-66-r0",
+          "postmarketos-bootsplash-openrc-3-r0",
+          "postmarketos-ui-console-1-r0",
+          "pyc-3.14.10-r1",
+          "python3-pyc-3.14.10-r1"
+        ],
+        "missing_target_package_metadata": [
+          {
+            "package_version": "linux-firmware-none-20261019-r0",
+            "package": "linux-firmware-none",
+            "version": "20261019-r0",
+            "architecture": "aarch64",
+            "installed_control_checksum": "Q1Zubv4kaQNJ/f2AL8swU6MikMePE=",
+            "recorded_archive_size_bytes": 1338,
+            "installed_payload_size_bytes": 0
+          },
+          {
+            "package_version": "postmarketos-base-apk-79-r0",
+            "package": "postmarketos-base-apk",
+            "version": "79-r0",
+            "architecture": "aarch64",
+            "installed_control_checksum": "Q1XH+i0F0k6prKZ2/+8MOMrSVnzg0=",
+            "recorded_archive_size_bytes": 1241,
+            "installed_payload_size_bytes": 0
+          },
+          {
+            "package_version": "postmarketos-base-fwupd-79-r0",
+            "package": "postmarketos-base-fwupd",
+            "version": "79-r0",
+            "architecture": "aarch64",
+            "installed_control_checksum": "Q12Avf/skbhezz7KtbGDUNNauggQE=",
+            "recorded_archive_size_bytes": 1243,
+            "installed_payload_size_bytes": 0
+          },
+          {
+            "package_version": "postmarketos-base-mesa-79-r0",
+            "package": "postmarketos-base-mesa",
+            "version": "79-r0",
+            "architecture": "aarch64",
+            "installed_control_checksum": "Q1TlcfxNEOjlha7b23WTpeccA5JxA=",
+            "recorded_archive_size_bytes": 1257,
+            "installed_payload_size_bytes": 0
+          },
+          {
+            "package_version": "postmarketos-base-nftables-79-r0",
+            "package": "postmarketos-base-nftables",
+            "version": "79-r0",
+            "architecture": "aarch64",
+            "installed_control_checksum": "Q1W7bIx+rzDq37LbhAronyyUt0IJA=",
+            "recorded_archive_size_bytes": 1252,
+            "installed_payload_size_bytes": 0
+          },
+          {
+            "package_version": "postmarketos-base-nofde-62-r0",
+            "package": "postmarketos-base-nofde",
+            "version": "62-r0",
+            "architecture": "aarch64",
+            "installed_control_checksum": "Q1Hd2RJ8gvOFZ7c+deWUxW0Nuz6OM=",
+            "recorded_archive_size_bytes": 1248,
+            "installed_payload_size_bytes": 0
+          },
+          {
+            "package_version": "postmarketos-base-ui-wifi-wpa_supplicant-66-r0",
+            "package": "postmarketos-base-ui-wifi-wpa_supplicant",
+            "version": "66-r0",
+            "architecture": "aarch64",
+            "installed_control_checksum": "Q1YnCIZBZwu37pgyzlv+Et9q6FwYQ=",
+            "recorded_archive_size_bytes": 1312,
+            "installed_payload_size_bytes": 0
+          },
+          {
+            "package_version": "postmarketos-bootsplash-openrc-3-r0",
+            "package": "postmarketos-bootsplash-openrc",
+            "version": "3-r0",
+            "architecture": "aarch64",
+            "installed_control_checksum": "Q1D+taDOPcDkbm0tWLipKLikJnyq8=",
+            "recorded_archive_size_bytes": 1316,
+            "installed_payload_size_bytes": 0
+          },
+          {
+            "package_version": "postmarketos-ui-console-1-r0",
+            "package": "postmarketos-ui-console",
+            "version": "1-r0",
+            "architecture": "aarch64",
+            "installed_control_checksum": "Q1PM8p2epr+4xRCXWrR+5m81qxWY4=",
+            "recorded_archive_size_bytes": 1265,
+            "installed_payload_size_bytes": 0
+          },
+          {
+            "package_version": "pyc-3.14.10-r1",
+            "package": "pyc",
+            "version": "3.14.10-r1",
+            "architecture": "aarch64",
+            "installed_control_checksum": "Q15PmggaQz4rD6Das1ln9d+YYs29w=",
+            "recorded_archive_size_bytes": 1274,
+            "installed_payload_size_bytes": 0
+          },
+          {
+            "package_version": "python3-pyc-3.14.10-r1",
+            "package": "python3-pyc",
+            "version": "3.14.10-r1",
+            "architecture": "aarch64",
+            "installed_control_checksum": "Q165vZrB/4672LTWZiWEBu5LwR5jc=",
+            "recorded_archive_size_bytes": 1330,
+            "installed_payload_size_bytes": 0
+          }
+        ],
+        "ambiguous_target_packages": [],
+        "total_size_bytes": 278422676
+      }
+    },
+    "guest-share/pmwork/apk.static": {
+      "path_in_container": "/work/pmwork/guest-share/pmwork/apk.static",
+      "size_bytes": 5075216,
+      "sha256": "e00d54b995904dd09b6777f1d292351c11f0cbc16e05b29f443290e60549b85e"
+    },
+    "stop_builder.py": {
+      "path_in_container": "/work/pmwork/stop_builder.py",
+      "size_bytes": 3710,
+      "sha256": "a68941a09e8995b160c416421494aae42dfa4fc9bc61b12c5d67a6c5b6a59179"
+    },
+    "cleanup.json": {
+      "path_in_container": "/work/pmwork/cleanup.json",
+      "size_bytes": 2331,
+      "sha256": "d2a8073bcfe4a0d0c9a852fe8c4282c399afb37bff6840e4ff96e4722335cdfa",
+      "record": {
+        "started_at_utc": "2026-11-22T23:30:16.830169+00:00",
+        "reason": "Target chroots stopped and rootfs archive exported; release only owned infrastructure",
+        "artifact_retained": {
+          "path": "/work/pmwork/artifacts/nura-qemu-aarch64-userspace-20261123.tar.gz",
+          "size_bytes": 307393454,
+          "sha256": "eb8786e4fb51b25f077d5ade55e89123eb702d8c99076bbce5c11083f112ed46"
+        },
+        "signal": "SIGTERM",
+        "processes": [
+          {
+            "pid": 56144,
+            "role": "loopback_verified_media_server",
+            "argv": [
+              "python3",
+              "-u",
+              "-m",
+              "http.server",
+              "18083",
+              "--bind",
+              "127.0.0.1",
+              "--directory",
+              "/work/pmwork/boot/alpine"
+            ],
+            "exited": true
+          },
+          {
+            "pid": 61157,
+            "role": "generic_arm_builder_vm_03",
+            "argv": [
+              "qemu-system-aarch64",
+              "-machine",
+              "virt-10.0,gic-version=3",
+              "-cpu",
+              "cortex-a72",
+              "-smp",
+              "2",
+              "-m",
+              "2048",
+              "-accel",
+              "tcg,thread=multi",
+              "-kernel",
+              "/work/pmwork/boot/alpine/Image",
+              "-initrd",
+              "/work/pmwork/boot/alpine/initramfs-virt",
+              "-append",
+              "console=ttyAMA0 ip=dhcp alpine_repo=http://10.0.2.2:18083/apks modloop=http://10.0.2.2:18083/modloop-virt",
+              "-display",
+              "none",
+              "-monitor",
+              "none",
+              "-no-reboot",
+              "-chardev",
+              "socket,id=serial0,path=/work/pmwork/console.sock,server=on,wait=on,logfile=/work/pmwork/console-03.log",
+              "-serial",
+              "chardev:serial0",
+              "-netdev",
+              "user,id=net0",
+              "-device",
+              "virtio-net-device,netdev=net0",
+              "-fsdev",
+              "local,id=work,path=/work/pmwork/guest-share,security_model=none",
+              "-device",
+              "virtio-9p-pci,fsdev=work,mount_tag=work",
+              "-fsdev",
+              "local,id=pmbsrc,path=/work/pmbootstrap,security_model=none,readonly=on",
+              "-device",
+              "virtio-9p-pci,fsdev=pmbsrc,mount_tag=pmbsrc",
+              "-fsdev",
+              "local,id=ports,path=/work/pmaports,security_model=none,readonly=on",
+              "-device",
+              "virtio-9p-pci,fsdev=ports,mount_tag=ports"
+            ],
+            "exited": true
+          }
+        ],
+        "all_owned_processes_exited": true,
+        "finished_at_utc": "2026-11-22T23:30:20.639155+00:00"
+      }
+    }
+  },
+  "verified_bootstrap_medium": {
+    "alpine_version": "3.24.4",
+    "architecture": "aarch64",
+    "role": "Generic ARM virtual-machine bootstrap medium; not a TB371FC image",
+    "sources": {
+      "alpine-virt-3.24.4-aarch64.iso": {
+        "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso",
+        "sha256": "cf88d8ba67389d20d9ed307366b52e487c15d7d3ee3233b62b95f709daa1d430"
+      },
+      "alpine-virt-3.24.4-aarch64.iso.sha256": {
+        "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso.sha256",
+        "sha256": "b5a7203e9ff214241df52a29a32b0f730f314ad552aacae6aaa69028544dbe87"
+      },
+      "alpine-virt-3.24.4-aarch64.iso.asc": {
+        "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-virt-3.24.4-aarch64.iso.asc",
+        "sha256": "85651b6c09c16780bb12ff69ac835feddf4a4b5c2e35200ffabf081b3ef7860e"
+      },
+      "ncopa.asc": {
+        "url": "https://alpinelinux.org/keys/ncopa.asc",
+        "sha256": "75a9a7e0cc35bfa946ce40c26133b3ed29a204fbd98a3b33331b659d927b3027"
+      }
+    },
+    "verified_signer_fingerprint": "0482D84022F52DF1C4E7CD43293ACD0907D9495A",
+    "signature_verification_exit_code": 0,
+    "extracted_boot_files": {
+      "vmlinuz-virt": {
+        "size_bytes": 10412544,
+        "sha256": "cd05fed9e617b5df93dc62ece9b78c422fd94e9b432a2f7c092714b139d5eef4"
+      },
+      "initramfs-virt": {
+        "size_bytes": 10167867,
+        "sha256": "a0aca3b06df6b029711099e78cf01635f53331754d14af608f87bf9254630bac"
+      },
+      "modloop-virt": {
+        "size_bytes": 17788928,
+        "sha256": "a726889467d1d4fefa4ba1ed710f28b9db1fbd019ca3eba2d4c6c65b33536343"
+      }
+    },
+    "arm64_image": {
+      "method": "Declared EFI zboot gzip payload, then ARM64 Image magic check",
+      "payload_offset": 51832,
+      "payload_size": 10353483,
+      "size_bytes": 36306944,
+      "sha256": "a2cecb9b6fdbd83e87bd43c8040de67300d5b8dde1fc50c34714faa272888f17"
+    },
+    "bootstrap_repository": {
+      "relative_path": "apks/aarch64",
+      "file_count": 96,
+      "manifest_sha256": "3840f292ba94bcbe8d0897f27cef22c1507b7139cd6167d4128b60f93a77b32b",
+      "source": "Files extracted from the verified fixed-version ISO"
+    }
+  },
+  "result": {
+    "status": "rootfs_exported",
+    "alpine_builder_booted": true,
+    "native_pmb_bootstrap_complete": true,
+    "target_package_transaction_complete": true,
+    "target_rootfs_exported": true,
+    "offline_cache_complete": false,
+    "independent_offline_rebuild_tested": false,
+    "target_rootfs_booted": false,
+    "tablet_linux_boot_tested_by_this_experiment": false,
+    "hardware_gpu_tested_by_this_experiment": false,
+    "rootfs_gzip_integrity_verified": true,
+    "owned_vm_and_media_server_stopped": true
+  },
+  "implementation_files": {
+    "distros/nura/README.md": {
+      "sha256": "2c0cd6ea68437c3151e614a2b61d0ca68570c259c20c88c62e6c96bf9fbddfa8",
+      "size_bytes": 11137,
+      "mode": "0o644"
+    },
+    "distros/nura/collect_evidence.py": {
+      "sha256": "35c1a8a312e23b7d5e5acfdc3a4a0a1a74815c3733f52a1d4176e0972090589d",
+      "size_bytes": 8483,
+      "mode": "0o755"
+    },
+    "distros/nura/complete_package_cache.py": {
+      "sha256": "947b895d4c6ce6bade369fd47336fc0143eacb2cffeb6a821e6ee2544996bff6",
+      "size_bytes": 5273,
+      "mode": "0o755"
+    },
+    "distros/nura/export_rootfs.py": {
+      "sha256": "9da8a2a93d666464f4dd413bffd4ef8166661af8cf360771dc7e3a225a166189",
+      "size_bytes": 11767,
+      "mode": "0o755"
+    },
+    "distros/nura/fetch_media.py": {
+      "sha256": "af8b7b5d904d48d4145156507f58d3290704e73fce808916b476c83aee34ace4",
+      "size_bytes": 10086,
+      "mode": "0o755"
+    },
+    "distros/nura/guest-bootstrap.sh": {
+      "sha256": "21c2f4d8db11e655ad81239970f171692395f095723ac4d1b8aac392aa8dff79",
+      "size_bytes": 2278,
+      "mode": "0o755"
+    },
+    "distros/nura/guest-install.sh": {
+      "sha256": "cff215303b15446a1c47efe54c5fd5b79a3de3665a0815ab925e1d10def1ddf3",
+      "size_bytes": 2777,
+      "mode": "0o755"
+    },
+    "distros/nura/serial_command.py": {
+      "sha256": "488bb7da71a3840d654c215c3b1f7c75336817fc33ed7185004d974badd99c8b",
+      "size_bytes": 3957,
+      "mode": "0o755"
+    },
+    "distros/nura/stop_builder.py": {
+      "sha256": "a68941a09e8995b160c416421494aae42dfa4fc9bc61b12c5d67a6c5b6a59179",
+      "size_bytes": 3710,
+      "mode": "0o755"
+    }
+  }
+}

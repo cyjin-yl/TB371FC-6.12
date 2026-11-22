@@ -1,0 +1,4249 @@
+{
+  "schema_version": 1,
+  "captured_utc": "2026-11-22T22:06:23.413266+00:00",
+  "evidence_class": "host_build_and_emulated_userspace",
+  "environment": {
+    "device": "doesvm",
+    "ct": 102,
+    "container": "tb371fc-build-20261123",
+    "rootfs": "/work/fedora-bundle/rootfs"
+  },
+  "seed": {
+    "path": "/work/downloads/Fedora-Container-Base-Generic-45-1.4.aarch64.oci.tar.xz",
+    "size": 68993700,
+    "sha256": "bc6c3b3e132e3ed5eff398112d16fcdca13dc8abd63550f8aad40e882b9617b6",
+    "url": "https://dl.fedoraproject.org/pub/fedora/linux/releases/45/Container/aarch64/images/Fedora-Container-Base-Generic-45-1.4.aarch64.oci.tar.xz",
+    "checksum_file": {
+      "path": "/work/downloads/Fedora-Container-45-1.4-aarch64-CHECKSUM",
+      "size": 1672,
+      "sha256": "3113d7cbffab48840a5675a7cd5ff35abcb364b554138ae3c33713d66b88b85f"
+    },
+    "checksum_matches_archive": true,
+    "signer_fingerprint": "4F50A6114CD5C6976A7F1179655A4B02F577861E",
+    "signature_verification": {
+      "command": [
+        "gpgv",
+        "--homedir",
+        "/work/fedora-gpgv-home",
+        "--status-fd",
+        "1",
+        "--keyring",
+        "/work/downloads/fedora.gpg",
+        "/work/downloads/Fedora-Container-45-1.4-aarch64-CHECKSUM"
+      ],
+      "exit_code": 0,
+      "stdout": "[GNUPG:] NEWSIG\n[GNUPG:] KEY_CONSIDERED 4F50A6114CD5C6976A7F1179655A4B02F577861E 0\n[GNUPG:] SIG_ID Xr13j4C3Cb1VXGadfhl8fDTEmoU 2026-10-31 1793430625\n[GNUPG:] GOODSIG 655A4B02F577861E Fedora (45) <fedora-45-primary@fedoraproject.org>\n[GNUPG:] VALIDSIG 4F50A6114CD5C6976A7F1179655A4B02F577861E 2026-10-31 1793430625 0 4 0 1 8 01 4F50A6114CD5C6976A7F1179655A4B02F577861E",
+      "stderr": "gpgv: Signature made Sat Oct 31 07:10:25 2026 UTC\ngpgv:                using RSA key 4F50A6114CD5C6976A7F1179655A4B02F577861E\ngpgv: Good signature from \"Fedora (45) <fedora-45-primary@fedoraproject.org>\""
+    },
+    "keyring_file": {
+      "path": "/work/downloads/fedora.gpg",
+      "size": 4704,
+      "sha256": "3b8a3660cca4851a67f67f56819e37e2f6b37ac8e905cb571b25d2127d1b7618"
+    },
+    "keyring_url": "https://fedoraproject.org/fedora.gpg"
+  },
+  "execution_compatibility": {
+    "direct_qemu_nested_exec": {
+      "status": "failed",
+      "child_exit_code": 126,
+      "reason": "Exec format error",
+      "job": "fedora-preflight"
+    },
+    "debian_proot_5_1": {
+      "status": "incompatible_for_dnf",
+      "statx_missing_file": true,
+      "test_exists": 0,
+      "test_regular_file": 0,
+      "test_readable": 1,
+      "job": "fedora-proot-fs-probe"
+    },
+    "fixed_proot": {
+      "revision": "25dc6a3134891f98a79f57ce1c2c1b23ff15cad1",
+      "uthash_revision": "e493aa90a2833b4655927598f169c31cfcdf7861",
+      "binary": {
+        "path": "/work/fedora-proot-src/src/proot",
+        "size": 832232,
+        "sha256": "313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f"
+      },
+      "version": {
+        "command": [
+          "/work/fedora-proot-src/src/proot",
+          "--version"
+        ],
+        "exit_code": 0,
+        "stdout": "_____ _____              ___\n|  __ \\  __ \\_____  _____|   |_\n|   __/     /  _  \\/  _  \\    _|\n|__|  |__|__\\_____/\\_____/\\____| v5.5.0-25dc6a31\n\nbuilt-in accelerators: process_vm = yes, seccomp_filter = yes\n\nVisit https://proot-me.github.io for help, bug reports, suggestions, patches, ...\nCopyright (C) 2026 PRoot Developers, licensed under GPL v2 or later.",
+        "stderr": ""
+      }
+    },
+    "qemu": {
+      "binary": {
+        "path": "/usr/bin/qemu-aarch64-static",
+        "size": 16661520,
+        "sha256": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943"
+      },
+      "version": {
+        "command": [
+          "/usr/bin/qemu-aarch64-static",
+          "--version"
+        ],
+        "exit_code": 0,
+        "stdout": "qemu-aarch64 version 10.0.13 (Debian 1:10.0.13+ds-0+deb13u1)\nCopyright (c) 2003-2025 Fabrice Bellard and the QEMU Project developers",
+        "stderr": ""
+      }
+    },
+    "host_binfmt_changed": false,
+    "system_vm_started_for_fedora": false,
+    "container_root_packages_installed": false
+  },
+  "assembly": {
+    "install_job": "fedora-install",
+    "check_job": "fedora-check",
+    "scriptlets_disabled": false,
+    "dnf_tsflags": "nodocs",
+    "systemd_offline": true,
+    "weak_dependencies": false,
+    "repositories": [],
+    "observed_scriptlet_completions": [
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:58:05+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"glib2-0:2.90.0-1.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T22:01:00+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"shared-mime-info-0:2.5.1-3.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T22:01:05+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"adwaita-icon-theme-legacy-0:46.2-12.fc45.noarch\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T22:01:08+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"adwaita-icon-theme-0:51.0-1.fc45.noarch\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T22:01:13+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"hicolor-icon-theme-0:0.18-6.fc45.noarch\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T22:01:14+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"fontconfig-0:2.18.3-2.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T22:01:14+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"gdk-pixbuf2-0:2.44.8-3.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:15+0000 [52] INFO RPM callback stop %pretrans scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:15+0000 [52] INFO RPM callback stop %pretrans scriptlet \"crypto-policies-0:20260713-2.gitc42da77.fc45.noarch\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:15+0000 [52] INFO RPM callback stop %pretrans scriptlet \"ca-certificates-0:2026.2.92_v9.0.319-2.fc45.noarch\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:16+0000 [52] INFO RPM callback stop sysusers scriptlet \"setup-0:2.15.1-2.fc45.noarch\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:16+0000 [52] INFO RPM callback stop %post scriptlet \"setup-0:2.15.1-2.fc45.noarch\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:16+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:16+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:16+0000 [52] INFO RPM callback stop %post scriptlet \"bash-0:5.3.15-2.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:16+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:16+0000 [52] INFO RPM callback stop %pre scriptlet \"glibc-0:2.44-1.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:16+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:16+0000 [52] INFO RPM callback stop %post scriptlet \"glibc-0:2.44-1.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:16+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:16+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:16+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %pre scriptlet \"crypto-policies-0:20260713-2.gitc42da77.fc45.noarch\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %post scriptlet \"crypto-policies-0:20260713-2.gitc42da77.fc45.noarch\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %post scriptlet \"gnupg2-keyboxd-0:2.4.9-18.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %post scriptlet \"p11-kit-trust-0:0.26.5-1.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %pre scriptlet \"ca-certificates-0:2026.2.92_v9.0.319-2.fc45.noarch\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:17+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:19+0000 [52] INFO RPM callback stop %post scriptlet \"ca-certificates-0:2026.2.92_v9.0.319-2.fc45.noarch\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:19+0000 [52] INFO RPM callback stop sysusers scriptlet \"tpm2-tss-0:4.2.0-1.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:19+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:19+0000 [52] INFO RPM callback stop %post scriptlet \"gnupg2-gpg-agent-0:2.4.9-18.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:19+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:19+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:19+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %post scriptlet \"authselect-libs-0:1.8.0-1.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %post scriptlet \"gnupg2-dirmngr-0:2.4.9-18.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %post scriptlet \"dnf5-0:5.4.6.0-3.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %pre scriptlet \"rpm-0:6.1.0-1.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %post scriptlet \"rpm-0:6.1.0-1.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:20+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:21+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:21+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:21+0000 [52] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:21+0000 [52] INFO RPM callback stop %posttrans scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:23+0000 [52] INFO RPM callback stop %posttrans scriptlet \"ca-certificates-0:2026.2.92_v9.0.319-2.fc45.noarch\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:23+0000 [52] INFO RPM callback stop %posttrans scriptlet \"authselect-libs-0:1.8.0-1.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:23+0000 [52] INFO RPM callback stop %posttrans scriptlet \"rootfiles-0:9.0-8.fc45.noarch\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:23+0000 [52] INFO RPM callback stop %triggerin scriptlet \"glibc-common-0:2.44-1.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:23+0000 [52] INFO RPM callback stop %triggerin scriptlet \"glib2-0:2.90.0-1.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:24+0000 [1806] INFO RPM callback stop %triggerpostun scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-10-28T20:22:24+0000 [1806] INFO RPM callback stop %triggerpostun scriptlet \"glibc-common-0:2.44-1.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:55:36+0000 [58550] INFO RPM callback stop %pretrans scriptlet \"xkeyboard-config-0:2.48-4.fc45.noarch\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:55:40+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:55:45+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:55:47+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:55:47+0000 [58550] INFO RPM callback stop %post scriptlet \"shared-mime-info-0:2.5.1-3.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:55:57+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:56:06+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:56:16+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:56:23+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:56:46+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:56:49+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:56:49+0000 [58550] INFO RPM callback stop %post scriptlet \"libinput-0:1.32.0-1.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:56:50+0000 [58550] INFO RPM callback stop %pre scriptlet \"xml-common-0:0.6.3-70.fc45.noarch\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:56:51+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:56:53+0000 [58550] INFO RPM callback stop %post scriptlet \"fontconfig-0:2.18.3-2.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:57:01+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:57:05+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:57:06+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:57:08+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:57:10+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:57:17+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:57:17+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:57:18+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:57:19+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:57:20+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:57:25+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"filesystem-0:3.18-59.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:57:26+0000 [58550] INFO RPM callback stop %posttrans scriptlet \"fontconfig-0:2.18.3-2.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:58:03+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"glibc-common-0:2.44-1.fc45.aarch64\" return code 0"
+      },
+      {
+        "return_code": 0,
+        "line": "2026-11-22T21:58:04+0000 [58550] INFO RPM callback stop %triggerin scriptlet \"glib2-0:2.90.0-1.fc45.aarch64\" return code 0"
+      }
+    ],
+    "nonzero_observed_scriptlet_completions": [],
+    "base_package_count": 149,
+    "final_package_count": 309,
+    "new_package_count": 160,
+    "replaced_packages": [],
+    "installed_packages": [
+      {
+        "name": "abattis-cantarell-vf-fonts",
+        "evr": "0:0.301-18.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "abseil-cpp",
+        "evr": "0:20260526.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "adwaita-cursor-theme",
+        "evr": "0:51.0-1.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "adwaita-icon-theme",
+        "evr": "0:51.0-1.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "adwaita-icon-theme-legacy",
+        "evr": "0:46.2-12.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "alsa-lib",
+        "evr": "0:1.2.16.1-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "alternatives",
+        "evr": "0:1.33-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "at-spi2-atk",
+        "evr": "0:2.62.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "at-spi2-core",
+        "evr": "0:2.62.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "atk",
+        "evr": "0:2.62.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "audit-libs",
+        "evr": "0:4.2.1-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "authselect",
+        "evr": "0:1.8.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "authselect-libs",
+        "evr": "0:1.8.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "avahi-glib",
+        "evr": "0:0.9~rc2-9.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "avahi-libs",
+        "evr": "0:0.9~rc2-9.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "bash",
+        "evr": "0:5.3.15-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "bluez-libs",
+        "evr": "0:5.88-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "bubblewrap",
+        "evr": "0:0.13.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "bzip2",
+        "evr": "0:1.0.8-24.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "bzip2-libs",
+        "evr": "0:1.0.8-24.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "ca-certificates",
+        "evr": "0:2026.2.92_v9.0.319-2.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "cairo",
+        "evr": "0:1.18.6-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "cairo-gobject",
+        "evr": "0:1.18.6-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "colord-libs",
+        "evr": "0:1.4.8-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "coreutils",
+        "evr": "0:9.11-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "coreutils-common",
+        "evr": "0:9.11-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "cracklib",
+        "evr": "0:2.10.3-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "crypto-policies",
+        "evr": "0:20260713-2.gitc42da77.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "cups-filesystem",
+        "evr": "1:2.4.19-4.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "cups-libs",
+        "evr": "1:2.4.19-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "curl",
+        "evr": "0:8.21.0-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "cyrus-sasl-lib",
+        "evr": "0:2.1.28-37.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "dbus",
+        "evr": "1:1.16.4-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "dbus-libs",
+        "evr": "1:1.16.4-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "default-fonts-core-sans",
+        "evr": "0:4.3-3.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "dnf5",
+        "evr": "0:5.4.6.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "dnf5-plugins",
+        "evr": "0:5.4.6.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "duktape",
+        "evr": "0:2.7.0-12.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "egl-utils",
+        "evr": "0:9.0.0-12.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "elfutils-libelf",
+        "evr": "0:0.196-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "elfutils-libs",
+        "evr": "0:0.196-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "expat",
+        "evr": "0:2.9.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "fdk-aac-free",
+        "evr": "0:2.0.3-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "fedora-gpg-keys",
+        "evr": "0:45-1",
+        "arch": "noarch"
+      },
+      {
+        "name": "fedora-release-common",
+        "evr": "0:45-13",
+        "arch": "noarch"
+      },
+      {
+        "name": "fedora-release-container",
+        "evr": "0:45-13",
+        "arch": "noarch"
+      },
+      {
+        "name": "fedora-release-identity-container",
+        "evr": "0:45-13",
+        "arch": "noarch"
+      },
+      {
+        "name": "fedora-repos",
+        "evr": "0:45-1",
+        "arch": "noarch"
+      },
+      {
+        "name": "fftw-libs-single",
+        "evr": "0:3.3.10-18.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "file-libs",
+        "evr": "0:5.48-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "filesystem",
+        "evr": "0:3.18-59.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "findutils",
+        "evr": "1:4.11.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "fips-provider",
+        "evr": "0:1.5.2-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "flac-libs",
+        "evr": "0:1.5.0-9.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "fmt",
+        "evr": "0:12.1.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "fontconfig",
+        "evr": "0:2.18.3-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "fonts-filesystem",
+        "evr": "1:5.0.0-4.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "freetype",
+        "evr": "0:2.14.3-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "fribidi",
+        "evr": "0:1.0.18-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gawk",
+        "evr": "0:5.4.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gdbm",
+        "evr": "1:1.23-12.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gdbm-libs",
+        "evr": "1:1.23-12.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gdk-pixbuf2",
+        "evr": "0:2.44.8-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "glib-networking",
+        "evr": "0:2.90.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "glib2",
+        "evr": "0:2.90.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "glibc",
+        "evr": "0:2.44-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "glibc-common",
+        "evr": "0:2.44-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "glibc-minimal-langpack",
+        "evr": "0:2.44-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "glx-utils",
+        "evr": "0:9.0.0-12.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "glycin-libs",
+        "evr": "0:2.2.6-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "glycin-loaders",
+        "evr": "0:2.2.6-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gmp",
+        "evr": "1:6.3.0-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gnulib-l10n",
+        "evr": "0:20241231-4.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "gnupg2",
+        "evr": "0:2.4.9-18.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gnupg2-dirmngr",
+        "evr": "0:2.4.9-18.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gnupg2-gpg-agent",
+        "evr": "0:2.4.9-18.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gnupg2-gpgconf",
+        "evr": "0:2.4.9-18.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gnupg2-keyboxd",
+        "evr": "0:2.4.9-18.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gnupg2-verify",
+        "evr": "0:2.4.9-18.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gnutls",
+        "evr": "0:3.8.13-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "google-noto-fonts-common",
+        "evr": "0:20260601-3.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "google-noto-sans-vf-fonts",
+        "evr": "0:20260601-3.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "gpg-pubkey",
+        "evr": "0:4f50a6114cd5c6976a7f1179655a4b02f577861e-6888bc98",
+        "arch": "(none)"
+      },
+      {
+        "name": "graphite2",
+        "evr": "0:1.3.14-22.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "grep",
+        "evr": "0:3.12-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gsettings-desktop-schemas",
+        "evr": "0:51.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gsm",
+        "evr": "0:1.0.24-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gtk-update-icon-cache",
+        "evr": "0:3.24.52-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gtk3",
+        "evr": "0:3.24.52-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gzip",
+        "evr": "0:1.14-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "harfbuzz",
+        "evr": "0:15.0.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "hicolor-icon-theme",
+        "evr": "0:0.18-6.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "highway",
+        "evr": "0:1.3.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "hwdata",
+        "evr": "0:0.413-1.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "ima-evm-utils-libs",
+        "evr": "0:1.6.2-12.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "jbigkit-libs",
+        "evr": "0:2.1-34.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "json-c",
+        "evr": "0:0.18-9.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "json-glib",
+        "evr": "0:1.10.8-11.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "keyutils-libs",
+        "evr": "0:1.6.3-8.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "krb5-libs",
+        "evr": "0:1.22.2-9.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "lame-libs",
+        "evr": "0:4.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "lcms2",
+        "evr": "0:2.16-8.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libX11",
+        "evr": "0:1.8.13-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libX11-common",
+        "evr": "0:1.8.13-3.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "libX11-xcb",
+        "evr": "0:1.8.13-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXau",
+        "evr": "0:1.0.12-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXcomposite",
+        "evr": "0:0.4.6-8.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXcursor",
+        "evr": "0:1.2.3-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXdamage",
+        "evr": "0:1.1.6-8.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXext",
+        "evr": "0:1.3.6-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXfixes",
+        "evr": "0:6.0.1-8.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXft",
+        "evr": "0:2.3.8-11.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXi",
+        "evr": "0:1.8.4-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXinerama",
+        "evr": "0:1.1.5-11.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXrandr",
+        "evr": "0:1.5.4-8.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXrender",
+        "evr": "0:0.9.12-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXtst",
+        "evr": "0:1.2.5-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXxf86vm",
+        "evr": "0:1.1.6-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libacl",
+        "evr": "0:2.4.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libaom",
+        "evr": "0:3.15.3-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libarchive",
+        "evr": "0:3.8.9-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libassuan",
+        "evr": "0:2.5.7-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libasyncns",
+        "evr": "0:0.8-35.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libattr",
+        "evr": "0:2.6.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libblkid",
+        "evr": "0:2.42.4-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libbrotli",
+        "evr": "0:1.2.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libcap",
+        "evr": "0:2.78-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libcap-ng",
+        "evr": "0:0.9.6-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libcbor",
+        "evr": "0:0.14.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libcloudproviders",
+        "evr": "0:0.4.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libcom_err",
+        "evr": "0:1.47.4-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libcurl",
+        "evr": "0:8.21.0-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libdatrie",
+        "evr": "0:0.2.14-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libdav1d",
+        "evr": "0:1.5.4-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libdecor",
+        "evr": "0:0.2.5-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libdisplay-info",
+        "evr": "0:0.3.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libdnf5",
+        "evr": "0:5.4.6.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libdnf5-cli",
+        "evr": "0:5.4.6.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libdrm",
+        "evr": "0:2.4.134-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libebur128",
+        "evr": "0:1.2.6-16.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libeconf",
+        "evr": "0:0.7.9-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libedit",
+        "evr": "0:3.1-60.20260512cvs.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libepoxy",
+        "evr": "0:1.5.10-13.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libevdev",
+        "evr": "0:1.13.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libevent",
+        "evr": "0:2.1.13-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libffi",
+        "evr": "0:3.5.2-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libfido2",
+        "evr": "0:1.17.0-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libfsverity",
+        "evr": "0:1.7-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libgcc",
+        "evr": "0:16.2.1-2.fc45.1",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libgcrypt",
+        "evr": "0:1.12.2-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libglvnd",
+        "evr": "1:1.7.0-10.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libglvnd-egl",
+        "evr": "1:1.7.0-10.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libglvnd-gles",
+        "evr": "1:1.7.0-10.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libglvnd-glx",
+        "evr": "1:1.7.0-10.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libgomp",
+        "evr": "0:16.2.1-2.fc45.1",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libgpg-error",
+        "evr": "0:1.61-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libgudev",
+        "evr": "0:238-10.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libgusb",
+        "evr": "0:0.4.9-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libheif",
+        "evr": "0:1.23.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libicu",
+        "evr": "0:78.3-9.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libidn2",
+        "evr": "0:2.3.8-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libinput",
+        "evr": "0:1.32.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libinput-utils",
+        "evr": "0:1.32.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libjpeg-turbo",
+        "evr": "0:3.1.4.1-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libjxl",
+        "evr": "1:0.11.2-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libksba",
+        "evr": "0:1.8.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "liblc3",
+        "evr": "0:1.1.3-9.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libldac",
+        "evr": "0:2.0.2.6-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "liblerc",
+        "evr": "0:4.3.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libmodulemd",
+        "evr": "0:2.15.3-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libmount",
+        "evr": "0:2.42.4-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libnghttp2",
+        "evr": "0:1.69.0-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libnghttp3",
+        "evr": "0:1.18.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libnsl2",
+        "evr": "0:2.0.1-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libogg",
+        "evr": "2:1.3.6-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libopenjph",
+        "evr": "0:0.31.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libpciaccess",
+        "evr": "0:0.16-18.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libpng",
+        "evr": "2:1.6.59-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libproxy",
+        "evr": "0:0.5.12-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libpsl",
+        "evr": "0:0.23.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libpwquality",
+        "evr": "0:1.4.5-18.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "librepo",
+        "evr": "0:1.21.2-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "librsvg2",
+        "evr": "0:2.63.2-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libsbc",
+        "evr": "0:2.2-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libseat",
+        "evr": "0:0.9.3-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libseccomp",
+        "evr": "0:2.6.1-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libselinux",
+        "evr": "0:3.11-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libsemanage",
+        "evr": "0:3.11-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libsepol",
+        "evr": "0:3.11-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libsmartcols",
+        "evr": "0:2.42.4-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libsndfile",
+        "evr": "0:1.2.2-12.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libsolv",
+        "evr": "0:0.7.40-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libsoup3",
+        "evr": "0:3.8.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libssh",
+        "evr": "0:0.12.2-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libssh-config",
+        "evr": "0:0.12.2-1.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "libstdc++",
+        "evr": "0:16.2.1-2.fc45.1",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libstemmer",
+        "evr": "0:3.1.1-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libtasn1",
+        "evr": "0:4.21.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libthai",
+        "evr": "0:0.1.30-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libtiff",
+        "evr": "0:4.7.2-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libtinysparql",
+        "evr": "0:3.12.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libtirpc",
+        "evr": "0:1.3.8-0.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libtool-ltdl",
+        "evr": "0:2.5.4-11.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libunistring",
+        "evr": "0:1.1-12.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libusb1",
+        "evr": "0:1.0.30-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libuuid",
+        "evr": "0:2.42.4-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libverto",
+        "evr": "0:0.3.2-13.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libvorbis",
+        "evr": "1:1.3.7-21.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libwacom",
+        "evr": "0:2.19.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libwacom-data",
+        "evr": "0:2.19.0-2.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "libwayland-client",
+        "evr": "0:1.26.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libwayland-cursor",
+        "evr": "0:1.26.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libwayland-egl",
+        "evr": "0:1.26.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libwayland-server",
+        "evr": "0:1.26.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libwebp",
+        "evr": "0:1.6.0-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libxcb",
+        "evr": "0:1.17.0-8.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libxcrypt",
+        "evr": "0:4.5.2-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libxkbcommon",
+        "evr": "0:1.13.1-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libxml2",
+        "evr": "0:2.15.4-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libxshmfence",
+        "evr": "0:1.3.2-9.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libyaml",
+        "evr": "0:0.2.5-19.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libzstd",
+        "evr": "0:1.5.7-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "llvm-filesystem",
+        "evr": "0:23.1.5-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "llvm-libs",
+        "evr": "0:23.1.5-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "lm_sensors-libs",
+        "evr": "0:3.6.0-25.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "lua-libs",
+        "evr": "0:5.5.1-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "lz4-libs",
+        "evr": "0:1.10.0-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "lzo",
+        "evr": "0:2.10-17.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mesa-dri-drivers",
+        "evr": "0:26.2.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mesa-filesystem",
+        "evr": "0:26.2.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mesa-libEGL",
+        "evr": "0:26.2.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mesa-libGL",
+        "evr": "0:26.2.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mesa-libgbm",
+        "evr": "0:26.2.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mesa-vulkan-drivers",
+        "evr": "0:26.2.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mpdecimal",
+        "evr": "0:4.0.1-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mpfr",
+        "evr": "0:4.2.2-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mpg123-libs",
+        "evr": "0:1.33.6-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mtdev",
+        "evr": "0:1.1.6-13.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "ncurses-base",
+        "evr": "0:6.6-3.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "ncurses-libs",
+        "evr": "0:6.6-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "nettle",
+        "evr": "0:4.0-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "ngtcp2",
+        "evr": "0:1.22.1-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "ngtcp2-crypto-ossl",
+        "evr": "0:1.22.1-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "noopenh264",
+        "evr": "0:2.6.0-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "npth",
+        "evr": "0:1.8-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "openjpeg",
+        "evr": "0:2.5.4-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "openldap",
+        "evr": "0:2.6.14-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "openssl-libs",
+        "evr": "1:4.0.3-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "opus",
+        "evr": "0:1.6-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "p11-kit",
+        "evr": "0:0.26.5-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "p11-kit-trust",
+        "evr": "0:0.26.5-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "pam",
+        "evr": "0:1.7.2-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "pam-libs",
+        "evr": "0:1.7.2-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "pango",
+        "evr": "0:1.58.2-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "pcre2",
+        "evr": "0:10.47-1.fc45.2",
+        "arch": "aarch64"
+      },
+      {
+        "name": "pcre2-syntax",
+        "evr": "0:10.47-1.fc45.2",
+        "arch": "noarch"
+      },
+      {
+        "name": "pipewire-libs",
+        "evr": "0:1.6.11-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "pixman",
+        "evr": "0:0.46.2-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "popt",
+        "evr": "0:1.19-11.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "publicsuffix-list-dafsa",
+        "evr": "0:20260624-2.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "pulseaudio-libs",
+        "evr": "0:17.0-11.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "python-pip-wheel",
+        "evr": "0:26.1.2-5.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "python3",
+        "evr": "0:3.15.2-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "python3-libevdev",
+        "evr": "0:0.13.1-4.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "python3-libs",
+        "evr": "0:3.15.2-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "python3-pyudev",
+        "evr": "0:0.24.4-5.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "rav1e-libs",
+        "evr": "0:0.8.1-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "readline",
+        "evr": "0:8.3-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "redhat-systemd-presets",
+        "evr": "0:102-3.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "redhat-systemd-presets-common",
+        "evr": "0:102-3.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "rootfiles",
+        "evr": "0:9.0-8.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "rpm",
+        "evr": "0:6.1.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "rpm-build-libs",
+        "evr": "0:6.1.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "rpm-libs",
+        "evr": "0:6.1.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "rpm-sequoia",
+        "evr": "0:1.10.3-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "rpm-sign-libs",
+        "evr": "0:6.1.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "sdbus-cpp",
+        "evr": "0:2.3.1-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "sed",
+        "evr": "0:4.10-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "setup",
+        "evr": "0:2.15.1-2.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "shadow-utils",
+        "evr": "2:4.20.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "shared-mime-info",
+        "evr": "0:2.5.1-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "spandsp",
+        "evr": "0:0.0.6-23.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "spirv-tools-libs",
+        "evr": "0:2026.2-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "sqlite-libs",
+        "evr": "0:3.53.4-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "sudo",
+        "evr": "0:1.9.17-16.p2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "svt-av1-libs",
+        "evr": "0:3.1.2-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "systemd-libs",
+        "evr": "0:262-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "systemd-standalone-sysusers",
+        "evr": "0:262-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "tar",
+        "evr": "2:1.35-10.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "tpm2-tss",
+        "evr": "0:4.2.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "tzdata",
+        "evr": "0:2026c-2.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "util-linux-core",
+        "evr": "0:2.42.4-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "vim-data",
+        "evr": "2:9.2.1129-1.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "vim-minimal",
+        "evr": "2:9.2.1129-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "vulkan-loader",
+        "evr": "0:1.4.350.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "vulkan-tools",
+        "evr": "0:1.4.350.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "wayland-utils",
+        "evr": "0:1.3.0-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "webrtc-audio-processing",
+        "evr": "0:2.1-11.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "weston",
+        "evr": "0:15.0.1-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "weston-demo",
+        "evr": "0:15.0.1-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "weston-libs",
+        "evr": "0:15.0.1-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "xkeyboard-config",
+        "evr": "0:2.48-4.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "xml-common",
+        "evr": "0:0.6.3-70.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "xprop",
+        "evr": "0:1.2.8-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "xz",
+        "evr": "1:5.8.3-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "xz-libs",
+        "evr": "1:5.8.3-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "zchunk-libs",
+        "evr": "0:1.5.4-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "zlib-ng-compat",
+        "evr": "0:2.3.3-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "zstd",
+        "evr": "0:1.5.7-6.fc45",
+        "arch": "aarch64"
+      }
+    ],
+    "new_packages": [
+      {
+        "name": "abattis-cantarell-vf-fonts",
+        "evr": "0:0.301-18.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "abseil-cpp",
+        "evr": "0:20260526.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "adwaita-cursor-theme",
+        "evr": "0:51.0-1.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "adwaita-icon-theme",
+        "evr": "0:51.0-1.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "adwaita-icon-theme-legacy",
+        "evr": "0:46.2-12.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "alsa-lib",
+        "evr": "0:1.2.16.1-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "at-spi2-atk",
+        "evr": "0:2.62.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "at-spi2-core",
+        "evr": "0:2.62.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "atk",
+        "evr": "0:2.62.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "avahi-glib",
+        "evr": "0:0.9~rc2-9.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "avahi-libs",
+        "evr": "0:0.9~rc2-9.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "bluez-libs",
+        "evr": "0:5.88-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "bubblewrap",
+        "evr": "0:0.13.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "cairo",
+        "evr": "0:1.18.6-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "cairo-gobject",
+        "evr": "0:1.18.6-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "colord-libs",
+        "evr": "0:1.4.8-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "cups-filesystem",
+        "evr": "1:2.4.19-4.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "cups-libs",
+        "evr": "1:2.4.19-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "dbus",
+        "evr": "1:1.16.4-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "dbus-libs",
+        "evr": "1:1.16.4-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "default-fonts-core-sans",
+        "evr": "0:4.3-3.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "duktape",
+        "evr": "0:2.7.0-12.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "egl-utils",
+        "evr": "0:9.0.0-12.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "expat",
+        "evr": "0:2.9.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "fdk-aac-free",
+        "evr": "0:2.0.3-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "fftw-libs-single",
+        "evr": "0:3.3.10-18.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "flac-libs",
+        "evr": "0:1.5.0-9.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "fontconfig",
+        "evr": "0:2.18.3-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "fonts-filesystem",
+        "evr": "1:5.0.0-4.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "freetype",
+        "evr": "0:2.14.3-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "fribidi",
+        "evr": "0:1.0.18-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gdk-pixbuf2",
+        "evr": "0:2.44.8-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "glib-networking",
+        "evr": "0:2.90.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "glx-utils",
+        "evr": "0:9.0.0-12.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "glycin-libs",
+        "evr": "0:2.2.6-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "glycin-loaders",
+        "evr": "0:2.2.6-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "google-noto-fonts-common",
+        "evr": "0:20260601-3.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "google-noto-sans-vf-fonts",
+        "evr": "0:20260601-3.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "graphite2",
+        "evr": "0:1.3.14-22.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gsettings-desktop-schemas",
+        "evr": "0:51.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gsm",
+        "evr": "0:1.0.24-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gtk-update-icon-cache",
+        "evr": "0:3.24.52-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "gtk3",
+        "evr": "0:3.24.52-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "harfbuzz",
+        "evr": "0:15.0.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "hicolor-icon-theme",
+        "evr": "0:0.18-6.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "highway",
+        "evr": "0:1.3.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "hwdata",
+        "evr": "0:0.413-1.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "jbigkit-libs",
+        "evr": "0:2.1-34.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "json-glib",
+        "evr": "0:1.10.8-11.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "lame-libs",
+        "evr": "0:4.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "lcms2",
+        "evr": "0:2.16-8.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libX11",
+        "evr": "0:1.8.13-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libX11-common",
+        "evr": "0:1.8.13-3.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "libX11-xcb",
+        "evr": "0:1.8.13-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXau",
+        "evr": "0:1.0.12-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXcomposite",
+        "evr": "0:0.4.6-8.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXcursor",
+        "evr": "0:1.2.3-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXdamage",
+        "evr": "0:1.1.6-8.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXext",
+        "evr": "0:1.3.6-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXfixes",
+        "evr": "0:6.0.1-8.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXft",
+        "evr": "0:2.3.8-11.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXi",
+        "evr": "0:1.8.4-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXinerama",
+        "evr": "0:1.1.5-11.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXrandr",
+        "evr": "0:1.5.4-8.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXrender",
+        "evr": "0:0.9.12-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXtst",
+        "evr": "0:1.2.5-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libXxf86vm",
+        "evr": "0:1.1.6-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libaom",
+        "evr": "0:3.15.3-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libasyncns",
+        "evr": "0:0.8-35.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libcloudproviders",
+        "evr": "0:0.4.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libdatrie",
+        "evr": "0:0.2.14-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libdav1d",
+        "evr": "0:1.5.4-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libdecor",
+        "evr": "0:0.2.5-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libdisplay-info",
+        "evr": "0:0.3.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libdrm",
+        "evr": "0:2.4.134-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libebur128",
+        "evr": "0:1.2.6-16.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libedit",
+        "evr": "0:3.1-60.20260512cvs.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libepoxy",
+        "evr": "0:1.5.10-13.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libevdev",
+        "evr": "0:1.13.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libglvnd",
+        "evr": "1:1.7.0-10.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libglvnd-egl",
+        "evr": "1:1.7.0-10.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libglvnd-gles",
+        "evr": "1:1.7.0-10.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libglvnd-glx",
+        "evr": "1:1.7.0-10.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libgudev",
+        "evr": "0:238-10.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libgusb",
+        "evr": "0:0.4.9-6.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libheif",
+        "evr": "0:1.23.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libicu",
+        "evr": "0:78.3-9.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libinput",
+        "evr": "0:1.32.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libinput-utils",
+        "evr": "0:1.32.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libjpeg-turbo",
+        "evr": "0:3.1.4.1-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libjxl",
+        "evr": "1:0.11.2-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "liblc3",
+        "evr": "0:1.1.3-9.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libldac",
+        "evr": "0:2.0.2.6-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "liblerc",
+        "evr": "0:4.3.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libogg",
+        "evr": "2:1.3.6-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libopenjph",
+        "evr": "0:0.31.0-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libpciaccess",
+        "evr": "0:0.16-18.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libpng",
+        "evr": "2:1.6.59-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libproxy",
+        "evr": "0:0.5.12-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "librsvg2",
+        "evr": "0:2.63.2-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libsbc",
+        "evr": "0:2.2-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libseat",
+        "evr": "0:0.9.3-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libseccomp",
+        "evr": "0:2.6.1-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libsndfile",
+        "evr": "0:1.2.2-12.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libsoup3",
+        "evr": "0:3.8.1-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libstemmer",
+        "evr": "0:3.1.1-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libthai",
+        "evr": "0:0.1.30-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libtiff",
+        "evr": "0:4.7.2-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libtinysparql",
+        "evr": "0:3.12.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libvorbis",
+        "evr": "1:1.3.7-21.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libwacom",
+        "evr": "0:2.19.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libwacom-data",
+        "evr": "0:2.19.0-2.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "libwayland-client",
+        "evr": "0:1.26.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libwayland-cursor",
+        "evr": "0:1.26.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libwayland-egl",
+        "evr": "0:1.26.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libwayland-server",
+        "evr": "0:1.26.0-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libwebp",
+        "evr": "0:1.6.0-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libxcb",
+        "evr": "0:1.17.0-8.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libxkbcommon",
+        "evr": "0:1.13.1-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "libxshmfence",
+        "evr": "0:1.3.2-9.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "llvm-filesystem",
+        "evr": "0:23.1.5-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "llvm-libs",
+        "evr": "0:23.1.5-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "lm_sensors-libs",
+        "evr": "0:3.6.0-25.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "lzo",
+        "evr": "0:2.10-17.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mesa-dri-drivers",
+        "evr": "0:26.2.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mesa-filesystem",
+        "evr": "0:26.2.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mesa-libEGL",
+        "evr": "0:26.2.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mesa-libGL",
+        "evr": "0:26.2.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mesa-libgbm",
+        "evr": "0:26.2.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mesa-vulkan-drivers",
+        "evr": "0:26.2.7-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mpdecimal",
+        "evr": "0:4.0.1-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mpg123-libs",
+        "evr": "0:1.33.6-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "mtdev",
+        "evr": "0:1.1.6-13.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "noopenh264",
+        "evr": "0:2.6.0-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "openjpeg",
+        "evr": "0:2.5.4-5.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "opus",
+        "evr": "0:1.6-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "pango",
+        "evr": "0:1.58.2-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "pipewire-libs",
+        "evr": "0:1.6.11-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "pixman",
+        "evr": "0:0.46.2-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "pulseaudio-libs",
+        "evr": "0:17.0-11.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "python-pip-wheel",
+        "evr": "0:26.1.2-5.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "python3",
+        "evr": "0:3.15.2-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "python3-libevdev",
+        "evr": "0:0.13.1-4.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "python3-libs",
+        "evr": "0:3.15.2-1.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "python3-pyudev",
+        "evr": "0:0.24.4-5.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "rav1e-libs",
+        "evr": "0:0.8.1-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "shared-mime-info",
+        "evr": "0:2.5.1-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "spandsp",
+        "evr": "0:0.0.6-23.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "spirv-tools-libs",
+        "evr": "0:2026.2-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "svt-av1-libs",
+        "evr": "0:3.1.2-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "vulkan-loader",
+        "evr": "0:1.4.350.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "vulkan-tools",
+        "evr": "0:1.4.350.0-2.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "wayland-utils",
+        "evr": "0:1.3.0-4.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "webrtc-audio-processing",
+        "evr": "0:2.1-11.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "weston",
+        "evr": "0:15.0.1-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "weston-demo",
+        "evr": "0:15.0.1-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "weston-libs",
+        "evr": "0:15.0.1-3.fc45",
+        "arch": "aarch64"
+      },
+      {
+        "name": "xkeyboard-config",
+        "evr": "0:2.48-4.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "xml-common",
+        "evr": "0:0.6.3-70.fc45",
+        "arch": "noarch"
+      },
+      {
+        "name": "xprop",
+        "evr": "0:1.2.8-6.fc45",
+        "arch": "aarch64"
+      }
+    ],
+    "retained_rpms": [
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/abattis-cantarell-vf-fonts-0.301-18.fc45.noarch.rpm",
+        "size": 123147,
+        "sha256": "5a194ee8e324e5969c15241dd70a9a97a01158bf5160c0be4294ab9ad239c802"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/abseil-cpp-20260526.0-3.fc45.aarch64.rpm",
+        "size": 795985,
+        "sha256": "ee82b51d507807e1f93678594a2de0918ae33eb3031a80669d0a158da30fde87"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/adwaita-cursor-theme-51.0-1.fc45.noarch.rpm",
+        "size": 389355,
+        "sha256": "9ad7dde613f3e584d6c1f45bd75aefe96d16506c3a0157fb03d47468c0f18a93"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/adwaita-icon-theme-51.0-1.fc45.noarch.rpm",
+        "size": 409574,
+        "sha256": "68ffbb8c26ef29c7371b3803435cb34cfab435f5eb1efd54f3b9bb5bbe7096bc"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/adwaita-icon-theme-legacy-46.2-12.fc45.noarch.rpm",
+        "size": 2599140,
+        "sha256": "b0b4ec97bb402e2edb35d0c285e05eb54f16a45c22657a467f994f75a3cd2d36"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/alsa-lib-1.2.16.1-2.fc45.aarch64.rpm",
+        "size": 534225,
+        "sha256": "ab95030c44a183dccb0c81ab1fbaa0cc2f513ae7113aadac7acb9f26cb0d6daa"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/avahi-glib-0.9~rc2-9.fc45.aarch64.rpm",
+        "size": 15282,
+        "sha256": "aa2c88b9f39aa5b215089907bd429b2cb39607f3dfb0d0acf08a2239de73483a"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/avahi-libs-0.9~rc2-9.fc45.aarch64.rpm",
+        "size": 67054,
+        "sha256": "cc08f35ce9bfed1d8e00cfa1a380edbd56e67d5bf8b46b627e833269464eb118"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/cairo-1.18.6-1.fc45.aarch64.rpm",
+        "size": 719231,
+        "sha256": "e80edfd167e3ac0112943d9cec92a106e7eb25b3b36ce4b15b934e0739aef97b"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/cairo-gobject-1.18.6-1.fc45.aarch64.rpm",
+        "size": 17298,
+        "sha256": "727641226269843b2e9e0e44aa7f57997aa1b22d2e8e6a972fbf0d18e211e675"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/colord-libs-1.4.8-5.fc45.aarch64.rpm",
+        "size": 224982,
+        "sha256": "7fc6640e79e7fc8244cc6f35bd2fce1640b3ded5fe34e7e8c08e3f9e92a9185c"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/cups-filesystem-2.4.19-4.fc45.noarch.rpm",
+        "size": 12477,
+        "sha256": "d3e4d7e32cb46aaf265d8fd9bb2c95df938a5643ba1f19801ef9b3ceeefb700e"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/cups-libs-2.4.19-4.fc45.aarch64.rpm",
+        "size": 265529,
+        "sha256": "5c6c4ba94e841390a0360b3777fc92c26ed92a8bf04921af2785184ec2e177ca"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/default-fonts-core-sans-4.3-3.fc45.noarch.rpm",
+        "size": 29811,
+        "sha256": "e483c250f1424e7da8664f87d443d317808768c8005996399b307dc8aa65fdf0"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/duktape-2.7.0-12.fc45.aarch64.rpm",
+        "size": 174270,
+        "sha256": "701a74f31eb4c1c9021cc1d07e4b248aa67cc775b8f25fecca8a5f02c709f22c"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/egl-utils-9.0.0-12.fc45.aarch64.rpm",
+        "size": 105017,
+        "sha256": "1835dc9d15b108caf1800d6b218c84d3e29c1607e8851a5fc7c1937087a11d31"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/fdk-aac-free-2.0.3-3.fc45.aarch64.rpm",
+        "size": 334236,
+        "sha256": "2581184f91a9c0c556ea49e78d3a7e9f6d72d622a21d7060094e676a171a9f4f"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/fftw-libs-single-3.3.10-18.fc45.aarch64.rpm",
+        "size": 707621,
+        "sha256": "b190593555621db8dfc32b9515f458635d242ef93eeff1ba2c5e26345cc9d891"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/flac-libs-1.5.0-9.fc45.aarch64.rpm",
+        "size": 195967,
+        "sha256": "2dd6beb9eea1f2ef73564284cfaa61fe26c8c718bee7530f6c41f06530f92c19"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/fontconfig-2.18.3-2.fc45.aarch64.rpm",
+        "size": 387411,
+        "sha256": "994807676c7ed9c662b1ae70d3c1767501b3b3a74e2b234a79d01a99da58e785"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/fonts-filesystem-5.0.0-4.fc45.noarch.rpm",
+        "size": 8879,
+        "sha256": "3ed4a620367e03a82e2d95312fe9921ead4f887e5c596e9b7273db9b542c3120"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/gdk-pixbuf2-2.44.8-3.fc45.aarch64.rpm",
+        "size": 516737,
+        "sha256": "d43bf72b35c45765143b3277fdea4d62f39e3723de0da628f1de40d2173e1c16"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/glx-utils-9.0.0-12.fc45.aarch64.rpm",
+        "size": 73408,
+        "sha256": "7a01b46c539a86579fb4ee48ad394ce1ed0cb53af99f80d696b6a7db19c34395"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/google-noto-fonts-common-20260601-3.fc45.noarch.rpm",
+        "size": 17132,
+        "sha256": "be2e30de84fe831d6f385e6b67e0634e27b1e0596ac33643e09006cc2a3c1210"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/google-noto-sans-vf-fonts-20260601-3.fc45.noarch.rpm",
+        "size": 628514,
+        "sha256": "708d4b216caab8f5c047a752a0341341138941dafa8bae98510c82095068b6cf"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/graphite2-1.3.14-22.fc45.aarch64.rpm",
+        "size": 92373,
+        "sha256": "f9b06a0fa20274472b217ee9ad159bbf63b6531a7a191d754313f48c48ed7b91"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/gsettings-desktop-schemas-51.0-1.fc45.aarch64.rpm",
+        "size": 961149,
+        "sha256": "fe70f47ea6dfa2fac79fd9b516aec84eb7395da1a6564c078a69e055183fa48c"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/gsm-1.0.24-3.fc45.aarch64.rpm",
+        "size": 36238,
+        "sha256": "e56d42fe525e70491a8dd2c20fef5c49e4c4322a4c8588d1ee8f52e323cc56ae"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/gtk-update-icon-cache-3.24.52-6.fc45.aarch64.rpm",
+        "size": 34844,
+        "sha256": "6c537899b0e5b429c58741e4ab2b780eb92c8859ae1a84ba578038bf8ea4e5cb"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/gtk3-3.24.52-6.fc45.aarch64.rpm",
+        "size": 6192614,
+        "sha256": "a6a8c41344ad14aaee1c069b7b9e37bbb0611145e2e7da908f57255f9d59a959"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/hicolor-icon-theme-0.18-6.fc45.noarch.rpm",
+        "size": 67424,
+        "sha256": "f9907717875d5440055521d5a89375bbb38dd65141efe29e3a96a00574ea00e9"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/highway-1.3.0-3.fc45.aarch64.rpm",
+        "size": 175717,
+        "sha256": "ec0e9dfbec6d82bbc73eb9a4748f409e6ac6baed6e3a4755d5624fc2bbdc02dd"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/jbigkit-libs-2.1-34.fc45.aarch64.rpm",
+        "size": 54445,
+        "sha256": "9a774f4d7952bb30eb3884bea7c71647eb9eb75cdbdf5ed1488d61c8881f1c0b"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/json-glib-1.10.8-11.fc45.aarch64.rpm",
+        "size": 174485,
+        "sha256": "d62ee73f615755e598c3ec87023437a0320db3cf870aa4030f9b79058c3bc4ae"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/lame-libs-4.0-1.fc45.aarch64.rpm",
+        "size": 279265,
+        "sha256": "0edc3d9be62d01d4d2524edd832ab5465bcb7335038282db3cfc9c0f5ab39616"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/lcms2-2.16-8.fc45.aarch64.rpm",
+        "size": 184856,
+        "sha256": "3690d097b100b8efc9d93161d48513e8a8098246e3e8faad9fb9091b85596f9c"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libX11-1.8.13-3.fc45.aarch64.rpm",
+        "size": 665182,
+        "sha256": "673f153ba1655dd5a1f6da2c5d6f8b585a3e78614db4e934ef5ade4b447537f2"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libX11-common-1.8.13-3.fc45.noarch.rpm",
+        "size": 179473,
+        "sha256": "290b69160fb562695e8e61e0365e9d116c8bf53d6f2f99ac7e5e232f711afd7a"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libX11-xcb-1.8.13-3.fc45.aarch64.rpm",
+        "size": 11271,
+        "sha256": "ab56307942542a63657af1bb7580080cafdaa63e508ec5a864cf6c47b40bf24a"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libXau-1.0.12-5.fc45.aarch64.rpm",
+        "size": 34384,
+        "sha256": "bccae56c85a7aeb758712ba7401be6e156e74e63effeb064ef7ab6270511ba9c"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libXcomposite-0.4.6-8.fc45.aarch64.rpm",
+        "size": 24750,
+        "sha256": "e42911b4ed18f30440e4c3900e294cf19bcf8004ded9d4ffc0279ac6ea835f8d"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libXcursor-1.2.3-5.fc45.aarch64.rpm",
+        "size": 31892,
+        "sha256": "076ba644a92d0806594f68f0381cb0a501966177623d302b17705c7be9df9b2a"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libXdamage-1.1.6-8.fc45.aarch64.rpm",
+        "size": 23836,
+        "sha256": "6efa6f0182de4825253f852ff5113dbb87f7e08809f0e5eabcba78dbb97ac9a7"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libXext-1.3.6-6.fc45.aarch64.rpm",
+        "size": 39295,
+        "sha256": "c1b5dffe5db200278652c87e8b0c991ad538d15cff244e18f484bc600de17be0"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libXfixes-6.0.1-8.fc45.aarch64.rpm",
+        "size": 19610,
+        "sha256": "4ce0d54b468d6a9750d3f3e92c00112ca68cae688383d508dd8fdd00d974ff5c"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libXft-2.3.8-11.fc45.aarch64.rpm",
+        "size": 72422,
+        "sha256": "df04d645a0722c4931b93a8d47c50df304b8c51fd73dd24940f6f9d6a2ae6f76"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libXinerama-1.1.5-11.fc45.aarch64.rpm",
+        "size": 14501,
+        "sha256": "b3d5211d67585174200e44c4b96d03120f837b04bf263cd1081057f0fc8e1ddb"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libXrandr-1.5.4-8.fc45.aarch64.rpm",
+        "size": 27612,
+        "sha256": "196a230832fa6bdf61106f198a4e241152da8bcf18c21ad98c4a3920d90b40d2"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libXrender-0.9.12-5.fc45.aarch64.rpm",
+        "size": 27351,
+        "sha256": "0ff669dab35eefbfa9e54963ccbe6952e69044fe6fde043bb092263ff3e063c0"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libXtst-1.2.5-5.fc45.aarch64.rpm",
+        "size": 21104,
+        "sha256": "0b0ede5609a534022490ecdea2309dde7c7faa6883e59e0781987213f87716f6"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libXxf86vm-1.1.6-5.fc45.aarch64.rpm",
+        "size": 17918,
+        "sha256": "cc4b92f31e1985ee93b5a1ec80f343879cde63f50577626d689fc8d50884b438"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libasyncns-0.8-35.fc45.aarch64.rpm",
+        "size": 30268,
+        "sha256": "3c0095e7d5feeaf0e8aee63f3a2bd30d9180023d89780d685ae986b00649b4d4"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libcloudproviders-0.4.1-1.fc45.aarch64.rpm",
+        "size": 45979,
+        "sha256": "dfa1ac3afd8b8cfa62883ccecf5a9b3cb759b658d825c69b1667537983da3d2d"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libdatrie-0.2.14-3.fc45.aarch64.rpm",
+        "size": 32822,
+        "sha256": "ce82e9d08fd932527aff5fb851c7d52d18086059aca1d7d4d9636ce01b05d7e3"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libdav1d-1.5.4-1.fc45.aarch64.rpm",
+        "size": 387693,
+        "sha256": "b037b9e29c2423fe990ea294af92ff65a423bfacc3ff5025aba235dac47f1ea5"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libdecor-0.2.5-3.fc45.aarch64.rpm",
+        "size": 58156,
+        "sha256": "94e18741c083d36135828557b2ba984ce3a2da12dea13ee59f6c9f4bb97101f0"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libdisplay-info-0.3.0-2.fc45.aarch64.rpm",
+        "size": 94368,
+        "sha256": "ab10c7824fc81ad1d15f405ae42aae382164f9cfec2884bdd18c3861b5f2f449"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libdrm-2.4.134-2.fc45.aarch64.rpm",
+        "size": 196762,
+        "sha256": "e1335d6243c4cb1f407cd091bab55188716e48896ecc78c0bbd558e9dc26287c"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libebur128-1.2.6-16.fc45.aarch64.rpm",
+        "size": 24962,
+        "sha256": "af7aaf70097687327159cfa821d5083f1855d107cb3b71be722a93d0a36807dc"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libedit-3.1-60.20260512cvs.fc45.aarch64.rpm",
+        "size": 108928,
+        "sha256": "d71459ed92233073bbfa262786366220582dcdda0f2faf7dc2724bed7d298890"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libepoxy-1.5.10-13.fc45.aarch64.rpm",
+        "size": 246358,
+        "sha256": "e065e8ba3755ac0773c48d01a83d2df1a7af546f6fa79e8bbabe46499b3b45fc"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libevdev-1.13.7-1.fc45.aarch64.rpm",
+        "size": 38722,
+        "sha256": "e6d8251853002f4cf67994184286666068617e74e370a75137da03cc6fa9cf5a"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libglvnd-1.7.0-10.fc45.aarch64.rpm",
+        "size": 111148,
+        "sha256": "8a5a45d42a8a9959442d6361113c84fcb09fe74e36ab473f94a1cb66be14b132"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libglvnd-egl-1.7.0-10.fc45.aarch64.rpm",
+        "size": 36922,
+        "sha256": "556935d24876e62014bea189599f2584804756a1cbe7622c83a255838c8d3406"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libglvnd-gles-1.7.0-10.fc45.aarch64.rpm",
+        "size": 30845,
+        "sha256": "f0934dbf452fc1f4c5198833fffa270be2b65bc13400de17682f58a6e0e478b2"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libglvnd-glx-1.7.0-10.fc45.aarch64.rpm",
+        "size": 131900,
+        "sha256": "7a1f7e74a19005ca602f5555ca08a14b34b9a62dab0ca1aa8a44da41443fdd01"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libgudev-238-10.fc45.aarch64.rpm",
+        "size": 34653,
+        "sha256": "acdb89e0c2fb8409653369ac55e30a57b8e0da39dc950a1e91143c7c8fb0d401"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libgusb-0.4.9-6.fc45.aarch64.rpm",
+        "size": 62177,
+        "sha256": "9a08eaf612803178d67c123c565ab8cb17c30a06bbe2e376500356a38b2a259e"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libinput-1.32.0-1.fc45.aarch64.rpm",
+        "size": 271879,
+        "sha256": "eff2f127d5632e105cbb1189f311708fb2db660670b098a6eba3bed274eebcc2"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libinput-utils-1.32.0-1.fc45.aarch64.rpm",
+        "size": 135324,
+        "sha256": "6ea686ac7bc667b3d5cdc5f1f752b9437034c11c52c25b4c697b61eeabb09ef1"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libjpeg-turbo-3.1.4.1-2.fc45.aarch64.rpm",
+        "size": 257943,
+        "sha256": "7c53ed5d68b6950d97e3220dcc17fb7e27cba85a287bc1415314d97ef662924a"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libjxl-0.11.2-2.fc45.aarch64.rpm",
+        "size": 872021,
+        "sha256": "6bff4f8882596deafa4379ae637ac8fa768770f8ce91c6e5daff168956940017"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/liblc3-1.1.3-9.fc45.aarch64.rpm",
+        "size": 103393,
+        "sha256": "378e7f51f43dc74fdba3b0d2eb28d69d1b853f59fbc0710196e9fcb937337c66"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libldac-2.0.2.6-1.fc45.aarch64.rpm",
+        "size": 42320,
+        "sha256": "ee5b6980ffc2c481dca29c1969f686d725a600df0e713222761389f8566d2caa"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libogg-1.3.6-4.fc45.aarch64.rpm",
+        "size": 34263,
+        "sha256": "0cba657a8689d3784361c06fd6e540c590e0fef8ef168666c1ce4c84feabe7d2"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libopenjph-0.31.0-1.fc45.aarch64.rpm",
+        "size": 122418,
+        "sha256": "561c3fb02e7b3b8a60faa67e67d0fcfc2e8706a8b07353427c1b1f87d5fb138e"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libpciaccess-0.16-18.fc45.aarch64.rpm",
+        "size": 27125,
+        "sha256": "9a9df5ad5db42f36a614230fadd6ab6523f82977914496638e07105bb4ec33e6"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libproxy-0.5.12-3.fc45.aarch64.rpm",
+        "size": 44869,
+        "sha256": "b22b7372c0b7b4d96c19a278a66f17360bcd6b89885979b9b654dfab7723c12c"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/librsvg2-2.63.2-2.fc45.aarch64.rpm",
+        "size": 1844649,
+        "sha256": "78fefc02d3ddffb9a7eedc96ce56f1ecccf026ffa9354ac34acb8a3ccb29bddd"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libseat-0.9.3-2.fc45.aarch64.rpm",
+        "size": 29210,
+        "sha256": "97d018583c0cbdc33d3f407f061f9c2d2089e9581a4b5a6d7326bf2d12c3fc21"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libseccomp-2.6.1-3.fc45.aarch64.rpm",
+        "size": 77319,
+        "sha256": "b7ee7dcd77ca1b324dbc47943c355f01293766063466cdfa2d94fbb81a5796d6"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libsndfile-1.2.2-12.fc45.aarch64.rpm",
+        "size": 219870,
+        "sha256": "565f9762f1279b83ae81a0e2e7db8307835f150acb183fedf9195819d983dba2"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libstemmer-3.1.1-2.fc45.aarch64.rpm",
+        "size": 158584,
+        "sha256": "6d6edf89ff33f0e1030ff7d3e83757d0150ec873762982e25bf9a4936586e7a2"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libthai-0.1.30-3.fc45.aarch64.rpm",
+        "size": 219922,
+        "sha256": "f7577e1fec93b4b2d4c765ed1e102a648f121ea5b9a6e7f4313237bde14c425f"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libtinysparql-3.12.0-2.fc45.aarch64.rpm",
+        "size": 347273,
+        "sha256": "708cfeeb0a540a6ab0add13341fb14c46a68b98a229a41034a18e88cdbd972cb"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libvorbis-1.3.7-21.fc45.aarch64.rpm",
+        "size": 188717,
+        "sha256": "c879e3edb47076747a43562c631d550eb70556821b0ea190fad39f90d3f6997b"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libwacom-2.19.0-2.fc45.aarch64.rpm",
+        "size": 51825,
+        "sha256": "2d05cac1c952dbeed1af320f699b3ae6442ab789549445070971c4dd44d876d5"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libwacom-data-2.19.0-2.fc45.noarch.rpm",
+        "size": 355076,
+        "sha256": "1557380942e10aba02eb789402e6e5d3f6cee98f671c8448b9c80c8b99516481"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libwayland-client-1.26.0-3.fc45.aarch64.rpm",
+        "size": 34623,
+        "sha256": "27d6b754e6f41175127d184e8271014fee4d245b7a28bf3d3103d866df8a62e2"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libwayland-cursor-1.26.0-3.fc45.aarch64.rpm",
+        "size": 19461,
+        "sha256": "ed716bb34c49f52b822a9bdd3f8cbdcdb58e5ea1540f58df6e987f127d94448c"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libwayland-egl-1.26.0-3.fc45.aarch64.rpm",
+        "size": 12895,
+        "sha256": "55264a9f5dbec7225a0e1f42f56e6b9944c7f7cacfa23ec792cec289064ff8aa"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libwayland-server-1.26.0-3.fc45.aarch64.rpm",
+        "size": 43604,
+        "sha256": "5a0d69f3f5a2473edd466c87cc58640b9f456a03c9b11384764df449cf804920"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libwebp-1.6.0-4.fc45.aarch64.rpm",
+        "size": 264618,
+        "sha256": "8b1f536e6e39884fa7ffc90d21eb91d18dfe22694431a1c0a113a02532aed01d"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libxcb-1.17.0-8.fc45.aarch64.rpm",
+        "size": 248634,
+        "sha256": "7c204ac1a02c958c8567d02711588765184fc105a0a228d53f3d603877a736da"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libxkbcommon-1.13.1-4.fc45.aarch64.rpm",
+        "size": 181394,
+        "sha256": "0a5c9d676286f96b10dc574c2d4a0f63b74f53977e93205a5d8690b95320dd06"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/libxshmfence-1.3.2-9.fc45.aarch64.rpm",
+        "size": 13704,
+        "sha256": "f6c3245c2c55de36e4d5cba8d5b25ffaeff6bf3b89ed0f73ae3cda2d337af6ab"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/lm_sensors-libs-3.6.0-25.fc45.aarch64.rpm",
+        "size": 41570,
+        "sha256": "232122507fe722a54bc47ce782d32a2f1c31f6c5f6467c20957eaf2a8c57bf45"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/lzo-2.10-17.fc45.aarch64.rpm",
+        "size": 67470,
+        "sha256": "1269d1e1af2bfd4f2fc5078671cfca76b1ec531264eddfdba9a0dde6ca338319"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/mpdecimal-4.0.1-4.fc45.aarch64.rpm",
+        "size": 97718,
+        "sha256": "96f533428ddbcbeac929a51d889f751c68715d0e3b6798ea16d2c9c600286924"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/mpg123-libs-1.33.6-3.fc45.aarch64.rpm",
+        "size": 369954,
+        "sha256": "b42eb7fd2cc96669ae177ed30e1e8c2773cf5acee16cf79fc6ddcbe07995582e"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/mtdev-1.1.6-13.fc45.aarch64.rpm",
+        "size": 21341,
+        "sha256": "3dacb417ecc23b8386277423e5588a68bf1b069e6b34d928c4326bbb241ac155"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/noopenh264-2.6.0-5.fc45.aarch64.rpm",
+        "size": 22301,
+        "sha256": "9da792f74a96fe54e8383c2f512e6a06d27c7f4964325358c823b38abed846cb"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/opus-1.6-3.fc45.aarch64.rpm",
+        "size": 255996,
+        "sha256": "4c56e969bb078ebd20b9fa0c43345d8a2cd39ed1519b0dd09dedab39ea13df94"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/pango-1.58.2-1.fc45.aarch64.rpm",
+        "size": 366099,
+        "sha256": "a34a4ba54acbdb982e95b9d0b6f9955c6269d260ef8ec320b7a0aff06b68839c"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/pixman-0.46.2-4.fc45.aarch64.rpm",
+        "size": 217513,
+        "sha256": "4a52075837138cbdbc713eac163b6e6d44de0c32d8dfbdaa151677018bbaa809"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/pulseaudio-libs-17.0-11.fc45.aarch64.rpm",
+        "size": 684085,
+        "sha256": "ea68875bd06368f1a71847af51759dbeb9a82532110ed823fa9c5022a254a0c5"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/python-pip-wheel-26.1.2-5.fc45.noarch.rpm",
+        "size": 1232289,
+        "sha256": "f93313670cd7a8116c52a828bffff6ff40a8861695ec53893e492155c08bbe2f"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/python3-libevdev-0.13.1-4.fc45.noarch.rpm",
+        "size": 66237,
+        "sha256": "f16fa242ce8736ad34f5c1792791ffe18d5743eee358774b34603ffd91d0bcba"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/python3-pyudev-0.24.4-5.fc45.noarch.rpm",
+        "size": 99787,
+        "sha256": "9b483f16c6964abef92578f0c5a892b9459d3e0bda75ba76ff79414881b9bb8e"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/rav1e-libs-0.8.1-4.fc45.aarch64.rpm",
+        "size": 831342,
+        "sha256": "78edc88b4964ce45c6ce5436cc184c7b6646e1ba963b2db8fa6268d0d0854825"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/shared-mime-info-2.5.1-3.fc45.aarch64.rpm",
+        "size": 485481,
+        "sha256": "5dba5c7a4b14d7a6e5d98a78f587a9746bfe2b0c215d3dca2f141f13546e8fba"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/spandsp-0.0.6-23.fc45.aarch64.rpm",
+        "size": 340068,
+        "sha256": "d9f6af372164c18d46ac98960474fd49bf94d901e2a3ccdfc21b0da27dd5db93"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/spirv-tools-libs-2026.2-3.fc45.aarch64.rpm",
+        "size": 1694934,
+        "sha256": "2254b9b2d5a1ce0f119f4ea4f3495726328005681ba68c827c04dd80eb7f8a14"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/svt-av1-libs-3.1.2-3.fc45.aarch64.rpm",
+        "size": 1371309,
+        "sha256": "f48e2986d0ed366e5dd3b1337f22131712c0b1e6b2e69545e8f44d1ff364d24b"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/vulkan-loader-1.4.350.0-2.fc45.aarch64.rpm",
+        "size": 180078,
+        "sha256": "80223279e9637c2f0b76f2a63b18d98744835d795fa9fd6f185b40e84f4ab9a1"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/vulkan-tools-1.4.350.0-2.fc45.aarch64.rpm",
+        "size": 393667,
+        "sha256": "47de320a54091e2e0af6e411146ca368f1efa2abb3b2eab7af0fb7da59456aae"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/wayland-utils-1.3.0-4.fc45.aarch64.rpm",
+        "size": 32452,
+        "sha256": "3de1a5c9ca05d2184943386b8484a05a154222a7847e14861e325d678e59df17"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/webrtc-audio-processing-2.1-11.fc45.aarch64.rpm",
+        "size": 398516,
+        "sha256": "e68b83e3dacf180019c274c3753fba8c83a2d3677265acab6f0c12e8acd0a56b"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/weston-15.0.1-3.fc45.aarch64.rpm",
+        "size": 692848,
+        "sha256": "7a7894e7356d62a1a101499ca82c9291803bcdd65d746cc3baa2d05694c4d86d"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/weston-demo-15.0.1-3.fc45.aarch64.rpm",
+        "size": 476995,
+        "sha256": "0c011a24f4906cd3b66600291b46d8ea85cb7cf15efc8f0d56886517b62d9b94"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/weston-libs-15.0.1-3.fc45.aarch64.rpm",
+        "size": 463362,
+        "sha256": "717c4ed69f10886b302f42d968a87e04b677402ac2eb3405545ac58637445741"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/xkeyboard-config-2.48-4.fc45.noarch.rpm",
+        "size": 1030481,
+        "sha256": "6df60e3254b44d4470e0ffdcdd2db52fb83a5e0e1d151a52c21b36bee779c092"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/xml-common-0.6.3-70.fc45.noarch.rpm",
+        "size": 31795,
+        "sha256": "5ae547e42074aa15e78e61b7921602126d2ec603f4f23b289a7c28df321abe9f"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/fedora-abfacc21553c9377/packages/xprop-1.2.8-6.fc45.aarch64.rpm",
+        "size": 35851,
+        "sha256": "4150d218a4b9d80795c3f5dca96129d5882ebe31e582f77ebec92b994ef7a1b4"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/at-spi2-atk-2.62.1-1.fc45.aarch64.rpm",
+        "size": 89099,
+        "sha256": "b04e1c22f0754e5695dcbcaefd938eacdfaa4d2c6ec0242c83de8c240cf12193"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/at-spi2-core-2.62.1-1.fc45.aarch64.rpm",
+        "size": 405940,
+        "sha256": "1c0877d2fc1d353f9a8e70ba72dca484046cef142d04b83c14f7742ffec9f1ba"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/atk-2.62.1-1.fc45.aarch64.rpm",
+        "size": 83670,
+        "sha256": "bcae699bc751fd1325cf54d6d1973b443aabe0195dbb5e13e949075e190783ef"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/bluez-libs-5.88-1.fc45.aarch64.rpm",
+        "size": 92243,
+        "sha256": "174fa1d06ada3772dc46ca914b6c53b90dea85873d22de58928c56bcaed087b7"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/bubblewrap-0.13.1-1.fc45.aarch64.rpm",
+        "size": 68141,
+        "sha256": "0d27af0b2a6e819a03f772f2f8f7c2fa0d46862623dd141e9cb341950bfb4fb2"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/dbus-1.16.4-2.fc45.aarch64.rpm",
+        "size": 8041,
+        "sha256": "8fcaa511ba98967b918d5b01b6810ab51e2d22ab5fbb402d6b6d2d48680d49a0"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/dbus-libs-1.16.4-2.fc45.aarch64.rpm",
+        "size": 149967,
+        "sha256": "8d13bfd51384b3aa860bd854702bb45c795db04066e10b4d1170c1ae360a3a0b"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/expat-2.9.0-1.fc45.aarch64.rpm",
+        "size": 134068,
+        "sha256": "e7a2351a83528a7363ca52056750ef6723f0960d1afddba93509a97986e83d8b"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/freetype-2.14.3-3.fc45.aarch64.rpm",
+        "size": 425353,
+        "sha256": "180a13a7335ce16948fdf3170a4ec053a2ab49ca6aeaa77b0448ce7b42ab008a"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/fribidi-1.0.18-1.fc45.aarch64.rpm",
+        "size": 107125,
+        "sha256": "22e1559af661ad16d80fb2c0b68e9889cbe12f896c0ba9f464eecedd9ce71552"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/glib-networking-2.90.1-1.fc45.aarch64.rpm",
+        "size": 218896,
+        "sha256": "417bfcdf83db81cb3e8e90a468cb858bb4fb8ba546e2852c5010483c41b95d28"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/glycin-libs-2.2.6-1.fc45.aarch64.rpm",
+        "size": 1751875,
+        "sha256": "7a7ed2b509e85163ec92defb38a58eb26be69dad5f50aecdea95b8332bbd8720"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/glycin-loaders-2.2.6-1.fc45.aarch64.rpm",
+        "size": 3388521,
+        "sha256": "90e27b64c19095b645d7f549502d9cd265eadf6162f2c380441bfde0d806a14b"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/harfbuzz-15.0.0-2.fc45.aarch64.rpm",
+        "size": 1319893,
+        "sha256": "6a62c989f980236344077a9560989ae869752402a3ed0cd55e8fdb911560c12c"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/hwdata-0.413-1.fc45.noarch.rpm",
+        "size": 1804695,
+        "sha256": "0e6c276ada173f33eefb4fae72af46198abd2197d1898362afdf1e2998ea1d5d"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/libXi-1.8.4-1.fc45.aarch64.rpm",
+        "size": 41683,
+        "sha256": "bb8f919b7ab74eeffab9451261b5702aedd9b07aa00ecb3a18ce383e03621b50"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/libaom-3.15.3-1.fc45.aarch64.rpm",
+        "size": 1754502,
+        "sha256": "3864b4327e453285cd559818bc8736136f3256909ea2cc397c2f9d71c29d5213"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/libheif-1.23.7-1.fc45.aarch64.rpm",
+        "size": 795498,
+        "sha256": "4b7c2ac23a4ea68a5290311d8d9170cc9c67f2cc52f5a2886571504bdd88011b"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/libicu-78.3-9.fc45.aarch64.rpm",
+        "size": 11435494,
+        "sha256": "4090f4c03f09723b4b2639499909c9548af106b4ae37967c5ad695676f4ec15c"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/liblerc-4.3.0-1.fc45.aarch64.rpm",
+        "size": 201914,
+        "sha256": "80f7b209eefb33a4fb649c15d85805f9e794e60376ebc7826da6273fa09ae918"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/libpng-1.6.59-1.fc45.aarch64.rpm",
+        "size": 120683,
+        "sha256": "4aecabebde3d48cf77b74a5311bf1175c33b74d3180af77bbf421e26f2cd64bb"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/libsbc-2.2-1.fc45.aarch64.rpm",
+        "size": 46048,
+        "sha256": "8e1cad1a59b6e098200449759269eaa464814de324fdc7a6d19e05221fd960da"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/libsoup3-3.8.1-1.fc45.aarch64.rpm",
+        "size": 418271,
+        "sha256": "b60715bdcde013691eedd7db570dd8c8b59243a8d1b7bb5401bb2530303d07f6"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/libtiff-4.7.2-3.fc45.aarch64.rpm",
+        "size": 219601,
+        "sha256": "aa38795ac7ff18e3c63e58bdab5bb75322810408bcc37b65aa46d141e331d762"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/llvm-filesystem-23.1.5-2.fc45.aarch64.rpm",
+        "size": 7550,
+        "sha256": "66fabd5b5dfa2ec0dc862deb5d952f589a7e62b152d146936a8da7bc4771b5de"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/llvm-libs-23.1.5-2.fc45.aarch64.rpm",
+        "size": 36481233,
+        "sha256": "9e879365900dc169631f8cbccae0ab12aace37e7d2466cfd4d8ccbf1aa24754e"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/mesa-dri-drivers-26.2.7-1.fc45.aarch64.rpm",
+        "size": 10762442,
+        "sha256": "6f8141d2cdb38c06d386a6ccb53adc7306b4c8b2d929be6a28f6c064b74d56d4"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/mesa-filesystem-26.2.7-1.fc45.aarch64.rpm",
+        "size": 15354,
+        "sha256": "c92d9069d01769b55c5c19231d0b136ca10f56289681939d9acdca350594d95e"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/mesa-libEGL-26.2.7-1.fc45.aarch64.rpm",
+        "size": 136459,
+        "sha256": "ff9b3c1f5020b0b6b3358212b0290a23414a9f8dd821e0d3e4b6144b1ece0d3d"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/mesa-libGL-26.2.7-1.fc45.aarch64.rpm",
+        "size": 135558,
+        "sha256": "bd69d2f9ca1f0b38e65dc18e0870cc07eadade56befecb9a5fd4b6d625a8f5f2"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/mesa-libgbm-26.2.7-1.fc45.aarch64.rpm",
+        "size": 21989,
+        "sha256": "2819c8bfa9641122c154e50d19838929ea937e94c4e5dc3cb3eec9914f28ee08"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/mesa-vulkan-drivers-26.2.7-1.fc45.aarch64.rpm",
+        "size": 19907692,
+        "sha256": "fdfbc672f18b3d149873975b600772de6c4029f182470e0118eaf897d292ba0b"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/openjpeg-2.5.4-5.fc45.aarch64.rpm",
+        "size": 188082,
+        "sha256": "40bd85870d4a49006374648e949002f7955a1634af553164ab2f8f0699b15dc4"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/pipewire-libs-1.6.11-1.fc45.aarch64.rpm",
+        "size": 2611847,
+        "sha256": "f6533b06c684debc15d378e1ef899ae662e01df975002703cf0dbb24343c4310"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/python3-3.15.2-1.fc45.aarch64.rpm",
+        "size": 28756,
+        "sha256": "11e6becba5ee0510ab3803fab8af1118b68a655e12d341dce5ece33f9479a3f7"
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/var/cache/libdnf5/updates-9079de8d996e1894/packages/python3-libs-3.15.2-1.fc45.aarch64.rpm",
+        "size": 11435487,
+        "sha256": "14b5a9e052c88c42edae8fbd4545c2763978c397937990d36161ae509717aedb"
+      }
+    ],
+    "verified_aarch64_elf_files": [
+      {
+        "path": "/work/fedora-bundle/rootfs/usr/bin/weston",
+        "size": 68952,
+        "sha256": "3418ed0f97a8062ab70bda03aa81e76d48f15fa5bab5148af5c9df5e2251e2d3",
+        "guest_path": "/usr/bin/weston",
+        "elf_machine": 183
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/usr/bin/eglinfo",
+        "size": 267800,
+        "sha256": "9eb4ee82925b8ec1376ac064410f4e81d68b464ea1459a615b5222117e9f9d7e",
+        "guest_path": "/usr/bin/eglinfo",
+        "elf_machine": 183
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/usr/bin/vulkaninfo",
+        "size": 999056,
+        "sha256": "4536fbbaf7216697300007d8e70038260cc8d2e4f6e1dd95102477808521f6c9",
+        "guest_path": "/usr/bin/vulkaninfo",
+        "elf_machine": 183
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/usr/bin/vkcube",
+        "size": 332912,
+        "sha256": "a0fbd089072f12d9044b62d8c079c3dc4215661e4377804d1092db0f05b3fd4d",
+        "guest_path": "/usr/bin/vkcube",
+        "elf_machine": 183
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/usr/lib64/libEGL_mesa.so.0",
+        "size": 403672,
+        "sha256": "2b4854cf7aeb3d2f2c66a7684c48ca65a7d11767a37723f24ab8e7fa4e9f3380",
+        "guest_path": "/usr/lib64/libEGL_mesa.so.0",
+        "elf_machine": 183
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/usr/lib64/libgbm.so.1",
+        "size": 69232,
+        "sha256": "2051a27419dc4200820a904080a83f31bcf5f1ff2137e094de3e8c6a777ea797",
+        "guest_path": "/usr/lib64/libgbm.so.1",
+        "elf_machine": 183
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/usr/lib64/libvulkan_freedreno.so",
+        "size": 14648672,
+        "sha256": "5dac1c5a9cdf4fc543fc149ebad8c88f7e70eede0320c5f2b37cd83f8695579f",
+        "guest_path": "/usr/lib64/libvulkan_freedreno.so",
+        "elf_machine": 183
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/usr/lib64/libvulkan_lvp.so",
+        "size": 14274008,
+        "sha256": "b4f8645a32069e5fd844acc88b9afca4c902e81c67d038e780417fe0a6f52c75",
+        "guest_path": "/usr/lib64/libvulkan_lvp.so",
+        "elf_machine": 183
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/usr/lib64/libgallium-26.2.7.so",
+        "size": 41020528,
+        "sha256": "e651b0e6ce445bc781b4d81c546867cb8f2b03da8a83f883e9e9e4c816191acb",
+        "guest_path": "/usr/lib64/libgallium-26.2.7.so",
+        "elf_machine": 183
+      },
+      {
+        "path": "/work/fedora-bundle/rootfs/usr/lib64/dri/msm_dri.so",
+        "size": 134688,
+        "sha256": "87d5d150fce8e8ec1a5a478af3c47cdf164cd87c3aa5804b51b025d0dd95e436",
+        "guest_path": "/usr/lib64/dri/msm_dri.so",
+        "elf_machine": 183
+      }
+    ]
+  },
+  "emulated_graphics": {
+    "schema_version": 1,
+    "started_utc": "2026-11-22T22:02:09.961384+00:00",
+    "rootfs": "/work/fedora-bundle/rootfs",
+    "output_directory": "/work/fedora-smoke-primary",
+    "execution": "ARM64 QEMU user mode through fixed PRoot 5.5.0",
+    "physical_gpu_exposed": false,
+    "hardware_acceleration_tested": false,
+    "native_display_tested": false,
+    "probes": {
+      "egl_readback": {
+        "command": [
+          "/usr/bin/python3",
+          "/opt/tb371fc-build-tools/fedora_guest_egl.py"
+        ],
+        "environment_overrides": {},
+        "exit_code": 0,
+        "timed_out": false,
+        "elapsed_seconds": 17.64,
+        "log": "/work/fedora-smoke-primary/egl_readback.log",
+        "log_bytes": 544,
+        "log_sha256": "665ab5966b79d2095e0fd66dfe5813a2892bbf2e81b6076d97fb45abf6aa0c01",
+        "result": {
+          "schema_version": 1,
+          "test": "software EGL pbuffer clear and pixel readback",
+          "machine": "aarch64",
+          "egl_version": "1.5",
+          "vendor": "Mesa",
+          "renderer": "llvmpipe (LLVM 23.1.5, 128 bits)",
+          "version": "OpenGL ES 3.2 Mesa 26.2.7",
+          "expected_rgba8": [
+            64,
+            128,
+            191,
+            255
+          ],
+          "readback_rgba8": [
+            64,
+            128,
+            191,
+            255
+          ],
+          "component_tolerance": 1,
+          "gl_error": 0,
+          "software_renderer_confirmed": true,
+          "passed": true,
+          "hardware_acceleration_tested": false,
+          "native_display_tested": false
+        }
+      },
+      "lavapipe_vulkaninfo": {
+        "command": [
+          "/usr/bin/vulkaninfo",
+          "--summary"
+        ],
+        "environment_overrides": {
+          "VK_DRIVER_FILES": "/usr/share/vulkan/icd.d/lvp_icd.aarch64.json"
+        },
+        "exit_code": 0,
+        "timed_out": false,
+        "elapsed_seconds": 3.589,
+        "log": "/work/fedora-smoke-primary/lavapipe_vulkaninfo.log",
+        "log_bytes": 2228,
+        "log_sha256": "b4d481761c508700773b8018ccf55e2aa42535972b309099922fb2eaf27dc171",
+        "software_device_reported": true
+      },
+      "turnip_without_device": {
+        "command": [
+          "/usr/bin/vulkaninfo",
+          "--summary"
+        ],
+        "environment_overrides": {
+          "VK_DRIVER_FILES": "/usr/share/vulkan/icd.d/freedreno_icd.aarch64.json"
+        },
+        "exit_code": 1,
+        "timed_out": false,
+        "elapsed_seconds": 0.926,
+        "log": "/work/fedora-smoke-primary/turnip_without_device.log",
+        "log_bytes": 372,
+        "log_sha256": "13ea627588df365c10d1f8a191593f3bc1c5df10d2506f5c54d8f564c63d0b5a"
+      },
+      "wayland_info": {
+        "command": [
+          "/usr/bin/wayland-info"
+        ],
+        "environment_overrides": {},
+        "exit_code": 0,
+        "timed_out": false,
+        "elapsed_seconds": 0.215,
+        "log": "/work/fedora-smoke-primary/wayland_info.log",
+        "log_bytes": 2173,
+        "log_sha256": "3d468719ff523259bf9667946030390cf65f2b1f935d1a8b229481344a25e5c0",
+        "compositor_and_output_reported": true
+      },
+      "simple_shm": {
+        "command": [
+          "/usr/bin/weston-simple-shm"
+        ],
+        "environment_overrides": {
+          "WAYLAND_DEBUG": "1"
+        },
+        "exit_code": 255,
+        "timed_out": true,
+        "elapsed_seconds": 5.004,
+        "log": "/work/fedora-smoke-primary/simple_shm.log",
+        "log_bytes": 144552,
+        "log_sha256": "fc14670321a40027d8a2c80151d5cd9fb77583aa97f4bb34e9a17a24ce1554e9",
+        "frame_callbacks": 295
+      },
+      "lavapipe_vkcube": {
+        "command": [
+          "/usr/bin/vkcube",
+          "--wsi",
+          "wayland",
+          "--c",
+          "8"
+        ],
+        "environment_overrides": {
+          "VK_DRIVER_FILES": "/usr/share/vulkan/icd.d/lvp_icd.aarch64.json",
+          "WAYLAND_DEBUG": "1"
+        },
+        "exit_code": 0,
+        "timed_out": false,
+        "elapsed_seconds": 54.542,
+        "log": "/work/fedora-smoke-primary/lavapipe_vkcube.log",
+        "log_bytes": 42451,
+        "log_sha256": "f92c604ea9eb818bcd94aee4efdbb1115ea626aa51487865a3a77d49a63e3b78",
+        "requested_frames": 8,
+        "wayland_buffer_commits": 16
+      }
+    },
+    "packaged_icds": {
+      "lavapipe": {
+        "path": "/usr/share/vulkan/icd.d/lvp_icd.aarch64.json",
+        "content": {
+          "ICD": {
+            "api_version": "1.4.354",
+            "library_arch": "64",
+            "library_path": "/usr/lib64/libvulkan_lvp.so"
+          },
+          "file_format_version": "1.0.1"
+        }
+      },
+      "freedreno": {
+        "path": "/usr/share/vulkan/icd.d/freedreno_icd.aarch64.json",
+        "content": {
+          "ICD": {
+            "api_version": "1.4.354",
+            "library_arch": "64",
+            "library_path": "/usr/lib64/libvulkan_freedreno.so"
+          },
+          "file_format_version": "1.0.1"
+        }
+      }
+    },
+    "weston": {
+      "command": [
+        "/usr/bin/weston",
+        "--backend=headless",
+        "--renderer=pixman",
+        "--shell=kiosk-shell.so",
+        "--no-config",
+        "--idle-time=0",
+        "--width=256",
+        "--height=256",
+        "--socket=wayland-fedora-smoke"
+      ],
+      "log": "/work/fedora-smoke-primary/weston.log",
+      "log_sha256": "f3806db0bafbba962257a4fd0c37da07e741f10893f6f70f81fb1370a062f3b0",
+      "renderer": "explicit Pixman software renderer",
+      "exit_code_after_requested_shutdown": 0
+    },
+    "software_smoke_passed": true,
+    "completed_utc": "2026-11-22T22:03:32.749981+00:00"
+  },
+  "selected_diagnostics": {
+    "egl_readback": "{\n  \"schema_version\": 1,\n  \"test\": \"software EGL pbuffer clear and pixel readback\",\n  \"machine\": \"aarch64\",\n  \"egl_version\": \"1.5\",\n  \"vendor\": \"Mesa\",\n  \"renderer\": \"llvmpipe (LLVM 23.1.5, 128 bits)\",\n  \"version\": \"OpenGL ES 3.2 Mesa 26.2.7\",\n  \"expected_rgba8\": [\n    64,\n    128,\n    191,\n    255\n  ],\n  \"readback_rgba8\": [\n    64,\n    128,\n    191,\n    255\n  ],\n  \"component_tolerance\": 1,\n  \"gl_error\": 0,\n  \"software_renderer_confirmed\": true,\n  \"passed\": true,\n  \"hardware_acceleration_tested\": false,\n  \"native_display_tested\": false\n}\n",
+    "lavapipe_vulkaninfo": "'DISPLAY' environment variable not set... skipping surface info\n==========\nVULKANINFO\n==========\n\nVulkan Instance Version: 1.4.350\n\n\nInstance Extensions: count = 20\n-------------------------------\nVK_EXT_debug_report                    : extension revision 10\nVK_EXT_debug_utils                     : extension revision 2\nVK_EXT_headless_surface                : extension revision 1\nVK_EXT_layer_settings                  : extension revision 2\nVK_EXT_surface_maintenance1            : extension revision 1\nVK_EXT_swapchain_colorspace            : extension revision 5\nVK_KHR_device_group_creation           : extension revision 1\nVK_KHR_external_fence_capabilities     : extension revision 1\nVK_KHR_external_memory_capabilities    : extension revision 1\nVK_KHR_external_semaphore_capabilities : extension revision 1\nVK_KHR_get_physical_device_properties2 : extension revision 2\nVK_KHR_get_surface_capabilities2       : extension revision 1\nVK_KHR_portability_enumeration         : extension revision 1\nVK_KHR_surface                         : extension revision 25\nVK_KHR_surface_maintenance1            : extension revision 1\nVK_KHR_surface_protected_capabilities  : extension revision 1\nVK_KHR_wayland_surface                 : extension revision 6\nVK_KHR_xcb_surface                     : extension revision 6\nVK_KHR_xlib_surface                    : extension revision 6\nVK_LUNARG_direct_driver_loading        : extension revision 1\n\nInstance Layers: count = 2\n--------------------------\nVK_LAYER_MESA_anti_lag      Open-source implementation of the VK_AMD_anti_lag extension. 1.4.303  version 1\nVK_LAYER_MESA_device_select Linux device selection layer                                 1.4.303  version 1\n\nDevices:\n========\nGPU0:\n\tapiVersion         = 1.4.354\n\tdriverVersion      = 26.2.7\n\tvendorID           = 0x10005\n\tdeviceID           = 0x0000\n\tdeviceType         = PHYSICAL_DEVICE_TYPE_CPU\n\tdeviceName         = llvmpipe (LLVM 23.1.5, 128 bits)\n\tdriverID           = DRIVER_ID_MESA_LLVMPIPE\n\tdriverName         = llvmpipe\n\tdriverInfo         = Mesa 26.2.7 (LLVM 23.1.5)\n\tconformanceVersion = 1.3.1.1\n\tdeviceUUID         = 6d657361-3236-2e32-2e37-000000000000\n\tdriverUUID         = 6c6c766d-7069-7065-5555-494400000000\n",
+    "turnip_without_device": "'DISPLAY' environment variable not set... skipping surface info\nERROR: [Loader Message] Code 0 : setup_loader_term_phys_devs:  Failed to detect any valid GPUs in the current config\nERROR at /builddir/build/BUILD/vulkan-tools-1.4.350.0-build/Vulkan-Tools-vulkan-sdk-1.4.350.0/vulkaninfo/./vulkaninfo.h:249:vkEnumeratePhysicalDevices failed with ERROR_INITIALIZATION_FAILED\n",
+    "weston": "Date: 2026-11-22 UTC\n[22:02:32.237] weston 15.0.1\n               https://wayland.freedesktop.org\n               Bug reports to: https://gitlab.freedesktop.org/wayland/weston/issues/\n               Build: 15.0.1\n[22:02:32.251] Command line: /usr/bin/weston --backend=headless --renderer=pixman --shell=kiosk-shell.so --no-config --idle-time=0 --width=256 --height=256 --socket=wayland-fedora-smoke\n[22:02:32.251] OS: Linux, 7.0.14-26-pve, #1 SMP PREEMPT_DYNAMIC PMX 7.0.14-26 (2026-10-22T18:45Z), aarch64\n[22:02:32.252] Flight recorder: enabled, scopes subscribed: log\n[22:02:32.253] Starting with no config file.\n[22:02:32.258] Output repaint window is 7 ms maximum.\n[22:02:32.395] Loading module '/usr/lib64/libweston-15/headless-backend.so'\n[22:02:32.776] Using Pixman renderer\n[22:02:32.777] Registered plugin API 'weston_windowed_output_api_headless_v2' of size 16\n[22:02:32.778] Color manager: no-op\n                 protocol support: no\n[22:02:32.778] Color representation not supported by renderer\n[22:02:32.791] Output 'headless' attempts EOTF mode SDR and colorimetry mode default.\n[22:02:32.791] Output 'headless' using color profile: stock sRGB color profile\n[22:02:32.793] Output 'headless' enabled with head(s) headless\n[22:02:32.794] Compositor capabilities:\n               arbitrary surface rotation: yes\n               screen capture uses y-flip: no\n               cursor planes: no\n               arbitrary resolutions: no\n               view mask clipping: yes\n               explicit sync: no\n               color operations: no\n               color representation: no\n               presentation clock: CLOCK_MONOTONIC_RAW, id 4\n               presentation clock resolution: 0.000000001 s\n[22:02:32.827] Loading module '/usr/lib64/weston/kiosk-shell.so'\n[22:03:32.686] caught signal 15\n"
+  },
+  "native_tool_debs": [
+    {
+      "path": "/work/fedora-host-tools/packages/libpkgconf3_1.8.1-4_amd64.deb",
+      "size": 36436,
+      "sha256": "85087cd04e57fd4ab7d6e816d348c335047823ab60c78878336b74f07b352ca1"
+    },
+    {
+      "path": "/work/fedora-host-tools/packages/libtalloc-dev_2%3a2.4.3+samba4.22.11+dfsg-0+deb13u1_amd64.deb",
+      "size": 75044,
+      "sha256": "c415d6e45ce02e30099198dedc39afba1057d7c00bebcdb2735c23399e4df8e7"
+    },
+    {
+      "path": "/work/fedora-host-tools/packages/libtalloc2_2%3a2.4.3+samba4.22.11+dfsg-0+deb13u1_amd64.deb",
+      "size": 63644,
+      "sha256": "b4cc8aa74c8b7c05a64efb6577acc955f522a8e39d8f37fe60b1b3fe6634ce96"
+    },
+    {
+      "path": "/work/fedora-host-tools/packages/pkgconf-bin_1.8.1-4_amd64.deb",
+      "size": 30220,
+      "sha256": "54efef2aef4db5fcb5e0f5b7746465000c6a779b06f3686d0ec3d2a901b20aeb"
+    },
+    {
+      "path": "/work/fedora-host-tools/packages/pkgconf_1.8.1-4_amd64.deb",
+      "size": 26172,
+      "sha256": "f1fcad470ca3ac80b4a0f4af6f03cd215089473996b07e508b3ee342bbb11af7"
+    },
+    {
+      "path": "/work/fedora-host-tools/packages/proot_5.1.0-1.3+b1_amd64.deb",
+      "size": 75876,
+      "sha256": "7ca9260edf1ca6666f9b33e1da551638055934d673117acd135ff5367f420744"
+    }
+  ],
+  "reproduction_scripts": [
+    {
+      "path": "/work/fedora-userspace.sh",
+      "size": 5863,
+      "sha256": "e3ed4d6763f2f890bdc3bebf3f2b03fd45417adc5e0fdbf8cee1b4021df57b18"
+    },
+    {
+      "path": "/work/fedora_guest_egl.py",
+      "size": 6085,
+      "sha256": "dfb2b3b3cc1e77a07a7ee966235bb2005a0a6600592a37285950880141b6a7fe"
+    },
+    {
+      "path": "/work/fedora_smoke.py",
+      "size": 9232,
+      "sha256": "a15a883cb29bd5084e0aa0696b4b1bbeb1f05715aac5332c619969607c3ccdcf"
+    },
+    {
+      "path": "/work/fedora_evidence.py",
+      "size": 10934,
+      "sha256": "d3727f3a73c6f8b63fa3a35bfcb75ea71bbb82a700817779abfab01975382141"
+    }
+  ],
+  "jobs": {
+    "fedora-check": {
+      "command": [
+        "bash",
+        "/work/fedora-userspace.sh",
+        "check"
+      ],
+      "start_utc": "2026-11-22T22:02:09.320547+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 47.57715237198863,
+      "status_file": {
+        "path": "/work/fedora-check.json",
+        "size": 189,
+        "sha256": "bbea5eef9888c09a9c7b354cfcbf901bc09b3483e1f483844fea85729966d4a0"
+      },
+      "log_file": {
+        "path": "/work/fedora-check.log",
+        "size": 7695,
+        "sha256": "9b5b88ed3b7b35a72e7c315f252500ff146e0ad9b50c24fda987bccfaa013406"
+      }
+    },
+    "fedora-cli-probe": {
+      "command": [
+        "python3",
+        "/work/fedora-cli-probe.py"
+      ],
+      "start_utc": "2026-11-22T22:02:09.319403+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 3.0836529320222326,
+      "status_file": {
+        "path": "/work/fedora-cli-probe.json",
+        "size": 180,
+        "sha256": "6f34addd16004832fa299ad53b95ee917ca38912df0510b883325b1f10990173"
+      },
+      "log_file": {
+        "path": "/work/fedora-cli-probe.log",
+        "size": 4550,
+        "sha256": "2d691d9a0c86b03e2b070494e2b9423f1044b40d73af41e0de94251b1420feb8"
+      }
+    },
+    "fedora-install": {
+      "command": [
+        "bash",
+        "/work/fedora-userspace.sh",
+        "install"
+      ],
+      "start_utc": "2026-11-22T21:53:17.693282+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 482.58108122099657,
+      "status_file": {
+        "path": "/work/fedora-install.json",
+        "size": 192,
+        "sha256": "1e15cd33f46500d03d99e028e2da06e3a439020646e9e4f9fdc317af96591047"
+      },
+      "log_file": {
+        "path": "/work/fedora-install.log",
+        "size": 39934,
+        "sha256": "d9b0ef7a726eb4fdf65a69e4bd174a63f666df22dd1997c7605336ca86778584"
+      }
+    },
+    "fedora-preflight": {
+      "command": [
+        "python3",
+        "/work/fedora-preflight.py"
+      ],
+      "start_utc": "2026-11-22T21:43:15.333284+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 1.139639779983554,
+      "status_file": {
+        "path": "/work/fedora-preflight.json",
+        "size": 179,
+        "sha256": "62cea9ee3476ef81b3fec632104a93695601e855da240c957f675794b34b6c71"
+      },
+      "log_file": {
+        "path": "/work/fedora-preflight.log",
+        "size": 4917,
+        "sha256": "ab2fad5993cda7ba19264871555e57bd3c8209a76a84322008032afa91a9dbf0"
+      }
+    },
+    "fedora-proot-build-v2": {
+      "command": [
+        "bash",
+        "/work/fedora-proot-build-v2.sh"
+      ],
+      "start_utc": "2026-11-22T21:49:31.027286+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 18.810693713021465,
+      "status_file": {
+        "path": "/work/fedora-proot-build-v2.json",
+        "size": 182,
+        "sha256": "f89bb34f783725c481a171c6688bb97c1761c1eb2e9b6309496e275f8ce7d448"
+      },
+      "log_file": {
+        "path": "/work/fedora-proot-build-v2.log",
+        "size": 11067,
+        "sha256": "0fe059b5b2fe7bff01c20c2c1510ab8f3e5d9ce1643d523e213a29e1e81798e7"
+      }
+    },
+    "fedora-proot-build": {
+      "command": [
+        "bash",
+        "/work/fedora-proot-build.sh"
+      ],
+      "start_utc": "2026-11-22T21:48:21.072199+00:00",
+      "exit_code": 2,
+      "elapsed_seconds": 23.697230561985634,
+      "status_file": {
+        "path": "/work/fedora-proot-build.json",
+        "size": 179,
+        "sha256": "9c2529ea0a80546906b2d8be6ffc3aa41f67aeb6e166c9800d65a865c8eb78a7"
+      },
+      "log_file": {
+        "path": "/work/fedora-proot-build.log",
+        "size": 1943,
+        "sha256": "df03c19c65999bb8a8489e50eb74e131b8bbdd2a29598635fcd2efb9ff6bd42d"
+      }
+    },
+    "fedora-proot-fs-probe": {
+      "command": [
+        "bash",
+        "/work/fedora-proot-fs-probe.sh"
+      ],
+      "start_utc": "2026-11-22T21:47:42.824766+00:00",
+      "exit_code": 2,
+      "elapsed_seconds": 0.5383053680416197,
+      "status_file": {
+        "path": "/work/fedora-proot-fs-probe.json",
+        "size": 182,
+        "sha256": "eaefef1544790fcf55dcf1d0c28cb4b6723498bd52dd148e5effec7d9178cbcd"
+      },
+      "log_file": {
+        "path": "/work/fedora-proot-fs-probe.log",
+        "size": 405,
+        "sha256": "156547b9e60f7c001dd9a1d8c33e1342cf58a372470f38eec20bb5ba3db94ad3"
+      }
+    },
+    "fedora-proot-setup": {
+      "command": [
+        "bash",
+        "/work/fedora-proot-setup.sh"
+      ],
+      "start_utc": "2026-11-22T21:43:57.543886+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 13.285013446991798,
+      "status_file": {
+        "path": "/work/fedora-proot-setup.json",
+        "size": 179,
+        "sha256": "65bb629e9fb7a3371255ddcc26ed33329037fd228f4329f3d724ac8d6148d87b"
+      },
+      "log_file": {
+        "path": "/work/fedora-proot-setup.log",
+        "size": 1015,
+        "sha256": "c620976a21013b5084e1cb3d7e1cdbe2c90e2b978def740705531bc54404633a"
+      }
+    },
+    "fedora-query-v2": {
+      "command": [
+        "bash",
+        "/work/fedora-query-v2.sh"
+      ],
+      "start_utc": "2026-11-22T21:46:12.127066+00:00",
+      "exit_code": 1,
+      "elapsed_seconds": 7.867082843033131,
+      "status_file": {
+        "path": "/work/fedora-query-v2.json",
+        "size": 175,
+        "sha256": "aa3ddf22e647220036700a067584307e715ab40911cdc25c5347386db4309582"
+      },
+      "log_file": {
+        "path": "/work/fedora-query-v2.log",
+        "size": 372,
+        "sha256": "79954e93583855e604c0b834d63bebcf082fb53e32f58e4b692acb339d2280e7"
+      }
+    },
+    "fedora-query-v3": {
+      "command": [
+        "bash",
+        "/work/fedora-query-v3.sh"
+      ],
+      "start_utc": "2026-11-22T21:50:56.988713+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 73.34822004998568,
+      "status_file": {
+        "path": "/work/fedora-query-v3.json",
+        "size": 175,
+        "sha256": "5889408e8c2b04a8b5767063619a05fdd93c2662e53c308edbc326beaf516836"
+      },
+      "log_file": {
+        "path": "/work/fedora-query-v3.log",
+        "size": 1591,
+        "sha256": "7d86cc75dd2c414b4e6598b6072853724ccdd28ed57526834514c3e0b873f8c1"
+      }
+    },
+    "fedora-query": {
+      "command": [
+        "bash",
+        "/work/fedora-query.sh"
+      ],
+      "start_utc": "2026-11-22T21:45:04.841206+00:00",
+      "exit_code": 1,
+      "elapsed_seconds": 36.71424343797844,
+      "status_file": {
+        "path": "/work/fedora-query.json",
+        "size": 172,
+        "sha256": "6cce75b267c64a74de5562bd32189f1e819f97ebc9b5b787e3d41f78de0a6746"
+      },
+      "log_file": {
+        "path": "/work/fedora-query.log",
+        "size": 958,
+        "sha256": "978068c24e18134d588b14a285a8f529469199d7a87cce00b483a95a503d22be"
+      }
+    },
+    "fedora-smoke": {
+      "command": [
+        "python3",
+        "/work/fedora_smoke.py",
+        "--run-id",
+        "primary"
+      ],
+      "start_utc": "2026-11-22T22:02:09.319403+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 83.50273671001196,
+      "status_file": {
+        "path": "/work/fedora-smoke.json",
+        "size": 206,
+        "sha256": "716e80f4530fb64611a3c852d5b59d706fe6ac69cc83a25e61ee5f1b0d938b2b"
+      },
+      "log_file": {
+        "path": "/work/fedora-smoke.log",
+        "size": 2359,
+        "sha256": "0e809771f9c3a50a97b82705d35bd32246f069b09124827944515f10dea027ce"
+      }
+    }
+  },
+  "hardware_claims": {
+    "tablet_booted_or_flashed": false,
+    "bootable_tablet_image_produced": false,
+    "adreno_acceleration_passed": false,
+    "native_dpu_dsi_passed": false,
+    "gpu_process_isolation_passed": false,
+    "hardware_video_passed": false,
+    "systemd_pid1_tested": false,
+    "physical_input_or_wifi_tested": false,
+    "android_gpu_binaries_used": false
+  }
+}

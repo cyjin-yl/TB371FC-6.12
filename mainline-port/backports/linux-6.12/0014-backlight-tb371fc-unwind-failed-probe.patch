@@ -1,0 +1,49 @@
+Subject: [PATCH] backlight: tb371fc: unwind global state on probe failure
+
+Each controller is linked into a global list before the initial
+brightness writes. If one of those writes fails, probe returns an error
+and devres frees the controller, but remove() is not called. A later
+brightness update can then traverse a freed list node. If this probe also
+registered the shared backlight, its global pointer becomes stale too.
+
+Unlink the failed controller under the existing mutex on every failure
+following list insertion. Clear the shared pointer only when it belongs
+to this client, and clear client data. Keep the successfully bound peer
+and any shared backlight owned by a different client. Fold registration
+failure into the same cleanup so the list entry is removed exactly once.
+
+The devm registration continues to own backlight unregistration; do not
+unregister it a second time. Brightness values, sink masks, register writes
+and successful probe/remove behavior are unchanged.
+
+Apply to drivers/video/backlight/tb371fc-ktz8866.c after copying the
+unmodified mainline-port/backports/linux-6.12/tb371fc-ktz8866.c into the
+kernel tree. The same hunks also match the mainline-port/drivers source
+and the historical scripts/r170-backlight source when staged at that path.
+
+diff --git a/drivers/video/backlight/tb371fc-ktz8866.c b/drivers/video/backlight/tb371fc-ktz8866.c
+--- a/drivers/video/backlight/tb371fc-ktz8866.c
++++ b/drivers/video/backlight/tb371fc-ktz8866.c
+@@ -121,7 +121,6 @@
+ 		if (IS_ERR(tb371fc_backlight)) {
+ 			ret = PTR_ERR(tb371fc_backlight);
+ 			tb371fc_backlight = NULL;
+-			list_del(&ktz->node);
+ 		}
+ 	}
+ 
+@@ -139,6 +138,14 @@
+ 		} else {
+ 			ret = tb371fc_ktz8866_write_level(ktz, brightness);
+ 		}
++	}
++	if (ret) {
++		/* Probe failure releases devres without calling remove(). */
++		list_del(&ktz->node);
++		if (tb371fc_backlight &&
++		    tb371fc_backlight->dev.parent == &client->dev)
++			tb371fc_backlight = NULL;
++		i2c_set_clientdata(client, NULL);
+ 	}
+ 	mutex_unlock(&tb371fc_ktz8866_lock);
+ 

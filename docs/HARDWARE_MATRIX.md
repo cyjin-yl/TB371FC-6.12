@@ -25,6 +25,26 @@ owner's Android captures, isolated traces and source comparisons. It does
 [power audit](research/2026-11-23/power-management.md) for current evidence and
 explicit differences from the historical assumptions below.
 
+For this owner, completion follows the
+[whole-device acceptance contract](research/2026-11-23/acceptance.md): all fitted
+devices and intended combined modes must pass on one identified final Linux
+stack, with Android parity or better for measured performance, latency, quality
+and energy. The research kernel builds and generic QEMU boots add build evidence;
+they do not close the physical hardware cases in this table.
+
+The later [owner peripheral inventory](research/2026-11-23/android-peripheral-inventory.md)
+adds a material distinction: this owner's Android SensorService reports
+TDK-Invensense `icm4x6xx` acceleration/gyroscope entries, whereas the historical
+table below names Bosch BMI3x0. Use the owner-specific report when choosing
+drivers and orientation data; neither a service declaration nor a historical
+identity substitutes for a Linux data-quality test. The same capture enumerates
+two camera devices and four bound `tfa98xx` I2C clients, but does not establish
+the camera silicon names or the amplifier's exact silicon/container variant.
+It also records a bound `rtc6226` I2C client and `radio0` tuner interface;
+FM reception, antenna requirements, audio routing and supported owner features
+remain untested and require their own acceptance case.
+The historical rows below are retained as their original experiment record.
+
 ## Historical bring-up matrix
 
 | Subsystem | Exact hardware / wiring | Evidence | Upstream path | Historical local status / later correction |

@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "evidence_class": "host_build",
+  "observed_utc": "2026-11-22T22:58:18.656861+00:00",
+  "scope": "Isolated standard Docker builder with an SSD work bind; build infrastructure only.",
+  "result": {
+    "ready": true,
+    "bootstrap_exit_code": 0,
+    "bootstrap_elapsed_seconds": 617.6851472950075,
+    "aarch64_compiler_probe": true,
+    "kernel_built_by_this_bootstrap": false,
+    "tablet_linux_boot_tested": false,
+    "hardware_accepted": false
+  },
+  "docker": {
+    "Id": "c1b39497c162b3d43f2dad1f85ccc8627f88f91df7a4d76def482143178176d9",
+    "Name": "/tb371fc-build-ssd-20261123",
+    "Image": "sha256:ec92d6b34c6a7e6372d87dc9ef2fd6e8ca8125353fe7d033c676f51cf923a13b",
+    "running": true,
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "/workspaces/tb371fc-linux",
+        "Destination": "/src",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/tank/hot/tb371fc-build-20261123",
+        "Destination": "/work",
+        "RW": true,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/downloads/linux-6.12.114.tar.xz",
+        "Destination": "/seed/linux-6.12.114.tar.xz",
+        "RW": false,
+        "Propagation": "rslave"
+      },
+      {
+        "Type": "bind",
+        "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/source-manifest.json",
+        "Destination": "/seed/source-manifest.json",
+        "RW": false,
+        "Propagation": "rslave"
+      }
+    ],
+    "limits": {
+      "NanoCpus": 4000000000,
+      "Memory": 8589934592,
+      "MemorySwap": 8589934592,
+      "PidsLimit": 2048,
+      "Privileged": false,
+      "SecurityOpt": [
+        "no-new-privileges"
+      ],
+      "Init": true,
+      "RestartPolicy": {
+        "Name": "no",
+        "MaximumRetryCount": 0
+      },
+      "Devices": []
+    }
+  },
+  "records": {
+    "control/provision.json": {
+      "remote_path": "/tank/hot/tb371fc-build-20261123/control/provision.json",
+      "size": 2948,
+      "sha256": "1ba49bd44a5eb8116ca113b4b1256609ccdac4ffd3ae7cb1e8dba9c86dbbd189",
+      "record": {
+        "created_utc": "2026-11-22T22:43:55.728732+00:00",
+        "name": "tb371fc-build-ssd-20261123",
+        "container_id": "c1b39497c162b3d43f2dad1f85ccc8627f88f91df7a4d76def482143178176d9",
+        "base_image": "debian@sha256:a99cfc517144bc59b1978475ec53b46ecabec7e43635402ee5b77cc54cd1b20a",
+        "actual_image_id": "sha256:ec92d6b34c6a7e6372d87dc9ef2fd6e8ca8125353fe7d033c676f51cf923a13b",
+        "cpu_count": 4,
+        "memory_bytes": 8589934592,
+        "memory_plus_swap_bytes": 8589934592,
+        "pids_limit": 2048,
+        "privileged": false,
+        "mounts": [
+          {
+            "Type": "bind",
+            "Source": "/workspaces/tb371fc-linux",
+            "Destination": "/src",
+            "Mode": "",
+            "RW": false,
+            "Propagation": "rprivate"
+          },
+          {
+            "Type": "bind",
+            "Source": "/tank/hot/tb371fc-build-20261123",
+            "Destination": "/work",
+            "Mode": "",
+            "RW": true,
+            "Propagation": "rprivate"
+          },
+          {
+            "Type": "bind",
+            "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/downloads/linux-6.12.114.tar.xz",
+            "Destination": "/seed/linux-6.12.114.tar.xz",
+            "Mode": "",
+            "RW": false,
+            "Propagation": "rslave"
+          },
+          {
+            "Type": "bind",
+            "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/source-manifest.json",
+            "Destination": "/seed/source-manifest.json",
+            "Mode": "",
+            "RW": false,
+            "Propagation": "rslave"
+          }
+        ],
+        "create_command": [
+          "docker",
+          "create",
+          "--pull=never",
+          "--name",
+          "tb371fc-build-ssd-20261123",
+          "--hostname",
+          "tb371fc-ssd-builder",
+          "--init",
+          "--cpus",
+          "4",
+          "--memory",
+          "8g",
+          "--memory-swap",
+          "8g",
+          "--pids-limit",
+          "2048",
+          "--security-opt",
+          "no-new-privileges",
+          "--restart",
+          "no",
+          "--label",
+          "com.tb371fc.project=mainline-research",
+          "--label",
+          "com.tb371fc.role=ssd-kernel-builder",
+          "--env",
+          "PATH=/usr/lib/llvm-19/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "--env",
+          "TMPDIR=/work/tmp",
+          "--mount",
+          "type=bind,src=/tank/hot/tb371fc-build-20261123,dst=/work",
+          "--mount",
+          "type=bind,src=/workspaces/tb371fc-linux,dst=/src,readonly",
+          "--mount",
+          "type=bind,src=/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/downloads/linux-6.12.114.tar.xz,dst=/seed/linux-6.12.114.tar.xz,readonly",
+          "--mount",
+          "type=bind,src=/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/source-manifest.json,dst=/seed/source-manifest.json,readonly",
+          "debian@sha256:a99cfc517144bc59b1978475ec53b46ecabec7e43635402ee5b77cc54cd1b20a",
+          "sleep",
+          "infinity"
+        ],
+        "ct_memory_before_bytes": 17331589120,
+        "ct_memory_limit": "max",
+        "bootstrap_sha256": "3a31e6e3405a00123538809b0dff64403312943a8eed4067f4639e8ea5278f82",
+        "scope": "new project Docker builder; no old container, volume, daemon or host storage settings changed"
+      }
+    },
+    "ssd-bootstrap.json": {
+      "remote_path": "/tank/hot/tb371fc-build-20261123/ssd-bootstrap.json",
+      "size": 249,
+      "sha256": "b814966d1307bad9e2e05f709f616f0b180c81fb2790b36bcf2951b4458b0fd3",
+      "record": {
+        "command": [
+          "docker",
+          "exec",
+          "tb371fc-build-ssd-20261123",
+          "bash",
+          "/work/control/bootstrap_ssd_builder.sh"
+        ],
+        "start_utc": "2026-11-22T22:43:57.401590+00:00",
+        "exit_code": 0,
+        "elapsed_seconds": 617.6851472950075
+      }
+    },
+    "builder-ready.json": {
+      "remote_path": "/tank/hot/tb371fc-build-20261123/builder-ready.json",
+      "size": 3070,
+      "sha256": "106b252282329ccf03871236fe921371744b794abc6adf2ebc48b20e38665781",
+      "record": {
+        "base_image": "debian@sha256:a99cfc517144bc59b1978475ec53b46ecabec7e43635402ee5b77cc54cd1b20a",
+        "bootstrap_script_sha256": "3a31e6e3405a00123538809b0dff64403312943a8eed4067f4639e8ea5278f82",
+        "completed_utc": "2026-11-22T22:54:15.050056+00:00",
+        "cross_compile": {
+          "aarch64_elf": true,
+          "object_sha256": "2bbee578ac6b301e6196eb7c5e1dd5a0017df888e434f8dff11e205d3b3530e7"
+        },
+        "kernel_built": false,
+        "kernel_source_assembled": false,
+        "limits": [
+          "APT packages are inventoried, not from an immutable repository snapshot.",
+          "Compiler/tools remain in the fresh Docker writable layer; active source/output use the SSD bind.",
+          "No old container snapshot, Nix store, private firmware or signing key was copied."
+        ],
+        "package_manifest": {
+          "path": "/work/builder-packages.tsv",
+          "sha256": "8ac64da0ebd395e10811716dc4682371323166f29acafd1d4ed40e1b0939cee4"
+        },
+        "physical_hardware_tested": false,
+        "ready": true,
+        "schema_version": 1,
+        "scope": "Dedicated standard Docker kernel builder with SSD work; no tablet or old build modified",
+        "seed_files": [
+          {
+            "already_present": false,
+            "path": "/work/downloads/linux-6.12.114.tar.xz",
+            "sha256": "7a8589912bd7a8adb07fed074283652cf482a35facef8954554654f0154b4af3",
+            "size": 148721296,
+            "source": "/seed/linux-6.12.114.tar.xz"
+          },
+          {
+            "already_present": false,
+            "path": "/work/reference-hdd/source-manifest.json",
+            "sha256": "1a8788a8e5700287870d9e9ca44ad2be8c69e6f28d927321edd89508c5501821",
+            "size": 3269,
+            "source": "/seed/source-manifest.json"
+          }
+        ],
+        "tmux_session": "tb371fc-ssd",
+        "tools": {
+          "bison": [
+            "bison (GNU Bison) 3.8.2",
+            "Written by Robert Corbett and Richard Stallman.",
+            "",
+            "Copyright (C) 2021 Free Software Foundation, Inc.",
+            "This is free software; see the source for copying conditions.  There is NO",
+            "warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+          ],
+          "clang": [
+            "Debian clang version 19.1.7 (3+b1)",
+            "Target: x86_64-pc-linux-gnu",
+            "Thread model: posix",
+            "InstalledDir: /usr/lib/llvm-19/bin"
+          ],
+          "dtc": [
+            "Version: DTC 1.7.2"
+          ],
+          "flex": [
+            "flex 2.6.4"
+          ],
+          "lld": [
+            "Debian LLD 19.1.7 (compatible with GNU linkers)"
+          ],
+          "make": [
+            "GNU Make 4.4.1",
+            "Built for x86_64-pc-linux-gnu",
+            "Copyright (C) 1988-2023 Free Software Foundation, Inc.",
+            "License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>",
+            "This is free software: you are free to change and redistribute it.",
+            "There is NO WARRANTY, to the extent permitted by law."
+          ],
+          "modinfo": [
+            "kmod version 34.2",
+            "+ZSTD +XZ -ZLIB +OPENSSL"
+          ],
+          "python": [
+            "Python 3.13.5"
+          ],
+          "qemu_system_aarch64": [
+            "QEMU emulator version 10.0.13 (Debian 1:10.0.13+ds-0+deb13u1)",
+            "Copyright (c) 2003-2025 Fabrice Bellard and the QEMU Project developers"
+          ],
+          "tmux": [
+            "tmux 3.5a"
+          ]
+        }
+      }
+    }
+  },
+  "package_manifest": {
+    "path": "ssd-builder-packages.tsv",
+    "size": 7058,
+    "sha256": "8ac64da0ebd395e10811716dc4682371323166f29acafd1d4ed40e1b0939cee4",
+    "installed_package_count": 258
+  },
+  "additional_observation": {
+    "command": [
+      "docker",
+      "exec",
+      "tb371fc-build-ssd-20261123",
+      "sh",
+      "-c",
+      "command -v flock; python3 --version; tmux list-windows -t tb371fc-ssd -F \"#S:#W #{pane_current_path}\""
+    ],
+    "exit_code": 0,
+    "stdout": "/usr/bin/flock\nPython 3.13.5\ntb371fc-ssd:ready /work\n"
+  },
+  "boundaries": [
+    "No old container or volume was stopped, moved or deleted. No Docker daemon or host storage configuration was changed.",
+    "Only the public Linux archive and a source manifest were copied from the old work volume.",
+    "The source checkout is a read-only bind; research2 preparation owns a separate private overlay and output tree.",
+    "Package installation and compiler binaries remain in the standard Docker writable layer on HDD; active source/output and TMPDIR use the SSD work bind.",
+    "The base image is digest pinned. APT dependencies are inventoried but were not installed from an immutable repository snapshot.",
+    "The bootstrap probe establishes only that LLVM emits a little-endian ELF64 AArch64 object. It does not compile a Linux kernel or test hardware.",
+    "No speedup benchmark was performed."
+  ]
+}

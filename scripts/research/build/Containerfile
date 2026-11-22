@@ -1,0 +1,10 @@
+FROM debian:trixie-slim@sha256:a99cfc517144bc59b1978475ec53b46ecabec7e43635402ee5b77cc54cd1b20a
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates curl git gpgv clang lld llvm make gcc g++ bc bison flex \
+    libssl-dev libelf-dev dwarves cpio rsync kmod device-tree-compiler \
+    python3 python3-venv xz-utils zstd file jq tmux sudo \
+    qemu-user qemu-user-static qemu-system-arm skopeo umoci dnf rpm \
+    util-linux e2fsprogs dosfstools nix-bin kpartx procps
+WORKDIR /work
+CMD ["sleep", "infinity"]

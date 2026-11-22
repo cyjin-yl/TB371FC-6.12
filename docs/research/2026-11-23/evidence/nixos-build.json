@@ -1,0 +1,396 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-11-22T21:25:19.649653+00:00",
+  "source": {
+    "repository": "https://github.com/cyjin-yl/TB371FC-6.12",
+    "branch": "research/reproducible-build-gpu-20261123",
+    "nixpkgs_revision": "94c3211b0ee8ba969a3f12eb4aff8ba0f72971dd",
+    "nixpkgs_nar_hash": "sha256-IEuDsf80ubivfpidbRsIm30HVo7PZIdZt1stRsbaY4Y=",
+    "files_sha256": {
+      "distros/nixos/flake.nix": "e99faf0dae7f02939ea51cfae7f8a0540697ee98a33df46f4935e3bf97c9608f",
+      "distros/nixos/hardware-configuration.nix": "b4bf8962790d8e12793fee0151f1cf58007432ccd338e4bb14c2660423353ce4",
+      "distros/nixos/flake.lock": "663995d8f6b6a0d197a4b582e85b998fccb0d48108abcafbcf33f091ec0855e8"
+    }
+  },
+  "environment": {
+    "device": "doesvm",
+    "ct_id": 102,
+    "container": "tb371fc-build-20261123",
+    "container_architecture": "x86_64",
+    "target_system": "aarch64-linux",
+    "container_os": {
+      "ID": "debian",
+      "VERSION_ID": "13",
+      "PRETTY_NAME": "Debian GNU/Linux 13 (trixie)"
+    },
+    "nix_version": "nix (Nix) 2.26.3",
+    "nix_config_after": {
+      "build-users-group": "nixbld",
+      "extra-platforms": "i686-linux x86_64-v1-linux x86_64-v2-linux x86_64-v3-linux",
+      "require-sigs": "true",
+      "sandbox": "true",
+      "sandbox-fallback": "true",
+      "substituters": "https://cache.nixos.org/",
+      "system": "x86_64-linux",
+      "trusted-public-keys": "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    },
+    "dedicated_nix_build_users_created": [
+      "nixbld1",
+      "nixbld2",
+      "nixbld3",
+      "nixbld4"
+    ],
+    "build_group_created": "nixbld",
+    "binfmt_registration_changed": false,
+    "host_or_ct_nix_configuration_changed": false,
+    "sandbox_default_changed": false,
+    "sandbox_false_scope": "Only the second closure attempt and the expected-failure artifact-gate invocation"
+  },
+  "jobs": {
+    "nix-eval-system": {
+      "command": [
+        "nix",
+        "--extra-experimental-features",
+        "nix-command flakes",
+        "eval",
+        "--raw",
+        "path:/work/nixos-flake#nixosConfigurations.tb371fc.config.system.build.toplevel.drvPath"
+      ],
+      "start_utc": "2026-11-22T21:13:42.508374+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 99.42533713695593,
+      "metadata_sha256": "004de6d7b0c5c5c141a8a31ab0a76640ca63ce7639c59127b4dc5b852510e07b",
+      "log_path": "/work/nix-eval-system.log",
+      "log_sha256": "1b37f5b0f51f78d15d473d2832a7922729fc838a9667bc19285dccfc7862166f",
+      "log_size_bytes": 569,
+      "log_tail": "warning: the group 'nixbld' specified in 'build-users-group' does not exist\nwarning: creating lock file '\"/work/nixos-flake/flake.lock\"': \n\u2022 Added input 'nixpkgs':\n    'github:NixOS/nixpkgs/94c3211b0ee8ba969a3f12eb4aff8ba0f72971dd?narHash=sha256-IEuDsf80ubivfpidbRsIm30HVo7PZIdZt1stRsbaY4Y%3D' (2026-11-21)\nevaluation warning: TB371FC: this is an aarch64 userspace research profile. Kernel, DT, initramfs, module ABI and exact firmware integration are not completed.\n/nix/store/9qpn9nzy4xmcrfv6jc5liymr8mnzwdpg-nixos-system-tb371fc-research-26.05.20261121.94c3211.drv"
+    },
+    "nix-hello-aarch64-01": {
+      "command": [
+        "nix",
+        "--extra-experimental-features",
+        "nix-command flakes",
+        "--option",
+        "sandbox",
+        "true",
+        "--option",
+        "sandbox-fallback",
+        "false",
+        "--option",
+        "cores",
+        "2",
+        "--option",
+        "max-jobs",
+        "1",
+        "build",
+        "--no-link",
+        "--print-out-paths",
+        "path:/work/nixos-flake#packages.x86_64-linux.hello-aarch64"
+      ],
+      "start_utc": "2026-11-22T21:17:15.455532+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 7.853217671974562,
+      "metadata_sha256": "6ecb035921fc800171ac93ffd9956a4643dd0ccbd0bf5faf9a2e50c8026a32e2",
+      "log_path": "/work/nix-hello-aarch64-01.log",
+      "log_sha256": "f491da0b828a0252dd9fd3ca0c2c6a90004b667a7ad8e2ba4ec5d97f8777ca71",
+      "log_size_bytes": 984,
+      "log_tail": "these 5 paths will be fetched (10.60 MiB download, 47.26 MiB unpacked):\n  /nix/store/fgkgp2zr4vg683r9ngp5fj36gv2sa979-glibc-2.42-103\n  /nix/store/67xf635fy5p8pryn15rwfc5iz63gk0kx-hello-2.12.3\n  /nix/store/42mr9s98j4andsi5zyzpayyn7mfspwj3-libidn2-2.3.8\n  /nix/store/vzf5bb5371n9im9y8da0z0wg1kr151b2-libunistring-1.4.2\n  /nix/store/6183djr5sfi3f5ys7frq4pimf84nhkxd-xgcc-15.3.0-libgcc\ncopying path '/nix/store/6183djr5sfi3f5ys7frq4pimf84nhkxd-xgcc-15.3.0-libgcc' from 'https://cache.nixos.org'...\ncopying path '/nix/store/vzf5bb5371n9im9y8da0z0wg1kr151b2-libunistring-1.4.2' from 'https://cache.nixos.org'...\ncopying path '/nix/store/42mr9s98j4andsi5zyzpayyn7mfspwj3-libidn2-2.3.8' from 'https://cache.nixos.org'...\ncopying path '/nix/store/fgkgp2zr4vg683r9ngp5fj36gv2sa979-glibc-2.42-103' from 'https://cache.nixos.org'...\ncopying path '/nix/store/67xf635fy5p8pryn15rwfc5iz63gk0kx-hello-2.12.3' from 'https://cache.nixos.org'...\n/nix/store/67xf635fy5p8pryn15rwfc5iz63gk0kx-hello-2.12.3\n"
+    },
+    "nix-hello-qemu-01": {
+      "command": [
+        "python3",
+        "-c",
+        "import hashlib,json,pathlib,struct,subprocess\nbinary=pathlib.Path(\"/nix/store/67xf635fy5p8pryn15rwfc5iz63gk0kx-hello-2.12.3/bin/hello\")\nraw=binary.read_bytes()\nheader={\"magic\":raw[:4].hex(),\"class\":raw[4],\"endianness\":raw[5],\"machine\":struct.unpack(\"<H\",raw[18:20])[0],\"sha256\":hashlib.sha256(raw).hexdigest()}\nif raw[:4]!=b\"\\x7fELF\" or raw[4]!=2 or raw[5]!=1 or header[\"machine\"]!=183:\n    raise SystemExit(\"expected a little-endian ELF64 AArch64 executable\")\nversion=subprocess.run([\"qemu-aarch64\",\"--version\"],capture_output=True,text=True,check=True).stdout.splitlines()[0]\nresult=subprocess.run([\"qemu-aarch64\",str(binary)],capture_output=True,text=True,timeout=20)\nrecord={\"binary\":str(binary),\"elf\":header,\"qemu_version\":version,\"execution\":{\"command\":[\"qemu-aarch64\",str(binary)],\"exit_code\":result.returncode,\"stdout\":result.stdout,\"stderr\":result.stderr},\"scope\":\"AArch64 userspace ABI under explicit QEMU; no tablet boot or GPU test\"}\npathlib.Path(\"/work/nix-hello-qemu-result.json\").write_text(json.dumps(record,indent=2)+\"\\n\")\nprint(json.dumps(record,indent=2))\nif result.returncode or result.stdout!=\"Hello, world!\\n\":\n    raise SystemExit(1)\n"
+      ],
+      "start_utc": "2026-11-22T21:18:18.424321+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 0.8152261349605396,
+      "metadata_sha256": "6bf8db7f52bf1b4cf1abafa7e7055d810d858f29a06e3ef08afe10c53f185e3d",
+      "log_path": "/work/nix-hello-qemu-01.log",
+      "log_sha256": "8d699c608c5543a5b750dfb1a585f923479ef096e9feba21c024979d7bdf168c",
+      "log_size_bytes": 643,
+      "log_tail": "{\n  \"binary\": \"/nix/store/67xf635fy5p8pryn15rwfc5iz63gk0kx-hello-2.12.3/bin/hello\",\n  \"elf\": {\n    \"magic\": \"7f454c46\",\n    \"class\": 2,\n    \"endianness\": 1,\n    \"machine\": 183,\n    \"sha256\": \"697177ae103f7de874d0f193c2f3b6cee9e26450afce008cb86aef3c7398e6c0\"\n  },\n  \"qemu_version\": \"qemu-aarch64 version 10.0.13 (Debian 1:10.0.13+ds-0+deb13u1)\",\n  \"execution\": {\n    \"command\": [\n      \"qemu-aarch64\",\n      \"/nix/store/67xf635fy5p8pryn15rwfc5iz63gk0kx-hello-2.12.3/bin/hello\"\n    ],\n    \"exit_code\": 0,\n    \"stdout\": \"Hello, world!\\n\",\n    \"stderr\": \"\"\n  },\n  \"scope\": \"AArch64 userspace ABI under explicit QEMU; no tablet boot or GPU test\"\n}\n"
+    },
+    "nix-aarch64-closure-01": {
+      "command": [
+        "nix",
+        "--extra-experimental-features",
+        "nix-command flakes",
+        "--option",
+        "sandbox",
+        "true",
+        "--option",
+        "sandbox-fallback",
+        "false",
+        "--option",
+        "cores",
+        "2",
+        "--option",
+        "max-jobs",
+        "1",
+        "build",
+        "--no-link",
+        "--print-out-paths",
+        "path:/work/nixos-flake#packages.x86_64-linux.aarch64-userspace-closure"
+      ],
+      "start_utc": "2026-11-22T21:17:15.479755+00:00",
+      "exit_code": 1,
+      "elapsed_seconds": 156.57331963902107,
+      "metadata_sha256": "b5d078298b4f832d6af705de1ba9fcc9fd77ed721b413f34b3ec00a2decbc629",
+      "log_path": "/work/nix-aarch64-closure-01.log",
+      "log_sha256": "f1d553d607501bfe1e8984c999609b3735bc067534a628755ffe54743c9b7f2f",
+      "log_size_bytes": 71761,
+      "log_tail": "9grs1gk8snkhj0dgs438-libcamera-0.7.0' from 'https://cache.nixos.org'...\ncopying path '/nix/store/c6cvhvviiyvq6ik1fmffz8blb3kaf339-pipewire-1.6.6' from 'https://cache.nixos.org'...\ncopying path '/nix/store/9928vln1ajq1yix84i3rcx73h2p4f0bm-openal-soft-1.24.3' from 'https://cache.nixos.org'...\ncopying path '/nix/store/k1vzy56w9xbvisima5hxk867bl49rx6i-gst-plugins-bad-1.26.11' from 'https://cache.nixos.org'...\ncopying path '/nix/store/hvss6c5rmvksg7b663d5qdlfvixxmj8i-gtk4-4.22.5' from 'https://cache.nixos.org'...\ncopying path '/nix/store/cdxbk3aq70mqjf70wfq61ns705mwhgsp-mesa-26.1.8' from 'https://cache.nixos.org'...\ncopying path '/nix/store/1aqmk7vr32gh7wkyacqgqrh2bqcr7ibr-libadwaita-1.9.4' from 'https://cache.nixos.org'...\ncopying path '/nix/store/lrijw1kjsmwlkk6dllcqcai98h3chp5i-zenity-4.2.2' from 'https://cache.nixos.org'...\ncopying path '/nix/store/88ld4wws5wrnxdyn0r1ivq42ms7s053n-sdl3-3.4.10-lib' from 'https://cache.nixos.org'...\ncopying path '/nix/store/2r2dvbix26rrq1jhccly4qj7bffv7lcw-sdl3-ttf-3.2.2' from 'https://cache.nixos.org'...\ncopying path '/nix/store/sjba3bm36bn9rvdri8iv93mwm7fjf87x-freerdp-3.33.1' from 'https://cache.nixos.org'...\ncopying path '/nix/store/4j61dpqxbgfvq1fp4nmhzx5i1c15vgav-weston-15.0.1' from 'https://cache.nixos.org'...\nerror: this system does not support the kernel namespaces that are required for sandboxing; use '--no-sandbox' to disable sandboxing\n"
+    },
+    "nix-aarch64-closure-02": {
+      "command": [
+        "nix",
+        "--extra-experimental-features",
+        "nix-command flakes",
+        "--option",
+        "sandbox",
+        "false",
+        "--option",
+        "cores",
+        "2",
+        "--option",
+        "max-jobs",
+        "1",
+        "build",
+        "--no-link",
+        "--print-out-paths",
+        "path:/work/nixos-flake#packages.x86_64-linux.aarch64-userspace-closure"
+      ],
+      "start_utc": "2026-11-22T21:21:02.674356+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 134.22456658398733,
+      "metadata_sha256": "b0acde477d2d75097554b59eccc0911940998201d3c99e620ade0683477476d6",
+      "log_path": "/work/nix-aarch64-closure-02.log",
+      "log_sha256": "904695e6ca25b4f422fd7cb6d2e77966e8df878bc22ede264eeaa99aae7864d1",
+      "log_size_bytes": 226,
+      "log_tail": "this derivation will be built:\n  /nix/store/d6agdv0gxaab7hh9ycjfklb2mli4fpr5-closure-info.drv\nbuilding '/nix/store/d6agdv0gxaab7hh9ycjfklb2mli4fpr5-closure-info.drv'...\n/nix/store/gb1qmx1p3a8rl5z6qnflzr0yhgf9w78s-closure-info\n"
+    },
+    "nix-artifact-gate-01": {
+      "command": [
+        "nix",
+        "--extra-experimental-features",
+        "nix-command flakes",
+        "--option",
+        "sandbox",
+        "false",
+        "--option",
+        "cores",
+        "2",
+        "--option",
+        "max-jobs",
+        "1",
+        "build",
+        "--no-link",
+        "--print-out-paths",
+        "path:/work/nixos-flake#packages.x86_64-linux.artifact-gate"
+      ],
+      "start_utc": "2026-11-22T21:21:02.672976+00:00",
+      "exit_code": 1,
+      "elapsed_seconds": 107.58468463597819,
+      "metadata_sha256": "5b91472f55d36482c7ea116818df68b9049abac41077e222f8db53f56acdc676",
+      "log_path": "/work/nix-artifact-gate-01.log",
+      "log_sha256": "f3ab5551349b330662ee3f7a916b5d70298363c224d53f378000cddfc1f95efc",
+      "log_size_bytes": 3424,
+      "log_tail": "tore/l9s4gvvpy23kfa3hlna2qm2gvgcdm3jb-util-linux-minimal-2.42.4-lib' from 'https://cache.nixos.org'...\ncopying path '/nix/store/lvsxc7x14m050phwag36f3ml1kwy0axv-zstd-1.5.7' from 'https://cache.nixos.org'...\ncopying path '/nix/store/vyxbdhxnm07nr9f2l7b35vhrwp1rfm7b-sqlite-3.53.3' from 'https://cache.nixos.org'...\ncopying path '/nix/store/nrvqr3nnif28v4nnkh5ilrld6fx772qi-kmod-31' from 'https://cache.nixos.org'...\ncopying path '/nix/store/qjzmskqwq90kwf0i9gfyad2np90iij1b-kmod-31-lib' from 'https://cache.nixos.org'...\ncopying path '/nix/store/rykcybqhb849f12cjkd9q24xhxyyhqra-readline-8.3p3' from 'https://cache.nixos.org'...\ncopying path '/nix/store/8g9pr6szsf1fbbi6r78iy3gm415bkq7w-kmod-31-dev' from 'https://cache.nixos.org'...\ncopying path '/nix/store/9qkpw9669q6w9nl6bmh2k35nq76i52nf-python3-3.13.18' from 'https://cache.nixos.org'...\nbuilding '/nix/store/hklizi59ikhygmp59p3zw3dybzjaabwz-tb371fc-external-artifact-gate.drv'...\nerror: builder for '/nix/store/hklizi59ikhygmp59p3zw3dybzjaabwz-tb371fc-external-artifact-gate.drv' failed with exit code 1;\n       last 2 log lines:\n       > TB371FC boot integration is incomplete. Missing artifact inputs:\n       > kernelImage, deviceTreeBlob, initramfs, kernelConfig, moduleSymvers, moduleRoot, firmwareRoot, kernelRelease\n       For full logs, run:\n         nix log /nix/store/hklizi59ikhygmp59p3zw3dybzjaabwz-tb371fc-external-artifact-gate.drv\n"
+    }
+  },
+  "system_evaluation": {
+    "exit_code": 0,
+    "derivation_path": "/nix/store/9qpn9nzy4xmcrfv6jc5liymr8mnzwdpg-nixos-system-tb371fc-research-26.05.20261121.94c3211.drv",
+    "system": "aarch64-linux",
+    "builder": "/nix/store/xkz38nlafxlb2jry727hg5l64iln9c05-bash-5.3p9/bin/bash",
+    "planned_output": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211",
+    "output_exists": false,
+    "full_system_build_attempted": false,
+    "remaining_requirement": "The custom aarch64-linux derivations need a native or deliberately configured foreign builder; explicit qemu-aarch64 execution of one cached binary does not provide one"
+  },
+  "hello_qemu": {
+    "binary": "/nix/store/67xf635fy5p8pryn15rwfc5iz63gk0kx-hello-2.12.3/bin/hello",
+    "elf": {
+      "magic": "7f454c46",
+      "class": 2,
+      "endianness": 1,
+      "machine": 183,
+      "sha256": "697177ae103f7de874d0f193c2f3b6cee9e26450afce008cb86aef3c7398e6c0"
+    },
+    "qemu_version": "qemu-aarch64 version 10.0.13 (Debian 1:10.0.13+ds-0+deb13u1)",
+    "execution": {
+      "command": [
+        "qemu-aarch64",
+        "/nix/store/67xf635fy5p8pryn15rwfc5iz63gk0kx-hello-2.12.3/bin/hello"
+      ],
+      "exit_code": 0,
+      "stdout": "Hello, world!\n",
+      "stderr": ""
+    },
+    "scope": "AArch64 userspace ABI under explicit QEMU; no tablet boot or GPU test"
+  },
+  "selected_userspace_closure": {
+    "output": "/nix/store/gb1qmx1p3a8rl5z6qnflzr0yhgf9w78s-closure-info",
+    "entry_count": 386,
+    "unique_entry_count": 386,
+    "all_paths_exist": true,
+    "files": {
+      "total-nar-size": {
+        "size_bytes": 11,
+        "sha256": "122a211c7d80b0285bc556a04368bec08cbf11f536890c8546e36dff4c9b163d"
+      },
+      "store-paths": {
+        "size_bytes": 23290,
+        "sha256": "04e8b016f843f739a9455c8d752a3f97683e2cd859c63f716309a49aff5a7848"
+      },
+      "registration": {
+        "size_bytes": 162721,
+        "sha256": "c7cca92c86c50075a81a90ec4528adac4a32559b0c22c9a3fe25fb2bcaada5f1"
+      }
+    },
+    "recursive_nar_count_including_manifest": 387,
+    "recursive_nar_size_bytes_including_manifest": 2217248608,
+    "manifest_store_paths_size_bytes": 23290,
+    "target_closure_nar_size_bytes": 2217061896,
+    "store_paths_work_copy": "/work/nix-aarch64-closure-store-paths.txt",
+    "registration_work_copy": "/work/nix-aarch64-closure-registration",
+    "scope": "Selected ARM64 package dependency closure and native closure inventory helper, not a complete NixOS system/rootfs",
+    "retention": {
+      "indirect_gc_root": "/work/nix-aarch64-userspace-result",
+      "resolved_output": "/nix/store/gb1qmx1p3a8rl5z6qnflzr0yhgf9w78s-closure-info",
+      "command": [
+        "nix-store",
+        "--add-root",
+        "/work/nix-aarch64-userspace-result",
+        "--indirect",
+        "--realise",
+        "/nix/store/gb1qmx1p3a8rl5z6qnflzr0yhgf9w78s-closure-info"
+      ],
+      "exit_code": 0,
+      "scope": "Keeps the package closure reachable to GC in this container; the Nix store itself is still container-local"
+    }
+  },
+  "mesa": {
+    "metadata": {
+      "outPath": {
+        "exit_code": 0,
+        "value": "/nix/store/cdxbk3aq70mqjf70wfq61ns705mwhgsp-mesa-26.1.8"
+      },
+      "outputs": {
+        "exit_code": 0,
+        "value": [
+          "out",
+          "opencl",
+          "spirv2dxil",
+          "cross_tools",
+          "debug"
+        ]
+      },
+      "version": {
+        "exit_code": 0,
+        "value": "26.1.8"
+      },
+      "system": {
+        "exit_code": 0,
+        "value": "aarch64-linux"
+      }
+    },
+    "inspected_files": {
+      "share/vulkan/icd.d/freedreno_icd.aarch64.json": {
+        "sha256": "5924466bc4a4ee328537acb2580e91800874e0305f6c2259b4f8f6ca638349dc",
+        "size_bytes": 231,
+        "elf_machine": null,
+        "contents": {
+          "ICD": {
+            "api_version": "1.4.354",
+            "library_arch": "64",
+            "library_path": "/nix/store/cdxbk3aq70mqjf70wfq61ns705mwhgsp-mesa-26.1.8/lib/libvulkan_freedreno.so"
+          },
+          "file_format_version": "1.0.1"
+        }
+      },
+      "lib/libvulkan_freedreno.so": {
+        "sha256": "7586090fce3fed9a78b0a44b70bfa49b974eb8ff1cd151220683d28d0dc20b4a",
+        "size_bytes": 16522512,
+        "elf_machine": 183
+      },
+      "lib/dri/msm_dri.so": {
+        "sha256": "838046e2977d4fbbd5db875a70c88fd98f386bb53385a81f57f146fb35aca78a",
+        "size_bytes": 143192,
+        "elf_machine": 183
+      }
+    },
+    "gpu_execution_tested": false
+  },
+  "cache_package_info": {
+    "/nix/store/67xf635fy5p8pryn15rwfc5iz63gk0kx-hello-2.12.3": {
+      "ca": null,
+      "deriver": "/nix/store/3h7id9044kw7jhqgf7bc3ca20an9vq05-hello-2.12.3.drv",
+      "narHash": "sha256-4Wp6RCM+Fo+K3TUmdSQKnPUugXabWoEc7qsYJsBqRqQ=",
+      "narSize": 294440,
+      "references": [
+        "/nix/store/67xf635fy5p8pryn15rwfc5iz63gk0kx-hello-2.12.3",
+        "/nix/store/fgkgp2zr4vg683r9ngp5fj36gv2sa979-glibc-2.42-103"
+      ],
+      "registrationTime": 1795382243,
+      "signatures": [
+        "cache.nixos.org-1:KHqqZEf0ZT6JV1bG1gyvo28nf1IwK1QuKFzVz6iAMbHShdnAZ2hdyd+Ij1tyQ2epfF2UR6AJiQAvUbhKK4uFDg=="
+      ],
+      "ultimate": false
+    },
+    "/nix/store/cdxbk3aq70mqjf70wfq61ns705mwhgsp-mesa-26.1.8": {
+      "ca": null,
+      "deriver": "/nix/store/cpmblpvpkcgxzh93dgc1g9ynm5wrj1ik-mesa-26.1.8.drv",
+      "narHash": "sha256-zzvNd7BEGWvGFQ7Hm7eLqod1TtgNM+QuH8F61G/x0yM=",
+      "narSize": 273593392,
+      "references": [
+        "/nix/store/1in76mgfzd7y8br39x8a8qz6l08mav9j-zstd-1.5.7",
+        "/nix/store/2avdb6wids8ppw9f95nnv0lddaj8qn4n-libxcb-keysyms-0.4.1",
+        "/nix/store/2zp9wda0gh0p8hhf6vxldg1ac03ql5v9-libpng-apng-1.6.59",
+        "/nix/store/3qmm7pakwdb019kgfckrzvl176jcw37i-libxext-1.3.7",
+        "/nix/store/5kss7vljm122d31hjb1xkxl9h6ry8hvz-lm-sensors-3.6.2",
+        "/nix/store/6gjw3x8sp7q2myajg91bjh99v7r1987z-libx11-1.8.14",
+        "/nix/store/7r05f1qwli31ky4vi63l6hak9vjlkr07-llvm-21.1.8-lib",
+        "/nix/store/84azrswjm964yixv8kil846zcxm8mi20-python3-3.13.18",
+        "/nix/store/9cgc3p6i95xfx4v117b9q651pq8l7x6b-libxshmfence-1.3.3",
+        "/nix/store/cdxbk3aq70mqjf70wfq61ns705mwhgsp-mesa-26.1.8",
+        "/nix/store/cjyac19wnlmg9v05375fsjg76fyxhsla-wayland-1.25.0",
+        "/nix/store/cv1lsclcjqnm2lik1h9w3nay23an41ik-vulkan-loader-1.4.341.0",
+        "/nix/store/dxwgngj3avxwbw1fyk2fhga9ylb1bby6-elfutils-0.194",
+        "/nix/store/fakzlcf036binar8q0868vjfxgchyyip-libdrm-2.4.133",
+        "/nix/store/fgkgp2zr4vg683r9ngp5fj36gv2sa979-glibc-2.42-103",
+        "/nix/store/hc7f19s6x4vckwgrvxjra4j75az2w7xk-gcc-15.3.0-lib",
+        "/nix/store/kjcr5sb93a6y3zp828dgckcafp02lzmk-expat-2.10.0",
+        "/nix/store/kw24x0mglnqc5gv3j7y9ib7hmmcqam23-libdisplay-info-0.3.0",
+        "/nix/store/mwh6r9g4qnfid02bczkfcna2yh9nd88i-libxxf86vm-1.1.7",
+        "/nix/store/rh3x2z4y39831mpy9c2lgcr198lnv964-libxcb-1.17.0",
+        "/nix/store/rvks4gxxjvk9595hg2f9l5m97y6233ps-mesa-libgbm-26.0.3",
+        "/nix/store/vqii3zjk4sfplfz9w4kn7mg48slks13m-systemd-minimal-libs-260.5"
+      ],
+      "registrationTime": 1795382390,
+      "signatures": [
+        "cache.nixos.org-1:iNdwj/6KZgZ9Cuqn1QjVAno417MQ6Cbh0agtHSW6GELZQ3/PVsPdCmuCjjzdM/5Sxbm8A2pFwThjJDTiy16tAw=="
+      ],
+      "ultimate": false
+    }
+  },
+  "artifact_gate": {
+    "expected_failure": true,
+    "observed_exit_code": 1,
+    "missing_inputs": [
+      "kernelImage",
+      "deviceTreeBlob",
+      "initramfs",
+      "kernelConfig",
+      "moduleSymvers",
+      "moduleRoot",
+      "firmwareRoot",
+      "kernelRelease"
+    ],
+    "actual_artifact_formats_or_abi_checked": false
+  },
+  "tablet_boot_tested": false,
+  "rootfs_image_assembled": false,
+  "hardware_support_demonstrated": false
+}

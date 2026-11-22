@@ -1,0 +1,87 @@
+{
+  "completed_utc": "2026-11-22T22:42:13.808577+00:00",
+  "destination": "/data/local/tmp/tb371fc-current-boot-backup-20261123",
+  "expected_total_bytes": 461504512,
+  "off_device_copy_verified": false,
+  "partitions": [
+    {
+      "backup_sha256": "78ba0f4f75bec85a80155a9e9ea8fa19546bbd88598a7923a16b069404899a9a",
+      "bytes": 100663296,
+      "file": "boot_a.img",
+      "name": "boot_a",
+      "source_recheck_sha256": "78ba0f4f75bec85a80155a9e9ea8fa19546bbd88598a7923a16b069404899a9a",
+      "source_sha256": "78ba0f4f75bec85a80155a9e9ea8fa19546bbd88598a7923a16b069404899a9a",
+      "verified": true
+    },
+    {
+      "backup_sha256": "dedaae8f49d8c052302cc5329652383b8e35cb571fd3510e15b3444ab9b45573",
+      "bytes": 100663296,
+      "file": "boot_b.img",
+      "name": "boot_b",
+      "source_recheck_sha256": "dedaae8f49d8c052302cc5329652383b8e35cb571fd3510e15b3444ab9b45573",
+      "source_sha256": "dedaae8f49d8c052302cc5329652383b8e35cb571fd3510e15b3444ab9b45573",
+      "verified": true
+    },
+    {
+      "backup_sha256": "94649360140db672e861729927011984e9714459b4e19c9aab02b7ab79466668",
+      "bytes": 104857600,
+      "file": "recovery_a.img",
+      "name": "recovery_a",
+      "source_recheck_sha256": "94649360140db672e861729927011984e9714459b4e19c9aab02b7ab79466668",
+      "source_sha256": "94649360140db672e861729927011984e9714459b4e19c9aab02b7ab79466668",
+      "verified": true
+    },
+    {
+      "backup_sha256": "2c62c4c7c85ed751f3ca2273191fdddb6a20c62504f0ccb5a45456c08c6f5a72",
+      "bytes": 104857600,
+      "file": "recovery_b.img",
+      "name": "recovery_b",
+      "source_recheck_sha256": "2c62c4c7c85ed751f3ca2273191fdddb6a20c62504f0ccb5a45456c08c6f5a72",
+      "source_sha256": "2c62c4c7c85ed751f3ca2273191fdddb6a20c62504f0ccb5a45456c08c6f5a72",
+      "verified": true
+    },
+    {
+      "backup_sha256": "58f6a16ac40bed13555f9b8b0e67319b9921b9b9759d6dba5275053bbac53c05",
+      "bytes": 65536,
+      "file": "vbmeta_a.img",
+      "name": "vbmeta_a",
+      "source_recheck_sha256": "58f6a16ac40bed13555f9b8b0e67319b9921b9b9759d6dba5275053bbac53c05",
+      "source_sha256": "58f6a16ac40bed13555f9b8b0e67319b9921b9b9759d6dba5275053bbac53c05",
+      "verified": true
+    },
+    {
+      "backup_sha256": "7366d06e2b8689ab0ca429050fbdae0b8f08af0957debdbcb4706a9e52021e63",
+      "bytes": 65536,
+      "file": "vbmeta_b.img",
+      "name": "vbmeta_b",
+      "source_recheck_sha256": "7366d06e2b8689ab0ca429050fbdae0b8f08af0957debdbcb4706a9e52021e63",
+      "source_sha256": "7366d06e2b8689ab0ca429050fbdae0b8f08af0957debdbcb4706a9e52021e63",
+      "verified": true
+    },
+    {
+      "backup_sha256": "d82c51b5b85c8a9c7d8a163d4fc24e61f7abbd93f5728a7235dcfb809e3b8b17",
+      "bytes": 25165824,
+      "file": "dtbo_a.img",
+      "name": "dtbo_a",
+      "source_recheck_sha256": "d82c51b5b85c8a9c7d8a163d4fc24e61f7abbd93f5728a7235dcfb809e3b8b17",
+      "source_sha256": "d82c51b5b85c8a9c7d8a163d4fc24e61f7abbd93f5728a7235dcfb809e3b8b17",
+      "verified": true
+    },
+    {
+      "backup_sha256": "d45cd003d9a355c4d7e27c97de0ab9742927233b385dc866e4ea6c9412c19bf5",
+      "bytes": 25165824,
+      "file": "dtbo_b.img",
+      "name": "dtbo_b",
+      "source_recheck_sha256": "d45cd003d9a355c4d7e27c97de0ab9742927233b385dc866e4ea6c9412c19bf5",
+      "source_sha256": "d45cd003d9a355c4d7e27c97de0ab9742927233b385dc866e4ea6c9412c19bf5",
+      "verified": true
+    }
+  ],
+  "physical_mainline_boot_tested": false,
+  "restore_tested": false,
+  "schema_version": 1,
+  "scope": "current partition bytes, not pristine factory images",
+  "source_open_mode": "O_RDONLY",
+  "started_utc": "2026-11-22T22:42:09.569045+00:00",
+  "status": "verified_current_local_copies"
+}

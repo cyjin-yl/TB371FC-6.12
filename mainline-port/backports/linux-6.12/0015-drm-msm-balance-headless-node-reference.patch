@@ -1,0 +1,46 @@
+Subject: [PATCH] drm/msm: balance the TB371FC headless OF node reference
+
+The TB371FC headless fallback uses of_find_node_with_property() as a
+Boolean. The lookup returns a referenced node, so each successful lookup
+leaks that reference.
+
+Move only the Boolean lookup into a helper and release the reference
+before returning its presence. Keep the existing short-circuit order,
+whole-tree property lookup and device predicate unchanged. This does not
+change headless registration, IOMMU selection or the global-page-table
+experiment.
+
+Apply to official Linux v6.12.114 after
+experimental/community-handoff/reference/kernel-6.12.114/working-tree.patch.
+
+diff --git a/drivers/gpu/drm/msm/msm_drv.c b/drivers/gpu/drm/msm/msm_drv.c
+--- a/drivers/gpu/drm/msm/msm_drv.c
++++ b/drivers/gpu/drm/msm/msm_drv.c
+@@ -108,6 +108,18 @@
+ 	return 0;
+ }
+ 
++static bool tb371fc_has_headless_gpu(void)
++{
++	struct device_node *np;
++	bool found;
++
++	np = of_find_node_with_property(NULL, "tb371fc,headless-gpu");
++	found = np != NULL;
++	of_node_put(np);
++
++	return found;
++}
++
+ bool msm_use_mmu(struct drm_device *dev)
+ {
+ 	struct msm_drm_private *priv = dev->dev_private;
+@@ -123,7 +135,7 @@
+ 		device_iommu_mapped(dev->dev) ||
+ 		device_iommu_mapped(dev->dev->parent) ||
+ 		(!dev->dev->of_node &&
+-		 of_find_node_with_property(NULL, "tb371fc,headless-gpu"));
++		 tb371fc_has_headless_gpu());
+ }
+ 
+ static int msm_init_vram(struct drm_device *dev)

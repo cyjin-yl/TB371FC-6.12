@@ -13,8 +13,10 @@ describe R191; they do not reproduce R226 unchanged.
 
 Research update 2026-11-23: [Android hardware evidence and source audit](docs/research/2026-11-23/README.md)
 ([中文](docs/research/2026-11-23/README.zh-CN.md)) covers the display, keyboard,
-pen, charging and power management. It includes sanitized Android captures and
-isolated traces; it does not add a new mainline hardware-validation result.
+pen, charging and power management. The follow-up adds an actually compiled
+[research kernel and generic ARM64 VM boot](docs/research/2026-11-23/kernel-build.md),
+private GPU firmware staging and Fedora/Nura/NixOS build experiments. It does
+not add a new physical-tablet pass; see the [all-device acceptance contract](docs/research/2026-11-23/acceptance.md).
 
 Arch Linux ARM with KDE Plasma running on the Lenovo **TB371FC** tablet, using a
 **Linux 6.12** kernel that is started from microSD. Android on the internal UFS stays

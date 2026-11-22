@@ -1,0 +1,133 @@
+{
+  "attributes": {
+    "/proc/sys/kernel/osrelease": "4.19.157-perf+",
+    "/sys/class/kgsl/kgsl-3d0/devfreq/available_frequencies": "683000000 642000000 602000000 537000000 452000000 410000000",
+    "/sys/class/kgsl/kgsl-3d0/devfreq/governor": "msm-adreno-tz",
+    "/sys/class/kgsl/kgsl-3d0/gpu_available_frequencies": "683000000 642000000 602000000 537000000 452000000 410000000",
+    "/sys/class/kgsl/kgsl-3d0/gpu_model": "Adreno650v3"
+  },
+  "bindings": {
+    "/sys/class/drm/card0": {
+      "driver": "/sys/bus/platform/drivers/msm_drm",
+      "of_node": "/sys/firmware/devicetree/base/soc/qcom,mdss_mdp@ae00000"
+    },
+    "/sys/class/drm/renderD128": {
+      "driver": "/sys/bus/platform/drivers/msm_drm",
+      "of_node": "/sys/firmware/devicetree/base/soc/qcom,mdss_mdp@ae00000"
+    },
+    "/sys/class/kgsl/kgsl-3d0": {
+      "driver": "/sys/bus/platform/drivers/kgsl-3d",
+      "of_node": "/sys/firmware/devicetree/base/soc/qcom,kgsl-3d0@3d00000"
+    }
+  },
+  "capture_utc": "2026-11-22T21:06:57.696003+00:00",
+  "firmware": [
+    {
+      "path": "/vendor/firmware/a650_gmu.bin",
+      "sha256": "df79fa8482fcc7587bb239b9c9e2b24bce4729893b990fe3f82b30da8175b01c",
+      "size": 41548
+    },
+    {
+      "path": "/vendor/firmware/a650_sqe.fw",
+      "sha256": "b4c27420fd6a5c6b511b254cc0fad8cdd40eea38ceb3418f895a1084f4460487",
+      "size": 31632
+    },
+    {
+      "path": "/vendor/firmware/a630_sqe.fw",
+      "sha256": "57eece0d8032b0ab2467d856c304ce22f502ae8d4b2f8169b9d1ca890ceb463c",
+      "size": 32264
+    },
+    {
+      "elf": {
+        "class_bits": 32,
+        "program_headers": [
+          {
+            "bytes_present_in_this_file": true,
+            "file_offset": 0,
+            "file_size": 148,
+            "flags": 117440512,
+            "index": 0,
+            "memory_size": 0,
+            "type": 0
+          },
+          {
+            "bytes_present_in_this_file": true,
+            "file_offset": 4096,
+            "file_size": 6712,
+            "flags": 35651584,
+            "index": 1,
+            "memory_size": 8192,
+            "type": 0
+          },
+          {
+            "bytes_present_in_this_file": true,
+            "file_offset": 12288,
+            "file_size": 1676,
+            "flags": 134217735,
+            "index": 2,
+            "memory_size": 1676,
+            "type": 1
+          }
+        ]
+      },
+      "path": "/vendor/firmware/a650_zap.elf",
+      "sha256": "9fa3242134d6070c4facba48bb5c5ef2206d92995035aec7daff01198e853299",
+      "size": 13964
+    },
+    {
+      "elf": {
+        "class_bits": 32,
+        "program_headers": [
+          {
+            "bytes_present_in_this_file": true,
+            "file_offset": 0,
+            "file_size": 148,
+            "flags": 117440512,
+            "index": 0,
+            "memory_size": 0,
+            "type": 0
+          },
+          {
+            "bytes_present_in_this_file": false,
+            "file_offset": 4096,
+            "file_size": 6712,
+            "flags": 35651584,
+            "index": 1,
+            "memory_size": 8192,
+            "type": 0
+          },
+          {
+            "bytes_present_in_this_file": false,
+            "file_offset": 12288,
+            "file_size": 1676,
+            "flags": 134217735,
+            "index": 2,
+            "memory_size": 1676,
+            "type": 1
+          }
+        ]
+      },
+      "path": "/vendor/firmware/a650_zap.mdt",
+      "sha256": "61269235aed0949659580859c8694eaf5a9744aaa0ffa6ef1f5125ab3bf8083a",
+      "size": 6860
+    },
+    {
+      "path": "/vendor/firmware/a650_zap.b00",
+      "sha256": "ec9b9d5a67456384809624b14a00d15d36297e5f2e75728504cd872bc95e0947",
+      "size": 148
+    },
+    {
+      "path": "/vendor/firmware/a650_zap.b01",
+      "sha256": "134aa6dd25db423d3f6e5f04923c9cf0efbdd647bf706962dc69922872dde89e",
+      "size": 6712
+    },
+    {
+      "path": "/vendor/firmware/a650_zap.b02",
+      "sha256": "a415e5452fa8f597670a6e51010e97bfabca7d20fbce8044caed64d9d5873113",
+      "size": 1676
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Android GPU identity, binding and firmware metadata; no hardware acceleration test",
+  "unavailable": {}
+}

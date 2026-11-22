@@ -1,0 +1,30 @@
+Subject: [PATCH] Input: nt36523 - preserve GPIO-to-IRQ lookup errors
+
+A negative return from gpiod_to_irq() passes the existing nonzero test
+and reaches request_threaded_irq() as an unsigned IRQ number. This can
+replace -EPROBE_DEFER with a different error instead of deferring probe.
+
+Reject negative mapping results before requesting an interrupt. Preserve
+the original errno and use the existing input-device cleanup path, which
+does not free an IRQ that was never acquired.
+
+Apply after mainline-port/patches/0002-input-touchscreen-add-nt36523-spi-pen.patch.
+The Linux v6.12.114 GPIO implementation returns positive IRQs or negative
+errors; zero from a GPIO chip is converted to -ENXIO there. Valid IRQ
+requests, GPIO polarity, reset sequencing and input geometry are unchanged.
+
+diff --git a/drivers/input/touchscreen/nt36523/nt36xxx.c b/drivers/input/touchscreen/nt36523/nt36xxx.c
+--- a/drivers/input/touchscreen/nt36523/nt36xxx.c
++++ b/drivers/input/touchscreen/nt36523/nt36xxx.c
+@@ -1552,6 +1552,11 @@
+ 
+ 	//---set int-pin & request irq---
+ 	client->irq = gpiod_to_irq(ts->irq_gpio);
++	if (client->irq < 0) {
++		ret = dev_err_probe(&client->dev, client->irq,
++				    "failed to map interrupt GPIO\n");
++		goto err_int_request_failed;
++	}
+ 	if (client->irq) {
+ 		NVT_LOG("int_trigger_type=%d\n", ts->int_trigger_type);
+ 		ts->irq_enabled = true;

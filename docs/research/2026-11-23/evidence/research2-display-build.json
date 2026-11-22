@@ -1,0 +1,733 @@
+{
+  "all_module_vermagic_matches": true,
+  "all_modules_elf_aarch64": true,
+  "baseline_source_manifest": {
+    "assembled_files": {
+      "Documentation/devicetree/bindings/input/hid-over-i2c.yaml": "88ea205dc89f3a872a21d1b0f7266d3416f07b89789670ce8862ae888cbea882",
+      "arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc.dts": "288e8278b90770b16461073d32706c741abed79d6a45e4c33a3c1191c9b1e178",
+      "arch/arm64/mm/mmu.c": "b03413247434f6c2abd500036e2aca226f49156ebb726949c25f3a925ab1ca44",
+      "drivers/gpu/drm/msm/msm_drv.c": "00bd1f06be741360f250a0961f0b0f2452f4f4879494ae15f1e26271a02412d5",
+      "drivers/gpu/drm/panel/panel-novatek-nt36523.c": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33",
+      "drivers/hid/i2c-hid/i2c-hid-of.c": "af114006449c419e6efaa1df21b20cecc58d494a22cd2fab3d2db0b5e863e28d",
+      "drivers/input/touchscreen/nt36523/nt36xxx.c": "bcc8e60eb6c10d97b84680224d1118462e5d121daa62d6b8732ec8938a09e0a2",
+      "drivers/video/backlight/tb371fc-ktz8866.c": "5e52309b0c1d6b836273efd1161bf862683dbf6b8b58b3095d04a360f9faab59"
+    },
+    "base_sha256": "7a8589912bd7a8adb07fed074283652cf482a35facef8954554654f0154b4af3",
+    "base_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.114.tar.xz",
+    "inputs": {
+      "experimental/community-handoff/reference/kernel-6.12.114/config": "29beceb93692369a875296f663b574c463b5b02a59f53c3910dfeb03c085eda9",
+      "experimental/community-handoff/reference/kernel-6.12.114/working-tree.patch": "896bed8375817890c13cfd58b0c55b16228bcf85ff42e29d9d0adab561c22618",
+      "mainline-port/arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc.dts": "80b9dbbe56e2ea892d553c756308ec516b9eb45a9dec2d19dc7edf91db1abe97",
+      "mainline-port/backports/linux-6.12/0013-input-nt36523-preserve-gpio-irq-errors.patch": "7915efcbed2eb6e230524529b33a90588380788769ed8d15f9422c7cc35a11a6",
+      "mainline-port/backports/linux-6.12/0014-backlight-tb371fc-unwind-failed-probe.patch": "2e3e6fabe529d0d971639f3551a27cdafdd10735db726be3b9f8eb30ea46aa6a",
+      "mainline-port/backports/linux-6.12/0015-drm-msm-balance-headless-node-reference.patch": "6734a5b8d1667a9e87f2c224b9217c86a731dfbeb7f49825d4dcdb67f5eaea07",
+      "mainline-port/backports/linux-6.12/0016-dts-tb371fc-linux-6.12-compat.patch": "1dfc5caa09ae5f7bb6b93198331abde812e878e5b9f82c13467bdade1e74a105",
+      "mainline-port/backports/linux-6.12/0017-arm64-scope-tb371fc-early-page-table-pool.patch": "d47f00e8cb4c9d90f5d56a07a3e362cadddfbcfc8d2f802985b5abbba04ea8c5",
+      "mainline-port/backports/linux-6.12/panel-novatek-nt36523.c": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33",
+      "mainline-port/backports/linux-6.12/tb371fc-ktz8866.c": "411274490ba052ce942a08db0fa900d2fc342c69be7364423b934fd7d162f127",
+      "mainline-port/patches/0002-input-touchscreen-add-nt36523-spi-pen.patch": "7ce384059a725714cfc82ebf77bcac17f4d327c060947a202abd142a7dbede14",
+      "mainline-port/patches/0006-backlight-add-tb371fc-dual-ktz8866.patch": "cf1c2d9f4ab9790efc5817d885c4fa325f766a03747f9e8fea1535bc2b46302b",
+      "mainline-port/patches/0017-hid-i2c-add-optional-wake-gpio.patch": "013a11e7a647095f98a5b7b9e94c1c30b37374d5b955cfdef3b78ae455a3cc67",
+      "scripts/research/build/research.config": "42410e9f4ab348497bd552f5b3e16bcf160a673a190deaa746d3a1fb592db06a"
+    },
+    "profile": "6.12.114-research1; compile qualification, hardware untested",
+    "schema_version": 1
+  },
+  "bit_for_bit_independent_reproducibility_proven": false,
+  "capture_utc": "2026-11-22T23:21:27.185817+00:00",
+  "compiler": [
+    "Debian clang version 19.1.7 (3+b1)",
+    "Target: x86_64-pc-linux-gnu",
+    "Thread model: posix",
+    "InstalledDir: /usr/lib/llvm-19/bin"
+  ],
+  "files": {
+    "Image": {
+      "sha256": "181f0152868a2dc501191f09cb839ff295f6814f38f0bf027d6f55833382b27d",
+      "size": 29849608
+    },
+    "Module.symvers": {
+      "sha256": "8e71a956b3c79112228f92cd234a13a39aa7a3193a5d1222d1dab5123043d9d0",
+      "size": 807568
+    },
+    "System.map": {
+      "sha256": "ab405c0d8b879e13b401e4b5cf86fe03e57c9843a7ed77c14e92e7a806ae9128",
+      "size": 4425244
+    },
+    "board.dtb": {
+      "sha256": "50ad113c0f50b5586190c30fa9a6b4bedc7cbb64174c5ef4450ce558c593b63e",
+      "size": 126861
+    },
+    "build-state.json": {
+      "sha256": "c85cc51ff10dfbcdd583796a24565689ed0e098a45797eae7ff5e60e534ee2ff",
+      "size": 798
+    },
+    "builder-packages.tsv": {
+      "sha256": "8ac64da0ebd395e10811716dc4682371323166f29acafd1d4ed40e1b0939cee4",
+      "size": 7058
+    },
+    "kernel.config": {
+      "sha256": "e024e6d2094180d31d2b3f64a643801d95c544c0bb9593a64b6d117c2ffb86a8",
+      "size": 216625
+    },
+    "kernel.release": {
+      "sha256": "a22c7e3304d51bb65b0ba99524b584d9f96dd8cc15199c467711c9d2afa44e03",
+      "size": 35
+    },
+    "modules.SHA256SUMS": {
+      "sha256": "18fc3d022405bb7a1f69424a41cc7af5d7608beb6a2d3e5a0b6f9c51a2ef4dbc",
+      "size": 13032
+    },
+    "source-manifest-research1.json": {
+      "sha256": "1a8788a8e5700287870d9e9ca44ad2be8c69e6f28d927321edd89508c5501821",
+      "size": 3269
+    },
+    "source-manifest.json": {
+      "sha256": "845914d9cc1c876f10704f3334ee942b2c26deaa8045ce9c2ef82ef2920cde21",
+      "size": 9679
+    }
+  },
+  "jobs": {
+    "research2-display-build": {
+      "log_sha256": "e98c4e8ecd72a6f3d3cf5e5f83ff2e2db607dd12e11cfa49626947cea622d3d2",
+      "result": {
+        "command": [
+          "bash",
+          "/work/research2-repo/scripts/research/build/build_research2_display.sh"
+        ],
+        "elapsed_seconds": 1268.9154624310322,
+        "exit_code": 0,
+        "start_utc": "2026-11-22T23:00:09.190117+00:00"
+      },
+      "result_sha256": "d1d60e81d694bb69629f23036072d6c57bb83e14b51a1e96af2c148e9c79d8af"
+    },
+    "research2-display-prepare": {
+      "log_sha256": "1aadfc40ee438b15ae84c65d25792b0735905ed32049371cc35042f4052bd088",
+      "result": {
+        "command": [
+          "/usr/bin/python3",
+          "/work/research2-repo/scripts/research/build/prepare_research2_display.py",
+          "--repo",
+          "/work/research2-repo",
+          "--work",
+          "/work/research2-display"
+        ],
+        "elapsed_seconds": 36.96445747598773,
+        "exit_code": 0,
+        "start_utc": "2026-11-22T22:59:32.171666+00:00"
+      },
+      "result_sha256": "0d6e553ffcd8a973291c405a4831c1cf142369798526f2b5eeb57093ab48f07f"
+    },
+    "research2-display-qemu": {
+      "log_sha256": "4a7c58c498219be4f7eebe124cb8a789ace61574777fa7d3a1b000c16aaf408e",
+      "result": {
+        "command": [
+          "/usr/bin/python3",
+          "/work/research2-repo/scripts/research/build/smoke_research2_display.py",
+          "--repo",
+          "/work/research2-repo",
+          "--work",
+          "/work/research2-display"
+        ],
+        "elapsed_seconds": 7.586652869998943,
+        "exit_code": 0,
+        "start_utc": "2026-11-22T23:21:18.188174+00:00"
+      },
+      "result_sha256": "a7bba098891027788a1ca7878e1afa3d4922f3e0d6a961be78a6abe973f95ed3"
+    }
+  },
+  "kernel_release": "6.12.114-tb371fc-research2-display",
+  "linker": "Debian LLD 19.1.7 (compatible with GNU linkers)",
+  "module_count": 83,
+  "module_inventory": {
+    "build_order_entry_format": ".o mapped to kernel/*.ko by Linux 6.12.114 modules_install",
+    "build_order_path": "kernel-out/modules.order",
+    "build_order_sha256": "da77f8df1eb5d29d0064f7a0de3c28b993d3a47270825e3cfae5578f99307fde",
+    "expected_count": 83,
+    "installed_count": 83,
+    "installed_module_set_matches_build": true,
+    "installed_order_matches_build": true,
+    "installed_order_path": "modules/lib/modules/6.12.114-tb371fc-research2-display/modules.order",
+    "installed_order_sha256": "651980651fc90ecfafd7eb6612ce70c18efcd5ee72fce45c437eff6424195b4c",
+    "missing_modules": [],
+    "scope": "all declared uncompressed in-tree modules; no external module directory admitted",
+    "undeclared_module_directories": [],
+    "unexpected_modules": []
+  },
+  "native_compatible_strings_in_image": true,
+  "native_display_tested": false,
+  "native_dtb": {
+    "input_nodes": {
+      "spi14": {
+        "compatible": [
+          "qcom,geni-spi"
+        ],
+        "path": "/soc@0/geniqup@8c0000/spi@880000",
+        "status": "disabled"
+      },
+      "touchscreen": {
+        "compatible": [
+          "novatek,NVT-ts-spi"
+        ],
+        "path": "/soc@0/geniqup@8c0000/spi@880000/touchscreen@0",
+        "status": "disabled"
+      }
+    },
+    "model": "Lenovo TB371FC (Linux 6.12 native display diagnostic)",
+    "nodes": {
+      "dpu": {
+        "compatible": [
+          "lenovo,tb371fc-dpu"
+        ],
+        "path": "/soc@0/display-subsystem@ae00000/display-controller@ae01000",
+        "status": "okay",
+        "status_property_present": false
+      },
+      "dsi0": {
+        "compatible": [
+          "qcom,sm8250-dsi-ctrl",
+          "qcom,mdss-dsi-ctrl"
+        ],
+        "path": "/soc@0/display-subsystem@ae00000/dsi@ae94000",
+        "status": "okay",
+        "status_property_present": true
+      },
+      "dsi1": {
+        "compatible": [
+          "qcom,sm8250-dsi-ctrl",
+          "qcom,mdss-dsi-ctrl"
+        ],
+        "path": "/soc@0/display-subsystem@ae00000/dsi@ae96000",
+        "status": "okay",
+        "status_property_present": true
+      },
+      "mdss": {
+        "compatible": [
+          "qcom,sm8250-mdss"
+        ],
+        "path": "/soc@0/display-subsystem@ae00000",
+        "status": "okay",
+        "status_property_present": true
+      },
+      "panel": {
+        "compatible": [
+          "lenovo,tb371fc-tianma-nt36532",
+          "novatek,nt36523"
+        ],
+        "path": "/soc@0/display-subsystem@ae00000/dsi@ae94000/panel@0",
+        "status": "okay",
+        "status_property_present": true
+      },
+      "phy0": {
+        "compatible": [
+          "lenovo,tb371fc-dsi-phy-7nm"
+        ],
+        "path": "/soc@0/display-subsystem@ae00000/phy@ae94400",
+        "status": "okay",
+        "status_property_present": true
+      },
+      "phy1": {
+        "compatible": [
+          "lenovo,tb371fc-dsi-phy-7nm"
+        ],
+        "path": "/soc@0/display-subsystem@ae00000/phy@ae96400",
+        "status": "okay",
+        "status_property_present": true
+      }
+    },
+    "root_compatible": [
+      "lenovo,tb371fc",
+      "qcom,sm8250"
+    ],
+    "stdout_path": "/chosen/framebuffer@9c000000"
+  },
+  "only_config_change": {
+    "CONFIG_LOCALVERSION": "-tb371fc-research2-display"
+  },
+  "physical_hardware_tested": false,
+  "profile": "research2-display",
+  "qemu": {
+    "result": {
+      "cleanup": {
+        "child_reaped": true,
+        "errors": [],
+        "kill_sent": false,
+        "terminate_sent": true
+      },
+      "command": [
+        "qemu-system-aarch64",
+        "-machine",
+        "virt",
+        "-accel",
+        "tcg",
+        "-cpu",
+        "max",
+        "-smp",
+        "2",
+        "-m",
+        "1024",
+        "-nographic",
+        "-monitor",
+        "none",
+        "-nic",
+        "none",
+        "-no-reboot",
+        "-kernel",
+        "/work/research2-display/artifacts/Image",
+        "-initrd",
+        "/work/research2-display/qemu-smoke/initramfs.cpio.gz",
+        "-append",
+        "console=ttyAMA0 earlycon=pl011,0x9000000 rdinit=/init loglevel=7 panic=1"
+      ],
+      "compiler_command": [
+        "clang",
+        "--target=aarch64-linux-gnu",
+        "-fuse-ld=lld",
+        "-Oz",
+        "-ffreestanding",
+        "-fno-stack-protector",
+        "-nostdlib",
+        "-static",
+        "-Wl,-e,_start",
+        "-Wl,--build-id=none",
+        "-o",
+        "/work/research2-display/qemu-smoke/init.elf",
+        "/work/research2-repo/scripts/research/build/qemu-init.c"
+      ],
+      "controller_result": "pass",
+      "controller_sha256": "e3bcf5a7fe442b3e0065e513d82e4774891de98b3b61a4331971a2ab112a5473",
+      "elapsed_seconds": 7.078841484966688,
+      "expected_release": "6.12.114-tb371fc-research2-display",
+      "image_sha256": "181f0152868a2dc501191f09cb839ff295f6814f38f0bf027d6f55833382b27d",
+      "init_elf_sha256": "6ee5841ec2b2e5e7655721f6ea6b783818a59ebab13903e457b8532d09d7412e",
+      "init_source_sha256": "2932cb3b2cac25e7ba98041bba3df116623d169adc606bcd99974c29f5c5195f",
+      "initramfs_sha256": "e0c55a4f8d4425861b39da487d13eb852e180cd468b5e23b95ba3ab761847e90",
+      "interrupted_signal": null,
+      "native_display_tested": false,
+      "observed_lines": {
+        "el0_marker": true,
+        "guest_error": false,
+        "machine": true,
+        "release": true
+      },
+      "physical_hardware_tested": false,
+      "profile": "research2-display",
+      "profile_launcher_sha256": "3d2e197cc69580fd742a9d5e2e5885c14fa23db715fd40bb87f6d9bd4861a251",
+      "qemu_returncode": 0,
+      "schema_version": 1,
+      "scope": "generic QEMU virt using its machine DT; native TB371FC display DT is not passed",
+      "serial_output_truncated": false,
+      "serial_sha256": "00f50dfd515fed0df41474024ba55cc47e422e2a3a13064abb11bcd1d07d753c",
+      "source_manifest_sha256": "845914d9cc1c876f10704f3334ee942b2c26deaa8045ce9c2ef82ef2920cde21",
+      "stop_reason": "observed_el0_marker",
+      "timeout_seconds": 120
+    },
+    "result_sha256": "b765158f46617d1bacda5dda81d6faa636f9270fc03baba866bf4b368f92331a",
+    "serial_sha256": "00f50dfd515fed0df41474024ba55cc47e422e2a3a13064abb11bcd1d07d753c"
+  },
+  "reproducibility_limit": "APT is recorded rather than snapshot-pinned; a fresh private module-signing key affects output bytes",
+  "resolved_config": {
+    "CONFIG_BACKLIGHT_TB371FC_KTZ8866": "m",
+    "CONFIG_DRM_MSM": "y",
+    "CONFIG_DRM_MSM_DPU": "y",
+    "CONFIG_DRM_MSM_DSI": "y",
+    "CONFIG_DRM_MSM_DSI_7NM_PHY": "y",
+    "CONFIG_DRM_PANEL_NOVATEK_NT36523": "m",
+    "CONFIG_FW_LOADER_COMPRESS_XZ": "y",
+    "CONFIG_FW_LOADER_COMPRESS_ZSTD": "y",
+    "CONFIG_I2C_HID_OF": "y",
+    "CONFIG_LOCALVERSION": "\"-tb371fc-research2-display\"",
+    "CONFIG_TOUCHSCREEN_NT36523_SPI": "m",
+    "CONFIG_VIDEO_QCOM_VENUS": "m"
+  },
+  "schema_version": 1,
+  "scope": "complete Image/modules/native diagnostic DT build plus generic virt boot; no native hardware validation",
+  "selected_modules": [
+    {
+      "aliases": [
+        "of:N*T*Cqcom,sm8250-camcc",
+        "of:N*T*Cqcom,sm8250-camccC*"
+      ],
+      "firmware_names": [],
+      "path": "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/clk/qcom/camcc-sm8250.ko",
+      "sha256": "ae6b932281773c892f28dd07e3f306e9f6118d5f2d1981d8ea3f8a6028b56c7a",
+      "size": 74657,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "aliases": [
+        "of:N*T*Cqcom,sc8180x-dispcc",
+        "of:N*T*Cqcom,sc8180x-dispccC*",
+        "of:N*T*Cqcom,sm8150-dispcc",
+        "of:N*T*Cqcom,sm8150-dispccC*",
+        "of:N*T*Cqcom,sm8250-dispcc",
+        "of:N*T*Cqcom,sm8250-dispccC*",
+        "of:N*T*Cqcom,sm8350-dispcc",
+        "of:N*T*Cqcom,sm8350-dispccC*"
+      ],
+      "firmware_names": [],
+      "path": "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/clk/qcom/dispcc-sm8250.ko",
+      "sha256": "71312c23208091f34247b9eb6f14cbed1d2406b37e7ca4096d65afe43ac81d62",
+      "size": 48601,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "aliases": [
+        "of:N*T*Cqcom,sm8250-videocc",
+        "of:N*T*Cqcom,sm8250-videoccC*"
+      ],
+      "firmware_names": [],
+      "path": "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/clk/qcom/videocc-sm8250.ko",
+      "sha256": "7e57ecbba3defecaacac098b2fc832d0da2d0894caf9e3411170db12f2735015",
+      "size": 23625,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "aliases": [
+        "of:N*T*Clenovo,tb371fc-boe-nt36532",
+        "of:N*T*Clenovo,tb371fc-boe-nt36532C*",
+        "of:N*T*Clenovo,tb371fc-tianma-nt36532",
+        "of:N*T*Clenovo,tb371fc-tianma-nt36532C*",
+        "of:N*T*Clenovo,j606f-boe-nt36523w",
+        "of:N*T*Clenovo,j606f-boe-nt36523wC*",
+        "of:N*T*Cxiaomi,elish-boe-nt36523",
+        "of:N*T*Cxiaomi,elish-boe-nt36523C*",
+        "of:N*T*Cxiaomi,elish-csot-nt36523",
+        "of:N*T*Cxiaomi,elish-csot-nt36523C*"
+      ],
+      "firmware_names": [],
+      "path": "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/gpu/drm/panel/panel-novatek-nt36523.ko",
+      "sha256": "8701df203a43f2dc3e3b381fec0dc53a8be30c864255c5e3dd571980b5e7b5f4",
+      "size": 214393,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "aliases": [
+        "spi:NVT-ts-spi",
+        "of:N*T*Cnovatek,NVT-ts-spi",
+        "of:N*T*Cnovatek,NVT-ts-spiC*"
+      ],
+      "firmware_names": [],
+      "path": "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/input/touchscreen/nt36523/nt36523_ts.ko",
+      "sha256": "d67efc02c756e8685ca0043cfb6684349bc72fb9918087f3e5c5a0ba81061f6f",
+      "size": 90393,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "aliases": [
+        "of:N*T*Cqcom,sm8250-aggre1-noc",
+        "of:N*T*Cqcom,sm8250-aggre1-nocC*",
+        "of:N*T*Cqcom,sm8250-aggre2-noc",
+        "of:N*T*Cqcom,sm8250-aggre2-nocC*",
+        "of:N*T*Cqcom,sm8250-compute-noc",
+        "of:N*T*Cqcom,sm8250-compute-nocC*",
+        "of:N*T*Cqcom,sm8250-config-noc",
+        "of:N*T*Cqcom,sm8250-config-nocC*",
+        "of:N*T*Cqcom,sm8250-dc-noc",
+        "of:N*T*Cqcom,sm8250-dc-nocC*",
+        "of:N*T*Cqcom,sm8250-gem-noc",
+        "of:N*T*Cqcom,sm8250-gem-nocC*",
+        "of:N*T*Cqcom,sm8250-mc-virt",
+        "of:N*T*Cqcom,sm8250-mc-virtC*",
+        "of:N*T*Cqcom,sm8250-mmss-noc",
+        "of:N*T*Cqcom,sm8250-mmss-nocC*",
+        "of:N*T*Cqcom,sm8250-npu-noc",
+        "of:N*T*Cqcom,sm8250-npu-nocC*",
+        "of:N*T*Cqcom,sm8250-qup-virt",
+        "of:N*T*Cqcom,sm8250-qup-virtC*",
+        "of:N*T*Cqcom,sm8250-system-noc",
+        "of:N*T*Cqcom,sm8250-system-nocC*"
+      ],
+      "firmware_names": [],
+      "path": "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/interconnect/qcom/qnoc-sm8250.ko",
+      "sha256": "0f1d63cf6414f3d04b50b6323007e21d7b00dbdbf86a4509e5db8a1de9b59b47",
+      "size": 95049,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "aliases": [
+        "platform:qcom-venus",
+        "of:N*T*Cqcom,msm8916-venus",
+        "of:N*T*Cqcom,msm8916-venusC*",
+        "of:N*T*Cqcom,msm8996-venus",
+        "of:N*T*Cqcom,msm8996-venusC*",
+        "of:N*T*Cqcom,msm8998-venus",
+        "of:N*T*Cqcom,msm8998-venusC*",
+        "of:N*T*Cqcom,sdm660-venus",
+        "of:N*T*Cqcom,sdm660-venusC*",
+        "of:N*T*Cqcom,sdm845-venus",
+        "of:N*T*Cqcom,sdm845-venusC*",
+        "of:N*T*Cqcom,sdm845-venus-v2",
+        "of:N*T*Cqcom,sdm845-venus-v2C*",
+        "of:N*T*Cqcom,sc7180-venus",
+        "of:N*T*Cqcom,sc7180-venusC*",
+        "of:N*T*Cqcom,sc7280-venus",
+        "of:N*T*Cqcom,sc7280-venusC*",
+        "of:N*T*Cqcom,sm8250-venus",
+        "of:N*T*Cqcom,sm8250-venusC*"
+      ],
+      "firmware_names": [],
+      "path": "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/media/platform/qcom/venus/venus-core.ko",
+      "sha256": "3cdb7e49959f6c973272237d65e852d42c232de0dea8d147b447c0fe5997d249",
+      "size": 191545,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "aliases": [
+        "platform:qcom-venus-decoder",
+        "of:N*T*Cvenus-decoder",
+        "of:N*T*Cvenus-decoderC*"
+      ],
+      "firmware_names": [],
+      "path": "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/media/platform/qcom/venus/venus-dec.ko",
+      "sha256": "40ab75488e01ea92d553a0e3e038a477090005383e893f2d509f793dcd6c2ca4",
+      "size": 50937,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "aliases": [
+        "platform:qcom-venus-encoder",
+        "of:N*T*Cvenus-encoder",
+        "of:N*T*Cvenus-encoderC*"
+      ],
+      "firmware_names": [],
+      "path": "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/media/platform/qcom/venus/venus-enc.ko",
+      "sha256": "7e0e289d5acea66225f367ad7978fe415efef0be593b0f9e80248d7e568ea70a",
+      "size": 48009,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "aliases": [],
+      "firmware_names": [],
+      "path": "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/net/wireless/ath/ath11k/ath11k.ko",
+      "sha256": "17e333ca4f5a26b04b6180c97ed5170df1a421aa9957766387e9abfb1e3edfbb",
+      "size": 622033,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "aliases": [
+        "pci:v000017CBd00001101sv*sd*bc*sc*i*",
+        "pci:v000017CBd00001103sv*sd*bc*sc*i*",
+        "pci:v000017CBd00001104sv*sd*bc*sc*i*"
+      ],
+      "firmware_names": [
+        "ath11k/QCA6390/hw2.0/*",
+        "ath11k/QCN9074/hw1.0/*",
+        "ath11k/WCN6855/hw2.0/*",
+        "ath11k/WCN6855/hw2.1/*"
+      ],
+      "path": "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/net/wireless/ath/ath11k/ath11k_pci.ko",
+      "sha256": "d9852a03c95540165b57a9460be2d978eb86d90ff97f3440fe576c6577b1005b",
+      "size": 44017,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "aliases": [
+        "of:N*T*Cqcom,sm8250-lpass-lpi-pinctrl",
+        "of:N*T*Cqcom,sm8250-lpass-lpi-pinctrlC*"
+      ],
+      "firmware_names": [],
+      "path": "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/pinctrl/qcom/pinctrl-sm8250-lpass-lpi.ko",
+      "sha256": "ba80e0a5eb57f767beab4135a91d0a0bcec7df41692aeb8c33e325b488ad8151",
+      "size": 14249,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "aliases": [
+        "of:N*T*Cqcom,pm8005-rpmh-regulators",
+        "of:N*T*Cqcom,pm8005-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm8009-rpmh-regulators",
+        "of:N*T*Cqcom,pm8009-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm8009-1-rpmh-regulators",
+        "of:N*T*Cqcom,pm8009-1-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm8010-rpmh-regulators",
+        "of:N*T*Cqcom,pm8010-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm8150-rpmh-regulators",
+        "of:N*T*Cqcom,pm8150-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm8150l-rpmh-regulators",
+        "of:N*T*Cqcom,pm8150l-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm8350-rpmh-regulators",
+        "of:N*T*Cqcom,pm8350-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm8350c-rpmh-regulators",
+        "of:N*T*Cqcom,pm8350c-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm8450-rpmh-regulators",
+        "of:N*T*Cqcom,pm8450-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm8550-rpmh-regulators",
+        "of:N*T*Cqcom,pm8550-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm8550ve-rpmh-regulators",
+        "of:N*T*Cqcom,pm8550ve-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm8550vs-rpmh-regulators",
+        "of:N*T*Cqcom,pm8550vs-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm8998-rpmh-regulators",
+        "of:N*T*Cqcom,pm8998-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pmg1110-rpmh-regulators",
+        "of:N*T*Cqcom,pmg1110-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pmi8998-rpmh-regulators",
+        "of:N*T*Cqcom,pmi8998-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm6150-rpmh-regulators",
+        "of:N*T*Cqcom,pm6150-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm6150l-rpmh-regulators",
+        "of:N*T*Cqcom,pm6150l-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm6350-rpmh-regulators",
+        "of:N*T*Cqcom,pm6350-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pmc8180-rpmh-regulators",
+        "of:N*T*Cqcom,pmc8180-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pmc8180c-rpmh-regulators",
+        "of:N*T*Cqcom,pmc8180c-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pmc8380-rpmh-regulators",
+        "of:N*T*Cqcom,pmc8380-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pmm8155au-rpmh-regulators",
+        "of:N*T*Cqcom,pmm8155au-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pmm8654au-rpmh-regulators",
+        "of:N*T*Cqcom,pmm8654au-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pmx55-rpmh-regulators",
+        "of:N*T*Cqcom,pmx55-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pmx65-rpmh-regulators",
+        "of:N*T*Cqcom,pmx65-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pmx75-rpmh-regulators",
+        "of:N*T*Cqcom,pmx75-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm7325-rpmh-regulators",
+        "of:N*T*Cqcom,pm7325-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pmr735a-rpmh-regulators",
+        "of:N*T*Cqcom,pmr735a-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm660-rpmh-regulators",
+        "of:N*T*Cqcom,pm660-rpmh-regulatorsC*",
+        "of:N*T*Cqcom,pm660l-rpmh-regulators",
+        "of:N*T*Cqcom,pm660l-rpmh-regulatorsC*"
+      ],
+      "firmware_names": [],
+      "path": "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/regulator/qcom-rpmh-regulator.ko",
+      "sha256": "e4c3b5c236d0a8cdee581fd25a524a30e2ea5ed69ba5017bc5b6ac1d0a772105",
+      "size": 101993,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "aliases": [
+        "of:N*T*Clenovo,tb371fc-ktz8866",
+        "of:N*T*Clenovo,tb371fc-ktz8866C*"
+      ],
+      "firmware_names": [],
+      "path": "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/video/backlight/tb371fc-ktz8866.ko",
+      "sha256": "ea57fa1563d35b58a7ebb04894fa63ab76a394ba04f0043e96eb64b6d773e21f",
+      "size": 13073,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    {
+      "aliases": [
+        "of:N*T*Cqcom,sm8250-sndcard",
+        "of:N*T*Cqcom,sm8250-sndcardC*",
+        "of:N*T*Cqcom,qrb4210-rb2-sndcard",
+        "of:N*T*Cqcom,qrb4210-rb2-sndcardC*",
+        "of:N*T*Cqcom,qrb5165-rb5-sndcard",
+        "of:N*T*Cqcom,qrb5165-rb5-sndcardC*"
+      ],
+      "firmware_names": [],
+      "path": "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/snd-soc-sm8250.ko",
+      "sha256": "0c6e64dffc0457b056e95c948d854260dc32f3d796178ccca50e2044bccbee0a",
+      "size": 11969,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    }
+  ],
+  "source_manifest": {
+    "added_patches": [
+      "mainline-port/backports/linux-6.12/0002-tb371fc-phy-wideplane.patch"
+    ],
+    "assembled_files": {
+      "Documentation/devicetree/bindings/input/hid-over-i2c.yaml": "88ea205dc89f3a872a21d1b0f7266d3416f07b89789670ce8862ae888cbea882",
+      "arch/arm64/Kconfig.debug": "4dc5c41b8ee71924798d7136a4ea143e6d169e8e4ebc5a678a04b534ed259e55",
+      "arch/arm64/boot/dts/qcom/Makefile": "97b687d47d1aafd80ed8a41b0cb77b220cc36c9cbcacc7d95a2c2d640dcbc576",
+      "arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc-display-test-6.12.dts": "8cac3ffe34d6eaf3ee43ea1c63b4395fd6a38325ccb5f289283da3e234bfe1f7",
+      "arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc-display-test.dts": "cbb4a34fb144d01f2df5804049b6de1fc58cd3fdb0417cec04ee44b01a5b0cef",
+      "arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc.dts": "288e8278b90770b16461073d32706c741abed79d6a45e4c33a3c1191c9b1e178",
+      "arch/arm64/kernel/head.S": "e2ba2ec353f0e03b0861563e07fc6a2858c903ca5ba6533b41e034d108d05508",
+      "arch/arm64/kernel/pi/map_range.c": "2eedfaa79b543a061a9a54908b2e7d28cbae5c422e8cefd688123ccddfa48efc",
+      "arch/arm64/kernel/setup.c": "834cf165ee9caab12a6f0321e1eef91fb008aabc7eeaa329f620b21ee9d77297",
+      "arch/arm64/mm/mmu.c": "b03413247434f6c2abd500036e2aca226f49156ebb726949c25f3a925ab1ca44",
+      "drivers/clk/qcom/gcc-sm8250.c": "4685b5d11e5cd89718dc80f9b723ab86e5951bfc06fbace1447a855c6a035a20",
+      "drivers/gpu/drm/msm/adreno/adreno_device.c": "7ddde6ff94c9270a6ed94e6a001e127ee9be2c2fe1904e2c929e41d0e1502091",
+      "drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_6_0_sm8250.h": "9e0aa98c6460fedc5b7b039f286ffe1fc49a0fcaf33b7a53b73a46bbd95d69a6",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c": "6d51dfb9b7cf73c67ddcd48336b3437029f0291039b7656406f432029aeb1c48",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_encoder_phys_vid.c": "2febd00e30a765e1fb7c7335dda47f7ae54665f307103172787e90814d264f10",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.h": "98daac09b803bab1cb4bb5aad1b3b7c1ec27cf2174884b9897e1293ef3ea13cb",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c": "6db93d382191a8e9989a2a1b5196bf9b81b55ff18909030b0d4c0e4fb3275a8d",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.h": "200ed6d145287043087dfc6e8bd44e891293fa21997f5bd5c222425d82ffb07d",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c": "d28352bcdad53cd1bae0301138b17c5736ab3ead8bf98b0eefca368a58b8d2df",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c": "3f90bdd225d6853f6b15a2c2f53f0ade0d08ed456521ae4c5b873c140aea92ee",
+      "drivers/gpu/drm/msm/dsi/dsi_host.c": "f0c9e8c2aff20215228543c6051a36310ac12a9164ebce4888db1e2ee45d1f19",
+      "drivers/gpu/drm/msm/dsi/phy/dsi_phy.c": "dd0feba0e7f75f04c9e537354eee377c1c8a33943ee9a346178bf0a2b58a7539",
+      "drivers/gpu/drm/msm/dsi/phy/dsi_phy.h": "4837d449c078ab3417a6c001ed85f0598de0c24ef3b3baba390d802da8d04728",
+      "drivers/gpu/drm/msm/dsi/phy/dsi_phy_7nm.c": "188eb7e650a6045f685d669edefa957412e624220bfe21fa0a3097f9d19fe3be",
+      "drivers/gpu/drm/msm/msm_drv.c": "00bd1f06be741360f250a0961f0b0f2452f4f4879494ae15f1e26271a02412d5",
+      "drivers/gpu/drm/panel/panel-novatek-nt36523.c": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33",
+      "drivers/hid/i2c-hid/i2c-hid-of.c": "af114006449c419e6efaa1df21b20cecc58d494a22cd2fab3d2db0b5e863e28d",
+      "drivers/input/touchscreen/Kconfig": "e041e2345cc0cbb585faed4783ef674baf8d8beb315bb5ba4e6d2e642a9868ee",
+      "drivers/input/touchscreen/Makefile": "01ef0d88222f1afdde09116acbeea70cf136fe1ecfafdb6195e30fb07b6e05e1",
+      "drivers/input/touchscreen/nt36523/Kconfig": "b7efd88e85bbb4c540c51be27ecc1e30a36ee14f4e57ffcddf651300b3090057",
+      "drivers/input/touchscreen/nt36523/Makefile": "963bf5a9051f750023ff201b39edec65a9b29ee19c4e869d1f70d5f615b5adc1",
+      "drivers/input/touchscreen/nt36523/nt36xxx.c": "bcc8e60eb6c10d97b84680224d1118462e5d121daa62d6b8732ec8938a09e0a2",
+      "drivers/input/touchscreen/nt36523/nt36xxx.h": "68f848aea0524d82278fd1651c29e6108d7e326426fca531db6282a16d9758e4",
+      "drivers/input/touchscreen/nt36523/nt36xxx_fw_update.c": "cbd363cd60c7850519704e6b7291ea5d6b937184f0f660d4e24fdc140586c1ba",
+      "drivers/input/touchscreen/nt36523/nt36xxx_mem_map.h": "f44d26d96d60c7890ddc956378fbcd82f8fb7077dd3a2b7746bbf818c713eb0b",
+      "drivers/mmc/host/sdhci-msm.c": "c85f1d69041033a8bee4b7f15c000fe453fba79f71547dc39007078cb605bd30",
+      "drivers/phy/qualcomm/phy-qcom-qmp-combo.c": "3c470a2391950732182cfd83196d228fa4f1f8cb907fdd64000c113f2f2f7173",
+      "drivers/video/backlight/Kconfig": "3923e7bb7be44bef64c1eb5241101cf4d7b1dd95710e5c5ee6ea7e59a72df5d6",
+      "drivers/video/backlight/Makefile": "2fb1d8bdc0ac5d753000a3a8a00f3b3eb915c18fd621595cf051f4b91324ae36",
+      "drivers/video/backlight/tb371fc-ktz8866.c": "5e52309b0c1d6b836273efd1161bf862683dbf6b8b58b3095d04a360f9faab59",
+      "init/main.c": "5956b8729c4ba0ad8f71550cc37372375c6226e92a4697b1d9f9c090d7b667a6",
+      "net/socket.c": "b8f0c0796ab942edee0e8a895d0bf2a9d021aa586207140686b71d1de6442b15"
+    },
+    "base_sha256": "7a8589912bd7a8adb07fed074283652cf482a35facef8954554654f0154b4af3",
+    "base_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.114.tar.xz",
+    "baseline_manifest": {
+      "path": "source-manifest-research1.json",
+      "sha256": "1a8788a8e5700287870d9e9ca44ad2be8c69e6f28d927321edd89508c5501821"
+    },
+    "baseline_resolved_config_sha256": "1929caefadeb28cf84174c7fe7c100ab7251b3adcfdf547b2165c229b50f66da",
+    "configuration_change": {
+      "CONFIG_LOCALVERSION": "-tb371fc-research2-display"
+    },
+    "dtb_target": "qcom/sm8250-lenovo-tb371fc-display-test-6.12.dtb",
+    "expected_dtb_sha256": "50ad113c0f50b5586190c30fa9a6b4bedc7cbb64174c5ef4450ce558c593b63e",
+    "frozen_helpers": {
+      "scripts/research/build/inspect_kernel.py": "2cac7d0bfdf13d449349e6482c75ceda261ec7d67acd0c677490843f8591a875",
+      "scripts/research/build/prepare_kernel.py": "79794fb988ebfd204e1fc99ba35fdf301da6de5db554debdf689143700598f59",
+      "scripts/research/build/qemu-init.c": "2932cb3b2cac25e7ba98041bba3df116623d169adc606bcd99974c29f5c5195f",
+      "scripts/research/build/run_job.py": "94b3d3692adbbbbbcec8cf2d84718bf5eb6c0ef0278145add177c4c1e92d63fe",
+      "scripts/research/build/smoke_qemu.py": "e3bcf5a7fe442b3e0065e513d82e4774891de98b3b61a4331971a2ab112a5473"
+    },
+    "inputs": {
+      "experimental/community-handoff/reference/kernel-6.12.114/config": "29beceb93692369a875296f663b574c463b5b02a59f53c3910dfeb03c085eda9",
+      "experimental/community-handoff/reference/kernel-6.12.114/working-tree.patch": "896bed8375817890c13cfd58b0c55b16228bcf85ff42e29d9d0adab561c22618",
+      "mainline-port/arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc-display-test.dts": "cbb4a34fb144d01f2df5804049b6de1fc58cd3fdb0417cec04ee44b01a5b0cef",
+      "mainline-port/arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc.dts": "80b9dbbe56e2ea892d553c756308ec516b9eb45a9dec2d19dc7edf91db1abe97",
+      "mainline-port/backports/linux-6.12/0002-tb371fc-phy-wideplane.patch": "839699e055d8959232f2912895cbd71f5fd85f3e07a1d3f033a1fd728e08ce56",
+      "mainline-port/backports/linux-6.12/0013-input-nt36523-preserve-gpio-irq-errors.patch": "7915efcbed2eb6e230524529b33a90588380788769ed8d15f9422c7cc35a11a6",
+      "mainline-port/backports/linux-6.12/0014-backlight-tb371fc-unwind-failed-probe.patch": "2e3e6fabe529d0d971639f3551a27cdafdd10735db726be3b9f8eb30ea46aa6a",
+      "mainline-port/backports/linux-6.12/0015-drm-msm-balance-headless-node-reference.patch": "6734a5b8d1667a9e87f2c224b9217c86a731dfbeb7f49825d4dcdb67f5eaea07",
+      "mainline-port/backports/linux-6.12/0016-dts-tb371fc-linux-6.12-compat.patch": "1dfc5caa09ae5f7bb6b93198331abde812e878e5b9f82c13467bdade1e74a105",
+      "mainline-port/backports/linux-6.12/0017-arm64-scope-tb371fc-early-page-table-pool.patch": "d47f00e8cb4c9d90f5d56a07a3e362cadddfbcfc8d2f802985b5abbba04ea8c5",
+      "mainline-port/backports/linux-6.12/panel-novatek-nt36523.c": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33",
+      "mainline-port/backports/linux-6.12/sm8250-lenovo-tb371fc-display-test-6.12.dts": "8cac3ffe34d6eaf3ee43ea1c63b4395fd6a38325ccb5f289283da3e234bfe1f7",
+      "mainline-port/backports/linux-6.12/tb371fc-ktz8866.c": "411274490ba052ce942a08db0fa900d2fc342c69be7364423b934fd7d162f127",
+      "mainline-port/patches/0002-input-touchscreen-add-nt36523-spi-pen.patch": "7ce384059a725714cfc82ebf77bcac17f4d327c060947a202abd142a7dbede14",
+      "mainline-port/patches/0006-backlight-add-tb371fc-dual-ktz8866.patch": "cf1c2d9f4ab9790efc5817d885c4fa325f766a03747f9e8fea1535bc2b46302b",
+      "mainline-port/patches/0017-hid-i2c-add-optional-wake-gpio.patch": "013a11e7a647095f98a5b7b9e94c1c30b37374d5b955cfdef3b78ae455a3cc67",
+      "scripts/research/build/research.config": "42410e9f4ab348497bd552f5b3e16bcf160a673a190deaa746d3a1fb592db06a"
+    },
+    "kernel_release": "6.12.114-tb371fc-research2-display",
+    "physical_hardware_tested": false,
+    "prerequisite_qualification": {
+      "path": "docs/research/2026-11-23/evidence/diagnostic-dt-profiles.json",
+      "sha256": "5a277ba48186870748799b43b84e10c3fa719d6c6b178b1d14502a2a8091e5a9"
+    },
+    "profile": "research2-display; complete-build candidate; physical hardware untested",
+    "recipes": {
+      "scripts/research/build/build_research2_display.sh": "5a110a84de6f6a7d7444908bf448156d85ea608441c43e3f7e541c3595144417",
+      "scripts/research/build/inspect_research2_display.py": "96eac3ff9ced87f792abc39343013ff4c1769d0eae11c9fcb5e82783c5ca1320",
+      "scripts/research/build/prepare_research2_display.py": "2e8e6f2c3a4962553b9938bb1288be84873eb31cca41be39cefa41daf5f87f45",
+      "scripts/research/build/smoke_research2_display.py": "3d2e197cc69580fd742a9d5e2e5885c14fa23db715fd40bb87f6d9bd4861a251"
+    },
+    "schema_version": 1,
+    "source_dir": "linux-6.12.114-research2-display"
+  }
+}
