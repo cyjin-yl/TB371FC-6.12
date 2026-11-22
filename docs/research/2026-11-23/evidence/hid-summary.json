@@ -1,0 +1,1982 @@
+{
+  "schema": "tb371fc-hid-report-descriptor-v1",
+  "descriptor_bytes": 604,
+  "sha256": "92b9e225936372a521e88f217d96d5a05200c6fdc91ab07532d6e9ca9b4cd9e0",
+  "interpretation": "Advertised descriptor capabilities only; no events or runtime validation.",
+  "privacy": "No raw bytes, string values, device paths, serial numbers or network addresses are emitted.",
+  "applications": [
+    {
+      "page": "0x000d",
+      "usage": "0x0005",
+      "page_name": "Digitizers",
+      "name": "Touch Pad"
+    },
+    {
+      "page": "0x0001",
+      "usage": "0x0006",
+      "page_name": "Generic Desktop",
+      "name": "Keyboard"
+    },
+    {
+      "page": "0x000c",
+      "usage": "0x0001",
+      "page_name": "Consumer",
+      "name": "Consumer Control"
+    }
+  ],
+  "reports": [
+    {
+      "kind": "feature",
+      "report_id": 2,
+      "payload_bits": 8,
+      "report_bytes_with_id": 2
+    },
+    {
+      "kind": "feature",
+      "report_id": 6,
+      "payload_bits": 32,
+      "report_bytes_with_id": 5
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "payload_bits": 224,
+      "report_bytes_with_id": 29
+    },
+    {
+      "kind": "input",
+      "report_id": 4,
+      "payload_bits": 64,
+      "report_bytes_with_id": 9
+    },
+    {
+      "kind": "input",
+      "report_id": 5,
+      "payload_bits": 24,
+      "report_bytes_with_id": 4
+    },
+    {
+      "kind": "output",
+      "report_id": 4,
+      "payload_bits": 8,
+      "report_bytes_with_id": 2
+    }
+  ],
+  "fields": [
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 0,
+      "size_bits": 1,
+      "count": 2,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        0
+      ],
+      "unit": "0x0",
+      "unit_exponent": 0,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x0009",
+          "usage": "0x0001",
+          "page_name": "Button"
+        },
+        {
+          "page": "0x0009",
+          "usage": "0x0002",
+          "page_name": "Button"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 2,
+      "size_bits": 1,
+      "count": 2,
+      "constant": true,
+      "variable": true,
+      "relative": false,
+      "flags": "0x3",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        0
+      ],
+      "unit": "0x0",
+      "unit_exponent": 0,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": []
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 4,
+      "size_bits": 4,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        15
+      ],
+      "physical_range": [
+        0,
+        0
+      ],
+      "unit": "0x0",
+      "unit_exponent": 0,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x000d",
+          "usage": "0x0054",
+          "page_name": "Digitizers",
+          "name": "Contact Count"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 8,
+      "size_bits": 16,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        65535
+      ],
+      "physical_range": [
+        0,
+        65535
+      ],
+      "unit": "0x1001",
+      "unit_exponent": -4,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x000d",
+          "usage": "0x0056",
+          "page_name": "Digitizers",
+          "name": "Scan Time"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 24,
+      "size_bits": 1,
+      "count": 2,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        65535
+      ],
+      "unit": "0x1001",
+      "unit_exponent": -4,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x000d",
+          "usage": "0x0042",
+          "page_name": "Digitizers",
+          "name": "Tip Switch"
+        },
+        {
+          "page": "0x000d",
+          "usage": "0x0047",
+          "page_name": "Digitizers",
+          "name": "Confidence"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 26,
+      "size_bits": 1,
+      "count": 2,
+      "constant": true,
+      "variable": true,
+      "relative": false,
+      "flags": "0x3",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        65535
+      ],
+      "unit": "0x1001",
+      "unit_exponent": -4,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": []
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 28,
+      "size_bits": 4,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        15
+      ],
+      "physical_range": [
+        0,
+        65535
+      ],
+      "unit": "0x1001",
+      "unit_exponent": -4,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x000d",
+          "usage": "0x0051",
+          "page_name": "Digitizers",
+          "name": "Contact Identifier"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 32,
+      "size_bits": 16,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        2998
+      ],
+      "physical_range": [
+        0,
+        9540
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x0001",
+          "usage": "0x0030",
+          "page_name": "Generic Desktop",
+          "name": "X"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 48,
+      "size_bits": 16,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        1771
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x0001",
+          "usage": "0x0031",
+          "page_name": "Generic Desktop",
+          "name": "Y"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 64,
+      "size_bits": 1,
+      "count": 2,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x000d",
+          "usage": "0x0042",
+          "page_name": "Digitizers",
+          "name": "Tip Switch"
+        },
+        {
+          "page": "0x000d",
+          "usage": "0x0047",
+          "page_name": "Digitizers",
+          "name": "Confidence"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 66,
+      "size_bits": 1,
+      "count": 2,
+      "constant": true,
+      "variable": true,
+      "relative": false,
+      "flags": "0x3",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": []
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 68,
+      "size_bits": 4,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        15
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x000d",
+          "usage": "0x0051",
+          "page_name": "Digitizers",
+          "name": "Contact Identifier"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 72,
+      "size_bits": 16,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        2998
+      ],
+      "physical_range": [
+        0,
+        9540
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x0001",
+          "usage": "0x0030",
+          "page_name": "Generic Desktop",
+          "name": "X"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 88,
+      "size_bits": 16,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        1771
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x0001",
+          "usage": "0x0031",
+          "page_name": "Generic Desktop",
+          "name": "Y"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 104,
+      "size_bits": 1,
+      "count": 2,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x000d",
+          "usage": "0x0042",
+          "page_name": "Digitizers",
+          "name": "Tip Switch"
+        },
+        {
+          "page": "0x000d",
+          "usage": "0x0047",
+          "page_name": "Digitizers",
+          "name": "Confidence"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 106,
+      "size_bits": 1,
+      "count": 2,
+      "constant": true,
+      "variable": true,
+      "relative": false,
+      "flags": "0x3",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": []
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 108,
+      "size_bits": 4,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        15
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x000d",
+          "usage": "0x0051",
+          "page_name": "Digitizers",
+          "name": "Contact Identifier"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 112,
+      "size_bits": 16,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        2998
+      ],
+      "physical_range": [
+        0,
+        9540
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x0001",
+          "usage": "0x0030",
+          "page_name": "Generic Desktop",
+          "name": "X"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 128,
+      "size_bits": 16,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        1771
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x0001",
+          "usage": "0x0031",
+          "page_name": "Generic Desktop",
+          "name": "Y"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 144,
+      "size_bits": 1,
+      "count": 2,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x000d",
+          "usage": "0x0042",
+          "page_name": "Digitizers",
+          "name": "Tip Switch"
+        },
+        {
+          "page": "0x000d",
+          "usage": "0x0047",
+          "page_name": "Digitizers",
+          "name": "Confidence"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 146,
+      "size_bits": 1,
+      "count": 2,
+      "constant": true,
+      "variable": true,
+      "relative": false,
+      "flags": "0x3",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": []
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 148,
+      "size_bits": 4,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        15
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x000d",
+          "usage": "0x0051",
+          "page_name": "Digitizers",
+          "name": "Contact Identifier"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 152,
+      "size_bits": 16,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        2998
+      ],
+      "physical_range": [
+        0,
+        9540
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x0001",
+          "usage": "0x0030",
+          "page_name": "Generic Desktop",
+          "name": "X"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 168,
+      "size_bits": 16,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        1771
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x0001",
+          "usage": "0x0031",
+          "page_name": "Generic Desktop",
+          "name": "Y"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 184,
+      "size_bits": 1,
+      "count": 2,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x000d",
+          "usage": "0x0042",
+          "page_name": "Digitizers",
+          "name": "Tip Switch"
+        },
+        {
+          "page": "0x000d",
+          "usage": "0x0047",
+          "page_name": "Digitizers",
+          "name": "Confidence"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 186,
+      "size_bits": 1,
+      "count": 2,
+      "constant": true,
+      "variable": true,
+      "relative": false,
+      "flags": "0x3",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": []
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 188,
+      "size_bits": 4,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        15
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x000d",
+          "usage": "0x0051",
+          "page_name": "Digitizers",
+          "name": "Contact Identifier"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 192,
+      "size_bits": 16,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        2998
+      ],
+      "physical_range": [
+        0,
+        9540
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x0001",
+          "usage": "0x0030",
+          "page_name": "Generic Desktop",
+          "name": "X"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 3,
+      "offset_bits_payload": 208,
+      "size_bits": 16,
+      "count": 1,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        1771
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        },
+        {
+          "type": 2,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0022",
+            "page_name": "Digitizers",
+            "name": "Finger"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x0001",
+          "usage": "0x0031",
+          "page_name": "Generic Desktop",
+          "name": "Y"
+        }
+      ]
+    },
+    {
+      "kind": "feature",
+      "report_id": 2,
+      "offset_bits_payload": 0,
+      "size_bits": 4,
+      "count": 2,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        4
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000d",
+            "usage": "0x0005",
+            "page_name": "Digitizers",
+            "name": "Touch Pad"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x000d",
+          "usage": "0x0055",
+          "page_name": "Digitizers",
+          "name": "Contact Count Maximum"
+        },
+        {
+          "page": "0x000d",
+          "usage": "0x0059",
+          "page_name": "Digitizers"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 4,
+      "offset_bits_payload": 0,
+      "size_bits": 1,
+      "count": 8,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x0001",
+            "usage": "0x0006",
+            "page_name": "Generic Desktop",
+            "name": "Keyboard"
+          }
+        }
+      ],
+      "usages": [],
+      "usage_min": {
+        "page": "0x0007",
+        "usage": "0x00e0",
+        "page_name": "Keyboard/Keypad"
+      },
+      "usage_max": {
+        "page": "0x0007",
+        "usage": "0x00e7",
+        "page_name": "Keyboard/Keypad"
+      }
+    },
+    {
+      "kind": "input",
+      "report_id": 4,
+      "offset_bits_payload": 8,
+      "size_bits": 8,
+      "count": 1,
+      "constant": true,
+      "variable": true,
+      "relative": false,
+      "flags": "0x3",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x0001",
+            "usage": "0x0006",
+            "page_name": "Generic Desktop",
+            "name": "Keyboard"
+          }
+        }
+      ],
+      "usages": []
+    },
+    {
+      "kind": "input",
+      "report_id": 4,
+      "offset_bits_payload": 16,
+      "size_bits": 8,
+      "count": 6,
+      "constant": false,
+      "variable": false,
+      "relative": false,
+      "flags": "0x0",
+      "logical_range": [
+        0,
+        143
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x0001",
+            "usage": "0x0006",
+            "page_name": "Generic Desktop",
+            "name": "Keyboard"
+          }
+        }
+      ],
+      "usages": [],
+      "usage_min": {
+        "page": "0x0007",
+        "usage": "0x0000",
+        "page_name": "Keyboard/Keypad"
+      },
+      "usage_max": {
+        "page": "0x0007",
+        "usage": "0x008f",
+        "page_name": "Keyboard/Keypad"
+      }
+    },
+    {
+      "kind": "output",
+      "report_id": 4,
+      "offset_bits_payload": 0,
+      "size_bits": 1,
+      "count": 5,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x0001",
+            "usage": "0x0006",
+            "page_name": "Generic Desktop",
+            "name": "Keyboard"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x0008",
+          "usage": "0x0001",
+          "page_name": "LEDs"
+        },
+        {
+          "page": "0x0008",
+          "usage": "0x0002",
+          "page_name": "LEDs"
+        },
+        {
+          "page": "0x0008",
+          "usage": "0x0003",
+          "page_name": "LEDs"
+        },
+        {
+          "page": "0x0008",
+          "usage": "0x0006",
+          "page_name": "LEDs"
+        },
+        {
+          "page": "0x0008",
+          "usage": "0x0009",
+          "page_name": "LEDs"
+        }
+      ]
+    },
+    {
+      "kind": "output",
+      "report_id": 4,
+      "offset_bits_payload": 5,
+      "size_bits": 3,
+      "count": 1,
+      "constant": true,
+      "variable": true,
+      "relative": false,
+      "flags": "0x3",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x0001",
+            "usage": "0x0006",
+            "page_name": "Generic Desktop",
+            "name": "Keyboard"
+          }
+        }
+      ],
+      "usages": []
+    },
+    {
+      "kind": "input",
+      "report_id": 5,
+      "offset_bits_payload": 0,
+      "size_bits": 1,
+      "count": 10,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000c",
+            "usage": "0x0001",
+            "page_name": "Consumer",
+            "name": "Consumer Control"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x000c",
+          "usage": "0x00e2",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x00e9",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x00ea",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x006f",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x0070",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x0224",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x038e",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x0390",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x0391",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x0394",
+          "page_name": "Consumer"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 5,
+      "offset_bits_payload": 10,
+      "size_bits": 1,
+      "count": 10,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000c",
+            "usage": "0x0001",
+            "page_name": "Consumer",
+            "name": "Consumer Control"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0x000c",
+          "usage": "0x0395",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x019e",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x0392",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x0397",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x0398",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x0399",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x039a",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x0393",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x039b",
+          "page_name": "Consumer"
+        },
+        {
+          "page": "0x000c",
+          "usage": "0x0079",
+          "page_name": "Consumer"
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "report_id": 5,
+      "offset_bits_payload": 20,
+      "size_bits": 4,
+      "count": 1,
+      "constant": true,
+      "variable": false,
+      "relative": false,
+      "flags": "0x1",
+      "logical_range": [
+        0,
+        1
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000c",
+            "usage": "0x0001",
+            "page_name": "Consumer",
+            "name": "Consumer Control"
+          }
+        }
+      ],
+      "usages": []
+    },
+    {
+      "kind": "feature",
+      "report_id": 6,
+      "offset_bits_payload": 0,
+      "size_bits": 8,
+      "count": 4,
+      "constant": false,
+      "variable": true,
+      "relative": false,
+      "flags": "0x2",
+      "logical_range": [
+        0,
+        255
+      ],
+      "physical_range": [
+        0,
+        5640
+      ],
+      "unit": "0x11",
+      "unit_exponent": -3,
+      "collections": [
+        {
+          "type": 1,
+          "usage": {
+            "page": "0x000c",
+            "usage": "0x0001",
+            "page_name": "Consumer",
+            "name": "Consumer Control"
+          }
+        }
+      ],
+      "usages": [
+        {
+          "page": "0xff00",
+          "usage": "0x00c5"
+        }
+      ]
+    }
+  ],
+  "warnings": [],
+  "source_capture": {
+    "file": "android-stock.json",
+    "sha256": "c0262aaf4b16672764335317dcedf172e33fbd596d373ce442fc6d1139e92915",
+    "capture_utc": "2026-11-22T20:30:07.299342+00:00",
+    "descriptor_path": "keyboard_hid[0].descriptor"
+  }
+}

@@ -11,6 +11,11 @@ No personal rootfs, provisioned initrd or SSH keys are distributed. This is a de
 source project, not a complete one-click installer. Older installation examples below
 describe R191; they do not reproduce R226 unchanged.
 
+Research update 2026-11-23: [Android hardware evidence and source audit](docs/research/2026-11-23/README.md)
+([中文](docs/research/2026-11-23/README.zh-CN.md)) covers the display, keyboard,
+pen, charging and power management. It includes sanitized Android captures and
+isolated traces; it does not add a new mainline hardware-validation result.
+
 Arch Linux ARM with KDE Plasma running on the Lenovo **TB371FC** tablet, using a
 **Linux 6.12** kernel that is started from microSD. Android on the internal UFS stays
 untouched: Linux lives entirely on the microSD card and is started through the

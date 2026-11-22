@@ -1,5 +1,13 @@
 # Novatek touch and Lenovo AP500U port
 
+The [2026-11-23 keyboard, touch and pen audit](research/2026-11-23/input-and-pen.md)
+adds this owner's Android input capabilities, the keyboard HID descriptor,
+Novatek parser review and the located CTN730 downstream sources. It separates
+inking, Bluetooth functions and magnetic charging, and adds no new mainline
+hardware-validation result. The Linux 7.1 and diagnostic-build records below
+are historical; use [R226](../experimental/r226/README.md) for the latest
+installed 6.12 project profile.
+
 AP500U support is a required part of the TB371FC Linux port. The tablet uses
 one Novatek NT36532 SPI controller for capacitive touch and the active-pen
 digitizer. The inking path is not a generic Bluetooth tablet: coordinates,

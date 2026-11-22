@@ -1,14 +1,23 @@
 # Native display port
 
-## Current native-display candidate
+For the latest project profile, use [R226](../experimental/r226/README.md) and
+[INSTALL_CURRENT.md](INSTALL_CURRENT.md). The
+[2026-11-23 display audit](research/2026-11-23/display.md) compares this owner's
+Android Tianma DT/command bytes with the 6.12 source and records the remaining
+DSC, OFF-sequence and refresh/pen gaps. It contains no new native-display
+hardware validation. The candidate and V-numbered records below are retained
+as historical experiments, not the current installed profile.
 
-The next candidate is `mainline-7.1.7-native-display-phycfg-v4`. It retains
+## Historical Linux 7.1.x native-display candidate
+
+At this historical stage, the next candidate was
+`mainline-7.1.7-native-display-phycfg-v4`. It retained
 the verified long-write v3 panel sequence, dual-link DSC PPS and stock
 2944x1840@120 geometry, and additionally reproduces Lenovo's DSI PHY v4.0
 electrical setup. Both PHYs use the v4.0 TX_DCTRL table and clock-lane
 `CFG0=0x20`; the display-test DTB also drives GPIO33 high with the already
-identified GPIO54/77/78 display enables. It is built and verified offline but
-has not been written to or booted on the tablet.
+identified GPIO54/77/78 display enables. At that stage it was built and
+verified offline, without a corresponding tablet boot result.
 
 The stock TB371FC display is a 2944x1840 LCD driven as two synchronized
 1472x1840 MIPI DSI links. Lenovo ships BOE and Tianma variants of the Novatek
@@ -35,14 +44,14 @@ module is 231,464 bytes with SHA-256
 `ktz8866.ko` is 57,296 bytes with SHA-256
 `3ca0e7b65962c795f375f00fa64c64eaed40def7b52a6eed7b4fc4aac03941a2`.
 
-The DSI graph is present in the TB371FC DTS but remains disabled. This is
-deliberate: the fitted BOE/Tianma variant is not exposed by Android's
-unprivileged sysfs, and selecting the wrong command table is not an acceptable
-guess. The first simple-framebuffer diagnostic boot will identify the panel
-from the live DT or a controlled DCS read before native reset/power sequencing
-is enabled.
+In that 7.1.x candidate, the DSI graph was present in the TB371FC DTS but
+disabled while panel-variant discovery was pending. The planned first
+simple-framebuffer diagnostic boot was intended to identify the panel before
+enabling native reset/power sequencing. The current owner's Android capture
+now identifies the selected Tianma node and confirms the vendor ON payloads;
+it does not validate the later native DPU/DSI sequence.
 
-The remaining display work is:
+The remaining display work recorded at that historical stage was:
 
 1. identify the fitted panel variant and verify DCS ID registers;
 2. model the two KTZ8866 chips as one synchronized logical backlight while

@@ -1,0 +1,240 @@
+{
+  "buffer_loss_detected": false,
+  "capture_utc": "2026-11-22T20:36:39.693096+00:00",
+  "cleanup_errors": [],
+  "conditions": "existing Android workload; no screen/refresh/charger/input changes requested",
+  "cpu_idle_enabled": false,
+  "enabled_events": [
+    "power:cpu_frequency",
+    "power:gpu_frequency",
+    "power:suspend_resume",
+    "power:device_pm_callback_start",
+    "power:device_pm_callback_end",
+    "kgsl:kgsl_pwr_set_state",
+    "drm:drm_vblank_event"
+  ],
+  "global_after": {
+    "buffer_size_kb": "1408",
+    "current_tracer": "nop",
+    "tracing_on": "0"
+  },
+  "global_before": {
+    "buffer_size_kb": "1408",
+    "current_tracer": "nop",
+    "tracing_on": "0"
+  },
+  "global_settings_unchanged": true,
+  "instance_created": true,
+  "instance_removed": true,
+  "interpretation": "no ring-buffer loss reported; this is an uncontrolled workload sample",
+  "kernel_release": "4.19.157-perf+",
+  "observed_seconds": 8.011965152996709,
+  "per_cpu_buffer_stats": {
+    "cpu0": {
+      "bytes": "2708",
+      "commit overrun": "0",
+      "dropped events": "0",
+      "entries": "126",
+      "now ts": "42214.310369",
+      "oldest event ts": "42206.320117",
+      "overrun": "0",
+      "read events": "0"
+    },
+    "cpu1": {
+      "bytes": "320",
+      "commit overrun": "0",
+      "dropped events": "0",
+      "entries": "13",
+      "now ts": "42214.311279",
+      "oldest event ts": "42206.527718",
+      "overrun": "0",
+      "read events": "0"
+    },
+    "cpu2": {
+      "bytes": "92",
+      "commit overrun": "0",
+      "dropped events": "0",
+      "entries": "3",
+      "now ts": "42214.311747",
+      "oldest event ts": "42214.210433",
+      "overrun": "0",
+      "read events": "0"
+    },
+    "cpu3": {
+      "bytes": "168",
+      "commit overrun": "0",
+      "dropped events": "0",
+      "entries": "8",
+      "now ts": "42214.312245",
+      "oldest event ts": "42208.024931",
+      "overrun": "0",
+      "read events": "0"
+    },
+    "cpu4": {
+      "bytes": "684",
+      "commit overrun": "0",
+      "dropped events": "0",
+      "entries": "30",
+      "now ts": "42214.312657",
+      "oldest event ts": "42206.505950",
+      "overrun": "0",
+      "read events": "0"
+    },
+    "cpu5": {
+      "bytes": "228",
+      "commit overrun": "0",
+      "dropped events": "0",
+      "entries": "10",
+      "now ts": "42214.313060",
+      "oldest event ts": "42209.412641",
+      "overrun": "0",
+      "read events": "0"
+    },
+    "cpu6": {
+      "bytes": "256",
+      "commit overrun": "0",
+      "dropped events": "0",
+      "entries": "12",
+      "now ts": "42214.313476",
+      "oldest event ts": "42210.170416",
+      "overrun": "0",
+      "read events": "0"
+    },
+    "cpu7": {
+      "bytes": "496",
+      "commit overrun": "0",
+      "dropped events": "0",
+      "entries": "24",
+      "now ts": "42214.313868",
+      "oldest event ts": "42207.617641",
+      "overrun": "0",
+      "read events": "0"
+    }
+  },
+  "requested_seconds": 8,
+  "samples": [
+    {
+      "battery": {
+        "capacity": "29",
+        "current_now": "427000",
+        "status": "Charging",
+        "temp": "333",
+        "voltage_now": "3796000"
+      },
+      "monotonic_s": 42206.219419574,
+      "usb": {
+        "current_max": "2000000",
+        "pd_active": "0",
+        "real_type": "USB_HVDCP_3",
+        "voltage_now": "7072314"
+      }
+    },
+    {
+      "battery": {
+        "capacity": "29",
+        "current_now": "427000",
+        "status": "Charging",
+        "temp": "333",
+        "voltage_now": "3795000"
+      },
+      "monotonic_s": 42208.940066761,
+      "usb": {
+        "current_max": "2000000",
+        "pd_active": "0",
+        "real_type": "USB_HVDCP_3",
+        "voltage_now": "7136934"
+      }
+    },
+    {
+      "battery": {
+        "capacity": "29",
+        "current_now": "426000",
+        "status": "Charging",
+        "temp": "333",
+        "voltage_now": "3796000"
+      },
+      "monotonic_s": 42211.601685926,
+      "usb": {
+        "current_max": "2000000",
+        "pd_active": "0",
+        "real_type": "USB_HVDCP_3",
+        "voltage_now": "7137324"
+      }
+    },
+    {
+      "battery": {
+        "capacity": "29",
+        "current_now": "426000",
+        "status": "Charging",
+        "temp": "333",
+        "voltage_now": "3796000"
+      },
+      "monotonic_s": 42214.268424467,
+      "usb": {
+        "current_max": "2000000",
+        "pd_active": "0",
+        "real_type": "USB_HVDCP_3",
+        "voltage_now": "7113192"
+      }
+    }
+  ],
+  "schema_version": 1,
+  "summary": {
+    "cpu_frequency_khz": {
+      "0": [
+        1075200,
+        1344000,
+        1804800
+      ],
+      "1": [
+        1075200,
+        1344000,
+        1804800
+      ],
+      "2": [
+        1075200,
+        1344000,
+        1804800
+      ],
+      "3": [
+        1075200,
+        1344000,
+        1804800
+      ],
+      "4": [
+        710400,
+        1958400,
+        2054400
+      ],
+      "5": [
+        710400,
+        1958400,
+        2054400
+      ],
+      "6": [
+        710400,
+        1958400,
+        2054400
+      ],
+      "7": [
+        844800,
+        1632000,
+        2361600
+      ]
+    },
+    "cpu_idle_transition_counts": {},
+    "event_counts": {
+      "cpu_frequency": 196,
+      "gpu_frequency": 12,
+      "kgsl_pwr_set_state": 18
+    },
+    "gpu_state_counts": {
+      "ACTIVE": 6,
+      "AWARE": 6,
+      "SLUMBER": 6
+    },
+    "unparsed_lines": 0,
+    "vblank_observations": {}
+  },
+  "unavailable_events": []
+}
