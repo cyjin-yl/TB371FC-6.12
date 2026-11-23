@@ -114,6 +114,8 @@ def create_ext4(root, image, label, *, size_bytes=4 * 1024**3, mkfs_timeout=2400
     """
     staging.ordinary_dir(root)
     staging.ordinary_dir(image.parent)
+    if image.parent.resolve().is_relative_to(root.resolve()):
+        raise ValueError("image output must be outside the source root")
     if (not label.isascii() or not 1 <= len(label) <= 16 or
             any(not (ch.isalnum() or ch in "-_") for ch in label)):
         raise ValueError("invalid ext4 label")
