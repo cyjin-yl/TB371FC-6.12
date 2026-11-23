@@ -1,0 +1,750 @@
+{
+  "schema_version": 1,
+  "observed_date": "2026-11-24",
+  "timezone": "Asia/Shanghai",
+  "evidence_kind": "owner-device Android read-only observation",
+  "collection": {
+    "device_model": "TB371FC",
+    "methods": [
+      "Android getprop allowlist and uname",
+      "read-only /proc/config.gz decompression and SHA-256",
+      "read-only /proc/cgroups and cgroup filesystem inspection",
+      "read-only sysfs driver bindings and input identities",
+      "read-only installed Debian dpkg status"
+    ],
+    "changes_performed": [],
+    "raw_input_events_captured": false,
+    "device_identifiers_or_personal_files_included": false
+  },
+  "identity": {
+    "ro.product.model": "TB371FC",
+    "ro.product.device": "TB371FC",
+    "ro.product.manufacturer": "LENOVO",
+    "ro.product.board": "spinel",
+    "ro.build.display.id": "TB371FC_CN_OPEN_USER_Q00028.1_U_ZUI_16.0.474_ST_241129",
+    "ro.build.version.release": "14",
+    "ro.build.version.incremental": "TB371FC_CN_OPEN_USER_Q00028.1_U_ZUI_16.0.474_ST_241129",
+    "ro.build.version.security_patch": "2024-11-05",
+    "ro.boot.hardware": "qcom",
+    "ro.soc.model": "SM8250",
+    "kernel_release": "4.19.157-perf+",
+    "kernel_build": "SMP PREEMPT Fri Nov 29 19:47:27 CST 2024",
+    "architecture": "aarch64",
+    "dt_model": "Qualcomm Technologies, Inc. kona QRD",
+    "dt_compatible": [
+      "qcom,kona-qrd",
+      "qcom,kona",
+      "qcom,qrd"
+    ],
+    "dt_identity_caveat": "Vendor DT uses generic kona QRD identifiers; product getprop identifies this physical device as TB371FC."
+  },
+  "kernel_config": {
+    "sha256": "23d3db565be3cd6cfc07bb90541d971dc70e6a6ce3516360155b8fd15590e726",
+    "selected_lines": {
+      "CONFIG_PID_NS": "# CONFIG_PID_NS is not set",
+      "CONFIG_USER_NS": "# CONFIG_USER_NS is not set",
+      "CONFIG_CGROUPS": "CONFIG_CGROUPS=y",
+      "CONFIG_CGROUP_PIDS": "# CONFIG_CGROUP_PIDS is not set",
+      "CONFIG_CGROUP_DEVICE": "# CONFIG_CGROUP_DEVICE is not set",
+      "CONFIG_FHANDLE": "# CONFIG_FHANDLE is not set",
+      "CONFIG_DEVTMPFS": "# CONFIG_DEVTMPFS is not set",
+      "CONFIG_KEXEC": "# CONFIG_KEXEC is not set",
+      "CONFIG_KEXEC_FILE": null,
+      "CONFIG_NAMESPACES": "CONFIG_NAMESPACES=y",
+      "CONFIG_ARM64_PTR_AUTH": null,
+      "CONFIG_ARM64_BTI": null,
+      "CONFIG_IKCONFIG": "CONFIG_IKCONFIG=y"
+    },
+    "scope": "The decompressed live kernel configuration. A matching retained config hash does not by itself prove the entire live boot image is byte-identical to a historical Image."
+  },
+  "cgroups": {
+    "proc_cgroups": "#subsys_name\thierarchy\tnum_cgroups\tenabled\ncpuset\t3\t8\t1\ncpu\t2\t10\t1\ncpuacct\t0\t1036\t1\nschedtune\t5\t6\t1\nblkio\t1\t2\t1\nmemory\t4\t3\t1\nfreezer\t0\t1036\t1\n",
+    "cgroup2_controllers": [],
+    "cgroup2_subtree_control": [],
+    "android_v1_mounts": [
+      {
+        "mountpoint": "/dev/blkio",
+        "options": "rw,blkio"
+      },
+      {
+        "mountpoint": "/dev/cpuctl",
+        "options": "rw,cpu"
+      },
+      {
+        "mountpoint": "/dev/cpuset",
+        "options": "rw,cpuset,noprefix,release_agent=/sbin/cpuset_release_agent"
+      },
+      {
+        "mountpoint": "/dev/memcg",
+        "options": "rw,memory"
+      },
+      {
+        "mountpoint": "/dev/stune",
+        "options": "rw,schedtune"
+      }
+    ],
+    "scope": "Observed Android mounts and the cgroup2 root; no controller was moved, mounted, rebound or delegated."
+  },
+  "debian": {
+    "os_release": "PRETTY_NAME=\"Debian GNU/Linux forky/sid\"\nNAME=\"Debian GNU/Linux\"\nVERSION_CODENAME=forky\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+    "installed_systemd_dpkg": [
+      "Package: systemd",
+      "Status: install ok installed",
+      "Architecture: arm64",
+      "Version: 257.7-1"
+    ],
+    "scope": "Package database inspected from Android; no systemd PID1 or service-start acceptance was performed."
+  },
+  "cpu": {
+    "exported_proc_cpuinfo": [
+      "CPU architecture: 8",
+      "CPU implementer\t: 0x41",
+      "CPU implementer\t: 0x51",
+      "CPU part\t: 0x805",
+      "CPU part\t: 0xd0d",
+      "CPU revision\t: 0",
+      "CPU revision\t: 14",
+      "CPU variant\t: 0x1",
+      "CPU variant\t: 0xd",
+      "Features\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm lrcpc dcpop asimddp"
+    ],
+    "paca_pacg_bti_reported": false,
+    "scope": "Linux 4.19 exported feature view, not a complete per-core architectural ID-register measurement and not macOS ABI compatibility evidence."
+  },
+  "inputs": [
+    {
+      "name": "qpnp_pon",
+      "id": {
+        "bustype": "0000",
+        "vendor": "0000",
+        "product": "0000",
+        "version": "0000"
+      },
+      "properties": "0"
+    },
+    {
+      "name": "NVTCapacitivePen",
+      "id": {
+        "bustype": "001c",
+        "vendor": "0000",
+        "product": "0000",
+        "version": "0000"
+      },
+      "properties": "2"
+    },
+    {
+      "name": "kona-qrd-snd-card Headset Jack",
+      "id": {
+        "bustype": "0000",
+        "vendor": "0000",
+        "product": "0000",
+        "version": "0000"
+      },
+      "properties": "0"
+    },
+    {
+      "name": "kona-qrd-snd-card Button Jack",
+      "id": {
+        "bustype": "0000",
+        "vendor": "0000",
+        "product": "0000",
+        "version": "0000"
+      },
+      "properties": "0"
+    },
+    {
+      "name": "uinput_nav",
+      "id": {
+        "bustype": "0003",
+        "vendor": "0001",
+        "product": "0001",
+        "version": "0001"
+      },
+      "properties": "0"
+    },
+    {
+      "name": "Lenovo Precision Pen 3 Mouse",
+      "id": {
+        "bustype": "0005",
+        "vendor": "17ef",
+        "product": "612b",
+        "version": "0000"
+      },
+      "properties": "0"
+    },
+    {
+      "name": "Lenovo Precision Pen 3 Consumer Control",
+      "id": {
+        "bustype": "0005",
+        "vendor": "17ef",
+        "product": "612b",
+        "version": "0000"
+      },
+      "properties": "0"
+    },
+    {
+      "name": "qwerty",
+      "id": {
+        "bustype": "0000",
+        "vendor": "0000",
+        "product": "0000",
+        "version": "0000"
+      },
+      "properties": "0"
+    },
+    {
+      "name": "keyboard_wakeup_devices",
+      "id": {
+        "bustype": "0000",
+        "vendor": "0000",
+        "product": "0000",
+        "version": "0000"
+      },
+      "properties": "0"
+    },
+    {
+      "name": "Lenovo Keyboard Pack for Spinel Touchpad",
+      "id": {
+        "bustype": "0018",
+        "vendor": "17ef",
+        "product": "6175",
+        "version": "0100"
+      },
+      "properties": "5"
+    },
+    {
+      "name": "Lenovo Keyboard Pack for Spinel Keyboard",
+      "id": {
+        "bustype": "0018",
+        "vendor": "17ef",
+        "product": "6175",
+        "version": "0100"
+      },
+      "properties": "0"
+    },
+    {
+      "name": "Lenovo Keyboard Pack for Spinel Consumer Control",
+      "id": {
+        "bustype": "0018",
+        "vendor": "17ef",
+        "product": "6175",
+        "version": "0100"
+      },
+      "properties": "0"
+    },
+    {
+      "name": "qti-haptics",
+      "id": {
+        "bustype": "0000",
+        "vendor": "0000",
+        "product": "0000",
+        "version": "0000"
+      },
+      "properties": "0"
+    },
+    {
+      "name": "gpio-keys",
+      "id": {
+        "bustype": "0019",
+        "vendor": "0001",
+        "product": "0001",
+        "version": "0100"
+      },
+      "properties": "0"
+    },
+    {
+      "name": "NVTCapacitiveTouchScreen",
+      "id": {
+        "bustype": "001c",
+        "vendor": "0000",
+        "product": "0000",
+        "version": "0000"
+      },
+      "properties": "2"
+    }
+  ],
+  "observed_device_inventory": [
+    {
+      "bus": "i2c",
+      "device": "1-0055",
+      "name": "mm8013c06",
+      "modalias": "of:Nmitsumi,mm8013T<NULL>Cmitsumi,mm8013c06",
+      "of_compatible": "mitsumi,mm8013c06,",
+      "of_status": "ok,",
+      "driver": "mm8013"
+    },
+    {
+      "bus": "i2c",
+      "device": "2-0011",
+      "name": "ktz8866a",
+      "modalias": "of:Nktz8866T<NULL>Cktz,ktz8866a",
+      "of_compatible": "ktz,ktz8866a,",
+      "of_status": "ok,",
+      "driver": "ktz8866a"
+    },
+    {
+      "bus": "i2c",
+      "device": "4-0011",
+      "name": "ktz8866b",
+      "modalias": "of:Nktz8866T<NULL>Cktz,ktz8866b",
+      "of_compatible": "ktz,ktz8866b,",
+      "of_status": "ok,",
+      "driver": "ktz8866b"
+    },
+    {
+      "bus": "i2c",
+      "device": "6-0034",
+      "name": "tfa98xx",
+      "modalias": "of:Ntfa98xxT<NULL>Ctfa,tfa98xx",
+      "of_compatible": "tfa,tfa98xx,",
+      "of_status": null,
+      "driver": "tfa98xx"
+    },
+    {
+      "bus": "i2c",
+      "device": "6-0035",
+      "name": "tfa98xx",
+      "modalias": "of:Ntfa98xxT<NULL>Ctfa,tfa98xx",
+      "of_compatible": "tfa,tfa98xx,",
+      "of_status": null,
+      "driver": "tfa98xx"
+    },
+    {
+      "bus": "i2c",
+      "device": "6-0036",
+      "name": "tfa98xx",
+      "modalias": "of:Ntfa98xxT<NULL>Ctfa,tfa98xx",
+      "of_compatible": "tfa,tfa98xx,",
+      "of_status": null,
+      "driver": "tfa98xx"
+    },
+    {
+      "bus": "i2c",
+      "device": "6-0037",
+      "name": "tfa98xx",
+      "modalias": "of:Ntfa98xxT<NULL>Ctfa,tfa98xx",
+      "of_compatible": "tfa,tfa98xx,",
+      "of_status": null,
+      "driver": "tfa98xx"
+    },
+    {
+      "bus": "i2c",
+      "device": "7-0034",
+      "name": "i2c-pmic",
+      "modalias": "of:Nqcom,smb1396T<NULL>Cqcom,i2c-pmic",
+      "of_compatible": "qcom,i2c-pmic,",
+      "of_status": "ok,",
+      "driver": "i2c_pmic"
+    },
+    {
+      "bus": "i2c",
+      "device": "8-0042",
+      "name": "fsa4480-i2c",
+      "modalias": "of:Nfsa4480T<NULL>Cqcom,fsa4480-i2c",
+      "of_compatible": "qcom,fsa4480-i2c,",
+      "of_status": null,
+      "driver": "fsa4480-driver"
+    },
+    {
+      "bus": "spi",
+      "device": "spi0.0",
+      "name": null,
+      "modalias": "spi:NVT-ts-spi",
+      "of_compatible": "novatek,NVT-ts-spi,",
+      "of_status": "ok,",
+      "driver": "NVT-ts"
+    },
+    {
+      "bus": "platform",
+      "device": "1d84000.ufshc",
+      "name": null,
+      "modalias": "of:NufshcT<NULL>Cqcom,ufshc",
+      "of_compatible": "qcom,ufshc,",
+      "of_status": "ok,",
+      "driver": "ufshcd-qcom"
+    },
+    {
+      "bus": "platform",
+      "device": "3ac0000.slim:qca6390",
+      "name": null,
+      "modalias": "of:Nqca6390T<NULL>Cqcom,btfmslim_slave",
+      "of_compatible": "qcom,btfmslim_slave,",
+      "of_status": null,
+      "driver": null
+    },
+    {
+      "bus": "platform",
+      "device": "888000.i2c:qcom,smb1396@34:qcom,div2_cp",
+      "name": null,
+      "modalias": "of:Nqcom,div2_cpT<NULL>Cqcom,smb1396-div2-cp-master",
+      "of_compatible": "qcom,smb1396-div2-cp-master,",
+      "of_status": "ok,",
+      "driver": "qcom,smb1398-charger"
+    },
+    {
+      "bus": "platform",
+      "device": "b0000000.qcom,cnss-qca6390",
+      "name": null,
+      "modalias": "of:Nqcom,cnss-qca6390T<NULL>Cqcom,cnss-qca6390",
+      "of_compatible": "qcom,cnss-qca6390,",
+      "of_status": null,
+      "driver": "cnss2"
+    },
+    {
+      "bus": "platform",
+      "device": "rx_swr_ctrl",
+      "name": null,
+      "modalias": "of:Nrx_swr_masterT<NULL>Cqcom,swr-mstr",
+      "of_compatible": "qcom,swr-mstr,",
+      "of_status": null,
+      "driver": "swr-wcd"
+    },
+    {
+      "bus": "platform",
+      "device": "soc:goodix_fp",
+      "name": null,
+      "modalias": "of:Ngoodix_fpT<NULL>Cgoodix,fingerprint",
+      "of_compatible": "goodix,fingerprint,",
+      "of_status": "okay,",
+      "driver": "goodix_fp"
+    },
+    {
+      "bus": "platform",
+      "device": "soc:qcom,msm-audio-apr:qcom,q6core-audio:wsa_swr_clk_data_pinctrl",
+      "name": null,
+      "modalias": "of:Nwsa_swr_clk_data_pinctrlT<NULL>Cqcom,msm-cdc-pinctrl",
+      "of_compatible": "qcom,msm-cdc-pinctrl,",
+      "of_status": null,
+      "driver": "msm-cdc-pinctrl"
+    },
+    {
+      "bus": "platform",
+      "device": "soc:qcom,msm-dai-cdc-dma:qcom,msm-dai-wsa-cdc-dma-0-rx",
+      "name": null,
+      "modalias": "of:Nqcom,msm-dai-wsa-cdc-dma-0-rxT<NULL>Cqcom,msm-dai-cdc-dma-dev",
+      "of_compatible": "qcom,msm-dai-cdc-dma-dev,",
+      "of_status": null,
+      "driver": "msm-dai-cdc-dma-dev"
+    },
+    {
+      "bus": "platform",
+      "device": "soc:qcom,msm-dai-cdc-dma:qcom,msm-dai-wsa-cdc-dma-0-tx",
+      "name": null,
+      "modalias": "of:Nqcom,msm-dai-wsa-cdc-dma-0-txT<NULL>Cqcom,msm-dai-cdc-dma-dev",
+      "of_compatible": "qcom,msm-dai-cdc-dma-dev,",
+      "of_status": null,
+      "driver": "msm-dai-cdc-dma-dev"
+    },
+    {
+      "bus": "platform",
+      "device": "soc:qcom,msm-dai-cdc-dma:qcom,msm-dai-wsa-cdc-dma-1-rx",
+      "name": null,
+      "modalias": "of:Nqcom,msm-dai-wsa-cdc-dma-1-rxT<NULL>Cqcom,msm-dai-cdc-dma-dev",
+      "of_compatible": "qcom,msm-dai-cdc-dma-dev,",
+      "of_status": null,
+      "driver": "msm-dai-cdc-dma-dev"
+    },
+    {
+      "bus": "platform",
+      "device": "soc:qcom,msm-dai-cdc-dma:qcom,msm-dai-wsa-cdc-dma-1-tx",
+      "name": null,
+      "modalias": "of:Nqcom,msm-dai-wsa-cdc-dma-1-txT<NULL>Cqcom,msm-dai-cdc-dma-dev",
+      "of_compatible": "qcom,msm-dai-cdc-dma-dev,",
+      "of_status": null,
+      "driver": "msm-dai-cdc-dma-dev"
+    },
+    {
+      "bus": "platform",
+      "device": "soc:qcom,msm-dai-cdc-dma:qcom,msm-dai-wsa-cdc-dma-2-tx",
+      "name": null,
+      "modalias": "of:Nqcom,msm-dai-wsa-cdc-dma-2-txT<NULL>Cqcom,msm-dai-cdc-dma-dev",
+      "of_compatible": "qcom,msm-dai-cdc-dma-dev,",
+      "of_status": null,
+      "driver": "msm-dai-cdc-dma-dev"
+    },
+    {
+      "bus": "platform",
+      "device": "soc:qcom,npu-staticmap-mon",
+      "name": null,
+      "modalias": "of:Nqcom,npu-staticmap-monT<NULL>Cqcom,static-map",
+      "of_compatible": "qcom,static-map,",
+      "of_status": null,
+      "driver": "static-map"
+    },
+    {
+      "bus": "platform",
+      "device": "soc:wsa_core_clk",
+      "name": null,
+      "modalias": "of:Nwsa_core_clkT<NULL>Cqcom,audio-ref-clk",
+      "of_compatible": "qcom,audio-ref-clk,",
+      "of_status": null,
+      "driver": "audio-ref-clk"
+    },
+    {
+      "bus": "platform",
+      "device": "soc:wsa_npl_clk",
+      "name": null,
+      "modalias": "of:Nwsa_npl_clkT<NULL>Cqcom,audio-ref-clk",
+      "of_compatible": "qcom,audio-ref-clk,",
+      "of_status": null,
+      "driver": "audio-ref-clk"
+    },
+    {
+      "bus": "platform",
+      "device": "soc:wsa_spkr_en1_pinctrl",
+      "name": null,
+      "modalias": "of:Nwsa_spkr_en1_pinctrlT<NULL>Cqcom,msm-cdc-pinctrl",
+      "of_compatible": "qcom,msm-cdc-pinctrl,",
+      "of_status": null,
+      "driver": "msm-cdc-pinctrl"
+    },
+    {
+      "bus": "platform",
+      "device": "soc:wsa_spkr_en2_pinctrl",
+      "name": null,
+      "modalias": "of:Nwsa_spkr_en2_pinctrlT<NULL>Cqcom,msm-cdc-pinctrl",
+      "of_compatible": "qcom,msm-cdc-pinctrl,",
+      "of_status": null,
+      "driver": "msm-cdc-pinctrl"
+    },
+    {
+      "bus": "platform",
+      "device": "tx_swr_ctrl",
+      "name": null,
+      "modalias": "of:Ntx_swr_masterT<NULL>Cqcom,swr-mstr",
+      "of_compatible": "qcom,swr-mstr,",
+      "of_status": null,
+      "driver": "swr-wcd"
+    },
+    {
+      "bus": "platform",
+      "device": "vendor:bt_qca6390",
+      "name": null,
+      "modalias": "of:Nbt_qca6390T<NULL>Cqca,qca6390",
+      "of_compatible": "qca,qca6390,",
+      "of_status": null,
+      "driver": "bt_power"
+    },
+    {
+      "bus": "platform",
+      "device": "wcd938x-codec",
+      "name": null,
+      "modalias": "of:Nwcd938x-codecT<NULL>Cqcom,wcd938x-codec",
+      "of_compatible": "qcom,wcd938x-codec,",
+      "of_status": null,
+      "driver": "wcd938x_codec"
+    },
+    {
+      "bus": "platform",
+      "device": "wsa-macro",
+      "name": null,
+      "modalias": "of:Nwsa-macroT<NULL>Cqcom,wsa-macro",
+      "of_compatible": "qcom,wsa-macro,",
+      "of_status": null,
+      "driver": "wsa_macro"
+    },
+    {
+      "bus": "platform",
+      "device": "wsa_swr_ctrl",
+      "name": null,
+      "modalias": "of:Nwsa_swr_masterT<NULL>Cqcom,swr-mstr",
+      "of_compatible": "qcom,swr-mstr,",
+      "of_status": null,
+      "driver": "swr-wcd"
+    }
+  ],
+  "device_tree_candidates": [
+    {
+      "path": "/vendor/bt_qca6390",
+      "compatible": "qca,qca6390,"
+    },
+    {
+      "path": "/soc/qcom,wb-display@0",
+      "compatible": "qcom,wb-display,"
+    },
+    {
+      "path": "/soc/qcom,mdss_dsi_ctrl1@ae96000",
+      "compatible": "qcom,dsi-ctrl-hw-v2.4,"
+    },
+    {
+      "path": "/soc/ufsphy_mem@1d87000",
+      "compatible": "qcom,ufs-phy-qmp-v4,"
+    },
+    {
+      "path": "/soc/qcom,kgsl-iommu@3da0000",
+      "compatible": "qcom,kgsl-smmu-v2,"
+    },
+    {
+      "path": "/soc/qcom,kgsl-iommu@3da0000/gfx3d_user",
+      "compatible": "qcom,smmu-kgsl-cb,"
+    },
+    {
+      "path": "/soc/qcom,kgsl-iommu@3da0000/gfx3d_secure",
+      "compatible": "qcom,smmu-kgsl-cb,"
+    },
+    {
+      "path": "/soc/qcom,mdss_dsi_ctrl0@ae94000",
+      "compatible": "qcom,dsi-ctrl-hw-v2.4,"
+    },
+    {
+      "path": "/soc/spi@880000/novatek@0",
+      "compatible": "novatek,NVT-ts-spi,"
+    },
+    {
+      "path": "/soc/spi@880000/novatek@0/novatek-mp-criteria-6068@0",
+      "compatible": "novatek-mp-criteria-6068,"
+    },
+    {
+      "path": "/soc/spi@880000/novatek@0/novatek-mp-criteria-6067@0",
+      "compatible": "novatek-mp-criteria-6067,"
+    },
+    {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150l@5/qcom,wled@d800",
+      "compatible": "qcom,pm8150l-spmi-wled,"
+    },
+    {
+      "path": "/soc/i2c@884000/qcom,smb1390@10/qcom,charge_pump",
+      "compatible": "qcom,smb1390-charger-psy,"
+    },
+    {
+      "path": "/soc/ufshc@1d84000",
+      "compatible": "qcom,ufshc,"
+    },
+    {
+      "path": "/soc/qcom,mdss_dsi_phy1@ae96400",
+      "compatible": "qcom,dsi-phy-v4.1,"
+    },
+    {
+      "path": "/soc/qcom,dsi-display-primary",
+      "compatible": "qcom,dsi-display,"
+    },
+    {
+      "path": "/soc/qcom,mdss_dsi_pll@ae94900",
+      "compatible": "qcom,mdss_dsi_pll_7nm_v4_1,"
+    },
+    {
+      "path": "/soc/qcom,mdss_dsi_phy0@ae94400",
+      "compatible": "qcom,dsi-phy-v4.1,"
+    },
+    {
+      "path": "/soc/i2c@894000/fsa4480@42",
+      "compatible": "qcom,fsa4480-i2c,"
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/wcd938x-codec",
+      "compatible": "qcom,wcd938x-codec,"
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/wsa-macro@3240000",
+      "compatible": "qcom,wsa-macro,"
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/wsa-macro@3240000/wsa_swr_master/wsa881x@21170213",
+      "compatible": "qcom,wsa881x,"
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/wsa-macro@3240000/wsa_swr_master/wsa881x@20170212",
+      "compatible": "qcom,wsa881x,"
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/wsa-macro@3240000/wsa_swr_master/wsa881x@21170214",
+      "compatible": "qcom,wsa881x,"
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/wsa-macro@3240000/wsa_swr_master/wsa881x@20170211",
+      "compatible": "qcom,wsa881x,"
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/rx-macro@3200000/rx_swr_master/wcd938x-rx-slave",
+      "compatible": "qcom,wcd938x-slave,"
+    },
+    {
+      "path": "/soc/qcom,msm-audio-apr/qcom,q6core-audio/bolero-cdc/tx-macro@3220000/tx_swr_master/wcd938x-tx-slave",
+      "compatible": "qcom,wcd938x-slave,"
+    },
+    {
+      "path": "/soc/qcom,kgsl-3d0@3d00000",
+      "compatible": "qcom,kgsl-3d0,qcom,kgsl-3d,"
+    },
+    {
+      "path": "/soc/qcom,kgsl-busmon",
+      "compatible": "qcom,kgsl-busmon,"
+    },
+    {
+      "path": "/soc/qcom,dp_display@ae90000",
+      "compatible": "qcom,dp-display,"
+    },
+    {
+      "path": "/soc/qcom,mdss_dsi_pll@ae96900",
+      "compatible": "qcom,mdss_dsi_pll_7nm_v4_1,"
+    },
+    {
+      "path": "/soc/qcom,dsi-display-secondary",
+      "compatible": "qcom,dsi-display,"
+    },
+    {
+      "path": "/soc/sdhci@8804000",
+      "compatible": "qcom,sdhci-msm-v5,"
+    },
+    {
+      "path": "/soc/qcom,cnss-qca6390@b0000000",
+      "compatible": "qcom,cnss-qca6390,"
+    },
+    {
+      "path": "/soc/goodix_fp",
+      "compatible": "goodix,fingerprint,"
+    }
+  ],
+  "power_supply_inventory": [
+    {
+      "name": "battery",
+      "type": "Battery",
+      "model_name": "SWD",
+      "manufacturer": null
+    },
+    {
+      "name": "bms",
+      "type": "BMS",
+      "model_name": null,
+      "manufacturer": null
+    },
+    {
+      "name": "charge_pump_master",
+      "type": "Nothing attached",
+      "model_name": "SMB1398_V3",
+      "manufacturer": null
+    },
+    {
+      "name": "dc",
+      "type": "Wireless",
+      "model_name": null,
+      "manufacturer": null
+    },
+    {
+      "name": "main",
+      "type": "Main",
+      "model_name": null,
+      "manufacturer": null
+    },
+    {
+      "name": "pc_port",
+      "type": "USB",
+      "model_name": null,
+      "manufacturer": null
+    },
+    {
+      "name": "usb",
+      "type": "USB_PD",
+      "model_name": null,
+      "manufacturer": null
+    }
+  ],
+  "limits": [
+    "Input enumeration does not demonstrate working keys, gestures, pressure, tilt or reconnect behaviour on Linux.",
+    "A device-tree node, compatible string or generic driver binding does not by itself establish exact chip revision, populated hardware or functional acceptance.",
+    "Four tfa98xx I2C bindings are observed; this capture does not prove the exact TFA9894 variant or acoustic firmware calibration.",
+    "WSA881x nodes present in the vendor DT must not override the observed tfa98xx bindings as the tablet speaker-amplifier identification.",
+    "No raw touch/pen/keyboard events, I2C register accesses, firmware writes, reboot, kernel flash or destructive storage operations were performed.",
+    "All observations here are under the shipped Android kernel. Mainline Linux, QEMU and XNU have separate acceptance ledgers."
+  ]
+}
