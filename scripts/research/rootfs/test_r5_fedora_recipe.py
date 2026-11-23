@@ -1,0 +1,69 @@
+# SPDX-License-Identifier: GPL-2.0-only
+from pathlib import Path
+import json
+import subprocess
+import tempfile
+import unittest
+
+import materialize_r5_fedora_recipe as recipe
+import r5_system_common as common
+import stage_r5_fedora as s
+
+
+class RecipeTests(unittest.TestCase):
+    def test_actual_frozen_source_derivation(self):
+        repo = Path(__file__).resolve().parents[3]
+        with tempfile.TemporaryDirectory() as tmp:
+            destination = Path(tmp) / "recipe"
+            result = recipe.derive_sources(repo, destination)
+            self.assertEqual(result["changed_v9_files"],
+                             ["assemble_system.py", "guest_verify_system.py"])
+            for name in recipe.PINS.keys() | recipe.SUPPLEMENT.keys():
+                original = result["originals"][name]["sha256"]
+                actual = result["derived"][name]["sha256"]
+                if name in result["changed_v9_files"]:
+                    self.assertNotEqual(original, actual)
+                else:
+                    self.assertEqual(original, actual)
+            guest = (destination / "guest_verify_system.py").read_text()
+            self.assertIn("profile['root_label'] == 'tb371fc-r5-f45'", guest)
+            self.assertIn("module.sig_enforce=1", guest)
+            self.assertIn("production boot did not select the exact reviewed tmpfs entrypoint", guest)
+            self.assertIn("booted ext4 did not retain the qualified journal ACL", guest)
+            assemble = (destination / "assemble_system.py").read_text()
+            self.assertIn("from system_common import build_image", assemble)
+            self.assertIn("install_policy_candidate()", assemble)
+            self.assertIn("from early_initramfs import build", assemble)
+            with self.assertRaises(FileExistsError):
+                recipe.derive_sources(repo, destination)
+
+    def test_derivation_rejects_missing_or_duplicate_anchor(self):
+        for text in ("none", "anchor anchor"):
+            with self.assertRaises(ValueError):
+                recipe.replace_once(text, "anchor", "new")
+
+    def test_real_ordinary_ext4_fixture(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            root = base / "root"
+            root.mkdir()
+            (root / "payload").write_bytes(b"R5 image fixture\n")
+            image = base / "fixture.ext4"
+            result = common.create_ext4(root, image, "tb371fc-r5-f45",
+                                       size_bytes=64 * 1024**2, mkfs_timeout=60)
+            self.assertEqual(result["label"], "tb371fc-r5-f45")
+            self.assertFalse(result["physical_block_device_used"])
+            self.assertEqual(result["sha256"], s.identity(image)["sha256"])
+            data = subprocess.check_output(["/usr/sbin/debugfs", "-R", "cat /payload", str(image)])
+            self.assertEqual(data, b"R5 image fixture\n")
+            for suffix in ("mkfs", "fsck", "label"):
+                receipt = json.loads((base / ("fixture.ext4." + suffix + ".json")).read_text())
+                self.assertEqual(receipt["exit_code"], 0)
+            with self.assertRaises(FileExistsError):
+                common.create_ext4(root, image, "tb371fc-r5-f45",
+                                   size_bytes=64 * 1024**2, mkfs_timeout=60)
+            self.assertEqual(result["sha256"], s.identity(image)["sha256"])
+
+
+if __name__ == "__main__":
+    unittest.main()
