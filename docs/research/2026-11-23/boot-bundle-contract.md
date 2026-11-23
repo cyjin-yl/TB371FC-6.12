@@ -20,6 +20,44 @@ that status from file presence, a historical `true` field or a generic VM pass.
 `native_boot_attempted=false` and `owner_native_linux_passes_added=0` make the
 execution boundary explicit.
 
+## Current CT102 payload verification
+
+The third actual run completed on **2026-11-23 at 20:44:42 UTC** in
+`tb371fc-build-20261123`, using the exact published source commit
+`2a8b5b1bf2bc01416fa56c8340cdb97d289e741e`. All **106 payload files**, **84
+modules** and **two transport sidecars** matched. The real 126,877-byte DTB
+parsed successfully with **1,058 nodes**, maximum depth 9 and the expected
+root compatible. The raw Image header matched the effective/stored-size
+contract below. The same isolated source snapshot passed **60 regression tests**
+inside the builder in 2.066 seconds. No physical boot was attempted.
+
+The complete [current payload result](evidence/r5-boot-bundle/attempt-3-payload.json)
+is 37,289 bytes, SHA-256
+`a39e20465d85d9fd2bafa3798a69aada2b70f8d6d4d731669d9423d966315f94`.
+The [execution receipt](evidence/r5-boot-bundle/attempt-3-execution.json)
+binds all 16 downloaded source/evidence inputs, exact argv, source commit,
+exit codes and report/log hashes. The
+[unabridged test log](evidence/r5-boot-bundle/attempt-3-tests.log) is retained.
+These four validator source files are unchanged by the subsequent publication
+of this evidence. The code commit's
+[GitHub CI](https://github.com/cyjin-yl/TB371FC-6.12/actions/runs/45262399152)
+also succeeded; that CI runs offline fixtures/evidence and does not access the
+private builder's kernel payload.
+
+| Actual attempt | Source | Result retained |
+| --- | --- | --- |
+| 20:38 UTC | `1d254a0` | [Failed](evidence/r5-boot-bundle/attempt-1-payload.json): unlisted `bundle.json` and `transfer.json`; [receipt](evidence/r5-boot-bundle/attempt-1-execution.json) |
+| 20:41 UTC | `5c420a5` | [Failed](evidence/r5-boot-bundle/attempt-2-payload.json): checker incorrectly required compiled FORCE=y; [receipt](evidence/r5-boot-bundle/attempt-2-execution.json), [59-test log](evidence/r5-boot-bundle/attempt-2-tests.log) |
+| 20:44 UTC | `2a8b5b1` | [Kernel gate passed](evidence/r5-boot-bundle/attempt-3-payload.json), 60 tests passed; native readiness remains blocked |
+
+Earlier failures remain failures. Their original files were copied back with
+byte counts and SHA-256 checked; they were not overwritten or re-scored. The
+[publication index](evidence/r5-boot-bundle/index.json) binds all eight retained
+raw files. Remote source/results remain under
+`/work/r5-boot-bundle-qualification-2a8b5b1` (and the two earlier commit-named
+directories). The [handoff](r5-boot-bundle-checkpoint.json) identifies the next
+R5 root-loader integration task.
+
 ## Reproduce the candidate
 
 Run at the repository root with Python 3.10 or newer on Linux. The tools use
