@@ -255,8 +255,16 @@ def stage(repo, work):
         for name, target in mappings.items():
             key = "artifacts/" + name
             copy_exact(under(INPUTS, key), under(root, target, mkdir=True), artifacts[key])
-        kmod = under(root, "usr/sbin/kmod")
-        depmod = under(root, "usr/sbin/depmod")
+        # Fedora may merge /usr/sbin into /usr/bin. Resolve only that
+        # explicit in-root alias, never a host absolute symlink.
+        sbin = root / "usr/sbin"
+        if sbin.is_symlink():
+            if os.readlink(sbin) not in ("bin", "/usr/bin"):
+                raise ValueError("unexpected /usr/sbin alias")
+            sbin = root / "usr/bin"
+        ordinary_dir(sbin)
+        kmod = sbin / "kmod"
+        depmod = sbin / "depmod"
         if not depmod.is_symlink() or os.readlink(depmod) != "kmod":
             raise ValueError("unexpected target depmod alias")
         record["target_kmod"] = identity(kmod)
@@ -277,21 +285,20 @@ def stage(repo, work):
         run(work, "root-module-gate", [sys.executable, str(qualifier), "--repo", str(repo),
             "--rootfs-root", str(root), "--gate", "evidence",
             "--output", str(work / "root-module-report.json")])
-        # The evidence gate itself does not require the optional root to pass.
-        sys.path.insert(0, str(repo / "scripts/research"))
-        import boot_rootfs
         report = json.loads((work / "root-module-report.json").read_text())
+        tree = report["root_module_tree"]
+        if not tree["passed"] or not tree["input_snapshot_stable"]:
+            raise ValueError("root module qualification did not pass")
         record["root_module_report"] = identity(work / "root-module-report.json")
         record["module_tree"] = {p.relative_to(dest).as_posix(): identity(p)
                                  for p in sorted(dest.rglob("*")) if p.is_file()}
         for name, expected in modules.items():
             if record["module_tree"].get(name) != expected:
                 raise ValueError("depmod changed a frozen module or Kbuild input")
-        for name in boot_rootfs.REQUIRED_INDEXES:
-            if name not in record["module_tree"]:
-                raise ValueError("missing target depmod index: " + name)
-        boot_rootfs._dependency_graph((dest / "modules.dep").read_bytes(),
-                                     {n: v for n, v in modules.items() if n.endswith(".ko")})
+        for item in tree["indexes"]:
+            expected = {k: item[k] for k in ("sha256", "bytes", "mode")}
+            if record["module_tree"].get(item["path"]) != expected:
+                raise ValueError("depmod index changed after inspection")
         record["depmod_receipts"] = {name: identity(work / name) for name in (
             "target-depmod.json", "target-depmod.stdout", "target-depmod.stderr",
             "target-depmod-version.json", "target-depmod-version.stdout",
