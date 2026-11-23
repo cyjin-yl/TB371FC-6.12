@@ -6,6 +6,10 @@
 
 ## 构建进展与完成标准
 
+新增 [R5 启动候选包校验](boot-bundle-contract.md)：可执行地核对完整 106 文件输入、
+当前产物身份和最终 root 的模块依赖。真实 root loader、入口和恢复通道仍分别保留
+未完成条件，不因文件校验成功而增加本机 Linux 通过数。
+
 **最新构建检查：[research5](research5-services-kernel.md) 已编译并完成传输；
 [首次 Fedora v9 镜像尝试](fedora-r4f-image-failed.md) 在任何 VM 之前失败。
 最近一次实际生产启动仍是 [v8](fedora-r4e-persistent-result-failed.md)：guest
