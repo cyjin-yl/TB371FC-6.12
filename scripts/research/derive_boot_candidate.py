@@ -235,6 +235,16 @@ def derive(repo: Path) -> dict:
         },
         "kernel_files": [{"path": path, "bytes": files[path]["size"], "sha256": files[path]["sha256"],
                           "mode": transfer["destination_readback"][path]["mode"]} for path in sorted(files)],
+        # The transfer may leave these two evidence files beside its 106-file
+        # payload. They are optional, but their bytes are fixed if present;
+        # this is not permission to admit arbitrary JSON or old indexes. Their
+        # local file mode is not part of the original transport evidence.
+        "kernel_evidence_sidecars": [
+            {"path": "bundle.json", "bytes": FROZEN_SOURCES[BUNDLE][0],
+             "sha256": FROZEN_SOURCES[BUNDLE][1]},
+            {"path": "transfer.json", "bytes": FROZEN_SOURCES[TRANSFER][0],
+             "sha256": FROZEN_SOURCES[TRANSFER][1]},
+        ],
         "boot_requirements": requirements,
     }
 

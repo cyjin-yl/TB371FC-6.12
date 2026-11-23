@@ -147,12 +147,15 @@ def parse_config(raw):
 
 
 def qualify_kernel(root, contract):
-    result = {'status': 'failed', 'files': [], 'errors': [],
+    result = {'status': 'failed', 'files': [], 'evidence_sidecars': [], 'errors': [],
               'module_signatures_reexecuted': False,
               'module_symbol_crc_commands_reexecuted': False,
               'module_bytes_match_recorded_qualification': False,
               'physical_hardware_tested': False}
     expected = {entry['path']: entry for entry in contract['kernel_files']}
+    sidecars = {entry['path']: entry for entry in contract.get('kernel_evidence_sidecars', [])}
+    require(not (expected.keys() & sidecars.keys()), 'payload and sidecar paths overlap')
+    allowed = {**expected, **sidecars}
     artifacts = contract['kernel']['artifacts']
     capture = set(artifacts.values()) | {'artifacts/kernel.release'}
     captured = {}
@@ -160,23 +163,23 @@ def qualify_kernel(root, contract):
         with BundleReader(root) as reader:
             before, dirs_before = reader.inventory()
             missing = sorted(set(expected) - set(before))
-            extra = sorted(set(before) - set(expected))
+            extra = sorted(set(before) - set(allowed))
             if missing:
                 result['errors'].append({'code': 'missing_files', 'paths': missing})
             if extra:
                 result['errors'].append({'code': 'unexpected_files', 'paths': extra})
-            for relative in sorted(expected.keys() & before.keys()):
-                reference = expected[relative]
+            for relative in sorted(allowed.keys() & before.keys()):
+                reference = allowed[relative]
                 try:
                     raw, info = reader.read(relative, min(MAX_FILE, reference['bytes']))
                     observed = {'path': relative, 'bytes': len(raw),
                                 'sha256': hashlib.sha256(raw).hexdigest(),
                                 'mode': stat.S_IMODE(info.st_mode)}
-                    observed['matches'] = all(observed[key] == reference[key]
-                                              for key in ('bytes', 'sha256', 'mode'))
+                    keys = ('bytes', 'sha256', 'mode') if 'mode' in reference else ('bytes', 'sha256')
+                    observed['matches'] = all(observed[key] == reference[key] for key in keys)
                     require(before[relative] == fingerprint(info),
                             'file changed after inventory: ' + relative)
-                    result['files'].append(observed)
+                    result['files' if relative in expected else 'evidence_sidecars'].append(observed)
                     if not observed['matches']:
                         result['errors'].append({'code': 'identity_mismatch', 'path': relative})
                     elif relative in capture:
@@ -209,6 +212,7 @@ def qualify_kernel(root, contract):
             require(len(modules) == contract['kernel']['module_count'],
                     'signed module set has the wrong size')
             result.update(status='verified', file_count=len(result['files']),
+                          evidence_sidecar_count=len(result['evidence_sidecars']),
                           module_count=len(modules), arm64_header=header,
                           device_tree=dt, required_config=REQUIRED_CONFIG,
                           public_certificate_present_in_image=True,

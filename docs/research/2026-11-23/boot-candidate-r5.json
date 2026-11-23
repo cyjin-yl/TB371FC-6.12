@@ -130,6 +130,18 @@
     "module_count": 84,
     "release": "6.12.114-tb371fc-research5-services"
   },
+  "kernel_evidence_sidecars": [
+    {
+      "bytes": 22269,
+      "path": "bundle.json",
+      "sha256": "b540b71d3d5719265bed35b05016c9e0cbfc988ab17ccb351d14c42610d46c04"
+    },
+    {
+      "bytes": 83440,
+      "path": "transfer.json",
+      "sha256": "6892cdb643e8ab58e55f10e86f7ce45f2ef6bdd22ddaaf400b935900cfc9cb5e"
+    }
+  ],
   "kernel_files": [
     {
       "bytes": 41091080,

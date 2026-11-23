@@ -68,6 +68,13 @@ The exact file set includes 84 `.ko` files and the installed
 Kbuild metadata files are valid inputs. It deliberately excludes old
 `modules.dep*`, `modules.alias*` and other generated depmod indexes.
 
+The real destination also retains `bundle.json` and `transfer.json` beside the
+106 payload files. These two optional evidence sidecars have their own frozen
+length/hash bindings and a separate report count. A present but changed sidecar
+fails; arbitrary other JSON files are not allowed. Their observed modes are
+recorded, while the payload mode contract remains exact. The first real run
+exposed these sidecars as unexpected files; its failed receipt is retained.
+
 The original inspector already executed CMS verification and imported-symbol
 CRC checks. Matching every current module byte to that frozen qualification
 reuses that evidence. The new report explicitly sets

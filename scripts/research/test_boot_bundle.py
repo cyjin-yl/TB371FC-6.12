@@ -162,6 +162,24 @@ class FrozenEvidenceTests(unittest.TestCase):
 
 
 class CurrentPayloadTests(unittest.TestCase):
+    def test_frozen_transport_sidecars_are_separate_and_cannot_mask_corruption(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            contract = fixture_bundle(root)
+            raw = b'{"recorded":true}\n'
+            contract['kernel_evidence_sidecars'] = [
+                {'path': 'bundle.json', 'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()}]
+            self.assertEqual(bundle.qualify_kernel(root, contract)['status'], 'verified')
+            (root / 'bundle.json').write_bytes(raw)
+            result = bundle.qualify_kernel(root, contract)
+            self.assertEqual(result['status'], 'verified', result['errors'])
+            self.assertEqual(result['file_count'], len(contract['kernel_files']))
+            self.assertEqual(result['evidence_sidecar_count'], 1)
+            (root / 'bundle.json').write_bytes(raw.replace(b'true', b'null'))
+            result = bundle.qualify_kernel(root, contract)
+            self.assertEqual(result['status'], 'failed')
+            self.assertIn({'code': 'identity_mismatch', 'path': 'bundle.json'}, result['errors'])
+
     def test_exact_current_bytes_are_distinct_from_a_new_signature_execution(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
