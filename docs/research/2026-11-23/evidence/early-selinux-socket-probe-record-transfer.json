@@ -1,0 +1,87 @@
+{
+  "all_member_bytes_and_full_hashes_verified": true,
+  "gzip_bytes": 17342,
+  "gzip_sha256": "16a5997f57e7d46740591ae1893ba4d3e83c76ef34a565a61e8b58839972df08",
+  "local_derivation_files": [
+    {
+      "bytes": 2437,
+      "mode": 420,
+      "path": "docs/research/2026-11-23/evidence/early-selinux-socket-probe-recipe-derivation.json",
+      "sha256": "441b68f50ac88873eef3ba236b884e4240d4b54cdab146ce3a0326d2557ce82b"
+    },
+    {
+      "bytes": 520,
+      "mode": 420,
+      "path": "docs/research/2026-11-23/evidence/early-selinux-socket-probe-source-delta.json",
+      "sha256": "952c186620943753c430e7a6f21af6c4baa0208c68bb36ce42f72c262d254a0c"
+    }
+  ],
+  "lossless_base64_member_transfer": true,
+  "omitted_payloads": [
+    "policy-source.stdout binary policy",
+    "SSD ELF transfer payload",
+    "private packet containing executable bytes"
+  ],
+  "packet_bytes": 57783,
+  "packet_sha256": "769009d3fda78a1cdc130ff7274f06bf07dba9026d867330d00b91e7eebc3814",
+  "physical_hardware_tested": false,
+  "private_transfer_directory": "/tank/shared/projects/tb371fc-linux/private/early-selinux-socket-probe-20261123",
+  "raw_record_files": [
+    {
+      "bytes": 13504,
+      "mode": 420,
+      "path": "docs/research/2026-11-23/evidence/early-selinux-socket-probe-build.json",
+      "sha256": "17f5d76724740765d89eea5633b1029340de91cd1cb45fc0343c9103bf21fa80"
+    },
+    {
+      "bytes": 2142,
+      "mode": 420,
+      "path": "docs/research/2026-11-23/evidence/early-selinux-socket-probe-negative.json",
+      "sha256": "786f0d3b536ef93e15f91c22dff949a216035f3a017b589f4d2a1812b0e9888b"
+    },
+    {
+      "bytes": 20616,
+      "mode": 420,
+      "path": "docs/research/2026-11-23/evidence/early-selinux-socket-probe-driver.json",
+      "sha256": "448395b6e263f0d2536e2e2995a7847d09a79c063c5144b6534f5c548b7db29f"
+    },
+    {
+      "bytes": 1060,
+      "mode": 420,
+      "path": "docs/research/2026-11-23/evidence/early-selinux-socket-probe-invocation.json",
+      "sha256": "33d47d29f1e1e8a9ef9db7f58656d4c307417ec266e527e8829db0a2ac2342c0"
+    },
+    {
+      "bytes": 826,
+      "mode": 420,
+      "path": "docs/research/2026-11-23/evidence/early-selinux-socket-probe-negative-invocation.json",
+      "sha256": "90566243d32e0d3fd27fc742a62958fd4e742056a75703b186cf6c937d4fa43e"
+    },
+    {
+      "bytes": 843,
+      "mode": 420,
+      "path": "docs/research/2026-11-23/evidence/early-selinux-socket-probe-input-transfer.json",
+      "sha256": "c0a5ca70fa64b924b9a3e0c7cf14bdef39bfd5aa06741c8861b7abce4ec7f102"
+    },
+    {
+      "bytes": 1869,
+      "mode": 420,
+      "path": "docs/research/2026-11-23/evidence/early-selinux-socket-probe-hdd-transfer.json",
+      "sha256": "922ea780bf9e0193373e91ded3942f085e4f1f425bfca7fe63a47cebb0d7d59f"
+    },
+    {
+      "bytes": 635,
+      "mode": 420,
+      "path": "docs/research/2026-11-23/evidence/early-selinux-socket-probe-launch.json",
+      "sha256": "097c54f99ab033acfe0677f3800ba828977f73c8896c176e80b5c6f708793818"
+    },
+    {
+      "bytes": 920,
+      "mode": 420,
+      "path": "docs/research/2026-11-23/evidence/early-selinux-socket-probe-driver.log",
+      "sha256": "ff84ce7113570dad28ae371adcff0c5648e39a2b2c2debd135c42f7af9ccb9a7"
+    }
+  ],
+  "record_numbers_not_reserialized": true,
+  "schema_version": 1
+}

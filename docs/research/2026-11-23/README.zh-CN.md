@@ -6,9 +6,10 @@
 
 ## 构建进展与完成标准
 
-**最新完整系统检查：[Fedora v8](fedora-r4e-persistent-result-failed.md) 的 guest 行为
-与结果传输已完成，但一条 Enforcing AVC 仍使整轮失败。本机 Linux 仍为
-0 次启动、0 项通过。**
+**最新构建检查：[research5](research5-services-kernel.md) 已编译并完成传输；
+[首次 Fedora v9 镜像尝试](fedora-r4f-image-failed.md) 在任何 VM 之前失败。
+最近一次实际生产启动仍是 [v8](fedora-r4e-persistent-result-failed.md)：guest
+检查通过，但一条 Enforcing AVC 使整轮失败。本机 Linux 仍为 0 次启动、0 项通过。**
 
 已在 doesvm CT102 的隔离容器内构建 `6.12.114-tb371fc-research1` 内核、
 配套模块和设备树。实际启动测试发现并修复了历史页表池在通用 ARM 虚拟机
@@ -117,11 +118,40 @@ QEMU 正常关机退出 0；413,706 字节完整结果通过固定路径、文�
 启动 ID 和 profile 检查只读取回，无解析错误，生产日志中所有既定丢失／抑制
 计数为零。独立完整日志仍发现一项 Enforcing AVC：`journalctl --sync` 中的
 `journalctl_t` 被拒绝创建自身 `unix_dgram_socket`。该命令虽退出 0，host
-controller 仍为 false、pipeline 仍退出 1，不能忽略这条拒绝。后续源码诊断与
-新候选另行进行。实际策略 `9d7aa2b3…` 私有保存、公开仅元数据，不与离线转换
+controller 仍为 false、pipeline 仍退出 1，不能忽略这条拒绝。后续源码诊断、
+新候选与镜像失败另行记录如下。实际策略 `9d7aa2b3…` 私有保存、公开仅元数据，不与离线转换
 文件等同。post-qualification、finalize 和 postboot e2fsck 都未运行；没有正的
 udev 计数对，不能说队列为空或已全部保全。此前合成文件传输检查也不保证异常
 终止后无需 journal replay 就能恢复。所有平板实机项目保持原状态。
+
+### 后续构建检查点
+
+[匹配实际版本的 socket 探测诊断](selinux-journalctl-socket-probe.md)已查明 v8 的
+datagram 拒绝：systemd 创建 socket 以探测 xattr 支持，而固定内核会在 LSM
+xattr 钩子之前拒绝这类特殊 inode 的 `user.*` 属性。对已保存的实际 v8 策略
+直接查询也确认该缺口。新的[七权限候选](selinux-socket-probe-policy.md)只在
+此前六项基础上增加自身 datagram `create`；完整 version 35／新解析 version 33
+CIL 比较和 19 元组离线查询通过，12 项拒绝控制／诊断保持拒绝。
+独立 [V4 入口](early-selinux-socket-probe-loader.md)已编译并通过非 PID 1 拒绝
+检查，这些均为构建证据，原 v8 失败结果不改写。
+
+[首次 v9／R4F 尝试](fedora-r4f-image-failed.md)在**任何虚拟机启动之前**失败。
+两份新 initramfs 通过原有构建检查，但 `mkfs.ext4` 超过固定的 600 秒子进程
+期限；连同清理，image 阶段为 615.382 秒，pipeline 退出 1。完整异常、原始
+源码和未完成镜像保留。没有新的实际策略、FD、TasksMax、BPF 或零 AVC 结果；
+独立恢复须另记输入与结果。同期 HDD 工作是资源背景，不能据此断言唯一故障原因。
+
+另行构建的 [research5-services 内核](research5-services-kernel.md)已完成全量
+编译和离线检查。相对 R4 恰有 14 项配置变化，补齐原始 Nix／Nura nftables
+合同、Nura 明确选用的 zstd zram、通用 PL031 RTC 及新 release。84 个签名模块、
+4,308 项导入 CRC、Image／BTF／公开证书和未变化的显示/输入联合 DT 均已核验；
+106 个普通文件在共享构建器传输前后内容、模式与 owner 一致。
+**这还不是 R5 系统启动**：原防火墙规则、OpenRC、zram、RTC、原生模块加载仍须
+实际运行验证，不提升任何本机硬件项目。
+
+[Nura 原始入口的有限只读盘点](nura-entry-inventory.md)另行确认 BusyBox PID 1
+和由原 inittab 调用的 OpenRC 顺序。它没有执行目标程序，也不能把服务定义或
+先前导出的通用 rootfs 当作目标系统已启动。
 
 [NixOS 后续构建](nixos-system-build.md)已实际完成固定的
 `system.build.toplevel`，得到引用闭合的 894 个存储路径，合计
@@ -131,14 +161,19 @@ udev 计数对，不能说队列为空或已全部保全。此前合成文件传
 但不等于系统启动或本机硬件通过。独立根文件系统／虚拟机实验仍在另行准备，
 不把尚未执行的草稿登记成这次冻结成果。
 
+[首次原生 Nix 注册根准备](nixos-store-preparation-failed.md)已有明确失败记录：
+源内容验证退出 0，后续签名缓存复制触及原定 3600 秒超时，整个任务退出 1。
+目标注册、完整目标校验、镜像、激活和 PID 1 启动均未到达。旧部分缓存与完整
+原始日志保留，`require-sigs` 不变；独立 SSD 恢复不计为本次通过。
+
 ### 各发行版目前完成到哪里
 
 | 候选 | 已完成的主机证据 | 尚未跨过的边界 |
 | --- | --- | --- |
 | Fedora，冻结 research1 系统 | systemd 多用户和 Enforcing 完整启动，83 模块与 69 固件哈希匹配 | 基线资源/GPIO 提示仍保留；未测试平板硬件 |
-| Fedora，research3/research4 后续 | 两份 84 模块完整内核；v8 完成早期标签、真实 FD/TasksMax/BPF 行为、PL061 绑定及正常关机结果传输 | 一项 journalctl datagram-create AVC 仍使整轮失败；后续资格确认/收尾未跑；未测试平板 |
-| NixOS | 完整 894 路径 toplevel 闭包，ARM 版本命令及脚本语法检查 | 无根镜像、激活或 PID 1 启动 |
-| Nura/postmarketOS 实验 | ARM 构建器安装 382 个目标包并导出校验过的通用 rootfs | 目标未启动；离线缓存仅保留 371 个版本，未集成本机内核 |
+| Fedora，research3/research4 后续 | 两份 84 模块完整内核；v8 完成早期标签、真实 FD/TasksMax/BPF 行为、PL061 绑定及正常关机结果传输 | v8 失败保留；首次 v9 镜像在 VM 之前超时；后续运行/收尾及平板验收未完成 |
+| NixOS | 完整 894 路径闭包，ARM 版本/语法检查；独立 R5 服务前提已编译 | 源校验后首次签名缓存复制超时；无合格注册根／镜像、激活或 PID 1 启动 |
+| Nura/postmarketOS 实验 | 382 包目标 rootfs 已导出；实际 BusyBox/OpenRC 入口盘点与独立 R5 前提编译 | 目标未启动；早期缓存仅留 371 个版本，完整重建和硬件集成仍未完成 |
 
 [早期发行版构建比较](distro-builds.md)保留早期实验正文，并新增后续状态导航；
 原全文哈希记录在该页。正文中的包闭包及软件图形数字仍是当时的观测，
@@ -161,11 +196,22 @@ USB 救援通道或 AVB 信任。
 [双端 USB 跟进](usb-transport-followup.md)与[05:18 UTC 的再次复查](usb-transport-recheck.md)
 均读到两 UDC 为 `not attached`、doesvm 无对应候选；这不推断物理线缆是否存在或
 其他主机的状态。[此前上海 14:09 的双端复查](usb-transport-recheck-1409.md)
-再次记录同一有限结果。[最新上海 15:46:57–59 的双端读取](usb-transport-recheck-20261123T074657Z.md)
+再次记录同一有限结果。[此前上海 15:46:57–59 的双端读取](usb-transport-recheck-20261123T074657Z.md)
 也得到两 UDC `not attached`／`UNKNOWN`、相同主控制器配置和 14 项主机 USB
 条目中无对应 vendor 候选；两端命令均退出 0。未改变 USB／启动状态，不能据此
 诊断线缆或其他主机。入口和恢复控制仍是实机测试的硬门槛。
 
+[最新上海 17:36:24–25／UTC 09:36 的双端复查](usb-transport-recheck-20261123T093624Z.md)
+两端均退出 0：两 UDC 仍为 `not attached`／`UNKNOWN`，`g1` 仍配置在
+`a600000.dwc3`、VID/PID 为 `17ef:7e31`，doesvm 的 14 项中无对应 vendor
+候选。没有 USB／启动状态修改，也未证明数据／恢复连接；不推断线缆故障、
+物理连接位置或另一主机状态。
+
+- [research5 原服务前提、全量内核编译与共享传输](research5-services-kernel.md)
+- [journalctl socket 探测诊断](selinux-journalctl-socket-probe.md)、
+  [最小七权限策略](selinux-socket-probe-policy.md)、[V4 入口构建](early-selinux-socket-probe-loader.md)、
+  [保留的 v9 首次镜像失败／零 VM](fedora-r4f-image-failed.md)
+- [Nura 原 BusyBox／OpenRC 入口盘点](nura-entry-inventory.md)
 - [内核构建、真实失败、修复与复测](kernel-build.md)
 - [6.12 显示设备树与驱动匹配修复](diagnostic-dt-profiles.md)、
   [独立显示候选](research2-display-build.md)、[SSD 构建环境](ssd-builder.md)
@@ -180,7 +226,8 @@ USB 救援通道或 AVB 信任。
   [真实出厂内核的 tracepoint/CNSS 缓存审查](cnss-shipping-static.md)
 - [早期发行版构建比较](distro-builds.md)、[Fedora](fedora-build.md)、[Nura](nura-build.md)、
   [NixOS 配置和实测](../../../distros/nixos/README.md)
-- [NixOS 完整系统存储构建及尚未启动的边界](nixos-system-build.md)
+- [NixOS 完整系统存储构建及尚未启动的边界](nixos-system-build.md)，以及
+  [首次注册根准备的原始超时](nixos-store-preparation-failed.md)
 - [Fedora systemd/Enforcing 完整系统启动](fedora-system-integration.md)、
   [固定策略格式兼容检查](selinux-compatibility.md)、
   [压缩 initramfs 的独立校验](evidence/initramfs-validation.json)
@@ -205,7 +252,7 @@ USB 救援通道或 AVB 信任。
 - [本机和 doesvm 的 USB 快照](usb-transport-readiness.md)、
   [双端跟进](usb-transport-followup.md)、[后续有界复查](usb-transport-recheck.md)、
   [14:09 双端复查](usb-transport-recheck-1409.md)、
-  [最新 15:46 双端读取](usb-transport-recheck-20261123T074657Z.md)、
+  [此前 15:46 双端读取](usb-transport-recheck-20261123T074657Z.md)、
   [已独立检查的固定控制器救援修订](first-stage-owner-udc.md)
 - [最终内核的固件请求、设备状态与加载规则](firmware-kernel-contract.md)
 - [118 个专用固件文件的私有传输与完整性检查](stock-firmware-bundle.md)

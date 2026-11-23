@@ -1,0 +1,36 @@
+mke2fs 1.47.2 (1-Jan-2025)
+Discarding device blocks:       0/1048576               done                            
+Creating filesystem with 1048576 4k blocks and 262144 inodes
+Filesystem UUID: 3da799fb-e947-459f-aa2b-d128d609497a
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736
+
+Allocating group tables:  0/32     done                            
+Writing inode tables:  0/32     done                            
+Creating journal (16384 blocks): done
+Copying files into the device: Traceback (most recent call last):
+  File "/work/fedora-input-system-recipe-r4-v7/assemble_system.py", line 123, in <module>
+    {'configure': configure, 'initrd': initrd, 'image': image}[arguments.phase]()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/work/fedora-input-system-recipe-r4-v7/assemble_system.py", line 109, in image
+    subprocess.run(['/usr/sbin/mkfs.ext4', '-F', '-L', LABEL, '-E',
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    'lazy_itable_init=0,lazy_journal_init=0', '-d', str(ROOT), str(IMAGE)],
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                   check=True, timeout=600)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 556, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1222, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 2154, in _communicate
+    self.wait(timeout=self._remaining_time(endtime))
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1280, in wait
+    return self._wait(timeout=timeout)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 2058, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['/usr/sbin/mkfs.ext4', '-F', '-L', 'tb371fc-r4f-f45', '-E', 'lazy_itable_init=0,lazy_journal_init=0', '-d', '/work/fedora-input-system-v9/rootfs', '/work/fedora-input-system-v9/fedora45-research4f-persistent-result.ext4']' timed out after 600 seconds

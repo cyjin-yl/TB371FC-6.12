@@ -1,0 +1,2365 @@
+{
+  "critical_members": {
+    "hook_shell": {
+      "elf_machine": 183,
+      "elf_type": 3,
+      "interpreters": [
+        "usr/lib/ld-linux-aarch64.so.1"
+      ],
+      "kind": "regular",
+      "path": "usr/bin/bash",
+      "payload_source": "usr/bin/bash",
+      "sha256": "046b0c93ea9e58fde26e4d311392ca850fabd78df5e824dde56a2b2f17c4af2e",
+      "size": 1500440
+    },
+    "init_resolves_to": "usr/lib/systemd/systemd",
+    "selinux_hook": {
+      "kind": "regular",
+      "path": "var/lib/dracut/hooks/pre-pivot/50-selinux-loadpolicy.sh",
+      "payload_source": "var/lib/dracut/hooks/pre-pivot/50-selinux-loadpolicy.sh",
+      "sha256": "8fe83554141667c99eda1fa3a96ce621cdea09feae2c2f3617074d8548b28e45",
+      "size": 2291
+    },
+    "systemd": {
+      "elf_machine": 183,
+      "elf_type": 3,
+      "interpreters": [
+        "usr/lib/ld-linux-aarch64.so.1"
+      ],
+      "kind": "regular",
+      "path": "usr/lib/systemd/systemd",
+      "payload_source": "usr/lib/systemd/systemd",
+      "sha256": "f22f9b8d4cad6de84e2b22a6e16693c8bb67885d8b3c7ad547251ba15ada5ea4",
+      "size": 204224
+    }
+  },
+  "early": {
+    "bytes": 512,
+    "hardlink_aliases": 0,
+    "hardlink_groups": 0,
+    "records": 1,
+    "sha256": "3521d128059c1a552819220600abf86962b9bd6cac0bce0d673ec0629ba38b8a",
+    "trailer_offset": 112,
+    "types": {
+      "directory": 1
+    },
+    "unique_paths": 1,
+    "zero_padding_bytes": 276
+  },
+  "extracted": false,
+  "firmware": {
+    "files": [
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/ath11k/QCA6390/hw2.0/amss.bin",
+        "payload_source": "usr/lib/firmware/ath11k/QCA6390/hw2.0/amss.bin",
+        "sha256": "23971cf2acadd3eeffa44575ec5573859f95388e7aa38a4a6734ec75d6b90e53",
+        "size": 4384928
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/ath11k/QCA6390/hw2.0/m3.bin",
+        "payload_source": "usr/lib/firmware/ath11k/QCA6390/hw2.0/m3.bin",
+        "sha256": "b1da77a2508789ce7fa1557425d3c6933b4d51f2c44f10298f58071f7a5b2448",
+        "size": 266684
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/lenovo/tb371fc/novatek_ts_fw_boe_6.bin",
+        "payload_source": "usr/lib/firmware/lenovo/tb371fc/novatek_ts_fw_boe_6.bin",
+        "sha256": "6611efef1126dad4ef588311a7bbbf54503d03afdf7d972d4bf14c44567bf3c4",
+        "size": 245760
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/lenovo/tb371fc/novatek_ts_tm_fw_6.bin",
+        "payload_source": "usr/lib/firmware/lenovo/tb371fc/novatek_ts_tm_fw_6.bin",
+        "sha256": "9e8642c6c0d2f27a99d64e318b9fefa41c507356008ead7c15bc4aba18c36574",
+        "size": 245760
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qca/htbtfw10.tlv",
+        "payload_source": "usr/lib/firmware/qca/htbtfw10.tlv",
+        "sha256": "c6ac59eaa877786f0c883ce087816d8882e06f4850afd36ec1fcc5c2e0b72c5c",
+        "size": 129964
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qca/htbtfw20.tlv",
+        "payload_source": "usr/lib/firmware/qca/htbtfw20.tlv",
+        "sha256": "07b0be73dea31551200487f15fdc049edbb923555d38b7e7b0436a773bfbb2ea",
+        "size": 205772
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qca/htnv10.bin",
+        "payload_source": "usr/lib/firmware/qca/htnv10.bin",
+        "sha256": "c7dabb873d4f3e60e698c9ec1521a0ede4f48fe58936aec2c9f0ebc0166c8d28",
+        "size": 3569
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qca/htnv20.bin",
+        "payload_source": "usr/lib/firmware/qca/htnv20.bin",
+        "sha256": "21492a18750319b594a6287e2393d39deac28bf54edb91c660b5918b397c9451",
+        "size": 5839
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/a650_gmu.bin",
+        "payload_source": "usr/lib/firmware/qcom/a650_gmu.bin",
+        "sha256": "df79fa8482fcc7587bb239b9c9e2b24bce4729893b990fe3f82b30da8175b01c",
+        "size": 41548
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/a650_sqe.fw",
+        "payload_source": "usr/lib/firmware/qcom/a650_sqe.fw",
+        "sha256": "b4c27420fd6a5c6b511b254cc0fad8cdd40eea38ceb3418f895a1084f4460487",
+        "size": 31632
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/a650_zap.mbn",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/a650_zap.mbn",
+        "sha256": "9fa3242134d6070c4facba48bb5c5ef2206d92995035aec7daff01198e853299",
+        "size": 13964
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b02",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b02",
+        "sha256": "f85a8ef97191c49f2d0b8f713b6009963b81e225ce0dabb1189cd92f7d0c5600",
+        "size": 82680
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b03",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b03",
+        "sha256": "11d886ebfc13ea7a11410470d6ff884d720379b0d3fe78af793538dfc2def040",
+        "size": 358784
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b04",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b04",
+        "sha256": "4359682ac1abdcfe413d52cb30eea69fae0e36fbec6f55b4d77489bb667e7292",
+        "size": 1966540
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b05",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b05",
+        "sha256": "f63badc1a2492c064efdec96d8285cbc3f6c744979adb6a5a773361ab80cd133",
+        "size": 2487860
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b06",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b06",
+        "sha256": "08cfc45db65000403bac68390c87c3383c05b16dbf622e732ae42721f3ccd79d",
+        "size": 38696
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b07",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b07",
+        "sha256": "4a3c57349f55e357678092e1cf1b5d4f3f08197e508be1882e3e4a707dcaca96",
+        "size": 28972
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b08",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b08",
+        "sha256": "20175c2c1b2b429818dcda95460c53143d5ad299c3f99cbd0d6a1c5fdf50fbfc",
+        "size": 126736
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b09",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b09",
+        "sha256": "565aaaa031b54649bc587b9f05e0d080e3f60803047d6e53c68b9252e0f7ccfe",
+        "size": 64424
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b10",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b10",
+        "sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+        "size": 602112
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b11",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b11",
+        "sha256": "047b890fde8b8cb9444607ee7ef2d3212e6cf891976fc2743daa30dcee9f1fa4",
+        "size": 6896588
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b12",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b12",
+        "sha256": "8816fe73433a146cea5365b74ef0ee2c2833ed9c895e5a39a8a9dba5f55fe48b",
+        "size": 280880
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b13",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b13",
+        "sha256": "271c5783def587733c57edd67523fd9890a97b12fd2ee0ad4237226454bb6b85",
+        "size": 20
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b14",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b14",
+        "sha256": "15f4ec05645cbfc96a203969aa771df863a28f348abe82663f96d09204113eff",
+        "size": 104184
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b15",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b15",
+        "sha256": "85839996e8abe7eeebc44cc9e0af3d8b6fcdd25db47e53563e00407433ed9be4",
+        "size": 1346476
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b16",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b16",
+        "sha256": "7f134e39357e679f6d84289ed0128d5dd538de494da89e159d13cbb9abf31052",
+        "size": 79592
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b17",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b17",
+        "sha256": "215f026fd6b54d2d882db118b6b7742443edd3d19157b91c1021cb1920b6d2c8",
+        "size": 1021612
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b18",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b18",
+        "sha256": "d8c9e88d16aeb6666185a6318ac7e273342e31a54770ff29ca7b5f5a79f2f564",
+        "size": 172
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.mbn",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.mbn",
+        "sha256": "560d2e96806a1fd78ab768f74b48464cc5c783553ac7b7d1e29e4e4f9a0472a8",
+        "size": 8220
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b02",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b02",
+        "sha256": "dd688282e63724ca96a4849b2c495683f4ba951a84899a24fa52ef35791289a9",
+        "size": 235676
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b03",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b03",
+        "sha256": "613dd6c2c9a606d32849231c14cc249d9dd9dac2d588e84206053ce6d1a4756a",
+        "size": 105980
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b04",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b04",
+        "sha256": "ceb11f87af22fd6f54154295b870d089c4f98a76ff1cd69cfbab193d9857a449",
+        "size": 1076
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b05",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b05",
+        "sha256": "8c3c65ebd31375d9a161a7e9487ee37aa5eff73989e975800721ec754d4f6097",
+        "size": 2795116
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b06",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b06",
+        "sha256": "a3d4e8a59934bab0eb2950b791280194979ee4170abe4268733c31ac385089ed",
+        "size": 83418
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b08",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b08",
+        "sha256": "63e298d9daaa458a8339af3f1d1612cbc5785c1f691ecd0ff73b2b8cba41bc03",
+        "size": 2779840
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b09",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b09",
+        "sha256": "28fbbdb4d8b39670ba687abd3f6a18ddfa0c2ff05d9ed4e1362907072aa2dccd",
+        "size": 3576
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b11",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b11",
+        "sha256": "b90eebdf7fcf3372f3eea85cca724cbe716d2edccbbe21854c8b9306164b9ae8",
+        "size": 59156
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.mbn",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.mbn",
+        "sha256": "db68c13910322d48b6deea45148abf825ba49ad0c91582dd197db9b352d9fd39",
+        "size": 7660
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b02",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b02",
+        "sha256": "fd87e93666a2331477d10437550a11bcdc6e528bbdf29c349a35e362f7e89afd",
+        "size": 82872
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b03",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b03",
+        "sha256": "4b768e122a60ec71dda5d0ef490309062a29fac4a1f409202fc0076778455a6e",
+        "size": 247232
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b04",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b04",
+        "sha256": "a1ea273715b88cc3ca471546c05731bdd85d292d4428809decf99469e4bdf0fe",
+        "size": 2078252
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b05",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b05",
+        "sha256": "d264bde8290f492f7754a8ea58f637eebb8fdeadb1e8e5ce0affa51cf678222c",
+        "size": 1733164
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b06",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b06",
+        "sha256": "2f80599e66d0206c1a8b3b4b968e3d836a3c40d5570ab8aa240344641e469614",
+        "size": 63634
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b07",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b07",
+        "sha256": "4d59b5a16bae0a961d074c4440b1f1eb001908e71b8500f70573a758bcf2f00a",
+        "size": 28972
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b08",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b08",
+        "sha256": "97eb9589d0fb7c9e7993470d2652288054e2d863fc901453a41907002082b2e8",
+        "size": 167668
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b09",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b09",
+        "sha256": "718bbbb7e73d7fb513f0e7ff03550a566c399128d354baf6d8f9d739385d6fd4",
+        "size": 111388
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b10",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b10",
+        "sha256": "c1beb7c5a6f1b7c2647dcf2f9191d50d043311111d6f00f67391d46cfae9ab1a",
+        "size": 57580
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b11",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b11",
+        "sha256": "8adeefc0beeb2d837dcc4592bb2ada15e170d120e0dc0c5bb91f650e43632778",
+        "size": 27572
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b12",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b12",
+        "sha256": "521a113f30343622d1b99cf1047a724dce74b0522dc185a8a782c8ce98861e02",
+        "size": 82
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b13",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b13",
+        "sha256": "fb13f16cfbfbf46bc2ad57b3e6c7ef4d6b1f7036b3f09b49560a4361a7be230b",
+        "size": 125836
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b14",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b14",
+        "sha256": "bbfeb50f39a19b2e9a054ac79b2bf129ce05f968420417554a48d8e6e19e99f8",
+        "size": 260
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b15",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b15",
+        "sha256": "c09424927c186ccf316e8536b4fdee1bcb6bf1661f68b820f27976ee2fc804f9",
+        "size": 1994428
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b16",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b16",
+        "sha256": "1fd042948b7120a85cca9a2030d79dc545bcdd4354051e261b0bedb7727396cb",
+        "size": 24580
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b17",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b17",
+        "sha256": "9f22e08889bd3198735d7fb9b8778bcb585586db93eeb3b0eefacbb5d13b1fa7",
+        "size": 14816
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b18",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b18",
+        "sha256": "5579b534b638bab659518a93f8a6354392f8ba69de2240060778cf7a3d064b4e",
+        "size": 52064
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b19",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b19",
+        "sha256": "d52980ec965cbf97985743a16f6e8d54c70067805a9217fc58862138bc67f9d6",
+        "size": 53164
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b20",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b20",
+        "sha256": "0d208706a046ae412d33b5caecb5eb40bda87dca5c8f5ecf3f358d08ad0a528a",
+        "size": 380844
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.mbn",
+        "payload_source": "usr/lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.mbn",
+        "sha256": "ec60ea4eee3af0a69c7e81032880ab329374af8e8f4cf3a30786e697d982f0ae",
+        "size": 8380
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/vpu-1.0/venus.b02",
+        "payload_source": "usr/lib/firmware/qcom/vpu-1.0/venus.b02",
+        "sha256": "da84bbff77270766a2f6d61bc6b42902fb59a942b950117a5b5c106ccbacbb49",
+        "size": 300
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/vpu-1.0/venus.b03",
+        "payload_source": "usr/lib/firmware/qcom/vpu-1.0/venus.b03",
+        "sha256": "5c810efcddb8df1e523c99097d5609a278f722e56b7ce575e5ba1f04726e22f4",
+        "size": 20
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/vpu-1.0/venus.b04",
+        "payload_source": "usr/lib/firmware/qcom/vpu-1.0/venus.b04",
+        "sha256": "03350ef9fd20590d448d92ea0c53456f2b8a797e0e910426b8c0d75df46ab218",
+        "size": 20
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/vpu-1.0/venus.b05",
+        "payload_source": "usr/lib/firmware/qcom/vpu-1.0/venus.b05",
+        "sha256": "7a1b9d5dff73c70276f9b18b6440f9a8d674b446ece36dc3f44dead3da04e5a8",
+        "size": 20
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/vpu-1.0/venus.b06",
+        "payload_source": "usr/lib/firmware/qcom/vpu-1.0/venus.b06",
+        "sha256": "c047e67c4b16a8630345deae029a22c3b245c35df5485e7e172b23a2380a6bd9",
+        "size": 20
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/vpu-1.0/venus.b07",
+        "payload_source": "usr/lib/firmware/qcom/vpu-1.0/venus.b07",
+        "sha256": "1881c2584c0e18865c5f1575905251e46795a98a1cbacb78a5ad4b8448cdfbbc",
+        "size": 24
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/vpu-1.0/venus.b08",
+        "payload_source": "usr/lib/firmware/qcom/vpu-1.0/venus.b08",
+        "sha256": "17b5bbea81099abafc9cf970586f97ee4d198e01dd80a7d63ef129f6407cc808",
+        "size": 16
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/vpu-1.0/venus.b09",
+        "payload_source": "usr/lib/firmware/qcom/vpu-1.0/venus.b09",
+        "sha256": "d049c579fe219e1bbed41f34be7ef1b4635bac952d4af29e380c2cbb9d2e4f77",
+        "size": 887728
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/vpu-1.0/venus.b10",
+        "payload_source": "usr/lib/firmware/qcom/vpu-1.0/venus.b10",
+        "sha256": "10a6fec4d1c7c7d61ae71358e5986151d3348d174fe9ab9c36627df0762abe8e",
+        "size": 41488
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/vpu-1.0/venus.b19",
+        "payload_source": "usr/lib/firmware/qcom/vpu-1.0/venus.b19",
+        "sha256": "43b09596e1496809aaa964b34c146580f0566c86bc9d7218a1288fd15fb93424",
+        "size": 32
+      },
+      {
+        "kind": "regular",
+        "path": "usr/lib/firmware/qcom/vpu-1.0/venus.mbn",
+        "payload_source": "usr/lib/firmware/qcom/vpu-1.0/venus.mbn",
+        "sha256": "67f1f37279b7be7c336b9b813cbd936ff00d2ffab210cd8e1aab1531bb748155",
+        "size": 8220
+      }
+    ],
+    "files_verified": 69,
+    "payload_bytes": 35332142,
+    "source": "archive payloads, including archive-local hardlinks"
+  },
+  "firmware_loaded": false,
+  "firmware_manifest": {
+    "path": "/work/fedora-input-system-v9/rootfs/usr/share/tb371fc/stock-firmware-manifest.json",
+    "sha256": "4feb4264605198fc56114fb8b8044ffcd51f662107270a857f59fdaf2e8bcf7c"
+  },
+  "gzip": {
+    "bytes": 30709418,
+    "combined_expanded_bytes": 76279808,
+    "crc32": "d4995b9f",
+    "crc_and_isize_verified": true,
+    "expanded_bytes": 76279296,
+    "members": 1,
+    "offset": 512,
+    "trailing_bytes": 0
+  },
+  "image": {
+    "bytes": 30709930,
+    "path": "/work/fedora-input-system-v9/initramfs-maintenance-qualified.img",
+    "sha256": "721af9be1c6c23b5b6dc1778c48c447eb197d1a7ec0a8d7f83a0e113815e33dd"
+  },
+  "image_executed": false,
+  "kernel_policy_load_tested": false,
+  "ld_so_cache": {
+    "all_cached_payloads_present_and_aarch64": true,
+    "architecture_flags": "0x0a03",
+    "entries": [
+      {
+        "cache_path": "/lib64/libzstd.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libzstd.so.1.5.7",
+        "sha256": "2e5d50c10d8e2ff8eb5fdeea6fa4965a37c37405ad3f6fb21d9d473203538247",
+        "soname": "libzstd.so.1"
+      },
+      {
+        "cache_path": "/lib64/libz.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libz.so.1.3.1.zlib-ng",
+        "sha256": "7daae3cb8adb9679c0b7a7f44974b8374d71a557382eadeca8385b129cbd33bf",
+        "soname": "libz.so.1"
+      },
+      {
+        "cache_path": "/lib64/libuuid.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libuuid.so.1.3.0",
+        "sha256": "81b2c944dd9c3343a43e16f58bf27a1154bbb8ca839feffb89725f9ebbbab8e5",
+        "soname": "libuuid.so.1"
+      },
+      {
+        "cache_path": "/lib64/libudev.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libudev.so.1.7.15",
+        "sha256": "1b527ab4eea8c0323002fd83a5f076d96dbf5a0a011745b47b3cae3c13d3477a",
+        "soname": "libudev.so.1"
+      },
+      {
+        "cache_path": "/lib64/libtinfo.so.6",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libtinfo.so.6.6",
+        "sha256": "a9b6aba827571166e227c67afd15354e78e8c324f4e63d4920716c599577814c",
+        "soname": "libtinfo.so.6"
+      },
+      {
+        "cache_path": "/lib64/libsystemd.so.0",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libsystemd.so.0.45.0",
+        "sha256": "6eea71c8a4b1e9e78c39ab2c697f27999e99e5cf3d9d6b10e7c2e6bc551b443c",
+        "soname": "libsystemd.so.0"
+      },
+      {
+        "cache_path": "/lib64/libsmartcols.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libsmartcols.so.1.1.0",
+        "sha256": "a9678fbb0636b450899d5483b982d867dd21a24cef2f44d0388d8f158891de6b",
+        "soname": "libsmartcols.so.1"
+      },
+      {
+        "cache_path": "/lib64/libselinux.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libselinux.so.1",
+        "sha256": "c9edfec980b8a05666d24dc3a4e15b502431334e2c7e3adcae189402b5031f6d",
+        "soname": "libselinux.so.1"
+      },
+      {
+        "cache_path": "/lib64/libseccomp.so.2",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libseccomp.so.2.6.1",
+        "sha256": "2a042d0374219aa688b07b1991418af87abd1ac5fd24d883fe89350a5c788cc1",
+        "soname": "libseccomp.so.2"
+      },
+      {
+        "cache_path": "/lib64/libresolv.so.2",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libresolv.so.2",
+        "sha256": "1ced9630294ccafa48a573ca226572326cc0a6052635bf700c1e5e60e5ee6edf",
+        "soname": "libresolv.so.2"
+      },
+      {
+        "cache_path": "/lib64/libproc2.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libproc2.so.1.0.1",
+        "sha256": "344861e948b66beb1ac29be9b029396bbec76df612fc929a51090c26e6029e06",
+        "soname": "libproc2.so.1"
+      },
+      {
+        "cache_path": "/lib64/libpcre2-8.so.0",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libpcre2-8.so.0.15.0",
+        "sha256": "7f08df34d1ea74a79d32def854357b6466187acc8e4659beeb427e553bf1c4a3",
+        "soname": "libpcre2-8.so.0"
+      },
+      {
+        "cache_path": "/lib64/libnss_systemd.so.2",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libnss_systemd.so.2",
+        "sha256": "e2a06567cfcbe871c6e36554302670f5bc3e7682438647be7f3f5a55af4ed6cb",
+        "soname": "libnss_systemd.so.2"
+      },
+      {
+        "cache_path": "/lib64/libnss_resolve.so.2",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libnss_resolve.so.2",
+        "sha256": "cb9ee2a037e1a5f8bdfb37f2a7a3beb8dece6ccc6aa7605f871c73cc1332b796",
+        "soname": "libnss_resolve.so.2"
+      },
+      {
+        "cache_path": "/lib64/libnss_myhostname.so.2",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libnss_myhostname.so.2",
+        "sha256": "1ef2c09c054a4b03520bba3947f4658d0d5cbeb6f46c06e57412c0a292f9657d",
+        "soname": "libnss_myhostname.so.2"
+      },
+      {
+        "cache_path": "/lib64/libnss_files.so.2",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libnss_files.so.2",
+        "sha256": "c9de08648ba9996db7ab62c9a86df772b492247bb9b46b529fc3f9df11e22b7f",
+        "soname": "libnss_files.so.2"
+      },
+      {
+        "cache_path": "/lib64/libnss_dns.so.2",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libnss_dns.so.2",
+        "sha256": "61900e408766751851d51ae25159316d4735a088fd95c7644a913f043a20d983",
+        "soname": "libnss_dns.so.2"
+      },
+      {
+        "cache_path": "/lib64/libnss_compat.so.2",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libnss_compat.so.2",
+        "sha256": "0e32a830c8a836c477842592927386844f2d238c9a0a93282ffd9bd8be411d3c",
+        "soname": "libnss_compat.so.2"
+      },
+      {
+        "cache_path": "/lib64/libmount.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libmount.so.1.1.0",
+        "sha256": "17097d1477618a3eb1c513e76ff5bbe13a1cfa28c4672db5845da20aaabbae3e",
+        "soname": "libmount.so.1"
+      },
+      {
+        "cache_path": "/lib64/libm.so.6",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libm.so.6",
+        "sha256": "e4b837f8287a586ba7ce29dd8f757c4329aa8d6a0f52c6d264badcd907171102",
+        "soname": "libm.so.6"
+      },
+      {
+        "cache_path": "/lib64/liblz4.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/liblz4.so.1.10.0",
+        "sha256": "11dbf02c52111c52e248f84b5bfa2e759d6727f708b1e86fc2ea4234f2984b03",
+        "soname": "liblz4.so.1"
+      },
+      {
+        "cache_path": "/lib64/liblzma.so.5",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/liblzma.so.5.8.3",
+        "sha256": "22de33288c790f3d2e229d08f0ce081e354dacbddb44d1777e1820c440fa0cbf",
+        "soname": "liblzma.so.5"
+      },
+      {
+        "cache_path": "/lib64/libkmod.so.2",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libkmod.so.2.5.1",
+        "sha256": "d79ede942d6ea7b2627de0015db84af131adfde0a93277bbddb8687761a93039",
+        "soname": "libkmod.so.2"
+      },
+      {
+        "cache_path": "/lib64/libgcc_s.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libgcc_s-16-20260819.so.1",
+        "sha256": "ac02fe32df9084d75ea400befd249bb5de2c26a0bcd4c341a959ef805ca0890e",
+        "soname": "libgcc_s.so.1"
+      },
+      {
+        "cache_path": "/lib64/libe2p.so.2",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libe2p.so.2.3",
+        "sha256": "2351a7f6a51dda8b1c514cde46dc70abbbd14b91a22f32240e83a6f2cb8ca9be",
+        "soname": "libe2p.so.2"
+      },
+      {
+        "cache_path": "/lib64/libext2fs.so.2",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libext2fs.so.2.4",
+        "sha256": "9cde99340331c7a2b63498169af6b80bcb7ef364698b643d63e84d4485125e3a",
+        "soname": "libext2fs.so.2"
+      },
+      {
+        "cache_path": "/lib64/libelf.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libelf-0.196.so",
+        "sha256": "46347accd1e9ba0b402c7a86a2e2910049dce408d7a38178728e3d1224129be7",
+        "soname": "libelf.so.1"
+      },
+      {
+        "cache_path": "/lib64/libcrypto.so.4",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libcrypto.so.4.0.3",
+        "sha256": "4ca68fbf9be8b3c5e63c199604351cd2538daf60d92e9db4f2e3763e4bbb3531",
+        "soname": "libcrypto.so.4"
+      },
+      {
+        "cache_path": "/lib64/libcom_err.so.2",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libcom_err.so.2.1",
+        "sha256": "ec5c3bc296e8d6c4dcacf5f7092508c876d739ce65d205c34c8bb3b562715853",
+        "soname": "libcom_err.so.2"
+      },
+      {
+        "cache_path": "/lib64/libcap.so.2",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libcap.so.2.78",
+        "sha256": "a251188a6166d6a9f4eec2d0172b9754afdc8a8f60353b7706eff56b15901e59",
+        "soname": "libcap.so.2"
+      },
+      {
+        "cache_path": "/lib64/libcap-ng.so.0",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libcap-ng.so.0.0.0",
+        "sha256": "611bce349ac27b2f0e83c69549d2a32f2494652e4761b26a1f5773e35d878b8e",
+        "soname": "libcap-ng.so.0"
+      },
+      {
+        "cache_path": "/lib64/libc.so.6",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libc.so.6",
+        "sha256": "620f6221d0cb0a7bc7d0674bcb0682a0b42f7fb593f596f3bf646f02b10cb798",
+        "soname": "libc.so.6"
+      },
+      {
+        "cache_path": "/lib64/libbpf.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libbpf.so.1.7.0",
+        "sha256": "8b783beaa99985950e6d4b5ff0b9359e6898ebdd6be339ac8e7de2b7833ee420",
+        "soname": "libbpf.so.1"
+      },
+      {
+        "cache_path": "/lib64/libblkid.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libblkid.so.1.1.0",
+        "sha256": "df82b79e296a30536f34e58ed211ea08a5da9493e2cc904e1bdf845c8b0d5015",
+        "soname": "libblkid.so.1"
+      },
+      {
+        "cache_path": "/lib64/libaudit.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libaudit.so.1.0.0",
+        "sha256": "88efd5f05e1e0fea194f8195d0c5d3b03bf7b72b58000262ebc368451e73fa1d",
+        "soname": "libaudit.so.1"
+      },
+      {
+        "cache_path": "/lib64/libattr.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libattr.so.1.1.2600",
+        "sha256": "850f586d627b9c692732ae14114732ae5a00ab8a0087d1d92f04c0383b17ccda",
+        "soname": "libattr.so.1"
+      },
+      {
+        "cache_path": "/lib64/libacl.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib64/libacl.so.1.2.2400",
+        "sha256": "3714c5b9eef47f87c6195c0fbd82ece0f5f65bb9944bc5aff48d2b5aa5413ad8",
+        "soname": "libacl.so.1"
+      },
+      {
+        "cache_path": "/lib/ld-linux-aarch64.so.1",
+        "elf_machine": 183,
+        "resolved_path": "usr/lib/ld-linux-aarch64.so.1",
+        "sha256": "8821728d15728a7046deef6d4183fb343716901e0e8119fff53d6b51e2605547",
+        "soname": "ld-linux-aarch64.so.1"
+      }
+    ],
+    "kind": "regular",
+    "path": "etc/ld.so.cache",
+    "payload_source": "etc/ld.so.cache",
+    "sha256": "4db2c927ed3e93a02b5bdee416ed121c5cca944223634e09884edc85c47a5452",
+    "size": 1855
+  },
+  "limits": {
+    "archive_bytes": 134217728,
+    "expanded_bytes": 536870912
+  },
+  "main": {
+    "bytes": 76279296,
+    "hardlink_aliases": 3,
+    "hardlink_groups": 1,
+    "records": 523,
+    "sha256": "162563b81bbb11b09d24056d110cfa7a7d49396acfd106892e5c1685a8df274a",
+    "trailer_offset": 76279064,
+    "types": {
+      "directory": 91,
+      "regular": 367,
+      "symlink": 65
+    },
+    "unique_paths": 523,
+    "zero_padding_bytes": 108
+  },
+  "passed": true,
+  "physical_hardware_tested": false,
+  "runtime_elfs": {
+    "all_elf64_little_endian_aarch64": true,
+    "count": 135,
+    "files": [
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/bash",
+        "payload_source": "usr/bin/bash",
+        "sha256": "046b0c93ea9e58fde26e4d311392ca850fabd78df5e824dde56a2b2f17c4af2e",
+        "size": 1500440
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/blkid",
+        "payload_source": "usr/bin/blkid",
+        "sha256": "bdc0c5d838b2d2d8c0d2cb965a4bf06af385490763eb9e43075d7e22a57d1e33",
+        "size": 69560
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/cat",
+        "payload_source": "usr/bin/cat",
+        "sha256": "2fbd817a725ea1a438994c4c389377d4185861d0beb816322e2398f76eb8b3f9",
+        "size": 69584
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/chmod",
+        "payload_source": "usr/bin/chmod",
+        "sha256": "36f3d308338732e9d85c56f0426e631b329644552e2ee231bad2e52ee6d4ab8a",
+        "size": 70056
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/chown",
+        "payload_source": "usr/bin/chown",
+        "sha256": "278d7936689e85cb7f125f7ae670d96e476d8b4c8b52df19c259dbbf052657be",
+        "size": 70080
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/chroot",
+        "payload_source": "usr/bin/chroot",
+        "sha256": "73d9205a0eb2cdeee17cb07c1cf4590b6fce332745efba417280a19634534ea1",
+        "size": 69608
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/cp",
+        "payload_source": "usr/bin/cp",
+        "sha256": "fdd72d1271952af8150aed60ff3f514355de04f7f3512fd497a74f6b668ee1d4",
+        "size": 136512
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/dmesg",
+        "payload_source": "usr/bin/dmesg",
+        "sha256": "298f669ccbecd3f915382fff570741ea6f8d0803ddd1423f4d2e619da4ccbc75",
+        "size": 71976
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/dracut-util",
+        "payload_source": "usr/bin/dracut-util",
+        "sha256": "d2d49fad549327b67b45625257f38172f82ed9e1e7cfdad4da7bc9c9db4fcadc",
+        "size": 69088
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/echo",
+        "payload_source": "usr/bin/echo",
+        "sha256": "e25dabc35dc65093992321648bbe4cb3b943aaa962dafc23abfac9c6fb64dc36",
+        "size": 69376
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/findmnt",
+        "payload_source": "usr/bin/findmnt",
+        "sha256": "f1b3b4c3370ebd1e51a1e0bb14416f6af6b9d42a3963c4aebba722b7916bdaa4",
+        "size": 136576
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/flock",
+        "payload_source": "usr/bin/flock",
+        "sha256": "ba84ac9e928f0939f72b2faa1f7a0ac6032e6ced69b19bead5ee65f2ee7e48ea",
+        "size": 69264
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/fsck",
+        "payload_source": "usr/bin/fsck",
+        "sha256": "31a9b42c3b554a2720d93b3443cf8f1129dde1481738e0a89ebe9a496e0bd38f",
+        "size": 69360
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/fsck.cramfs",
+        "payload_source": "usr/bin/fsck.cramfs",
+        "sha256": "aa8129d4e9df81284bd6d452cd939a2ded3048ffdec1133c78e5b4f17efb95e3",
+        "size": 69288
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/fsck.ext3",
+        "payload_source": "usr/bin/fsck.ext4",
+        "sha256": "cfb645a2263d26c47edd05f8bbc199b4648d5874f21ae9cc5c19fc394178e3c1",
+        "size": 353152
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/fsck.ext2",
+        "payload_source": "usr/bin/fsck.ext4",
+        "sha256": "cfb645a2263d26c47edd05f8bbc199b4648d5874f21ae9cc5c19fc394178e3c1",
+        "size": 353152
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/e2fsck",
+        "payload_source": "usr/bin/fsck.ext4",
+        "sha256": "cfb645a2263d26c47edd05f8bbc199b4648d5874f21ae9cc5c19fc394178e3c1",
+        "size": 353152
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/fsck.ext4",
+        "payload_source": "usr/bin/fsck.ext4",
+        "sha256": "cfb645a2263d26c47edd05f8bbc199b4648d5874f21ae9cc5c19fc394178e3c1",
+        "size": 353152
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/fsck.minix",
+        "payload_source": "usr/bin/fsck.minix",
+        "sha256": "212505b546bc69acf62da3e36b46554d2f17632d006b285e8a6520b51fe0d50f",
+        "size": 69600
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/grep",
+        "payload_source": "usr/bin/grep",
+        "sha256": "f6d122efc3293d5674e9f0e08dc047f59c727e79976ad46096253c724d4a9ae2",
+        "size": 202312
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/journalctl",
+        "payload_source": "usr/bin/journalctl",
+        "sha256": "22f5565a3cb68c64822364dfc1ab632ca399639e6e3138d13df612b1e0547d53",
+        "size": 141208
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/kmod",
+        "payload_source": "usr/bin/kmod",
+        "sha256": "bbcc9efbb7f828e68eb8a9e6d81b0019e765e5f113d2c26262d9dcee4b42c6bf",
+        "size": 202456
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/ln",
+        "payload_source": "usr/bin/ln",
+        "sha256": "a6a9ff10f9bb08417539e612919472f66e18bc4fef8e37c6c5f3f9abc8d93c1d",
+        "size": 69968
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/ls",
+        "payload_source": "usr/bin/ls",
+        "sha256": "b36b41f01fd402398b06bb5eb72ed3c690e9a80668248414754d9251f580cbcd",
+        "size": 202776
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/mkdir",
+        "payload_source": "usr/bin/mkdir",
+        "sha256": "17325a68df22c9ed57ade0d0f4d1aa93c7665d223d7e11aed6023a725be29d10",
+        "size": 69824
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/mkfifo",
+        "payload_source": "usr/bin/mkfifo",
+        "sha256": "2e3a1c15734858576bd066025df6e01dd801380febeb7dd13d965246fabaa3dc",
+        "size": 69704
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/mknod",
+        "payload_source": "usr/bin/mknod",
+        "sha256": "41b0634f4c3914fa4ae2443b02881c9f75883f68f5f92b26f9fa09b35633e409",
+        "size": 69752
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/mount",
+        "payload_source": "usr/bin/mount",
+        "sha256": "6c6afac3f30bf5ccf7cd31e422df84f983963d295e76f15843bee5381490d402",
+        "size": 69264
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/mv",
+        "payload_source": "usr/bin/mv",
+        "sha256": "dffe24bd570252e8f329965837b8b0759ebac4549383dea05fae677626fab7cc",
+        "size": 136456
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/nologin",
+        "payload_source": "usr/bin/nologin",
+        "sha256": "25e1622722127f00c1db16aa54498fc069628d7e9c69f2560d9c678487987044",
+        "size": 69024
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/ps",
+        "payload_source": "usr/bin/ps",
+        "sha256": "7411e13ce12f5029ae160aa5794b485c12045db8f39593c8ec6664ce7b4f4910",
+        "size": 137008
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/readlink",
+        "payload_source": "usr/bin/readlink",
+        "sha256": "d215848148a5e4effd31359aece5f5c9205926c8e5b1f8a4841bcd1507f3c9fd",
+        "size": 69632
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/rm",
+        "payload_source": "usr/bin/rm",
+        "sha256": "0cba31084f71ddfe8dc4e0300b5cb57b934d5716ccbfe92ccdad551824dc3814",
+        "size": 70056
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/sed",
+        "payload_source": "usr/bin/sed",
+        "sha256": "e35e011e20394668d0183dd414ff7bd2f1e1889226b0c2ab48fc8508674d75db",
+        "size": 136240
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/setenforce",
+        "payload_source": "usr/bin/setenforce",
+        "sha256": "156df759e7f9e137be3c2d789c7a86cbd81c020c64ff45e21a6ea72776408243",
+        "size": 68992
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/setsid",
+        "payload_source": "usr/bin/setsid",
+        "sha256": "44015ff8df75229725e7b8b25d8a3141b77199bf50d580d24de1523c9595b47d",
+        "size": 69016
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/sleep",
+        "payload_source": "usr/bin/sleep",
+        "sha256": "ffc93c834dd8e43430b42dc868f1634b6851a3cd18d36d03b69f0c27c1359556",
+        "size": 69496
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/swapoff",
+        "payload_source": "usr/bin/swapoff",
+        "sha256": "1a92acabace6403a37ae1a01ad7c924ae771b5a0d06dd98f79e9d73927d47f08",
+        "size": 69136
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/sysctl",
+        "payload_source": "usr/bin/sysctl",
+        "sha256": "c97e379fa251eb3b80d271864f2b4e100bafc87360225f53de9486cc44c41b6a",
+        "size": 69264
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/systemctl",
+        "payload_source": "usr/bin/systemctl",
+        "sha256": "1392e9681e4e34c9271645d084ba0f577d75b9658d57ec106c9acb2949710d1c",
+        "size": 347112
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/systemd-cgls",
+        "payload_source": "usr/bin/systemd-cgls",
+        "sha256": "53bda665ca8a5ef0086b4244a9ce12ad992af64ff0c8754e93e9630264f4fbb2",
+        "size": 70392
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/systemd-escape",
+        "payload_source": "usr/bin/systemd-escape",
+        "sha256": "197131b785ca0a81fa2485a9bdc66f874439cae159082f0cd3c5674cc218915c",
+        "size": 69992
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/systemd-run",
+        "payload_source": "usr/bin/systemd-run",
+        "sha256": "5e07043ba6b021df5e55f918f8c2de977ed1e1787ffdf8f2b7260ae7fa36710e",
+        "size": 140864
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/systemd-tmpfiles",
+        "payload_source": "usr/bin/systemd-tmpfiles",
+        "sha256": "95bb7010cbff836d89c588c27e8e441731626fc5cbd4986d3195cfb4f0b23f5e",
+        "size": 203472
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/tr",
+        "payload_source": "usr/bin/tr",
+        "sha256": "f822fa18af92b259ce7708593919d609d64fb912f58c595fc6671f7dc1ef8f4c",
+        "size": 69680
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/true",
+        "payload_source": "usr/bin/true",
+        "sha256": "31db39481e6149e41bf875892b1b96d04ab72127c3f6093f622516723b92a9b4",
+        "size": 69344
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/udevadm",
+        "payload_source": "usr/bin/udevadm",
+        "sha256": "c5179f74ca85b819cab125c01b1c9f23b64d780512235e0572b4ba9dfacb4e17",
+        "size": 807528
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/umount",
+        "payload_source": "usr/bin/umount",
+        "sha256": "d7b3cb475d9cfd326edde61178d40c32e09285dc400a8f012666adca955eb6ca",
+        "size": 69216
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/uname",
+        "payload_source": "usr/bin/uname",
+        "sha256": "626e419edbcca9cb70e620f282be1e6aa6c7b5007fb0eeacc891e83d9ba42225",
+        "size": 69488
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/varlinkctl",
+        "payload_source": "usr/bin/varlinkctl",
+        "sha256": "95a5082320c55aaedf039741cba0bcd8620cf495dbc9ae37ea9711f62b1a4dd6",
+        "size": 71616
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/bin/vi",
+        "payload_source": "usr/bin/vi",
+        "sha256": "596c55754f8c5516bedc6af5e6297eb688b7bb102646e742682ada6814628320",
+        "size": 1773480
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/ld-linux-aarch64.so.1",
+        "payload_source": "usr/lib/ld-linux-aarch64.so.1",
+        "sha256": "8821728d15728a7046deef6d4183fb343716901e0e8119fff53d6b51e2605547",
+        "size": 928784
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/crypto/michael_mic.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/crypto/michael_mic.ko",
+        "sha256": "3e2e08363269c8ffd69a5987b3086a1f28796c5b8099a25510dc409862768492",
+        "size": 9569
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/clk/qcom/camcc-sm8250.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/clk/qcom/camcc-sm8250.ko",
+        "sha256": "199f17dcf1c535a9ae13f8be4327c9eafb63118c46fa85343d0d90d12f297ffa",
+        "size": 75497
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/clk/qcom/dispcc-sm8250.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/clk/qcom/dispcc-sm8250.ko",
+        "sha256": "e47ee533a28b7d2d90fa35af6bee0043c8737a14a2733c4f4e2e759cfb7dee50",
+        "size": 49585
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/clk/qcom/videocc-sm8250.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/clk/qcom/videocc-sm8250.ko",
+        "sha256": "6b0e71a0c0d32bd372dec1e00a901b883c3e5ecf333601446880331b1bd37e16",
+        "size": 24441
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/i2c/busses/i2c-qcom-cci.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/i2c/busses/i2c-qcom-cci.ko",
+        "sha256": "f7bb9ce49aeb70bdd1e8c3e6380d354f4882ffd5f0b6497562c5fd865224ac4a",
+        "size": 27017
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/interconnect/qcom/icc-bcm-voter.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/interconnect/qcom/icc-bcm-voter.ko",
+        "sha256": "de1b075cca255874d9bfd6adf3604efe28367873b371c38260af6e21b4262650",
+        "size": 17409
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/interconnect/qcom/icc-rpmh.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/interconnect/qcom/icc-rpmh.ko",
+        "sha256": "ab0b7adef9bdc4622690aeea3005c57328232fc5bd036a1da07c081980ad6e5c",
+        "size": 17393
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/interconnect/qcom/interconnect_qcom.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/interconnect/qcom/interconnect_qcom.ko",
+        "sha256": "51d4d5ab6231fa136f19acb64905cd793d5a10504321f6f058beab0be89c6ad7",
+        "size": 7209
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/interconnect/qcom/qnoc-sm8250.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/interconnect/qcom/qnoc-sm8250.ko",
+        "sha256": "633a24d9d6b2c6859f587fe256a99629246e21eca3fcd008e933550ea974cdce",
+        "size": 96841
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/phy/qualcomm/phy-qcom-qmp-pcie.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/phy/qualcomm/phy-qcom-qmp-pcie.ko",
+        "sha256": "4bd1deb444da54efc6b2c9bd6c28f528da34209e244d4ee9f86cb329a4c55440",
+        "size": 199553
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/phy/qualcomm/phy-qcom-snps-femto-v2.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/phy/qualcomm/phy-qcom-snps-femto-v2.ko",
+        "sha256": "03ad548f47c634d6826557dba1c221530d3b019ceb9e996c7ce7ec5f89d34b21",
+        "size": 26257
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/pinctrl/qcom/pinctrl-lpass-lpi.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/pinctrl/qcom/pinctrl-lpass-lpi.ko",
+        "sha256": "b6a3d0eddc45be7e31f8c1877f159bf85ffb343ed8fe2f82f05b22efab7fc449",
+        "size": 22265
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/pinctrl/qcom/pinctrl-sm8250-lpass-lpi.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/pinctrl/qcom/pinctrl-sm8250-lpass-lpi.ko",
+        "sha256": "9dda37f8e0f1d397f5f217391bcaaf76e64787a6d2d73b575449237c4ed12edd",
+        "size": 15241
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/power/sequencing/pwrseq-core.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/power/sequencing/pwrseq-core.ko",
+        "sha256": "edec8d6e2cfcd7de6fbe836bf303693b527fe776af5e86e634364f58304d64ee",
+        "size": 35985
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/power/sequencing/pwrseq-qcom-wcn.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/power/sequencing/pwrseq-qcom-wcn.ko",
+        "sha256": "83ac23da07680b7d0215e4103033acb4b36ad87ebef94bba1b0bcb0e95ce6558",
+        "size": 20625
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/regulator/qcom-rpmh-regulator.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/regulator/qcom-rpmh-regulator.ko",
+        "sha256": "2f9c09783aea5a0752e05caec97077d3d98165f01519ce94a0ff38441d7aa547",
+        "size": 106065
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/soc/qcom/apr.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/soc/qcom/apr.ko",
+        "sha256": "b36e9007f0b9bf2ef4efecdb0c72b4863aca914b9b547d0888b3ed11e23ec242",
+        "size": 31825
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/soc/qcom/pdr_interface.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/soc/qcom/pdr_interface.ko",
+        "sha256": "8aa37479ea7b412e509574640d861a6412be88c6b961f33a0c1a77f1ff473cde",
+        "size": 29057
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/soc/qcom/qcom_pdr_msg.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/soc/qcom/qcom_pdr_msg.ko",
+        "sha256": "e531d05ec28b7cb24e184a617093a70d55425b39ed60dcaafd711aaf69e8c641",
+        "size": 13097
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/soc/qcom/qmi_helpers.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/soc/qcom/qmi_helpers.ko",
+        "sha256": "73e60cd4dfd6549473a196d0f64dd4c943767116d5fb2bef3e19462ab34ec3e2",
+        "size": 35473
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/usb/dwc3/dwc3-qcom.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/usb/dwc3/dwc3-qcom.ko",
+        "sha256": "4b5ee1c1ebe906fdc026b9d351990b39c227a1bfe4ed06a43bbe431a806daac5",
+        "size": 31161
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/watchdog/qcom-wdt.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/watchdog/qcom-wdt.ko",
+        "sha256": "0f4d02f1466904515bfc1dd584dce46d8a96a19ec3e951ab0a07a802021b078d",
+        "size": 18505
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/watchdog/watchdog.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/drivers/watchdog/watchdog.ko",
+        "sha256": "c201f21a87541d11ef3357f58523fb08679dfe24eea6629f4eab63b177270aa4",
+        "size": 61649
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 1,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/fs/autofs/autofs4.ko",
+        "payload_source": "usr/lib/modules/6.12.114-tb371fc-research4-system/kernel/fs/autofs/autofs4.ko",
+        "sha256": "b0e710f1ce34bd94fe18d0b60d49969b18a34a79638159db6fe28f12cbfa5d69",
+        "size": 96649
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/systemd/system-generators/systemd-debug-generator",
+        "payload_source": "usr/lib/systemd/system-generators/systemd-debug-generator",
+        "sha256": "33067143d06c1d06c04ca7593fad916104778827a315d26057b068e11483a8f2",
+        "size": 69808
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/systemd/system-generators/systemd-fstab-generator",
+        "payload_source": "usr/lib/systemd/system-generators/systemd-fstab-generator",
+        "sha256": "17486bc558a6066b71419463d7191480e4b94877468f4de278ee4aaedc4dcadc",
+        "size": 70328
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/systemd/system-generators/systemd-gpt-auto-generator",
+        "payload_source": "usr/lib/systemd/system-generators/systemd-gpt-auto-generator",
+        "sha256": "55844bc49303a7095139366440e8ea696eda2c5e7cea75e3efa87b117cdf810d",
+        "size": 69992
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/systemd/systemd",
+        "payload_source": "usr/lib/systemd/systemd",
+        "sha256": "f22f9b8d4cad6de84e2b22a6e16693c8bb67885d8b3c7ad547251ba15ada5ea4",
+        "size": 204224
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/systemd/systemd-executor",
+        "payload_source": "usr/lib/systemd/systemd-executor",
+        "sha256": "dec50ea2778dbc0e827cb6eca9a05d4016b0055bebed4f49e590254d4b03c824",
+        "size": 1666256
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/systemd/systemd-fsck",
+        "payload_source": "usr/lib/systemd/systemd-fsck",
+        "sha256": "950db28262d8e4a070fac289e10bedd6d442fd04b798b2c8f6621250dc4a57e2",
+        "size": 69176
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/systemd/systemd-journald",
+        "payload_source": "usr/lib/systemd/systemd-journald",
+        "sha256": "260503c98759c4e151b5b5f527950e60f284b4e92057fe38850048bd583dfe2b",
+        "size": 270880
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/systemd/systemd-modules-load",
+        "payload_source": "usr/lib/systemd/systemd-modules-load",
+        "sha256": "a6e662459d73f8433f46571e2b8ae6d77cda5e506b37265356d19708053295d6",
+        "size": 70112
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/systemd/systemd-reply-password",
+        "payload_source": "usr/lib/systemd/systemd-reply-password",
+        "sha256": "a270d07a0c1cc32ed2adb90a76516bcc1d0ca70e12dca620666d22504e59dd82",
+        "size": 69112
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/systemd/systemd-shutdown",
+        "payload_source": "usr/lib/systemd/systemd-shutdown",
+        "sha256": "e5ac929e41f8559935f921508bf486d3cb3327551f9f3572b1f7d789b48b2e60",
+        "size": 70680
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/systemd/systemd-sysctl",
+        "payload_source": "usr/lib/systemd/systemd-sysctl",
+        "sha256": "21852763d9d691bdaf295dc124be7f37200e568068af4dc06267319c0983109e",
+        "size": 70560
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/systemd/systemd-validatefs",
+        "payload_source": "usr/lib/systemd/systemd-validatefs",
+        "sha256": "02ee7122e2343b74b7ca42b3543ceb5d32487d4a65e7c73c47fb2840c6d10d43",
+        "size": 70160
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/systemd/systemd-volatile-root",
+        "payload_source": "usr/lib/systemd/systemd-volatile-root",
+        "sha256": "aaaeb6d3175872ce8ef6f33427d6fcb68f0f2c047fe276252678a13f942558a8",
+        "size": 69320
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/udev/ata_id",
+        "payload_source": "usr/lib/udev/ata_id",
+        "sha256": "0124c6cda0c2e65962d31c6c8d7f8f8b9165b727e9db7f1c2ea9359af751b082",
+        "size": 69688
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/udev/cdrom_id",
+        "payload_source": "usr/lib/udev/cdrom_id",
+        "sha256": "5cf7231753360931cfc3dca9239c3ba2b1bde1f463baeda0bc1fb0a6662de7c1",
+        "size": 70000
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/udev/dmi_memory_id",
+        "payload_source": "usr/lib/udev/dmi_memory_id",
+        "sha256": "6e5d66316192b2ea6d2132f8f2f9199175da7f2414f381586ece4fff7c1f143c",
+        "size": 69808
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/udev/fido_id",
+        "payload_source": "usr/lib/udev/fido_id",
+        "sha256": "ec92947452b1d835512c1b2c038e5c17d43d7470ee379f7236e694e1c7fb55ae",
+        "size": 69616
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/udev/mtd_probe",
+        "payload_source": "usr/lib/udev/mtd_probe",
+        "sha256": "0e42346989f70d66b60c14d531ec77ef2130468a2379df4f3f1fa1961e1ae1cb",
+        "size": 69600
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/udev/scsi_id",
+        "payload_source": "usr/lib/udev/scsi_id",
+        "sha256": "9f10ea646df25f23130164bfb8c2d491f114753f79e18a3054de994ec177aed8",
+        "size": 70936
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib/udev/v4l_id",
+        "payload_source": "usr/lib/udev/v4l_id",
+        "sha256": "44a46845dd1d8bfaeaa35f0a8bc6e1da8ed94aeab2ccae94d3bb91f46ab8e870",
+        "size": 69616
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libacl.so.1.2.2400",
+        "payload_source": "usr/lib64/libacl.so.1.2.2400",
+        "sha256": "3714c5b9eef47f87c6195c0fbd82ece0f5f65bb9944bc5aff48d2b5aa5413ad8",
+        "size": 69504
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libattr.so.1.1.2600",
+        "payload_source": "usr/lib64/libattr.so.1.1.2600",
+        "sha256": "850f586d627b9c692732ae14114732ae5a00ab8a0087d1d92f04c0383b17ccda",
+        "size": 69120
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libaudit.so.1.0.0",
+        "payload_source": "usr/lib64/libaudit.so.1.0.0",
+        "sha256": "88efd5f05e1e0fea194f8195d0c5d3b03bf7b72b58000262ebc368451e73fa1d",
+        "size": 200496
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libblkid.so.1.1.0",
+        "payload_source": "usr/lib64/libblkid.so.1.1.0",
+        "sha256": "df82b79e296a30536f34e58ed211ea08a5da9493e2cc904e1bdf845c8b0d5015",
+        "size": 270712
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libbpf.so.1.7.0",
+        "payload_source": "usr/lib64/libbpf.so.1.7.0",
+        "sha256": "8b783beaa99985950e6d4b5ff0b9359e6898ebdd6be339ac8e7de2b7833ee420",
+        "size": 469904
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib64/libc.so.6",
+        "payload_source": "usr/lib64/libc.so.6",
+        "sha256": "620f6221d0cb0a7bc7d0674bcb0682a0b42f7fb593f596f3bf646f02b10cb798",
+        "size": 2303728
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libcap-ng.so.0.0.0",
+        "payload_source": "usr/lib64/libcap-ng.so.0.0.0",
+        "sha256": "611bce349ac27b2f0e83c69549d2a32f2494652e4761b26a1f5773e35d878b8e",
+        "size": 69152
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [
+          "usr/lib/ld-linux-aarch64.so.1"
+        ],
+        "kind": "regular",
+        "path": "usr/lib64/libcap.so.2.78",
+        "payload_source": "usr/lib64/libcap.so.2.78",
+        "sha256": "a251188a6166d6a9f4eec2d0172b9754afdc8a8f60353b7706eff56b15901e59",
+        "size": 69552
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libcom_err.so.2.1",
+        "payload_source": "usr/lib64/libcom_err.so.2.1",
+        "sha256": "ec5c3bc296e8d6c4dcacf5f7092508c876d739ce65d205c34c8bb3b562715853",
+        "size": 69088
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libcrypto.so.4.0.3",
+        "payload_source": "usr/lib64/libcrypto.so.4.0.3",
+        "sha256": "4ca68fbf9be8b3c5e63c199604351cd2538daf60d92e9db4f2e3763e4bbb3531",
+        "size": 4843992
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libe2p.so.2.3",
+        "payload_source": "usr/lib64/libe2p.so.2.3",
+        "sha256": "2351a7f6a51dda8b1c514cde46dc70abbbd14b91a22f32240e83a6f2cb8ca9be",
+        "size": 71040
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libelf-0.196.so",
+        "payload_source": "usr/lib64/libelf-0.196.so",
+        "sha256": "46347accd1e9ba0b402c7a86a2e2910049dce408d7a38178728e3d1224129be7",
+        "size": 136496
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libext2fs.so.2.4",
+        "payload_source": "usr/lib64/libext2fs.so.2.4",
+        "sha256": "9cde99340331c7a2b63498169af6b80bcb7ef364698b643d63e84d4485125e3a",
+        "size": 534416
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libgcc_s-16-20260819.so.1",
+        "payload_source": "usr/lib64/libgcc_s-16-20260819.so.1",
+        "sha256": "ac02fe32df9084d75ea400befd249bb5de2c26a0bcd4c341a959ef805ca0890e",
+        "size": 137000
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libkmod.so.2.5.1",
+        "payload_source": "usr/lib64/libkmod.so.2.5.1",
+        "sha256": "d79ede942d6ea7b2627de0015db84af131adfde0a93277bbddb8687761a93039",
+        "size": 136296
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/liblz4.so.1.10.0",
+        "payload_source": "usr/lib64/liblz4.so.1.10.0",
+        "sha256": "11dbf02c52111c52e248f84b5bfa2e759d6727f708b1e86fc2ea4234f2984b03",
+        "size": 200696
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/liblzma.so.5.8.3",
+        "payload_source": "usr/lib64/liblzma.so.5.8.3",
+        "sha256": "22de33288c790f3d2e229d08f0ce081e354dacbddb44d1777e1820c440fa0cbf",
+        "size": 268648
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libm.so.6",
+        "payload_source": "usr/lib64/libm.so.6",
+        "sha256": "e4b837f8287a586ba7ce29dd8f757c4329aa8d6a0f52c6d264badcd907171102",
+        "size": 803728
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libmount.so.1.1.0",
+        "payload_source": "usr/lib64/libmount.so.1.1.0",
+        "sha256": "17097d1477618a3eb1c513e76ff5bbe13a1cfa28c4672db5845da20aaabbae3e",
+        "size": 403840
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libnss_compat.so.2",
+        "payload_source": "usr/lib64/libnss_compat.so.2",
+        "sha256": "0e32a830c8a836c477842592927386844f2d238c9a0a93282ffd9bd8be411d3c",
+        "size": 70016
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libnss_dns.so.2",
+        "payload_source": "usr/lib64/libnss_dns.so.2",
+        "sha256": "61900e408766751851d51ae25159316d4735a088fd95c7644a913f043a20d983",
+        "size": 68816
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libnss_files.so.2",
+        "payload_source": "usr/lib64/libnss_files.so.2",
+        "sha256": "c9de08648ba9996db7ab62c9a86df772b492247bb9b46b529fc3f9df11e22b7f",
+        "size": 68824
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libnss_myhostname.so.2",
+        "payload_source": "usr/lib64/libnss_myhostname.so.2",
+        "sha256": "1ef2c09c054a4b03520bba3947f4658d0d5cbeb6f46c06e57412c0a292f9657d",
+        "size": 269376
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libnss_resolve.so.2",
+        "payload_source": "usr/lib64/libnss_resolve.so.2",
+        "sha256": "cb9ee2a037e1a5f8bdfb37f2a7a3beb8dece6ccc6aa7605f871c73cc1332b796",
+        "size": 402624
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libnss_systemd.so.2",
+        "payload_source": "usr/lib64/libnss_systemd.so.2",
+        "sha256": "e2a06567cfcbe871c6e36554302670f5bc3e7682438647be7f3f5a55af4ed6cb",
+        "size": 536592
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libpcre2-8.so.0.15.0",
+        "payload_source": "usr/lib64/libpcre2-8.so.0.15.0",
+        "sha256": "7f08df34d1ea74a79d32def854357b6466187acc8e4659beeb427e553bf1c4a3",
+        "size": 662552
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libproc2.so.1.0.1",
+        "payload_source": "usr/lib64/libproc2.so.1.0.1",
+        "sha256": "344861e948b66beb1ac29be9b029396bbec76df612fc929a51090c26e6029e06",
+        "size": 206840
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libresolv.so.2",
+        "payload_source": "usr/lib64/libresolv.so.2",
+        "sha256": "1ced9630294ccafa48a573ca226572326cc0a6052635bf700c1e5e60e5ee6edf",
+        "size": 70232
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libseccomp.so.2.6.1",
+        "payload_source": "usr/lib64/libseccomp.so.2.6.1",
+        "sha256": "2a042d0374219aa688b07b1991418af87abd1ac5fd24d883fe89350a5c788cc1",
+        "size": 201392
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libselinux.so.1",
+        "payload_source": "usr/lib64/libselinux.so.1",
+        "sha256": "c9edfec980b8a05666d24dc3a4e15b502431334e2c7e3adcae189402b5031f6d",
+        "size": 270480
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libsmartcols.so.1.1.0",
+        "payload_source": "usr/lib64/libsmartcols.so.1.1.0",
+        "sha256": "a9678fbb0636b450899d5483b982d867dd21a24cef2f44d0388d8f158891de6b",
+        "size": 203216
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libsystemd.so.0.45.0",
+        "payload_source": "usr/lib64/libsystemd.so.0.45.0",
+        "sha256": "6eea71c8a4b1e9e78c39ab2c697f27999e99e5cf3d9d6b10e7c2e6bc551b443c",
+        "size": 1339872
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libtinfo.so.6.6",
+        "payload_source": "usr/lib64/libtinfo.so.6.6",
+        "sha256": "a9b6aba827571166e227c67afd15354e78e8c324f4e63d4920716c599577814c",
+        "size": 203672
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libudev.so.1.7.15",
+        "payload_source": "usr/lib64/libudev.so.1.7.15",
+        "sha256": "1b527ab4eea8c0323002fd83a5f076d96dbf5a0a011745b47b3cae3c13d3477a",
+        "size": 336944
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libuuid.so.1.3.0",
+        "payload_source": "usr/lib64/libuuid.so.1.3.0",
+        "sha256": "81b2c944dd9c3343a43e16f58bf27a1154bbb8ca839feffb89725f9ebbbab8e5",
+        "size": 69544
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libz.so.1.3.1.zlib-ng",
+        "payload_source": "usr/lib64/libz.so.1.3.1.zlib-ng",
+        "sha256": "7daae3cb8adb9679c0b7a7f44974b8374d71a557382eadeca8385b129cbd33bf",
+        "size": 136568
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/libzstd.so.1.5.7",
+        "payload_source": "usr/lib64/libzstd.so.1.5.7",
+        "sha256": "2e5d50c10d8e2ff8eb5fdeea6fa4965a37c37405ad3f6fb21d9d473203538247",
+        "size": 861264
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/systemd/libsystemd-core-262.1-1.fc45.so",
+        "payload_source": "usr/lib64/systemd/libsystemd-core-262.1-1.fc45.so",
+        "sha256": "7eb20e2042b81dfba2e56d6a26d759e965291cd9f447af8c15a25b9e67a9805e",
+        "size": 2915360
+      },
+      {
+        "elf_machine": 183,
+        "elf_type": 3,
+        "interpreters": [],
+        "kind": "regular",
+        "path": "usr/lib64/systemd/libsystemd-shared-262.1-1.fc45.so",
+        "payload_source": "usr/lib64/systemd/libsystemd-shared-262.1-1.fc45.so",
+        "sha256": "4e3d8a4731d1fd53b8715a1b9e086b71005c9660db96289f159615f2e86915bb",
+        "size": 6266200
+      }
+    ]
+  },
+  "schema_version": 1,
+  "scope": "fixed generic ARM64 initramfs archive validation only",
+  "stage": "complete"
+}

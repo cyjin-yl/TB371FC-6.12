@@ -1,0 +1,28 @@
+{
+  "child_pid": 661427,
+  "command": [
+    "sudo",
+    "-n",
+    "/usr/sbin/pct",
+    "exec",
+    "102",
+    "--",
+    "python3",
+    "-B",
+    "/var/tmp/tb371fc-r5-services-transfer-v1/transfer_kernel.py",
+    "--report-sha256",
+    "69d0b558c99bdfb339df8b3b9baca8bb1ee4d0cb2e46dd9b3b7fef3ab69aaad2"
+  ],
+  "elapsed_seconds": 5.2354281729785725,
+  "ended_utc": "2026-11-23T10:07:21.635712+00:00",
+  "exit_code": 0,
+  "started_utc": "2026-11-23T10:07:16.400280+00:00",
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 229,
+    "sha256": "2fbf8fbc3eb0ea1f773c43d8bb9c779883d77cdbbc36fe75f11b8c38c5eb2aa4"
+  }
+}

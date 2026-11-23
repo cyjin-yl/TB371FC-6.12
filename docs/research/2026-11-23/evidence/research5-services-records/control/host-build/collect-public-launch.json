@@ -1,0 +1,10 @@
+{
+  "command": [
+    "python3",
+    "-u",
+    "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/collect_public_records.py"
+  ],
+  "pane": "%337",
+  "real_job_in_tmux": true,
+  "started_utc": "2026-11-23T10:10:29.363115+00:00"
+}

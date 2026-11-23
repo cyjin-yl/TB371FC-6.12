@@ -19,7 +19,14 @@ pen, charging and power management. The follow-up adds an actually compiled
 [the realized NixOS ARM system closure](docs/research/2026-11-23/nixos-system-build.md),
 private firmware staging, input-driver fixes and an
 [owner-specific rescue-controller correction](docs/research/2026-11-23/first-stage-owner-udc.md).
-The dated overview tracks later combined-kernel validation and retained failures.
+The follow-up [research5 kernel](docs/research/2026-11-23/research5-services-kernel.md)
+has a full build and 84 signed modules for the original Nix/Nura service prerequisites.
+The latest actual Fedora production run remains v8, whose complete guest checks
+still fail the overall zero-AVC gate; the [first v9 image attempt](docs/research/2026-11-23/fedora-r4f-image-failed.md)
+times out before any VM. The first [Nix registered-root preparation](docs/research/2026-11-23/nixos-store-preparation-failed.md)
+also times out during signed-cache copying after source verification; no NixOS
+image or PID1 boot was reached. Nix/Nura target-system boot and physical entry remain open.
+The dated overview keeps these construction, runtime and retained-failure scopes separate.
 These results add no owner physical-tablet pass; see the
 [all-device acceptance contract](docs/research/2026-11-23/acceptance.md).
 

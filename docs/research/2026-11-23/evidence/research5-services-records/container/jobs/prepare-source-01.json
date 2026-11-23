@@ -1,0 +1,58 @@
+{
+  "baseline_r4": {
+    "kernel.config": {
+      "bytes": 222379,
+      "sha256": "0236496603f168aacc5586eac7e199ca8f840b5d0c9b5ed111da64e9d28ec275",
+      "source_path": "/work/research4-system/artifacts/kernel.config"
+    },
+    "modules.SHA256SUMS": {
+      "bytes": 13089,
+      "sha256": "9ef1c87254c5422b61c0c365d088b8374a4c323c99da9bda1578170eaa443f03",
+      "source_path": "/work/research4-system/artifacts/modules.SHA256SUMS"
+    },
+    "research4-system-build.json": {
+      "bytes": 139692,
+      "sha256": "0db9a7e6164b44ac845a80974c3a369476ede23ac6f094de9c14c8602fa3faa6",
+      "source_path": "/work/research4-system/artifacts/research4-system-build.json"
+    },
+    "signing-cert.der": {
+      "bytes": 1324,
+      "sha256": "da222772fe59edc2d0efc6826ff4c31504ee9420b057121cd0a2e2503d81788d",
+      "source_path": "/work/research4-system/artifacts/signing-cert.der"
+    }
+  },
+  "child_pid": 219118,
+  "command": [
+    "python3",
+    "/work/research4-system/source-input/input-recipe/scripts/research/input/prepare_input.py",
+    "--repo",
+    "/work/research4-system/source-input/input-recipe",
+    "--baseline-repo",
+    "/work/research2-repo",
+    "--baseline-work",
+    "/work/research2-display",
+    "--work",
+    "/work/research5-services/source-input",
+    "--cache",
+    "/work/downloads/linux-6.12.114.tar.xz"
+  ],
+  "elapsed_seconds": 45.014304622018244,
+  "ended_utc": "2026-11-23T09:27:38.872004+00:00",
+  "exit_code": 0,
+  "old_objects_copied": false,
+  "old_private_key_copied": false,
+  "original_source_helper": {
+    "bytes": 7208,
+    "sha256": "0f3334412a7711d3a38d4bfdb0b0b5a35f5a5cb97c1d65868155d34e0c966059"
+  },
+  "passed": true,
+  "physical_hardware_tested": false,
+  "reproduced_manifest": {
+    "bytes": 7108,
+    "sha256": "5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0"
+  },
+  "schema_version": 1,
+  "source_inputs_unchanged": true,
+  "start_utc": "2026-11-23T09:26:53.857393+00:00",
+  "virtual_machine_started": false
+}

@@ -1,0 +1,17 @@
+{
+  "command": [
+    "python3",
+    "/work/research5-services/recipe-v1/inspect_system.py",
+    "--work",
+    "/work/research5-services",
+    "--repo",
+    "/src",
+    "--baseline-repo",
+    "/work/research2-repo",
+    "--attempt",
+    "1"
+  ],
+  "start_utc": "2026-11-23T10:03:55.112849+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 11.566334230010398
+}

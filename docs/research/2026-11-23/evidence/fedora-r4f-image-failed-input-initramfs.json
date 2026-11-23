@@ -1,0 +1,63 @@
+{
+  "archive_entry_counts": {
+    "early": 1,
+    "main": 574
+  },
+  "archive_validator_sha256": "9e36bf88b93aa3dda05ddc3ff235ab743ff4c2c80fe8e6b0694175b69e9f497a",
+  "archive_verified": true,
+  "bootstrap": {
+    "mode": 493,
+    "sha256": "0bc3f0fbb814ece1133b16e36c6b3c402fbf5456d366fb99f4fe2783c87c1d14",
+    "size": 72528,
+    "source_path": "/work/early-selinux-socket-probe-20261123/build-01/early-init"
+  },
+  "cache_created_by": "fixed Fedora static AArch64 ldconfig through QEMU outside PRoot",
+  "cache_semantic_map_matches_fixed_sources": true,
+  "early_selinux_argument": "rd.tb371fc.early-selinux=1",
+  "enforcing_argument": 1,
+  "handoff_members": [
+    {
+      "mode": 493,
+      "path": "init.tmpfs",
+      "sha256": "15905f3993604e6f600a17b556354c2bece12bd5a00256c24cf7838482bb7d7d",
+      "size": 6039,
+      "source_path": "/work/early-selinux-rootfs-20261123/build-01/source/stage0.sh"
+    },
+    {
+      "mode": 493,
+      "path": "init.tmpfs-wait",
+      "sha256": "7e593ef9b2c40834b97ad35b1bc21fcd54b00e34dce72381832f88329e28b3ec",
+      "size": 71872,
+      "source_path": "/work/tmpfs-waiter-v2-20261123/build-01/init.tmpfs-wait"
+    },
+    {
+      "mode": 493,
+      "path": "usr/bin/stat",
+      "sha256": "f54c956a5e840a22480869e0f5093f51e3a39b42374dd1045d527e8560ad5d5e",
+      "size": 135480,
+      "source_path": "/work/fedora-system-integration-v1/rootfs/usr/bin/stat"
+    },
+    {
+      "mode": 493,
+      "path": "usr/bin/switch_root",
+      "sha256": "6b6c1803111f117b76b553a664cec1a074827d025618446319d7871f9c127f75",
+      "size": 69104,
+      "source_path": "/work/fedora-system-integration-v1/rootfs/usr/bin/switch_root"
+    }
+  ],
+  "hostonly": false,
+  "kernel_rdinit_argument": "rdinit=/init.tmpfs",
+  "kernel_release": "6.12.114-tb371fc-research4-system",
+  "original_legacy_validator_sha256": "263866a1943cd43116e69cb0a8b1081d6ccd1cc93ef98866a4b3eacc00bac58a",
+  "path": "/work/fedora-input-system-v9/rootfs/boot/initramfs-6.12.114-tb371fc-research4-system.img",
+  "physical_hardware_tested": false,
+  "policy_source_manifest_sha256": "08978c5473ec3041622cbe031566bcc19b8a91d88f28d1527d6dd3d1d4383f38",
+  "process_domain_proof_payloads_verified": true,
+  "qualified_baseline_image_sha256": "2741ed3f3b5814b40dd303f4666b6f629c55ad11fd057a6e99f9f6be5e01c543",
+  "repacked_by": "GNU cpio newc, flushed early prefix, gzip -n",
+  "role": "production-tmpfs-early-selinux",
+  "sha256": "8533dcc827613d332d4869167351d50acf4694c27b52dcc6cf144ef7268503f6",
+  "size_bytes": 32532312,
+  "target_cache_sha256": "0571b75832400c2d74a2da6cef58416d34906e7b292cf5e92449bc849144b3a9",
+  "tmpfs_migration_argument": "rd.tb371fc.tmpfs-root=1"
+}

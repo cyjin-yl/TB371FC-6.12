@@ -1,0 +1,14 @@
+{
+  "cancelled_signal": null,
+  "command": [
+    "/usr/bin/python3",
+    "/work/fedora-input-system-recipe-r4-v7/assemble_system.py",
+    "image"
+  ],
+  "elapsed_seconds": 615.3817805770086,
+  "exit_code": 1,
+  "finished_utc": "2026-11-23T09:24:26.668139+00:00",
+  "name": "image-01",
+  "recipe_sha256": "9d698cf253edf526fa9cd81121f5e6d3e60789020fd2f5f5fab784113e8ab0c5",
+  "started_utc": "2026-11-23T09:14:11.286358+00:00"
+}

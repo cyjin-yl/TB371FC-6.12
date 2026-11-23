@@ -1,0 +1,1 @@
+{"passed": true, "kernel_release": "6.12.114-tb371fc-research5-services", "module_count": 84, "report": "/work/research5-services/artifacts/research5-services-build.json", "report_sha256": "69d0b558c99bdfb339df8b3b9baca8bb1ee4d0cb2e46dd9b3b7fef3ab69aaad2", "kernel_btf_sha256": "fee84441d208c1ce5e920a3a26e5132f74095f1d2eb3e692b95a9343ac9a43f4", "physical_hardware_tested": false}

@@ -1,0 +1,52 @@
+{
+  "scope": "one direct-QEMU userspace query; no VM/PRoot/kernel-policy load",
+  "command": [
+    "/usr/bin/qemu-aarch64",
+    "-L",
+    "/work/fedora-input-system-v3/rootfs",
+    "/work/fedora-input-system-v3/rootfs/usr/bin/python3",
+    "-I",
+    "-B",
+    "/work/selinux-journalctl-dgram-20261123/query-01/query_journalctl_socket_probe.py",
+    "--policy",
+    "/work/selinux-journalctl-dgram-20261123/query-01/policy.33",
+    "--library",
+    "/work/selinux-journalctl-dgram-20261123/query-01/libsepol.so.2"
+  ],
+  "started_utc": "2026-11-23T08:26:29.494404+00:00",
+  "source": {
+    "size": 10631,
+    "sha256": "fb51735ec147fee035c0fe091d6f3172fdef0b5c1290d0fab072457c444837ec"
+  },
+  "inputs": {
+    "/work/fedora-r4e-closed-image-evidence-v1/loaded-policy.33": {
+      "copy": "/work/selinux-journalctl-dgram-20261123/query-01/policy.33",
+      "size": 3835444,
+      "sha256": "9d7aa2b3d3c64e8c24dbff83e8850036b8e15cec63aaa1521bbea555f42b2342"
+    },
+    "/work/selinux-standard-services-av-20261123/query-01/libsepol.so.2": {
+      "copy": "/work/selinux-journalctl-dgram-20261123/query-01/libsepol.so.2",
+      "size": 802880,
+      "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b"
+    }
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 8.971320238953922,
+  "finished_utc": "2026-11-23T08:26:38.465724+00:00",
+  "stdout.json": {
+    "size": 14162,
+    "sha256": "64e73543588a59291629aef55d9b8c877caf448c59fc6a5ef7fdf9f57cf259c0"
+  },
+  "stderr.log": {
+    "size": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "completed": true,
+  "query_count": 19,
+  "allowed_count": 6,
+  "denied_count": 13,
+  "inputs_unchanged": {
+    "/work/fedora-r4e-closed-image-evidence-v1/loaded-policy.33": true,
+    "/work/selinux-standard-services-av-20261123/query-01/libsepol.so.2": true
+  }
+}

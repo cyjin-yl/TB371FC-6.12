@@ -1,0 +1,56 @@
+COMMAND ["bash", "/work/research5-services/source-input/linux-6.12.114-input-integration/scripts/kconfig/merge_config.sh", "-m", "-O", "/work/research5-services/kernel-out", "/work/research5-services/kernel-out/base.config", "/work/research5-services/system.config"]
+Using /work/research5-services/kernel-out/base.config as base
+Merging /work/research5-services/system.config
+Value of CONFIG_LOCALVERSION is redefined by fragment /work/research5-services/system.config:
+Previous value: CONFIG_LOCALVERSION="-tb371fc-research4-system"
+New value: CONFIG_LOCALVERSION="-tb371fc-research5-services"
+
+Value of CONFIG_NF_TABLES is redefined by fragment /work/research5-services/system.config:
+Previous value: # CONFIG_NF_TABLES is not set
+New value: CONFIG_NF_TABLES=y
+
+Value of CONFIG_RTC_DRV_PL031 is redefined by fragment /work/research5-services/system.config:
+Previous value: # CONFIG_RTC_DRV_PL031 is not set
+New value: CONFIG_RTC_DRV_PL031=y
+
+Value of CONFIG_ZRAM_BACKEND_ZSTD is redefined by fragment /work/research5-services/system.config:
+Previous value: # CONFIG_ZRAM_BACKEND_ZSTD is not set
+New value: CONFIG_ZRAM_BACKEND_ZSTD=y
+
+#
+# merged configuration written to /work/research5-services/kernel-out/.config (needs make)
+#
+COMMAND ["make", "-C", "/work/research5-services/source-input/linux-6.12.114-input-integration", "O=/work/research5-services/kernel-out", "ARCH=arm64", "LLVM=1", "CC=clang --sysroot=/work/research5-services/target-sysroot", "olddefconfig"]
+make: Entering directory '/work/research5-services/source-input/linux-6.12.114-input-integration'
+make[1]: Entering directory '/work/research5-services/kernel-out'
+  GEN     Makefile
+  HOSTCC  scripts/basic/fixdep
+  HOSTCC  scripts/kconfig/conf.o
+  HOSTCC  scripts/kconfig/confdata.o
+  HOSTCC  scripts/kconfig/expr.o
+  LEX     scripts/kconfig/lexer.lex.c
+  YACC    scripts/kconfig/parser.tab.[ch]
+  HOSTCC  scripts/kconfig/lexer.lex.o
+  HOSTCC  scripts/kconfig/menu.o
+  HOSTCC  scripts/kconfig/parser.tab.o
+  HOSTCC  scripts/kconfig/preprocess.o
+  HOSTCC  scripts/kconfig/symbol.o
+  HOSTCC  scripts/kconfig/util.o
+  HOSTLD  scripts/kconfig/conf
+#
+# configuration written to .config
+#
+make[1]: Leaving directory '/work/research5-services/kernel-out'
+make: Leaving directory '/work/research5-services/source-input/linux-6.12.114-input-integration'
+COMMAND ["clang", "--version"]
+Debian clang version 19.1.7 (3+b1)
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/lib/llvm-19/bin
+COMMAND ["ld.lld", "--version"]
+Debian LLD 19.1.7 (compatible with GNU linkers)
+COMMAND ["pahole", "--version"]
+v1.30
+COMMAND ["openssl", "version"]
+OpenSSL 3.5.9 29 Sep 2026 (Library: OpenSSL 3.5.9 29 Sep 2026)
+{"stage": "configure", "passed": true, "record": "/work/research5-services/configure-attempt-01.json", "record_sha256": "f88b1ddde9d280a2984fe1c368d55b601436b61b5ee41c8d9579ae8d4c13ac5f", "kernel_release": "6.12.114-tb371fc-research5-services"}

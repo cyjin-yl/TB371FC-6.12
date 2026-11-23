@@ -1,0 +1,69 @@
+{
+  "artifact": {
+    "sha256": "0bc3f0fbb814ece1133b16e36c6b3c402fbf5456d366fb99f4fe2783c87c1d14",
+    "size": 72528
+  },
+  "at_utc": "2026-11-23T08:56:27.427755+00:00",
+  "audit_sysctl_guard_reached": false,
+  "command": [
+    "/usr/bin/qemu-aarch64",
+    "-L",
+    "/work/fedora-input-system-v6/rootfs",
+    "/work/early-selinux-socket-probe-20261123/build-01/early-init"
+  ],
+  "container_sysctl_values_after": {
+    "printk_ratelimit": "5",
+    "printk_ratelimit_burst": "10"
+  },
+  "container_sysctl_values_before": {
+    "printk_ratelimit": "5",
+    "printk_ratelimit_burst": "10"
+  },
+  "elapsed_seconds": 0.9839866189868189,
+  "exit_code": 1,
+  "limit": "The exact failure marker and fixed source entry order identify the refused branch. Sampled metadata is limited corroboration, not a full syscall trace or a VM result.",
+  "mount_operation_attempted": false,
+  "passed": true,
+  "physical_hardware_tested": false,
+  "policy_load_attempted": false,
+  "qualifier_sha256": "d0d38c90283abfd2d358da1bee266cbc50ee62ff048df3dd09979d53ee85f7d2",
+  "reference_directory_metadata_after": {
+    ".": {
+      "ctime_ns": 1795411373755183497,
+      "inode": 16631058,
+      "mtime_ns": 1795411373755183497
+    },
+    "dev": {
+      "ctime_ns": 1795411373754183441,
+      "inode": 16631069,
+      "mtime_ns": 1795411373754183441
+    },
+    "etc": {
+      "ctime_ns": 1795411373755183497,
+      "inode": 16628819,
+      "mtime_ns": 1795411373755183497
+    }
+  },
+  "reference_directory_metadata_before": {
+    ".": {
+      "ctime_ns": 1795411373755183497,
+      "inode": 16631058,
+      "mtime_ns": 1795411373755183497
+    },
+    "dev": {
+      "ctime_ns": 1795411373754183441,
+      "inode": 16631069,
+      "mtime_ns": 1795411373754183441
+    },
+    "etc": {
+      "ctime_ns": 1795411373755183497,
+      "inode": 16628819,
+      "mtime_ns": 1795411373755183497
+    }
+  },
+  "schema_version": 1,
+  "scope": "direct AArch64 non-PID1 refusal only; no API-only check or PID1 execution",
+  "stderr": "TB371FC_EARLY_SELINUX_V4 FAILED phase=entry reason=pid1-with-no-arguments-required errno=0\n",
+  "stdout": "",
+  "sysctl_write_attempted": false
+}

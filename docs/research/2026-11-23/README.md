@@ -13,9 +13,11 @@ The R226 installation/reproducibility limitations in
 
 ## Build follow-up and completion standard
 
-**Latest full-system checkpoint: [Fedora v8](fedora-r4e-persistent-result-failed.md)
-completes its guest behavior and result transport, but one Enforcing AVC
-still fails overall. Owner-tablet Linux remains at 0 runs and 0 passes.**
+**Latest construction checkpoint: [research5](research5-services-kernel.md) is
+built and transferred; the [first Fedora v9 image attempt](fedora-r4f-image-failed.md)
+fails before any VM. The latest actual production run remains
+[v8](fedora-r4e-persistent-result-failed.md), whose guest checks pass but one
+Enforcing AVC fails overall. Owner-tablet Linux remains at 0 runs and 0 passes.**
 
 The new `6.12.114-tb371fc-research1` Image, matching modules and native board
 DTB have now compiled in an isolated CT102 container. A generic ARM64 VM boot
@@ -158,13 +160,52 @@ no parse error, and all configured production loss/suppression counts are
 zero. One visible Enforcing AVC nevertheless remains: `journalctl_t` is
 denied self `unix_dgram_socket create` during `journalctl --sync`, even though
 that command exits 0. The unchanged host controller stays false and the
-pipeline exits 1. Source diagnosis and a further candidate are separate work.
+pipeline exits 1. The subsequent source diagnosis, new candidate and failed image attempt are separately recorded below.
 The actual exported policy `9d7aa2b3…` is retained privately with public
 metadata; it is not equated to the offline conversion. Post-qualification,
 finalization and postboot e2fsck did not run. No positive udev count pair
 proves an empty or completely preserved queue. The earlier synthetic
 transport checks do not establish recovery after abrupt termination.
 Every physical-tablet case remains unchanged.
+
+### Subsequent construction checkpoint
+
+The [matched socket-probe diagnosis](selinux-journalctl-socket-probe.md) now
+identifies the v8 datagram denial precisely. The fixed systemd path creates a
+socket to test xattr support; the kernel rejects the attempted `user.*` xattr
+on that special inode before its LSM xattr hook. A direct query of the saved
+actual v8 policy confirms the gap. The independent
+[seven-permission candidate](selinux-socket-probe-policy.md) adds only self
+datagram `create` to the prior six permissions. Complete version-35 and fresh
+version-33 CIL comparisons and a 19-tuple offline matrix pass, with 12 denied
+controls/diagnostics retained. The independently
+[compiled V4 loader](early-selinux-socket-probe-loader.md) and its non-PID1
+rejection are construction evidence; the old v8 result remains failed.
+
+The [first v9/R4F attempt](fedora-r4f-image-failed.md) then fails **before any
+VM**. Its new production and maintenance archives pass their original checks,
+but `mkfs.ext4` exceeds the unchanged 600-second subprocess deadline. The image
+phase records 615.382 seconds including cleanup, and the pipeline exits 1.
+The source, full traceback and partial image remain retained. No new live
+policy, FD, TasksMax, BPF or zero-AVC result follows; a separate recovery must
+report its own outputs. Concurrent HDD work is context, not a proven exclusive
+cause of the timeout.
+
+The separate [research5-services kernel](research5-services-kernel.md) has now
+completed a full build and offline qualification. Its exactly 14 semantic
+configuration changes supply the original Nix/Nura nftables requirements,
+Nura's explicitly selected zstd zram backend, the generic PL031 RTC and the new
+release. The 84 signed modules, all 4,308 imported CRCs, Image/BTF/public
+certificate and unchanged joint display/input DT are checked. All 106 ordinary
+files transferred into the shared builder match source before/after and
+destination contents, modes and owners. This is **not an R5 system boot**:
+original firewall rules, OpenRC services, zram, RTC and native module loading
+still require actual runtime observations. No owner hardware case is closed.
+
+The [bounded Nura entry inventory](nura-entry-inventory.md) separately confirms
+the original BusyBox PID1 and inittab-driven OpenRC sequence. It executes no
+target binary and does not turn retained service definitions or the earlier
+generic rootfs export into a successful target boot.
 
 The [NixOS follow-up](nixos-system-build.md) has now actually realized the full
 fixed `system.build.toplevel`: 894 reference-closed store paths, totalling
@@ -175,14 +216,21 @@ has been performed. This advances the earlier selected-package checkpoint
 without claiming a booted tablet system. An independent rootfs/VM experiment
 is being prepared outside this frozen evidence set and has no boot result here.
 
+The [first native Nix registered-root preparation](nixos-store-preparation-failed.md)
+now has a definite failure record: source verification exits zero, then the
+signed-cache copy reaches its original 3600-second timeout. The job exits one;
+destination qualification, image creation, activation and system boot were not
+reached. The old partial cache and full original logs are retained, without
+changing `require-sigs`, extending that attempt or scoring an incomplete root.
+
 ### Current distro checkpoints
 
 | Candidate | Completed host evidence | Outstanding boundary |
 | --- | --- | --- |
 | Fedora, frozen research1 system | Full systemd multi-user boot with Enforcing, 83 modules and 69 firmware hashes checked | Baseline resource/GPIO notices remain; no physical tablet |
-| Fedora, research3/research4 follow-up | Both 84-module kernels; v8 completes early labels, real FD/TasksMax/BPF behavior, PL061 binding and normal-shutdown result transport | v8 overall fails on one journalctl datagram-create AVC; later qualification/finalization not run; no tablet test |
-| NixOS | Full 894-path `system.build.toplevel` closure; ARM version and script syntax checks | No NixOS rootfs image, activation or PID 1 boot |
-| Nura/postmarketOS experiment | ARM builder installed 382 target packages and exported a checked generic rootfs | Target not booted; only 371 package versions retained in its offline cache; no TB371FC kernel integration |
+| Fedora, research3/research4 follow-up | Both 84-module kernels; v8 completes early labels, real FD/TasksMax/BPF behavior, PL061 binding and normal-shutdown result transport | v8 remains failed; the first v9 image times out before any VM; later runtime/finalization and tablet tests remain open |
+| NixOS | Full 894-path `system.build.toplevel`; ARM version/syntax checks; separate R5 service-prerequisite build | First signed-cache copy times out after source verification; no qualified root/image, activation or PID 1 boot |
+| Nura/postmarketOS experiment | ARM builder installed 382 target packages and exported a checked rootfs; actual BusyBox/OpenRC entry inventory and separate R5 prerequisite build | Target not booted; only 371 versions retained in its earlier offline cache; full reconstruction and hardware integration remain open |
 
 The [early distro build comparison](distro-builds.md) retains its earlier
 experiment body and now includes a follow-up status notice. Its original
@@ -213,12 +261,25 @@ result without inferring cable presence or other hosts. The
 [earlier 14:09 Shanghai paired check](usb-transport-recheck-1409.md) again records
 that same bounded state; the entry and recovery control gate remains open.
 
-The [latest 15:46:57–59 Shanghai paired read](usb-transport-recheck-20261123T074657Z.md)
+The [earlier 15:46:57–59 Shanghai paired read](usb-transport-recheck-20261123T074657Z.md)
 again records both owner UDCs `not attached`/`UNKNOWN`, the same configured
 primary and 14 doesvm USB entries without a matching vendor candidate. Both
 reads exit 0. It establishes no data/recovery link and changes no USB or boot
 state; it does not diagnose a cable or another host.
 
+The [latest 17:36:24–25 Shanghai / 09:36 UTC paired read](usb-transport-recheck-20261123T093624Z.md)
+again exits 0 on both ends: both UDCs remain `not attached`/`UNKNOWN`, `g1`
+retains `a600000.dwc3` and `17ef:7e31`, and doesvm has 14 entries without a
+corresponding vendor candidate. This establishes no data/recovery link and
+changes no USB or boot state. Cable failure, physical connection and another
+host's state are not inferred.
+
+- [Research5 original-service kernel prerequisites, full build and shared transfer](research5-services-kernel.md).
+- [Matched journalctl socket-probe diagnosis](selinux-journalctl-socket-probe.md),
+  [minimal seven-permission policy](selinux-socket-probe-policy.md),
+  [V4 loader construction](early-selinux-socket-probe-loader.md) and
+  [retained v9 image failure before any VM](fedora-r4f-image-failed.md).
+- [Original Nura BusyBox/OpenRC entry inventory](nura-entry-inventory.md).
 - [Actual kernel build, failure/fix and VM retest](kernel-build.md).
 - [Native 6.12 DT/driver qualification and framebuffer fix](diagnostic-dt-profiles.md),
   [independent display candidate](research2-display-build.md) and [SSD builder](ssd-builder.md).
@@ -237,7 +298,8 @@ state; it does not diagnose a cable or another host.
   [actual shipping-kernel tracepoint/CNSS cache audit](cnss-shipping-static.md).
 - [Early distro build comparison](distro-builds.md), [Fedora experiment](fedora-build.md)
   and [Nura experiment](nura-build.md); [NixOS configuration](../../../distros/nixos/README.md).
-- [Full NixOS system-store build, with the system-boot gap kept explicit](nixos-system-build.md).
+- [Full NixOS system-store build, with the system-boot gap kept explicit](nixos-system-build.md),
+  and [the original registered-root preparation timeout](nixos-store-preparation-failed.md).
 - [Full Fedora systemd/Enforcing VM](fedora-system-integration.md),
   [fixed-policy compatibility](selinux-compatibility.md) and
   [independent packed-initramfs checks](evidence/initramfs-validation.json).
@@ -268,7 +330,7 @@ state; it does not diagnose a cable or another host.
   [paired follow-up](usb-transport-followup.md) and
   [later bounded recheck](usb-transport-recheck.md) and
   [14:09 Shanghai paired check](usb-transport-recheck-1409.md),
-  [latest 15:46 paired read](usb-transport-recheck-20261123T074657Z.md), plus the
+  [earlier 15:46 paired read](usb-transport-recheck-20261123T074657Z.md), plus the
   [independently qualified owner-UDC rescue revision](first-stage-owner-udc.md).
 - [Frozen kernel firmware requests, effective device states and loader rules](firmware-kernel-contract.md).
 - [Verified private transfer and structure of 118 selected stock firmware files](stock-firmware-bundle.md).

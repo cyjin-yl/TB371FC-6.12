@@ -1,0 +1,7 @@
+{"phase": "policy-source", "exit_code": 0, "seconds": 1.5387149800080806}
+{"phase": "input-transfer", "exit_code": 0, "seconds": 2.8832475710078143}
+{"phase": "build-invocation", "exit_code": 0, "seconds": 12.185711677011568}
+{"phase": "ssd-artifacts", "exit_code": 0, "seconds": 1.1314938900177367}
+{"phase": "hdd-transfer", "exit_code": 0, "seconds": 1.187940620991867}
+{"phase": "negative-invocation", "exit_code": 0, "seconds": 2.715431088989135}
+{"completed": true, "exit_code": 0, "seconds": 21.694349299999885, "artifact": {"glibc_versions": ["GLIBC_2.17", "GLIBC_2.33", "GLIBC_2.34"], "interpreter": "/lib/ld-linux-aarch64.so.1", "machine": 183, "mode": "0755", "needed": ["libc.so.6", "ld-linux-aarch64.so.1"], "path": "/work/early-selinux-socket-probe-20261123/build-01/early-init", "sha256": "0bc3f0fbb814ece1133b16e36c6b3c402fbf5456d366fb99f4fe2783c87c1d14", "size": 72528, "type": "ET_DYN"}, "error": null}

@@ -1,0 +1,132 @@
+{
+  "all_raw_members_byte_verified": true,
+  "compressed_bytes": 227343,
+  "compressed_sha256": "295d0f31971c723a21b72befd001066a0fb3aaf1eb04f35e6b8ef09192a8ae87",
+  "member_count": 20,
+  "members": [
+    {
+      "bytes": 9491,
+      "mode": 420,
+      "path": "artifacts/builder-packages.tsv",
+      "sha256": "488f96f01ff4f808ed9cebdce1c705815ad43a5ae57fd87d727d259d758f7dcf"
+    },
+    {
+      "bytes": 223395,
+      "mode": 420,
+      "path": "artifacts/kernel.config",
+      "sha256": "a4980121abcc3e2bac47f7020e63c8c00949c53c289019c22b67808d84cd3afa"
+    },
+    {
+      "bytes": 13257,
+      "mode": 420,
+      "path": "artifacts/modules.SHA256SUMS",
+      "sha256": "278c225ae2eed47341a9d185b4d2919a9208757fe86ff0268c9bfce3c3dfd7e1"
+    },
+    {
+      "bytes": 1489,
+      "mode": 420,
+      "path": "artifacts/qualified-artifacts.SHA256SUMS",
+      "sha256": "ccdd316712a5607fa8fa27488bde771c8a50eb6363b6ce44c72fdbd640dae36c"
+    },
+    {
+      "bytes": 136930,
+      "mode": 420,
+      "path": "artifacts/research5-services-build.json",
+      "sha256": "69d0b558c99bdfb339df8b3b9baca8bb1ee4d0cb2e46dd9b3b7fef3ab69aaad2"
+    },
+    {
+      "bytes": 4020,
+      "mode": 384,
+      "path": "build-attempt-01.json",
+      "sha256": "814719dba82396d32e10c4ca75f98e826c5bbb1633e963afd4eba4567ce1931e"
+    },
+    {
+      "bytes": 7765,
+      "mode": 384,
+      "path": "configuration.json",
+      "sha256": "a87ce0d5e431234b0889366c2434cd01daf6e266377568473b71425ee03feb85"
+    },
+    {
+      "bytes": 7874,
+      "mode": 384,
+      "path": "configure-attempt-01.json",
+      "sha256": "f88b1ddde9d280a2984fe1c368d55b601436b61b5ee41c8d9579ae8d4c13ac5f"
+    },
+    {
+      "bytes": 136930,
+      "mode": 420,
+      "path": "inspection-attempt-01.json",
+      "sha256": "69d0b558c99bdfb339df8b3b9baca8bb1ee4d0cb2e46dd9b3b7fef3ab69aaad2"
+    },
+    {
+      "bytes": 313,
+      "mode": 420,
+      "path": "jobs/build-01.json",
+      "sha256": "cccc1af3287f32766ad2b46197c19e1ba91fdb022aaae1a8a310912058462d09"
+    },
+    {
+      "bytes": 222140,
+      "mode": 420,
+      "path": "jobs/build-01.log",
+      "sha256": "dd8abab350d558fa5fa0bcf788adf5b6ce25b53640d87e7994db392003de715a"
+    },
+    {
+      "bytes": 316,
+      "mode": 420,
+      "path": "jobs/configure-01.json",
+      "sha256": "742e715677c1fd15729542be3a2cde838f7814c63201a71be90ae6f78ddb953d"
+    },
+    {
+      "bytes": 2923,
+      "mode": 420,
+      "path": "jobs/configure-01.log",
+      "sha256": "8c31cc274b4eb748fc0e9cea11a7323ce24d2f1d899c51ecaa7b8ae0694f6ac7"
+    },
+    {
+      "bytes": 356,
+      "mode": 420,
+      "path": "jobs/inspect-01.json",
+      "sha256": "41723a964f0666a427a8e119d0e253bff6acb232226bd9ad7dc8df7f84ac3f0b"
+    },
+    {
+      "bytes": 381,
+      "mode": 420,
+      "path": "jobs/inspect-01.log",
+      "sha256": "928384e1181c243e265a61f97195b4f8982c815fe6080f8b52c793caf096eb09"
+    },
+    {
+      "bytes": 1985,
+      "mode": 384,
+      "path": "jobs/prepare-source-01.json",
+      "sha256": "9b72161aa79720cfbc90071ac2f74857843dbc5b6585d00e98d3d3ac4fdddc0f"
+    },
+    {
+      "bytes": 3941,
+      "mode": 384,
+      "path": "jobs/prepare-source-01.log",
+      "sha256": "dc332b17967b897f16ac1df7a01c12fa5b1b2b390d3bf855c9beb9313b1746f5"
+    },
+    {
+      "bytes": 1092,
+      "mode": 384,
+      "path": "recipe-install.json",
+      "sha256": "5823c850e883225bfbc9dad8bbf4b68cbd699a4c6472f914f2b031c62459926c"
+    },
+    {
+      "bytes": 7108,
+      "mode": 384,
+      "path": "source-input/source-manifest.json",
+      "sha256": "5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0"
+    },
+    {
+      "bytes": 9517,
+      "mode": 384,
+      "path": "source-manifest.json",
+      "sha256": "515b380aaf7d50d54a0c830021308e94b1a2b242ef7e7709be17493c9a51ddeb"
+    }
+  ],
+  "packet_bytes": 1061040,
+  "packet_sha256": "57e90974ebcca347c9429998e7763f521364ee0ca35960cb9a40cac7b8ae18dc",
+  "physical_hardware_tested": false,
+  "schema_version": 1
+}

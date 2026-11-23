@@ -1,0 +1,36 @@
+{
+  "new_runtime_result_pending": true,
+  "old_sources_modified": false,
+  "overlay": "/work/fedora-r4f-source-overlay-v1",
+  "policy_qualification": {
+    "all_candidate_contracts_satisfied": true,
+    "allow_count": 7,
+    "deny_count": 12,
+    "effective_access_query_exit_code": 0,
+    "effective_access_query_finished_utc": "2026-11-23T08:58:57.889633Z",
+    "effective_access_query_started_utc": "2026-11-23T08:58:52.567814Z",
+    "fresh33_sha256": "fe71750b659e71969145d89d08153196f21b46e6d66c6f28e09f8b11e739e53e",
+    "fresh33_size": 3835456,
+    "full_policy35_and_fresh33_cil_comparison_exit_code": 0,
+    "policy35_sha256": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+    "policy35_size": 3835468,
+    "query_count": 19,
+    "query_scope": "offline candidate; not the later actual kernel export",
+    "raw_report_identity_published_separately": true,
+    "reported_by": "/root/power_evidence"
+  },
+  "profile_manifest": {
+    "sha256": "5fb332d61e8e5b9b1699021aba8a5b2658a2763c7897d656692e5a49ddc107e0",
+    "size": 2397
+  },
+  "recipe": "/work/fedora-input-system-recipe-r4-v7",
+  "recipe_manifest": {
+    "sha256": "927fd0755f54f303adac25daa8342bfe4615d0d42ff9a07361d29226f7cdf947",
+    "size": 2674
+  },
+  "schema_version": 1,
+  "state": "source_frozen_for_unique_pipeline",
+  "tablet_linux_boots": 0,
+  "unit": "tb371fc-r4f-full-01.service",
+  "work": "/work/fedora-input-system-v9"
+}

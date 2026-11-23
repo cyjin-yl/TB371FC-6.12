@@ -1,0 +1,17 @@
+{
+  "cancelled_signal": null,
+  "command": [
+    "/usr/bin/python3",
+    "/work/fedora-input-system-recipe-r4-v7/stage_system.py",
+    "--report-sha256",
+    "0db9a7e6164b44ac845a80974c3a369476ede23ac6f094de9c14c8602fa3faa6",
+    "--bundle-sha256",
+    "82ffa9d01bd5cab5fe859e0182cac9998f103391ca5dac469b0044234fa18627"
+  ],
+  "elapsed_seconds": 24.50850780401379,
+  "exit_code": 0,
+  "finished_utc": "2026-11-23T09:05:42.688505+00:00",
+  "name": "stage-01",
+  "recipe_sha256": "13a146a04367fe109298678f0c221912693174dfd88aa634cfa5b47396f9f321",
+  "started_utc": "2026-11-23T09:05:18.180002+00:00"
+}

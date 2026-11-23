@@ -1,0 +1,495 @@
+{
+  "approved_new_delta": {
+    "cil": "(allow journalctl_t self (unix_dgram_socket (create)))",
+    "class": "unix_dgram_socket",
+    "permission": "create",
+    "source_type": "journalctl_t",
+    "target_type": "journalctl_t"
+  },
+  "booleans_changed": false,
+  "build_inputs": {
+    "inventoried_subtrees": [
+      "etc/selinux",
+      "var/lib/selinux/targeted"
+    ],
+    "source_complete_content_inventory_sha256": "c0070c6fb7f209ed7e391d4707a1058caedbaf1ad96c076a17624661e5558b50",
+    "source_pins": {
+      "etc/selinux/config": "80134a263d874d1687a43513a09b6cc8fdc2998e623c1c1670cb5769a85ce942",
+      "etc/selinux/semanage.conf": "8ba0df9a109dd136f1e8827343806ced9a0652c670c2572b4dd8642c67c27734",
+      "etc/selinux/targeted/policy/policy.35": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+      "usr/lib64/libselinux.so.1": "c9edfec980b8a05666d24dc3a4e15b502431334e2c7e3adcae189402b5031f6d",
+      "usr/lib64/libsemanage.so.2": "246206662c92e1df56f5f4f0d173bfb1bd6f97827fa189538e0857b6dc6058e8",
+      "usr/lib64/libsepol.so.2": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+      "usr/sbin/sefcontext_compile": "4a4f15badf7f975f4a10f14d5706e6f53a3765ead74531110c64da4797767936",
+      "usr/sbin/semodule": "1fee7d2141b111197eb4bbcc72f626646af702c45e5f5212347e0e6c5e028029",
+      "usr/sbin/setfiles": "75a118afe1060f2a402ac9c25498699b8b8493501bc7bd56099ee47fb0aa435b"
+    },
+    "source_root": "/work/fedora-input-system-v3/rootfs",
+    "stock_policy_sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430"
+  },
+  "candidate_access_query": {
+    "all_candidate_contracts_satisfied": true,
+    "allow_count": 7,
+    "completed": true,
+    "controls_denied": true,
+    "count": 19,
+    "deny_count": 12,
+    "input_policy": {
+      "sha256": "fe71750b659e71969145d89d08153196f21b46e6d66c6f28e09f8b11e739e53e",
+      "size": 3835456
+    },
+    "inputs_unchanged": true,
+    "prior_required_allowed": true,
+    "required_socket_create_allowed": true,
+    "runtime_kernel_export_identity_asserted": false,
+    "stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "unrequested_permissions_remain_denied": true
+  },
+  "candidate_policy": {
+    "mode": "0o644",
+    "path": "/work/selinux-socket-probe-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35",
+    "sha256": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+    "size": 3835468
+  },
+  "collection_failures_retained": [
+    {
+      "resolution": "read-only existing job/result and source identities established completed build and comparison; launch was not repeated",
+      "result": "bridge timeout after 20.9 seconds; no stdout",
+      "scope": "combined new query-source installation and compare launch"
+    },
+    {
+      "resolution": "single own-pane diagnostic showed progressing source-copy/tool preparation, then existing final job metadata established exit zero; no duplicate build was launched",
+      "result": "empty run_job log, later semodule-complete without job JSON",
+      "scope": "early build status"
+    }
+  ],
+  "comparison": {
+    "binary_difference": {
+      "changed_byte_count_in_overlap": 1052265,
+      "first_changed_offsets": [
+        345595,
+        1201979,
+        1201980,
+        1201981,
+        1201982,
+        1201983,
+        1201987,
+        1201988,
+        1201989,
+        1201997,
+        1201999,
+        1202000,
+        1202001,
+        1202002,
+        1202003,
+        1202004,
+        1202005,
+        1202006,
+        1202007,
+        1202009,
+        1202011,
+        1202012,
+        1202013,
+        1202014,
+        1202015,
+        1202016,
+        1202017,
+        1202018,
+        1202019,
+        1202023,
+        1202024,
+        1202025,
+        1202027,
+        1202028,
+        1202029,
+        1202030,
+        1202031,
+        1202033,
+        1202035,
+        1202036,
+        1202039,
+        1202040,
+        1202041,
+        1202042,
+        1202043,
+        1202045,
+        1202047,
+        1202048,
+        1202049,
+        1202050,
+        1202051,
+        1202052,
+        1202053,
+        1202054,
+        1202055,
+        1202059,
+        1202060,
+        1202061,
+        1202062,
+        1202063,
+        1202064,
+        1202065,
+        1202066,
+        1202067
+      ],
+      "same_length": false,
+      "trailing_length_delta": 12
+    },
+    "comparisons": {
+      "33": {
+        "complete_cil_identical_after_reverting_exact_create_rule_change": true,
+        "includes_other_av_booleans_types_permissive_mls_and_policycaps": true,
+        "no_cross_type_dyntransition_added": true,
+        "only_socket_probe_create_added": true,
+        "rules": [
+          {
+            "added_permissions": [
+              "create"
+            ],
+            "after_rule": "(allow journalctl_t self (unix_dgram_socket (create)))",
+            "before_rule": null,
+            "contract": "socket_probe_create",
+            "exact_reviewed_permissions_added": true,
+            "original_rule_present": false,
+            "removed_permissions": []
+          }
+        ],
+        "target_journal_sock_file_getattr_not_added": true
+      },
+      "35": {
+        "complete_cil_identical_after_reverting_exact_create_rule_change": true,
+        "includes_other_av_booleans_types_permissive_mls_and_policycaps": true,
+        "no_cross_type_dyntransition_added": true,
+        "only_socket_probe_create_added": true,
+        "rules": [
+          {
+            "added_permissions": [
+              "create"
+            ],
+            "after_rule": "(allow journalctl_t self (unix_dgram_socket (create)))",
+            "before_rule": null,
+            "contract": "socket_probe_create",
+            "exact_reviewed_permissions_added": true,
+            "original_rule_present": false,
+            "removed_permissions": []
+          }
+        ],
+        "target_journal_sock_file_getattr_not_added": true
+      }
+    },
+    "completed": true,
+    "exports": {
+      "candidate-v33": {
+        "line_count": 356736,
+        "path": "/work/selinux-socket-probe-20261123/compare-01/candidate-v33.cil",
+        "sha256": "6d81bc7ebf3cab9bfe047436c8a4591877e894effad33ea5e81d99cc5549d53e",
+        "size": 26816270
+      },
+      "candidate-v35": {
+        "line_count": 356736,
+        "path": "/work/selinux-socket-probe-20261123/compare-01/candidate-v35.cil",
+        "sha256": "6d81bc7ebf3cab9bfe047436c8a4591877e894effad33ea5e81d99cc5549d53e",
+        "size": 26816270
+      },
+      "original-v33": {
+        "line_count": 356735,
+        "path": "/work/selinux-socket-probe-20261123/compare-01/original-v33.cil",
+        "sha256": "74839737f1c0dd679cbe3d288bdb8e1342816f71dcd18d9114565ef8cc2b8501",
+        "size": 26816215
+      },
+      "original-v35": {
+        "line_count": 356735,
+        "path": "/work/selinux-socket-probe-20261123/compare-01/original-v35.cil",
+        "sha256": "74839737f1c0dd679cbe3d288bdb8e1342816f71dcd18d9114565ef8cc2b8501",
+        "size": 26816215
+      }
+    },
+    "library": {
+      "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+      "size": 802880
+    }
+  },
+  "comparison_baseline": {
+    "fresh_v33": {
+      "fresh_parse_without_prior_cil_export": true,
+      "kernel_export_identity_asserted": false,
+      "path": "/work/selinux-socket-probe-20261123/compare-01/original-converted-v33.policy",
+      "sha256": "9b39b5a59771bf3f7ac1119979ac09ca7c579fd5504b57f2970008b6ee200afe",
+      "size": 3835444,
+      "version": 33
+    },
+    "policy": {
+      "sha256": "727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502",
+      "size": 3835456
+    },
+    "prior_six_permission_report": {
+      "mode": "0o644",
+      "path": "docs/research/2026-11-23/evidence/selinux-standard-service-policy.json",
+      "sha256": "fae6bd38484e0b966a2d4c20e3cf928366b402bcd899932ce41d14bdf0df7a13",
+      "size": 38773
+    }
+  },
+  "derivation": {
+    "comparison_baseline": "fixed 727cd98 six-permission policy, full 35 and fresh 33 CIL",
+    "outputs": {
+      "build_policy.py": {
+        "mode": "0o755",
+        "sha256": "5bece11e18eac452206be0fb6ca19a5c4887a05b89b5cd93d65e4172db85a030",
+        "size": 14856
+      },
+      "compare_policy.py": {
+        "mode": "0o755",
+        "sha256": "cb52113795010fc56887ca1708dbb064bcbbe349fb39a49c4570d28c0072c723",
+        "size": 11398
+      },
+      "tb371fc_socket_probe.cil": {
+        "mode": "0o644",
+        "sha256": "72a3dc94296a5b99b6c6b2cd6fc376f88129c73c211035065e6109f44eaf3cde",
+        "size": 344
+      }
+    },
+    "parents": {
+      "scripts/research/selinux/standard-services/build_policy.py": {
+        "sha256": "c1d3125b2ad211bb10db36ec6c72aceb21e46af49537753c7ed24a3c7d74c637",
+        "size": 14787
+      },
+      "scripts/research/selinux/standard-services/compare_policy.py": {
+        "sha256": "5cd9b4e3a57b3a856ef9ecf22e295ef566933aa42f6c7354ddf953c46159bfab",
+        "size": 11919
+      },
+      "scripts/research/selinux/standard-services/tb371fc_standard_services.cil": {
+        "sha256": "791afa8483adb1ccbdfe559bf0b574e9aff9fd4490407d6bf2f258d94fffde2a",
+        "size": 289
+      }
+    },
+    "scope": "fresh stock-store rebuild, prior six permissions plus only self datagram create"
+  },
+  "enforcing_changed": false,
+  "fresh_candidate_v33": {
+    "fresh_parse_without_prior_cil_export": true,
+    "kernel_export_identity_asserted": false,
+    "path": "/work/selinux-socket-probe-20261123/compare-01/candidate-converted-v33.policy",
+    "sha256": "fe71750b659e71969145d89d08153196f21b46e6d66c6f28e09f8b11e739e53e",
+    "size": 3835456,
+    "version": 33
+  },
+  "full_module_added_permission_count_relative_to_stock": 7,
+  "full_module_rule_count": 6,
+  "hardware_acceptance_passes_added": 0,
+  "interpretation_limits": [
+    "The fresh v33 serialization is an offline candidate artifact, not V8 runtime bytes and not a predicted V9 kernel export hash.",
+    "The comparison baseline is the prior six-permission candidate. Complete 35 and fresh33 CIL exports become byte-identical after removing only the new self datagram create rule.",
+    "Diagnostic socket attribute/data/option and net_admin decisions remain DENY. Their results are controls, not evidence that those calls were attempted.",
+    "No policy was loaded into a kernel, no replacement VM was run, and no owner-tablet action was performed by this work.",
+    "A following independent VM must still retain its actual loaded policy and pass all full-log AVC/loss and behavior gates."
+  ],
+  "jobs": {
+    "build": {
+      "log_identity": {
+        "sha256": "d2ed651b1f84e2db5179123af647a2a7ae14c2f70262683956531a968293ed6c",
+        "size": 1354
+      },
+      "log_private_path": "/work/tb371fc-socket-policy-build-01.log",
+      "original_metadata": {
+        "sha256": "ba3c9eeece29b0acebba3a8e9aab177b106ad8237b9e143cd17874e4520b0111",
+        "size": 440
+      },
+      "record": {
+        "command": [
+          "python3",
+          "/work/selinux-socket-probe-20261123/recipe-v1/build_policy.py",
+          "--source-root",
+          "/work/fedora-input-system-v3/rootfs",
+          "--work",
+          "/work/selinux-socket-probe-20261123/build-01",
+          "--module",
+          "/work/selinux-socket-probe-20261123/recipe-v1/tb371fc_socket_probe.cil"
+        ],
+        "elapsed_seconds": 247.81853468896588,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T08:50:29.310392+00:00"
+      },
+      "record_private_path": "/work/tb371fc-socket-policy-build-01.json"
+    },
+    "compare": {
+      "log_identity": {
+        "sha256": "584b51fbf0c671e64eee69b6e3e4f988cc2102cc05a38897e6b79c2a03366528",
+        "size": 5037
+      },
+      "log_private_path": "/work/tb371fc-socket-policy-compare-01.log",
+      "original_metadata": {
+        "sha256": "8c64da89a72c7b23b151edb4ac5a8cf8f293f098473b1e59b3ecf5c238d228da",
+        "size": 953
+      },
+      "record": {
+        "command": [
+          "/usr/bin/qemu-aarch64",
+          "-L",
+          "/work/fedora-input-system-v3/rootfs",
+          "-E",
+          "PYTHONHOME=/work/fedora-input-system-v3/rootfs/usr",
+          "/work/fedora-input-system-v3/rootfs/usr/bin/python3",
+          "-B",
+          "/work/selinux-socket-probe-20261123/recipe-v1/compare_policy.py",
+          "--original",
+          "/work/selinux-standard-services-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35",
+          "--candidate",
+          "/work/selinux-socket-probe-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35",
+          "--candidate-size",
+          "3835468",
+          "--candidate-sha256",
+          "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+          "--library",
+          "/work/fedora-input-system-v3/rootfs/usr/lib64/libsepol.so.2",
+          "--output",
+          "/work/selinux-socket-probe-20261123/compare-01"
+        ],
+        "elapsed_seconds": 82.5944042810006,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T08:55:45.238517+00:00"
+      },
+      "record_private_path": "/work/tb371fc-socket-policy-compare-01.json"
+    },
+    "query": {
+      "log_identity": {
+        "sha256": "480680db6d263610570c6c066e605af8f0bbe85174ef56aeec2c9b2818284828",
+        "size": 2677
+      },
+      "log_private_path": "/work/tb371fc-socket-policy-query-01.log",
+      "original_metadata": {
+        "sha256": "5973cf4785a28fb52126c35e7e433f61930a574c152ae8761d2aa0f685ce0000",
+        "size": 229
+      },
+      "record": {
+        "command": [
+          "python3",
+          "/work/selinux-socket-probe-20261123/query-recipe-v1/run_candidate_query.py"
+        ],
+        "elapsed_seconds": 5.3807790070422925,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T08:58:52.525455+00:00"
+      },
+      "record_private_path": "/work/tb371fc-socket-policy-query-01.json"
+    }
+  },
+  "kernel_policy_loaded_or_written": false,
+  "original_byte_records": {
+    "build-01/result.json": {
+      "mode": "0o644",
+      "path": "docs/research/2026-11-23/evidence/selinux-socket-probe-policy-build.json",
+      "sha256": "170bc6b5a3c2d13a1460595369df3809452cffdf1e1f69cb5ff64c6f79c1deaa",
+      "size": 15347
+    },
+    "compare-01/result.json": {
+      "mode": "0o644",
+      "path": "docs/research/2026-11-23/evidence/selinux-socket-probe-policy-compare.json",
+      "sha256": "584b51fbf0c671e64eee69b6e3e4f988cc2102cc05a38897e6b79c2a03366528",
+      "size": 5037
+    },
+    "query-01/execution.json": {
+      "mode": "0o644",
+      "path": "docs/research/2026-11-23/evidence/selinux-socket-probe-policy-query-execution.json",
+      "sha256": "480680db6d263610570c6c066e605af8f0bbe85174ef56aeec2c9b2818284828",
+      "size": 2677
+    },
+    "query-01/stdout.json": {
+      "mode": "0o644",
+      "path": "docs/research/2026-11-23/evidence/selinux-socket-probe-policy-query.json",
+      "sha256": "35e2473b2bbd6526d8b6d823997fcf46fca11d2c8c4ea6b04443d8a1c0b0faa0",
+      "size": 14320
+    }
+  },
+  "own_build_compare_query_jobs_complete": true,
+  "owner_linux_runs_added": 0,
+  "prior_failed_v8_reclassified": false,
+  "private_manifests": {
+    "build-01/candidate-after.json": {
+      "sha256": "3346f4abf55946dde0acaed0c4efcbdbbc585504f8454e8da94930328afdee73",
+      "size": 505508
+    },
+    "build-01/candidate-before.json": {
+      "sha256": "5aebdb3c1a04f0b05936bcf460986cd1596adfe6f50ed4ba9bc34e22a6f8df80",
+      "size": 504226
+    },
+    "build-01/candidate-content-diff.json": {
+      "sha256": "3eee73dda92e203ff653d6bac6c61194ad0d1abcf39ee95a0942869225076e6f",
+      "size": 4768
+    },
+    "build-01/source-after.json": {
+      "sha256": "3ab1550b558272ac17ff8a89520238bac8d2b5c108958e4458210da52fb10534",
+      "size": 504226
+    },
+    "build-01/source-before.json": {
+      "sha256": "3ab1550b558272ac17ff8a89520238bac8d2b5c108958e4458210da52fb10534",
+      "size": 504226
+    }
+  },
+  "r1_proot_used": false,
+  "receipt": {
+    "expanded_sha256": "fa8c727fe48778c01ab3d4ac3252b9eaf3eca4c47f052bfd0df9ea572d517056",
+    "expanded_size": 55042
+  },
+  "related_evidence": {
+    "source_and_actual_v8_query": {
+      "mode": "0o644",
+      "path": "docs/research/2026-11-23/evidence/selinux-journalctl-socket-probe.json",
+      "sha256": "02c7a77788f52195dd54558ad86e9c31348bc9d37ec4465c9db669d2a360b762",
+      "size": 59039
+    },
+    "unchanged_v8_failure": {
+      "mode": "0o644",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4e-persistent-result-failed-verify.json",
+      "sha256": "ac6db6cac9ad5d375e1b054ac3c70c8bef877b994b28662488f368888412f478",
+      "size": 676766
+    }
+  },
+  "schema_version": 1,
+  "scope": "host/container build and direct-QEMU ARM64 userspace policy qualification; no replacement VM",
+  "scripts": {
+    "build_policy.py": {
+      "mode": "0o755",
+      "path": "scripts/research/selinux/socket-probe/build_policy.py",
+      "sha256": "5bece11e18eac452206be0fb6ca19a5c4887a05b89b5cd93d65e4172db85a030",
+      "size": 14856
+    },
+    "compare_policy.py": {
+      "mode": "0o755",
+      "path": "scripts/research/selinux/socket-probe/compare_policy.py",
+      "sha256": "cb52113795010fc56887ca1708dbb064bcbbe349fb39a49c4570d28c0072c723",
+      "size": 11398
+    },
+    "query_candidate.py": {
+      "mode": "0o755",
+      "path": "scripts/research/selinux/socket-probe/query_candidate.py",
+      "sha256": "34e2b4a250bceca14d30a56b84437a45b9d57bf3ebf5c8d4cba152a0a2206e8d",
+      "size": 11794
+    },
+    "query_journalctl_socket_probe.py": {
+      "mode": "0o755",
+      "path": "scripts/research/selinux/socket-probe/query_journalctl_socket_probe.py",
+      "sha256": "fb51735ec147fee035c0fe091d6f3172fdef0b5c1290d0fab072457c444837ec",
+      "size": 10631
+    },
+    "run_candidate_query.py": {
+      "mode": "0o755",
+      "path": "scripts/research/selinux/socket-probe/run_candidate_query.py",
+      "sha256": "df330458e58498d975955a5a18b1859a5e1a4edb1366a9430d73b1922e1bb92e",
+      "size": 5220
+    },
+    "tb371fc_socket_probe.cil": {
+      "mode": "0o644",
+      "path": "scripts/research/selinux/socket-probe/tb371fc_socket_probe.cil",
+      "sha256": "72a3dc94296a5b99b6c6b2cd6fc376f88129c73c211035065e6109f44eaf3cde",
+      "size": 344
+    }
+  },
+  "source_atime_unchanged_asserted": false,
+  "source_subtrees_unchanged_including_content_ownership_mode_mtime_ctime": true,
+  "status": "fresh candidate built; complete CIL comparison and 19 effective-access contracts passed offline",
+  "title": "Create-only socket-xattr probe policy candidate",
+  "virtual_machine_started": false,
+  "workspace": "/work/selinux-socket-probe-20261123"
+}

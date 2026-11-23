@@ -1,0 +1,17 @@
+{
+  "command": [
+    "python3",
+    "-u",
+    "/tank/shared/projects/tb371fc-linux/private/research5-services-transfer-20261123/run_transfer.py",
+    "--packet-sha256",
+    "275856e41c8ee98fbc21b1ab8e19448d12fd12d0072d077f62bbc2f004908776",
+    "--report-sha256",
+    "69d0b558c99bdfb339df8b3b9baca8bb1ee4d0cb2e46dd9b3b7fef3ab69aaad2"
+  ],
+  "pane": "%332",
+  "pane_pid": "661354",
+  "physical_hardware_tested": false,
+  "real_job_in_tmux": true,
+  "session": "tb371fc-research5-transfer",
+  "started_utc": "2026-11-23T10:07:15.372718+00:00"
+}

@@ -1,0 +1,5 @@
+dracut[E]: No '/dev/log' or 'logger' included for syslog logging
+ldconfig: Can't create temporary cache file /etc/ld.so.cache~: No such file or directory
+dracut[E]: ldconfig exited ungracefully
+Not removing /var/tmp/dracut.dCdOYVE.
+FEDORA_R4F_MAINTENANCE_AND_PRODUCTION_INITRAMFS_VERIFIED

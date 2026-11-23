@@ -32,6 +32,20 @@ stack, with Android parity or better for measured performance, latency, quality
 and energy. The research kernel builds and generic QEMU boots add build evidence;
 they do not close the physical hardware cases in this table.
 
+The independent [research5 service-prerequisite kernel](research/2026-11-23/research5-services-kernel.md)
+now has a complete Image, 84 signed modules, the unchanged joint display/input
+DT and a verified shared transfer. It does not have a new R5 system-VM result
+or physical peripheral result. The latest actual Fedora production run remains
+v8 with successful guest behavior but one overall-failing AVC; the
+[first v9 image attempt](research/2026-11-23/fedora-r4f-image-failed.md) stops at a
+host mkfs timeout before any VM. The latest
+[17:36 Shanghai USB pair](research/2026-11-23/usb-transport-recheck-20261123T093624Z.md)
+still establishes no owner-to-doesvm data/recovery link. Owner native Linux
+remains 0 runs and 0 passes; the historical rows are not reclassified.
+The [first Nix registered-root preparation](research/2026-11-23/nixos-store-preparation-failed.md)
+also retains its cache-copy timeout before any root image or PID1; successful
+source verification does not close a peripheral case.
+
 The later [owner peripheral inventory](research/2026-11-23/android-peripheral-inventory.md)
 adds a material distinction: this owner's Android SensorService reports
 TDK-Invensense `icm4x6xx` acceleration/gyroscope entries, whereas the historical

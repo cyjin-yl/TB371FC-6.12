@@ -1,0 +1,41 @@
+{
+  "all_byte_and_mode_verified": true,
+  "files": [
+    {
+      "bytes": 14314,
+      "mode": 493,
+      "name": "build_system.py",
+      "sha256": "053178a79838a69440a5e18f01f4fc9a9dc8a81c11347f1689c8e062d530439a"
+    },
+    {
+      "bytes": 21098,
+      "mode": 493,
+      "name": "inspect_system.py",
+      "sha256": "dbcd4389a5f88549f9bee645c0faa047a13005206933790a589a52b23e5e4ba1"
+    },
+    {
+      "bytes": 6039,
+      "mode": 420,
+      "name": "services-contract.json",
+      "sha256": "3b9730335d5573d98f2f9382f83ba79810c9dd563a9e9eed83668a9b3f24ce21"
+    },
+    {
+      "bytes": 356,
+      "mode": 420,
+      "name": "system.config",
+      "sha256": "5f2ed320c037194509cba247eaebdf36b63cf1663081d0b7a347ca28233b13b1"
+    },
+    {
+      "bytes": 1546,
+      "mode": 493,
+      "name": "run_job.py",
+      "sha256": "94b3d3692adbbbbbcec8cf2d84718bf5eb6c0ef0278145add177c4c1e92d63fe"
+    }
+  ],
+  "old_objects_copied": false,
+  "old_private_key_copied": false,
+  "physical_hardware_tested": false,
+  "schema_version": 1,
+  "source_preparation_passed": true,
+  "vm_started": false
+}

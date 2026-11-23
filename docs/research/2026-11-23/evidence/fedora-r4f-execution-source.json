@@ -1,0 +1,199 @@
+{
+  "invocation_id": "67c43daba4bf43418f4b954fc102beaa",
+  "launcher_result": {
+    "command": [
+      "systemd-run",
+      "--unit=tb371fc-r4f-full-01",
+      "--description=TB371FC R4F isolated persistent-result full system qualification",
+      "--property=Type=exec",
+      "--property=TimeoutStopSec=75",
+      "--",
+      "docker",
+      "exec",
+      "tb371fc-build-20261123",
+      "python3",
+      "/work/fedora-r4f-source-overlay-v1/scripts/research/input/system-integration/profiles/persistent-result-v9/launch_pipeline.py"
+    ],
+    "launch_exit_code": 0,
+    "stderr": "Running as unit: tb371fc-r4f-full-01.service; invocation ID: 67c43daba4bf43418f4b954fc102beaa\n",
+    "stdout": ""
+  },
+  "materialization_readback": {
+    "command": [
+      "python3",
+      "/work/fedora-r4f-source-overlay-v1/scripts/research/input/system-integration/profiles/persistent-result-v9/materialize_recipe.py",
+      "--repo",
+      "/work/fedora-r4f-source-overlay-v1"
+    ],
+    "file_count": 25,
+    "materializer_exit_code": 0,
+    "packet_sha256": "05ddecf0957fb1b4f8201a521543979d72d603402061363dc048a2d8922b470c",
+    "packet_size": 82271,
+    "physical_tablet_tested": false,
+    "recipe": "/work/fedora-input-system-recipe-r4-v7",
+    "recipe_file_count": 20,
+    "recipe_files_readback_verified": true,
+    "recipe_manifest_sha256": "927fd0755f54f303adac25daa8342bfe4615d0d42ff9a07361d29226f7cdf947",
+    "schema_version": 1,
+    "source_readback_verified": true,
+    "stderr": "",
+    "stdout": "{\"file_count\": 20, \"output\": \"/work/fedora-input-system-recipe-r4-v7\", \"recipe_manifest\": {\"sha256\": \"927fd0755f54f303adac25daa8342bfe4615d0d42ff9a07361d29226f7cdf947\", \"size\": 2674}}\n"
+  },
+  "original_sources_modified": false,
+  "overlay": "/work/fedora-r4f-source-overlay-v1",
+  "packet": {
+    "file_count": 25,
+    "sha256": "05ddecf0957fb1b4f8201a521543979d72d603402061363dc048a2d8922b470c",
+    "size": 82271
+  },
+  "physical_tablet_tested": false,
+  "profile_manifest": {
+    "sha256": "5fb332d61e8e5b9b1699021aba8a5b2658a2763c7897d656692e5a49ddc107e0",
+    "size": 2397
+  },
+  "recipe": "/work/fedora-input-system-recipe-r4-v7",
+  "runtime_pass_asserted_by_this_record": false,
+  "schema_version": 1,
+  "scope": "Actual native materialization and unique pipeline launch; runtime outcome recorded separately",
+  "transport_sources": [
+    {
+      "path": "scripts/research/input/system-integration/profiles/persistent-result-v9/transport/install_overlay.py",
+      "sha256": "f626c17ad74e2ab66f72b3de3b29eb2b1463c87077c0282c10f1e3c61382d851",
+      "size": 3273
+    },
+    {
+      "path": "scripts/research/input/system-integration/profiles/persistent-result-v9/transport/install_and_launch.py",
+      "sha256": "5bd123b6ac81c25c6f8026701ddbce50e214faca9302f321ecb35c812f0cce64",
+      "size": 4538
+    }
+  ],
+  "unit": "tb371fc-r4f-full-01.service",
+  "upload_manifest": {
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/assemble_system.py": {
+      "mode": 420,
+      "sha256": "9d698cf253edf526fa9cd81121f5e6d3e60789020fd2f5f5fab784113e8ab0c5",
+      "size": 6041
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/boot_system_vm.py": {
+      "mode": 420,
+      "sha256": "4d1f59691bb4faccdcdbd791ae2120a89e56f7712fd63270f0a2204662842736",
+      "size": 40810
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/early_initramfs.py": {
+      "mode": 420,
+      "sha256": "f3d4871fb4347356a9254634243863a37a62f424fad186e13a4f9ad783299ced",
+      "size": 18212
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/expected-recipe-manifest.json": {
+      "mode": 420,
+      "sha256": "927fd0755f54f303adac25daa8342bfe4615d0d42ff9a07361d29226f7cdf947",
+      "size": 2674
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/finalize_system.py": {
+      "mode": 420,
+      "sha256": "177ba641de6504802e775bc3ebef3bf7833e75248aea1ff191dd2e1b6348fa69",
+      "size": 10874
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/guest_result_file.py": {
+      "mode": 420,
+      "sha256": "8d0ecba854e0d8c6303938c0253d79a72e3a03e2c1190e2ced0e17556f1a23b1",
+      "size": 5302
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/guest_transient_worker.py": {
+      "mode": 420,
+      "sha256": "2efabfc34473ff37f703f71346fa7f61d4666867bea822bb9a6c17a110693b10",
+      "size": 8776
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/guest_verify_system.py": {
+      "mode": 420,
+      "sha256": "fc2dea25edc8ac4eb6a76ea77ecff799b8abf69e8cb47548bfefaef59eaaac16",
+      "size": 41210
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/initrd-domain-proof.service": {
+      "mode": 420,
+      "sha256": "1ac451e16abf1aeefa3191972370bed649060b1d21fba302a9fff047107d2631",
+      "size": 521
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/initrd-domain-proof.sh": {
+      "mode": 493,
+      "sha256": "3b4b65784b3c8bd13fde728e780bcd101235986c5756ac1f24000d024cd50d95",
+      "size": 5312
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/launch_pipeline.py": {
+      "mode": 420,
+      "sha256": "2fd4bcb57a4d1440e9711941febeb2e633325e6312804c5bd42becbb8ec136ae",
+      "size": 4148
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/materialize_recipe.py": {
+      "mode": 420,
+      "sha256": "95e1fcd4674f4d0db5a3a24bd23627bb9d4d73e8bf6e838032aa7a75a32b0e64",
+      "size": 4626
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/prior-profile-source-manifest.json": {
+      "mode": 420,
+      "sha256": "f705c87a1c5efe082ae134febc139e8ce437818951c83a9709bd475d17fc60d2",
+      "size": 2397
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/probe_fd_route_v2.py": {
+      "mode": 420,
+      "sha256": "5ccc94fdc0bda5da5bf7cab46f6a195a86e51d6d85cddebcd31602daf3b19f5b",
+      "size": 15438
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/profile-source-manifest.json": {
+      "mode": 420,
+      "sha256": "5fb332d61e8e5b9b1699021aba8a5b2658a2763c7897d656692e5a49ddc107e0",
+      "size": 2397
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/qualify_udev_handoff.py": {
+      "mode": 420,
+      "sha256": "6555c14486322084e8c5c271ca103419e962407e449b396cbcd20282eec9c2fc",
+      "size": 6132
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/read_vm_result.py": {
+      "mode": 420,
+      "sha256": "e28f8a031c43e096bb0741a109ab03e8b1d725341ac3a71d1e5730cd10e2393d",
+      "size": 8311
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/retain_policy_export.py": {
+      "mode": 420,
+      "sha256": "c07a7402b14361468f9fe32ee1bc8453e167d1fb688c7c3aa10312dd4a97d575",
+      "size": 3993
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/run_pipeline.py": {
+      "mode": 420,
+      "sha256": "5eaedb6808dbc2cbd58390f52a8f2237715ad2d368b57736778750ff54fe444e",
+      "size": 5905
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/stage_system.py": {
+      "mode": 420,
+      "sha256": "13a146a04367fe109298678f0c221912693174dfd88aa634cfa5b47396f9f321",
+      "size": 13569
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/system_common.py": {
+      "mode": 420,
+      "sha256": "dbb9d73e10f30fb51940b880bdd65c3da0ac4a5f78836cba449ff8f338547a41",
+      "size": 4209
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/transient_protocol.py": {
+      "mode": 420,
+      "sha256": "9504ad6c86730caa3e9f2dd571c50b57800e9aaeac2ff5322a6b201032f50cc5",
+      "size": 17436
+    },
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/verify_runtime_policy_initramfs.py": {
+      "mode": 420,
+      "sha256": "9e36bf88b93aa3dda05ddc3ff235ab743ff4c2c80fe8e6b0694175b69e9f497a",
+      "size": 30119
+    },
+    "scripts/research/input/system-integration/verify_early_policy_initramfs.py": {
+      "mode": 493,
+      "sha256": "58a5dba0186174c7442f73c2f8f0a2333599e6cbbcb1cf332169e5df558bfd1e",
+      "size": 27585
+    },
+    "scripts/research/rootfs/verify_initramfs.py": {
+      "mode": 493,
+      "sha256": "263866a1943cd43116e69cb0a8b1081d6ccd1cc93ef98866a4b3eacc00bac58a",
+      "size": 20506
+    }
+  },
+  "work": "/work/fedora-input-system-v9"
+}

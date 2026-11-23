@@ -1,0 +1,10 @@
+{
+  "started_at_utc": "2026-11-23T08:56:06.672837+00:00",
+  "target": "tb371fc-early-selinux-v4:build",
+  "command": "exec python3 -u /tank/shared/projects/tb371fc-linux/private/early-selinux-socket-probe-20261123/run_build.py --packet-sha256 c19ebf6c4f2373cf2684f1f38fbfe4c992efb1d62e194a03ae8aa040b4454ffe > /tank/shared/projects/tb371fc-linux/private/early-selinux-socket-probe-20261123/driver.log 2>&1",
+  "sources": {
+    "source-packet.json": "c19ebf6c4f2373cf2684f1f38fbfe4c992efb1d62e194a03ae8aa040b4454ffe",
+    "run_build.py": "a34c342b777759e47e743cdcfd49e756c341d339eb5bccd9b5719e674893e64a"
+  },
+  "pane": "%248 357095"
+}

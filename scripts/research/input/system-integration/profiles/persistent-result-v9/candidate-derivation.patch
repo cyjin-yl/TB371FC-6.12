@@ -1,0 +1,836 @@
+--- frozen-v8/assemble_system.py
++++ candidate-v9/assemble_system.py
+@@ -13,8 +13,8 @@
+ HERE = Path(__file__).resolve().parent
+ VALIDATOR = HERE / 'verify_initramfs.py'
+ VALIDATOR_SHA = '263866a1943cd43116e69cb0a8b1081d6ccd1cc93ef98866a4b3eacc00bac58a'
+-POLICY_SOURCE = Path('/work/selinux-standard-services-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35')
+-POLICY_SHA = '727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502'
++POLICY_SOURCE = Path('/work/selinux-socket-probe-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35')
++POLICY_SHA = 'ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798'
+ ORIGINAL_POLICY_SHA = '928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430'
+ 
+ 
+@@ -22,16 +22,16 @@
+     """Archive the copied old payload, then replace only this candidate's policy."""
+     destination = ROOT / 'etc/selinux/targeted/policy/policy.35'
+     backup = ROOT / 'usr/share/tb371fc/research1-policy-archive/policy.35'
+-    pending = destination.with_name('policy.35.tb371fc-r4e-pending')
++    pending = destination.with_name('policy.35.tb371fc-r4f-pending')
+     check(destination, ORIGINAL_POLICY_SHA, 3835432)
+     original_mode = destination.stat().st_mode & 0o7777
+-    check(POLICY_SOURCE, POLICY_SHA, 3835456)
++    check(POLICY_SOURCE, POLICY_SHA, 3835468)
+     copy_new(destination, backup)
+     copy_new(POLICY_SOURCE, pending)
+     pending.chmod(original_mode)
+     pending.replace(destination)
+     check(backup, ORIGINAL_POLICY_SHA, 3835432)
+-    check(destination, POLICY_SHA, 3835456)
++    check(destination, POLICY_SHA, 3835468)
+     save('policy-replacement.json', {'only_replaced_path': 'etc/selinux/targeted/policy/policy.35',
+         'original_sha256': ORIGINAL_POLICY_SHA, 'original_preserved_in_candidate': str(backup),
+         'candidate_sha256': POLICY_SHA, 'candidate_source': str(POLICY_SOURCE),
+@@ -46,33 +46,33 @@
+                    f'LABEL={LABEL} / ext4 defaults 0 1\n')
+     preserve_write('etc/hostname', 'tb371fc-research4-vm\n')
+     preserve_write('etc/machine-id', '')
+-    copy_new(HERE / 'guest_verify_system.py', ROOT / 'usr/libexec/tb371fc-r4e-vm-verify.py')
+-    copy_new(HERE / 'guest_transient_worker.py', ROOT / 'usr/libexec/tb371fc-r4e-worker.py')
++    copy_new(HERE / 'guest_verify_system.py', ROOT / 'usr/libexec/tb371fc-r4f-vm-verify.py')
++    copy_new(HERE / 'guest_transient_worker.py', ROOT / 'usr/libexec/tb371fc-r4f-worker.py')
+     copy_new(HERE / 'transient_protocol.py', ROOT / 'usr/libexec/tb371fc_transient_protocol.py')
+     copy_new(HERE / 'probe_fd_route_v2.py', ROOT / 'usr/libexec/tb371fc_fd_route.py')
+     copy_new(HERE / 'guest_result_file.py', ROOT / 'usr/libexec/tb371fc_result_file.py')
+     install_policy_candidate()
+-    proof_directory = ROOT / 'var/lib/tb371fc-r4e-proof'
++    proof_directory = ROOT / 'var/lib/tb371fc-r4f-proof'
+     proof_directory.mkdir(mode=0o700)
+-    preserve_write('etc/systemd/system/tb371fc-r4e-validation.service', '''[Unit]
++    preserve_write('etc/systemd/system/tb371fc-r4f-validation.service', '''[Unit]
+ Description=Verify the independent research4 Fedora management-domain contract
+ After=multi-user.target
+-ConditionKernelCommandLine=tb371fc.r4e-phase
++ConditionKernelCommandLine=tb371fc.r4f-phase
+ 
+ [Service]
+ Type=oneshot
+ SELinuxContext=system_u:system_r:sysadm_t:s0
+-ExecStart=/usr/bin/python3 /usr/libexec/tb371fc-r4e-vm-verify.py
++ExecStart=/usr/bin/python3 /usr/libexec/tb371fc-r4f-vm-verify.py
+ StandardOutput=journal+console
+ StandardError=journal+console
+ Environment=LC_ALL=C
+ TasksMax=128
+ TimeoutStartSec=600
+ ''')
+-    preserve_write('etc/systemd/system/tb371fc-r4e-validation.target', '''[Unit]
++    preserve_write('etc/systemd/system/tb371fc-r4f-validation.target', '''[Unit]
+ Description=Isolated research4 ARM64 system validation
+-Requires=multi-user.target tb371fc-r4e-validation.service
+-After=multi-user.target tb371fc-r4e-validation.service
++Requires=multi-user.target tb371fc-r4f-validation.service
++After=multi-user.target tb371fc-r4f-validation.service
+ AllowIsolate=yes
+ ''')
+     # The prior generic dracut policy is preserved and replaced in this copy.
+@@ -83,12 +83,12 @@
+ add_dracutmodules+=" systemd systemd-initrd rootfs-block kernel-modules selinux "
+ omit_dracutmodules+=" network-manager network-legacy nfs iscsi "
+ ''')
+-    run_guest(['/usr/bin/systemd-analyze', 'verify', 'tb371fc-r4e-validation.service', 'tb371fc-r4e-validation.target'])
++    run_guest(['/usr/bin/systemd-analyze', 'verify', 'tb371fc-r4f-validation.service', 'tb371fc-r4f-validation.target'])
+     save('configured.json', {'profile_sha256': sha(PROFILE),
+                              'guest_verifier_sha256': sha(HERE / 'guest_verify_system.py'),
+                              'validation_target_is_default': False, 'root_label': LABEL,
+                              'kernel_release': data['kernel_release'], 'tablet_partition_mapping': None})
+-    print('FEDORA_R4E_CONFIGURED', flush=True)
++    print('FEDORA_R4F_CONFIGURED', flush=True)
+ 
+ 
+ def initrd():
+@@ -113,7 +113,7 @@
+     save('image.before-boot.json', {'path': str(IMAGE), 'size_bytes': IMAGE.stat().st_size,
+                                   'sha256': sha(IMAGE), 'filesystem': 'ext4', 'label': LABEL,
+                                   'physical_block_device_used': False})
+-    print('FEDORA_R4E_IMAGE_CREATED', flush=True)
++    print('FEDORA_R4F_IMAGE_CREATED', flush=True)
+ 
+ 
+ if __name__ == '__main__':
+--- frozen-v8/boot_system_vm.py
++++ candidate-v9/boot_system_vm.py
+@@ -21,7 +21,7 @@
+ cancelled = None
+ MANAGEMENT_CONTEXT = 'system_u:system_r:sysadm_t:s0'
+ AUDIT_PRINTK_MARKER = re.compile(
+-    r'TB371FC_EARLY_SELINUX_V3 AUDIT_PRINTK_UNLIMITED scope=generic-vm opt_in=1 '
++    r'TB371FC_EARLY_SELINUX_V4 AUDIT_PRINTK_UNLIMITED scope=generic-vm opt_in=1 '
+     r'compatible=linux,dummy-virt before=([0-9]+) after=0 '
+     r'burst_before=([0-9]+) burst_after=([0-9]+) policy_load_attempted=0')
+ API_CONTEXTS = {
+@@ -36,9 +36,9 @@
+ def descriptor_route_matches(proof, mode, restriction, data, profile_sha):
+     """Independently compare the forwarded/READY-held-worker observations."""
+     try:
+-        units = {'noop': 'tb371fc-r4e-bus-proof.service',
+-                 'pids': 'tb371fc-r4e-pids-proof.service',
+-                 'proc-read': 'tb371fc-r4e-fs-proof.service'}
++        units = {'noop': 'tb371fc-r4f-bus-proof.service',
++                 'pids': 'tb371fc-r4f-pids-proof.service',
++                 'proc-read': 'tb371fc-r4f-fs-proof.service'}
+         worker, properties = proof['actual_worker'], proof['unit_properties']
+         client = proof['actual_client']
+         argv = worker['argv']
+@@ -55,7 +55,7 @@
+                 proof['installed_worker_sha256'] == data['transient_worker_sha256'] and
+                 worker['cgroup'] == '0::/system.slice/' + units[mode] and
+                 len(argv) == 7 and argv[:3] == ['/usr/bin/python3',
+-                    '/usr/libexec/tb371fc-r4e-worker.py', mode] and
++                    '/usr/libexec/tb371fc-r4f-worker.py', mode] and
+                 argv[3] == '--nonce' and re.fullmatch('[0-9a-f]{32}', argv[4]) and
+                 argv[5:] == ['--profile-sha256', profile_sha] and
+                 properties['MainPID'] == str(worker['pid']) and
+@@ -169,11 +169,11 @@
+ 
+ def inspect_serial(serial, phase, data, profile_sha, persisted=None):
+     lines = serial.decode(errors='replace').splitlines()
+-    marker = 'TB371FC_R4E_VM_LABEL_COMPLETE' if phase == 'label' else 'TB371FC_R4E_VM_SYSTEM_COMPLETE'
++    marker = 'TB371FC_R4F_VM_LABEL_COMPLETE' if phase == 'label' else 'TB371FC_R4F_VM_SYSTEM_COMPLETE'
+     # The guarded guest writes exact raw /dev/console lines, independent of
+     # journal's timestamp/PID formatting. Only those lines are accepted here.
+     marker_count = sum(line.strip() == marker for line in lines)
+-    failures = {'validation_failure_seen': any('TB371FC_R4E_VM_VALIDATION_FAILED' in line for line in lines),
++    failures = {'validation_failure_seen': any('TB371FC_R4F_VM_VALIDATION_FAILED' in line for line in lines),
+                 'kernel_panic_seen': any('Kernel panic - not syncing' in line for line in lines),
+                 'invalid_initramfs_seen': any('rootfs image is not initramfs' in line for line in lines)}
+     needles = {'autofs4_module_warning_count': "Failed to find module 'autofs4'",
+@@ -293,7 +293,7 @@
+                       proofs['proc_read_restricted'].get('unit_properties', {}).get(key)
+                       for key in ('ControlGroup', 'SELinuxContext', 'TasksMax', 'RuntimeMaxUSec')))
+         export = guest.get('actual_loaded_policy_export', {})
+-        export_ok = (export.get('guest_path') == '/var/lib/tb371fc-r4e-proof/loaded-policy.33' and
++        export_ok = (export.get('guest_path') == '/var/lib/tb371fc-r4f-proof/loaded-policy.33' and
+                      export.get('size') == guest.get('loaded_policy_bytes') and
+                      export.get('sha256') == guest.get('loaded_policy_sha256') and
+                      export.get('version') == 33 and export.get('mode') == 0o600 and
+@@ -336,9 +336,9 @@
+             type(before_tests.get('burst')) is int and before_tests['burst'] >= 0)
+         result['actual_audit_printk_readback_gate'] = audit_observation_ok
+         gates = gates and audit_observation_ok
+-        early = [line for line in lines if line.startswith('TB371FC_EARLY_SELINUX_V3 ')]
++        early = [line for line in lines if line.startswith('TB371FC_EARLY_SELINUX_V4 ')]
+         domain_records = [json.loads(line.split(' ', 1)[1]) for line in lines
+-                          if line.startswith('TB371FC_R4E_INITRD_DOMAINS ')]
++                          if line.startswith('TB371FC_R4F_INITRD_DOMAINS ')]
+         initrd_proof = guest.get('initrd_process_domains', {})
+         policy_access = guest.get('loaded_policy_access', {})
+         gates = (gates and len(domain_records) == 1 and domain_records[0] == initrd_proof and
+@@ -379,10 +379,10 @@
+         audit_printk = [(i, match) for i, line in enumerate(lines)
+                        if (match := AUDIT_PRINTK_MARKER.fullmatch(line))]
+         policy_indices = [i for i, line in enumerate(lines)
+-                          if line.startswith('TB371FC_EARLY_SELINUX_V3 POLICY_LOADED enforcing=1 ')]
++                          if line.startswith('TB371FC_EARLY_SELINUX_V4 POLICY_LOADED enforcing=1 ')]
+         exec_indices = [i for i, line in enumerate(lines)
+-                        if line.startswith('TB371FC_EARLY_SELINUX_V3 EXEC_SYSTEMD enforcing=1 flags=0x828c')]
+-        domain_indices = [i for i, line in enumerate(lines) if line.startswith('TB371FC_R4E_INITRD_DOMAINS ')]
++                        if line.startswith('TB371FC_EARLY_SELINUX_V4 EXEC_SYSTEMD enforcing=1 flags=0x828c')]
++        domain_indices = [i for i, line in enumerate(lines) if line.startswith('TB371FC_R4F_INITRD_DOMAINS ')]
+         migration = {'stage0_count': len(stage0), 'stage1_count': len(stage1),
+                      'policy_load_count': len(policy_indices), 'systemd_exec_count': len(exec_indices),
+                      'postexec_domain_proof_count': len(domain_indices), 'passed': False}
+@@ -482,10 +482,10 @@
+     command_line = (f'console=ttyAMA0 root=LABEL={LABEL} rootfstype=ext4 rw '
+                     'rd.luks=0 rd.lvm=0 rd.md=0 rd.dm=0 rd.neednet=0 '
+                     'module.sig_enforce=1 '
+-                    'systemd.unit=tb371fc-r4e-validation.target systemd.show_status=yes '
++                    'systemd.unit=tb371fc-r4f-validation.target systemd.show_status=yes '
+                     'systemd.log_target=console systemd.log_level=debug selinux=1 enforcing=' +
+                     ('0' if args.phase == 'label' else '1 rd.tb371fc.early-selinux=1 rd.tb371fc.tmpfs-root=1 rdinit=/init.tmpfs rd.tb371fc.audit-printk-unlimited=1') +
+-                    f' tb371fc.r4e-phase={args.phase} tb371fc.r4e-profile={profile_sha}')
++                    f' tb371fc.r4f-phase={args.phase} tb371fc.r4f-profile={profile_sha}')
+     command = ['/usr/bin/qemu-system-aarch64', '-machine', 'virt', '-cpu', 'cortex-a72',
+                '-smp', '2', '-m', '2048', '-display', 'none', '-monitor', 'none',
+                '-serial', 'stdio', '-nic', 'none', '-no-reboot', '-kernel', str(image),
+@@ -531,7 +531,7 @@
+                 with log.open('rb') as reader:
+                     reader.seek(max(0, size - 32000))
+                     tail = reader.read(32000)
+-                if b'TB371FC_R4E_VM_VALIDATION_FAILED' in tail or b'Kernel panic - not syncing' in tail:
++                if b'TB371FC_R4F_VM_VALIDATION_FAILED' in tail or b'Kernel panic - not syncing' in tail:
+                     reason = 'guest reported failure'
+                     break
+                 time.sleep(0.5)
+--- frozen-v8/early_initramfs.py
++++ candidate-v9/early_initramfs.py
+@@ -20,18 +20,18 @@
+ LEGACY = HERE / 'verify_initramfs.py'
+ LEGACY_SHA = '263866a1943cd43116e69cb0a8b1081d6ccd1cc93ef98866a4b3eacc00bac58a'
+ CHECKER = HERE / 'verify_runtime_policy_initramfs.py'
+-CHECKER_SHA = '0ced7a067f49371049502548c3685374f8c4b8b398b6c498afcfb4cebf9eda6d'
++CHECKER_SHA = '9e36bf88b93aa3dda05ddc3ff235ab743ff4c2c80fe8e6b0694175b69e9f497a'
+ PARENT_CHECKER_SHA = '58a5dba0186174c7442f73c2f8f0a2333599e6cbbcb1cf332169e5df558bfd1e'
+ SOURCE = Path('/work/fedora-system-integration-v1/rootfs')
+ BASELINE = SOURCE / 'boot/initramfs-6.12.114-tb371fc-research1.img'
+ BASELINE_SHA = '2741ed3f3b5814b40dd303f4666b6f629c55ad11fd057a6e99f9f6be5e01c543'
+-BOOTSTRAP = Path('/work/early-selinux-standard-services-20261123/build-01/early-init')
+-BOOTSTRAP_SHA = '84cc4868317fd1799ab1ff8f8ba5ae8bf85445dda5d65c3f11e1637aadb599c3'
++BOOTSTRAP = Path('/work/early-selinux-socket-probe-20261123/build-01/early-init')
++BOOTSTRAP_SHA = '0bc3f0fbb814ece1133b16e36c6b3c402fbf5456d366fb99f4fe2783c87c1d14'
+ BOOTSTRAP_SIZE = 72528
+-POLICY_SOURCE = Path('/work/selinux-standard-services-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35')
+-POLICY_SHA = '727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502'
+-PROOF_SCRIPT_SHA = 'da45ac48debefb1eb282adb5574694a66d16522c3de8e668b191e264181adbfc'
+-PROOF_UNIT_SHA = 'f0dedb803142b5633f4431aef31f25c4308523cde460fb56251c9eb80a3286f5'
++POLICY_SOURCE = Path('/work/selinux-socket-probe-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35')
++POLICY_SHA = 'ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798'
++PROOF_SCRIPT_SHA = '3b4b65784b3c8bd13fde728e780bcd101235986c5756ac1f24000d024cd50d95'
++PROOF_UNIT_SHA = '1ac451e16abf1aeefa3191972370bed649060b1d21fba302a9fff047107d2631'
+ HANDOFF = {
+     'init.tmpfs': {'path': Path('/work/early-selinux-rootfs-20261123/build-01/source/stage0.sh'),
+                    'size': 6039, 'sha256': '15905f3993604e6f600a17b556354c2bece12bd5a00256c24cf7838482bb7d7d'},
+@@ -118,8 +118,8 @@
+ def proof_payloads(checker, legacy, image):
+     archive, unused = checker.parse_image(legacy, image)
+     expected = {
+-        'usr/libexec/tb371fc-r4e-initrd-domain-proof.sh': (HERE / 'initrd-domain-proof.sh', 0o755),
+-        'usr/lib/systemd/system/tb371fc-r4e-initrd-domain-proof.service':
++        'usr/libexec/tb371fc-r4f-initrd-domain-proof.sh': (HERE / 'initrd-domain-proof.sh', 0o755),
++        'usr/lib/systemd/system/tb371fc-r4f-initrd-domain-proof.service':
+             (HERE / 'initrd-domain-proof.service', 0o644),
+     }
+     records = []
+@@ -129,11 +129,11 @@
+                 entry['sha256'] != sha(source) or stat.S_IMODE(entry['mode']) != mode):
+             raise ValueError('actual initrd process-proof payload differs from source')
+         records.append(legacy.member_record(entry))
+-    link = 'usr/lib/systemd/system/initrd.target.wants/tb371fc-r4e-initrd-domain-proof.service'
++    link = 'usr/lib/systemd/system/initrd.target.wants/tb371fc-r4f-initrd-domain-proof.service'
+     entry = archive.entries.get(link)
+     if (not entry or entry['kind'] != 'symlink' or
+-            entry['target'] != '../tb371fc-r4e-initrd-domain-proof.service' or
+-            archive.resolve(link)['path'] != 'usr/lib/systemd/system/tb371fc-r4e-initrd-domain-proof.service'):
++            entry['target'] != '../tb371fc-r4f-initrd-domain-proof.service' or
++            archive.resolve(link)['path'] != 'usr/lib/systemd/system/tb371fc-r4f-initrd-domain-proof.service'):
+         raise ValueError('actual initrd process-proof activation link is missing or changed')
+     records.append({**legacy.member_record(entry), 'target': entry['target']})
+     return {'passed': True, 'scope': 'archive bytes and activation only; actual process domains require VM',
+@@ -142,7 +142,7 @@
+ 
+ def build():
+     if not all((CHECKER_SHA, PROOF_SCRIPT_SHA, PROOF_UNIT_SHA)):
+-        raise ValueError('v8 checker/proof source freeze is not yet complete')
++        raise ValueError('v9 checker/proof source freeze is not yet complete')
+     check(HERE / 'verify_early_policy_initramfs.py', PARENT_CHECKER_SHA)
+     for item in HANDOFF.values():
+         check(item['path'], item['sha256'], item['size'])
+@@ -190,8 +190,8 @@
+         if name == 'etc/selinux/targeted/policy/policy.35':
+             if record['sha256'] != '928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430':
+                 raise ValueError('original source policy changed')
+-            check(POLICY_SOURCE, POLICY_SHA, 3835456)
+-            record = {'path': name, 'size': 3835456, 'sha256': POLICY_SHA}
++            check(POLICY_SOURCE, POLICY_SHA, 3835468)
++            record = {'path': name, 'size': 3835468, 'sha256': POLICY_SHA}
+         policy_manifest['files'].append({key: record[key] for key in ('path', 'size', 'sha256')})
+     for item in expected_libraries:
+         record, unused = checker.source_payload(legacy, SOURCE, item['resolved_path'])
+@@ -248,12 +248,12 @@
+     new_lib = checker.EXTRA_LIBRARY_CATALOG['libsepol.so.2']
+     install_fixed(SOURCE / new_lib['resolved_path'], production / new_lib['resolved_path'], new_lib['sha256'])
+     install_fixed(HERE / 'initrd-domain-proof.sh',
+-                  production / 'usr/libexec/tb371fc-r4e-initrd-domain-proof.sh', PROOF_SCRIPT_SHA, 0o755)
++                  production / 'usr/libexec/tb371fc-r4f-initrd-domain-proof.sh', PROOF_SCRIPT_SHA, 0o755)
+     install_fixed(HERE / 'initrd-domain-proof.service',
+-                  production / 'usr/lib/systemd/system/tb371fc-r4e-initrd-domain-proof.service', PROOF_UNIT_SHA, 0o644)
+-    link = production / 'usr/lib/systemd/system/initrd.target.wants/tb371fc-r4e-initrd-domain-proof.service'
++                  production / 'usr/lib/systemd/system/tb371fc-r4f-initrd-domain-proof.service', PROOF_UNIT_SHA, 0o644)
++    link = production / 'usr/lib/systemd/system/initrd.target.wants/tb371fc-r4f-initrd-domain-proof.service'
+     link.parent.mkdir(parents=True, exist_ok=True)
+-    link.symlink_to('../tb371fc-r4e-initrd-domain-proof.service')
++    link.symlink_to('../tb371fc-r4f-initrd-domain-proof.service')
+     expected_cache = cache_and_listing(production, 'production', expected_libraries)
+     production_archive, counts = pack(tree.parent / 'earlycpio', production, 'production')
+     inputs = {'expected_cache': expected_cache, 'expected_libraries': expected_libraries,
+@@ -270,7 +270,7 @@
+         'bootstrap_build_policy_sha256': POLICY_SHA,
+         'bootstrap_build_and_profile_policy_inputs_identical': True,
+         'old_bootstrap_build_input_records_rewritten': False,
+-        'bootstrap_embeds_policy_hash': False, 'bootstrap_policy_size_constant': 3835456,
++        'bootstrap_embeds_policy_hash': False, 'bootstrap_policy_size_constant': 3835468,
+         'size_check_alone_is_not_identity_proof': True,
+         'full_policy_hash_required_by_archive_checker': True,
+         'full_policy_hash_required_by_actual_guest': True,
+@@ -303,4 +303,4 @@
+     retained = WORK / 'retained-dracut-trees'
+     retained.mkdir()
+     tree.parent.rename(retained / tree.parent.name)
+-    print('FEDORA_R4E_MAINTENANCE_AND_PRODUCTION_INITRAMFS_VERIFIED', flush=True)
++    print('FEDORA_R4F_MAINTENANCE_AND_PRODUCTION_INITRAMFS_VERIFIED', flush=True)
+--- frozen-v8/finalize_system.py
++++ candidate-v9/finalize_system.py
+@@ -116,7 +116,7 @@
+         'normal_root_configuration': {'selinux': 'enforcing', 'policy': 'targeted',
+                                       'validation_target_is_default': False,
+                                       'automatic_tablet_kexec': False},
+-        'production_initramfs_scope': 'V3 requires explicit audit observation opt-in and actual linux,dummy-virt; this generic-VM qualification artifact is not a qualified tablet boot initramfs',
++        'production_initramfs_scope': 'V4 requires explicit audit observation opt-in and actual linux,dummy-virt; this generic-VM qualification artifact is not a qualified tablet boot initramfs',
+         'original_fedora_tree_written_by_this_profile': False,
+         'old_research1_files_deleted_by_this_profile': False,
+         'physical_tablet_booted': False, 'physical_tablet_modified': False,
+@@ -135,7 +135,7 @@
+             'Before this profile, PRoot query bindings changed three source directory mtimes; the failed copy remains failed, and the new quiescent copy was qualified independently.',
+             'The controlled verifier and its owned workers use strict existing sysadm_t; this does not qualify every production daemon domain.',
+             'The restrictions on unconfined_service_t FIFO transfer and init_t reading policy remain independently checked.',
+-            'V3 changes only this generic VM printk rate interval to 0 under explicit opt-in; audit queue loss is unchanged and any observed audit loss or suppression fails the run.',
++            'V4 changes only this generic VM printk rate interval to 0 under explicit opt-in; audit queue loss is unchanged and any observed audit loss or suppression fails the run.',
+             'Read-only debugfs does not replay the filesystem journal; unavailable post-failure evidence remains a failed transport contract.',
+         ],
+     }
+--- frozen-v8/guest_result_file.py
++++ candidate-v9/guest_result_file.py
+@@ -13,7 +13,7 @@
+ import re
+ import stat
+ 
+-DIRECTORY = Path('/var/lib/tb371fc-r4e-proof')
++DIRECTORY = Path('/var/lib/tb371fc-r4f-proof')
+ FILENAME = 'system-result.json'
+ GUEST_PATH = str(DIRECTORY / FILENAME)
+ MAX_BYTES = 4 * 1024**2
+@@ -86,7 +86,7 @@
+         digest = hashlib.sha256(raw).hexdigest()
+         # All fields have a closed grammar and the complete receipt stays
+         # below 300 bytes. Concurrent console corruption still fails closed.
+-        receipt = ('TB371FC_R4E_VM_FILE status=' + status + ' boot_id=' + boot_id +
++        receipt = ('TB371FC_R4F_VM_FILE status=' + status + ' boot_id=' + boot_id +
+                    ' profile_sha256=' + profile_sha256 + ' sha256=' + digest +
+                    ' bytes=' + str(len(raw)) + ' END')
+         if len(receipt.encode('ascii')) >= 300:
+--- frozen-v8/guest_transient_worker.py
++++ candidate-v9/guest_transient_worker.py
+@@ -22,13 +22,13 @@
+ import time
+ 
+ PROFILE = Path('/usr/share/tb371fc/system-profile.json')
+-PROFILE_NAME = 'research4-display-input-fedora45-v8-persistent-result'
++PROFILE_NAME = 'research4-display-input-fedora45-v9-persistent-result'
+ CONTEXT = 'system_u:system_r:sysadm_t:s0'
+-UNITS = {'noop': 'tb371fc-r4e-bus-proof.service',
+-         'pids': 'tb371fc-r4e-pids-proof.service',
+-         'proc-read': 'tb371fc-r4e-fs-proof.service'}
+-READY = 'TB371FC_R4E_WORKER_READY '
+-RESULT = 'TB371FC_R4E_WORKER_RESULT '
++UNITS = {'noop': 'tb371fc-r4f-bus-proof.service',
++         'pids': 'tb371fc-r4f-pids-proof.service',
++         'proc-read': 'tb371fc-r4f-fs-proof.service'}
++READY = 'TB371FC_R4F_WORKER_READY '
++RESULT = 'TB371FC_R4F_WORKER_RESULT '
+ 
+ 
+ def require(value, message):
+@@ -163,7 +163,7 @@
+     raw_profile = PROFILE.read_bytes()
+     require(hashlib.sha256(raw_profile).hexdigest() == args.profile_sha256, 'candidate profile differs')
+     profile = json.loads(raw_profile)
+-    require(profile['profile'] == PROFILE_NAME and profile['root_label'] == 'tb371fc-r4e-f45' and
++    require(profile['profile'] == PROFILE_NAME and profile['root_label'] == 'tb371fc-r4f-f45' and
+             profile['validation_selinux_context'] == CONTEXT and
+             profile['transient_selinux_context'] == CONTEXT,
+             'not the explicit new management-domain contract')
+@@ -191,5 +191,5 @@
+     try:
+         raise SystemExit(main())
+     except Exception as error:
+-        emit('TB371FC_R4E_WORKER_ERROR ', {'type': type(error).__name__, 'message': str(error)[:1024]})
++        emit('TB371FC_R4F_WORKER_ERROR ', {'type': type(error).__name__, 'message': str(error)[:1024]})
+         raise SystemExit(1)
+--- frozen-v8/guest_verify_system.py
++++ candidate-v9/guest_verify_system.py
+@@ -21,7 +21,7 @@
+ from tb371fc_result_file import publish as publish_result
+ 
+ PROFILE = Path('/usr/share/tb371fc/system-profile.json')
+-UNIT = 'tb371fc-r4e-validation.service'
++UNIT = 'tb371fc-r4f-validation.service'
+ DIAGNOSTICS_READY = False
+ POLICY_BYTES = None
+ ROUTE_SCOPE = None
+@@ -82,7 +82,7 @@
+             'bounded complete progress evidence exceeded')
+     PROGRESS_RECORDS.append(json.loads(raw))
+     PROGRESS_BYTES += len(raw)
+-    emit('TB371FC_R4E_VM_PROGRESS seq=' + str(len(PROGRESS_RECORDS)) + ' stage=' + stage + ' END')
++    emit('TB371FC_R4F_VM_PROGRESS seq=' + str(len(PROGRESS_RECORDS)) + ' stage=' + stage + ' END')
+ 
+ 
+ def seal_result(status, result=None, failure=None):
+@@ -192,7 +192,7 @@
+ 
+ 
+ def export_actual_policy(policy, boot_id):
+-    directory = Path('/var/lib/tb371fc-r4e-proof')
++    directory = Path('/var/lib/tb371fc-r4f-proof')
+     for part in (Path('/var'), Path('/var/lib'), directory):
+         info = part.lstat()
+         require(stat.S_ISDIR(info.st_mode) and info.st_uid == 0,
+@@ -214,7 +214,7 @@
+         require(stat.S_ISREG(info.st_mode) and stat.S_IMODE(info.st_mode) == 0o600 and
+                 info.st_uid == 0 and observed == policy, 'exported ordinary policy copy differs')
+         record = {'schema_version': 1, 'boot_id': boot_id,
+-                  'guest_path': '/var/lib/tb371fc-r4e-proof/loaded-policy.33',
++                  'guest_path': '/var/lib/tb371fc-r4f-proof/loaded-policy.33',
+                   'size': len(policy), 'sha256': hashlib.sha256(policy).hexdigest(),
+                   'version': 33, 'mode': 0o600, 'inode_selinux_context': label,
+                   'source': '/sys/fs/selinux/policy', 'kernel_policy_written': False,
+@@ -272,8 +272,8 @@
+ def main():
+     global DIAGNOSTICS_READY, POLICY_BYTES, ROUTE_SCOPE, ACTIVE_PROFILE, RESULT_IDENTITY
+     words = Path('/proc/cmdline').read_text().split()
+-    phases = [x.split('=', 1)[1] for x in words if x.startswith('tb371fc.r4e-phase=')]
+-    identities = [x.split('=', 1)[1] for x in words if x.startswith('tb371fc.r4e-profile=')]
++    phases = [x.split('=', 1)[1] for x in words if x.startswith('tb371fc.r4f-phase=')]
++    identities = [x.split('=', 1)[1] for x in words if x.startswith('tb371fc.r4f-profile=')]
+     require(len(phases) == 1 and phases[0] in ('label', 'verify'), 'exact isolated VM phase missing')
+     require(len(identities) == 1 and identities[0] == digest(PROFILE, 65536)[0], 'new VM profile token mismatch')
+     phase = phases[0]
+@@ -286,7 +286,7 @@
+     root_type = run('/usr/bin/findmnt', '-n', '-o', 'FSTYPE', '/')
+     require(root_source == '/dev/vda' and root_type == 'ext4', 'unexpected root mount')
+     root_label = run('/usr/sbin/blkid', '-s', 'LABEL', '-o', 'value', root_source)
+-    require(root_label == profile['root_label'] == 'tb371fc-r4e-f45', 'root is not the dedicated new image')
++    require(root_label == profile['root_label'] == 'tb371fc-r4f-f45', 'root is not the dedicated new image')
+     require(platform.machine() == 'aarch64' and platform.release() == profile['kernel_release'], 'unexpected kernel/architecture')
+     require(words.count('module.sig_enforce=1') == 1 and
+             len([s for s in words if s.startswith('module.sig_enforce=')]) == 1,
+@@ -306,7 +306,7 @@
+     require(policy_version == 33, 'unexpected loaded policy version')
+     require(digest(Path('/etc/selinux/targeted/policy/policy.35'))[0] ==
+             profile['source_policy_sha256'] ==
+-            '727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502', 'candidate source policy changed')
++            'ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798', 'candidate source policy changed')
+     require(digest(Path('/usr/share/tb371fc/research1-policy-archive/policy.35'))[0] ==
+             profile['original_source_policy_sha256'] ==
+             '928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430',
+@@ -316,7 +316,7 @@
+         subprocess.run(['/usr/sbin/setfiles', '-F', '-e', '/proc', '-e', '/sys', '-e', '/dev', '-e', '/run',
+                         '/etc/selinux/targeted/contexts/files/file_contexts', '/'], check=True, timeout=500)
+         os.sync()
+-        emit('TB371FC_R4E_VM_LABEL_COMPLETE')
++        emit('TB371FC_R4F_VM_LABEL_COMPLETE')
+     else:
+         require(enforce.read_text().strip() == '1', 'verification boot must enforce SELinux')
+         require(digest(Path('/usr/libexec/tb371fc_result_file.py'), 128 * 1024)[0] ==
+@@ -346,7 +346,7 @@
+         service_context = Path('/proc/self/attr/current').read_text().strip('\0\n')
+         require(service_context == profile['validation_selinux_context'] == 'system_u:system_r:sysadm_t:s0',
+                 'strict verification service exec context was not entered')
+-        initrd_proof_path = Path('/run/tb371fc-r4e-initrd-domains.json')
++        initrd_proof_path = Path('/run/tb371fc-r4f-initrd-domains.json')
+         require(initrd_proof_path.is_file() and not initrd_proof_path.is_symlink() and
+                 initrd_proof_path.stat().st_size <= 4096, 'bounded same-boot initrd domain proof missing')
+         initrd_proof = json.loads(initrd_proof_path.read_text())
+@@ -615,7 +615,7 @@
+         require(result['pid1_selinux_context'].split(':')[2:3] == ['init_t'], 'systemd did not enter init_t')
+         require(result['selinux'] == 'Enforcing' and not result['failed_units'], 'complete system gate failed')
+         seal_result('pass', result=result)
+-        emit('TB371FC_R4E_VM_SYSTEM_COMPLETE')
++        emit('TB371FC_R4F_VM_SYSTEM_COMPLETE')
+     # All guards above are required before this private VM is powered off.
+     subprocess.run(['/usr/bin/systemctl', '--no-block', 'poweroff'], check=True, timeout=30)
+ 
+@@ -629,13 +629,13 @@
+             try:
+                 failure_diagnostics(error_trace)
+             except Exception as error:
+-                print('TB371FC_R4E_DIAGNOSTICS_ERROR ' + type(error).__name__ + ': ' + str(error), flush=True)
++                print('TB371FC_R4F_DIAGNOSTICS_ERROR ' + type(error).__name__ + ': ' + str(error), flush=True)
+         if RESULT_IDENTITY is not None:
+             try:
+                 seal_result('fail', failure={'type': type(original_error).__name__,
+                     'message': str(original_error)[:2048], 'traceback': error_trace[-8192:]})
+             except Exception as error:
+-                print('TB371FC_R4E_RESULT_FILE_ERROR ' + type(error).__name__ + ': ' + str(error)[:1024], flush=True)
++                print('TB371FC_R4F_RESULT_FILE_ERROR ' + type(error).__name__ + ': ' + str(error)[:1024], flush=True)
+         print(error_trace, file=sys.stderr, flush=True)
+-        print('TB371FC_R4E_VM_VALIDATION_FAILED', flush=True)
++        print('TB371FC_R4F_VM_VALIDATION_FAILED', flush=True)
+         sys.exit(1)
+--- frozen-v8/initrd-domain-proof.service
++++ candidate-v9/initrd-domain-proof.service
+@@ -9,7 +9,7 @@
+ [Service]
+ Type=oneshot
+ SELinuxContext=system_u:system_r:initrc_t:s0
+-ExecStart=/usr/libexec/tb371fc-r4e-initrd-domain-proof.sh
++ExecStart=/usr/libexec/tb371fc-r4f-initrd-domain-proof.sh
+ StandardOutput=journal+console
+ StandardError=journal+console
+ TimeoutStartSec=20s
+--- frozen-v8/initrd-domain-proof.sh
++++ candidate-v9/initrd-domain-proof.sh
+@@ -6,7 +6,7 @@
+ 
+ test -e /etc/initrd-release
+ test -r /proc/1/attr/current
+-test ! -e /run/tb371fc-r4e-initrd-domains.json
++test ! -e /run/tb371fc-r4f-initrd-domains.json
+ 
+ read_context() {
+     value=
+@@ -132,5 +132,5 @@
+     "$null_context" "$kmsg_context" "$run_context" "$log_context" "$journal_context" \
+     "$journald_pid" "$journald_context" "${#journal_files[@]}")
+ set -C
+-printf '%s\n' "$proof" > /run/tb371fc-r4e-initrd-domains.json
+-printf '\nTB371FC_R4E_INITRD_DOMAINS %s\n' "$proof" > /dev/console
++printf '%s\n' "$proof" > /run/tb371fc-r4f-initrd-domains.json
++printf '\nTB371FC_R4F_INITRD_DOMAINS %s\n' "$proof" > /dev/console
+--- frozen-v8/launch_pipeline.py
++++ candidate-v9/launch_pipeline.py
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python3
+ # SPDX-License-Identifier: GPL-2.0-only
+-"""Own one explicit R4E pipeline and preserve its exit/log independently."""
++"""Own one explicit R4F pipeline and preserve its exit/log independently."""
+ import datetime
+ import hashlib
+ import json
+@@ -11,9 +11,9 @@
+ import sys
+ import time
+ 
+-WORK = Path('/work/fedora-input-system-v8')
+-RECIPE = Path('/work/fedora-input-system-recipe-r4-v6')
+-MANIFEST_SHA = 'c453d67a35b466be76924eceb7f3af96bfd15ed313ee5cba11963a9de91fcb94'
++WORK = Path('/work/fedora-input-system-v9')
++RECIPE = Path('/work/fedora-input-system-recipe-r4-v7')
++MANIFEST_SHA = '927fd0755f54f303adac25daa8342bfe4615d0d42ff9a07361d29226f7cdf947'
+ REPORT_SHA = '0db9a7e6164b44ac845a80974c3a369476ede23ac6f094de9c14c8602fa3faa6'
+ BUNDLE_SHA = '82ffa9d01bd5cab5fe859e0182cac9998f103391ca5dac469b0044234fa18627'
+ cancelled = None
+@@ -32,9 +32,9 @@
+     manifest = RECIPE / 'recipe-manifest.json'
+     if (manifest.is_symlink() or not manifest.is_file() or
+             hashlib.sha256(manifest.read_bytes()).hexdigest() != MANIFEST_SHA):
+-        raise ValueError('the exact read-back R4E recipe is required')
++        raise ValueError('the exact read-back R4F recipe is required')
+     if WORK.is_symlink() or not WORK.is_dir():
+-        raise ValueError('owned prepared R4E directory required')
++        raise ValueError('owned prepared R4F directory required')
+     paths = [WORK / name for name in ('pipeline-command.json', 'pipeline.log', 'pipeline.exit.json')]
+     if any(path.exists() or path.is_symlink() for path in paths):
+         raise ValueError('this unique pipeline already has retained evidence')
+--- frozen-v8/materialize_recipe.py
++++ candidate-v9/materialize_recipe.py
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python3
+ # SPDX-License-Identifier: GPL-2.0-only
+-"""Materialize the exact v8 recipe from repository-tracked source files.
++"""Materialize the exact v9 recipe from repository-tracked source files.
+ 
+ Run inside the project builder with a source checkout/overlay containing this
+ profile. Refuse an existing destination; do not modify a previous recipe.
+@@ -10,8 +10,8 @@
+ import json
+ from pathlib import Path
+ 
+-OUTPUT = Path('/work/fedora-input-system-recipe-r4-v6')
+-PROFILE = Path('scripts/research/input/system-integration/profiles/persistent-result-v8')
++OUTPUT = Path('/work/fedora-input-system-recipe-r4-v7')
++PROFILE = Path('scripts/research/input/system-integration/profiles/persistent-result-v9')
+ PARENT = Path('scripts/research/input/system-integration')
+ PROFILE_NAMES = ('assemble_system.py', 'boot_system_vm.py', 'early_initramfs.py',
+                  'finalize_system.py', 'guest_verify_system.py',
+@@ -47,12 +47,12 @@
+         raise ValueError('ordinary repository/overlay root required')
+     manifest = json.loads(ordinary(root / PROFILE / 'profile-source-manifest.json'))
+     if set(manifest) != set(PROFILE_NAMES):
+-        raise ValueError('exact v8 override source set required')
++        raise ValueError('exact v9 override source set required')
+     values = {}
+     for name in PROFILE_NAMES:
+         raw = ordinary(root / PROFILE / name)
+         if identity(raw) != manifest[name]:
+-            raise ValueError('v8 profile source changed: ' + name)
++            raise ValueError('v9 profile source changed: ' + name)
+         if name.endswith('.py'):
+             compile(raw, name, 'exec')
+         values[name] = raw
+@@ -64,8 +64,8 @@
+             compile(raw, name, 'exec')
+         values[name] = raw
+     base = ordinary(root / PROFILE / 'prior-profile-source-manifest.json')
+-    if hashlib.sha256(base).hexdigest() != '8b70be328295fa01789a34b7a8212c9424c926890889b2881002a7163d8c619f':
+-        raise ValueError('exact historical v7 source manifest required')
++    if hashlib.sha256(base).hexdigest() != 'f705c87a1c5efe082ae134febc139e8ce437818951c83a9709bd475d17fc60d2':
++        raise ValueError('exact historical v8 source manifest required')
+     if OUTPUT.exists() or OUTPUT.is_symlink():
+         raise ValueError('fresh recipe prefix required')
+     OUTPUT.mkdir()
+@@ -80,7 +80,7 @@
+         stream.write('\n')
+     provenance = {'schema_version': 1, 'source_repository': str(root),
+                   'profile_source_directory': str(PROFILE),
+-                  'prior_v7_profile_source_manifest_sha256': hashlib.sha256(base).hexdigest(),
++                  'prior_v8_profile_source_manifest_sha256': hashlib.sha256(base).hexdigest(),
+                   'profile_source_manifest': identity(ordinary(root / PROFILE / 'profile-source-manifest.json')),
+                   'materializer': identity(Path(__file__).read_bytes()),
+                   'output_directory': str(OUTPUT), 'old_recipes_modified': False,
+--- frozen-v8/probe_fd_route_v2.py
++++ candidate-v9/probe_fd_route_v2.py
+@@ -89,7 +89,7 @@
+             raise ValueError('actual exported version33 binary policy required; no conversion is allowed')
+         if (manager_context != MANAGER or broker_context != BROKER or
+                 creator_context != MANAGEMENT or worker_context != MANAGEMENT):
+-            raise ValueError('actual/requested contexts differ from the explicit v8 management contract')
++            raise ValueError('actual/requested contexts differ from the explicit v9 management contract')
+         if policy_file_context != POLICY_FILE or entry_file_context != ENTRY_FILE:
+             raise ValueError('actual policy or executable inode label differs from the qualified entry')
+         result['process_context_inputs'] = {
+--- frozen-v8/qualify_udev_handoff.py
++++ candidate-v9/qualify_udev_handoff.py
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python3
+ # SPDX-License-Identifier: GPL-2.0-only
+-"""Independent read-only post-boot qualification, derived before v8 production.
++"""Independent read-only post-boot qualification, derived before v9 production.
+ 
+ Counts cover successful stores/inserts, not automatically the original queue.
+ Reject every explicit storage/restore failure path in the matched v262.1
+@@ -16,7 +16,7 @@
+ import re
+ import stat
+ 
+-WORK = Path('/work/fedora-input-system-v8')
++WORK = Path('/work/fedora-input-system-v9')
+ SOURCE_SHA = '49ece39cdd38f83c7112dc94df2cb8ba0e6a570bd42939b31c98bce64392ed4e'
+ FAILURE_PREFIXES = (
+     'Failed to create new device monitor instance:',
+@@ -63,7 +63,7 @@
+     if not re.fullmatch(r'vm-verify-[0-9]{2}', args.run):
+         parser.error('fixed verification run name required')
+     if WORK.is_symlink() or not WORK.is_dir():
+-        raise ValueError('independent v8 prefix required')
++        raise ValueError('independent v9 prefix required')
+     result_path = WORK / args.run / 'result.json'
+     raw_result = read(result_path, 1024 * 1024)
+     result = json.loads(raw_result)
+--- frozen-v8/read_vm_result.py
++++ candidate-v9/read_vm_result.py
+@@ -14,16 +14,16 @@
+ import stat
+ import subprocess
+ 
+-GUEST_PATH = '/var/lib/tb371fc-r4e-proof/system-result.json'
++GUEST_PATH = '/var/lib/tb371fc-r4f-proof/system-result.json'
+ MAX_BYTES = 4 * 1024**2
+ UUID = r'[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
+-RECEIPT = re.compile(r'TB371FC_R4E_VM_FILE status=(pass|fail) boot_id=(' + UUID +
++RECEIPT = re.compile(r'TB371FC_R4F_VM_FILE status=(pass|fail) boot_id=(' + UUID +
+                      r') profile_sha256=([0-9a-f]{64}) sha256=([0-9a-f]{64}) bytes=([0-9]+) END')
+ 
+ 
+ def receipt_from_serial(serial, profile_sha256):
+     lines = serial.decode('utf-8', errors='replace').splitlines()
+-    candidates = [line for line in lines if 'TB371FC_R4E_VM_FILE' in line]
++    candidates = [line for line in lines if 'TB371FC_R4F_VM_FILE' in line]
+     if len(candidates) != 1:
+         raise ValueError('exactly one complete same-boot result receipt is required')
+     matched = RECEIPT.fullmatch(candidates[0])
+@@ -79,7 +79,7 @@
+             return item['stdout']
+ 
+         parents = {}
+-        for name in ('/var', '/var/lib', '/var/lib/tb371fc-r4e-proof'):
++        for name in ('/var', '/var/lib', '/var/lib/tb371fc-r4f-proof'):
+             observed = metadata_from_stat(debugfs('stat ' + name))
+             if observed['type'] != 'directory' or observed['uid'] != 0 or observed['gid'] != 0:
+                 raise ValueError('guest result path crosses a non-directory or unexpected owner')
+--- frozen-v8/retain_policy_export.py
++++ candidate-v9/retain_policy_export.py
+@@ -21,7 +21,7 @@
+             controller.get('termination_reason') is None and controller.get('phase') == 'verify'):
+         raise ValueError('the same owned production VM must have ended cleanly and passed')
+     expected = controller['guest_result']['actual_loaded_policy_export']
+-    if not (expected.get('guest_path') == '/var/lib/tb371fc-r4e-proof/loaded-policy.33' and
++    if not (expected.get('guest_path') == '/var/lib/tb371fc-r4f-proof/loaded-policy.33' and
+             expected.get('version') == 33 and expected.get('mode') == 0o600 and
+             type(expected.get('size')) is int and 1024 < expected['size'] <= 32 * 1024**2 and
+             expected.get('sha256') == controller['guest_result']['loaded_policy_sha256'] and
+@@ -37,7 +37,7 @@
+         destination = output / name
+         if destination.exists() or destination.is_symlink():
+             raise ValueError('fresh policy export destination required')
+-        source = '/var/lib/tb371fc-r4e-proof/' + name
++        source = '/var/lib/tb371fc-r4f-proof/' + name
+         command = ['/usr/sbin/debugfs', '-R', 'dump -p ' + source + ' ' + str(destination), str(IMAGE)]
+         result = subprocess.run(command, capture_output=True, timeout=30)
+         if result.returncode or len(result.stdout) + len(result.stderr) > 16384:
+--- frozen-v8/run_pipeline.py
++++ candidate-v9/run_pipeline.py
+@@ -47,7 +47,7 @@
+         'verify_early_policy_initramfs.py', 'verify_runtime_policy_initramfs.py',
+         'guest_result_file.py', 'read_vm_result.py'}
+     if set(sources) != expected:
+-        raise ValueError('exact complete v8 execution source set required')
++        raise ValueError('exact complete v9 execution source set required')
+     for name, item in sources.items():
+         path = HERE / name
+         if path.is_symlink() or not path.is_file() or path.stat().st_size != item['size'] or sha(path) != item['sha256']:
+--- frozen-v8/stage_system.py
++++ candidate-v9/stage_system.py
+@@ -178,7 +178,7 @@
+                'firmware_authenticated_or_loaded_on_tablet': False}
+     save('runtime.json', runtime)
+     copy_new(WORK / 'runtime.json', ROOT / 'usr/share/tb371fc/runtime.json')
+-    profile = {'schema_version': 1, 'profile': 'research4-display-input-fedora45-v8-persistent-result',
++    profile = {'schema_version': 1, 'profile': 'research4-display-input-fedora45-v9-persistent-result',
+                'kernel_release': release, 'root_label': LABEL,
+                'module_count': len(expected_modules), 'firmware_file_count': len(firmware['files']),
+                'runtime_manifest_sha256': sha(WORK / 'runtime.json'),
+@@ -193,13 +193,13 @@
+                'guest_result_writer_sha256': sha(Path(__file__).parent / 'guest_result_file.py'),
+                'host_result_reader_sha256': sha(Path(__file__).parent / 'read_vm_result.py'),
+                'audit_printk_opt_in_required': True, 'audit_printk_interval_required': 0,
+-               'source_policy_sha256': '727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502',
++               'source_policy_sha256': 'ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798',
+                'original_source_policy_sha256': '928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430',
+                'actual_exported_kernel_policy_sha256_predetermined': False,
+-               'early_bootstrap_sha256': '84cc4868317fd1799ab1ff8f8ba5ae8bf85445dda5d65c3f11e1637aadb599c3',
+-               'early_bootstrap_build_policy_sha256': '727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502',
++               'early_bootstrap_sha256': '0bc3f0fbb814ece1133b16e36c6b3c402fbf5456d366fb99f4fe2783c87c1d14',
++               'early_bootstrap_build_policy_sha256': 'ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798',
+                'early_bootstrap_embeds_policy_hash': False,
+-               'early_bootstrap_expected_policy_size': 3835456,
++               'early_bootstrap_expected_policy_size': 3835468,
+                'early_selinux_required': True,
+                'initramfs_root_type_required': 'tmpfs',
+                'kernel_rdinit_required': '/init.tmpfs',
+--- frozen-v8/system_common.py
++++ candidate-v9/system_common.py
+@@ -11,11 +11,11 @@
+ import shutil
+ import subprocess
+ 
+-WORK = Path('/work/fedora-input-system-v8')
++WORK = Path('/work/fedora-input-system-v9')
+ ROOT = WORK / 'rootfs'
+ INPUTS = WORK / 'kernel-inputs'
+-LABEL = 'tb371fc-r4e-f45'
+-IMAGE = WORK / 'fedora45-research4e-persistent-result.ext4'
++LABEL = 'tb371fc-r4f-f45'
++IMAGE = WORK / 'fedora45-research4f-persistent-result.ext4'
+ PROFILE = ROOT / 'usr/share/tb371fc/system-profile.json'
+ PROOT = Path('/work/fedora-proot-src/src/proot')
+ HOST_LIBS = Path('/work/fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu')
+@@ -76,13 +76,13 @@
+     if not copied['complete'] or ROOT.is_symlink() or not ROOT.is_dir():
+         raise ValueError('complete verified independent Fedora tree required')
+     check(WORK / 'baseline-copy-qualification.json',
+-          'd1136513b108ebc0a18abe859d28d2a913fbf75446b4ebacb02fd926f281a840')
++          'aea118880abaff3eee5c7aafc311f614d6c4f897308e6216e93e36c9ae964143')
+     qualification = json.loads((WORK / 'baseline-copy-qualification.json').read_text())
+     if (qualification.get('qualified') is not True or
+             qualification.get('baseline_copy_sha256') != sha(WORK / 'baseline-copy.json') or
+             qualification.get('expected_quiescent_stream_sha256') !=
+                 '1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96'):
+-        raise ValueError('the exact independently qualified quiescent v8 copy is required')
++        raise ValueError('the exact independently qualified quiescent v9 copy is required')
+     for path in (PROOT, QEMU):
+         check(path, copied['input_hashes'][str(path)])
+     env = dict(os.environ, LD_LIBRARY_PATH=str(HOST_LIBS), SYSTEMD_OFFLINE='1')
+--- frozen-v8/transient_protocol.py
++++ candidate-v9/transient_protocol.py
+@@ -19,13 +19,13 @@
+ import time
+ 
+ CONTEXT = 'system_u:system_r:sysadm_t:s0'
+-WORKER = Path('/usr/libexec/tb371fc-r4e-worker.py')
+-UNITS = {'noop': 'tb371fc-r4e-bus-proof.service',
+-         'pids': 'tb371fc-r4e-pids-proof.service',
+-         'proc-read': 'tb371fc-r4e-fs-proof.service'}
+-READY = b'TB371FC_R4E_WORKER_READY '
+-RESULT = b'TB371FC_R4E_WORKER_RESULT '
+-ERROR = b'TB371FC_R4E_WORKER_ERROR '
++WORKER = Path('/usr/libexec/tb371fc-r4f-worker.py')
++UNITS = {'noop': 'tb371fc-r4f-bus-proof.service',
++         'pids': 'tb371fc-r4f-pids-proof.service',
++         'proc-read': 'tb371fc-r4f-fs-proof.service'}
++READY = b'TB371FC_R4F_WORKER_READY '
++RESULT = b'TB371FC_R4F_WORKER_RESULT '
++ERROR = b'TB371FC_R4F_WORKER_ERROR '
+ LIMIT = 65536
+ 
+ 
+--- frozen-v8/verify_runtime_policy_initramfs.py
++++ candidate-v9/verify_runtime_policy_initramfs.py
+@@ -54,13 +54,13 @@
+               'EXTRA_LIBRARY_CATALOG'):
+     globals()[_name] = getattr(_PARENT, _name)
+ 
+-# Independent v8 pins; the imported original baseline verifier is unchanged.
++# Independent v9 pins; the imported original baseline verifier is unchanged.
+ ORIGINAL_POLICY_SIZE, ORIGINAL_POLICY_SHA = POLICY_SIZE, POLICY_SHA
+ BOOTSTRAP_SIZE = 72528
+-BOOTSTRAP_SHA = '84cc4868317fd1799ab1ff8f8ba5ae8bf85445dda5d65c3f11e1637aadb599c3'
+-POLICY_SIZE = 3835456
+-POLICY_SHA = '727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502'
+-CANDIDATE_POLICY_SOURCE = Path('/work/selinux-standard-services-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35')
++BOOTSTRAP_SHA = '0bc3f0fbb814ece1133b16e36c6b3c402fbf5456d366fb99f4fe2783c87c1d14'
++POLICY_SIZE = 3835468
++POLICY_SHA = 'ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798'
++CANDIDATE_POLICY_SOURCE = Path('/work/selinux-socket-probe-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35')
+ DERIVED_FROM_TMPFS_CHECKER_SHA = '92f02fd33fcc5f7aaea6d1d0e06c04589af024b09e8f678f772798909c2ebb07'
+ 
+ # These are explicit profile inputs, not an open catalog. The stage0 and stage1
+@@ -218,7 +218,7 @@
+ def verify(image, fw_manifest, expected_cache, expected_libraries, early_policy_manifest,
+            *, legacy_verifier, baseline_image, source_root, init_bootstrap, early_tools_manifest):
+     result = {'schema_version': 1, 'passed': False, 'stage': 'fixed-inputs',
+-              'scope': 'explicit tmpfs-handoff, V3 VM audit observation and single six-permission policy payload; ARM64 archive qualification only',
++              'scope': 'explicit tmpfs-handoff, V4 VM audit observation and single seven-permission policy payload; ARM64 archive qualification only',
+               'parent_verifier_sha256': PARENT_SHA,
+               'extracted': False, 'image_executed': False, 'ldconfig_executed': False,
+               'proot_executed': False, 'kernel_policy_load_tested': False,

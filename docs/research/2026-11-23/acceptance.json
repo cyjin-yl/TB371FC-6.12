@@ -366,7 +366,7 @@
       "id": "HISTORICAL-MATRIX",
       "evidence_class": "source_clue",
       "path": "docs/HARDWARE_MATRIX.md",
-      "sha256": "e8ef324962c6e9626762ac8684ef22caf6cb71079c2cce386b76a94517851dd7",
+      "sha256": "65e90fcd025f6dce075b3799406b5082e2fb513d2a484c5bf0b37509f8c78000",
       "device_id": null,
       "claims": [
         "Preserves the historical four-TFA9894/S5K4H7/HI1339/BMI3x0 inventory as source leads; current-owner notes distinguish icm4x6xx service descriptors, unresolved camera/amp silicon, and the newly bound RTC6226 tuner."
@@ -2779,6 +2779,526 @@
       "limits": [
         "Synthetic clean-image checks are not a VM boot or a crash-consistency guarantee; normal-shutdown transport is separately observed in v8."
       ]
+    },
+    {
+      "id": "SOCKET-PROBE-REVIEW",
+      "evidence_class": "source_clue",
+      "path": "docs/research/2026-11-23/selinux-journalctl-socket-probe.md",
+      "sha256": "c4ddcd9dcafbfc6e01fc40564fa918edc3f59c71584b650f53def1fd323b8b07",
+      "device_id": null,
+      "claims": [
+        "Matched systemd 262.1 and Linux 6.12 sources identify the journalctl socket-xattr feature probe; the retained v8 actual policy is separately queried."
+      ],
+      "limits": [
+        "The original v8 AVC and failed verdict remain unchanged. Source control flow and offline permission queries do not establish a repaired runtime."
+      ]
+    },
+    {
+      "id": "SOCKET-PROBE-ARTIFACTS",
+      "evidence_class": "source_clue",
+      "path": "docs/research/2026-11-23/evidence/selinux-journalctl-socket-probe.json",
+      "sha256": "02c7a77788f52195dd54558ad86e9c31348bc9d37ec4465c9db669d2a360b762",
+      "device_id": null,
+      "claims": [
+        "The fixed source chain creates an AF_UNIX datagram socket and probes user.testxxx; Linux rejects user xattrs on this special inode before the LSM xattr hook."
+      ],
+      "limits": [
+        "No connect, send, setsockopt or target-getattr permission is inferred. The actual v8 creation denial was retained rather than ignored."
+      ]
+    },
+    {
+      "id": "SOCKET-PROBE-LIVE-POLICY-AV",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/selinux-journalctl-socket-probe-query.json",
+      "sha256": "64e73543588a59291629aef55d9b8c877caf448c59fc6a5ef7fdf9f57cf259c0",
+      "device_id": null,
+      "claims": [
+        "A direct offline query of retained actual v8 version-33 bytes reports 6 existing allows and 13 denies across the fixed 19 tuples."
+      ],
+      "limits": [
+        "This is a query of a saved policy file, not a newly loaded policy or new guest execution."
+      ]
+    },
+    {
+      "id": "SOCKET-POLICY-REVIEW",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/selinux-socket-probe-policy.md",
+      "sha256": "aa62816afeb11288045562ee0520fac90fcdd1e29ddc6d8f4579f2ebcf32574f",
+      "device_id": null,
+      "claims": [
+        "An independent stock-store rebuild adds only the source-required journalctl self datagram create permission to the prior six-permission candidate."
+      ],
+      "limits": [
+        "Offline candidate qualification only. Labels, booleans, cross-domain permissions and old evidence are retained; no new policy load or repaired production result is claimed."
+      ]
+    },
+    {
+      "id": "SOCKET-POLICY-ARTIFACTS",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/selinux-socket-probe-policy.json",
+      "sha256": "a5e6a0aef5ab7e62e0d595965f792f265d1be9e98fb474f5fe6f5ba2e78b3211",
+      "device_id": null,
+      "claims": [
+        "The new ff65 candidate binds its actual build, complete original/candidate CIL comparisons and fixed candidate queries."
+      ],
+      "limits": [
+        "Offline candidate qualification only. Labels, booleans, cross-domain permissions and old evidence are retained; no new policy load or repaired production result is claimed."
+      ]
+    },
+    {
+      "id": "SOCKET-POLICY-BUILD",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/selinux-socket-probe-policy-build.json",
+      "sha256": "170bc6b5a3c2d13a1460595369df3809452cffdf1e1f69cb5ff64c6f79c1deaa",
+      "device_id": null,
+      "claims": [
+        "The new policy was built from a fresh copy of the original module store, with no old candidate overwritten."
+      ],
+      "limits": [
+        "Offline candidate qualification only. Labels, booleans, cross-domain permissions and old evidence are retained; no new policy load or repaired production result is claimed."
+      ]
+    },
+    {
+      "id": "SOCKET-POLICY-COMPARE",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/selinux-socket-probe-policy-compare.json",
+      "sha256": "584b51fbf0c671e64eee69b6e3e4f988cc2102cc05a38897e6b79c2a03366528",
+      "device_id": null,
+      "claims": [
+        "Complete version-35 and freshly parsed version-33 CIL comparisons against 727cd98e allow precisely one additional self datagram create operation."
+      ],
+      "limits": [
+        "Offline candidate qualification only. Labels, booleans, cross-domain permissions and old evidence are retained; no new policy load or repaired production result is claimed."
+      ]
+    },
+    {
+      "id": "SOCKET-POLICY-AV",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/selinux-socket-probe-policy-query.json",
+      "sha256": "35e2473b2bbd6526d8b6d823997fcf46fca11d2c8c4ea6b04443d8a1c0b0faa0",
+      "device_id": null,
+      "claims": [
+        "The candidate 19-tuple query yields 7 required allows and 12 retained denies."
+      ],
+      "limits": [
+        "Offline candidate qualification only. Labels, booleans, cross-domain permissions and old evidence are retained; no new policy load or repaired production result is claimed."
+      ]
+    },
+    {
+      "id": "EARLY-SOCKET-LOADER-REVIEW",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/early-selinux-socket-probe-loader.md",
+      "sha256": "87c9587bc6afca97c7dae67664e7ec5def9ce8d2141352cb1cfcdc1c13004a53",
+      "device_id": null,
+      "claims": [
+        "The independent V4 early loader is built for the measured ff65 policy length while preserving the reviewed audit/load/relabel/exec control flow."
+      ],
+      "limits": [
+        "Construction/negative-entry/transport evidence only. The unchanged waiter V2 checks target size, while the archive/profile must pin full ELF and policy hashes; no PID1 success or owner entry follows."
+      ]
+    },
+    {
+      "id": "EARLY-SOCKET-LOADER-BUILD",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/early-selinux-socket-probe-build.json",
+      "sha256": "17f5d76724740765d89eea5633b1029340de91cd1cb45fc0343c9103bf21fa80",
+      "device_id": null,
+      "claims": [
+        "Actual compilation produces the 72528-byte ARM64 V4 ELF 0bc3f0fb with the expected dynamic closure."
+      ],
+      "limits": [
+        "Construction/negative-entry/transport evidence only. The unchanged waiter V2 checks target size, while the archive/profile must pin full ELF and policy hashes; no PID1 success or owner entry follows."
+      ]
+    },
+    {
+      "id": "EARLY-SOCKET-LOADER-NEGATIVE",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/early-selinux-socket-probe-negative.json",
+      "sha256": "786f0d3b536ef93e15f91c22dff949a216035f3a017b589f4d2a1812b0e9888b",
+      "device_id": null,
+      "claims": [
+        "The exact V4 rejects the limited non-PID1 invocation before policy, mount or sysctl actions."
+      ],
+      "limits": [
+        "Construction/negative-entry/transport evidence only. The unchanged waiter V2 checks target size, while the archive/profile must pin full ELF and policy hashes; no PID1 success or owner entry follows."
+      ]
+    },
+    {
+      "id": "EARLY-SOCKET-LOADER-INVOCATION",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/early-selinux-socket-probe-invocation.json",
+      "sha256": "33d47d29f1e1e8a9ef9db7f58656d4c307417ec266e527e8829db0a2ac2342c0",
+      "device_id": null,
+      "claims": [
+        "The bounded actual loader build invocation completed with exit zero."
+      ],
+      "limits": [
+        "Construction/negative-entry/transport evidence only. The unchanged waiter V2 checks target size, while the archive/profile must pin full ELF and policy hashes; no PID1 success or owner entry follows."
+      ]
+    },
+    {
+      "id": "EARLY-SOCKET-LOADER-HDD-TRANSFER",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/early-selinux-socket-probe-hdd-transfer.json",
+      "sha256": "922ea780bf9e0193373e91ded3942f085e4f1f425bfca7fe63a47cebb0d7d59f",
+      "device_id": null,
+      "claims": [
+        "The actual new V4 bytes and construction records were transferred and read back for the separate system attempt."
+      ],
+      "limits": [
+        "Construction/negative-entry/transport evidence only. The unchanged waiter V2 checks target size, while the archive/profile must pin full ELF and policy hashes; no PID1 success or owner entry follows."
+      ]
+    },
+    {
+      "id": "FEDORA-R4F-REVIEW",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/fedora-r4f-image-failed.md",
+      "sha256": "a1b3f2c4054ea6d0eb611c9cdc1fdd179aff2a2ed2c596cd1ad473325f9a8a37",
+      "device_id": null,
+      "claims": [
+        "The first R4F/v9 attempt retains a real image-build failure before any label or production VM."
+      ],
+      "limits": [
+        "No VM, actual policy export, live AV/FD/TasksMax/BPF/journal gate or tablet test ran. The partial image was not mounted, repaired, hashed as complete or rescored. Concurrent HDD work is context, not a proven exclusive cause."
+      ]
+    },
+    {
+      "id": "FEDORA-R4F-ARTIFACTS",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4f-image-failed.json",
+      "sha256": "79390c4bf78de7f806cbc26109faf8df870fea3d7cce5b3ffb3db7e99b5806e9",
+      "device_id": null,
+      "claims": [
+        "The failed-attempt aggregate binds the original 20 executed source files, completed archive records, timeout and retained partial image metadata."
+      ],
+      "limits": [
+        "No VM, actual policy export, live AV/FD/TasksMax/BPF/journal gate or tablet test ran. The partial image was not mounted, repaired, hashed as complete or rescored. Concurrent HDD work is context, not a proven exclusive cause."
+      ]
+    },
+    {
+      "id": "FEDORA-R4F-PIPELINE",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4f-image-failed-pipeline.json",
+      "sha256": "9e0b4d6bbcb8a7eadf9a74184315ca1f584bacb8ded7d493ab1a2a4fbec9467c",
+      "device_id": null,
+      "claims": [
+        "The original pipeline exits one after 1148.676 seconds, with no cancellation and no VM phase."
+      ],
+      "limits": [
+        "No VM, actual policy export, live AV/FD/TasksMax/BPF/journal gate or tablet test ran. The partial image was not mounted, repaired, hashed as complete or rescored. Concurrent HDD work is context, not a proven exclusive cause."
+      ]
+    },
+    {
+      "id": "FEDORA-R4F-IMAGE",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4f-image-failed-image.json",
+      "sha256": "c972ce87d931d477aa30e5c97a4a7f59939a5ca5ec3062e1dfcc3956e885060a",
+      "device_id": null,
+      "claims": [
+        "Image construction exits one after 615.382 seconds including cleanup; the unchanged mkfs subprocess deadline is 600 seconds."
+      ],
+      "limits": [
+        "No VM, actual policy export, live AV/FD/TasksMax/BPF/journal gate or tablet test ran. The partial image was not mounted, repaired, hashed as complete or rescored. Concurrent HDD work is context, not a proven exclusive cause."
+      ]
+    },
+    {
+      "id": "FEDORA-R4F-IMAGE-LOG",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4f-image-failed-image.log",
+      "sha256": "68f0d1cbac45ea8baaa0fc8f3d597ff4701bb076db5d06cfda6aa607ea1e34cc",
+      "device_id": null,
+      "claims": [
+        "The complete original traceback identifies mkfs.ext4 copying the prepared root and subprocess.TimeoutExpired after 600 seconds."
+      ],
+      "limits": [
+        "No VM, actual policy export, live AV/FD/TasksMax/BPF/journal gate or tablet test ran. The partial image was not mounted, repaired, hashed as complete or rescored. Concurrent HDD work is context, not a proven exclusive cause."
+      ]
+    },
+    {
+      "id": "FEDORA-R4F-INITRAMFS",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4f-image-failed-initramfs.json",
+      "sha256": "3c43b95ffdb753ef816a9e05cd1a42f9347fe1231d44fc37fc8e1f0a2812bcde",
+      "device_id": null,
+      "claims": [
+        "Both production and maintenance archives passed their original construction and archive verification records before image failure."
+      ],
+      "limits": [
+        "No VM, actual policy export, live AV/FD/TasksMax/BPF/journal gate or tablet test ran. The partial image was not mounted, repaired, hashed as complete or rescored. Concurrent HDD work is context, not a proven exclusive cause."
+      ]
+    },
+    {
+      "id": "FEDORA-R4F-SOURCE",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4f-execution-source.json",
+      "sha256": "a80329a2a155c3b269a787ed8e7886ed2533b69f6ed395d58037cbf04f7c270c",
+      "device_id": null,
+      "claims": [
+        "The actual original R4F execution source materialization was qualified before launch."
+      ],
+      "limits": [
+        "No VM, actual policy export, live AV/FD/TasksMax/BPF/journal gate or tablet test ran. The partial image was not mounted, repaired, hashed as complete or rescored. Concurrent HDD work is context, not a proven exclusive cause."
+      ]
+    },
+    {
+      "id": "FEDORA-R4F-BASELINE",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4f-baseline-preparation.json",
+      "sha256": "ec24294addd305c7262eb2baba87215a0ed810fb9f391fc2698ab8eabd4137c7",
+      "device_id": null,
+      "claims": [
+        "The independent native baseline and runtime inputs were qualified without PRoot writes to the frozen source."
+      ],
+      "limits": [
+        "No VM, actual policy export, live AV/FD/TasksMax/BPF/journal gate or tablet test ran. The partial image was not mounted, repaired, hashed as complete or rescored. Concurrent HDD work is context, not a proven exclusive cause."
+      ]
+    },
+    {
+      "id": "NURA-ENTRY-REVIEW",
+      "evidence_class": "source_clue",
+      "path": "docs/research/2026-11-23/nura-entry-inventory.md",
+      "sha256": "e85c18630bebacbe1810298633de91bf27255632e1e062113c5bd335c0054b5a",
+      "device_id": null,
+      "claims": [
+        "The actual stopped target uses original BusyBox PID1 and inittab-driven OpenRC sysinit/boot/default, with original enabled service definitions retained."
+      ],
+      "limits": [
+        "Static stopped-tree inventory only. It does not rehash every archive member or execute target startup, and its original R4 next-plan is superseded by the separately qualified R5 prerequisites."
+      ]
+    },
+    {
+      "id": "NURA-ENTRY-ARTIFACTS",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/nura-entry-inventory.json",
+      "sha256": "8e9f289acc6b7be0d40e6e89dec21125a8e9a3a2f16189adbab7e774e7ec991d",
+      "device_id": null,
+      "claims": [
+        "The bounded native collector exited zero, resolving the original ARM init/Python and service files while retaining root/dev/etc metadata."
+      ],
+      "limits": [
+        "An ELF or service definition is not a running process, successful OpenRC runlevel or owner hardware result."
+      ]
+    },
+    {
+      "id": "R5-KERNEL",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/research5-services-kernel.md",
+      "sha256": "b97201da57b3ecc77f26995cf7913b9d888c52f696e503fd1fe3d040ecb4b639",
+      "device_id": null,
+      "claims": [
+        "The independent research5-services Image and complete 84-module set are built and transferred, with exactly 14 resolved R4 configuration changes."
+      ],
+      "limits": [
+        "No R5 system VM or module load occurred in this construction/transfer. The new signing key and unsnapshotted packages preclude a bit-identical rebuild claim. Original 894-path Nix and Nura target boot gates remain open."
+      ]
+    },
+    {
+      "id": "R5-ARTIFACTS",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/research5-services-build.json",
+      "sha256": "69d0b558c99bdfb339df8b3b9baca8bb1ee4d0cb2e46dd9b3b7fef3ab69aaad2",
+      "device_id": null,
+      "claims": [
+        "The actual inspector verifies ARM64/vermagic/CMS/BTF/stripping and all 4308 imported CRCs, full Image/BTF/certificate binding and the unchanged joint DT."
+      ],
+      "limits": [
+        "No R5 system VM or module load occurred in this construction/transfer. The new signing key and unsnapshotted packages preclude a bit-identical rebuild claim. Original 894-path Nix and Nura target boot gates remain open."
+      ]
+    },
+    {
+      "id": "R5-VERIFICATION",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/research5-services-verification.json",
+      "sha256": "e1bb04fba61b8d64177853580f826e1e45a1c472670512248d31520162f9f654",
+      "device_id": null,
+      "claims": [
+        "The publication index binds 55 original raw records, 16 execution sources and 11 original service inputs."
+      ],
+      "limits": [
+        "No R5 system VM or module load occurred in this construction/transfer. The new signing key and unsnapshotted packages preclude a bit-identical rebuild claim. Original 894-path Nix and Nura target boot gates remain open."
+      ]
+    },
+    {
+      "id": "R5-CONFIGURATION",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/configuration.json",
+      "sha256": "a87ce0d5e431234b0889366c2434cd01daf6e266377568473b71425ee03feb85",
+      "device_id": null,
+      "claims": [
+        "The exact 14 configuration changes supply nftables core/families/compatibility/conntrack/reject, zstd zram, PL031 and the new release; other semantic selections are unchanged."
+      ],
+      "limits": [
+        "No R5 system VM or module load occurred in this construction/transfer. The new signing key and unsnapshotted packages preclude a bit-identical rebuild claim. Original 894-path Nix and Nura target boot gates remain open."
+      ]
+    },
+    {
+      "id": "R5-TRANSFER",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/shared-transfer/transfer.json",
+      "sha256": "6892cdb643e8ab58e55f10e86f7ce45f2ef6bdd22ddaaf400b935900cfc9cb5e",
+      "device_id": null,
+      "claims": [
+        "All 106 ordinary runtime/evidence files match source before/after and destination bytes, modes and owners, with equal canonical tar streams."
+      ],
+      "limits": [
+        "No R5 system VM or module load occurred in this construction/transfer. The new signing key and unsnapshotted packages preclude a bit-identical rebuild claim. Original 894-path Nix and Nura target boot gates remain open."
+      ]
+    },
+    {
+      "id": "R5-CONTRACT",
+      "evidence_class": "source_clue",
+      "path": "scripts/research/system-kernel/research5-services/recipe-v1/services-contract.json",
+      "sha256": "3b9730335d5573d98f2f9382f83ba79810c9dd563a9e9eed83668a9b3f24ce21",
+      "device_id": null,
+      "claims": [
+        "The source-derived service contract uses exact original Nix/Nura rules and fixed kernel Kconfig/Makefile evidence, without speculative FIB/NAT/route-chain additions."
+      ],
+      "limits": [
+        "Source/configuration contract only; no actual firewall packet behavior, zram, RTC, generic R5 VM or owner hardware pass."
+      ]
+    },
+    {
+      "id": "USB-RECHECK-1736-REVIEW",
+      "evidence_class": "source_clue",
+      "path": "docs/research/2026-11-23/usb-transport-recheck-20261123T093624Z.md",
+      "sha256": "d1e8ee9c43302910146dbf8a2a357948588a700b407c9ba76e7672a2bb27ee87",
+      "device_id": null,
+      "claims": [
+        "The later actual paired 09:36:24-25 UTC/17:36 Shanghai capture again records no demonstrated owner-to-doesvm data/recovery link."
+      ],
+      "limits": [
+        "This does not identify a broken cable, a physical connection or another host; no role, gadget, bootloader or recovery action occurs."
+      ]
+    },
+    {
+      "id": "ANDROID-USB-RECHECK-1736",
+      "evidence_class": "device_android",
+      "path": "docs/research/2026-11-23/evidence/usb-transport-recheck-20261123T093624Z.json",
+      "sha256": "8a3442c9fabaae638311e318efd5654464f49176b62116d16698d426c8d9524c",
+      "device_id": "owner-tb371fc",
+      "claims": [
+        "Only the Android portion: both observed UDCs remain not attached/UNKNOWN, with g1 on a600000.dwc3 and 17ef:7e31; the fixed read exits zero."
+      ],
+      "limits": [
+        "Passive current-state observation only; no Linux entry, binding, transfer or usable recovery is established."
+      ]
+    },
+    {
+      "id": "HOST-USB-RECHECK-1736",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/usb-transport-recheck-20261123T093624Z.json",
+      "sha256": "8a3442c9fabaae638311e318efd5654464f49176b62116d16698d426c8d9524c",
+      "device_id": null,
+      "claims": [
+        "Only the doesvm portion: the fixed read exits zero and returns 14 USB sysfs entries without a 17ef/18d1/05c6 candidate."
+      ],
+      "limits": [
+        "The observation is specific to this host/time and cannot determine a different host or physical cable state."
+      ]
+    },
+    {
+      "id": "TOOLS-MAC-BOUNDARY",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/research-tools-mac-boundary.json",
+      "sha256": "cd62ec9af39c1d7f086cf6f961869bdf198dc2180e07062d978a2d36aaa86640",
+      "device_id": null,
+      "claims": [
+        "The exact offline regression fixes six-octet token boundaries so a 20-byte public signing-key identifier is not falsely classified as a MAC address; its targeted test exits zero."
+      ],
+      "limits": [
+        "No raw evidence exemption, broad test rerun, hardware result or disclosure claim is introduced. Original R4/R5 evidence bytes are unchanged."
+      ]
+    },
+    {
+      "id": "NIX-ROOT-PREPARATION-REVIEW",
+      "evidence_class": "source_clue",
+      "path": "docs/research/2026-11-23/nixos-store-preparation-failed.md",
+      "sha256": "f4ceea68185f9ba476d9b3e2627e0f401b5b891112bcf5f2929df0c14f3008e1",
+      "device_id": null,
+      "claims": [
+        "The first actual registered-root preparation preserves the signed-cache-copy 3600-second timeout before any NixOS image or system VM."
+      ],
+      "limits": [
+        "No destination registration/content/signature qualification, source-after comparison, image, activation, PID1 or VM was reached. Old partial cache and original timeout are retained, private key bytes excluded, and no exclusive I/O cause or owner hardware result is inferred."
+      ]
+    },
+    {
+      "id": "NIX-ROOT-PREPARATION-ARTIFACTS",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/nixos-store-preparation-failed.json",
+      "sha256": "824709d2877032fa894696fb1e457e715243eb7f670773507a239b4bd6f81eb2",
+      "device_id": null,
+      "claims": [
+        "The original job exited one after 5530.405676769966 seconds; source verification completed before the incomplete cache copy."
+      ],
+      "limits": [
+        "No destination registration/content/signature qualification, source-after comparison, image, activation, PID1 or VM was reached. Old partial cache and original timeout are retained, private key bytes excluded, and no exclusive I/O cause or owner hardware result is inferred."
+      ]
+    },
+    {
+      "id": "NIX-ROOT-PREPARATION-ORIGINAL",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/nixos-store-preparation-failed-records/store-preparation.json",
+      "sha256": "6a7c5bb1c85d8c76570d99fe51886f99651d60c113ff5e9f625c3725167c5ce9",
+      "device_id": null,
+      "claims": [
+        "The exact original report contains the TimeoutExpired traceback and completed source-verify exit zero; require-sigs remains true."
+      ],
+      "limits": [
+        "No destination registration/content/signature qualification, source-after comparison, image, activation, PID1 or VM was reached. Old partial cache and original timeout are retained, private key bytes excluded, and no exclusive I/O cause or owner hardware result is inferred."
+      ]
+    },
+    {
+      "id": "NIX-ROOT-PREPARATION-JOB",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/nixos-store-preparation-failed-records/store-01.json",
+      "sha256": "6ea23db5edf5b6abb334b066bc3cbe5b825f0cf496454b5f9055c53a03456c8f",
+      "device_id": null,
+      "claims": [
+        "The exact original runner records exit one and actual elapsed time, with the original recipe/arguments."
+      ],
+      "limits": [
+        "No destination registration/content/signature qualification, source-after comparison, image, activation, PID1 or VM was reached. Old partial cache and original timeout are retained, private key bytes excluded, and no exclusive I/O cause or owner hardware result is inferred."
+      ]
+    },
+    {
+      "id": "NIX-ROOT-PREPARATION-COPY-STDERR",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/nixos-store-preparation-failed-records/signed-cache-copy.stderr.log",
+      "sha256": "d1acbddb90e8d19ebf8c497dea1ea0546c6452826d9b632cb6f215a525500d4a",
+      "device_id": null,
+      "claims": [
+        "All 125629 original stderr bytes retain copy activity for the phase absent from the completed-commands array."
+      ],
+      "limits": [
+        "No destination registration/content/signature qualification, source-after comparison, image, activation, PID1 or VM was reached. Old partial cache and original timeout are retained, private key bytes excluded, and no exclusive I/O cause or owner hardware result is inferred."
+      ]
+    },
+    {
+      "id": "NIX-ROOT-PREPARATION-SOURCE-VERIFY",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/nixos-store-preparation-failed-records/source-verify.stderr.log",
+      "sha256": "9a04bc44277539077171ce0a384c2064b7d45bb5fb703651d25621ffd82e8b1a",
+      "device_id": null,
+      "claims": [
+        "All 68837 original source-verification stderr bytes are retained beside the report that records native verification exit zero."
+      ],
+      "limits": [
+        "No destination registration/content/signature qualification, source-after comparison, image, activation, PID1 or VM was reached. Old partial cache and original timeout are retained, private key bytes excluded, and no exclusive I/O cause or owner hardware result is inferred."
+      ]
+    },
+    {
+      "id": "NIX-ROOT-PREPARATION-SOURCE",
+      "evidence_class": "source_clue",
+      "path": "scripts/research/nixos/store-preparation-v1/prepare_store.py",
+      "sha256": "bae60cfa9cb64b6ce229a30f36c0bf1c0d2eb8b1d7508d63c4a5361e65a7169a",
+      "device_id": null,
+      "claims": [
+        "The exact executed source appends phase records after subprocess.run; timeout explains why the executed copy is missing from that array."
+      ],
+      "limits": [
+        "No destination registration/content/signature qualification, source-after comparison, image, activation, PID1 or VM was reached. Old partial cache and original timeout are retained, private key bytes excluded, and no exclusive I/O cause or owner hardware result is inferred."
+      ]
     }
   ],
   "preflight": [
@@ -2971,7 +3491,7 @@
     {
       "id": "PF-USB-TRANSPORT",
       "status": "owner_controller_identified_host_transport_unverified",
-      "observation": "The bounded owner Android snapshot exposes a600000.dwc3 and a800000.dwc3, both not attached; g1 is configured on a600000.dwc3 with 17ef:7e31. The contemporaneous doesvm snapshot has 14 USB entries and no such device. Controller maximum-speed values and a configured gadget do not demonstrate a data link. No role, PD, gadget, bootloader or recovery action was performed. A usable independently identified host connection and recovery-return path remain required. A fresh paired follow-up at 2026-11-23 04:00 UTC again found both owner UDCs not attached, g1 on the same primary and 14 host entries without a 17ef/18d1/05c6 candidate. It did not change role, gadget or boot state. The later 05:18:28-30 UTC paired recheck again returned exit 0 on both hosts, two not-attached/UNKNOWN UDCs and 14 doesvm devices without a vendor candidate; this does not determine cable presence or other hosts. The later paired 06:09:03-05 UTC (14:09 Shanghai) snapshot again records the same owner UDC/g1 state and 14 host entries without a matching vendor candidate; both reads exited zero and no transport or boot state changed. The newest paired 07:46:57-59 UTC (15:46 Shanghai) read again returns exit0 on both ends: two not-attached/UNKNOWN UDCs, g1 on a600000.dwc3 with 17ef:7e31, and 14 doesvm entries without a 17ef/18d1/05c6 candidate. No role, gadget or boot action occurred and physical entry/recovery remains unverified.",
+      "observation": "The bounded owner Android snapshot exposes a600000.dwc3 and a800000.dwc3, both not attached; g1 is configured on a600000.dwc3 with 17ef:7e31. The contemporaneous doesvm snapshot has 14 USB entries and no such device. Controller maximum-speed values and a configured gadget do not demonstrate a data link. No role, PD, gadget, bootloader or recovery action was performed. A usable independently identified host connection and recovery-return path remain required. A fresh paired follow-up at 2026-11-23 04:00 UTC again found both owner UDCs not attached, g1 on the same primary and 14 host entries without a 17ef/18d1/05c6 candidate. It did not change role, gadget or boot state. The later 05:18:28-30 UTC paired recheck again returned exit 0 on both hosts, two not-attached/UNKNOWN UDCs and 14 doesvm devices without a vendor candidate; this does not determine cable presence or other hosts. The later paired 06:09:03-05 UTC (14:09 Shanghai) snapshot again records the same owner UDC/g1 state and 14 host entries without a matching vendor candidate; both reads exited zero and no transport or boot state changed. The earlier paired 07:46:57-59 UTC (15:46 Shanghai) read again returns exit0 on both ends: two not-attached/UNKNOWN UDCs, g1 on a600000.dwc3 with 17ef:7e31, and 14 doesvm entries without a 17ef/18d1/05c6 candidate. No role, gadget or boot action occurred and physical entry/recovery remains unverified. The latest retained paired snapshot at 09:36:24-25 UTC (17:36 Shanghai) again exits zero on both ends: two not-attached/UNKNOWN UDCs, unchanged g1 primary/VID/PID, and 14 doesvm entries without a corresponding vendor candidate. It establishes no owner data/recovery link and changes no USB or boot state.",
       "evidence_ids": [
         "ANDROID-USB-TRANSPORT",
         "HOST-USB-TRANSPORT",
@@ -2987,7 +3507,10 @@
         "HOST-USB-RECHECK-1409",
         "USB-RECHECK-1546-REVIEW",
         "ANDROID-USB-RECHECK-1546",
-        "HOST-USB-RECHECK-1546"
+        "HOST-USB-RECHECK-1546",
+        "USB-RECHECK-1736-REVIEW",
+        "ANDROID-USB-RECHECK-1736",
+        "HOST-USB-RECHECK-1736"
       ]
     },
     {
@@ -3411,6 +3934,103 @@
         "FEDORA-R4E-BASELINE",
         "FEDORA-R4E-PLAN"
       ]
+    },
+    {
+      "id": "PF-SOCKET-PROBE-SOURCE",
+      "status": "matched_source_and_retained_actual_policy_query",
+      "observation": "The fixed systemd 262.1 journalctl varlink path performs a socket-xattr feature probe. It creates an AF_UNIX datagram socket and tries user.testxxx; the fixed kernel rejects that user xattr on a socket before the LSM xattr hook. The no-stat fd_is_opath branch uses F_GETFL only. A direct saved-v8-policy query gives 6 allows and 13 denies over 19 tuples. The required next permission is self datagram create; getattr/setattr/connect/send additions are not justified. This explains an actual retained AVC without ignoring it or proving a repaired run.",
+      "evidence_ids": [
+        "SOCKET-PROBE-REVIEW",
+        "SOCKET-PROBE-ARTIFACTS",
+        "SOCKET-PROBE-LIVE-POLICY-AV",
+        "FEDORA-R4E-SERIAL"
+      ]
+    },
+    {
+      "id": "PF-SOCKET-PROBE-POLICY",
+      "status": "fresh_candidate_exact_semantics_and_offline_av_pass",
+      "observation": "The new ff65 version-35 candidate has 3835468 bytes. A fresh original-store build and complete 35/fresh-33 CIL comparison against the six-permission 727 candidate permit exactly journalctl_t self unix_dgram_socket create in addition to the old six. The new 19-tuple matrix yields 7 required allows and 12 retained denies. This is offline evidence; no V9 production policy was loaded and old V8 failure remains unchanged.",
+      "evidence_ids": [
+        "SOCKET-POLICY-REVIEW",
+        "SOCKET-POLICY-ARTIFACTS",
+        "SOCKET-POLICY-BUILD",
+        "SOCKET-POLICY-COMPARE",
+        "SOCKET-POLICY-AV"
+      ]
+    },
+    {
+      "id": "PF-EARLY-SOCKET-LOADER",
+      "status": "independent_v4_build_and_nonpid1_rejection_pass",
+      "observation": "The actual V4 build produces ARM64 ELF 0bc3f0fb, 72528 bytes, for the actual new policy length. Non-PID1 invocation is rejected, and the new artifact transfer matches. The audit guard and official load/relabel/exec behavior are retained. Waiter V2 is reusable by length, but full ELF and policy identity remain separate archive/profile gates. This construction does not run PID1 or establish owner entry.",
+      "evidence_ids": [
+        "EARLY-SOCKET-LOADER-REVIEW",
+        "EARLY-SOCKET-LOADER-BUILD",
+        "EARLY-SOCKET-LOADER-NEGATIVE",
+        "EARLY-SOCKET-LOADER-INVOCATION",
+        "EARLY-SOCKET-LOADER-HDD-TRANSFER"
+      ]
+    },
+    {
+      "id": "PF-FEDORA-R4F-IMAGE",
+      "status": "original_mkfs_timeout_before_any_vm",
+      "observation": "The first R4F/v9 pipeline actually exits one after 1148.676 seconds. Stage, configure and both archives passed their original checks; mkfs.ext4 then exceeded the fixed 600-second subprocess deadline, with the image phase taking 615.382 seconds including cleanup. The partial 4 GiB apparent file, original source and full traceback remain retained. No label/production VM, actual policy export or live behavior was run. Concurrent HDD work is relevant context, not a proven exclusive cause. An independent recovery must retain these limits and report its own outputs.",
+      "evidence_ids": [
+        "FEDORA-R4F-REVIEW",
+        "FEDORA-R4F-ARTIFACTS",
+        "FEDORA-R4F-PIPELINE",
+        "FEDORA-R4F-IMAGE",
+        "FEDORA-R4F-IMAGE-LOG",
+        "FEDORA-R4F-INITRAMFS",
+        "FEDORA-R4F-SOURCE",
+        "FEDORA-R4F-BASELINE"
+      ]
+    },
+    {
+      "id": "PF-KERNEL-R5",
+      "status": "full_build_offline_qualification_and_shared_transfer_pass_no_vm",
+      "observation": "The independent 6.12.114-tb371fc-research5-services configuration differs from R4 in exactly 14 values derived from the original Nix/Nura services. Full build exits zero in 1681.092 seconds and inspector exits zero in 15.765 seconds. All 84 modules retain the R4 relative path set, new matching CMS/vermagic/BTF/stripping and all 4308 imported CRC checks. Image contains the exact BTF and new public certificate; joint DT and standard Adreno SMMU references are unchanged. All 106 transferred ordinary files have equal source-before/source-after/destination hashes/modes/owners and canonical archive streams. No private key, firmware or old depmod index is transferred. Actual Nix/Nura startup, firewall, zram and RTC behavior still await a separate R5 VM; no owner case changes.",
+      "evidence_ids": [
+        "R5-KERNEL",
+        "R5-ARTIFACTS",
+        "R5-VERIFICATION",
+        "R5-CONFIGURATION",
+        "R5-TRANSFER",
+        "R5-CONTRACT"
+      ]
+    },
+    {
+      "id": "PF-NURA-ENTRY",
+      "status": "bounded_original_busybox_openrc_inventory_only",
+      "observation": "A native read-only collector identifies original Nura BusyBox PID1, inittab-driven OpenRC sysinit/boot/default, ARM Python, original service definitions and the retained 7.3.5 module tree. It does not execute the target or rehash every exported archive member. Original firewall/zram/hwclock service prerequisites motivated the separate R5 build; no service is silently removed to claim complete startup. Target boot and complete offline package reconstruction remain open.",
+      "evidence_ids": [
+        "NURA-HOST",
+        "NURA-ARTIFACTS",
+        "NURA-ENTRY-REVIEW",
+        "NURA-ENTRY-ARTIFACTS",
+        "R5-CONTRACT"
+      ]
+    },
+    {
+      "id": "PF-TOOLS-MAC-BOUNDARY",
+      "status": "targeted_offline_token_boundary_regression_pass",
+      "observation": "The six-octet privacy-check regex now excludes adjacent colons as well as hexadecimal characters. The specified offline test accepts its synthetic positive/negative cases and leaves original 20-byte public key IDs and raw R4/R5 evidence intact. This is source-tooling qualification only, with no new Linux hardware result.",
+      "evidence_ids": [
+        "TOOLS-MAC-BOUNDARY"
+      ]
+    },
+    {
+      "id": "PF-NIX-REGISTERED-ROOT",
+      "status": "original_signed_cache_copy_timeout_before_image_or_vm",
+      "observation": "The original native Nix 2.26.3 job exits one after 5530.405676769966 seconds. Recursive source metadata and content/trust verification pass, the latter in 1922.6411205229815 seconds. The signed cache copy then raises TimeoutExpired at its unchanged 3600-second limit. This executed phase is missing from the commands array because the original helper appends only after subprocess.run returns; its traceback and complete original streams are retained. require-sigs remains true. Destination registration, full destination verification and source-after comparison were not reached, nor any image, activation, PID1 or VM. The original 894-path toplevel build remains valid within its original build scope; the partial cache is not a qualified root. Future SSD recovery is independent and not scored here.",
+      "evidence_ids": [
+        "NIX-ROOT-PREPARATION-REVIEW",
+        "NIX-ROOT-PREPARATION-ARTIFACTS",
+        "NIX-ROOT-PREPARATION-ORIGINAL",
+        "NIX-ROOT-PREPARATION-JOB",
+        "NIX-ROOT-PREPARATION-COPY-STDERR",
+        "NIX-ROOT-PREPARATION-SOURCE-VERIFY",
+        "NIX-ROOT-PREPARATION-SOURCE"
+      ]
     }
   ],
   "stack_manifest_required": [
@@ -3755,7 +4375,7 @@
         "absence_requires_owner_android_evidence": true
       },
       "baseline": {
-        "observed": "Owner stock is TB371FC Android 14 / 4.19.157-perf+, with conflicting lock fields, CONFIG_KEXEC=n, forced module signatures/versioning and no ACM. Eight current partitions have verified off-device copies; restore and actual entry remain untested. Research1/research2 builds and generic VM boots succeeded; a separate signed research2 joint input/display bundle and full research1 Fedora systemd/Enforcing VM now exist. The new public 4.19.325 bridge and default-HOLD rescue initramfs compile, but its generic VM fails in Qualcomm SCM before PID1; the initramfs passed only under the frozen research2 reference Image. An unsigned owner-layout v2 candidate passed independent format checks only. No owner Linux boot, bootloader acceptance, runtime placement, kexec execution or recovery transport has been demonstrated. The owner exposes two not-attached UDCs and doesvm has no matching gadget; the later fixed-a600000 ramdisk passed only mocked selection, reference-kernel PID1 and private-v2 format checks. Full NixOS toplevel store realization is separately recorded without activation or system boot. Full independent research3/research4 Image and 84-module builds have passed offline qualification, including the joint DT and standard SMMU. The separate Fedora R3 run failed before pids/BPF behavioral probes. Matched-source early SELinux analysis and a same-process ARM bootstrap now have build/API-only evidence; the separate v5 production result is now retained as failed at rootfs filesystem association before systemd. Fresh owner/host USB snapshots still do not demonstrate an entry/recovery link. The first R4 Fedora verification also remains failed: ordinary real-broker round trips passed, while unrestricted FD transport reset before pids/BPF, with a separate observed early queued-udev-FD loss. The v5 attempt also remains failed: first policy load succeeded Enforcing, but /var relabel was denied by filesystem association before systemd. The separate v6 candidate now has actual archive, tmpfs migration/cleanup and same-boot init_t/udev_t observations, but failed complete verification on policy/API-label AVCs and a manager-side FIFO denial with truncated FDs; pids/BPF workers did not run. The latest paired USB capture at 06:09 UTC (14:09 Asia/Shanghai) still leaves the owner entry/recovery transport unverified. The separate v7 run observes successful early reload/API labels, the real controlled three-FD route and TasksMax behavior; it still fails overall at a PL061 fixture and retains two visible AVCs plus corrupted serial frames. BPF attachment is observed, but the restricted-filesystem workload did not run. All owner native-Linux counts remain zero.",
+        "observed": "Owner stock is TB371FC Android 14 / 4.19.157-perf+, with conflicting lock fields, CONFIG_KEXEC=n, forced module signatures/versioning and no ACM. Eight current partitions have verified off-device copies; restore and actual entry remain untested. Research1/research2 builds and generic VM boots succeeded; a separate signed research2 joint input/display bundle and full research1 Fedora systemd/Enforcing VM now exist. The new public 4.19.325 bridge and default-HOLD rescue initramfs compile, but its generic VM fails in Qualcomm SCM before PID1; the initramfs passed only under the frozen research2 reference Image. An unsigned owner-layout v2 candidate passed independent format checks only. No owner Linux boot, bootloader acceptance, runtime placement, kexec execution or recovery transport has been demonstrated. The owner exposes two not-attached UDCs and doesvm has no matching gadget; the later fixed-a600000 ramdisk passed only mocked selection, reference-kernel PID1 and private-v2 format checks. Full NixOS toplevel store realization is separately recorded without activation or system boot. Full independent research3/research4 Image and 84-module builds have passed offline qualification, including the joint DT and standard SMMU. The separate Fedora R3 run failed before pids/BPF behavioral probes. Matched-source early SELinux analysis and a same-process ARM bootstrap now have build/API-only evidence; the separate v5 production result is now retained as failed at rootfs filesystem association before systemd. Fresh owner/host USB snapshots still do not demonstrate an entry/recovery link. The first R4 Fedora verification also remains failed: ordinary real-broker round trips passed, while unrestricted FD transport reset before pids/BPF, with a separate observed early queued-udev-FD loss. The v5 attempt also remains failed: first policy load succeeded Enforcing, but /var relabel was denied by filesystem association before systemd. The separate v6 candidate now has actual archive, tmpfs migration/cleanup and same-boot init_t/udev_t observations, but failed complete verification on policy/API-label AVCs and a manager-side FIFO denial with truncated FDs; pids/BPF workers did not run. The earlier paired USB capture at 06:09 UTC (14:09 Asia/Shanghai) still leaves the owner entry/recovery transport unverified. The separate v7 run observes successful early reload/API labels, the real controlled three-FD route and TasksMax behavior; it still fails overall at a PL061 fixture and retains two visible AVCs plus corrupted serial frames. BPF attachment is observed, but the restricted-filesystem workload did not run. All owner native-Linux counts remain zero. The separate v8 generic run later completed its paired BPF open-EPERM, pids, signed-module and persistent-result gates but still failed on one journalctl AVC. The new seven-permission policy and V4 loader are qualified offline; the first v9 image attempt timed out before any VM. R5 now supplies a fully built, signed 84-module kernel with the original Nix/Nura service prerequisites, without a new R5 boot result. The newest retained USB pair at 09:36:24-25 UTC (17:36 Shanghai) still demonstrates no owner-to-doesvm recovery/data link. The first native Nix registered-root preparation later failed at the original 3600-second signed-cache copy after successful source verification; no destination qualification, image or NixOS boot was reached.",
         "evidence_ids": [
           "ANDROID-STOCK",
           "ANDROID-BOOT",
@@ -3830,7 +4450,18 @@
           "FEDORA-R4C-TMPFS-SOURCE",
           "FEDORA-R4D-ARTIFACTS",
           "FEDORA-R4D-SERIAL",
-          "FEDORA-R4D-POLICY-EXPORT"
+          "FEDORA-R4D-POLICY-EXPORT",
+          "FEDORA-R4E-ARTIFACTS",
+          "FEDORA-R4E-GUEST",
+          "SOCKET-POLICY-ARTIFACTS",
+          "EARLY-SOCKET-LOADER-REVIEW",
+          "FEDORA-R4F-ARTIFACTS",
+          "R5-ARTIFACTS",
+          "R5-TRANSFER",
+          "ANDROID-USB-RECHECK-1736",
+          "HOST-USB-RECHECK-1736",
+          "NIX-ROOT-PREPARATION-ARTIFACTS",
+          "NIX-ROOT-PREPARATION-ORIGINAL"
         ],
         "controlled_measurements_available": false,
         "android_work_remaining": [
@@ -5309,7 +5940,7 @@
         "absence_requires_owner_android_evidence": true
       },
       "baseline": {
-        "observed": "Owner Type-C snapshot reports sink/device; PS5169 is bound. Later fixed USB capture exposes a600000.dwc3 and a800000.dwc3, both not attached; Android g1 is configured on a600000.dwc3 with 17ef:7e31. The doesvm snapshot has no matching device. Maximum-speed values and generic USB_PD labels do not prove a data link or PD contract. Android config enables NCM/FunctionFS but not ACM. The separately compiled bridge enables ACM; a new default-HOLD ramdisk selects only the observed a600000 target and holds when missing/invalid. Ten mocked predicate cases, reference-kernel PID1 and private-v2 format checks passed, but no physical UDC binding, host enumeration or usable rescue console has been proved. The fresh paired follow-up again records both UDCs not attached and no matching host candidate; no physical connection or entry success is inferred. The later 05:18 UTC paired recheck retains the same bounded no-link observation, without inferring cable presence or another host.",
+        "observed": "Owner Type-C snapshot reports sink/device; PS5169 is bound. Later fixed USB capture exposes a600000.dwc3 and a800000.dwc3, both not attached; Android g1 is configured on a600000.dwc3 with 17ef:7e31. The doesvm snapshot has no matching device. Maximum-speed values and generic USB_PD labels do not prove a data link or PD contract. Android config enables NCM/FunctionFS but not ACM. The separately compiled bridge enables ACM; a new default-HOLD ramdisk selects only the observed a600000 target and holds when missing/invalid. Ten mocked predicate cases, reference-kernel PID1 and private-v2 format checks passed, but no physical UDC binding, host enumeration or usable rescue console has been proved. The fresh paired follow-up again records both UDCs not attached and no matching host candidate; no physical connection or entry success is inferred. The later 05:18 UTC paired recheck retains the same bounded no-link observation, without inferring cable presence or another host. The latest retained fixed-helper pair at 09:36:24-25 UTC (17:36 Shanghai) again exits zero with both UDCs not attached/UNKNOWN, unchanged primary/VID/PID and 14 doesvm entries without a matching vendor candidate. No cable fault or other host state is inferred.",
         "evidence_ids": [
           "ANDROID-STOCK",
           "ANDROID-BOOT-CAPABILITIES",
@@ -5325,7 +5956,10 @@
           "USB-FOLLOWUP-REVIEW",
           "USB-RECHECK-REVIEW",
           "ANDROID-USB-RECHECK",
-          "HOST-USB-RECHECK"
+          "HOST-USB-RECHECK",
+          "USB-RECHECK-1736-REVIEW",
+          "ANDROID-USB-RECHECK-1736",
+          "HOST-USB-RECHECK-1736"
         ],
         "controlled_measurements_available": false,
         "android_work_remaining": [

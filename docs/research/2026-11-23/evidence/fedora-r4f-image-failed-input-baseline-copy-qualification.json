@@ -1,0 +1,22 @@
+{
+  "baseline_copy_sha256": "6d864ae1072cfd8c40695dfeeea80fa133505d0a48fa1da6dde4a4c5eda3422f",
+  "canonical_stream": {
+    "bytes": 1323141120,
+    "exit_code": 0,
+    "sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96"
+  },
+  "copy_helper_sha256": "e47bb6f6f59af80bd1fc1014e3d83db1537371f641ec7997dae7bacc7ffbbf6b",
+  "expected_quiescent_stream_sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96",
+  "old_failed_candidate_modified": false,
+  "physical_tablet_tested": false,
+  "prior_v8_failure": {
+    "path": "/work/fedora-r4e-closed-image-evidence-v1/fedora-r4e-persistent-result-failed.json",
+    "sha256": "099bcd2a4c76de06ce73aa2c985d0dca6e1d32725ca748a03e63c4b28ced1392"
+  },
+  "proot_or_initrd_or_vm_executed": false,
+  "qualified": true,
+  "runtime_helper_sha256": "da19f1c9e2a75b3f384411708048ddf5272a2e0ad2351391adc587e9690ff4d0",
+  "schema_version": 1,
+  "source_timestamps_reset": false,
+  "wrapper_sha256": "71b9603c675f3acdb8bd1e35687dedb7729fb51f7f5ec2554d62547625bfe977"
+}

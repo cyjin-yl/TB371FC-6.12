@@ -1,0 +1,52 @@
+{
+  "base_sha256": "bf6502d4a81f2f2c79ce610c8ae5a7a3937cab43cfba060562139f0e607209a7",
+  "changes": [
+    {
+      "new": "fresh v9 userspace copy",
+      "occurrences": 1,
+      "old": "fresh v8 userspace copy"
+    },
+    {
+      "new": "Existing failed v8 evidence",
+      "occurrences": 1,
+      "old": "Existing failed v7 evidence"
+    },
+    {
+      "new": "WORK = Path('/work/fedora-input-system-v9')",
+      "occurrences": 1,
+      "old": "WORK = Path('/work/fedora-input-system-v8')"
+    },
+    {
+      "new": "Path('/work/fedora-r4e-closed-image-evidence-v1/fedora-r4e-persistent-result-failed.json')",
+      "occurrences": 1,
+      "old": "Path('/work/fedora-input-system-v7/fedora-input-system-attempt.json')"
+    },
+    {
+      "new": "099bcd2a4c76de06ce73aa2c985d0dca6e1d32725ca748a03e63c4b28ced1392",
+      "occurrences": 1,
+      "old": "6fb7125cc66bbb650c168a233eb6f13bbe56be759df11f47403ff7e2fc410e74"
+    },
+    {
+      "new": "V8_FAILURE",
+      "occurrences": 7,
+      "old": "V7_FAILURE"
+    },
+    {
+      "new": "actual v8 failure",
+      "occurrences": 1,
+      "old": "actual v7 failure"
+    },
+    {
+      "new": "fresh v9 project prefix",
+      "occurrences": 1,
+      "old": "fresh v8 project prefix"
+    },
+    {
+      "new": "prior_v8_failure",
+      "occurrences": 1,
+      "old": "prior_v7_failure"
+    }
+  ],
+  "kernel_or_policy_changed": false,
+  "new_vm_started": false
+}

@@ -1,0 +1,150 @@
+{
+  "configuration_changes": {
+    "CONFIG_LOCALVERSION": {
+      "after": "\"-tb371fc-research5-services\"",
+      "before": "\"-tb371fc-research4-system\""
+    },
+    "CONFIG_NFT_COMPAT": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NFT_CT": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NFT_REJECT": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NFT_REJECT_INET": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NFT_REJECT_IPV4": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NFT_REJECT_IPV6": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NF_TABLES": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NF_TABLES_INET": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NF_TABLES_IPV4": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NF_TABLES_IPV6": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_RTC_DRV_PL031": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_ZRAM_BACKEND_FORCE_LZO": {
+      "after": "n",
+      "before": "y"
+    },
+    "CONFIG_ZRAM_BACKEND_ZSTD": {
+      "after": "y",
+      "before": "n"
+    }
+  },
+  "dtb_target": "qcom/sm8250-lenovo-tb371fc-display-input-test-6.12.dtb",
+  "expected_dtb_sha256": "af80b06f38b73ea42cb669a2897721ba7ecc5a99a8aa3d6d9c1e9ba132597730",
+  "kernel_release": "6.12.114-tb371fc-research5-services",
+  "old_objects_copied": false,
+  "old_private_key_copied": false,
+  "parent_input_manifest_sha256": "5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0",
+  "physical_hardware_tested": false,
+  "profile": "research5-services",
+  "resolved_config_sha256": "a4980121abcc3e2bac47f7020e63c8c00949c53c289019c22b67808d84cd3afa",
+  "resolved_r4_baseline_config_sha256": "0236496603f168aacc5586eac7e199ca8f840b5d0c9b5ed111da64e9d28ec275",
+  "schema_version": 1,
+  "services_contract_sha256": "3b9730335d5573d98f2f9382f83ba79810c9dd563a9e9eed83668a9b3f24ce21",
+  "source_dir": "source-input/linux-6.12.114-input-integration",
+  "source_input": {
+    "assembled_files": {
+      "Documentation/devicetree/bindings/input/hid-over-i2c.yaml": "88ea205dc89f3a872a21d1b0f7266d3416f07b89789670ce8862ae888cbea882",
+      "arch/arm64/Kconfig.debug": "4dc5c41b8ee71924798d7136a4ea143e6d169e8e4ebc5a678a04b534ed259e55",
+      "arch/arm64/boot/dts/qcom/Makefile": "e796147ad6c2135dc27d32d92f6d82f0645cd320d23ac396873c88eecb36ad98",
+      "arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc-display-input-test-6.12.dts": "9c90d87b527dd52b7195190328effaea321dd5ec717f983dcf2dd9c58876f758",
+      "arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc-display-test-6.12.dts": "8cac3ffe34d6eaf3ee43ea1c63b4395fd6a38325ccb5f289283da3e234bfe1f7",
+      "arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc-display-test.dts": "cbb4a34fb144d01f2df5804049b6de1fc58cd3fdb0417cec04ee44b01a5b0cef",
+      "arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc.dts": "288e8278b90770b16461073d32706c741abed79d6a45e4c33a3c1191c9b1e178",
+      "arch/arm64/kernel/head.S": "e2ba2ec353f0e03b0861563e07fc6a2858c903ca5ba6533b41e034d108d05508",
+      "arch/arm64/kernel/pi/map_range.c": "2eedfaa79b543a061a9a54908b2e7d28cbae5c422e8cefd688123ccddfa48efc",
+      "arch/arm64/kernel/setup.c": "834cf165ee9caab12a6f0321e1eef91fb008aabc7eeaa329f620b21ee9d77297",
+      "arch/arm64/mm/mmu.c": "b03413247434f6c2abd500036e2aca226f49156ebb726949c25f3a925ab1ca44",
+      "drivers/clk/qcom/gcc-sm8250.c": "4685b5d11e5cd89718dc80f9b723ab86e5951bfc06fbace1447a855c6a035a20",
+      "drivers/gpu/drm/msm/adreno/adreno_device.c": "7ddde6ff94c9270a6ed94e6a001e127ee9be2c2fe1904e2c929e41d0e1502091",
+      "drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_6_0_sm8250.h": "9e0aa98c6460fedc5b7b039f286ffe1fc49a0fcaf33b7a53b73a46bbd95d69a6",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c": "6d51dfb9b7cf73c67ddcd48336b3437029f0291039b7656406f432029aeb1c48",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_encoder_phys_vid.c": "2febd00e30a765e1fb7c7335dda47f7ae54665f307103172787e90814d264f10",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.h": "98daac09b803bab1cb4bb5aad1b3b7c1ec27cf2174884b9897e1293ef3ea13cb",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c": "6db93d382191a8e9989a2a1b5196bf9b81b55ff18909030b0d4c0e4fb3275a8d",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.h": "200ed6d145287043087dfc6e8bd44e891293fa21997f5bd5c222425d82ffb07d",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c": "d28352bcdad53cd1bae0301138b17c5736ab3ead8bf98b0eefca368a58b8d2df",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c": "3f90bdd225d6853f6b15a2c2f53f0ade0d08ed456521ae4c5b873c140aea92ee",
+      "drivers/gpu/drm/msm/dsi/dsi_host.c": "f0c9e8c2aff20215228543c6051a36310ac12a9164ebce4888db1e2ee45d1f19",
+      "drivers/gpu/drm/msm/dsi/phy/dsi_phy.c": "dd0feba0e7f75f04c9e537354eee377c1c8a33943ee9a346178bf0a2b58a7539",
+      "drivers/gpu/drm/msm/dsi/phy/dsi_phy.h": "4837d449c078ab3417a6c001ed85f0598de0c24ef3b3baba390d802da8d04728",
+      "drivers/gpu/drm/msm/dsi/phy/dsi_phy_7nm.c": "188eb7e650a6045f685d669edefa957412e624220bfe21fa0a3097f9d19fe3be",
+      "drivers/gpu/drm/msm/msm_drv.c": "00bd1f06be741360f250a0961f0b0f2452f4f4879494ae15f1e26271a02412d5",
+      "drivers/gpu/drm/panel/panel-novatek-nt36523.c": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33",
+      "drivers/hid/i2c-hid/i2c-hid-of.c": "af114006449c419e6efaa1df21b20cecc58d494a22cd2fab3d2db0b5e863e28d",
+      "drivers/input/touchscreen/Kconfig": "e041e2345cc0cbb585faed4783ef674baf8d8beb315bb5ba4e6d2e642a9868ee",
+      "drivers/input/touchscreen/Makefile": "01ef0d88222f1afdde09116acbeea70cf136fe1ecfafdb6195e30fb07b6e05e1",
+      "drivers/input/touchscreen/nt36523/Kconfig": "b7efd88e85bbb4c540c51be27ecc1e30a36ee14f4e57ffcddf651300b3090057",
+      "drivers/input/touchscreen/nt36523/Makefile": "963bf5a9051f750023ff201b39edec65a9b29ee19c4e869d1f70d5f615b5adc1",
+      "drivers/input/touchscreen/nt36523/nt36xxx.c": "c1bc7a07d67ec332a6154ca9403df7ee971e31efa0798c2cc8a611ed9c5035a0",
+      "drivers/input/touchscreen/nt36523/nt36xxx.h": "e10d0e48c714c18dbb54b3b94f12fdedb015aa4595229329eec708971ebe54a8",
+      "drivers/input/touchscreen/nt36523/nt36xxx_fw_update.c": "8720c0a2fa1cc4311bb100d2d493e3bf697fb20e6d402589e102bfa1b6f33f77",
+      "drivers/input/touchscreen/nt36523/nt36xxx_mem_map.h": "f44d26d96d60c7890ddc956378fbcd82f8fb7077dd3a2b7746bbf818c713eb0b",
+      "drivers/mmc/host/sdhci-msm.c": "c85f1d69041033a8bee4b7f15c000fe453fba79f71547dc39007078cb605bd30",
+      "drivers/phy/qualcomm/phy-qcom-qmp-combo.c": "3c470a2391950732182cfd83196d228fa4f1f8cb907fdd64000c113f2f2f7173",
+      "drivers/video/backlight/Kconfig": "3923e7bb7be44bef64c1eb5241101cf4d7b1dd95710e5c5ee6ea7e59a72df5d6",
+      "drivers/video/backlight/Makefile": "2fb1d8bdc0ac5d753000a3a8a00f3b3eb915c18fd621595cf051f4b91324ae36",
+      "drivers/video/backlight/tb371fc-ktz8866.c": "5e52309b0c1d6b836273efd1161bf862683dbf6b8b58b3095d04a360f9faab59",
+      "init/main.c": "5956b8729c4ba0ad8f71550cc37372375c6226e92a4697b1d9f9c090d7b667a6",
+      "net/socket.c": "b8f0c0796ab942edee0e8a895d0bf2a9d021aa586207140686b71d1de6442b15"
+    },
+    "base_manifest_sha256": "845914d9cc1c876f10704f3334ee942b2c26deaa8045ce9c2ef82ef2920cde21",
+    "baseline_abi_inputs": {
+      "baseline-abi/Module.symvers": "8e71a956b3c79112228f92cd234a13a39aa7a3193a5d1222d1dab5123043d9d0",
+      "baseline-abi/display.dtb": "50ad113c0f50b5586190c30fa9a6b4bedc7cbb64174c5ef4450ce558c593b63e",
+      "baseline-abi/kernel.config": "e024e6d2094180d31d2b3f64a643801d95c544c0bb9593a64b6d117c2ffb86a8"
+    },
+    "device_linux_tested": false,
+    "dtb_target": "qcom/sm8250-lenovo-tb371fc-display-input-test-6.12.dtb",
+    "image_built": false,
+    "input_copies": {
+      "mainline-port/backports/linux-6.12/0018-input-nt36523-use-declared-physical-dimensions.patch": "790d13667f3ced31152f55a7e74db3517f8e0410a7a699d231ba6f7a9a621d7f",
+      "mainline-port/backports/linux-6.12/0019-input-nt36523-fail-closed-and-release-resources.patch": "42739b19a7fd2a9797056b3fb93ba90fc49ea141162da5bc42e83f2078b42da6",
+      "mainline-port/backports/linux-6.12/sm8250-lenovo-tb371fc-display-input-test-6.12.dts": "9c90d87b527dd52b7195190328effaea321dd5ec717f983dcf2dd9c58876f758",
+      "scripts/research/input/build_input.sh": "5a32e1462e628df04788418a6dcdf9592b7ab4dade5758386818b8248d8a3532",
+      "scripts/research/input/inspect_input.py": "9297325b83d480784d236e2fe44a413e22a2dd1d258a3b82410c4b6701470d67",
+      "scripts/research/input/prepare_input.py": "0f3334412a7711d3a38d4bfdb0b0b5a35f5a5cb97c1d65868155d34e0c966059",
+      "scripts/research/input/regress_input.py": "d07b662886af09ff4f8838d1aaa9729960aef599e809466b942ca5fb6e1e98ac",
+      "scripts/research/input/regression_harness.c": "dc307b3a9eaff1878420edb64272ffc6ec420fe484dbb8e016d90931d4a82ac2"
+    },
+    "kernel_release": "6.12.114-tb371fc-research2-display",
+    "module_loaded": false,
+    "patch_order": [
+      "mainline-port/backports/linux-6.12/0018-input-nt36523-use-declared-physical-dimensions.patch",
+      "mainline-port/backports/linux-6.12/0019-input-nt36523-fail-closed-and-release-resources.patch"
+    ],
+    "profile": "input-integration-v3; module/DT-only against frozen research2 ABI",
+    "schema_version": 1,
+    "source_dir": "linux-6.12.114-input-integration"
+  },
+  "source_reproduction_baseline_config_sha256": "e024e6d2094180d31d2b3f64a643801d95c544c0bb9593a64b6d117c2ffb86a8",
+  "system_config_sha256": "5f2ed320c037194509cba247eaebdf36b63cf1663081d0b7a347ca28233b13b1"
+}

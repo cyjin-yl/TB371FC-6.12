@@ -1,0 +1,36 @@
+{
+  "actual_kernel_policy_export_sha256_predetermined": false,
+  "baseline_copy_qualification_sha256": "aea118880abaff3eee5c7aafc311f614d6c4f897308e6216e93e36c9ae964143",
+  "baseline_preparation_record_sha256": "ec24294addd305c7262eb2baba87215a0ed810fb9f391fc2698ab8eabd4137c7",
+  "bootstrap": {
+    "build_policy_sha256": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+    "derived_source_sha256": "7badcfe780ff18e906ad03de6e907f038b3c80505a64c631c0579c62850548f5",
+    "embedded_policy_sha256": false,
+    "marker": "TB371FC_EARLY_SELINUX_V4",
+    "mode": "0755",
+    "path": "/work/early-selinux-socket-probe-20261123/build-01/early-init",
+    "policy_size_constant": 3835468,
+    "sha256": "0bc3f0fbb814ece1133b16e36c6b3c402fbf5456d366fb99f4fe2783c87c1d14",
+    "size": 72528
+  },
+  "owner_linux_boots": 0,
+  "r4_image_or_modules_modified": false,
+  "schema_version": 1,
+  "source_policy": {
+    "effective_access_qualification_report_pending": false,
+    "full_cil_qualification_report_pending": false,
+    "path": "/work/selinux-socket-probe-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35",
+    "qualification_scope": "Peer-reported actual full CIL and 19 effective AV qualification; frozen evidence reports are separate",
+    "sha256": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+    "size": 3835468
+  },
+  "waiter": {
+    "marker": "TB371FC_TMPFS_STAGE1_V2",
+    "original_build_target_was_v3": true,
+    "path": "/work/tmpfs-waiter-v2-20261123/build-01/init.tmpfs-wait",
+    "reuse_reason": "unchanged runtime path, ELF shape and actual 72528-byte target size; the independent archive verifier binds the new V4 full hash",
+    "sha256": "7e593ef9b2c40834b97ad35b1bc21fcd54b00e34dce72381832f88329e28b3ec",
+    "size": 71872,
+    "target_size_constant": 72528
+  }
+}

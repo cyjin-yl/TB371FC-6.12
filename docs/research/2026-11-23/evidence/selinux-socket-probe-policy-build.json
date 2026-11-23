@@ -1,0 +1,486 @@
+{
+  "build_config": {
+    "changes": "Only fixed emulated executable paths; load_policy rejects every invocation.",
+    "sha256": "a2d1fb5a3cdab95865da6334352ac23451ec115c8f6ae09771f4eb00546cccf1",
+    "size": 2987
+  },
+  "candidate_content_differences": [
+    {
+      "after": {
+        "ctime_ns": 1795424053373916549,
+        "gid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1795424052946894598,
+        "sha256": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+        "size": 3835468,
+        "type": "file",
+        "uid": 0
+      },
+      "before": {
+        "ctime_ns": 1795423977541018428,
+        "gid": 0,
+        "mode": "0o644",
+        "mtime_ns": 1795398511879883392,
+        "sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+        "size": 3835432,
+        "type": "file",
+        "uid": 0
+      },
+      "path": "etc/selinux/targeted/policy/policy.35"
+    },
+    {
+      "after": {
+        "ctime_ns": 1795424051002794664,
+        "gid": 0,
+        "mode": "0o600",
+        "mtime_ns": 1795424051002794664,
+        "sha256": "8d17b2536d3905e4b709f53152aaa15327030c1cc96e6828c41c63f558aba405",
+        "size": 32,
+        "type": "file",
+        "uid": 0
+      },
+      "before": {
+        "ctime_ns": 1795423977957039813,
+        "gid": 0,
+        "mode": "0o600",
+        "mtime_ns": 1795398511627869585,
+        "sha256": "449c9d6620e597577fd95aec779aa45739148fa2ae055711fec50827dcfe8ced",
+        "size": 32,
+        "type": "file",
+        "uid": 0
+      },
+      "path": "var/lib/selinux/targeted/active/commit_num"
+    },
+    {
+      "after": {
+        "ctime_ns": 1795423983380318591,
+        "gid": 0,
+        "mode": "0o700",
+        "mtime_ns": 1795423983380318591,
+        "type": "directory",
+        "uid": 0
+      },
+      "before": null,
+      "path": "var/lib/selinux/targeted/active/modules/400"
+    },
+    {
+      "after": {
+        "ctime_ns": 1795423983450322190,
+        "gid": 0,
+        "mode": "0o700",
+        "mtime_ns": 1795423983450322190,
+        "type": "directory",
+        "uid": 0
+      },
+      "before": null,
+      "path": "var/lib/selinux/targeted/active/modules/400/tb371fc_socket_probe"
+    },
+    {
+      "after": {
+        "ctime_ns": 1795423983458322601,
+        "gid": 0,
+        "mode": "0o600",
+        "mtime_ns": 1795423983458322601,
+        "sha256": "4b58be4bff378099632f5917ff5127740b30314cdc25fc01328e9c5a231ccf1e",
+        "size": 212,
+        "type": "file",
+        "uid": 0
+      },
+      "before": null,
+      "path": "var/lib/selinux/targeted/active/modules/400/tb371fc_socket_probe/cil"
+    },
+    {
+      "after": {
+        "ctime_ns": 1795423983381318643,
+        "gid": 0,
+        "mode": "0o600",
+        "mtime_ns": 1795423983381318643,
+        "sha256": "9a2e646ef933bedfa63503f7c2484674daf9d41f7e6822983b919e5e952f83cf",
+        "size": 3,
+        "type": "file",
+        "uid": 0
+      },
+      "before": null,
+      "path": "var/lib/selinux/targeted/active/modules/400/tb371fc_socket_probe/lang_ext"
+    },
+    {
+      "after": {
+        "ctime_ns": 1795423983381318643,
+        "gid": 0,
+        "mode": "0o700",
+        "mtime_ns": 1795423983381318643,
+        "type": "directory",
+        "uid": 0
+      },
+      "before": null,
+      "path": "var/lib/selinux/targeted/active/modules/disabled"
+    },
+    {
+      "after": {
+        "ctime_ns": 1795423988796597010,
+        "gid": 0,
+        "mode": "0o600",
+        "mtime_ns": 1795423988796597010,
+        "sha256": "1c2471e09efe006d04c866d2370aca1dc127bdcb3987c90b7a7f5c6e39d85cf7",
+        "size": 72,
+        "type": "file",
+        "uid": 0
+      },
+      "before": {
+        "ctime_ns": 1795423977926038219,
+        "gid": 0,
+        "mode": "0o600",
+        "mtime_ns": 1795398461180105589,
+        "sha256": "7954896f00a3f756bf56c1d32d5d2015a09760bd288bd50469a1714357c84081",
+        "size": 72,
+        "type": "file",
+        "uid": 0
+      },
+      "path": "var/lib/selinux/targeted/active/modules_checksum"
+    },
+    {
+      "after": {
+        "ctime_ns": 1795424043590413637,
+        "gid": 0,
+        "mode": "0o600",
+        "mtime_ns": 1795424043590413637,
+        "sha256": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+        "size": 3835468,
+        "type": "file",
+        "uid": 0
+      },
+      "before": {
+        "ctime_ns": 1795423977956039761,
+        "gid": 0,
+        "mode": "0o600",
+        "mtime_ns": 1795398509748766630,
+        "sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+        "size": 3835432,
+        "type": "file",
+        "uid": 0
+      },
+      "path": "var/lib/selinux/targeted/active/policy.kern"
+    },
+    {
+      "after": {
+        "ctime_ns": 1795424043078387316,
+        "gid": 0,
+        "mode": "0o600",
+        "mtime_ns": 1795424043078387316,
+        "sha256": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+        "size": 3835468,
+        "type": "file",
+        "uid": 0
+      },
+      "before": {
+        "ctime_ns": 1795423977942039042,
+        "gid": 0,
+        "mode": "0o600",
+        "mtime_ns": 1795398509396747343,
+        "sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+        "size": 3835432,
+        "type": "file",
+        "uid": 0
+      },
+      "path": "var/lib/selinux/targeted/active/policy.linked"
+    }
+  ],
+  "candidate_policy": {
+    "mode": "0o644",
+    "path": "/work/selinux-socket-probe-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35",
+    "sha256": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+    "size": 3835468
+  },
+  "command": [
+    "/work/selinux-socket-probe-20261123/build-01/qemu-aarch64",
+    "-L",
+    "/work/selinux-socket-probe-20261123/build-01/tool-root",
+    "/work/selinux-socket-probe-20261123/build-01/tool-root/usr/sbin/semodule",
+    "-p",
+    "/work/selinux-socket-probe-20261123/build-01/candidate",
+    "-S",
+    "/var/lib/selinux",
+    "-s",
+    "targeted",
+    "-g",
+    "/work/selinux-socket-probe-20261123/build-01/semanage-build.conf",
+    "-n",
+    "-v",
+    "-X",
+    "400",
+    "-i",
+    "/work/selinux-socket-probe-20261123/build-01/tb371fc_socket_probe.cil"
+  ],
+  "elapsed_seconds": 99.6215408500284,
+  "external_tools": [
+    {
+      "accepted": true,
+      "argv": [
+        "-q",
+        "-c",
+        "/work/selinux-socket-probe-20261123/build-01/candidate/var/lib/selinux/final/targeted/policy/policy.35",
+        "/work/selinux-socket-probe-20261123/build-01/candidate/var/lib/selinux/final/targeted/contexts/files/file_contexts"
+      ],
+      "tool": "setfiles"
+    },
+    {
+      "accepted": true,
+      "argv": [
+        "-r",
+        "/work/selinux-socket-probe-20261123/build-01/candidate/var/lib/selinux/final/targeted/contexts/files/file_contexts"
+      ],
+      "tool": "sefcontext_compile"
+    },
+    {
+      "accepted": true,
+      "argv": [
+        "-r",
+        "/work/selinux-socket-probe-20261123/build-01/candidate/var/lib/selinux/final/targeted/contexts/files/file_contexts.homedirs"
+      ],
+      "tool": "sefcontext_compile"
+    }
+  ],
+  "finished_utc": "2026-11-23T08:54:37.118377+00:00",
+  "kernel_policy_loaded": false,
+  "module": {
+    "priority": 400,
+    "rules": [
+      "(allow init_t semanage_store_t (file (map)))",
+      "(allow init_t init_t (process (setcurrent dyntransition)))",
+      "(allow init_t systemd_varlink_registry_t (lnk_file (unlink)))",
+      "(allow journalctl_t syslogd_var_run_t (sock_file (write)))",
+      "(allow journalctl_t syslogd_t (unix_stream_socket (connectto)))",
+      "(allow journalctl_t self (unix_dgram_socket (create)))"
+    ],
+    "sha256": "72a3dc94296a5b99b6c6b2cd6fc376f88129c73c211035065e6109f44eaf3cde",
+    "size": 344
+  },
+  "original_source_inventory_reference_sha256": "3ab1550b558272ac17ff8a89520238bac8d2b5c108958e4458210da52fb10534",
+  "physical_device_actions": false,
+  "qemu": {
+    "sha256": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943",
+    "size": 16661520
+  },
+  "rootfs_booted": false,
+  "schema": 1,
+  "script_sha256": "5bece11e18eac452206be0fb6ca19a5c4887a05b89b5cd93d65e4172db85a030",
+  "semodule_exit_code": 0,
+  "semodule_log": {
+    "sha256": "faac5c3dd3f082ff2a237f6bdd84d54aac88d08362602c21b5b4590dfafb9ca4",
+    "size": 257
+  },
+  "source_complete_content_inventory_sha256": "c0070c6fb7f209ed7e391d4707a1058caedbaf1ad96c076a17624661e5558b50",
+  "source_inventory_unchanged_including_mtime_ctime": true,
+  "source_pins": {
+    "etc/selinux/config": "80134a263d874d1687a43513a09b6cc8fdc2998e623c1c1670cb5769a85ce942",
+    "etc/selinux/semanage.conf": "8ba0df9a109dd136f1e8827343806ced9a0652c670c2572b4dd8642c67c27734",
+    "etc/selinux/targeted/policy/policy.35": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+    "usr/lib64/libselinux.so.1": "c9edfec980b8a05666d24dc3a4e15b502431334e2c7e3adcae189402b5031f6d",
+    "usr/lib64/libsemanage.so.2": "246206662c92e1df56f5f4f0d173bfb1bd6f97827fa189538e0857b6dc6058e8",
+    "usr/lib64/libsepol.so.2": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+    "usr/sbin/sefcontext_compile": "4a4f15badf7f975f4a10f14d5706e6f53a3765ead74531110c64da4797767936",
+    "usr/sbin/semodule": "1fee7d2141b111197eb4bbcc72f626646af702c45e5f5212347e0e6c5e028029",
+    "usr/sbin/setfiles": "75a118afe1060f2a402ac9c25498699b8b8493501bc7bd56099ee47fb0aa435b"
+  },
+  "source_root": "/work/fedora-input-system-v3/rootfs",
+  "started_utc": "2026-11-23T08:50:40.839654+00:00",
+  "status": "built_pending_delta_and_runtime_qualification",
+  "tool_closure": {
+    "etc/group": {
+      "sha256": "4f26d10b6be334dcc52bd88a90ca36b10901d0f5bbd8426c23836c95fa02522c",
+      "size": 506,
+      "source_payload": "etc/group"
+    },
+    "etc/ld.so.cache": {
+      "sha256": "82a27d912c1958ab916d72b4d9be8ca3dc4261f9c674a1aa24459993f381bdde",
+      "size": 26311,
+      "source_payload": "etc/ld.so.cache"
+    },
+    "etc/nsswitch.conf": {
+      "sha256": "36d4629defe53f0fe01b1578296b3cd411272f888643785716a439370e67166b",
+      "size": 639,
+      "source_payload": "etc/authselect/nsswitch.conf"
+    },
+    "etc/passwd": {
+      "sha256": "2e849193aba3276b14bd939879481c6c1c312d57d4fd8b29d74b3236d59f1417",
+      "size": 1074,
+      "source_payload": "etc/passwd"
+    },
+    "usr/lib/ld-linux-aarch64.so.1": {
+      "interp": [],
+      "mode": "0o755",
+      "needed": [],
+      "sha256": "8821728d15728a7046deef6d4183fb343716901e0e8119fff53d6b51e2605547",
+      "size": 928784,
+      "source_payload": "usr/lib/ld-linux-aarch64.so.1"
+    },
+    "usr/lib64/libaudit.so.1": {
+      "interp": [],
+      "mode": "0o755",
+      "needed": [
+        "libcap-ng.so.0",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "sha256": "88efd5f05e1e0fea194f8195d0c5d3b03bf7b72b58000262ebc368451e73fa1d",
+      "size": 200496,
+      "source_payload": "usr/lib64/libaudit.so.1.0.0"
+    },
+    "usr/lib64/libbz2.so.1": {
+      "interp": [],
+      "mode": "0o755",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "sha256": "38e73d4bc01b1b318c4a0be8b3a89ed59e3d1644fa4354dd84549669ba33680f",
+      "size": 72320,
+      "source_payload": "usr/lib64/libbz2.so.1.0.8"
+    },
+    "usr/lib64/libc.so.6": {
+      "interp": [
+        "/lib/ld-linux-aarch64.so.1"
+      ],
+      "mode": "0o755",
+      "needed": [
+        "ld-linux-aarch64.so.1"
+      ],
+      "sha256": "620f6221d0cb0a7bc7d0674bcb0682a0b42f7fb593f596f3bf646f02b10cb798",
+      "size": 2303728,
+      "source_payload": "usr/lib64/libc.so.6"
+    },
+    "usr/lib64/libcap-ng.so.0": {
+      "interp": [],
+      "mode": "0o755",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "sha256": "611bce349ac27b2f0e83c69549d2a32f2494652e4761b26a1f5773e35d878b8e",
+      "size": 69152,
+      "source_payload": "usr/lib64/libcap-ng.so.0.0.0"
+    },
+    "usr/lib64/libgcc_s.so.1": {
+      "interp": [],
+      "mode": "0o755",
+      "needed": [
+        "libc.so.6"
+      ],
+      "sha256": "ac02fe32df9084d75ea400befd249bb5de2c26a0bcd4c341a959ef805ca0890e",
+      "size": 137000,
+      "source_payload": "usr/lib64/libgcc_s-16-20260819.so.1"
+    },
+    "usr/lib64/libpcre2-8.so.0": {
+      "interp": [],
+      "mode": "0o755",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "sha256": "7f08df34d1ea74a79d32def854357b6466187acc8e4659beeb427e553bf1c4a3",
+      "size": 662552,
+      "source_payload": "usr/lib64/libpcre2-8.so.0.15.0"
+    },
+    "usr/lib64/libselinux.so.1": {
+      "interp": [],
+      "mode": "0o755",
+      "needed": [
+        "libpcre2-8.so.0",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "sha256": "c9edfec980b8a05666d24dc3a4e15b502431334e2c7e3adcae189402b5031f6d",
+      "size": 270480,
+      "source_payload": "usr/lib64/libselinux.so.1"
+    },
+    "usr/lib64/libsemanage.so.2": {
+      "interp": [],
+      "mode": "0o755",
+      "needed": [
+        "libsepol.so.2",
+        "libaudit.so.1",
+        "libselinux.so.1",
+        "libbz2.so.1",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "sha256": "246206662c92e1df56f5f4f0d173bfb1bd6f97827fa189538e0857b6dc6058e8",
+      "size": 336968,
+      "source_payload": "usr/lib64/libsemanage.so.2"
+    },
+    "usr/lib64/libsepol.so.2": {
+      "interp": [],
+      "mode": "0o755",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+      "size": 802880,
+      "source_payload": "usr/lib64/libsepol.so.2"
+    },
+    "usr/libexec/selinux/hll/pp": {
+      "interp": [
+        "/lib/ld-linux-aarch64.so.1"
+      ],
+      "mode": "0o755",
+      "needed": [
+        "libsepol.so.2",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "sha256": "26dc86a640e5224c7f46297e752ec27dd30ca65418acb47025f158b860c6bde6",
+      "size": 69064,
+      "source_payload": "usr/libexec/selinux/hll/pp"
+    },
+    "usr/sbin/sefcontext_compile": {
+      "interp": [
+        "/lib/ld-linux-aarch64.so.1"
+      ],
+      "mode": "0o755",
+      "needed": [
+        "libselinux.so.1",
+        "libsepol.so.2",
+        "libpcre2-8.so.0",
+        "libgcc_s.so.1",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "sha256": "4a4f15badf7f975f4a10f14d5706e6f53a3765ead74531110c64da4797767936",
+      "size": 69504,
+      "source_payload": "usr/bin/sefcontext_compile"
+    },
+    "usr/sbin/semodule": {
+      "interp": [
+        "/lib/ld-linux-aarch64.so.1"
+      ],
+      "mode": "0o755",
+      "needed": [
+        "libsemanage.so.2",
+        "libsepol.so.2",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "sha256": "1fee7d2141b111197eb4bbcc72f626646af702c45e5f5212347e0e6c5e028029",
+      "size": 69952,
+      "source_payload": "usr/bin/semodule"
+    },
+    "usr/sbin/setfiles": {
+      "interp": [
+        "/lib/ld-linux-aarch64.so.1"
+      ],
+      "mode": "0o755",
+      "needed": [
+        "libselinux.so.1",
+        "libsepol.so.2",
+        "libaudit.so.1",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "sha256": "75a118afe1060f2a402ac9c25498699b8b8493501bc7bd56099ee47fb0aa435b",
+      "size": 69056,
+      "source_payload": "usr/bin/setfiles"
+    }
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "artifacts": {
+    "Image": {
+      "sha256": "d80bfce0feb5f6c0cec1b0b0dd4691323720ec3f34a373c7a109001e2cf42e76",
+      "size": 41091080
+    },
+    "Module.symvers": {
+      "sha256": "bd99bf91ba0644a9f2d52de1cf5e390118569371644bc80484b88b0e555e8545",
+      "size": 838926
+    },
+    "SHA256SUMS": {
+      "sha256": "c38a1cf5f041e660d01fcd4c58178db2f672d7169482172470150c88e2e40c95",
+      "size": 892
+    },
+    "System.map": {
+      "sha256": "18f6f59e8a411915b1a59bd3113ab507a9e154a14fad98cf2422604abad3b353",
+      "size": 5656953
+    },
+    "board.dtb": {
+      "sha256": "af80b06f38b73ea42cb669a2897721ba7ecc5a99a8aa3d6d9c1e9ba132597730",
+      "size": 126877
+    },
+    "configuration.json": {
+      "sha256": "a87ce0d5e431234b0889366c2434cd01daf6e266377568473b71425ee03feb85",
+      "size": 7765
+    },
+    "kernel.btf": {
+      "sha256": "fee84441d208c1ce5e920a3a26e5132f74095f1d2eb3e692b95a9343ac9a43f4",
+      "size": 6466067
+    },
+    "kernel.config": {
+      "sha256": "a4980121abcc3e2bac47f7020e63c8c00949c53c289019c22b67808d84cd3afa",
+      "size": 223395
+    },
+    "kernel.release": {
+      "sha256": "82aa727df68913ae04b7291c89e8b11f349fd8d5b3dab4b504015f58ff824ca2",
+      "size": 36
+    },
+    "signing-cert.der": {
+      "sha256": "07a54ba929080f3c5d74cb485afeca7d7acf7c920fde0b26cf003ba45fd57627",
+      "size": 1324
+    },
+    "source-manifest-input.json": {
+      "sha256": "5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0",
+      "size": 7108
+    },
+    "source-manifest.json": {
+      "sha256": "515b380aaf7d50d54a0c830021308e94b1a2b242ef7e7709be17493c9a51ddeb",
+      "size": 9517
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "make",
+        "-C",
+        "/work/research5-services/source-input/linux-6.12.114-input-integration",
+        "O=/work/research5-services/kernel-out",
+        "ARCH=arm64",
+        "LLVM=1",
+        "CC=clang --sysroot=/work/research5-services/target-sysroot",
+        "-j4",
+        "Image",
+        "modules"
+      ],
+      "elapsed_seconds": 1669.5131341039669,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "make",
+        "-C",
+        "/work/research5-services/source-input/linux-6.12.114-input-integration",
+        "O=/work/research5-services/kernel-out",
+        "ARCH=arm64",
+        "LLVM=1",
+        "CC=clang --sysroot=/work/research5-services/target-sysroot",
+        "-j4",
+        "qcom/sm8250-lenovo-tb371fc-display-input-test-6.12.dtb"
+      ],
+      "elapsed_seconds": 3.221351607993711,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "make",
+        "-C",
+        "/work/research5-services/source-input/linux-6.12.114-input-integration",
+        "O=/work/research5-services/kernel-out",
+        "ARCH=arm64",
+        "LLVM=1",
+        "CC=clang --sysroot=/work/research5-services/target-sysroot",
+        "INSTALL_MOD_PATH=/work/research5-services/modules",
+        "INSTALL_MOD_STRIP=1",
+        "modules_install"
+      ],
+      "elapsed_seconds": 5.1675691129639745,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "llvm-objcopy",
+        "--dump-section",
+        ".BTF=/work/research5-services/artifacts.partial/kernel.btf",
+        "/work/research5-services/kernel-out/vmlinux",
+        "/dev/null"
+      ],
+      "elapsed_seconds": 0.9854290639632381,
+      "exit_code": 0
+    }
+  ],
+  "elapsed_seconds": 1679.7351989799645,
+  "ended_utc": "2026-11-23T10:03:50.532476+00:00",
+  "input_source_manifest_sha256": "5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0",
+  "kernel_release": "6.12.114-tb371fc-research5-services",
+  "modules_install_strip_then_sign": true,
+  "new_build_key_generated_in_private_output": true,
+  "old_private_key_copied": false,
+  "passed": true,
+  "physical_hardware_tested": false,
+  "recipe": {
+    "build_system.py": {
+      "sha256": "053178a79838a69440a5e18f01f4fc9a9dc8a81c11347f1689c8e062d530439a",
+      "size": 14314
+    }
+  },
+  "schema_version": 1,
+  "stage": "build",
+  "start_utc": "2026-11-23T09:35:50.786974+00:00"
+}

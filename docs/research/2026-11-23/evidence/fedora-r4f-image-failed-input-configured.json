@@ -1,0 +1,8 @@
+{
+  "guest_verifier_sha256": "fc2dea25edc8ac4eb6a76ea77ecff799b8abf69e8cb47548bfefaef59eaaac16",
+  "kernel_release": "6.12.114-tb371fc-research4-system",
+  "profile_sha256": "34352f1cab5249c95c5c17a893f4277d40004f23e238d6b42ee842bf1e2ea9d3",
+  "root_label": "tb371fc-r4f-f45",
+  "tablet_partition_mapping": null,
+  "validation_target_is_default": false
+}

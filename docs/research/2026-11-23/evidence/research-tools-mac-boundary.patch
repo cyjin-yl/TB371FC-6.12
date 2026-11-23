@@ -1,0 +1,24 @@
+--- a/scripts/research/test_research_tools.py
++++ b/scripts/research/test_research_tools.py
+@@ -242,9 +242,20 @@
+             self.assertEqual(result["summary"]["unparsed_lines"], 0)
+ 
+     def test_public_evidence_has_no_mac_or_credential_marker(self):
++        # A six-octet token must not be a substring of a longer colon-separated
++        # public signing-key fingerprint. This is a token-boundary rule, not a
++        # field-name exemption: an actual MAC in any field still fails.
++        mac = re.compile(r"(?i)(?<![0-9a-f:])(?:[0-9a-f]{2}:){5}[0-9a-f]{2}(?![0-9a-f:])")
++        for value in ('00:11:22:33:44:55', '"mac":"AA:BB:CC:DD:EE:FF"',
++                      'address=02:ab:CD:01:23:45,'):
++            self.assertRegex(value, mac)
++        for value in ('00:11:22:33:44:55:66', ':00:11:22:33:44:55',
++                      '00:11:22:33:44:55:', 'a00:11:22:33:44:55',
++                      '00:11:22:33:44:55a'):
++            self.assertNotRegex(value, mac)
+         for path in EVIDENCE.glob("*.json"):
+             text = path.read_text()
+-            self.assertNotRegex(text, r"(?i)(?<![0-9a-f])(?:[0-9a-f]{2}:){5}[0-9a-f]{2}(?![0-9a-f])")
++            self.assertNotRegex(text, mac)
+             self.assertNotRegex(text, r"-----BEGIN (?:OPENSSH|RSA|EC|PRIVATE) .*KEY-----|gh[pousr]_[A-Za-z0-9]{20,}")
+         self.assertNotIn("ro.serialno", STOCK["properties"])
+         self.assertNotIn("androidboot.serialno", STOCK["boot_arguments"])

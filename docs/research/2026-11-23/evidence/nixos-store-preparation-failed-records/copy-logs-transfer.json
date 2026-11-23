@@ -1,0 +1,22 @@
+{
+  "captured_utc": "2026-11-23T10:40:56.997348+00:00",
+  "files": [
+    {
+      "gid": 0,
+      "mode": "0o600",
+      "path": "/work/nixos-system-boot-v1/store-jobs/signed-cache-copy.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0,
+      "uid": 0
+    },
+    {
+      "gid": 0,
+      "mode": "0o600",
+      "path": "/work/nixos-system-boot-v1/store-jobs/signed-cache-copy.stderr",
+      "sha256": "d1acbddb90e8d19ebf8c497dea1ea0546c6452826d9b632cb6f215a525500d4a",
+      "size": 125629,
+      "uid": 0
+    }
+  ],
+  "scope": "fixed ordinary signed-cache-copy stdout and stderr only; private key excluded"
+}

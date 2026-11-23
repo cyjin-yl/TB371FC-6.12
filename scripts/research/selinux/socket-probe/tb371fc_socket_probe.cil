@@ -1,0 +1,6 @@
+(allow init_t semanage_store_t (file (map)))
+(allow init_t init_t (process (setcurrent dyntransition)))
+(allow init_t systemd_varlink_registry_t (lnk_file (unlink)))
+(allow journalctl_t syslogd_var_run_t (sock_file (write)))
+(allow journalctl_t syslogd_t (unix_stream_socket (connectto)))
+(allow journalctl_t self (unix_dgram_socket (create)))

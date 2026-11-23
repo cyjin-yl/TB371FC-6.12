@@ -1,0 +1,18 @@
+{
+  "bundle_sha256": "82ffa9d01bd5cab5fe859e0182cac9998f103391ca5dac469b0044234fa18627",
+  "complete": true,
+  "destination_container": "tb371fc-build-20261123",
+  "destination_root": "/work/fedora-input-system-v9/kernel-inputs",
+  "files_verified": 96,
+  "finished_utc": "2026-11-23T08:30:16.723376+00:00",
+  "kernel_report_sha256": "0db9a7e6164b44ac845a80974c3a369476ede23ac6f094de9c14c8602fa3faa6",
+  "old_artifacts_modified": false,
+  "private_keys_or_firmware_transferred": false,
+  "recipe_sha256": "da19f1c9e2a75b3f384411708048ddf5272a2e0ad2351391adc587e9690ff4d0",
+  "schema_version": 1,
+  "source_container": "tb371fc-build-20261123",
+  "source_is_failed_vm_filesystem": false,
+  "source_root": "/work/fedora-input-system-v3/kernel-inputs",
+  "source_transfer_record_sha256": "f42c788cbfd7e4e7ae0ffab48f89f267482a31088597cadc9afe3154e2d23d19",
+  "started_utc": "2026-11-23T08:30:16.022801+00:00"
+}

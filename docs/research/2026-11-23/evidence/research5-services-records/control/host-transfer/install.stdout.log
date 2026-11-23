@@ -1,0 +1,1 @@
+{"all_source_bytes_modes_read_back": true, "files": [{"bytes": 8973, "mode": 493, "name": "copy_baseline.py", "sha256": "21e2d3b9887a52ed9fce96366eb71930fd9f5bcdfed901145cfc3a84ebd54ea0"}, {"bytes": 12223, "mode": 493, "name": "transfer_kernel.py", "sha256": "d9be30132e9a444836d7289b6712699583aa95444653f38b34e3f6eeff55cdd5"}], "transfer_started": false}

@@ -1,0 +1,180 @@
+{
+  "binary_difference": {
+    "changed_byte_count_in_overlap": 1052265,
+    "first_changed_offsets": [
+      345595,
+      1201979,
+      1201980,
+      1201981,
+      1201982,
+      1201983,
+      1201987,
+      1201988,
+      1201989,
+      1201997,
+      1201999,
+      1202000,
+      1202001,
+      1202002,
+      1202003,
+      1202004,
+      1202005,
+      1202006,
+      1202007,
+      1202009,
+      1202011,
+      1202012,
+      1202013,
+      1202014,
+      1202015,
+      1202016,
+      1202017,
+      1202018,
+      1202019,
+      1202023,
+      1202024,
+      1202025,
+      1202027,
+      1202028,
+      1202029,
+      1202030,
+      1202031,
+      1202033,
+      1202035,
+      1202036,
+      1202039,
+      1202040,
+      1202041,
+      1202042,
+      1202043,
+      1202045,
+      1202047,
+      1202048,
+      1202049,
+      1202050,
+      1202051,
+      1202052,
+      1202053,
+      1202054,
+      1202055,
+      1202059,
+      1202060,
+      1202061,
+      1202062,
+      1202063,
+      1202064,
+      1202065,
+      1202066,
+      1202067
+    ],
+    "same_length": false,
+    "trailing_length_delta": 12
+  },
+  "comparisons": {
+    "33": {
+      "complete_cil_identical_after_reverting_exact_create_rule_change": true,
+      "includes_other_av_booleans_types_permissive_mls_and_policycaps": true,
+      "no_cross_type_dyntransition_added": true,
+      "only_socket_probe_create_added": true,
+      "rules": [
+        {
+          "added_permissions": [
+            "create"
+          ],
+          "after_rule": "(allow journalctl_t self (unix_dgram_socket (create)))",
+          "before_rule": null,
+          "contract": "socket_probe_create",
+          "exact_reviewed_permissions_added": true,
+          "original_rule_present": false,
+          "removed_permissions": []
+        }
+      ],
+      "target_journal_sock_file_getattr_not_added": true
+    },
+    "35": {
+      "complete_cil_identical_after_reverting_exact_create_rule_change": true,
+      "includes_other_av_booleans_types_permissive_mls_and_policycaps": true,
+      "no_cross_type_dyntransition_added": true,
+      "only_socket_probe_create_added": true,
+      "rules": [
+        {
+          "added_permissions": [
+            "create"
+          ],
+          "after_rule": "(allow journalctl_t self (unix_dgram_socket (create)))",
+          "before_rule": null,
+          "contract": "socket_probe_create",
+          "exact_reviewed_permissions_added": true,
+          "original_rule_present": false,
+          "removed_permissions": []
+        }
+      ],
+      "target_journal_sock_file_getattr_not_added": true
+    }
+  },
+  "completed": true,
+  "conversions": {
+    "candidate": {
+      "fresh_parse_without_prior_cil_export": true,
+      "kernel_export_identity_asserted": false,
+      "path": "/work/selinux-socket-probe-20261123/compare-01/candidate-converted-v33.policy",
+      "sha256": "fe71750b659e71969145d89d08153196f21b46e6d66c6f28e09f8b11e739e53e",
+      "size": 3835456,
+      "version": 33
+    },
+    "original": {
+      "fresh_parse_without_prior_cil_export": true,
+      "kernel_export_identity_asserted": false,
+      "path": "/work/selinux-socket-probe-20261123/compare-01/original-converted-v33.policy",
+      "sha256": "9b39b5a59771bf3f7ac1119979ac09ca7c579fd5504b57f2970008b6ee200afe",
+      "size": 3835444,
+      "version": 33
+    }
+  },
+  "exports": {
+    "candidate-v33": {
+      "line_count": 356736,
+      "path": "/work/selinux-socket-probe-20261123/compare-01/candidate-v33.cil",
+      "sha256": "6d81bc7ebf3cab9bfe047436c8a4591877e894effad33ea5e81d99cc5549d53e",
+      "size": 26816270
+    },
+    "candidate-v35": {
+      "line_count": 356736,
+      "path": "/work/selinux-socket-probe-20261123/compare-01/candidate-v35.cil",
+      "sha256": "6d81bc7ebf3cab9bfe047436c8a4591877e894effad33ea5e81d99cc5549d53e",
+      "size": 26816270
+    },
+    "original-v33": {
+      "line_count": 356735,
+      "path": "/work/selinux-socket-probe-20261123/compare-01/original-v33.cil",
+      "sha256": "74839737f1c0dd679cbe3d288bdb8e1342816f71dcd18d9114565ef8cc2b8501",
+      "size": 26816215
+    },
+    "original-v35": {
+      "line_count": 356735,
+      "path": "/work/selinux-socket-probe-20261123/compare-01/original-v35.cil",
+      "sha256": "74839737f1c0dd679cbe3d288bdb8e1342816f71dcd18d9114565ef8cc2b8501",
+      "size": 26816215
+    }
+  },
+  "input_policy": {
+    "candidate": {
+      "sha256": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+      "size": 3835468
+    },
+    "original": {
+      "sha256": "727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502",
+      "size": 3835456
+    }
+  },
+  "kernel_policy_loaded_or_queried": false,
+  "library": {
+    "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+    "size": 802880
+  },
+  "physical_hardware_tested": false,
+  "runtime_relabel_proven": false,
+  "schema": 1,
+  "scope": "complete offline binary-to-CIL comparison",
+  "script_sha256": "cb52113795010fc56887ca1708dbb064bcbbe349fb39a49c4570d28c0072c723"
+}

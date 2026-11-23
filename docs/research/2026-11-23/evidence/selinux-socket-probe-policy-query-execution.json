@@ -1,0 +1,71 @@
+{
+  "all_candidate_contracts_satisfied": true,
+  "allowed_count": 7,
+  "command": [
+    "/usr/bin/qemu-aarch64",
+    "-L",
+    "/work/fedora-input-system-v3/rootfs",
+    "/work/fedora-input-system-v3/rootfs/usr/bin/python3",
+    "-I",
+    "-B",
+    "/work/selinux-socket-probe-20261123/query-01/query_candidate.py",
+    "--policy",
+    "/work/selinux-socket-probe-20261123/query-01/policy.33",
+    "--library",
+    "/work/selinux-socket-probe-20261123/query-01/libsepol.so.2",
+    "--policy-size",
+    "3835456",
+    "--policy-sha256",
+    "fe71750b659e71969145d89d08153196f21b46e6d66c6f28e09f8b11e739e53e"
+  ],
+  "denied_count": 12,
+  "elapsed_seconds": 5.3218197069945745,
+  "exit_code": 0,
+  "finished_utc": "2026-11-23T08:58:57.889633+00:00",
+  "inputs": {
+    "library": {
+      "copy": "/work/selinux-socket-probe-20261123/query-01/libsepol.so.2",
+      "path": "/work/selinux-socket-probe-20261123/build-01/tool-root/usr/lib64/libsepol.so.2",
+      "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+      "size": 802880
+    },
+    "policy": {
+      "copy": "/work/selinux-socket-probe-20261123/query-01/policy.33",
+      "path": "/work/selinux-socket-probe-20261123/compare-01/candidate-converted-v33.policy",
+      "sha256": "fe71750b659e71969145d89d08153196f21b46e6d66c6f28e09f8b11e739e53e",
+      "size": 3835456
+    },
+    "query": {
+      "copy": "/work/selinux-socket-probe-20261123/query-01/query_candidate.py",
+      "path": "/work/selinux-socket-probe-20261123/query-recipe-v1/query_candidate.py",
+      "sha256": "34e2b4a250bceca14d30a56b84437a45b9d57bf3ebf5c8d4cba152a0a2206e8d",
+      "size": 11794
+    }
+  },
+  "inputs_unchanged": true,
+  "kernel_export_identity_asserted": false,
+  "python": {
+    "ordinary_target": "/work/fedora-input-system-v3/rootfs/usr/bin/python3.15",
+    "path": "/work/fedora-input-system-v3/rootfs/usr/bin/python3",
+    "sha256": "a12cb0a1160abfbc59d3336fb3713562977fd862b9a3eafc2553c89b887a8d15",
+    "size": 68968
+  },
+  "qemu": {
+    "path": "/usr/bin/qemu-aarch64",
+    "sha256": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943",
+    "size": 16661520
+  },
+  "query_completed": true,
+  "query_count": 19,
+  "scope": "one direct-QEMU userspace candidate query; no VM, PRoot or kernel-policy load",
+  "source_sha256": "df330458e58498d975955a5a18b1859a5e1a4edb1366a9430d73b1922e1bb92e",
+  "started_utc": "2026-11-23T08:58:52.567814+00:00",
+  "stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size": 0
+  },
+  "stdout.json": {
+    "sha256": "35e2473b2bbd6526d8b6d823997fcf46fca11d2c8c4ea6b04443d8a1c0b0faa0",
+    "size": 14320
+  }
+}
