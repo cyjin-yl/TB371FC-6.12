@@ -1,0 +1,20 @@
+name: R5 Fedora runtime staging
+on:
+  pull_request:
+    paths:
+      - 'scripts/research/rootfs/stage_r5_fedora.py'
+      - 'scripts/research/rootfs/test_stage_r5_fedora.py'
+      - '.github/workflows/r5-fedora-runtime.yml'
+  push:
+    branches:
+      - feat/r5-fedora-runtime-20261123
+permissions:
+  contents: read
+jobs:
+  staging-unit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test new staging and failure boundaries (synthetic only)
+        run: python3 -m unittest discover -s scripts/research/rootfs -p test_stage_r5_fedora.py -v
