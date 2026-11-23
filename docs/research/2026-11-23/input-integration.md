@@ -2,6 +2,12 @@
 
 Date: 2026-11-23. Evidence: [input-integration.json](evidence/input-integration.json).
 
+Follow-up: [patch 0020](novatek-firmware-bounds.md) now addresses specific
+firmware-parser range checks left open by this report. It has a separate R5
+module build, 16 owner-matched stock-file comparisons and 18 range/decode
+checks. The historical research2 results and physical acceptance below remain
+unchanged.
+
 **The two new input patches, Novatek module, three HID objects and joint display/input DT have been built successfully against the frozen research2 ABI.** Eighteen groups of fault-injection checks execute functions extracted from the actual patched C source. This is a source and host-build result. No module was loaded, no tablet was booted or written, and no physical input test passed in this task.
 
 The final independent build is `/work/input-integration-v3` in the standard Docker container `tb371fc-build-ssd-20261123` on doesvm/CT102. Frozen research1/research2 source, Image and installed modules were not modified. The module in this report is **unsigned**; signing and any integrated kernel/module/DT bundle must have a separate manifest.
