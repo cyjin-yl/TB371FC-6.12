@@ -59,6 +59,22 @@ class RecipeTests(unittest.TestCase):
             with self.assertRaises(FileExistsError):
                 recipe.derive_sources(repo, destination)
 
+    def test_stage_source_identity_survives_different_umask(self):
+        repo = Path(__file__).resolve().parents[3]
+        source = Path(recipe.__file__).with_name("stage_r5_fedora.py")
+        with tempfile.TemporaryDirectory() as tmp:
+            destination = Path(tmp) / "recipe"
+            # Force the default output mode to differ from the source in
+            # ordinary Git checkouts and git-archive extractions.
+            mask = 0o077 if s.identity(source)["mode"] != 0o600 else 0o022
+            old_mask = os.umask(mask)
+            try:
+                result = recipe.derive_sources(repo, destination)
+            finally:
+                os.umask(old_mask)
+            self.assertEqual(result["derived"]["stage_r5_fedora.py"], s.identity(source))
+            self.assertEqual(s.identity(destination / "stage_r5_fedora.py"), s.identity(source))
+
     def test_derivation_rejects_missing_or_duplicate_anchor(self):
         for text in ("none", "anchor anchor"):
             with self.assertRaises(ValueError):

@@ -1,0 +1,13 @@
+{
+  "derivation_sha256": "d1aee152ef50ad6bccc7a8fbf0ad195baa4d2b27f5f632958704790fe47f638c",
+  "next": [
+    "recipe/assemble_system.py configure",
+    "recipe/assemble_system.py initrd",
+    "recipe/assemble_system.py image",
+    "recipe/boot_system_vm.py label --run vm-label-01",
+    "recipe/boot_system_vm.py verify --run vm-verify-01"
+  ],
+  "owner_native_linux_passes_added": 0,
+  "profile_sha256": "f961cd69c1a13bea7c4a3c15cbb4ab720b110f295707511551fa63c8df1b6350",
+  "root_loader_built": false
+}

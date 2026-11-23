@@ -72,16 +72,25 @@ def derive_sources(repo, destination):
     assemble = assemble[:start] + "\ndef image():\n    from system_common import build_image\n    build_image()\n" + assemble[end:]
     values["assemble_system.py"] = assemble.encode()
     values["system_common.py"] = (HERE / "r5_system_common.py").read_bytes()
-    values["stage_r5_fedora.py"] = (HERE / "stage_r5_fedora.py").read_bytes()
+    stage_source = HERE / "stage_r5_fedora.py"
+    stage_identity = s.identity(stage_source)
+    values["stage_r5_fedora.py"] = stage_source.read_bytes()
     for name, data in values.items():
         if name.endswith(".py"):
             compile(data, name, "exec")
     destination.mkdir()
     for name, data in values.items():
-        with (destination / name).open("xb") as output:
-            output.write(data)
-        if name.endswith(".sh"):
-            (destination / name).chmod(0o755)
+        target = destination / name
+        if name == "stage_r5_fedora.py":
+            # qualified_stage() compares the executed staging source's full
+            # identity, including its mode. Git archive extraction and the
+            # recipe creator may have different umasks.
+            s.copy_exact(stage_source, target, stage_identity)
+        else:
+            with target.open("xb") as output:
+                output.write(data)
+            if name.endswith(".sh"):
+                target.chmod(0o755)
     result = {"schema_version": 1, "originals": originals,
               "derived": {name: s.identity(destination / name) for name in sorted(values)},
               "changed_v9_files": ["assemble_system.py", "guest_verify_system.py"],
