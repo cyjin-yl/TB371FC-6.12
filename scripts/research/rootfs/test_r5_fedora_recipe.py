@@ -12,6 +12,26 @@ import r5_system_common as common
 import stage_r5_fedora as s
 
 
+def acl_semantics(raw):
+    # ext4 stores short ACL entries without an ID. debugfs reconstructs those
+    # unused fields as zero, while Linux getxattr reconstructs ACL_UNDEFINED_ID.
+    # Named users/groups must retain their exact numeric IDs and permissions.
+    if len(raw) < 4 or (len(raw) - 4) % 8 or struct.unpack_from("<I", raw)[0] != 2:
+        raise ValueError("unexpected POSIX ACL representation")
+    result = []
+    for tag, perm, ident in struct.iter_unpack("<HHI", raw[4:]):
+        if not 0 <= perm <= 7:
+            raise ValueError("invalid ACL permission")
+        if tag in (1, 4, 16, 32):
+            if ident not in (0, 0xffffffff):
+                raise ValueError("unexpected unused ACL identity")
+            ident = None
+        elif tag not in (2, 8) or ident == 0xffffffff:
+            raise ValueError("invalid named ACL identity")
+        result.append((tag, perm, ident))
+    return result
+
+
 class RecipeTests(unittest.TestCase):
     def test_actual_frozen_source_derivation(self):
         repo = Path(__file__).resolve().parents[3]
@@ -44,6 +64,15 @@ class RecipeTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 recipe.replace_once(text, "anchor", "new")
 
+    def test_acl_normalizes_only_unused_identifiers(self):
+        header = struct.pack("<I", 2)
+        named = lambda ident: struct.pack("<HHI", 2, 4, ident)
+        short = lambda ident: struct.pack("<HHI", 1, 6, ident)
+        self.assertEqual(acl_semantics(header + short(0)), acl_semantics(header + short(0xffffffff)))
+        self.assertNotEqual(acl_semantics(header + named(12345)), acl_semantics(header + named(12346)))
+        with self.assertRaises(ValueError):
+            acl_semantics(header + short(12345))
+
     def test_real_ordinary_ext4_fixture(self):
         with tempfile.TemporaryDirectory() as tmp:
             base = Path(tmp)
@@ -75,7 +104,14 @@ class RecipeTests(unittest.TestCase):
                 target = base / ("export-" + name)
                 subprocess.run(["/usr/sbin/debugfs", "-R",
                     f"ea_get -f {target} /payload {name}", str(image)], check=True)
-                self.assertEqual(target.read_bytes(), expected)
+                actual = target.read_bytes()
+                if name == "system.posix_acl_access":
+                    # This proves on-disk ACL semantics, not byte equality of
+                    # the later guest kernel's getxattr result. The v9 guest
+                    # retains its original exact kernel readback gate.
+                    self.assertEqual(acl_semantics(actual), acl_semantics(expected))
+                else:
+                    self.assertEqual(actual, expected)
             for suffix in ("mkfs", "fsck", "label"):
                 receipt = json.loads((base / ("fixture.ext4." + suffix + ".json")).read_text())
                 self.assertEqual(receipt["exit_code"], 0)
