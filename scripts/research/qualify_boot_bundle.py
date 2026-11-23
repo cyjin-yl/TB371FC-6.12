@@ -34,7 +34,8 @@ REQUIRED_CONFIG = {
     'CONFIG_MMC_SDHCI_MSM': 'y', 'CONFIG_SCSI_UFS_QCOM': 'y',
     'CONFIG_PHY_QCOM_QMP_UFS': 'y', 'CONFIG_BLK_DEV_SD': 'y',
     'CONFIG_VIRTIO_BLK': 'y', 'CONFIG_VIRTIO_MMIO': 'y',
-    'CONFIG_MODULE_SIG': 'y', 'CONFIG_MODULE_SIG_FORCE': 'y',
+    'CONFIG_MODULE_SIG': 'y', 'CONFIG_MODULE_SIG_ALL': 'y',
+    'CONFIG_MODULE_SIG_SHA512': 'y', 'CONFIG_MODULE_SIG_FORCE': 'n',
     'CONFIG_MODVERSIONS': 'y', 'CONFIG_FHANDLE': 'y',
     'CONFIG_PID_NS': 'y', 'CONFIG_USER_NS': 'y', 'CONFIG_CGROUP_PIDS': 'y',
 }
@@ -141,8 +142,12 @@ def parse_config(raw):
     for line in raw.decode('ascii').splitlines():
         if line.startswith('CONFIG_') and '=' in line:
             key, value = line.split('=', 1)
-            require(key not in values, 'duplicate configuration key: ' + key)
-            values[key] = value
+        elif line.startswith('# CONFIG_') and line.endswith(' is not set'):
+            key, value = line[2:-len(' is not set')], 'n'
+        else:
+            continue
+        require(key not in values, 'duplicate configuration key: ' + key)
+        values[key] = value
     return values
 
 
@@ -204,8 +209,9 @@ def qualify_kernel(root, contract):
             require(release == contract['kernel']['release'] + '\n',
                     'kernel.release differs from the candidate')
             config = parse_config(captured[artifacts['config']])
-            require(all(config.get(key) == value for key, value in REQUIRED_CONFIG.items()),
-                    'R5 configuration lacks a required root-loader or module capability')
+            mismatches = {key: {'expected': value, 'observed': config.get(key)}
+                          for key, value in REQUIRED_CONFIG.items() if config.get(key) != value}
+            require(not mismatches, 'R5 configuration contract differs: ' + json.dumps(mismatches, sort_keys=True))
             require(captured[artifacts['certificate']] in captured[artifacts['image']],
                     'public signing certificate is absent from the exact Image')
             modules = [row for row in result['files'] if row['path'].endswith('.ko')]
@@ -215,6 +221,10 @@ def qualify_kernel(root, contract):
                           evidence_sidecar_count=len(result['evidence_sidecars']),
                           module_count=len(modules), arm64_header=header,
                           device_tree=dt, required_config=REQUIRED_CONFIG,
+                          module_enforcement={
+                              'configured_force': config['CONFIG_MODULE_SIG_FORCE'] == 'y',
+                              'required_boot_argument': 'module.sig_enforce=1',
+                              'runtime_verified': False},
                           public_certificate_present_in_image=True,
                           module_bytes_match_recorded_qualification=True)
     except (OSError, ValueError, UnicodeError) as error:

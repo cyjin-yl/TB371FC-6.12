@@ -68,6 +68,19 @@ def fixture_bundle(root):
 
 
 class FrozenEvidenceTests(unittest.TestCase):
+    def test_actual_r5_config_uses_runtime_enforcement_not_compiled_force(self):
+        path = REPO / 'docs/research/2026-11-23/evidence/research5-services-records/container/artifacts/kernel.config.txt'
+        config = bundle.parse_config(path.read_bytes())
+        self.assertEqual(config['CONFIG_MODULE_SIG_FORCE'], 'n')
+        self.assertEqual(config['CONFIG_MODULE_SIG'], 'y')
+        self.assertEqual(config['CONFIG_MODULE_SIG_ALL'], 'y')
+        self.assertEqual(config['CONFIG_MODULE_SIG_SHA512'], 'y')
+        self.assertEqual(config['CONFIG_MODULE_SIG_HASH'], '"sha512"')
+        self.assertEqual(config['CONFIG_LOCALVERSION'], '"-tb371fc-research5-services"')
+        self.assertEqual({key: config.get(key) for key in bundle.REQUIRED_CONFIG}, bundle.REQUIRED_CONFIG)
+        with self.assertRaisesRegex(ValueError, 'duplicate configuration'):
+            bundle.parse_config(b'CONFIG_MODULE_SIG_FORCE=y\n# CONFIG_MODULE_SIG_FORCE is not set\n')
+
     def test_checked_in_candidate_is_deterministic_and_complete(self):
         candidate = derive.derive(REPO)
         self.assertEqual((REPO / bundle.CANDIDATE).read_bytes(), derive.encoded(candidate))
@@ -188,6 +201,9 @@ class CurrentPayloadTests(unittest.TestCase):
             self.assertEqual(result['status'], 'verified', result['errors'])
             self.assertTrue(result['module_bytes_match_recorded_qualification'])
             self.assertFalse(result['module_signatures_reexecuted'])
+            self.assertFalse(result['module_enforcement']['configured_force'])
+            self.assertFalse(result['module_enforcement']['runtime_verified'])
+            self.assertEqual(result['module_enforcement']['required_boot_argument'], 'module.sig_enforce=1')
             self.assertFalse(result['physical_hardware_tested'])
 
     def test_same_size_module_corruption_is_rejected(self):

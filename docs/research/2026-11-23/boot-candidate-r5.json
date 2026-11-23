@@ -3,10 +3,11 @@
     {
       "evidence": [
         "docs/research/2026-11-23/boot-readiness.md",
-        "docs/research/2026-11-23/evidence/initramfs-validation.json"
+        "docs/research/2026-11-23/evidence/initramfs-validation.json",
+        "docs/research/2026-11-23/evidence/research5-services-build.json"
       ],
       "id": "root_loader",
-      "reason": "A real root-loading initramfs has not been qualified for this exact R5/native candidate; the prior generic VM archive/probe and Nura qemu-profile boot files do not establish that handoff.",
+      "reason": "A real root-loading initramfs has not been qualified for this exact R5/native candidate; the prior generic VM archive/probe and Nura qemu-profile boot files do not establish that handoff. Its boot-argument handoff must preserve exactly one module.sig_enforce=1; R5 has CONFIG_MODULE_SIG_FORCE=n and native runtime enforcement is not established.",
       "status": "blocked"
     },
     {
@@ -51,7 +52,7 @@
         "docs/research/2026-11-23/evidence/research5-services-build.json"
       ],
       "id": "native_entry_memory_layout",
-      "reason": "A matched native first-stage/loader, image format, DMA quiescence and non-overlapping load/reserved-memory layout have not been qualified. Use ARM64 image_size and text_offset separately from stored Image length. The running Android kernel lacks the assumed kexec entry, and lock-state sources disagree.",
+      "reason": "A matched native first-stage/loader, image format, DMA quiescence and non-overlapping load/reserved-memory layout have not been qualified. Use ARM64 image_size and text_offset separately from stored Image length. The running Android kernel lacks the assumed kexec entry, and lock-state sources disagree. Actual native acceptance must verify the unique effective module.sig_enforce=1 boot argument and /sys/module/module/parameters/sig_enforce readback of Y or 1; configured FORCE=n or signed module bytes alone do not prove runtime enforcement.",
       "status": "blocked"
     },
     {
@@ -128,6 +129,11 @@
       "qcom,sm8250"
     ],
     "module_count": 84,
+    "module_enforcement": {
+      "configured_force": false,
+      "required_boot_argument": "module.sig_enforce=1",
+      "runtime_verified": false
+    },
     "release": "6.12.114-tb371fc-research5-services"
   },
   "kernel_evidence_sidecars": [

@@ -174,6 +174,10 @@ def derive(repo: Path) -> dict:
             "certificate identity differs")
     require(report["source_manifest"]["resolved_config_sha256"] == files["artifacts/kernel.config"]["sha256"],
             "config identity differs")
+    security = report["preserved_security"]
+    require(security["CONFIG_MODULE_SIG"] == security["CONFIG_MODULE_SIG_ALL"] == "y"
+            and security["CONFIG_MODULE_SIG_FORCE"] == "n",
+            "recorded R5 module signing/enforcement configuration differs")
     require(report["source_manifest"]["expected_dtb_sha256"] == verification["joint_dtb_sha256"]
             == files["artifacts/board.dtb"]["sha256"], "joint DT identity differs")
     require(report["native_dtb"]["root_compatible"] == ["lenovo,tb371fc", "qcom,sm8250"],
@@ -196,8 +200,8 @@ def derive(repo: Path) -> dict:
 
     requirements = [
         {"id": "root_loader", "status": "blocked",
-         "reason": "A real root-loading initramfs has not been qualified for this exact R5/native candidate; the prior generic VM archive/probe and Nura qemu-profile boot files do not establish that handoff.",
-         "evidence": [READINESS, INITRAMFS]},
+         "reason": "A real root-loading initramfs has not been qualified for this exact R5/native candidate; the prior generic VM archive/probe and Nura qemu-profile boot files do not establish that handoff. Its boot-argument handoff must preserve exactly one module.sig_enforce=1; R5 has CONFIG_MODULE_SIG_FORCE=n and native runtime enforcement is not established.",
+         "evidence": [READINESS, INITRAMFS, REPORT]},
         {"id": "rootfs_modules_depmod", "status": "blocked",
          "reason": "The final native rootfs and its exact R5 module installation are unselected/unqualified. Regenerate and verify depmod indexes in that final root; the recorded kernel transfer deliberately excluded old depmod indexes.",
          "evidence": [READINESS, BUNDLE, TRANSFER]},
@@ -211,7 +215,7 @@ def derive(repo: Path) -> dict:
          "reason": "Bluetooth ROM-specific firmware candidates are preserved, but the runtime ROM selection is not verified.",
          "evidence": [FIRMWARE]},
         {"id": "native_entry_memory_layout", "status": "blocked",
-         "reason": "A matched native first-stage/loader, image format, DMA quiescence and non-overlapping load/reserved-memory layout have not been qualified. Use ARM64 image_size and text_offset separately from stored Image length. The running Android kernel lacks the assumed kexec entry, and lock-state sources disagree.",
+         "reason": "A matched native first-stage/loader, image format, DMA quiescence and non-overlapping load/reserved-memory layout have not been qualified. Use ARM64 image_size and text_offset separately from stored Image length. The running Android kernel lacks the assumed kexec entry, and lock-state sources disagree. Actual native acceptance must verify the unique effective module.sig_enforce=1 boot argument and /sys/module/module/parameters/sig_enforce readback of Y or 1; configured FORCE=n or signed module bytes alone do not prove runtime enforcement.",
          "evidence": [READINESS, REPORT]},
         {"id": "reachable_recovery", "status": "blocked",
          "reason": "Eight current boot-related partitions have verified local/off-device backups; an actually reachable recovery/console and demonstrated restore/return path remain unverified. A backup alone is not recovery qualification.",
@@ -232,6 +236,11 @@ def derive(repo: Path) -> dict:
             "arm64_header": dict(header),
             "compatible": list(report["native_dtb"]["root_compatible"]),
             "module_count": 84,
+            "module_enforcement": {
+                "configured_force": security["CONFIG_MODULE_SIG_FORCE"] == "y",
+                "required_boot_argument": "module.sig_enforce=1",
+                "runtime_verified": False,
+            },
         },
         "kernel_files": [{"path": path, "bytes": files[path]["size"], "sha256": files[path]["sha256"],
                           "mode": transfer["destination_readback"][path]["mode"]} for path in sorted(files)],

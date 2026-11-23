@@ -11,7 +11,7 @@ without inventing absent payloads or changing the hardware acceptance ledger.
 
 | Result | What is actually checked | What it cannot establish |
 | --- | --- | --- |
-| Evidence consistency | Seven frozen published inputs, build/report/transfer links, all 106 file identities across source-before/source-after/destination records, all 84 module mappings | That the remote files still exist or remain unchanged today |
+| Evidence consistency | Frozen published inputs, build/report/transfer links, all 106 file identities across source-before/source-after/destination records, all 84 module mappings | That the remote files still exist or remain unchanged today |
 | Current kernel payload | Every supplied file's bytes, length and mode, exact file set, raw Image header, real DT root compatible, release, required config and embedded public certificate | That the bootloader will load it, the running kernel accepts a module, or any peripheral works |
 | Optional root-module tree | Exact R5 module/Kbuild bytes, complete text dependency graph, presence and identities of depmod indexes | Binary index semantics, which depmod execution produced them, root-loader handoff or runtime success |
 
@@ -81,6 +81,15 @@ reuses that evidence. The new report explicitly sets
 `module_signatures_reexecuted=false` and
 `module_symbol_crc_commands_reexecuted=false`; it does not pretend to execute
 those commands again. A current-byte mismatch fails before reusing the result.
+
+R5 deliberately inherits `CONFIG_MODULE_SIG_FORCE=n` from R4. It builds and
+signs modules, but the existing enforcing VM contract uses
+`module.sig_enforce=1` and verifies the live
+`/sys/module/module/parameters/sig_enforce` value. The initial checker incorrectly
+required compiled FORCE=y; its second real-payload run exposed that assumption.
+The corrected checker records the actual compiled setting and the required
+runtime argument separately, with `runtime_verified=false`. It does not alter
+the kernel or substitute a permissive runtime result for enforcement.
 
 | Selected CLI gate | Exit 0 means | Exit 2 means |
 | --- | --- | --- |
