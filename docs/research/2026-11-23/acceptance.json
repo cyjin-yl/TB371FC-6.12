@@ -2298,6 +2298,487 @@
       "limits": [
         "No conversion was applied to actual 0fe3. Agreement is limited to the 32 queried decisions, not whole-policy serialization or semantic equality. No repair, VM or device action is part of this diagnosis."
       ]
+    },
+    {
+      "id": "STANDARD-POLICY-REVIEW",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/selinux-standard-service-policy.md",
+      "sha256": "1bd02b09e86405cec987ec6863bd3ad357c3ab21ba9f584926e9543895e8acd8",
+      "device_id": null,
+      "claims": [
+        "A fresh original-store build adds only six effective permissions in five allow tuples; complete original/candidate version35 and fresh33 CIL comparisons exclude other semantic changes."
+      ],
+      "limits": [
+        "No label, boolean, permissive-domain or cross-type transition change. This is candidate construction, not a live reload or service result."
+      ]
+    },
+    {
+      "id": "STANDARD-POLICY-ARTIFACTS",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/selinux-standard-service-policy.json",
+      "sha256": "fae6bd38484e0b966a2d4c20e3cf928366b402bcd899932ce41d14bdf0df7a13",
+      "device_id": null,
+      "claims": [
+        "The candidate policy35 is 3835456 bytes with SHA727cd98e; its complete comparisons, actual commands and original-store provenance are retained."
+      ],
+      "limits": [
+        "Fresh33 9b39b5a5 is an offline serialization, not a predetermined kernel export. New initramfs and runtime gates must bind their actual policy bytes."
+      ]
+    },
+    {
+      "id": "STANDARD-POLICY-SOURCE",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/selinux-standard-service-policy-source-manifest.json",
+      "sha256": "3ab1550b558272ac17ff8a89520238bac8d2b5c108958e4458210da52fb10534",
+      "device_id": null,
+      "claims": [
+        "The complete original 1766-entry source inventory is retained and unchanged after construction."
+      ],
+      "limits": [
+        "Host provenance only; no kernel policy load, process transition or hardware behavior is established."
+      ]
+    },
+    {
+      "id": "STANDARD-POLICY-BEFORE",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/selinux-standard-service-policy-before-manifest.json",
+      "sha256": "c0e7adf30d018ce99bbcfafd1042106aa6100262bc085795e97a163363e32855",
+      "device_id": null,
+      "claims": [
+        "The independent fresh candidate copy is recorded before the standard module-store build."
+      ],
+      "limits": [
+        "Host provenance only; no kernel policy load, process transition or hardware behavior is established."
+      ]
+    },
+    {
+      "id": "STANDARD-POLICY-AFTER",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/selinux-standard-service-policy-candidate-manifest.json",
+      "sha256": "a5d64afb687c801c9c93593df629be4d6a9f8a5c24fbee280e97f6bdf55d94e4",
+      "device_id": null,
+      "claims": [
+        "The full candidate inventory records the actual build output; original contexts and config remain unchanged."
+      ],
+      "limits": [
+        "Host provenance only; no kernel policy load, process transition or hardware behavior is established."
+      ]
+    },
+    {
+      "id": "STANDARD-POLICY-BUILD-LOG",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/selinux-standard-service-policy-build.log",
+      "sha256": "fe393b55f846d35bb83e145bccd1029bba4e5742dfd8ebb569418262b61766d8",
+      "device_id": null,
+      "claims": [
+        "The original semodule log is retained, including the optional default-context warning rather than erasing it."
+      ],
+      "limits": [
+        "Host provenance only; no kernel policy load, process transition or hardware behavior is established."
+      ]
+    },
+    {
+      "id": "STANDARD-AV-REVIEW",
+      "evidence_class": "source_clue",
+      "path": "docs/research/2026-11-23/selinux-standard-service-av-query.md",
+      "sha256": "aad9d7d8a00462df3899386ac61b70edb7e1955a29a1e02d88fafd044a37829a",
+      "device_id": null,
+      "claims": [
+        "The fixed post-reload and Varlink matrices preserve all 86 rows, representing 79 unique tuples; required rights and retained denials are distinguished."
+      ],
+      "limits": [
+        "This report checks a candidate permission subset, not live domains, object labels, FD identities or the complete runtime."
+      ]
+    },
+    {
+      "id": "STANDARD-AV-ARTIFACTS",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/selinux-standard-service-av-query.json",
+      "sha256": "609bc146c82c952d0219040755ed122f060222c201d43dbef366a1de5690c7b0",
+      "device_id": null,
+      "claims": [
+        "One actual direct-QEMU query returns 80 ALLOW and 6 DENY across 86 preserved rows; no required permission is denied, and the expected fresh33 identity matches."
+      ],
+      "limits": [
+        "Repeated historical rows are not independent runs. Target-socket getattr and the original denial controls remain denied; no VM or policy load occurs."
+      ]
+    },
+    {
+      "id": "AUDIT-OBSERVABILITY-REVIEW",
+      "evidence_class": "source_clue",
+      "path": "docs/research/2026-11-23/audit-observability.md",
+      "sha256": "de1573a8dc39dfab136729a01fc5c57b9be87c5e9fe0f805ba631095336b7725",
+      "device_id": null,
+      "claims": [
+        "Fixed research4 source explains the shared printk suppression path and the narrowly scoped zero-interval observation guard for a subsequent generic VM."
+      ],
+      "limits": [
+        "Six suppressed callbacks do not identify six AVCs. Removing this limiter does not prove audit queues or serial transport are lossless."
+      ]
+    },
+    {
+      "id": "AUDIT-OBSERVABILITY-ARTIFACTS",
+      "evidence_class": "source_clue",
+      "path": "docs/research/2026-11-23/evidence/audit-observability.json",
+      "sha256": "2d6df7b1451a192cb16a92a2121275279dfac3ed3758693d627e96917ca960de",
+      "device_id": null,
+      "claims": [
+        "Exact kernel source identities, numbered excerpts and retained v7 suppression context support the observation contract."
+      ],
+      "limits": [
+        "Static analysis performs no sysctl setting, policy load or new VM run; old lost content is not recovered."
+      ]
+    },
+    {
+      "id": "AUDIT-OBSERVABILITY-SOURCE",
+      "evidence_class": "source_clue",
+      "path": "docs/research/2026-11-23/evidence/audit-observability-source-manifest.json",
+      "sha256": "57eb7fb9058bd0bf1ae59a63f59d40eb2bd57671c07ece952eec285578b759ab",
+      "device_id": null,
+      "claims": [
+        "The independent V3 guard requires an exact opt-in and actual linux,dummy-virt compatible, then interval-zero and unchanged-burst fresh readbacks before policy loading."
+      ],
+      "limits": [
+        "This is source binding, not execution of the guarded branch. Audit admission, queue limits, Enforcing and all runtime gates remain separate."
+      ]
+    },
+    {
+      "id": "EARLY-STANDARD-LOADER-REVIEW",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/early-selinux-standard-services-loader.md",
+      "sha256": "a341cdb92b0a5cffc02146bde979978bccf21b1e5bd3fd6074c9643fe22ad8c3",
+      "device_id": null,
+      "claims": [
+        "The actual V3 build produced the 72528-byte 84cc4868 loader; its copied ELF and non-PID1 refusal are recorded independently of any VM."
+      ],
+      "limits": [
+        "One successful compilation is not an independent identical rebuild. Runtime C checks policy length; archive and profile must pin the complete policy hash."
+      ]
+    },
+    {
+      "id": "EARLY-STANDARD-LOADER-BUILD",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/early-selinux-standard-services-build.json",
+      "sha256": "0e24edc68d3aacb612c209fc677fce714089ed210f79585b1e85e10dd5701017",
+      "device_id": null,
+      "claims": [
+        "The original build/ELF record binds source12548 to derived20011 bytes, the fixed guard and policy, and the actual ARM PIE artifact."
+      ],
+      "limits": [
+        "Construction or entry-refusal scope only; no new successful PID1 path, sysctl update, policy load or hardware test."
+      ]
+    },
+    {
+      "id": "EARLY-STANDARD-LOADER-NEGATIVE",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/early-selinux-standard-services-negative.json",
+      "sha256": "42c003de493b6929ad94ad23e1caf94a9ebe3d7438f226faec3fbd4b9c02fed0",
+      "device_id": null,
+      "claims": [
+        "The actual direct-QEMU invocation exits1 at the V3 non-PID1 guard, before mounts, audit setting or policy APIs."
+      ],
+      "limits": [
+        "Construction or entry-refusal scope only; no new successful PID1 path, sysctl update, policy load or hardware test."
+      ]
+    },
+    {
+      "id": "EARLY-STANDARD-LOADER-INVOCATION",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/early-selinux-standard-services-invocation.json",
+      "sha256": "f1378fc04dde8c06175ddaf31a5d700e86be915ca5c68b1f2bd223c62bad97d7",
+      "device_id": null,
+      "claims": [
+        "The actual compile invocation, timing, exit0 and build-output hash are retained."
+      ],
+      "limits": [
+        "Construction or entry-refusal scope only; no new successful PID1 path, sysctl update, policy load or hardware test."
+      ]
+    },
+    {
+      "id": "EARLY-STANDARD-LOADER-INPUT-TRANSFER",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/early-selinux-standard-services-input-transfer.json",
+      "sha256": "db0798c026d708b23b37e71d48c9640e4042dc9b70bc37d84e225d414a862901",
+      "device_id": null,
+      "claims": [
+        "Fixed policy and recipe inputs were copied with their complete length, hash and mode identities."
+      ],
+      "limits": [
+        "Construction or entry-refusal scope only; no new successful PID1 path, sysctl update, policy load or hardware test."
+      ]
+    },
+    {
+      "id": "EARLY-STANDARD-LOADER-HDD-TRANSFER",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/early-selinux-standard-services-hdd-transfer.json",
+      "sha256": "fc1d123b1b98b0883593f15241980a2ee4aa7a6021b5bb8ac5f6a83f62603544",
+      "device_id": null,
+      "claims": [
+        "The actual V3 ELF, derived C and recipe records arrived in the HDD container with matching complete identities."
+      ],
+      "limits": [
+        "Construction or entry-refusal scope only; no new successful PID1 path, sysctl update, policy load or hardware test."
+      ]
+    },
+    {
+      "id": "TMPFS-WAITER-V2-REVIEW",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/tmpfs-waiter-v2.md",
+      "sha256": "8eb867b3b654255c37065c9b64397194523a906b234abb83ca31aaf0d6cd889d",
+      "device_id": null,
+      "claims": [
+        "A separate cleanup waiter compiles and rejects non-PID1 entry; only its marker, next-loader length and accurate comment differ from the frozen original."
+      ],
+      "limits": [
+        "Its unchanged cleanup code is not a new cleanup run. The target length72528 is not a content hash; both complete ELF identities remain required."
+      ]
+    },
+    {
+      "id": "TMPFS-WAITER-V2-ARTIFACTS",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/tmpfs-waiter-v2.json",
+      "sha256": "8328cac3a8003ede3c8337a7b31ddbbad31527cf49ecddca32ed36a6e9ec8d5b",
+      "device_id": null,
+      "claims": [
+        "The 71872-byte 7e593ef9 waiter, exact reversible C delta, SSD/HDD transfer and limited negative execution are retained."
+      ],
+      "limits": [
+        "No old-root cleanup, target execution, policy loading or VM was performed by this build. The raw timestamp qualification is explicit."
+      ]
+    },
+    {
+      "id": "USB-RECHECK-1546-REVIEW",
+      "evidence_class": "source_clue",
+      "path": "docs/research/2026-11-23/usb-transport-recheck-20261123T074657Z.md",
+      "sha256": "2294353903af4b4225966cbc50ad4f23409f3e61b496eba7f2343e3601ad0145",
+      "device_id": null,
+      "claims": [
+        "The actual paired 15:46:57-59 Shanghai snapshot again retains two not-attached/UNKNOWN owner UDCs and no corresponding doesvm vendor candidate."
+      ],
+      "limits": [
+        "A bounded passive snapshot does not establish cable failure, another host, a data link or a recovery return."
+      ]
+    },
+    {
+      "id": "ANDROID-USB-RECHECK-1546",
+      "evidence_class": "device_android",
+      "path": "docs/research/2026-11-23/evidence/usb-transport-recheck-20261123T074657Z.json",
+      "sha256": "9977c0e11ee21ede8faac1bd2cab3f86a1173dbe4836f770f14c0d32eb6ae82a",
+      "device_id": "owner-tb371fc",
+      "claims": [
+        "Only the Android portion: at 07:46:57.804759 UTC both UDCs are not attached/UNKNOWN, while g1 retains a600000.dwc3 and 17ef:7e31."
+      ],
+      "limits": [
+        "One successful fixed-helper read; no role, gadget, serial, bootloader or recovery action."
+      ]
+    },
+    {
+      "id": "HOST-USB-RECHECK-1546",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/usb-transport-recheck-20261123T074657Z.json",
+      "sha256": "9977c0e11ee21ede8faac1bd2cab3f86a1173dbe4836f770f14c0d32eb6ae82a",
+      "device_id": null,
+      "claims": [
+        "Only the doesvm portion: at 07:46:59.677840 UTC the successful read records 14 USB sysfs entries and no 17ef/18d1/05c6 vendor candidate."
+      ],
+      "limits": [
+        "This host/time-specific observation does not determine physical cable presence or the state of another host."
+      ]
+    },
+    {
+      "id": "FEDORA-R4E-REVIEW",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/fedora-r4e-persistent-result-failed.md",
+      "sha256": "ceddf69a114ea5d0f1d7af3442e211e0b208798184088be7fa105bc9b2f71c74",
+      "device_id": null,
+      "claims": [
+        "The complete guest checks and ordinary-file transport succeed, but one production journalctl datagram-create AVC fails independent full-log qualification."
+      ],
+      "limits": [
+        "Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed."
+      ]
+    },
+    {
+      "id": "FEDORA-R4E-ARTIFACTS",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4e-persistent-result-failed.json",
+      "sha256": "099bcd2a4c76de06ce73aa2c985d0dca6e1d32725ca748a03e63c4b28ced1392",
+      "device_id": null,
+      "claims": [
+        "The immutable aggregate retains actual early boot, all guest behavior, four live 82-tuple FD matrices, normal shutdown and the original failed controller."
+      ],
+      "limits": [
+        "Source policy35, offline converted33 and actual exported33 have separate hashes. Post-qualify, finalize and postboot e2fsck did not run. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed."
+      ]
+    },
+    {
+      "id": "FEDORA-R4E-VERIFY",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4e-persistent-result-failed-verify.json",
+      "sha256": "ac6db6cac9ad5d375e1b054ac3c70c8bef877b994b28662488f368888412f478",
+      "device_id": null,
+      "claims": [
+        "The original controller records QEMU exit0, complete guest/transport qualification, no parse error and overall passed=false with one AVC."
+      ],
+      "limits": [
+        "Guest checks cannot override host full-log denial/loss checks; the controller was not rescored. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed."
+      ]
+    },
+    {
+      "id": "FEDORA-R4E-SERIAL",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4e-persistent-result-failed-verify.log",
+      "sha256": "a88df1ce7489884a0c228a4a2a0320c4dc2c2f425b2a769b88c1f170823f3534",
+      "device_id": null,
+      "claims": [
+        "The 1395418 original bytes retain ordered entry/audit markers, two source-qualified BPF attachments and the one journalctl_t self unix_dgram_socket create denial."
+      ],
+      "limits": [
+        "Zero configured production loss markers is a bounded observation, not proof against every theoretically unobservable event. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed."
+      ]
+    },
+    {
+      "id": "FEDORA-R4E-GUEST",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4e-persistent-result-failed-guest.json",
+      "sha256": "3e48c9a429cad37d8baabf3fed31fe9abefdbaedfb065a484faf445bb6c2fa11",
+      "device_id": null,
+      "claims": [
+        "The 413706-byte result file binds same-boot/profile identities, observed three-FD routes, four live 82-tuple matrices, TasksMax behavior and paired baseline181-byte versus open-EPERM/zero-byte BPF results."
+      ],
+      "limits": [
+        "Its pass envelope explicitly leaves host qualification pending and complete_system_accepted=false. Four matrices are four routes, not four independently booted systems. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed."
+      ]
+    },
+    {
+      "id": "FEDORA-R4E-LABEL",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4e-persistent-result-failed-label.json",
+      "sha256": "53d122abc124eb25898b9bef63045f7bfc64e39f422a418d881a4d8036ff3616",
+      "device_id": null,
+      "claims": [
+        "The separate maintenance labeling controller succeeds for its explicitly permissive preparation scope."
+      ],
+      "limits": [
+        "Maintenance is not an Enforcing production result; its denials and suppression remain in its own raw log. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed."
+      ]
+    },
+    {
+      "id": "FEDORA-R4E-LABEL-SERIAL",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4e-persistent-result-failed-label.log",
+      "sha256": "ede72b8afc61c2310cff7c7e499040df06df5a57381b6a47041309422c3f584f",
+      "device_id": null,
+      "claims": [
+        "The unchanged maintenance log retains 47 visible denials and nine suppressed-callback notices."
+      ],
+      "limits": [
+        "These preparation observations are not included in a claim of clean Enforcing production. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed."
+      ]
+    },
+    {
+      "id": "FEDORA-R4E-PIPELINE",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4e-persistent-result-failed-pipeline.json",
+      "sha256": "a29888e4f4bc7d067474f90f33a3696eb8503d85e55a7edc1f989bb43d89d9be",
+      "device_id": null,
+      "claims": [
+        "The unique actual pipeline exits1 after 658.410 seconds, stopping after production verification."
+      ],
+      "limits": [
+        "Later post-qualification/finalization were not executed or backfilled. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed."
+      ]
+    },
+    {
+      "id": "FEDORA-R4E-POLICY-RETENTION",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4e-persistent-result-failed-policy-retention.json",
+      "sha256": "9966e43d3b4f6f1aca6bc10c6d782bdbf05a6d389f82bd63db396c84af793318",
+      "device_id": null,
+      "claims": [
+        "A separate post-run read-only extraction retains actual policy33 9d7aa2b3 with exact owner/mode/header/hash and same-boot metadata."
+      ],
+      "limits": [
+        "The original passed-only pipeline was unchanged; no image replay/write, new policy load or extra VM occurred. Public evidence excludes the policy binary. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed."
+      ]
+    },
+    {
+      "id": "FEDORA-R4E-FREEZE-JOB",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4e-freeze-execution.json",
+      "sha256": "5605abf8c349fc91d8b32f47ed206a528ab054520aacc96052b4f68370e69b90",
+      "device_id": null,
+      "claims": [
+        "The independent failed-attempt freezer completed with exit0, retaining existing results without rescoring them."
+      ],
+      "limits": [
+        "A successful archival job is not a successful system or hardware run."
+      ]
+    },
+    {
+      "id": "FEDORA-R4E-TRANSFER",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4e-failed-evidence-transfer.json",
+      "sha256": "24f4ab2b5fb90557b22b962189178d167bb6c208a5ce67ec659c8e1758b70b7b",
+      "device_id": null,
+      "claims": [
+        "All eight JSON/log member lengths and hashes match after compression-only packet rewrapping; serial CR/LF and guest/controller bytes remain unchanged."
+      ],
+      "limits": [
+        "No raw private policy binary is in the public packet. Transport success does not change the failed production result."
+      ]
+    },
+    {
+      "id": "FEDORA-R4E-SOURCE",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4e-execution-source.json",
+      "sha256": "21da4c99bb43888708d63b171b94eb26bbaaa4973ec698f2e3f4da6e6eae0317",
+      "device_id": null,
+      "claims": [
+        "The actual 20-file recipe and immutable source overlay were materialized/read back before the unique v8 pipeline."
+      ],
+      "limits": [
+        "Source identity and launch do not establish runtime success. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed."
+      ]
+    },
+    {
+      "id": "FEDORA-R4E-BASELINE",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4e-baseline-preparation.json",
+      "sha256": "326ed1f6f3df9f1cc593c468104809404ea2b155c316088cea00f19760cdc1c7",
+      "device_id": null,
+      "claims": [
+        "The native independent root copy and all 96 ordinary runtime inputs were qualified before this new run."
+      ],
+      "limits": [
+        "No PRoot ran against the frozen R1 source; copy and input checks are not a boot result."
+      ]
+    },
+    {
+      "id": "FEDORA-R4E-PLAN",
+      "evidence_class": "source_clue",
+      "path": "docs/research/2026-11-23/fedora-r4e-profile-plan.md",
+      "sha256": "51ab04eedfa8aa7d7494bff46c942fa0003b842e91a7b322ffc5f9a57d5757f1",
+      "device_id": null,
+      "claims": [
+        "The retained launch contract now links to the actual failed outcome without rewriting its historical plan."
+      ],
+      "limits": [
+        "Planned gates are distinguished from completed phases and from physical acceptance."
+      ]
+    },
+    {
+      "id": "FEDORA-R4E-TRANSPORT-CASES",
+      "evidence_class": "host_build",
+      "path": "docs/research/2026-11-23/evidence/fedora-r4e-result-transport-qualification.json",
+      "sha256": "02ba26ca26b1fab08fdd598eddcc2726908afe1a9c479b58c24429857f0e458e",
+      "device_id": null,
+      "claims": [
+        "Six offline ext4 cases accept exact closed-file evidence and reject duplicate/interleaved receipts, wrong boot/hash and a symlink member."
+      ],
+      "limits": [
+        "Synthetic clean-image checks are not a VM boot or a crash-consistency guarantee; normal-shutdown transport is separately observed in v8."
+      ]
     }
   ],
   "preflight": [
@@ -2490,7 +2971,7 @@
     {
       "id": "PF-USB-TRANSPORT",
       "status": "owner_controller_identified_host_transport_unverified",
-      "observation": "The bounded owner Android snapshot exposes a600000.dwc3 and a800000.dwc3, both not attached; g1 is configured on a600000.dwc3 with 17ef:7e31. The contemporaneous doesvm snapshot has 14 USB entries and no such device. Controller maximum-speed values and a configured gadget do not demonstrate a data link. No role, PD, gadget, bootloader or recovery action was performed. A usable independently identified host connection and recovery-return path remain required. A fresh paired follow-up at 2026-11-23 04:00 UTC again found both owner UDCs not attached, g1 on the same primary and 14 host entries without a 17ef/18d1/05c6 candidate. It did not change role, gadget or boot state. The later 05:18:28-30 UTC paired recheck again returned exit 0 on both hosts, two not-attached/UNKNOWN UDCs and 14 doesvm devices without a vendor candidate; this does not determine cable presence or other hosts. The newest paired 06:09:03-05 UTC (14:09 Shanghai) snapshot again records the same owner UDC/g1 state and 14 host entries without a matching vendor candidate; both reads exited zero and no transport or boot state changed.",
+      "observation": "The bounded owner Android snapshot exposes a600000.dwc3 and a800000.dwc3, both not attached; g1 is configured on a600000.dwc3 with 17ef:7e31. The contemporaneous doesvm snapshot has 14 USB entries and no such device. Controller maximum-speed values and a configured gadget do not demonstrate a data link. No role, PD, gadget, bootloader or recovery action was performed. A usable independently identified host connection and recovery-return path remain required. A fresh paired follow-up at 2026-11-23 04:00 UTC again found both owner UDCs not attached, g1 on the same primary and 14 host entries without a 17ef/18d1/05c6 candidate. It did not change role, gadget or boot state. The later 05:18:28-30 UTC paired recheck again returned exit 0 on both hosts, two not-attached/UNKNOWN UDCs and 14 doesvm devices without a vendor candidate; this does not determine cable presence or other hosts. The later paired 06:09:03-05 UTC (14:09 Shanghai) snapshot again records the same owner UDC/g1 state and 14 host entries without a matching vendor candidate; both reads exited zero and no transport or boot state changed. The newest paired 07:46:57-59 UTC (15:46 Shanghai) read again returns exit0 on both ends: two not-attached/UNKNOWN UDCs, g1 on a600000.dwc3 with 17ef:7e31, and 14 doesvm entries without a 17ef/18d1/05c6 candidate. No role, gadget or boot action occurred and physical entry/recovery remains unverified.",
       "evidence_ids": [
         "ANDROID-USB-TRANSPORT",
         "HOST-USB-TRANSPORT",
@@ -2503,7 +2984,10 @@
         "HOST-USB-RECHECK",
         "USB-RECHECK-1409-REVIEW",
         "ANDROID-USB-RECHECK-1409",
-        "HOST-USB-RECHECK-1409"
+        "HOST-USB-RECHECK-1409",
+        "USB-RECHECK-1546-REVIEW",
+        "ANDROID-USB-RECHECK-1546",
+        "HOST-USB-RECHECK-1546"
       ]
     },
     {
@@ -2747,13 +3231,16 @@
     },
     {
       "id": "PF-SYSTEMD-BPF-CONTRACT",
-      "status": "matched_source_and_later_attachment_observed_behavior_not_run",
-      "observation": "The fixed Fedora 262.1 source confirms that the positive LSM attachment log follows successful load/attach. The later v7 raw serial contains that exact marker twice, providing actual generic-VM attachment evidence. The selected proc deny-list returns EPERM from file_open before any read; v7 stopped at the PL061 fixture before either controlled worker, so open-stage errno 1/zero-byte restriction behavior remains untested.",
+      "status": "matched_source_attachment_and_v8_paired_open_denial_observed",
+      "observation": "The fixed Fedora 262.1 source places the positive LSM attachment log after load/attach and returns EPERM from the proc-denying file_open hook. V7 retained two attachment markers but ran neither worker. Independent v8 now records two markers and the same-worker comparison: unrestricted open/read returns the actual release in 181 bytes; RestrictFileSystems=~proc returns open-stage errno 1/EPERM with 0 bytes. Actual worker domain/FDs/unit properties and unchanged loaded policy close the comparison. This is a generic-VM behavioral result; a separate journalctl AVC still fails v8 overall, and no owner hardware case changes.",
       "evidence_ids": [
         "SYSTEMD-BPF-CONTRACT-REVIEW",
         "SYSTEMD-BPF-CONTRACT-ARTIFACTS",
         "FEDORA-R4C-TMPFS-VERIFY",
-        "FEDORA-R4D-SERIAL"
+        "FEDORA-R4D-SERIAL",
+        "FEDORA-R4E-GUEST",
+        "FEDORA-R4E-SERIAL",
+        "FEDORA-R4E-VERIFY"
       ]
     },
     {
@@ -2825,6 +3312,104 @@
         "FEDORA-R4D-ARTIFACTS",
         "FEDORA-R4D-POLICY-EXPORT",
         "FEDORA-R4D-SERIAL"
+      ]
+    },
+    {
+      "id": "PF-STANDARD-SERVICE-POLICY",
+      "status": "fresh_build_and_full_six_permission_semantic_comparison_passed",
+      "observation": "A fresh original module-store build adds the prior policy map and same-init_t setcurrent/dyntransition rights plus registry-link unlink, journal socket write and journald connectto. Complete version-35 and fresh-version-33 CIL comparisons allow only those five tuples and six permissions. All original contexts/config and the 1,766-entry source inventory remain unchanged. Candidate 727cd98e is 3,835,456 bytes; no target-socket getattr or additional privilege is introduced. The separate v8 run now exercises the prior service fixes but exposes an additional journalctl self datagram-create denial; the qualified six-permission semantic comparison remains unchanged.",
+      "evidence_ids": [
+        "STANDARD-POLICY-REVIEW",
+        "STANDARD-POLICY-ARTIFACTS",
+        "STANDARD-POLICY-SOURCE",
+        "STANDARD-POLICY-BEFORE",
+        "STANDARD-POLICY-AFTER",
+        "STANDARD-POLICY-BUILD-LOG",
+        "FEDORA-R4E-ARTIFACTS"
+      ]
+    },
+    {
+      "id": "PF-STANDARD-SERVICE-AV",
+      "status": "independent_offline_required_permission_subset_satisfied",
+      "observation": "One direct-QEMU userspace process checked the complete preserved 54-row and 32-row matrices: 86 rows, 79 unique tuples, 80 ALLOW and 6 DENY. All 73 required-allow rows pass; the diagnostic target-socket getattr and original denial controls remain denied. The independent fresh33 hash matches 9b39b5a5. This is a candidate permission check, not a live policy export, service connection or owner Linux run.",
+      "evidence_ids": [
+        "STANDARD-AV-REVIEW",
+        "STANDARD-AV-ARTIFACTS",
+        "STANDARD-POLICY-ARTIFACTS"
+      ]
+    },
+    {
+      "id": "PF-AUDIT-OBSERVABILITY",
+      "status": "source_guard_and_v8_readbacks_observed_zero_configured_loss_markers",
+      "observation": "The fixed shared printk limiter explains why v7 suppressed callbacks do not identify missing content. In separate v8 the exact generic-VM/PID1 guard actually sets only interval 5 to 0 before policy load; fresh burst readbacks retain 10, and guest before/after tests still read 0/10. Audit admission/backlog and Enforcing are unchanged. Every configured production audit/loss/suppression count is 0; one visible AVC nevertheless fails the run. These observed markers do not disprove every theoretically unobservable event. The separate permissive maintenance log retains its own 47 denials and 9 suppression notices.",
+      "evidence_ids": [
+        "AUDIT-OBSERVABILITY-REVIEW",
+        "AUDIT-OBSERVABILITY-ARTIFACTS",
+        "AUDIT-OBSERVABILITY-SOURCE",
+        "FEDORA-R4D-SERIAL",
+        "FEDORA-R4E-ARTIFACTS",
+        "FEDORA-R4E-SERIAL",
+        "FEDORA-R4E-LABEL-SERIAL"
+      ]
+    },
+    {
+      "id": "PF-EARLY-STANDARD-LOADER",
+      "status": "independent_build_negative_entry_and_v8_ordered_entry_observed",
+      "observation": "The V3 source derivation produces 20,011 bytes from the fixed 12,548-byte original. One actual compile exits 0 in 1.562511 seconds and yields the 72,528-byte 84cc4868 AArch64 PIE; its HDD copy matches. Actual QEMU-user execution exits 1 at the first non-PID1 guard; the audit-setting branch, mounts and policy APIs are not reached. Full policy 727cd98e and loader hashes must be bound by the new archive/profile; neither a length check nor construction proves a successful VM. The separate actual v8 archive/profile now binds the full identities and observes V3 audit guard, policy load, systemd exec and same-boot domain/label proof in order. Its full production verification still fails on a later journalctl AVC, with no owner entry.",
+      "evidence_ids": [
+        "EARLY-STANDARD-LOADER-REVIEW",
+        "EARLY-STANDARD-LOADER-BUILD",
+        "EARLY-STANDARD-LOADER-NEGATIVE",
+        "EARLY-STANDARD-LOADER-INVOCATION",
+        "EARLY-STANDARD-LOADER-INPUT-TRANSFER",
+        "EARLY-STANDARD-LOADER-HDD-TRANSFER",
+        "FEDORA-R4E-ARTIFACTS",
+        "FEDORA-R4E-VERIFY"
+      ]
+    },
+    {
+      "id": "PF-TMPFS-WAITER-V2",
+      "status": "independent_build_and_v8_cleanup_observed_full_system_failed",
+      "observation": "The independently built 71,872-byte 7e593ef9 waiter targets the measured 72,528-byte V3. Its approved marker/length/comment substitutions reverse to every original C byte; all PID 1, FD 3, child/timeout, root and emptiness guards remain. Actual non-PID1 rejection and destination hashes pass. No cleanup, V3 entry or VM is executed by this qualification, and the native target-size check does not authenticate content. Separate v8 now observes one cleanup child reaped, old-root emptiness and 0:2 to 0:20 root migration before the fully pinned V3 path. That new runtime observation does not change this construction record or the failed full-system verdict.",
+      "evidence_ids": [
+        "TMPFS-WAITER-V2-REVIEW",
+        "TMPFS-WAITER-V2-ARTIFACTS",
+        "EARLY-STANDARD-LOADER-BUILD",
+        "FEDORA-R4E-ARTIFACTS",
+        "FEDORA-R4E-VERIFY"
+      ]
+    },
+    {
+      "id": "PF-R4E-RESULT-TRANSPORT",
+      "status": "six_offline_cases_and_actual_normal_shutdown_transport_qualified",
+      "observation": "The six synthetic ext4 cases retain their offline scope. In actual v8 the complete 413,706-byte guest result is exclusively created, fsynced/read back and bound to a unique short receipt. After normal QEMU exit 0, read-only debugfs verifies fixed parent/file metadata, full hash and same-boot/profile identity without mount or journal replay. Persistent qualification is true and parse_error is null. This closes the actual normal-shutdown transport gap only; abrupt-termination recovery is not guaranteed and the independent one-AVC system verdict remains failed.",
+      "evidence_ids": [
+        "FEDORA-R4E-TRANSPORT-CASES",
+        "FEDORA-R4E-GUEST",
+        "FEDORA-R4E-VERIFY",
+        "FEDORA-R4E-SERIAL",
+        "FEDORA-R4E-TRANSFER"
+      ]
+    },
+    {
+      "id": "PF-FEDORA-R4E-PERSISTENT",
+      "status": "all_guest_behavior_observed_overall_failed_one_enforcing_avc",
+      "observation": "The independent v8 pipeline exits 1 after 658.410 seconds, although its production QEMU exits 0 normally and all defined guest gates/transport pass. Ordered tmpfs cleanup/early Enforcing domains/API labels, real bus queries and three-FD delivery are observed; four routes each query the exact 82 live permission tuples separately from the 86-row offline candidate matrix. TasksMax admits 2 children, rejects the third with EAGAIN and advances max-events 0 to 1. The paired BPF test reads 181 bytes unrestricted and denies restricted open with EPERM/errno 1 and 0 bytes. Actual pl061_gpio binding, all 84 module/69 firmware hashes, enforced signatures, loaded autofs4 and taint 0 are checked. Full production log has one journalctl_t self unix_dgram_socket create AVC despite sync exit 0; all configured loss/suppression counters are 0. Original controller remains false. Post-qualify/finalize and postboot e2fsck did not run; no positive udev count pair proves an empty or completely preserved queue. Actual policy 33 9d7aa2b3 is retained independently, with no raw policy binary published or owner hardware pass.",
+      "evidence_ids": [
+        "FEDORA-R4E-REVIEW",
+        "FEDORA-R4E-ARTIFACTS",
+        "FEDORA-R4E-VERIFY",
+        "FEDORA-R4E-SERIAL",
+        "FEDORA-R4E-GUEST",
+        "FEDORA-R4E-LABEL",
+        "FEDORA-R4E-LABEL-SERIAL",
+        "FEDORA-R4E-PIPELINE",
+        "FEDORA-R4E-POLICY-RETENTION",
+        "FEDORA-R4E-FREEZE-JOB",
+        "FEDORA-R4E-TRANSFER",
+        "FEDORA-R4E-SOURCE",
+        "FEDORA-R4E-BASELINE",
+        "FEDORA-R4E-PLAN"
       ]
     }
   ],

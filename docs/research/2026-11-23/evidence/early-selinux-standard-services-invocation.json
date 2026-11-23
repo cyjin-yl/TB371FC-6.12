@@ -1,0 +1,32 @@
+{
+  "command": [
+    "sudo",
+    "-n",
+    "/usr/sbin/pct",
+    "exec",
+    "102",
+    "--",
+    "docker",
+    "exec",
+    "tb371fc-build-ssd-20261123",
+    "python3",
+    "/work/early-selinux-standard-services-20261123/recipe-v1/build_early_init_v3.py",
+    "--repo",
+    "/work/early-selinux-bootstrap-20261123/recipe-v1/repo",
+    "--policy",
+    "/work/early-selinux-standard-services-20261123/input-policy.35",
+    "--policy-sha256",
+    "727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502",
+    "--policy-size",
+    "3835456",
+    "--work",
+    "/work/early-selinux-standard-services-20261123/build-01",
+    "--header-cache",
+    "/work/early-selinux-bootstrap-20261123"
+  ],
+  "started_utc": "2026-11-23T07:23:07.447861+00:00",
+  "finished_utc": "2026-11-23T07:23:11.458544+00:00",
+  "exit_code": 0,
+  "stdout_sha256": "0e24edc68d3aacb612c209fc677fce714089ed210f79585b1e85e10dd5701017",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

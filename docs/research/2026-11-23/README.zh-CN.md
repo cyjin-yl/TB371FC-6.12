@@ -6,6 +6,10 @@
 
 ## 构建进展与完成标准
 
+**最新完整系统检查：[Fedora v8](fedora-r4e-persistent-result-failed.md) 的 guest 行为
+与结果传输已完成，但一条 Enforcing AVC 仍使整轮失败。本机 Linux 仍为
+0 次启动、0 项通过。**
+
 已在 doesvm CT102 的隔离容器内构建 `6.12.114-tb371fc-research1` 内核、
 配套模块和设备树。实际启动测试发现并修复了历史页表池在通用 ARM 虚拟机
 中耗尽的问题；最终 Image 已在 QEMU 中进入 ARM64 用户态。这仍不是本机
@@ -77,8 +81,8 @@ broker、PID 1 和 worker。先前[仅加入 map 的策略构建](selinux-policy
 实际绑定；两项可见 Enforcing AVC 和被并发控制台输出破坏的 JSON 帧也保留为失败。
 完整日志中有两次[匹配源码确认的 BPF 成功附着](systemd-bpf-runtime-contract.md)，
 但基线 proc-open 和受限 `EPERM`／零字节测试都未运行。实际加载策略的导出
-已独立保存，不能与离线转换文件混为一谈。后续检查脚本与最小策略修正正在独立
-准备，不改写旧实验，也不把局部进展提升为整体验收或平板实机通过。
+已独立保存，不能与离线转换文件混为一谈。后续独立构建和 v8 实际结果见下文；
+不改写旧实验，也不把局部进展提升为整体验收或平板实机通过。
 
 [标准服务权限诊断](selinux-varlink-cleanup.md)已分别查询离线候选与实际保存的
 v7 策略。两次各 32 项结果确认已观察的链接删除、socket 写入拒绝，以及
@@ -86,19 +90,53 @@ v7 策略。两次各 32 项结果确认已观察的链接删除、socket 写入
 目标 socket 的 `getattr`，原始标签也正确。这只是所查权限子集一致，不能
 推断两份完整策略等价。
 
+新的[标准服务策略](selinux-standard-service-policy.md)已完成独立构建和原始／
+候选完整 CIL 比较，仅改变五个 allow 元组中的六项权限，包含上述三项标准
+服务缺口；原上下文、布尔量和其他限制保持不变。[独立 86 行离线查询](selinux-standard-service-av-query.md)
+确认所需权限均允许、保留的拒绝控制仍被拒。这些记录来自一次执行，包含
+79 个唯一元组，不能当作 86 次独立测试或真实服务运行。
+
+[审计可见性审查](audit-observability.md)解释了旧日志中共享 printk 抑制的边界。
+独立[编译的 V3 入口](early-selinux-standard-services-loader.md)要求显式通用虚拟机
+参数和实际设备树兼容串，在首次策略加载前只改变这一 limiter 的 interval，
+并重新读取 interval 与 burst。其 72,528 字节 ELF 和新的[清理等待程序 V2](tmpfs-waiter-v2.md)
+已通过有限的非 PID 1 拒绝检查；档案和运行配置仍须固定两份 ELF 与策略的
+完整哈希，长度检查不能替代内容身份。这些构建证据保留原有范围，
+后续实际运行的新观察单独记录如下。
+
+[v8 的真实结果](fedora-r4e-persistent-result-failed.md)已完成全部既定 guest 行为
+检查和普通结果文件传输，但**整轮仍失败**。真实总线及三个 FD 的转交成功，
+四条实际路径各自核对 82 个 live-policy 元组；它们与一次 86 行／79 唯一元组的
+离线候选查询分别记录。TasksMax 允许两个子进程、以 `EAGAIN` 拒绝第三个，
+max-events 从 0 增至 1，子进程均回收。同一 worker 的 BPF 对照实际读到
+181 字节基线数据，限制 `~proc` 后在 **`open` 阶段返回 `EPERM`／errno 1，
+数据为零字节**。正确的 `pl061_gpio` 绑定、84 个模块与 69 个固件哈希、
+模块签名强制执行、已加载 autofs4 和 taint 0 也已核对。
+
+QEMU 正常关机退出 0；413,706 字节完整结果通过固定路径、文件元数据、哈希、
+启动 ID 和 profile 检查只读取回，无解析错误，生产日志中所有既定丢失／抑制
+计数为零。独立完整日志仍发现一项 Enforcing AVC：`journalctl --sync` 中的
+`journalctl_t` 被拒绝创建自身 `unix_dgram_socket`。该命令虽退出 0，host
+controller 仍为 false、pipeline 仍退出 1，不能忽略这条拒绝。后续源码诊断与
+新候选另行进行。实际策略 `9d7aa2b3…` 私有保存、公开仅元数据，不与离线转换
+文件等同。post-qualification、finalize 和 postboot e2fsck 都未运行；没有正的
+udev 计数对，不能说队列为空或已全部保全。此前合成文件传输检查也不保证异常
+终止后无需 journal replay 就能恢复。所有平板实机项目保持原状态。
+
 [NixOS 后续构建](nixos-system-build.md)已实际完成固定的
 `system.build.toplevel`，得到引用闭合的 894 个存储路径，合计
 3,751,712,072 NAR 字节。ARM systemd 的版本命令和生成脚本的语法检查
 在显式 PRoot/QEMU 下通过；尚未生成或启动 NixOS 根文件系统，也没有执行
 激活脚本或集成研究内核、模块与私有固件。这推进了先前的包闭包检查，
-但不等于系统启动或本机硬件通过。
+但不等于系统启动或本机硬件通过。独立根文件系统／虚拟机实验仍在另行准备，
+不把尚未执行的草稿登记成这次冻结成果。
 
 ### 各发行版目前完成到哪里
 
 | 候选 | 已完成的主机证据 | 尚未跨过的边界 |
 | --- | --- | --- |
 | Fedora，冻结 research1 系统 | systemd 多用户和 Enforcing 完整启动，83 模块与 69 固件哈希匹配 | 基线资源/GPIO 提示仍保留；未测试平板硬件 |
-| Fedora，research3/research4 后续 | 两份 84 模块完整内核；v7 实际重载/标签、三个 FD 转交、TasksMax 行为及 BPF 附着 | v7 整体失败：PL061 检查、两项可见 AVC 和串口帧问题；BPF 限制行为未跑；硬件未验 |
+| Fedora，research3/research4 后续 | 两份 84 模块完整内核；v8 完成早期标签、真实 FD/TasksMax/BPF 行为、PL061 绑定及正常关机结果传输 | 一项 journalctl datagram-create AVC 仍使整轮失败；后续资格确认/收尾未跑；未测试平板 |
 | NixOS | 完整 894 路径 toplevel 闭包，ARM 版本命令及脚本语法检查 | 无根镜像、激活或 PID 1 启动 |
 | Nura/postmarketOS 实验 | ARM 构建器安装 382 个目标包并导出校验过的通用 rootfs | 目标未启动；离线缓存仅保留 371 个版本，未集成本机内核 |
 
@@ -122,8 +160,11 @@ USB 救援通道或 AVB 信任。
 参考内核 PID 1 与新私有 v2 格式检查通过，实际 USB 绑定、入口和恢复仍未验证。
 [双端 USB 跟进](usb-transport-followup.md)与[05:18 UTC 的再次复查](usb-transport-recheck.md)
 均读到两 UDC 为 `not attached`、doesvm 无对应候选；这不推断物理线缆是否存在或
-其他主机的状态。[最新上海 14:09 的双端复查](usb-transport-recheck-1409.md)
-再次记录同一有限结果。入口和恢复控制仍是实机测试的硬门槛。
+其他主机的状态。[此前上海 14:09 的双端复查](usb-transport-recheck-1409.md)
+再次记录同一有限结果。[最新上海 15:46:57–59 的双端读取](usb-transport-recheck-20261123T074657Z.md)
+也得到两 UDC `not attached`／`UNKNOWN`、相同主控制器配置和 14 项主机 USB
+条目中无对应 vendor 候选；两端命令均退出 0。未改变 USB／启动状态，不能据此
+诊断线缆或其他主机。入口和恢复控制仍是实机测试的硬门槛。
 
 - [内核构建、真实失败、修复与复测](kernel-build.md)
 - [6.12 显示设备树与驱动匹配修复](diagnostic-dt-profiles.md)、
@@ -155,6 +196,7 @@ USB 救援通道或 AVB 信任。
   [保留的 map-only 构建](selinux-policy-map-candidate.md)及[后续缺权](selinux-postreload-contract-query.md)、
   [新联合策略完整比较](selinux-policy-map-self-candidate.md)、[独立权限子集核验](selinux-postreload-combined-query.md)、
   [独立 V2 入口构建](early-selinux-reload-loader.md)、[BPF 行为源码合同](systemd-bpf-runtime-contract.md)
+- [v8 全部 guest 行为与结果传输通过、整轮因一项 AVC 失败](fedora-r4e-persistent-result-failed.md)，以及[完整结果文件](evidence/fedora-r4e-persistent-result-failed-guest.json)和[原始生产日志](evidence/fedora-r4e-persistent-result-failed-verify.log)。
 - [v7 实际局部进展与完整验收失败](fedora-r4d-reload-fd-failed.md)，以及[同次启动的实际策略导出](evidence/fedora-r4d-loaded-policy-export.json)。
 - [整机验收计划](acceptance.md)、[逐项验收账本](acceptance.json)
 - [本机启动条件与已校验离机备份](boot-readiness.md)、[R241 诊断模块构建](r241-build.md)
@@ -162,7 +204,8 @@ USB 救援通道或 AVB 信任。
 - [新的公开首阶段编译、保留的 VM 失败与仅格式验证的 v2 候选](first-stage-reconstruction.md)
 - [本机和 doesvm 的 USB 快照](usb-transport-readiness.md)、
   [双端跟进](usb-transport-followup.md)、[后续有界复查](usb-transport-recheck.md)、
-  [最新 14:09 双端复查](usb-transport-recheck-1409.md)、
+  [14:09 双端复查](usb-transport-recheck-1409.md)、
+  [最新 15:46 双端读取](usb-transport-recheck-20261123T074657Z.md)、
   [已独立检查的固定控制器救援修订](first-stage-owner-udc.md)
 - [最终内核的固件请求、设备状态与加载规则](firmware-kernel-contract.md)
 - [118 个专用固件文件的私有传输与完整性检查](stock-firmware-bundle.md)

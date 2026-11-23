@@ -342,14 +342,59 @@ invented observed denial. Target-socket `getattr` is excluded because the
 fixed short-path connection performs no target stat. The queried subset
 agreement does not claim whole-policy equivalence or a repaired runtime.
 
+The next independent [standard-service policy](selinux-standard-service-policy.md)
+has now completed construction and complete original/candidate CIL comparison.
+Only six permissions in five allow tuples change, including the three
+source-qualified service gaps; original contexts, booleans and all other
+policy rules remain intact. A separate [86-row offline query](selinux-standard-service-av-query.md)
+finds every required right allowed and all retained denial controls intact.
+Those rows contain 79 unique tuples and come from one query execution; they
+are not 86 independent tests or an observation of live services.
+
+The [audit visibility review](audit-observability.md) explains why the old
+shared printk suppression cannot establish a complete absence of AVCs. The
+separately [compiled V3 loader](early-selinux-standard-services-loader.md)
+requires an explicit generic-VM opt-in and actual device-tree compatibility
+before changing only that limiter's interval, with fresh readbacks before
+policy loading. Its 72,528-byte ELF and the new [cleanup waiter V2](tmpfs-waiter-v2.md)
+have passed their limited non-PID1 checks. Archive/profile checks still must
+pin both full ELF hashes and the policy hash; length checks are insufficient.
+These construction records retain their original limited scope; the separate
+actual run below supplies the new runtime observations.
+
+The [actual v8 result](fedora-r4e-persistent-result-failed.md) now completes
+all defined guest behavior and ordinary-file transport checks, but **still
+fails overall**. The real bus and three-FD route work; four actual routes each
+check 82 live-policy tuples. These matrices remain separate from the single
+86-row/79-unique-tuple offline candidate query. TasksMax again admits two
+children, rejects the third with `EAGAIN`, advances max-events 0 to 1 and
+reaps every owned child. The same-worker BPF comparison reads 181 bytes
+unrestricted and returns **`open`-stage `EPERM`/errno 1 with zero bytes** under
+`RestrictFileSystems=~proc`. Actual `pl061_gpio` binding, all 84 module and 69
+firmware hashes, signature enforcement, loaded autofs4 and taint 0 are checked.
+
+The 413,706-byte guest result survives normal QEMU shutdown and fixed-path,
+read-only extraction with exact metadata/hash/boot/profile checks. There is
+no parse error, and all configured production loss/suppression counts are
+zero. One visible Enforcing AVC nevertheless remains: `journalctl_t` is
+denied self `unix_dgram_socket create` during `journalctl --sync`, even though
+that command exits 0. The unchanged host controller stays false and the
+pipeline exits 1. Source diagnosis and a further candidate are separate work.
+The actual exported policy `9d7aa2b3…` is retained privately with public
+metadata; it is not equated to the offline conversion. Post-qualification,
+finalization and postboot e2fsck did not run. No positive udev count pair
+proves an empty or completely preserved queue. The earlier synthetic
+transport checks do not establish recovery after abrupt termination.
+Every physical-tablet case remains unchanged.
+
 The [matched BPF source audit](systemd-bpf-runtime-contract.md) requires a real
 positive attachment and a same-worker denial at `open`, errno `EPERM`, with
 zero bytes read. Failure before that call or at an unrelated operation does
 not satisfy the restriction test. V7's exact raw serial contains the positive
-attachment marker twice, but execution stopped before either controlled
-proc-open worker. That runtime attachment evidence cannot fill the missing
-behavioral result. None of these generic-VM records changes an owner Linux
-hardware case.
+attachment marker twice but stopped before the workers. The separate v8 run
+now supplies both controlled results described above, with the same worker,
+live property/FD checks and unchanged policy. Its later journalctl AVC still
+fails overall. None of these VM results changes an owner Linux hardware case.
 
 Boot-state evidence needs explicit interpretation: Android properties report
 locked/green while the captured kernel arguments report unlocked/orange.
@@ -432,11 +477,17 @@ finds two not-attached owner UDCs and no corresponding host USB candidate.
 It changes no role, gadget or boot state and does not close the entry gate.
 The [later 05:18 UTC paired recheck](usb-transport-recheck.md) again reports
 both UDCs not attached/UNKNOWN and no host vendor candidate. This does not
-establish cable presence or what another host would see. The newest
+establish cable presence or what another host would see. The later
 [06:09 UTC / 14:09 Shanghai paired check](usb-transport-recheck-1409.md) again
 finds both owner UDCs not attached/UNKNOWN and 14 doesvm USB entries without a
 matching vendor candidate. Both reads succeeded; no role/gadget/boot change
 or physical recovery test was performed.
+
+The [latest 15:46:57–59 Shanghai paired read](usb-transport-recheck-20261123T074657Z.md)
+again records both owner UDCs `not attached`/`UNKNOWN`, the same configured
+primary and 14 doesvm USB entries without a matching vendor candidate. Both
+reads exit 0. It establishes no data/recovery link and changes no USB or boot
+state; it does not diagnose a cable or another host.
 
 A [separate standard Docker builder](ssd-builder.md) is also ready with an SSD
 work bind, the same 4 CPU / 8 GiB limits, LLVM 19 and a checked AArch64 compiler
@@ -681,9 +732,9 @@ Evidence: `ANDROID-BOOT-BACKUP`, `BOOT-BACKUP-OFFDEVICE`, `BOOT-HEADER-HOST`, `B
 
 ### PF-USB-TRANSPORT — `owner_controller_identified_host_transport_unverified`
 
-The bounded owner Android snapshot exposes a600000.dwc3 and a800000.dwc3, both not attached; g1 is configured on a600000.dwc3 with 17ef:7e31. The contemporaneous doesvm snapshot has 14 USB entries and no such device. Controller maximum-speed values and a configured gadget do not demonstrate a data link. No role, PD, gadget, bootloader or recovery action was performed. A usable independently identified host connection and recovery-return path remain required. A fresh paired follow-up at 2026-11-23 04:00 UTC again found both owner UDCs not attached, g1 on the same primary and 14 host entries without a 17ef/18d1/05c6 candidate. It did not change role, gadget or boot state. The later 05:18:28-30 UTC paired recheck again returned exit 0 on both hosts, two not-attached/UNKNOWN UDCs and 14 doesvm devices without a vendor candidate; this does not determine cable presence or other hosts. The newest paired 06:09:03-05 UTC (14:09 Shanghai) snapshot again records the same owner UDC/g1 state and 14 host entries without a matching vendor candidate; both reads exited zero and no transport or boot state changed.
+The bounded owner Android snapshot exposes a600000.dwc3 and a800000.dwc3, both not attached; g1 is configured on a600000.dwc3 with 17ef:7e31. The contemporaneous doesvm snapshot has 14 USB entries and no such device. Controller maximum-speed values and a configured gadget do not demonstrate a data link. No role, PD, gadget, bootloader or recovery action was performed. A usable independently identified host connection and recovery-return path remain required. A fresh paired follow-up at 2026-11-23 04:00 UTC again found both owner UDCs not attached, g1 on the same primary and 14 host entries without a 17ef/18d1/05c6 candidate. It did not change role, gadget or boot state. The later 05:18:28-30 UTC paired recheck again returned exit 0 on both hosts, two not-attached/UNKNOWN UDCs and 14 doesvm devices without a vendor candidate; this does not determine cable presence or other hosts. The later paired 06:09:03-05 UTC (14:09 Shanghai) snapshot again records the same owner UDC/g1 state and 14 host entries without a matching vendor candidate; both reads exited zero and no transport or boot state changed. The newest paired 07:46:57-59 UTC (15:46 Shanghai) read again returns exit0 on both ends: two not-attached/UNKNOWN UDCs, g1 on a600000.dwc3 with 17ef:7e31, and 14 doesvm entries without a 17ef/18d1/05c6 candidate. No role, gadget or boot action occurred and physical entry/recovery remains unverified.
 
-Evidence: `ANDROID-USB-TRANSPORT`, `HOST-USB-TRANSPORT`, `USB-TRANSPORT-REVIEW`, `USB-FOLLOWUP-REVIEW`, `ANDROID-USB-FOLLOWUP`, `HOST-USB-FOLLOWUP`, `USB-RECHECK-REVIEW`, `ANDROID-USB-RECHECK`, `HOST-USB-RECHECK`, `USB-RECHECK-1409-REVIEW`, `ANDROID-USB-RECHECK-1409`, `HOST-USB-RECHECK-1409`.
+Evidence: `ANDROID-USB-TRANSPORT`, `HOST-USB-TRANSPORT`, `USB-TRANSPORT-REVIEW`, `USB-FOLLOWUP-REVIEW`, `ANDROID-USB-FOLLOWUP`, `HOST-USB-FOLLOWUP`, `USB-RECHECK-REVIEW`, `ANDROID-USB-RECHECK`, `HOST-USB-RECHECK`, `USB-RECHECK-1409-REVIEW`, `ANDROID-USB-RECHECK-1409`, `HOST-USB-RECHECK-1409`, `USB-RECHECK-1546-REVIEW`, `ANDROID-USB-RECHECK-1546`, `HOST-USB-RECHECK-1546`.
 
 ### PF-BOOT-RECOVERY — `unresolved_stock_entry`
 
@@ -799,11 +850,11 @@ The V2 72048-byte loader compiled and rejected non-PID1 entry. Its control flow 
 
 Evidence: `EARLY-RELOAD-LOADER-REVIEW`, `EARLY-RELOAD-LOADER-BUILD`, `EARLY-RELOAD-LOADER-NEGATIVE`, `POLICY-MAP-ARTIFACTS`.
 
-### PF-SYSTEMD-BPF-CONTRACT — `matched_source_and_later_attachment_observed_behavior_not_run`
+### PF-SYSTEMD-BPF-CONTRACT — `matched_source_attachment_and_v8_paired_open_denial_observed`
 
-The fixed Fedora 262.1 source confirms that the positive LSM attachment log follows successful load/attach. The later v7 raw serial contains that exact marker twice, providing actual generic-VM attachment evidence. The selected proc deny-list returns EPERM from file_open before any read; v7 stopped at the PL061 fixture before either controlled worker, so open-stage errno 1/zero-byte restriction behavior remains untested.
+The fixed Fedora 262.1 source places the positive LSM attachment log after load/attach and returns EPERM from the proc-denying file_open hook. V7 retained two attachment markers but ran neither worker. Independent v8 now records two markers and the same-worker comparison: unrestricted open/read returns the actual release in 181 bytes; RestrictFileSystems=~proc returns open-stage errno 1/EPERM with 0 bytes. Actual worker domain/FDs/unit properties and unchanged loaded policy close the comparison. This is a generic-VM behavioral result; a separate journalctl AVC still fails v8 overall, and no owner hardware case changes.
 
-Evidence: `SYSTEMD-BPF-CONTRACT-REVIEW`, `SYSTEMD-BPF-CONTRACT-ARTIFACTS`, `FEDORA-R4C-TMPFS-VERIFY`, `FEDORA-R4D-SERIAL`.
+Evidence: `SYSTEMD-BPF-CONTRACT-REVIEW`, `SYSTEMD-BPF-CONTRACT-ARTIFACTS`, `FEDORA-R4C-TMPFS-VERIFY`, `FEDORA-R4D-SERIAL`, `FEDORA-R4E-GUEST`, `FEDORA-R4E-SERIAL`, `FEDORA-R4E-VERIFY`.
 
 ### PF-POSTRELOAD-MAPONLY — `retained_offline_candidate_contract_incomplete`
 
@@ -834,6 +885,48 @@ Evidence: `FEDORA-R4D-REVIEW`, `FEDORA-R4D-ARTIFACTS`, `FEDORA-R4D-VERIFY`, `FED
 Fixed source and two completed 32-row AV queries independently establish three required gaps: init_t to registry lnk_file unlink, journalctl_t to the correctly labeled journal sock_file write, and journalctl_t to syslogd_t unix_stream_socket connectto. The first two have actual v7 AVCs; connectto is a source-and-policy prediction of the next check. The captured version33 0fe3 bytes are queried directly without conversion; agreement with offline ce6ccb is only this subset. Existing directory and link rights already allow, while target-socket getattr is intentionally not requested by the fixed short-path client and must not be added. No policy repair or new runtime outcome is claimed by this audit.
 
 Evidence: `VARLINK-CLEANUP-REVIEW`, `VARLINK-CLEANUP-ARTIFACTS`, `FEDORA-R4D-ARTIFACTS`, `FEDORA-R4D-POLICY-EXPORT`, `FEDORA-R4D-SERIAL`.
+
+### PF-STANDARD-SERVICE-POLICY — `fresh_build_and_full_six_permission_semantic_comparison_passed`
+
+A fresh original module-store build adds the prior policy map and same-init_t setcurrent/dyntransition rights plus registry-link unlink, journal socket write and journald connectto. Complete version-35 and fresh-version-33 CIL comparisons allow only those five tuples and six permissions. All original contexts/config and the 1,766-entry source inventory remain unchanged. Candidate 727cd98e is 3,835,456 bytes; no target-socket getattr or additional privilege is introduced. The separate v8 run now exercises the prior service fixes but exposes an additional journalctl self datagram-create denial; the qualified six-permission semantic comparison remains unchanged.
+
+Evidence: `STANDARD-POLICY-REVIEW`, `STANDARD-POLICY-ARTIFACTS`, `STANDARD-POLICY-SOURCE`, `STANDARD-POLICY-BEFORE`, `STANDARD-POLICY-AFTER`, `STANDARD-POLICY-BUILD-LOG`, `FEDORA-R4E-ARTIFACTS`.
+
+### PF-STANDARD-SERVICE-AV — `independent_offline_required_permission_subset_satisfied`
+
+One direct-QEMU userspace process checked the complete preserved 54-row and 32-row matrices: 86 rows, 79 unique tuples, 80 ALLOW and 6 DENY. All 73 required-allow rows pass; the diagnostic target-socket getattr and original denial controls remain denied. The independent fresh33 hash matches 9b39b5a5. This is a candidate permission check, not a live policy export, service connection or owner Linux run.
+
+Evidence: `STANDARD-AV-REVIEW`, `STANDARD-AV-ARTIFACTS`, `STANDARD-POLICY-ARTIFACTS`.
+
+### PF-AUDIT-OBSERVABILITY — `source_guard_and_v8_readbacks_observed_zero_configured_loss_markers`
+
+The fixed shared printk limiter explains why v7 suppressed callbacks do not identify missing content. In separate v8 the exact generic-VM/PID1 guard actually sets only interval 5 to 0 before policy load; fresh burst readbacks retain 10, and guest before/after tests still read 0/10. Audit admission/backlog and Enforcing are unchanged. Every configured production audit/loss/suppression count is 0; one visible AVC nevertheless fails the run. These observed markers do not disprove every theoretically unobservable event. The separate permissive maintenance log retains its own 47 denials and 9 suppression notices.
+
+Evidence: `AUDIT-OBSERVABILITY-REVIEW`, `AUDIT-OBSERVABILITY-ARTIFACTS`, `AUDIT-OBSERVABILITY-SOURCE`, `FEDORA-R4D-SERIAL`, `FEDORA-R4E-ARTIFACTS`, `FEDORA-R4E-SERIAL`, `FEDORA-R4E-LABEL-SERIAL`.
+
+### PF-EARLY-STANDARD-LOADER — `independent_build_negative_entry_and_v8_ordered_entry_observed`
+
+The V3 source derivation produces 20,011 bytes from the fixed 12,548-byte original. One actual compile exits 0 in 1.562511 seconds and yields the 72,528-byte 84cc4868 AArch64 PIE; its HDD copy matches. Actual QEMU-user execution exits 1 at the first non-PID1 guard; the audit-setting branch, mounts and policy APIs are not reached. Full policy 727cd98e and loader hashes must be bound by the new archive/profile; neither a length check nor construction proves a successful VM. The separate actual v8 archive/profile now binds the full identities and observes V3 audit guard, policy load, systemd exec and same-boot domain/label proof in order. Its full production verification still fails on a later journalctl AVC, with no owner entry.
+
+Evidence: `EARLY-STANDARD-LOADER-REVIEW`, `EARLY-STANDARD-LOADER-BUILD`, `EARLY-STANDARD-LOADER-NEGATIVE`, `EARLY-STANDARD-LOADER-INVOCATION`, `EARLY-STANDARD-LOADER-INPUT-TRANSFER`, `EARLY-STANDARD-LOADER-HDD-TRANSFER`, `FEDORA-R4E-ARTIFACTS`, `FEDORA-R4E-VERIFY`.
+
+### PF-TMPFS-WAITER-V2 — `independent_build_and_v8_cleanup_observed_full_system_failed`
+
+The independently built 71,872-byte 7e593ef9 waiter targets the measured 72,528-byte V3. Its approved marker/length/comment substitutions reverse to every original C byte; all PID 1, FD 3, child/timeout, root and emptiness guards remain. Actual non-PID1 rejection and destination hashes pass. No cleanup, V3 entry or VM is executed by this qualification, and the native target-size check does not authenticate content. Separate v8 now observes one cleanup child reaped, old-root emptiness and 0:2 to 0:20 root migration before the fully pinned V3 path. That new runtime observation does not change this construction record or the failed full-system verdict.
+
+Evidence: `TMPFS-WAITER-V2-REVIEW`, `TMPFS-WAITER-V2-ARTIFACTS`, `EARLY-STANDARD-LOADER-BUILD`, `FEDORA-R4E-ARTIFACTS`, `FEDORA-R4E-VERIFY`.
+
+### PF-R4E-RESULT-TRANSPORT — `six_offline_cases_and_actual_normal_shutdown_transport_qualified`
+
+The six synthetic ext4 cases retain their offline scope. In actual v8 the complete 413,706-byte guest result is exclusively created, fsynced/read back and bound to a unique short receipt. After normal QEMU exit 0, read-only debugfs verifies fixed parent/file metadata, full hash and same-boot/profile identity without mount or journal replay. Persistent qualification is true and parse_error is null. This closes the actual normal-shutdown transport gap only; abrupt-termination recovery is not guaranteed and the independent one-AVC system verdict remains failed.
+
+Evidence: `FEDORA-R4E-TRANSPORT-CASES`, `FEDORA-R4E-GUEST`, `FEDORA-R4E-VERIFY`, `FEDORA-R4E-SERIAL`, `FEDORA-R4E-TRANSFER`.
+
+### PF-FEDORA-R4E-PERSISTENT — `all_guest_behavior_observed_overall_failed_one_enforcing_avc`
+
+The independent v8 pipeline exits 1 after 658.410 seconds, although its production QEMU exits 0 normally and all defined guest gates/transport pass. Ordered tmpfs cleanup/early Enforcing domains/API labels, real bus queries and three-FD delivery are observed; four routes each query the exact 82 live permission tuples separately from the 86-row offline candidate matrix. TasksMax admits 2 children, rejects the third with EAGAIN and advances max-events 0 to 1. The paired BPF test reads 181 bytes unrestricted and denies restricted open with EPERM/errno 1 and 0 bytes. Actual pl061_gpio binding, all 84 module/69 firmware hashes, enforced signatures, loaded autofs4 and taint 0 are checked. Full production log has one journalctl_t self unix_dgram_socket create AVC despite sync exit 0; all configured loss/suppression counters are 0. Original controller remains false. Post-qualify/finalize and postboot e2fsck did not run; no positive udev count pair proves an empty or completely preserved queue. Actual policy 33 9d7aa2b3 is retained independently, with no raw policy binary published or owner hardware pass.
+
+Evidence: `FEDORA-R4E-REVIEW`, `FEDORA-R4E-ARTIFACTS`, `FEDORA-R4E-VERIFY`, `FEDORA-R4E-SERIAL`, `FEDORA-R4E-GUEST`, `FEDORA-R4E-LABEL`, `FEDORA-R4E-LABEL-SERIAL`, `FEDORA-R4E-PIPELINE`, `FEDORA-R4E-POLICY-RETENTION`, `FEDORA-R4E-FREEZE-JOB`, `FEDORA-R4E-TRANSFER`, `FEDORA-R4E-SOURCE`, `FEDORA-R4E-BASELINE`, `FEDORA-R4E-PLAN`.
 
 ## Test index
 
@@ -2238,3 +2331,40 @@ Minimum repetitions: 1. Duration: 24 h mixed-use soak. Comparison profiles: pair
 | `FEDORA-R4D-PLAN` | `source_clue` | [fedora-r4d-profile-plan.md](fedora-r4d-profile-plan.md) | This plan is not the completed outcome; use the frozen failure report for actual observations. |
 | `VARLINK-CLEANUP-REVIEW` | `source_clue` | [selinux-varlink-cleanup.md](selinux-varlink-cleanup.md) | Only registry unlink and journal socket write are observed AVCs; connectto is the next source-qualified permission gate, not a captured AVC. Target socket getattr is not needed by the fixed short-path client. |
 | `VARLINK-CLEANUP-ARTIFACTS` | `host_build` | [selinux-varlink-cleanup.json](evidence/selinux-varlink-cleanup.json) | No conversion was applied to actual 0fe3. Agreement is limited to the 32 queried decisions, not whole-policy serialization or semantic equality. No repair, VM or device action is part of this diagnosis. |
+| `STANDARD-POLICY-REVIEW` | `host_build` | [selinux-standard-service-policy.md](selinux-standard-service-policy.md) | No label, boolean, permissive-domain or cross-type transition change. This is candidate construction, not a live reload or service result. |
+| `STANDARD-POLICY-ARTIFACTS` | `host_build` | [selinux-standard-service-policy.json](evidence/selinux-standard-service-policy.json) | Fresh33 9b39b5a5 is an offline serialization, not a predetermined kernel export. New initramfs and runtime gates must bind their actual policy bytes. |
+| `STANDARD-POLICY-SOURCE` | `host_build` | [selinux-standard-service-policy-source-manifest.json](evidence/selinux-standard-service-policy-source-manifest.json) | Host provenance only; no kernel policy load, process transition or hardware behavior is established. |
+| `STANDARD-POLICY-BEFORE` | `host_build` | [selinux-standard-service-policy-before-manifest.json](evidence/selinux-standard-service-policy-before-manifest.json) | Host provenance only; no kernel policy load, process transition or hardware behavior is established. |
+| `STANDARD-POLICY-AFTER` | `host_build` | [selinux-standard-service-policy-candidate-manifest.json](evidence/selinux-standard-service-policy-candidate-manifest.json) | Host provenance only; no kernel policy load, process transition or hardware behavior is established. |
+| `STANDARD-POLICY-BUILD-LOG` | `host_build` | [selinux-standard-service-policy-build.log](evidence/selinux-standard-service-policy-build.log) | Host provenance only; no kernel policy load, process transition or hardware behavior is established. |
+| `STANDARD-AV-REVIEW` | `source_clue` | [selinux-standard-service-av-query.md](selinux-standard-service-av-query.md) | This report checks a candidate permission subset, not live domains, object labels, FD identities or the complete runtime. |
+| `STANDARD-AV-ARTIFACTS` | `host_build` | [selinux-standard-service-av-query.json](evidence/selinux-standard-service-av-query.json) | Repeated historical rows are not independent runs. Target-socket getattr and the original denial controls remain denied; no VM or policy load occurs. |
+| `AUDIT-OBSERVABILITY-REVIEW` | `source_clue` | [audit-observability.md](audit-observability.md) | Six suppressed callbacks do not identify six AVCs. Removing this limiter does not prove audit queues or serial transport are lossless. |
+| `AUDIT-OBSERVABILITY-ARTIFACTS` | `source_clue` | [audit-observability.json](evidence/audit-observability.json) | Static analysis performs no sysctl setting, policy load or new VM run; old lost content is not recovered. |
+| `AUDIT-OBSERVABILITY-SOURCE` | `source_clue` | [audit-observability-source-manifest.json](evidence/audit-observability-source-manifest.json) | This is source binding, not execution of the guarded branch. Audit admission, queue limits, Enforcing and all runtime gates remain separate. |
+| `EARLY-STANDARD-LOADER-REVIEW` | `host_build` | [early-selinux-standard-services-loader.md](early-selinux-standard-services-loader.md) | One successful compilation is not an independent identical rebuild. Runtime C checks policy length; archive and profile must pin the complete policy hash. |
+| `EARLY-STANDARD-LOADER-BUILD` | `host_build` | [early-selinux-standard-services-build.json](evidence/early-selinux-standard-services-build.json) | Construction or entry-refusal scope only; no new successful PID1 path, sysctl update, policy load or hardware test. |
+| `EARLY-STANDARD-LOADER-NEGATIVE` | `host_build` | [early-selinux-standard-services-negative.json](evidence/early-selinux-standard-services-negative.json) | Construction or entry-refusal scope only; no new successful PID1 path, sysctl update, policy load or hardware test. |
+| `EARLY-STANDARD-LOADER-INVOCATION` | `host_build` | [early-selinux-standard-services-invocation.json](evidence/early-selinux-standard-services-invocation.json) | Construction or entry-refusal scope only; no new successful PID1 path, sysctl update, policy load or hardware test. |
+| `EARLY-STANDARD-LOADER-INPUT-TRANSFER` | `host_build` | [early-selinux-standard-services-input-transfer.json](evidence/early-selinux-standard-services-input-transfer.json) | Construction or entry-refusal scope only; no new successful PID1 path, sysctl update, policy load or hardware test. |
+| `EARLY-STANDARD-LOADER-HDD-TRANSFER` | `host_build` | [early-selinux-standard-services-hdd-transfer.json](evidence/early-selinux-standard-services-hdd-transfer.json) | Construction or entry-refusal scope only; no new successful PID1 path, sysctl update, policy load or hardware test. |
+| `TMPFS-WAITER-V2-REVIEW` | `host_build` | [tmpfs-waiter-v2.md](tmpfs-waiter-v2.md) | Its unchanged cleanup code is not a new cleanup run. The target length72528 is not a content hash; both complete ELF identities remain required. |
+| `TMPFS-WAITER-V2-ARTIFACTS` | `host_build` | [tmpfs-waiter-v2.json](evidence/tmpfs-waiter-v2.json) | No old-root cleanup, target execution, policy loading or VM was performed by this build. The raw timestamp qualification is explicit. |
+| `USB-RECHECK-1546-REVIEW` | `source_clue` | [usb-transport-recheck-20261123T074657Z.md](usb-transport-recheck-20261123T074657Z.md) | A bounded passive snapshot does not establish cable failure, another host, a data link or a recovery return. |
+| `ANDROID-USB-RECHECK-1546` | `device_android` | [usb-transport-recheck-20261123T074657Z.json](evidence/usb-transport-recheck-20261123T074657Z.json) | One successful fixed-helper read; no role, gadget, serial, bootloader or recovery action. |
+| `HOST-USB-RECHECK-1546` | `host_build` | [usb-transport-recheck-20261123T074657Z.json](evidence/usb-transport-recheck-20261123T074657Z.json) | This host/time-specific observation does not determine physical cable presence or the state of another host. |
+| `FEDORA-R4E-REVIEW` | `host_build` | [fedora-r4e-persistent-result-failed.md](fedora-r4e-persistent-result-failed.md) | Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed. |
+| `FEDORA-R4E-ARTIFACTS` | `host_build` | [fedora-r4e-persistent-result-failed.json](evidence/fedora-r4e-persistent-result-failed.json) | Source policy35, offline converted33 and actual exported33 have separate hashes. Post-qualify, finalize and postboot e2fsck did not run. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed. |
+| `FEDORA-R4E-VERIFY` | `host_build` | [fedora-r4e-persistent-result-failed-verify.json](evidence/fedora-r4e-persistent-result-failed-verify.json) | Guest checks cannot override host full-log denial/loss checks; the controller was not rescored. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed. |
+| `FEDORA-R4E-SERIAL` | `host_build` | [fedora-r4e-persistent-result-failed-verify.log](evidence/fedora-r4e-persistent-result-failed-verify.log) | Zero configured production loss markers is a bounded observation, not proof against every theoretically unobservable event. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed. |
+| `FEDORA-R4E-GUEST` | `host_build` | [fedora-r4e-persistent-result-failed-guest.json](evidence/fedora-r4e-persistent-result-failed-guest.json) | Its pass envelope explicitly leaves host qualification pending and complete_system_accepted=false. Four matrices are four routes, not four independently booted systems. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed. |
+| `FEDORA-R4E-LABEL` | `host_build` | [fedora-r4e-persistent-result-failed-label.json](evidence/fedora-r4e-persistent-result-failed-label.json) | Maintenance is not an Enforcing production result; its denials and suppression remain in its own raw log. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed. |
+| `FEDORA-R4E-LABEL-SERIAL` | `host_build` | [fedora-r4e-persistent-result-failed-label.log](evidence/fedora-r4e-persistent-result-failed-label.log) | These preparation observations are not included in a claim of clean Enforcing production. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed. |
+| `FEDORA-R4E-PIPELINE` | `host_build` | [fedora-r4e-persistent-result-failed-pipeline.json](evidence/fedora-r4e-persistent-result-failed-pipeline.json) | Later post-qualification/finalization were not executed or backfilled. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed. |
+| `FEDORA-R4E-POLICY-RETENTION` | `host_build` | [fedora-r4e-persistent-result-failed-policy-retention.json](evidence/fedora-r4e-persistent-result-failed-policy-retention.json) | The original passed-only pipeline was unchanged; no image replay/write, new policy load or extra VM occurred. Public evidence excludes the policy binary. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed. |
+| `FEDORA-R4E-FREEZE-JOB` | `host_build` | [fedora-r4e-freeze-execution.json](evidence/fedora-r4e-freeze-execution.json) | A successful archival job is not a successful system or hardware run. |
+| `FEDORA-R4E-TRANSFER` | `host_build` | [fedora-r4e-failed-evidence-transfer.json](evidence/fedora-r4e-failed-evidence-transfer.json) | No raw private policy binary is in the public packet. Transport success does not change the failed production result. |
+| `FEDORA-R4E-SOURCE` | `host_build` | [fedora-r4e-execution-source.json](evidence/fedora-r4e-execution-source.json) | Source identity and launch do not establish runtime success. Generic ARM64 VM only; no owner-tablet Linux boot or hardware acceptance. The complete production attempt remains failed. |
+| `FEDORA-R4E-BASELINE` | `host_build` | [fedora-r4e-baseline-preparation.json](evidence/fedora-r4e-baseline-preparation.json) | No PRoot ran against the frozen R1 source; copy and input checks are not a boot result. |
+| `FEDORA-R4E-PLAN` | `source_clue` | [fedora-r4e-profile-plan.md](fedora-r4e-profile-plan.md) | Planned gates are distinguished from completed phases and from physical acceptance. |
+| `FEDORA-R4E-TRANSPORT-CASES` | `host_build` | [fedora-r4e-result-transport-qualification.json](evidence/fedora-r4e-result-transport-qualification.json) | Synthetic clean-image checks are not a VM boot or a crash-consistency guarantee; normal-shutdown transport is separately observed in v8. |

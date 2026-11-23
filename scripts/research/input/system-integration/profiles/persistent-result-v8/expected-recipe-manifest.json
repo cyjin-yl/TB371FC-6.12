@@ -1,0 +1,82 @@
+{
+  "assemble_system.py": {
+    "sha256": "1c0a3088b8e39a6bdf6b7e828eacca70a51ee00e85a931f9e3e778352c140fe2",
+    "size": 6046
+  },
+  "boot_system_vm.py": {
+    "sha256": "0cc213bfa45f3f419adc39c6917ccecbb9dfcb5ea851388a61ef7f1d27523076",
+    "size": 40810
+  },
+  "early_initramfs.py": {
+    "sha256": "ec2ad218094aed7c1d8c99ae180aed8d36f43a83e9cd0b4106299963ed243d5a",
+    "size": 18222
+  },
+  "finalize_system.py": {
+    "sha256": "de72a5a1f60a0b56895bc8b595feb9d5c0c0ef09081fc8de9383fff3a9c6cb4a",
+    "size": 10874
+  },
+  "guest_result_file.py": {
+    "sha256": "89089a01d19113ac42d93f30cf86809e47dadfc7da28027733bf8a19c340c8a0",
+    "size": 5302
+  },
+  "guest_transient_worker.py": {
+    "sha256": "85f23dc3afdcca5a3bdce16349d51f8b84076380482b7c39fb5673555922907f",
+    "size": 8776
+  },
+  "guest_verify_system.py": {
+    "sha256": "9a897ad69789b8f29416ae1ef44d93dbd202563119932ce842f247c944988b7a",
+    "size": 41210
+  },
+  "initrd-domain-proof.service": {
+    "sha256": "f0dedb803142b5633f4431aef31f25c4308523cde460fb56251c9eb80a3286f5",
+    "size": 521
+  },
+  "initrd-domain-proof.sh": {
+    "sha256": "da45ac48debefb1eb282adb5574694a66d16522c3de8e668b191e264181adbfc",
+    "size": 5312
+  },
+  "probe_fd_route_v2.py": {
+    "sha256": "a9fbf6c6515e5652e80b328b3fdad2637938cc6133e02364256c616b41a8c755",
+    "size": 15438
+  },
+  "qualify_udev_handoff.py": {
+    "sha256": "7df5da2562ff9c5152c2d45304d0cdaf7f052917f7ef3edc4917f72f03aec110",
+    "size": 6132
+  },
+  "read_vm_result.py": {
+    "sha256": "71df5f32894a0f8b232173378786c39f39aca567af801dc3c5e035b04577dc25",
+    "size": 8311
+  },
+  "retain_policy_export.py": {
+    "sha256": "20fa7f3784cf07a707205c34ef1d5d6fbdab28dae785a5d20b66475a48d62f61",
+    "size": 3993
+  },
+  "run_pipeline.py": {
+    "sha256": "acc4649f6db53b8b23e642e8bf5f71f56f2c93077fdcfe55205e28d88a9471b8",
+    "size": 5905
+  },
+  "stage_system.py": {
+    "sha256": "78bc14c913c7aba1408da094f95c32183d3981a6744668352ad416ab4294d2dd",
+    "size": 13569
+  },
+  "system_common.py": {
+    "sha256": "ec3c0bc8c870f62af4acf6694d2134f86928fd61791b1e989f56a31404eebd12",
+    "size": 4209
+  },
+  "transient_protocol.py": {
+    "sha256": "69c8dcde80734ad3c71b6fdf0eaae0df330c5a760270aba560a971139955032d",
+    "size": 17436
+  },
+  "verify_early_policy_initramfs.py": {
+    "sha256": "58a5dba0186174c7442f73c2f8f0a2333599e6cbbcb1cf332169e5df558bfd1e",
+    "size": 27585
+  },
+  "verify_initramfs.py": {
+    "sha256": "263866a1943cd43116e69cb0a8b1081d6ccd1cc93ef98866a4b3eacc00bac58a",
+    "size": 20506
+  },
+  "verify_runtime_policy_initramfs.py": {
+    "sha256": "0ced7a067f49371049502548c3685374f8c4b8b398b6c498afcfb4cebf9eda6d",
+    "size": 30122
+  }
+}

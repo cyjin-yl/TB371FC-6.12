@@ -1,0 +1,68 @@
+{
+  "artifact": {
+    "sha256": "84cc4868317fd1799ab1ff8f8ba5ae8bf85445dda5d65c3f11e1637aadb599c3",
+    "size": 72528
+  },
+  "at_utc": "2026-11-23T07:26:33.344724+00:00",
+  "audit_sysctl_guard_reached": false,
+  "command": [
+    "/usr/bin/qemu-aarch64-static",
+    "-L",
+    "/work/fedora-input-system-v6/rootfs",
+    "/work/early-selinux-standard-services-20261123/build-01/early-init"
+  ],
+  "container_sysctl_values_after": {
+    "printk_ratelimit": "5",
+    "printk_ratelimit_burst": "10"
+  },
+  "container_sysctl_values_before": {
+    "printk_ratelimit": "5",
+    "printk_ratelimit_burst": "10"
+  },
+  "elapsed_seconds": 0.21121657401090488,
+  "exit_code": 1,
+  "limit": "Failure marker and frozen source entry order identify the refused branch; metadata is a limited read-only corroboration, not a full syscall trace or VM proof.",
+  "mount_operation_attempted": false,
+  "passed": true,
+  "physical_hardware_tested": false,
+  "policy_load_attempted": false,
+  "reference_directory_metadata_after": {
+    ".": {
+      "ctime_ns": 1795411373755183497,
+      "inode": 16631058,
+      "mtime_ns": 1795411373755183497
+    },
+    "dev": {
+      "ctime_ns": 1795411373754183441,
+      "inode": 16631069,
+      "mtime_ns": 1795411373754183441
+    },
+    "etc": {
+      "ctime_ns": 1795411373755183497,
+      "inode": 16628819,
+      "mtime_ns": 1795411373755183497
+    }
+  },
+  "reference_directory_metadata_before": {
+    ".": {
+      "ctime_ns": 1795411373755183497,
+      "inode": 16631058,
+      "mtime_ns": 1795411373755183497
+    },
+    "dev": {
+      "ctime_ns": 1795411373754183441,
+      "inode": 16631069,
+      "mtime_ns": 1795411373754183441
+    },
+    "etc": {
+      "ctime_ns": 1795411373755183497,
+      "inode": 16628819,
+      "mtime_ns": 1795411373755183497
+    }
+  },
+  "schema_version": 1,
+  "scope": "direct AArch64 non-PID1 refusal only; no API-only check or PID1 execution",
+  "stderr": "TB371FC_EARLY_SELINUX_V3 FAILED phase=entry reason=pid1-with-no-arguments-required errno=0\n",
+  "stdout": "",
+  "sysctl_write_attempted": false
+}

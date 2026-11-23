@@ -13,6 +13,10 @@ The R226 installation/reproducibility limitations in
 
 ## Build follow-up and completion standard
 
+**Latest full-system checkpoint: [Fedora v8](fedora-r4e-persistent-result-failed.md)
+completes its guest behavior and result transport, but one Enforcing AVC
+still fails overall. Owner-tablet Linux remains at 0 runs and 0 passes.**
+
 The new `6.12.114-tb371fc-research1` Image, matching modules and native board
 DTB have now compiled in an isolated CT102 container. A generic ARM64 VM boot
 first exposed an inherited early page-table pool panic; after a board-scoped
@@ -107,8 +111,8 @@ failures. The raw log contains two positive attachment messages qualified by
 the [matched systemd source](systemd-bpf-runtime-contract.md), but neither the
 baseline proc-open nor the restricted `EPERM`/zero-byte test ran. The actual
 same-boot policy export is retained separately from offline conversions.
-Follow-up fixture and narrowly scoped policy corrections are being prepared
-independently; no old outcome or physical-tablet case is upgraded.
+Independent follow-up construction and the actual v8 result are recorded
+below. No old result or physical-tablet case is upgraded.
 
 The [standard-service permission diagnosis](selinux-varlink-cleanup.md)
 queries both the offline candidate and actual retained v7 policy bytes. It
@@ -117,20 +121,66 @@ confirms the two observed link/socket denials and the required next
 client needs no target-socket `getattr`, and the original labels are correct.
 These 32-query subset results do not establish whole-policy equivalence.
 
+The next independent [standard-service policy](selinux-standard-service-policy.md)
+has now completed construction and complete original/candidate CIL comparison.
+Only six permissions in five allow tuples change, including the three
+source-qualified service gaps; original contexts, booleans and all other
+policy rules remain intact. A separate [86-row offline query](selinux-standard-service-av-query.md)
+finds every required right allowed and all retained denial controls intact.
+Those rows contain 79 unique tuples and come from one query execution; they
+are not 86 independent tests or an observation of live services.
+
+The [audit visibility review](audit-observability.md) explains why the old
+shared printk suppression cannot establish a complete absence of AVCs. The
+separately [compiled V3 loader](early-selinux-standard-services-loader.md)
+requires an explicit generic-VM opt-in and actual device-tree compatibility
+before changing only that limiter's interval, with fresh readbacks before
+policy loading. Its 72,528-byte ELF and the new [cleanup waiter V2](tmpfs-waiter-v2.md)
+have passed their limited non-PID1 checks. Archive/profile checks still must
+pin both full ELF hashes and the policy hash; length checks are insufficient.
+These construction records retain their original limited scope; the separate
+actual run below supplies the new runtime observations.
+
+The [actual v8 result](fedora-r4e-persistent-result-failed.md) now completes
+all defined guest behavior and ordinary-file transport checks, but **still
+fails overall**. The real bus and three-FD route work; four actual routes each
+check 82 live-policy tuples. These matrices remain separate from the single
+86-row/79-unique-tuple offline candidate query. TasksMax again admits two
+children, rejects the third with `EAGAIN`, advances max-events 0 to 1 and
+reaps every owned child. The same-worker BPF comparison reads 181 bytes
+unrestricted and returns **`open`-stage `EPERM`/errno 1 with zero bytes** under
+`RestrictFileSystems=~proc`. Actual `pl061_gpio` binding, all 84 module and 69
+firmware hashes, signature enforcement, loaded autofs4 and taint 0 are checked.
+
+The 413,706-byte guest result survives normal QEMU shutdown and fixed-path,
+read-only extraction with exact metadata/hash/boot/profile checks. There is
+no parse error, and all configured production loss/suppression counts are
+zero. One visible Enforcing AVC nevertheless remains: `journalctl_t` is
+denied self `unix_dgram_socket create` during `journalctl --sync`, even though
+that command exits 0. The unchanged host controller stays false and the
+pipeline exits 1. Source diagnosis and a further candidate are separate work.
+The actual exported policy `9d7aa2b3…` is retained privately with public
+metadata; it is not equated to the offline conversion. Post-qualification,
+finalization and postboot e2fsck did not run. No positive udev count pair
+proves an empty or completely preserved queue. The earlier synthetic
+transport checks do not establish recovery after abrupt termination.
+Every physical-tablet case remains unchanged.
+
 The [NixOS follow-up](nixos-system-build.md) has now actually realized the full
 fixed `system.build.toplevel`: 894 reference-closed store paths, totalling
 3,751,712,072 NAR bytes. ARM systemd `--version` and generated-script syntax
 checks passed under explicit PRoot/QEMU. No NixOS rootfs image, activation,
 PID 1 boot or integration of the research kernel/modules/private firmware
 has been performed. This advances the earlier selected-package checkpoint
-without claiming a booted tablet system.
+without claiming a booted tablet system. An independent rootfs/VM experiment
+is being prepared outside this frozen evidence set and has no boot result here.
 
 ### Current distro checkpoints
 
 | Candidate | Completed host evidence | Outstanding boundary |
 | --- | --- | --- |
 | Fedora, frozen research1 system | Full systemd multi-user boot with Enforcing, 83 modules and 69 firmware hashes checked | Baseline resource/GPIO notices remain; no physical tablet |
-| Fedora, research3/research4 follow-up | Both 84-module kernels; v7 early reload/labels, real three-FD route, TasksMax behavior and BPF attachment observed | v7 overall failed: PL061 fixture, two visible AVCs and serial framing; BPF restriction behavior not run; no hardware pass |
+| Fedora, research3/research4 follow-up | Both 84-module kernels; v8 completes early labels, real FD/TasksMax/BPF behavior, PL061 binding and normal-shutdown result transport | v8 overall fails on one journalctl datagram-create AVC; later qualification/finalization not run; no tablet test |
 | NixOS | Full 894-path `system.build.toplevel` closure; ARM version and script syntax checks | No NixOS rootfs image, activation or PID 1 boot |
 | Nura/postmarketOS experiment | ARM builder installed 382 target packages and exported a checked generic rootfs | Target not booted; only 371 package versions retained in its offline cache; no TB371FC kernel integration |
 
@@ -160,8 +210,14 @@ The [fresh paired USB follow-up](usb-transport-followup.md) again found both
 owner UDCs not attached and no corresponding host candidate. The
 [later 05:18 UTC recheck](usb-transport-recheck.md) retains that bounded
 result without inferring cable presence or other hosts. The
-[newest 14:09 Shanghai paired check](usb-transport-recheck-1409.md) again records
+[earlier 14:09 Shanghai paired check](usb-transport-recheck-1409.md) again records
 that same bounded state; the entry and recovery control gate remains open.
+
+The [latest 15:46:57–59 Shanghai paired read](usb-transport-recheck-20261123T074657Z.md)
+again records both owner UDCs `not attached`/`UNKNOWN`, the same configured
+primary and 14 doesvm USB entries without a matching vendor candidate. Both
+reads exit 0. It establishes no data/recovery link and changes no USB or boot
+state; it does not diagnose a cable or another host.
 
 - [Actual kernel build, failure/fix and VM retest](kernel-build.md).
 - [Native 6.12 DT/driver qualification and framebuffer fix](diagnostic-dt-profiles.md),
@@ -201,6 +257,7 @@ that same bounded state; the entry and recovery control gate remains open.
   [independent combined-permission query](selinux-postreload-combined-query.md),
   [separate V2 loader construction](early-selinux-reload-loader.md) and
   [matched BPF behavior contract](systemd-bpf-runtime-contract.md).
+- [Actual v8 guest/transport progress and retained one-AVC full-system failure](fedora-r4e-persistent-result-failed.md), with [complete guest evidence](evidence/fedora-r4e-persistent-result-failed-guest.json) and [unaltered production serial](evidence/fedora-r4e-persistent-result-failed-verify.log).
 - [Actual v7 progress and retained complete-verification failure](fedora-r4d-reload-fd-failed.md), with [exact exported-policy metadata](evidence/fedora-r4d-loaded-policy-export.json).
 - [Whole-device acceptance runbook](acceptance.md) and [machine-readable ledger](acceptance.json).
 - [Actual entry prerequisites and verified off-device backups](boot-readiness.md),
@@ -210,7 +267,8 @@ that same bounded state; the entry and recovery control gate remains open.
 - [Actual USB transport snapshot](usb-transport-readiness.md) and
   [paired follow-up](usb-transport-followup.md) and
   [later bounded recheck](usb-transport-recheck.md) and
-  [newest 14:09 Shanghai paired check](usb-transport-recheck-1409.md), plus the
+  [14:09 Shanghai paired check](usb-transport-recheck-1409.md),
+  [latest 15:46 paired read](usb-transport-recheck-20261123T074657Z.md), plus the
   [independently qualified owner-UDC rescue revision](first-stage-owner-udc.md).
 - [Frozen kernel firmware requests, effective device states and loader rules](firmware-kernel-contract.md).
 - [Verified private transfer and structure of 118 selected stock firmware files](stock-firmware-bundle.md).
@@ -285,6 +343,7 @@ and are not presented as observed device failures.
 | [cnss-shipping-static.json](evidence/cnss-shipping-static.json) | Actual backed-up Image helper/cache analysis; no live address or kernel-memory access, and no valid historical board-file assignment |
 | [Owner USB snapshot](evidence/android-usb-transport.json) / [doesvm USB snapshot](evidence/doesvm-usb-transport.json) | Two not-attached UDCs and the configured primary on Android, with no matching host gadget at capture time; no role changes or connection test |
 | [Paired USB follow-up](evidence/usb-transport-followup.json) / [05:18 UTC recheck](evidence/usb-transport-recheck.json) | Both successful paired reads retain not-attached UDCs and no host candidate; no recovery/temporary boot or inference about cable presence |
+| [Latest 15:46 Shanghai paired USB read](evidence/usb-transport-recheck-20261123T074657Z.json) | Both fixed helpers exit0; two owner UDCs remain not attached/UNKNOWN and 14 host entries have no vendor candidate; no role, entry or recovery trial |
 | [android-boot-state.json](evidence/android-boot-state.json) | Conflicting Android property and kernel command-line lock states; no raw command line or identifiers |
 | [android-boot-capabilities.json](evidence/android-boot-capabilities.json) | Actual `CONFIG_KEXEC=n`, forced module signatures, USB gadget prerequisites and MMC node names; no attempted entry |
 | [Local boot-copy manifest](evidence/android-boot-backup-local.json) / [off-device receipt](evidence/boot-backup-off-device.json) | Eight current partitions copied and independently re-hashed on doesvm; no partition bytes published and no restore claimed |
@@ -311,6 +370,10 @@ and are not presented as observed device failures.
 | [Rootfs/policy audit](evidence/selinux-rootfs-association.json) / [tmpfs bootstrap construction](evidence/tmpfs-initramfs-bootstrap.json) | Fixed source/policy/tool evidence plus new stage build and non-PID1 checks; no new root migration or full-system pass at these checkpoints |
 | [v6 actual attempt](evidence/fedora-r4c-tmpfs-failed.json) / [raw production serial](evidence/fedora-r4c-tmpfs-failed-verify.log) | Ordered root migration/cleanup/domain evidence, then policy/API-label AVCs and manager FIFO/MSG_CTRUNC failure; full result and udev qualifier remain failed |
 | [v7 actual attempt](evidence/fedora-r4d-reload-fd-failed.json) / [raw production serial](evidence/fedora-r4d-reload-fd-failed-verify.log) / [actual policy export](evidence/fedora-r4d-loaded-policy-export.json) | Real three-FD route and TasksMax behavior succeed; BPF attachment observed; overall failed with fixture/AVC/framing gaps and no restricted-filesystem workload |
+| [v8 actual attempt](evidence/fedora-r4e-persistent-result-failed.json) / [complete guest file](evidence/fedora-r4e-persistent-result-failed-guest.json) / [original controller](evidence/fedora-r4e-persistent-result-failed-verify.json) | Real four-route FD/AV, TasksMax and paired BPF behavior plus normal-shutdown transport; one Enforcing journalctl AVC keeps overall false, with later phases not run |
+| [Standard-service policy](evidence/selinux-standard-service-policy.json) / [independent AV query](evidence/selinux-standard-service-av-query.json) | Fresh six-permission candidate with full CIL comparison and all required rights in one 86-row query; no policy load or live service test |
+| [Audit observation source](evidence/audit-observability.json) / [guard derivation](evidence/audit-observability-source-manifest.json) | Exact shared printk mechanism and a bounded generic-VM opt-in contract; no runtime sysctl setting or losslessness claim |
+| [V3 loader build](evidence/early-selinux-standard-services-build.json) / [negative entry](evidence/early-selinux-standard-services-negative.json) / [waiter V2](evidence/tmpfs-waiter-v2.json) | Actual separate ARM builds, full transfer identities and non-PID1 refusals; subsequent v8 observations and physical entry remain separate |
 | [TFA cached metadata](evidence/tfa9894-cached-metadata.json) / [module prototype](evidence/tfa-module-prototype.json) | Bounded owner selection lead plus separate offline driver/ABI build; neither is calibration, playback or all-amplifier acceptance |
 | [initramfs-validation.json](evidence/initramfs-validation.json) | Independent parsing rejects the old archive ordering and accepts the corrected compressed bytes, firmware, ELF and library-cache contracts |
 | [android-peripheral-inventory.json](evidence/android-peripheral-inventory.json) | Filtered owner Android camera/sensor/audio identities and declarations; no capture, playback or native Linux test |

@@ -1,0 +1,61 @@
+{
+  "all_payload_sha256_match": true,
+  "capture_utc": "2026-11-23T08:12:16.230540+00:00",
+  "member_count": 8,
+  "original_gzip": {
+    "members": {
+      "fedora-r4e-persistent-result-failed-guest.json": {
+        "sha256": "3e48c9a429cad37d8baabf3fed31fe9abefdbaedfb065a484faf445bb6c2fa11",
+        "size": 413706
+      },
+      "fedora-r4e-persistent-result-failed-label.json": {
+        "sha256": "53d122abc124eb25898b9bef63045f7bfc64e39f422a418d881a4d8036ff3616",
+        "size": 4362
+      },
+      "fedora-r4e-persistent-result-failed-label.log": {
+        "sha256": "ede72b8afc61c2310cff7c7e499040df06df5a57381b6a47041309422c3f584f",
+        "size": 1095153
+      },
+      "fedora-r4e-persistent-result-failed-pipeline.json": {
+        "sha256": "a29888e4f4bc7d067474f90f33a3696eb8503d85e55a7edc1f989bb43d89d9be",
+        "size": 894
+      },
+      "fedora-r4e-persistent-result-failed-policy-retention.json": {
+        "sha256": "9966e43d3b4f6f1aca6bc10c6d782bdbf05a6d389f82bd63db396c84af793318",
+        "size": 7128
+      },
+      "fedora-r4e-persistent-result-failed-verify.json": {
+        "sha256": "ac6db6cac9ad5d375e1b054ac3c70c8bef877b994b28662488f368888412f478",
+        "size": 676766
+      },
+      "fedora-r4e-persistent-result-failed-verify.log": {
+        "sha256": "a88df1ce7489884a0c228a4a2a0320c4dc2c2f425b2a769b88c1f170823f3534",
+        "size": 1395418
+      },
+      "fedora-r4e-persistent-result-failed.json": {
+        "sha256": "099bcd2a4c76de06ce73aa2c985d0dca6e1d32725ca748a03e63c4b28ced1392",
+        "size": 773286
+      }
+    },
+    "path": "/work/fedora-r4e-closed-image-evidence-v1/public-evidence.tar.gz",
+    "private_policy_binary_included": false,
+    "sha256": "808795904f4b388da1f2fe01b32c7a6cd2c24da7e1af5070e903c0410440d3f9",
+    "size": 367707,
+    "source_image_metadata_unchanged_during_retention": true
+  },
+  "original_result_rewritten": false,
+  "original_serial_crlf_preserved": true,
+  "overall_system_passed": false,
+  "policy_binary_included": false,
+  "schema_version": 1,
+  "source_compression_rewrapped_only": true,
+  "verified": true,
+  "xz": {
+    "path": "/work/fedora-r4e-closed-image-evidence-v1/public-evidence.tar.xz",
+    "recompressed_only": true,
+    "sha256": "fe3fb64825cbb8e571341bd586fbe5a457782bb84e637266bf9b39a81d3fb1bd",
+    "size": 149344,
+    "source_gzip_sha256": "808795904f4b388da1f2fe01b32c7a6cd2c24da7e1af5070e903c0410440d3f9",
+    "unchanged_tar_payload_sha256": "cf33c60ca626ca3b3e63b519f3076a9deadb1b35e6ef8cf0a2264fde03c7702f"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "extra_vm_started": false,
+  "failure_reclassified_as_pass": false,
+  "files": {
+    "loaded-policy-export.json": {
+      "guest_inode": {
+        "gid": 0,
+        "inode": 25741,
+        "mode": 384,
+        "nlink": 1,
+        "size": 424,
+        "type": "regular",
+        "uid": 0
+      },
+      "guest_path": "/var/lib/tb371fc-r4e-proof/loaded-policy-export.json",
+      "path": "/work/fedora-r4e-closed-image-evidence-v1/loaded-policy-export.json",
+      "sha256": "88b6d696ce4d08ed519b81b9827efa54d510decc0531b4f11b25a926eec393e9",
+      "size": 424
+    },
+    "loaded-policy.33": {
+      "guest_inode": {
+        "gid": 0,
+        "inode": 25742,
+        "mode": 384,
+        "nlink": 1,
+        "size": 3835444,
+        "type": "regular",
+        "uid": 0
+      },
+      "guest_path": "/var/lib/tb371fc-r4e-proof/loaded-policy.33",
+      "path": "/work/fedora-r4e-closed-image-evidence-v1/loaded-policy.33",
+      "sha256": "9d7aa2b3d3c64e8c24dbff83e8850036b8e15cec63aaa1521bbea555f42b2342",
+      "size": 3835444
+    }
+  },
+  "filesystem_replayed_or_repaired": false,
+  "image_mounted": false,
+  "image_opened_for_write": false,
+  "kernel_policy_loaded_or_written": false,
+  "parent_inodes": {
+    "/var": {
+      "gid": 0,
+      "inode": 23696,
+      "mode": 493,
+      "nlink": 18,
+      "size": 4096,
+      "type": "directory",
+      "uid": 0
+    },
+    "/var/lib": {
+      "gid": 0,
+      "inode": 23962,
+      "mode": 493,
+      "nlink": 18,
+      "size": 4096,
+      "type": "directory",
+      "uid": 0
+    },
+    "/var/lib/tb371fc-r4e-proof": {
+      "gid": 0,
+      "inode": 25715,
+      "mode": 448,
+      "nlink": 2,
+      "size": 4096,
+      "type": "directory",
+      "uid": 0
+    }
+  },
+  "read_only_debugfs_requests": [
+    {
+      "exit_code": 0,
+      "request": "stat /var",
+      "stderr": "debugfs 1.47.2 (1-Jan-2025)\n",
+      "stdout": "Inode: 23696   Type: directory    Mode:  0755   Flags: 0x80000\nGeneration: 0    Version: 0x00000000:00000001\nUser:     0   Group:     0   Project:     0   Size: 4096\nFile ACL: 0\nLinks: 18   Blockcount: 8\nFragment:  Address: 0    Number: 0    Size: 0\n ctime: 0x6ad2babe:3b20b800 -- Sat Oct 17 00:01:02 2026\n atime: 0x6ad2baf4:487ab000 -- Sat Oct 17 00:01:56 2026\n mtime: 0x6ae25980:00000000 -- Wed Oct 28 20:22:24 2026\ncrtime: 0x6b03f054:00000000 -- Mon Nov 23 07:50:44 2026\nSize of extra inode fields: 32\nExtended attributes:\n  security.selinux (27) = \"system_u:object_r:var_t:s0\\000\"\nInode checksum: 0x43f1e71f\nEXTENTS:\n(0):291645\n"
+    },
+    {
+      "exit_code": 0,
+      "request": "stat /var/lib",
+      "stderr": "debugfs 1.47.2 (1-Jan-2025)\n",
+      "stdout": "Inode: 23962   Type: directory    Mode:  0755   Flags: 0x80000\nGeneration: 0    Version: 0x00000000:00000001\nUser:     0   Group:     0   Project:     0   Size: 4096\nFile ACL: 0\nLinks: 18   Blockcount: 8\nFragment:  Address: 0    Number: 0    Size: 0\n ctime: 0x6ad2babe:4a62f800 -- Sat Oct 17 00:01:02 2026\n atime: 0x6ad2baf3:487ab000 -- Sat Oct 17 00:01:55 2026\n mtime: 0x6b03ef2e:00000000 -- Mon Nov 23 07:45:50 2026\ncrtime: 0x6b03f05b:00000000 -- Mon Nov 23 07:50:51 2026\nSize of extra inode fields: 32\nExtended attributes:\n  security.selinux (31) = \"system_u:object_r:var_lib_t:s0\\000\"\nInode checksum: 0x60e97232\nEXTENTS:\n(0):353121\n"
+    },
+    {
+      "exit_code": 0,
+      "request": "stat /var/lib/tb371fc-r4e-proof",
+      "stderr": "debugfs 1.47.2 (1-Jan-2025)\n",
+      "stdout": "Inode: 25715   Type: directory    Mode:  0700   Flags: 0x80000\nGeneration: 0    Version: 0x00000000:00000004\nUser:     0   Group:     0   Project:     0   Size: 4096\nFile ACL: 0\nLinks: 2   Blockcount: 8\nFragment:  Address: 0    Number: 0    Size: 0\n ctime: 0x6ad2baff:57bcf000 -- Sat Oct 17 00:02:07 2026\n atime: 0x6ad2baf3:47868c00 -- Sat Oct 17 00:01:55 2026\n mtime: 0x6ad2baff:57bcf000 -- Sat Oct 17 00:02:07 2026\ncrtime: 0x6b03f05c:00000000 -- Mon Nov 23 07:50:52 2026\nSize of extra inode fields: 32\nExtended attributes:\n  security.selinux (31) = \"system_u:object_r:var_lib_t:s0\\000\"\nInode checksum: 0xa669fb6d\nEXTENTS:\n(0):358189\n"
+    },
+    {
+      "exit_code": 0,
+      "request": "stat /var/lib/tb371fc-r4e-proof/loaded-policy.33",
+      "stderr": "debugfs 1.47.2 (1-Jan-2025)\n",
+      "stdout": "Inode: 25742   Type: regular    Mode:  0600   Flags: 0x80000\nGeneration: 3813501379    Version: 0x00000000:00000003\nUser:     0   Group:     0   Project:     0   Size: 3835444\nFile ACL: 0\nLinks: 1   Blockcount: 7496\nFragment:  Address: 0    Number: 0    Size: 0\n ctime: 0x6ad2bade:660b0c00 -- Sat Oct 17 00:01:34 2026\n atime: 0x6ad2badf:53ec6000 -- Sat Oct 17 00:01:35 2026\n mtime: 0x6ad2bade:660b0c00 -- Sat Oct 17 00:01:34 2026\ncrtime: 0x6ad2bade:6516e800 -- Sat Oct 17 00:01:34 2026\nSize of extra inode fields: 32\nExtended attributes:\n  security.selinux (31) = \"system_u:object_r:var_lib_t:s0\\000\"\nInode checksum: 0x5e5b78be\nEXTENTS:\n(0-936):558080-559016\n"
+    },
+    {
+      "exit_code": 0,
+      "request": "dump -p /var/lib/tb371fc-r4e-proof/loaded-policy.33 /work/fedora-r4e-closed-image-evidence-v1/loaded-policy.33",
+      "stderr": "debugfs 1.47.2 (1-Jan-2025)\n",
+      "stdout": ""
+    },
+    {
+      "exit_code": 0,
+      "request": "stat /var/lib/tb371fc-r4e-proof/loaded-policy-export.json",
+      "stderr": "debugfs 1.47.2 (1-Jan-2025)\n",
+      "stdout": "Inode: 25741   Type: regular    Mode:  0600   Flags: 0x80000\nGeneration: 357426435    Version: 0x00000000:00000003\nUser:     0   Group:     0   Project:     0   Size: 424\nFile ACL: 0\nLinks: 1   Blockcount: 8\nFragment:  Address: 0    Number: 0    Size: 0\n ctime: 0x6ad2badf:76417000 -- Sat Oct 17 00:01:35 2026\n atime: 0x6ad2badf:74592800 -- Sat Oct 17 00:01:35 2026\n mtime: 0x6ad2badf:76417000 -- Sat Oct 17 00:01:35 2026\ncrtime: 0x6ad2badf:74592800 -- Sat Oct 17 00:01:35 2026\nSize of extra inode fields: 32\nExtended attributes:\n  security.selinux (31) = \"system_u:object_r:var_lib_t:s0\\000\"\nInode checksum: 0x25d869c7\nEXTENTS:\n(0):557569\n"
+    },
+    {
+      "exit_code": 0,
+      "request": "dump -p /var/lib/tb371fc-r4e-proof/loaded-policy-export.json /work/fedora-r4e-closed-image-evidence-v1/loaded-policy-export.json",
+      "stderr": "debugfs 1.47.2 (1-Jan-2025)\n",
+      "stdout": ""
+    }
+  ],
+  "retention_completed": true,
+  "same_boot_export_record": {
+    "boot_id": "905bf18c-cba9-4c58-99f6-9c8ff8d11366",
+    "guest_path": "/var/lib/tb371fc-r4e-proof/loaded-policy.33",
+    "inode_selinux_context": "system_u:object_r:var_lib_t:s0",
+    "kernel_policy_written": false,
+    "mode": 384,
+    "new_profile_ordinary_file_only": true,
+    "schema_version": 1,
+    "sha256": "9d7aa2b3d3c64e8c24dbff83e8850036b8e15cec63aaa1521bbea555f42b2342",
+    "size": 3835444,
+    "source": "/sys/fs/selinux/policy",
+    "version": 33
+  },
+  "schema_version": 1,
+  "scope": "ordinary same-boot export from the already closed failed R4E image",
+  "source_image_metadata_unchanged": true,
+  "source_run_guest_result_transport_qualified": true,
+  "source_run_normal_qemu_exit": true,
+  "source_run_overall_passed": false
+}
