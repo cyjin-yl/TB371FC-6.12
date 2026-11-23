@@ -1,0 +1,522 @@
+{
+  "base_artifacts": {
+    "Image": "181f0152868a2dc501191f09cb839ff295f6814f38f0bf027d6f55833382b27d",
+    "Module.symvers": "8e71a956b3c79112228f92cd234a13a39aa7a3193a5d1222d1dab5123043d9d0",
+    "kernel.config": "e024e6d2094180d31d2b3f64a643801d95c544c0bb9593a64b6d117c2ffb86a8",
+    "modules.SHA256SUMS": "18fc3d022405bb7a1f69424a41cc7af5d7608beb6a2d3e5a0b6f9c51a2ef4dbc"
+  },
+  "boot_image_packaged": false,
+  "capture_utc": "2026-11-23T02:09:59.556358+00:00",
+  "composition_hash_definition": "SHA256 of UTF-8 json.dumps({kernel_release,files: path-to-sha256,public_certificate_der_sha256}, sort_keys=True,separators=(',',':')); manifest itself excluded",
+  "composition_sha256": "42924e9026bea372eb4503aa2acc4ef6e0450fc43a86f2bb2f18e2c6fa912c66",
+  "device_linux_tested": false,
+  "evidence_class": "host_build",
+  "files": {
+    "Image": {
+      "sha256": "181f0152868a2dc501191f09cb839ff295f6814f38f0bf027d6f55833382b27d",
+      "size": 29849608
+    },
+    "Module.symvers": {
+      "sha256": "8e71a956b3c79112228f92cd234a13a39aa7a3193a5d1222d1dab5123043d9d0",
+      "size": 807568
+    },
+    "board.dtb": {
+      "sha256": "af80b06f38b73ea42cb669a2897721ba7ecc5a99a8aa3d6d9c1e9ba132597730",
+      "size": 126877
+    },
+    "kernel.config": {
+      "sha256": "e024e6d2094180d31d2b3f64a643801d95c544c0bb9593a64b6d117c2ffb86a8",
+      "size": 216625
+    },
+    "kernel.release": {
+      "sha256": "a22c7e3304d51bb65b0ba99524b584d9f96dd8cc15199c467711c9d2afa44e03",
+      "size": 35
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/crypto/michael_mic.ko": {
+      "sha256": "fd4fb985671e7734ae5bce7877328ee2b9879375d897a4817fab561ed4fd708d",
+      "size": 8265
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/base/regmap/regmap-sdw.ko": {
+      "sha256": "9dda7584429e50ad56b10de563fd48d11d041c6e8aeca35f966ca2afa581be54",
+      "size": 7513
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/bluetooth/btqca.ko": {
+      "sha256": "03e6b00889bf62b2d98702401885706cf100878aa2894998276c188e87df88fd",
+      "size": 39329
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/bluetooth/hci_uart.ko": {
+      "sha256": "99c624458a0b985e3c8f08ed14e7196c86cd90d84a7824e43194ddb7b3f5ad34",
+      "size": 123433
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/clk/qcom/camcc-sm8250.ko": {
+      "sha256": "ae6b932281773c892f28dd07e3f306e9f6118d5f2d1981d8ea3f8a6028b56c7a",
+      "size": 74657
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/clk/qcom/dispcc-sm8250.ko": {
+      "sha256": "71312c23208091f34247b9eb6f14cbed1d2406b37e7ca4096d65afe43ac81d62",
+      "size": 48601
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/clk/qcom/videocc-sm8250.ko": {
+      "sha256": "7e57ecbba3defecaacac098b2fc832d0da2d0894caf9e3411170db12f2735015",
+      "size": 23625
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/gpu/drm/panel/panel-novatek-nt36523.ko": {
+      "sha256": "8701df203a43f2dc3e3b381fec0dc53a8be30c864255c5e3dd571980b5e7b5f4",
+      "size": 214393
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/gpu/drm/virtio/virtio-gpu.ko": {
+      "sha256": "348b16508eb57928c7ddd36b43d7975215291b8d9709852484bc6de8a5d162c9",
+      "size": 115001
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/i2c/busses/i2c-qcom-cci.ko": {
+      "sha256": "af975c73f7721c2c83eecd82fa744a77382ead9c8ef547e6daa34f5ce5dc3672",
+      "size": 23657
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/input/misc/pm8941-pwrkey.ko": {
+      "sha256": "519c0315aba9e122df1e4c74e0b5b3678bf658462a87d5975f52766d56275ac2",
+      "size": 19553
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/input/touchscreen/novatek-nvt-ts.ko": {
+      "sha256": "9964d7c88d4be1214d73fe25ad4d5459acaefad359cafa7231bebacaaee30f4c",
+      "size": 15273
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/input/touchscreen/nt36523/nt36523_ts.ko": {
+      "sha256": "b61cd85efc0bfca2a3543fe077ec78d0e2ecbae7cc622f78370ad1ffea5a64b6",
+      "size": 91705
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/interconnect/qcom/icc-bcm-voter.ko": {
+      "sha256": "f62af26c7394f7f1853ed873fafef64e3d5f29b1ec7dc11da1930b526f84519b",
+      "size": 14945
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/interconnect/qcom/icc-rpmh.ko": {
+      "sha256": "6c782241bbf8dd630fd40201b772a5d92d06cea1fb2f0f880d7522a0e55a1395",
+      "size": 14673
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/interconnect/qcom/interconnect_qcom.ko": {
+      "sha256": "132a6f9ff5d4e96b386772a0c9274df759b42172d6cb0a977305b7f185b2b820",
+      "size": 6561
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/interconnect/qcom/qnoc-sm8250.ko": {
+      "sha256": "0f1d63cf6414f3d04b50b6323007e21d7b00dbdbf86a4509e5db8a1de9b59b47",
+      "size": 95049
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/media/common/videobuf2/videobuf2-dma-contig.ko": {
+      "sha256": "5374c257c125cae908e678e59bbdabe996e17e95a58ff3b9d87590b715db8dc0",
+      "size": 25033
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/media/i2c/gc08a3.ko": {
+      "sha256": "8291fc8cd8d6309d2c86b25d8bcaf398e1e19586f3693c71f9724139d13f9158",
+      "size": 33761
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/media/platform/qcom/camss/qcom-camss.ko": {
+      "sha256": "45b7b1a2f50ae42f7723386d9f1374d8dafbcd292cb7672f7aa7da39d41e5ad1",
+      "size": 352841
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/media/platform/qcom/venus/venus-core.ko": {
+      "sha256": "3cdb7e49959f6c973272237d65e852d42c232de0dea8d147b447c0fe5997d249",
+      "size": 191545
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/media/platform/qcom/venus/venus-dec.ko": {
+      "sha256": "40ab75488e01ea92d553a0e3e038a477090005383e893f2d509f793dcd6c2ca4",
+      "size": 50937
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/media/platform/qcom/venus/venus-enc.ko": {
+      "sha256": "7e0e289d5acea66225f367ad7978fe415efef0be593b0f9e80248d7e568ea70a",
+      "size": 48009
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/media/v4l2-core/v4l2-cci.ko": {
+      "sha256": "4b137198281fcdddcf6fb12d1d8b92de6c1f60e7c388cf5220b700208e9b0851",
+      "size": 10081
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/media/v4l2-core/v4l2-mem2mem.ko": {
+      "sha256": "1508f20af202c3bcc1818ff3ca16dd54863bab83ffd154bdf4dcc1624aa052c5",
+      "size": 57513
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/net/usb/r8152.ko": {
+      "sha256": "10393bd6a04bb5104cf9c3b5f3561b094dae8e87ef174f8b214396c838f0ed90",
+      "size": 189681
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/net/usb/r8153_ecm.ko": {
+      "sha256": "6d3bfc11e7026ab7b1f30359dd372264fdc913ff1041f5e78feddb79f84e12cc",
+      "size": 10881
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/net/wireless/ath/ath.ko": {
+      "sha256": "4a69ca24ba0a03793cd373837dae979d5275320414719ef5db1828c9e613cd2e",
+      "size": 48233
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/net/wireless/ath/ath11k/ath11k.ko": {
+      "sha256": "17e333ca4f5a26b04b6180c97ed5170df1a421aa9957766387e9abfb1e3edfbb",
+      "size": 622033
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/net/wireless/ath/ath11k/ath11k_pci.ko": {
+      "sha256": "d9852a03c95540165b57a9460be2d978eb86d90ff97f3440fe576c6577b1005b",
+      "size": 44017
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/net/wireless/ath/wil6210/wil6210.ko": {
+      "sha256": "913cf5ddf4c420fbff73f7d9664e4975e8af41dc72d34484d029f3baf01fdc21",
+      "size": 692961
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/pci/pwrctl/pci-pwrctl-core.ko": {
+      "sha256": "48b29e623ecc695de190b562c36702d34eb18fbcf6032098a5c66b9ac26ce87e",
+      "size": 10601
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/pci/pwrctl/pci-pwrctl-pwrseq.ko": {
+      "sha256": "105baa86cb888f5a3e7a3e6c22413d7b7c7cb8ea5c629d13aba21603bfffe040",
+      "size": 11217
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/phy/qualcomm/phy-qcom-qmp-pcie.ko": {
+      "sha256": "2dad2db3894cb8d42cba9778b4b2c6772d8106f368e4178118166975ee54df65",
+      "size": 196009
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/phy/qualcomm/phy-qcom-snps-femto-v2.ko": {
+      "sha256": "8217f180de2ee1dfa88a1ef7ee1b7779feb38569b8e7637fb24c19ce45704f06",
+      "size": 23913
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/pinctrl/qcom/pinctrl-lpass-lpi.ko": {
+      "sha256": "bd96141fdf4f87ee0ce379a43eae9c699eef69b933b817cca0ccae2eed2fa5d8",
+      "size": 19049
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/pinctrl/qcom/pinctrl-sm8250-lpass-lpi.ko": {
+      "sha256": "ba80e0a5eb57f767beab4135a91d0a0bcec7df41692aeb8c33e325b488ad8151",
+      "size": 14249
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/power/sequencing/pwrseq-core.ko": {
+      "sha256": "8b525257af0d995008a9bb90267d0985e54cda1b13b3599e36d300d144a29c6b",
+      "size": 30249
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/power/sequencing/pwrseq-qcom-wcn.ko": {
+      "sha256": "e49e68f309367d37aa1b126bb9d8dccdcb8342cc368a2cef3ebcc98d52196fcf",
+      "size": 17425
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/regulator/qcom-rpmh-regulator.ko": {
+      "sha256": "e4c3b5c236d0a8cdee581fd25a524a30e2ea5ed69ba5017bc5b6ac1d0a772105",
+      "size": 101993
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/remoteproc/qcom_common.ko": {
+      "sha256": "5ca8f8840598697b217a7b439298bcfc276a3011c4eeef61272a08b528473dbe",
+      "size": 20785
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/remoteproc/qcom_pil_info.ko": {
+      "sha256": "acaeed45491c1a9203aff892959b0e08c0f99e74d99d9f13efdcf6d2e293f731",
+      "size": 10001
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/remoteproc/qcom_q6v5.ko": {
+      "sha256": "f96682bc5ab637519a12b6aa7326f05b5a7b6ce268226faf5eba80234f3e1a42",
+      "size": 16489
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/remoteproc/qcom_q6v5_pas.ko": {
+      "sha256": "f1fd90bb334eed806efaa6bce46ab5e969707b4607d5438e7896939b75ecfb5c",
+      "size": 66289
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/remoteproc/qcom_sysmon.ko": {
+      "sha256": "fec1d5bf38030e1a1136f786e7357aa3ffc022e4be6d2867807e53617be35e36",
+      "size": 26049
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/soc/qcom/apr.ko": {
+      "sha256": "4b9e0bfd07fdbe6d1a6fcd93178f57d09ac914f02d8ea6744ee050c86361636e",
+      "size": 26265
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/soc/qcom/pdr_interface.ko": {
+      "sha256": "a4b9e0e963cb028c47af76e8dfbfc154d1f099a9e6639a7eaab26e2f1517412d",
+      "size": 22945
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/soc/qcom/qcom_pdr_msg.ko": {
+      "sha256": "8869998776b1a1b8a461d6458360dd334c311e0cbff95a65110240d90052d455",
+      "size": 12105
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/soc/qcom/qmi_helpers.ko": {
+      "sha256": "0427ab0d97b9db559b939517e402eabecb2475d21d8ce8fe3c070ec1e398c8a5",
+      "size": 28737
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/soundwire/soundwire-bus.ko": {
+      "sha256": "24b201517e5f5ee0ff728d510d316c3990cc6166fe54a42c484a1e62da698947",
+      "size": 155505
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/soundwire/soundwire-qcom.ko": {
+      "sha256": "ffdfd160c5311384b8a8379d6fab184ccb8bfb1927fb04c213aef8d983bc1a0a",
+      "size": 44745
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/usb/dwc3/dwc3-qcom.ko": {
+      "sha256": "c901957cbe8f1270ac070e488d0773fffe8b0434aff2489855d6f38e20e97467",
+      "size": 27929
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/video/backlight/tb371fc-ktz8866.ko": {
+      "sha256": "ea57fa1563d35b58a7ebb04894fa63ab76a394ba04f0043e96eb64b6d773e21f",
+      "size": 13073
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/virtio/virtio_dma_buf.ko": {
+      "sha256": "882a4c76da5edc80bdafdce6177fff4bf61b3dec1a3feef73a84ec4ab2dd5afb",
+      "size": 7361
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/watchdog/qcom-wdt.ko": {
+      "sha256": "99e6c71bb45831cb98ee15693bf3830dd329ae9814c9461265a9e2ad1a62c397",
+      "size": 15161
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/watchdog/watchdog.ko": {
+      "sha256": "281e691a3673617be2a2579cb85bd42f12b1d80bcb53cb37023df052f540fe4c",
+      "size": 39849
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/net/mac80211/mac80211.ko": {
+      "sha256": "d082650437077cf394f14d95ecfc222a3b619c95d5b8c92efef2d5881e093a6f",
+      "size": 829705
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/net/wireless/cfg80211.ko": {
+      "sha256": "a45ca87fd813dc5b1478e60b9bc4002b2fcdad985473311338a456cab1ec010e",
+      "size": 621201
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/codecs/snd-soc-lpass-macro-common.ko": {
+      "sha256": "43fb4fc0d6fb61bbb0e0538115abdbb9005d6aae64d5c493868eb6358c8d31ac",
+      "size": 10121
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/codecs/snd-soc-lpass-rx-macro.ko": {
+      "sha256": "5e8fbdb9602cc3026e77dcca56b84769b1bd06bb1c1a09d10784f875d3d78000",
+      "size": 161481
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/codecs/snd-soc-lpass-tx-macro.ko": {
+      "sha256": "41a0f563a5041b47d20256794278f1eae5391cc595594a956dfbaa8900ed285e",
+      "size": 149985
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/codecs/snd-soc-lpass-va-macro.ko": {
+      "sha256": "119a79dd4b9a2f4a0b4e4e556452bc01c899dd6f9e8c6fcac8db4cec67b8853d",
+      "size": 76393
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/codecs/snd-soc-wcd-classh.ko": {
+      "sha256": "8812a8dd27100202b5c53b94b532bef9348f7820dab725543377f41c8e9aa4e5",
+      "size": 20513
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/codecs/snd-soc-wcd-mbhc.ko": {
+      "sha256": "23aca14962c8dcec5e348ad9cb1bb3026b39edcdda62e2447d01760d557397bb",
+      "size": 40169
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/codecs/snd-soc-wcd938x-sdw.ko": {
+      "sha256": "6eeede47ae0559896ee32aff7a93e7571dd5765d0e6fc3368ee4190151206c70",
+      "size": 24513
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/codecs/snd-soc-wcd938x.ko": {
+      "sha256": "9e7846414f9ff704ca44a4cb2cc166dbca41f6460a9b45935fe9c7e86897294f",
+      "size": 140145
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/qdsp6/q6adm.ko": {
+      "sha256": "e18d5973804374b200f080b0fab21f4e85e56d1f64474d422e61c9dca519a48d",
+      "size": 21081
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/qdsp6/q6afe-clocks.ko": {
+      "sha256": "20845cf680e8eeef15be645516130c6555ba1240d5f0ec39510d1c6a3204d798",
+      "size": 13129
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/qdsp6/q6afe-dai.ko": {
+      "sha256": "8ccbd7e0c4c82ab1a36b07721696b2b045c5db68b16dc2257e71692e9e804f31",
+      "size": 90145
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/qdsp6/q6afe.ko": {
+      "sha256": "f9684c2d41bcb4658ed51bb2a211117e1b76e8d14c3d1731fe06821427a75928",
+      "size": 28881
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/qdsp6/q6apm-dai.ko": {
+      "sha256": "512243c3693a1ec66f3ecb2f740d092b89043c3a464d430f144becdbb7d91fda",
+      "size": 35585
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/qdsp6/q6apm-lpass-dais.ko": {
+      "sha256": "001f31147b0a7a77657704f9a2718d0ec1aede8d6fd778a03f459ffdba59cc65",
+      "size": 15049
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/qdsp6/q6asm-dai.ko": {
+      "sha256": "c4c75d06f2175e92a18f713a54e0c29810fa708b9a24dbdcfadf834e1d45509b",
+      "size": 49889
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/qdsp6/q6asm.ko": {
+      "sha256": "2e31657fa177669c01f0c3745da97d2e0b3f1bc1e378ed3d19930308c1b71908",
+      "size": 36281
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/qdsp6/q6core.ko": {
+      "sha256": "181a9d8688abd5736cc80b0dbb1a5eaa505e713f4af55dbc842ef8890dbbffae",
+      "size": 14569
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/qdsp6/q6prm-clocks.ko": {
+      "sha256": "51668bf782ccdb73fb1e38fe32ef0e21535f7abb23bd5b84ea3f4d516a9a8dbc",
+      "size": 11665
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/qdsp6/q6prm.ko": {
+      "sha256": "9c05769b29d614fe0a3ae57de5d2f92b877e30783f4be9595bd3cad753a5ebc3",
+      "size": 12089
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/qdsp6/q6routing.ko": {
+      "sha256": "87ba975b591c510c2684c0f6b3af71c4028e0729b93cc668805e05dffa7e53d5",
+      "size": 591505
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/qdsp6/snd-q6apm.ko": {
+      "sha256": "5c5aae82e4ece5be5e14da19918496bfc6cfee269b879d4702093f2663249a99",
+      "size": 60049
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/qdsp6/snd-q6dsp-common.ko": {
+      "sha256": "0115e73be0e732cd2935e622fc7559f1d3459718f4e5bad6f37b8456e68b7c75",
+      "size": 51713
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/snd-soc-qcom-common.ko": {
+      "sha256": "c648d0ce8e7f4323a92032dbad546645085b92fbcf1789b3baac0dc5f41dc0cf",
+      "size": 17601
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/snd-soc-qcom-sdw.ko": {
+      "sha256": "8951de3a6086cc04d4f06ae9ec87e0b074cafd7a5e3340cd727891559501aa14",
+      "size": 9353
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/kernel/sound/soc/qcom/snd-soc-sm8250.ko": {
+      "sha256": "0c6e64dffc0457b056e95c948d854260dc32f3d796178ccca50e2044bccbee0a",
+      "size": 11969
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/modules.alias": {
+      "sha256": "df9f2b00a43e560c1b67bce032397f620690046262033091f83e613df05ab159",
+      "size": 29138
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/modules.alias.bin": {
+      "sha256": "4e8339a2a4d5570c3534ed5d59e75316ebd078fbc66fe33a1e1d82731d829c98",
+      "size": 26084
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/modules.builtin": {
+      "sha256": "c1e71c39477c3fa09c41204d0019a61bee64c03e97d36325590ace461cd97407",
+      "size": 21715
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/modules.builtin.alias.bin": {
+      "sha256": "a4933431f8e5d62247c21a733f9680eaf0051f15b24d14e51413b3976e9f17bf",
+      "size": 25502
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/modules.builtin.bin": {
+      "sha256": "237df8f2893f100ff9f56d0c68122bff69e6faf641dd11ef34ad8c6ee575b4d9",
+      "size": 25519
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/modules.builtin.modinfo": {
+      "sha256": "6b361df89a376e26384df013c280c51492f91ceb7fe01832559251bcda3096a7",
+      "size": 166661
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/modules.dep": {
+      "sha256": "1321941f88c0636e9c2e2b4e9aa8445f899f1f3b761f07df2aa9e385a3c64661",
+      "size": 9566
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/modules.dep.bin": {
+      "sha256": "42823279477ba3795eb75e966ea06df23066a743f020bdafafb30c835b72bee2",
+      "size": 13461
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/modules.devname": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/modules.order": {
+      "sha256": "651980651fc90ecfafd7eb6612ce70c18efcd5ee72fce45c437eff6424195b4c",
+      "size": 3653
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/modules.softdep": {
+      "sha256": "ac2de753255c506934be29e69261f1485f51ee9cf9c2bf467bcc0c4cf95f8713",
+      "size": 55
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/modules.symbols": {
+      "sha256": "c766104a133e0997b20ff730b5ebed8540cf18fab9e786f531efe96e59a17431",
+      "size": 36006
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/modules.symbols.bin": {
+      "sha256": "8bba8ca2bd99d921b4692a0f4a73e1685ab1f39e6c5dbbd5ceb59bd110bb9064",
+      "size": 42157
+    },
+    "lib/modules/6.12.114-tb371fc-research2-display/modules.weakdep": {
+      "sha256": "a1fffe1059d8150b5d402b3f284f507025a8d4b5881810cb17b3fda8b8ab9304",
+      "size": 55
+    },
+    "signing-cert.der": {
+      "sha256": "6ee402403dbba5b40e6c0012aa5271b20b8bee376914416d891a791c5aca56e1",
+      "size": 1324
+    },
+    "source-manifest-input.json": {
+      "sha256": "5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0",
+      "size": 7108
+    },
+    "verification/baseline-module-payload.bin": {
+      "sha256": "650f8a4b61ede09422e484062d83b562e44648c0dd53723deb9415542db0baa2",
+      "size": 89672
+    },
+    "verification/baseline-signature.der": {
+      "sha256": "f7aa32cd0dd9ba6323284102a01c29854a82f6f5987f04052be12851f0b5cf91",
+      "size": 681
+    },
+    "verification/input-signature.der": {
+      "sha256": "aa84386ceccad0fc7417cd113cc85348157b19eb1fe6c93c49205b8902ea7592",
+      "size": 681
+    },
+    "verification/signing-cert.pem": {
+      "sha256": "72035d71825a18cfeab76c30570d404354ea207ecd8e41afe69b68fbc0208472",
+      "size": 1850
+    }
+  },
+  "firmware_included": false,
+  "initramfs_included": false,
+  "input_artifacts": {
+    "board.dtb": "af80b06f38b73ea42cb669a2897721ba7ecc5a99a8aa3d6d9c1e9ba132597730",
+    "nt36523_ts.ko": "cecbd4709f2e6cbb488586ca24f06de6ffe4f7a27fd15bba5ab4649aa29d3972",
+    "source-manifest.json": "5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0"
+  },
+  "kernel_release": "6.12.114-tb371fc-research2-display",
+  "kernel_signature_acceptance_tested": false,
+  "module_loaded": false,
+  "module_set": {
+    "all_import_crcs_match_baseline": true,
+    "baseline_files_unchanged_after_staging": true,
+    "depmod_exit": 0,
+    "new_module_imports": 63,
+    "replaced": [
+      "lib/modules/6.12.114-tb371fc-research2-display/kernel/drivers/input/touchscreen/nt36523/nt36523_ts.ko"
+    ],
+    "total": 83,
+    "unchanged": 82
+  },
+  "new_image_built": false,
+  "output_directory": "/work/input-research2-integration-v1",
+  "profile": "frozen research2 Image + signed patched input module + joint display/input DT",
+  "recipe": {
+    "path": "scripts/research/input/signing/stage_signed.py",
+    "sha256": "ad270d83f89ce08d2488906b8246167227e0e352a91294042489d0a0737908df",
+    "size": 14828
+  },
+  "rootfs_included": false,
+  "schema_version": 1,
+  "signing": {
+    "algorithm": "sha512",
+    "baseline_cms_verification": {
+      "diagnostic": "CMS Verification successful",
+      "exit_code": 0,
+      "public_ca_chain_checked": false,
+      "signature_verified": true
+    },
+    "exact_public_certificate_found_in_frozen_image": true,
+    "existing_project_key_used": true,
+    "new_cms_verification": {
+      "diagnostic": "CMS Verification successful",
+      "exit_code": 0,
+      "public_ca_chain_checked": false,
+      "signature_verified": true
+    },
+    "original_module": {
+      "sha256": "d67efc02c756e8685ca0043cfb6684349bc72fb9918087f3e5c5a0ba81061f6f",
+      "sig_hashalgo": "sha512",
+      "sig_key": "3C:F6:01:76:70:E0:3F:6A:F0:F6:56:54:20:3F:39:B2:F8:06:1F:59",
+      "signer": "Build time autogenerated kernel key",
+      "size": 90393,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    "payload_exactly_matches_unsigned_artifact": true,
+    "private_key_copied": false,
+    "private_key_generated": false,
+    "private_key_material_output": false,
+    "public_certificate_der_sha256": "6ee402403dbba5b40e6c0012aa5271b20b8bee376914416d891a791c5aca56e1",
+    "sign_file_binary": {
+      "sha256": "9606f9c986396110d5ce25f7c316c77abb63bdc06795afe8cb8a47cfec3670c6",
+      "size": 22760
+    },
+    "signed_module": {
+      "sha256": "b61cd85efc0bfca2a3543fe077ec78d0e2ecbae7cc622f78370ad1ffea5a64b6",
+      "sig_hashalgo": "sha512",
+      "sig_key": "3C:F6:01:76:70:E0:3F:6A:F0:F6:56:54:20:3F:39:B2:F8:06:1F:59",
+      "signer": "Build time autogenerated kernel key",
+      "size": 91705,
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    "unsigned_payload_sha256": "cecbd4709f2e6cbb488586ca24f06de6ffe4f7a27fd15bba5ab4649aa29d3972"
+  }
+}

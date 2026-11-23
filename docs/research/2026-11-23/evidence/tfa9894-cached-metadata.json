@@ -1,0 +1,727 @@
+{
+  "all_own_build_inspection_and_transfer_jobs_completed": true,
+  "boundaries": {
+    "android_register_or_i2c_reads_initiated": false,
+    "calibration_or_playback_requested": false,
+    "driver_attribute_written": false,
+    "firmware_loaded_by_this_task": false,
+    "live_kernel_addresses_published": false,
+    "live_kernel_memory_read": false,
+    "physical_mainline_audio_tested": false,
+    "summary_attribute_read": false,
+    "unrelated_hw_info_fields_read": false
+  },
+  "bridge_delivery_notes": [
+    "The first public-helper transport call timed out after the file was created; the actual offline run subsequently returned exit 0.",
+    "Two later metadata-only calls timed out and a host date query returned device disconnected. No host or Docker restart was attempted.",
+    "After the connection recovered, one bounded metadata-only read independently verified the remote helper size, SHA, mode and completed job/log identities."
+  ],
+  "candidate_file_reference": {
+    "archive_path": "vendor/firmware/tfa98xx_QS.cnt",
+    "canonical_firmware_tree_modified": false,
+    "new_mainline_loader_contract_established": false,
+    "previously_verified_bundle": {
+      "path": "evidence/stock-firmware-bundle.json",
+      "sha256": "94661a62898cd1cc7ef75bf90d713371b0bc5bb7372215c13dc7d5d34ce27c2b"
+    },
+    "sha256": "a3f641609cbb617ea2c3169e5a9edc6c04f89a342e99fd96dacc44f216cdfa81",
+    "size_bytes": 26245,
+    "source_path": "/vendor/firmware/tfa98xx_QS.cnt"
+  },
+  "capture_date_utc": "2026-11-23",
+  "captured_value_bytes_total": 45,
+  "captures": {
+    "parameter_read": {
+      "command": "su -c 'for p in /sys/module/tfa98xx_dlkm/parameters/fw_name_first /sys/module/tfa98xx_dlkm/parameters/fw_name_second; do printf '\\''%s\\n'\\'' \"$p\"; /system/bin/toybox timeout 2 /system/bin/toybox head -c 1024 \"$p\"; done'",
+      "result": "exit_code: 0\nstdout:\n/sys/module/tfa98xx_dlkm/parameters/fw_name_first\ntfa98xx_YC.cnt\n/sys/module/tfa98xx_dlkm/parameters/fw_name_second\ntfa98xx_QS.cnt\n\nstderr:\n"
+    },
+    "selected_request_read": {
+      "command": "su -c 'p=/sys/class/huaqin/interface/hw_info/tfa98xx; /system/bin/toybox stat -c '\\''%n %a %F'\\'' \"$p\"; /system/bin/toybox timeout 2 /system/bin/toybox head -c 1024 \"$p\"'",
+      "result": "exit_code: 0\nstdout:\n/sys/class/huaqin/interface/hw_info/tfa98xx 644 regular file\ntfa98xx_QS.cnt\n\nstderr:\n"
+    }
+  },
+  "evidence_class": [
+    "offline_owner_binary_inspection",
+    "android_cached_metadata_capture"
+  ],
+  "exact_capture_instant_recorded": false,
+  "input_provenance": {
+    "owner_kernel": {
+      "backup_sha256": "94649360140db672e861729927011984e9714459b4e19c9aab02b7ab79466668",
+      "backup_size": 104857600,
+      "member_offset": 4096,
+      "member_sha256": "ef9e7b5cdb9ef3c66977a04d6b6e21cf83e83f2f45476390c861827d1bb1cf0f",
+      "member_size": 37445648,
+      "same_as_owner_boot_a_kernel_reference": {
+        "path": "evidence/boot-header-inspection.json",
+        "sha256": "831ee408abed2e9ca0b3f4ac093cab760f7ee4a53dda0638658c463815ba97a7"
+      },
+      "source_backup": "/work/first-stage-research/private-input/recovery_a.img"
+    },
+    "owner_module": {
+      "name": "tfa98xx_dlkm",
+      "private_builder": "/work/tfa9894-static-20261123/audio_tfa98xx.ko",
+      "private_receiver": "private/tfa9894-static-20261123/audio_tfa98xx.ko",
+      "sha256": "94ec336cab4e1aa338e93ac7a8a9f4671b6c3dbfc7109b0530f2318910a89f37",
+      "size": 267094,
+      "source": "/vendor/lib/modules/audio_tfa98xx.ko",
+      "source_receiver_builder_size_sha_match": true,
+      "vermagic": "4.19.157-perf+ SMP preempt mod_unload modversions aarch64"
+    },
+    "public_android_source": {
+      "byte_equivalent_to_owner": false,
+      "generic_params_reference": {
+        "path": "kernel/params.c",
+        "sha256": "dc0acd8e1135fc64677f7e205682e79738f285d221fa788c224c12e33d2fc9cb",
+        "size": 24175,
+        "subsequently_checked_against_actual_owner_machine_code": true
+      },
+      "kernel_version": "4.19.325",
+      "root": "/work/first-stage-research/entry-r1-attempt4/linux",
+      "tfa98xx_matching_source_found": false
+    }
+  },
+  "observed_values": [
+    {
+      "maximum_bytes": 1024,
+      "path": "/sys/module/tfa98xx_dlkm/parameters/fw_name_first",
+      "scope": "Configured first candidate; generic cached string getter.",
+      "sha256": "00dfb6198be000c78b96af1a2bf86567ae1fc260ccaf4d52570cedb35447106f",
+      "size_bytes": 15,
+      "timeout_seconds": 2,
+      "value": "tfa98xx_YC.cnt\n"
+    },
+    {
+      "maximum_bytes": 1024,
+      "path": "/sys/module/tfa98xx_dlkm/parameters/fw_name_second",
+      "scope": "Configured second candidate; generic cached string getter.",
+      "sha256": "406499d2af9ff5a194dd361b33141a8e80a3358a013aa2e703eccc807ec519a0",
+      "size_bytes": 15,
+      "timeout_seconds": 2,
+      "value": "tfa98xx_QS.cnt\n"
+    },
+    {
+      "maximum_bytes": 1024,
+      "path": "/sys/class/huaqin/interface/hw_info/tfa98xx",
+      "scope": "Shared HQ id 131 cached request-name registration; not per-amplifier completion.",
+      "sha256": "406499d2af9ff5a194dd361b33141a8e80a3358a013aa2e703eccc807ec519a0",
+      "size_bytes": 15,
+      "timeout_seconds": 2,
+      "value": "tfa98xx_QS.cnt\n"
+    }
+  ],
+  "private_transport": {
+    "binary_published": false,
+    "existing_trusted_ssh_connection": true,
+    "final_directory_mode": "0700",
+    "initial_parent_inherited_setgid_mode": "02700",
+    "module_file_mode": "0600",
+    "module_loaded_or_executed": false,
+    "permission_correction": "Removed only the inherited setgid bit on the new owner-only directory; initial receipt retained.",
+    "source_read_only": true,
+    "strict_host_key_checking": true
+  },
+  "report_prepared_utc": "2026-11-23T03:41:16Z",
+  "request_selection": {
+    "all_four_amplifiers_same_selection_proven": false,
+    "already_registered_branch_returns_minus_4_without_overwrite": true,
+    "cached_gpio_result_nonzero_means": "fw_name_second",
+    "cached_gpio_result_zero_means": "fw_name_first",
+    "calibration_proven": false,
+    "dsp_initialization_proven": false,
+    "firmware_load_completion_proven": false,
+    "hq_id": 131,
+    "loudspeaker_vendor_identity_proven": false,
+    "nonzero_does_not_prove_successful_gpio_boolean_read": true,
+    "observed_amplifier_identity": null,
+    "physical_strap_value_observed": false,
+    "playback_proven": false,
+    "registered_name": "tfa98xx_QS.cnt",
+    "registration_concurrency_serialization_proven": false,
+    "registration_occurs_before_request_firmware_nowait": true,
+    "registration_result_ignored_by_tfa_probe": true,
+    "shared_registration_slot": true
+  },
+  "retained_limitations": [
+    "Only the id 131 branch of huaqin_show was approved for a live read. Other ids/summary have different control flow.",
+    "The HQ slot is shared and does not identify the amplifier that registered the pointer; no claim of four independent selections.",
+    "Generic mainline tfa989x has no established TFA9894 container loader contract here; this metadata does not enable those DT nodes.",
+    "Private kernel and module files are preserved locally; only hashes, offsets, selected metadata and analysis are public."
+  ],
+  "schema_version": 1,
+  "scope": "Owner Android TFA request-selection metadata; no mainline audio or amplifier operation test.",
+  "static_inspector": {
+    "command": "sudo -n pct exec 102 -- docker exec tb371fc-build-ssd-20261123 python3 /src/scripts/research/build/run_job.py --work /work/tfa9894-static-20261123/jobs --name static-inspection-01 -- python3 -B /src/scripts/research/audio/inspect_tfa_cached_metadata.py --image /work/tfa9894-static-20261123/owner-Image --module /work/tfa9894-static-20261123/audio_tfa98xx.ko",
+    "completed_job": {
+      "command": [
+        "python3",
+        "-B",
+        "/src/scripts/research/audio/inspect_tfa_cached_metadata.py",
+        "--image",
+        "/work/tfa9894-static-20261123/owner-Image",
+        "--module",
+        "/work/tfa9894-static-20261123/audio_tfa98xx.ko"
+      ],
+      "elapsed_seconds": 0.6167923420434818,
+      "exit_code": 0,
+      "start_utc": "2026-11-23T03:40:21.088488+00:00"
+    },
+    "exit_code": 0,
+    "job_sha256": "1f65ccf178b2ac34f9d4e21dbd4322e0d01bac59c6b7f375c7ac6110bd4168ed",
+    "log_sha256": "e8d6c3b4290737ce76863b50395d6b17b71ba68ab3df597ac92bf48e3c420b07",
+    "log_size": 14757,
+    "path": "scripts/research/audio/inspect_tfa_cached_metadata.py",
+    "remote_helper_size_sha_mode_verified": {
+      "mode": "0o755",
+      "sha256": "16ee901669d33a55878b3d36045a707fa2f0f471c9729f0e6911e9d1e204e074",
+      "size": 14099
+    },
+    "result": {
+      "device_accessed": false,
+      "evidence_class": "offline_owner_binary_inspection",
+      "inputs": {
+        "image": {
+          "sha256": "ef9e7b5cdb9ef3c66977a04d6b6e21cf83e83f2f45476390c861827d1bb1cf0f",
+          "size": 37445648
+        },
+        "module": {
+          "sha256": "94ec336cab4e1aa338e93ac7a8a9f4671b6c3dbfc7109b0530f2318910a89f37",
+          "size": 267094
+        }
+      },
+      "kernel": {
+        "all_name_markers_consistent": true,
+        "attribute": {
+          "array_index": 25,
+          "id": 131,
+          "name": "tfa98xx",
+          "object_relative_text_offset": 36090128,
+          "path": "/sys/class/huaqin/interface/hw_info/tfa98xx",
+          "permission_octal": "0o644"
+        },
+        "audited_function_ranges": {
+          "hq_harware_init": {
+            "relative_text_offset": 31230356,
+            "sha256": "975fed4fa2a7ead79903e60f95e831bd86b7dc14b9b47883523d5de3046c0819",
+            "size": 316
+          },
+          "hq_register_hw_info": {
+            "relative_text_offset": 8386480,
+            "sha256": "5ae9aa29e710129508fc62aba500790a16458360cb35f2d374229f8b32b2c7e1",
+            "size": 208
+          },
+          "huaqin_show": {
+            "relative_text_offset": 8386688,
+            "sha256": "40d39978692951c7ec5c08a361884ea4d3ecbbbebec0b8fe8363e0de60b590b9",
+            "size": 1504
+          },
+          "param_get_charp": {
+            "relative_text_offset": 435168,
+            "sha256": "d356f5ad10b68dc82b7e9e586b9e0e46d2801833c21056ffc0b6a0fb18e5a0ec",
+            "size": 40
+          }
+        },
+        "layout": {
+          "count": 25798144,
+          "markers": 27436288,
+          "names": 25798400,
+          "names_end": 27436274,
+          "offsets": 25312000,
+          "relative_base": 25797888,
+          "token_index": 27441152,
+          "token_table": 27440128
+        },
+        "live_kernel_memory_read": false,
+        "mapped_relative_relocations": 81655,
+        "marker_count": 475,
+        "reviewed_control_flow": {
+          "cached_name_field": 32,
+          "id_131_read": "huaqin_show: ordinary registered-name path; cached pointer then sprintf('%s\\n'); unregistered/null cases copy constant messages",
+          "normal_read_call": "sprintf",
+          "normal_read_call_relative_text_offset": 19947304,
+          "normal_read_offsets": [
+            8386752,
+            8386756,
+            8386764,
+            8386772,
+            8386884,
+            8386892,
+            8386900,
+            8387296,
+            8387300
+          ],
+          "per_amplifier_identity_available": false,
+          "registered_flag_field": 24,
+          "registration": "shared id slot stores pointer and registered=1; while registered, another registration returns -4 without replacing the pointer",
+          "special_id_branches_not_read": [
+            32,
+            128,
+            240,
+            241
+          ]
+        },
+        "selected_pointer_links": [
+          {
+            "field_relative_text_offset": 20482136,
+            "relocation_record_offset": 32173880,
+            "target_relative_text_offset": 435168,
+            "target_symbols": [
+              "param_get_charp"
+            ]
+          },
+          {
+            "field_relative_text_offset": 24481240,
+            "relocation_record_offset": 32446544,
+            "target_relative_text_offset": 8386688,
+            "target_symbols": [
+              "huaqin_show"
+            ]
+          },
+          {
+            "field_relative_text_offset": 36090176,
+            "relocation_record_offset": 33384296,
+            "target_relative_text_offset": 24481240,
+            "target_symbols": [
+              "huaqin_sysfs_ops"
+            ]
+          },
+          {
+            "field_relative_text_offset": 36090184,
+            "relocation_record_offset": 33384320,
+            "target_relative_text_offset": 36088912,
+            "target_symbols": [
+              "huaqin_attrs"
+            ]
+          },
+          {
+            "field_relative_text_offset": 36089112,
+            "relocation_record_offset": 33383648,
+            "target_relative_text_offset": 36090136,
+            "target_symbols": []
+          }
+        ],
+        "static_pointer_base_published": false,
+        "symbol_count": 121415
+      },
+      "limits": [
+        "The cached registration name is not firmware load, DSP, calibration or playback success.",
+        "One shared registration slot cannot establish each of four amplifiers' selection.",
+        "The kernel path proof applies only to these fixed owner bytes and id 131; other attributes may have side effects.",
+        "The separate bounded Android capture owns the observed value; this tool performs no live read."
+      ],
+      "module_executed_or_loaded": false,
+      "module_function_ranges": {
+        "tfa98xx_i2c_probe": {
+          "direct_relocated_calls": [
+            {
+              "relative_text_offset": 78940,
+              "symbol": "printk"
+            },
+            {
+              "relative_text_offset": 78976,
+              "symbol": "_dev_err"
+            },
+            {
+              "relative_text_offset": 79008,
+              "symbol": "devm_kmalloc"
+            },
+            {
+              "relative_text_offset": 79064,
+              "symbol": "__devm_regmap_init_i2c"
+            },
+            {
+              "relative_text_offset": 79100,
+              "symbol": "_dev_err"
+            },
+            {
+              "relative_text_offset": 79132,
+              "symbol": "__mutex_init"
+            },
+            {
+              "relative_text_offset": 79156,
+              "symbol": "__init_waitqueue_head"
+            },
+            {
+              "relative_text_offset": 79184,
+              "symbol": "of_get_named_gpio_flags"
+            },
+            {
+              "relative_text_offset": 79212,
+              "symbol": "of_get_named_gpio_flags"
+            },
+            {
+              "relative_text_offset": 79244,
+              "symbol": "of_property_read_variable_u32_array"
+            },
+            {
+              "relative_text_offset": 79356,
+              "symbol": "devm_gpio_request_one"
+            },
+            {
+              "relative_text_offset": 79396,
+              "symbol": "devm_gpio_request_one"
+            },
+            {
+              "relative_text_offset": 79428,
+              "symbol": "devm_gpio_request_one"
+            },
+            {
+              "relative_text_offset": 79452,
+              "symbol": "_dev_err"
+            },
+            {
+              "relative_text_offset": 79468,
+              "symbol": "gpio_to_desc"
+            },
+            {
+              "relative_text_offset": 79472,
+              "symbol": "gpiod_direction_input"
+            },
+            {
+              "relative_text_offset": 79480,
+              "symbol": "gpio_to_desc"
+            },
+            {
+              "relative_text_offset": 79484,
+              "symbol": "gpiod_get_raw_value"
+            },
+            {
+              "relative_text_offset": 79496,
+              "symbol": "gpio_free"
+            },
+            {
+              "relative_text_offset": 79520,
+              "symbol": "_dev_info"
+            },
+            {
+              "relative_text_offset": 79540,
+              "symbol": "gpio_to_desc"
+            },
+            {
+              "relative_text_offset": 79548,
+              "symbol": "gpiod_set_raw_value_cansleep"
+            },
+            {
+              "relative_text_offset": 79564,
+              "symbol": "__const_udelay"
+            },
+            {
+              "relative_text_offset": 79580,
+              "symbol": "gpio_to_desc"
+            },
+            {
+              "relative_text_offset": 79588,
+              "symbol": "gpiod_set_raw_value_cansleep"
+            },
+            {
+              "relative_text_offset": 79596,
+              "symbol": "__const_udelay"
+            },
+            {
+              "relative_text_offset": 79648,
+              "symbol": "devm_kmalloc"
+            },
+            {
+              "relative_text_offset": 79688,
+              "symbol": "devm_kmalloc"
+            },
+            {
+              "relative_text_offset": 79712,
+              "symbol": "memcpy"
+            },
+            {
+              "relative_text_offset": 79748,
+              "symbol": "dev_set_name"
+            },
+            {
+              "relative_text_offset": 79820,
+              "symbol": "regmap_read"
+            },
+            {
+              "relative_text_offset": 79844,
+              "symbol": "_dev_err"
+            },
+            {
+              "relative_text_offset": 79876,
+              "symbol": "_dev_err"
+            },
+            {
+              "relative_text_offset": 79928,
+              "symbol": "devm_snd_soc_register_component"
+            },
+            {
+              "relative_text_offset": 79948,
+              "symbol": "hq_register_hw_info"
+            },
+            {
+              "relative_text_offset": 79972,
+              "symbol": "gpio_to_desc"
+            },
+            {
+              "relative_text_offset": 79976,
+              "symbol": "gpiod_to_irq"
+            },
+            {
+              "relative_text_offset": 80016,
+              "symbol": "devm_request_threaded_irq"
+            },
+            {
+              "relative_text_offset": 80032,
+              "symbol": "gpio_to_desc"
+            },
+            {
+              "relative_text_offset": 80036,
+              "symbol": "gpiod_to_irq"
+            },
+            {
+              "relative_text_offset": 80060,
+              "symbol": "_dev_err"
+            },
+            {
+              "relative_text_offset": 80088,
+              "symbol": "_dev_err"
+            },
+            {
+              "relative_text_offset": 80104,
+              "symbol": "hq_register_hw_info"
+            },
+            {
+              "relative_text_offset": 80176,
+              "symbol": "_dev_info"
+            },
+            {
+              "relative_text_offset": 80204,
+              "symbol": "device_create_bin_file"
+            },
+            {
+              "relative_text_offset": 80224,
+              "symbol": "_dev_info"
+            },
+            {
+              "relative_text_offset": 80240,
+              "symbol": "device_create_bin_file"
+            },
+            {
+              "relative_text_offset": 80260,
+              "symbol": "_dev_info"
+            },
+            {
+              "relative_text_offset": 80284,
+              "symbol": "printk"
+            },
+            {
+              "relative_text_offset": 80308,
+              "symbol": "mutex_lock"
+            },
+            {
+              "relative_text_offset": 80352,
+              "symbol": "__list_add_valid"
+            },
+            {
+              "relative_text_offset": 80384,
+              "symbol": "mutex_unlock"
+            },
+            {
+              "relative_text_offset": 80412,
+              "symbol": "printk"
+            },
+            {
+              "relative_text_offset": 80456,
+              "symbol": "printk"
+            },
+            {
+              "relative_text_offset": 80484,
+              "symbol": "printk"
+            },
+            {
+              "relative_text_offset": 80516,
+              "symbol": "printk"
+            },
+            {
+              "relative_text_offset": 80572,
+              "symbol": "printk"
+            },
+            {
+              "relative_text_offset": 80604,
+              "symbol": "printk"
+            },
+            {
+              "relative_text_offset": 80636,
+              "symbol": "printk"
+            },
+            {
+              "relative_text_offset": 80668,
+              "symbol": "printk"
+            },
+            {
+              "relative_text_offset": 80712,
+              "symbol": "printk"
+            },
+            {
+              "relative_text_offset": 80736,
+              "symbol": "__stack_chk_fail"
+            }
+          ],
+          "relative_text_offset": 78872,
+          "sha256": "469bf8f4af0012f625e26e839915f50808aba1eb4a7a6d7cc82b95a2dc9e41c9",
+          "size": 1868
+        },
+        "tfa98xx_probe": {
+          "direct_relocated_calls": [
+            {
+              "relative_text_offset": 84492,
+              "symbol": "snd_soc_component_init_regmap"
+            },
+            {
+              "relative_text_offset": 84536,
+              "symbol": "__alloc_workqueue_key"
+            },
+            {
+              "relative_text_offset": 84604,
+              "symbol": "init_timer_key"
+            },
+            {
+              "relative_text_offset": 84652,
+              "symbol": "init_timer_key"
+            },
+            {
+              "relative_text_offset": 84700,
+              "symbol": "init_timer_key"
+            },
+            {
+              "relative_text_offset": 84748,
+              "symbol": "init_timer_key"
+            },
+            {
+              "relative_text_offset": 84800,
+              "symbol": "init_timer_key"
+            },
+            {
+              "relative_text_offset": 84864,
+              "symbol": "_dev_info"
+            },
+            {
+              "relative_text_offset": 84876,
+              "symbol": "hq_register_hw_info"
+            },
+            {
+              "relative_text_offset": 84924,
+              "symbol": "request_firmware_nowait"
+            },
+            {
+              "relative_text_offset": 84952,
+              "symbol": "devm_kmalloc"
+            },
+            {
+              "relative_text_offset": 84980,
+              "symbol": "memcpy"
+            },
+            {
+              "relative_text_offset": 85024,
+              "symbol": "snd_soc_dapm_new_controls"
+            },
+            {
+              "relative_text_offset": 85044,
+              "symbol": "snd_soc_dapm_add_routes"
+            },
+            {
+              "relative_text_offset": 85080,
+              "symbol": "snd_soc_dapm_new_controls"
+            },
+            {
+              "relative_text_offset": 85100,
+              "symbol": "snd_soc_dapm_add_routes"
+            },
+            {
+              "relative_text_offset": 85120,
+              "symbol": "_dev_info"
+            },
+            {
+              "relative_text_offset": 85164,
+              "symbol": "snd_soc_dapm_new_controls"
+            },
+            {
+              "relative_text_offset": 85184,
+              "symbol": "snd_soc_dapm_add_routes"
+            },
+            {
+              "relative_text_offset": 85212,
+              "symbol": "snd_soc_dapm_new_controls"
+            },
+            {
+              "relative_text_offset": 85232,
+              "symbol": "snd_soc_dapm_add_routes"
+            }
+          ],
+          "relative_text_offset": 84456,
+          "sha256": "5746b7c26a59ada35a4c947da1ddd5b9d6d0a0c6f65d14fdf02cbaf3c237f703",
+          "size": 792
+        },
+        "tfa98xx_rw_read": {
+          "direct_relocated_calls": [
+            {
+              "relative_text_offset": 95168,
+              "symbol": "i2c_transfer"
+            },
+            {
+              "relative_text_offset": 95272,
+              "symbol": "printk"
+            },
+            {
+              "relative_text_offset": 95288,
+              "symbol": "msleep"
+            },
+            {
+              "relative_text_offset": 95308,
+              "symbol": "i2c_transfer"
+            },
+            {
+              "relative_text_offset": 95336,
+              "symbol": "printk"
+            },
+            {
+              "relative_text_offset": 95356,
+              "symbol": "__stack_chk_fail"
+            }
+          ],
+          "relative_text_offset": 95048,
+          "sha256": "8355cbe918b702ebe92a12282da5008d88d99165976216e10a57a4af76e13a82",
+          "size": 312
+        }
+      },
+      "module_parameters": [
+        {
+          "compiled_default": "tfa98xx_YC.cnt",
+          "data_pointer_offset": 112,
+          "name": "fw_name_first",
+          "ops": "param_ops_charp",
+          "parameter_record_offset": 0,
+          "permission_octal": "0o644"
+        },
+        {
+          "compiled_default": "tfa98xx_QS.cnt",
+          "data_pointer_offset": 120,
+          "name": "fw_name_second",
+          "ops": "param_ops_charp",
+          "parameter_record_offset": 40,
+          "permission_octal": "0o644"
+        }
+      ],
+      "passed": true,
+      "reviewed_module_selection": {
+        "cached_flag_structure_offset": 960,
+        "chosen_name_structure_offset": 808,
+        "hq_id": 131,
+        "nonzero_flag_candidate": "fw_name_second",
+        "registration_precedes_async_firmware_request": true,
+        "registration_return_value_checked_by_probe": false,
+        "rw_attribute_read_by_this_tool": false,
+        "rw_attribute_reads_i2c": true,
+        "zero_flag_candidate": "fw_name_first"
+      },
+      "schema_version": 1
+    },
+    "sha256": "16ee901669d33a55878b3d36045a707fa2f0f471c9729f0e6911e9d1e204e074",
+    "size": 14099
+  }
+}

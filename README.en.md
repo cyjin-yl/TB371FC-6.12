@@ -15,8 +15,13 @@ Research update 2026-11-23: [Android hardware evidence and source audit](docs/re
 ([中文](docs/research/2026-11-23/README.zh-CN.md)) covers the display, keyboard,
 pen, charging and power management. The follow-up adds an actually compiled
 [research kernel and generic ARM64 VM boot](docs/research/2026-11-23/kernel-build.md),
-private GPU firmware staging and Fedora/Nura/NixOS build experiments. It does
-not add a new physical-tablet pass; see the [all-device acceptance contract](docs/research/2026-11-23/acceptance.md).
+[a complete Fedora Enforcing system boot in QEMU](docs/research/2026-11-23/fedora-system-integration.md),
+[the realized NixOS ARM system closure](docs/research/2026-11-23/nixos-system-build.md),
+private firmware staging, input-driver fixes and an
+[owner-specific rescue-controller correction](docs/research/2026-11-23/first-stage-owner-udc.md).
+The dated overview tracks later combined-kernel validation and retained failures.
+These results add no owner physical-tablet pass; see the
+[all-device acceptance contract](docs/research/2026-11-23/acceptance.md).
 
 Arch Linux ARM with KDE Plasma running on the Lenovo **TB371FC** tablet, using a
 **Linux 6.12** kernel that is started from microSD. Android on the internal UFS stays

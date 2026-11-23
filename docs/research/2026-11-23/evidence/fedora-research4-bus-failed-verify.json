@@ -1,0 +1,421 @@
+{
+  "board_dtb_used": false,
+  "compiled_module_sig_force": false,
+  "elapsed_seconds": 109.48120716802077,
+  "expected_marker_seen": false,
+  "guest_gates_match": false,
+  "guest_partial_progress": [
+    {
+      "complete_system_pass": false,
+      "details": {
+        "firmware_count": 69,
+        "kernel_release": "6.12.114-tb371fc-research4-system",
+        "loaded_policy_version": 33,
+        "module_count": 84,
+        "selinux_enforce": "1"
+      },
+      "physical_hardware_tested": false,
+      "stage": "runtime_hashes_verified"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "broker_children_unavailable": {
+          "errno": 2,
+          "type": "FileNotFoundError"
+        },
+        "broker_launcher": {
+          "open_fd_count": 15,
+          "open_file_limit": [
+            "Max open files            16384                16384                files     "
+          ],
+          "pid": 202,
+          "selinux_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+          "status": [
+            "Name:\tdbus-broker-lau",
+            "State:\tS (sleeping)",
+            "FDSize:\t128",
+            "Threads:\t1"
+          ]
+        },
+        "broker_mainpid_lookup": {
+          "command": [
+            "/usr/bin/systemctl",
+            "show",
+            "--property=MainPID",
+            "--value",
+            "dbus-broker.service"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_bytes": 0,
+          "stderr_truncated": false,
+          "stdout": "202\n",
+          "stdout_bytes": 4,
+          "stdout_truncated": false
+        },
+        "pid1": {
+          "open_fd_count": 145,
+          "open_file_limit": [
+            "Max open files            2147483584           2147483584           files     "
+          ],
+          "pid": 1,
+          "selinux_context": "system_u:system_r:init_t:s0",
+          "status": [
+            "Name:\tsystemd",
+            "State:\tS (sleeping)",
+            "FDSize:\t256",
+            "Threads:\t1"
+          ]
+        },
+        "validation_process": {
+          "open_fd_count": 4,
+          "open_file_limit": [
+            "Max open files            1024                 524288               files     "
+          ],
+          "pid": 247,
+          "selinux_context": "system_u:system_r:unconfined_service_t:s0",
+          "status": [
+            "Name:\tpython3",
+            "State:\tR (running)",
+            "FDSize:\t256",
+            "Threads:\t1"
+          ]
+        }
+      },
+      "physical_hardware_tested": false,
+      "stage": "system_bus_context"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "command": [
+          "/usr/bin/busctl",
+          "--system",
+          "--no-pager",
+          "call",
+          "org.freedesktop.DBus",
+          "/org/freedesktop/DBus",
+          "org.freedesktop.DBus",
+          "GetId"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_truncated": false,
+        "stdout": "s \"5713cf0ed5fb9a526aaee56896f90856\"\n",
+        "stdout_bytes": 37,
+        "stdout_truncated": false
+      },
+      "physical_hardware_tested": false,
+      "stage": "system_bus_get_id"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "command": [
+          "/usr/bin/busctl",
+          "--system",
+          "--no-pager",
+          "get-property",
+          "org.freedesktop.systemd1",
+          "/org/freedesktop/systemd1",
+          "org.freedesktop.systemd1.Manager",
+          "Version"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_truncated": false,
+        "stdout": "s \"262.1-1.fc45\"\n",
+        "stdout_bytes": 17,
+        "stdout_truncated": false
+      },
+      "physical_hardware_tested": false,
+      "stage": "system_bus_manager_version"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "client": {
+          "open_fd_count": 3,
+          "open_file_limit": [
+            "Max open files            1024                 524288               files     "
+          ],
+          "pid": 273,
+          "selinux_context": "system_u:system_r:unconfined_service_t:s0",
+          "status": [
+            "Name:\tsystemd-run",
+            "State:\tR (running)",
+            "FDSize:\t64",
+            "Threads:\t1"
+          ]
+        },
+        "command": [
+          "/usr/bin/true"
+        ],
+        "creator": {
+          "open_fd_count": 6,
+          "open_file_limit": [
+            "Max open files            1024                 524288               files     "
+          ],
+          "pid": 247,
+          "selinux_context": "system_u:system_r:unconfined_service_t:s0",
+          "status": [
+            "Name:\tpython3",
+            "State:\tR (running)",
+            "FDSize:\t256",
+            "Threads:\t1"
+          ]
+        },
+        "properties": [],
+        "stderr_pipe": {
+          "device": 14,
+          "fd": 5,
+          "inode": 6279,
+          "inode_selinux_context": "system_u:system_r:unconfined_service_t:s0",
+          "mode": 4480,
+          "target": "pipe:[6279]"
+        },
+        "stdin": {
+          "device": 6,
+          "fd": 0,
+          "inode": 5,
+          "inode_selinux_context": "system_u:object_r:null_device_t:s0",
+          "mode": 8630,
+          "target": "/dev/null"
+        },
+        "stdout_pipe": {
+          "device": 14,
+          "fd": 3,
+          "inode": 6278,
+          "inode_selinux_context": "system_u:system_r:unconfined_service_t:s0",
+          "mode": 4480,
+          "target": "pipe:[6278]"
+        },
+        "systemd_client_debug_logging": true,
+        "unit": "tb371fc-r4-bus-proof.service"
+      },
+      "physical_hardware_tested": false,
+      "stage": "transient_client_started"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "exit_code": 1,
+        "stderr": "Bus n/a: changing state UNSET -> OPENING\nsd-bus: starting bus by connecting to /run/dbus/system_bus_socket...\nBus n/a: changing state OPENING -> AUTHENTICATING\nBus n/a: changing state AUTHENTICATING -> HELLO\nSent message type=method_call sender=n/a destination=org.freedesktop.DBus path=/org/freedesktop/DBus interface=org.freedesktop.DBus member=Hello cookie=1 reply_cookie=0 signature=n/a error-name=n/a error-message=n/a\nGot message type=method_return sender=org.freedesktop.DBus destination=:1.13 path=n/a interface=n/a member=n/a  cookie=4294967295 reply_cookie=1 signature=s error-name=n/a error-message=n/a\nBus n/a: changing state HELLO -> RUNNING\nSent message type=method_call sender=n/a destination=org.freedesktop.systemd1 path=/org/freedesktop/systemd1 interface=org.freedesktop.systemd1.Manager member=StartTransientUnit cookie=2 reply_cookie=0 signature=ssa(sv)a(sa(sv)) error-name=n/a error-message=n/a\nBus n/a: changing state RUNNING -> CLOSING\nFailed to start transient service unit: Connection reset by peer\nBus n/a: changing state CLOSING -> CLOSED\n",
+        "stdout": ""
+      },
+      "physical_hardware_tested": false,
+      "stage": "system_bus_pipe_baseline"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "broker_children_unavailable": {
+          "errno": 2,
+          "type": "FileNotFoundError"
+        },
+        "broker_launcher": {
+          "open_fd_count": 15,
+          "open_file_limit": [
+            "Max open files            16384                16384                files     "
+          ],
+          "pid": 202,
+          "selinux_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+          "status": [
+            "Name:\tdbus-broker-lau",
+            "State:\tS (sleeping)",
+            "FDSize:\t128",
+            "Threads:\t1"
+          ]
+        },
+        "broker_mainpid_lookup": {
+          "command": [
+            "/usr/bin/systemctl",
+            "show",
+            "--property=MainPID",
+            "--value",
+            "dbus-broker.service"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_bytes": 0,
+          "stderr_truncated": false,
+          "stdout": "202\n",
+          "stdout_bytes": 4,
+          "stdout_truncated": false
+        },
+        "pid1": {
+          "open_fd_count": 142,
+          "open_file_limit": [
+            "Max open files            2147483584           2147483584           files     "
+          ],
+          "pid": 1,
+          "selinux_context": "system_u:system_r:init_t:s0",
+          "status": [
+            "Name:\tsystemd",
+            "State:\tS (sleeping)",
+            "FDSize:\t256",
+            "Threads:\t1"
+          ]
+        },
+        "traceback": "Traceback (most recent call last):\n  File \"/usr/libexec/tb371fc-r4-vm-verify.py\", line 392, in <module>\n    main()\n    ~~~~^^\n  File \"/usr/libexec/tb371fc-r4-vm-verify.py\", line 278, in main\n    require(bus_run.returncode == 0 and not bus_run.stdout,\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n            'system-bus --wait/--pipe baseline failed before resource probes')\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/libexec/tb371fc-r4-vm-verify.py\", line 42, in require\n    raise RuntimeError(message)\nRuntimeError: system-bus --wait/--pipe baseline failed before resource probes\n",
+        "validation_process": {
+          "open_fd_count": 4,
+          "open_file_limit": [
+            "Max open files            1024                 524288               files     "
+          ],
+          "pid": 247,
+          "selinux_context": "system_u:system_r:unconfined_service_t:s0",
+          "status": [
+            "Name:\tpython3",
+            "State:\tR (running)",
+            "FDSize:\t256",
+            "Threads:\t1"
+          ]
+        }
+      },
+      "physical_hardware_tested": false,
+      "stage": "failure_context"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "command": [
+          "/usr/bin/journalctl",
+          "--sync"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_truncated": false,
+        "stdout": "",
+        "stdout_bytes": 0,
+        "stdout_truncated": false
+      },
+      "physical_hardware_tested": false,
+      "stage": "journal_sync"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "command": [
+          "/usr/bin/journalctl",
+          "--boot=0",
+          "--unit=dbus-broker.service",
+          "--lines=80",
+          "--output=short-monotonic",
+          "--no-pager"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_truncated": false,
+        "stdout": "[   67.666917] tb371fc-research4-vm dbus-broker-launch[202]: Ready\n",
+        "stdout_bytes": 67,
+        "stdout_truncated": false
+      },
+      "physical_hardware_tested": false,
+      "stage": "broker_journal"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "command": [
+          "/usr/bin/journalctl",
+          "--boot=0",
+          "--dmesg",
+          "--grep=avc:|audit:|denied|BPF|bpf|Out of memory",
+          "--lines=100",
+          "--output=short-monotonic",
+          "--no-pager"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_truncated": false,
+        "stdout": "[  102.675851] tb371fc-research4-vm kernel: audit: type=1131 audit(1792195299.700:57): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=NetworkManager-dispatcher comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   93.003032] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195290.064:56): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=NetworkManager-wait-online comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   92.701112] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195289.700:55): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=NetworkManager-dispatcher comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   89.067634] tb371fc-research4-vm kernel: audit: type=1131 audit(1792195286.108:54): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=NetworkManager-dispatcher comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   85.076642] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195282.088:53): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-vconsole-setup comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   79.770822] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195276.820:52): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=NetworkManager-dispatcher comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   79.598024] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195276.584:51): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-user-sessions comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   77.971331] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195275.036:50): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=NetworkManager comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   76.385125] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195273.388:49): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-hostnamed comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   74.412981] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195271.468:48): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-logind comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   73.189179] tb371fc-research4-vm kernel: audit: type=1334 audit(1792195270.188:47): prog-id=63 op=LOAD\n[   73.175337] tb371fc-research4-vm kernel: audit: type=1334 audit(1792195270.184:46): prog-id=62 op=LOAD\n[   73.170041] tb371fc-research4-vm kernel: audit: type=1334 audit(1792195270.180:45): prog-id=61 op=LOAD\n[   72.547698] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195269.592:44): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-homed-activate comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   72.386470] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195269.412:43): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-homed comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   71.210605] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195268.092:42): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=rtkit-daemon comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   70.071153] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195267.108:41): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=dracut-shutdown comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   69.923183] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195266.988:40): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=authselect-apply-changes comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   69.036731] tb371fc-research4-vm kernel: audit: type=1334 audit(1792195266.080:39): prog-id=60 op=LOAD\n[   69.024763] tb371fc-research4-vm kernel: audit: type=1334 audit(1792195266.064:38): prog-id=59 op=LOAD\n[   69.014647] tb371fc-research4-vm kernel: audit: type=1334 audit(1792195266.064:37): prog-id=58 op=LOAD\n[   68.361183] tb371fc-research4-vm kernel: audit: type=1334 audit(1792195265.416:36): prog-id=57 op=LOAD\n[   67.054294] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195264.112:35): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=dbus-broker comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   65.995546] tb371fc-research4-vm kernel: audit: type=1334 audit(1792195263.064:34): prog-id=56 op=LOAD\n[   65.682992] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195262.748:33): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-update-utmp comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   65.410173] tb371fc-research4-vm kernel: audit: type=1127 audit(1792195262.456:32): pid=200 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg=' comm=\"update-utmp\" exe=\"/usr/lib/systemd/systemd-update-utmp\" hostname=? addr=? terminal=? res=success'\n[   64.891007] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195261.920:31): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-tmpfiles-setup comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   64.521932] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195261.580:30): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-udev-trigger comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   62.795103] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195257.824:29): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-journal-flush comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   62.653207] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195254.184:28): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-udevd comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   62.553771] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195251.324:27): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-oomd comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   62.454713] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195249.896:26): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-userdb-load-credentials comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   62.302183] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195248.880:25): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-userdbd comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   62.025772] tb371fc-research4-vm kernel: audit: type=1334 audit(1792195248.232:24): prog-id=55 op=LOAD\n[   61.821342] tb371fc-research4-vm kernel: audit: type=1334 audit(1792195248.224:23): prog-id=54 op=LOAD\n[   61.593470] tb371fc-research4-vm kernel: audit: type=1334 audit(1792195248.180:22): prog-id=22 op=UNLOAD\n[   61.412693] tb371fc-research4-vm kernel: audit: type=1334 audit(1792195248.176:21): prog-id=23 op=UNLOAD\n[   61.088241] tb371fc-research4-vm kernel: audit: type=1334 audit(1792195245.372:13): prog-id=48 op=LOAD\n[   60.943774] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195245.040:12): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-tmpfiles-setup-dev-early comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   46.264454] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195243.328:11): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-udev-load-credentials comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   46.202075] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195243.268:10): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-sysctl comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   46.176383] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195243.236:9): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-remount-fs comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   46.124577] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195243.188:8): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-network-generator comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   46.069923] tb371fc-research4-vm kernel: audit: type=1131 audit(1792195243.128:7): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=modprobe@efi_pstore comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   46.069085] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195243.128:6): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=modprobe@efi_pstore comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   46.008445] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195243.056:5): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=kmod-static-nodes comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   45.767814] tb371fc-research4-vm kernel: audit: type=1130 audit(1792195242.816:4): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-journald comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\n[   45.565590] tb371fc-research4-vm (udevadm)[154]: systemd-udev-load-credentials.service: Loaded shared library 'libbpf.so.1' via dlopen().\n[   45.555746] tb371fc-research4-vm (udevadm)[156]: systemd-udev-trigger.service: Loaded shared library 'libbpf.so.1' via dlopen().\n[   45.547093] tb371fc-research4-vm (systemd-sysctl)[152]: systemd-sysctl.service: Loaded shared library 'libbpf.so.1' via dlopen().\n[   45.525311] tb371fc-research4-vm (emd-remount-fs)[151]: systemd-remount-fs.service: Loaded shared library 'libbpf.so.1' via dlopen().\n[   45.511140] tb371fc-research4-vm (work-generator)[149]: systemd-network-generator.service: Loaded shared library 'libbpf.so.1' via dlopen().\n[   45.491080] tb371fc-research4-vm (stemd-journald)[148]: systemd-journald.service: Loaded shared library 'libbpf.so.1' via dlopen().\n[   45.458998] tb371fc-research4-vm (mount)[147]: sys-fs-fuse-connections.mount: Loaded shared library 'libbpf.so.1' via dlopen().\n[   45.452702] tb371fc-research4-vm (modprobe)[146]: modprobe@efi_pstore.service: Loaded shared library 'libbpf.so.1' via dlopen().\n[   45.435147] tb371fc-research4-vm (kmod)[145]: kmod-static-nodes.service: Loaded shared library 'libbpf.so.1' via dlopen().\n[   45.402055] tb371fc-research4-vm (mount)[144]: tmp.mount: Loaded shared library 'libbpf.so.1' via dlopen().\n[   45.401524] tb371fc-research4-vm (mount)[143]: sys-kernel-tracing.mount: Loaded shared library 'libbpf.so.1' via dlopen().\n[   45.391646] tb371fc-research4-vm (mount)[142]: sys-kernel-debug.mount: Loaded shared library 'libbpf.so.1' via dlopen().\n[   45.389360] tb371fc-research4-vm kernel: audit: type=1400 audit(1792195237.644:3): avc:  denied  { getattr } for  pid=1 comm=\"systemd\" path=\"socket:[2641]\" dev=\"sockfs\" ino=2641 scontext=system_u:system_r:init_t:s0 tcontext=system_u:system_r:kernel_t:s0 tclass=netlink_kobject_uevent_socket permissive=0\n[   45.388661] tb371fc-research4-vm kernel: audit: type=1403 audit(1792195228.024:2): auid=4294967295 ses=4294967295 lsm=selinux res=1\n[    8.789502] localhost (stemd-tmpfiles)[65]: systemd-tmpfiles-setup-dev.service: Loaded shared library 'libbpf.so.1' via dlopen().\n[    8.505512] localhost (stemd-tmpfiles)[64]: systemd-tmpfiles-setup-dev-early.service: Loaded shared library 'libbpf.so.1' via dlopen().\n[    8.488581] localhost (udevadm)[62]: systemd-udev-trigger.service: Loaded shared library 'libbpf.so.1' via dlopen().\n[    8.467213] localhost (stemd-journald)[60]: systemd-journald.service: Loaded shared library 'libbpf.so.1' via dlopen().\n[    8.464992] localhost (systemd-sysctl)[61]: systemd-sysctl.service: Loaded shared library 'libbpf.so.1' via dlopen().\n[    8.451302] localhost (kmod)[59]: kmod-static-nodes.service: Loaded shared library 'libbpf.so.1' via dlopen().\n[    8.262642] localhost kernel: audit: type=2000 audit(0.248:1): state=initialized audit_enabled=0 res=1\n[    8.262379] localhost kernel: audit: initializing netlink subsys (disabled)\n[    8.249082] localhost kernel: LSM support for eBPF active\n[    8.247938] localhost kernel: LSM: initializing lsm=capability,selinux,bpf\n",
+        "stdout_bytes": 14038,
+        "stdout_truncated": false
+      },
+      "physical_hardware_tested": false,
+      "stage": "kernel_security_journal"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "command": [
+          "/usr/bin/journalctl",
+          "--boot=0",
+          "--grep=Peer |disconnected|protocol|file descriptor|Connection reset|pids-proof|fs-proof|bus-proof",
+          "--lines=100",
+          "--output=short-monotonic",
+          "--no-pager"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_truncated": false,
+        "stdout": "[   89.908906] tb371fc-research4-vm NetworkManager[204]: <info>  [1792195286.9732] device (lo): state change: disconnected -> prepare (reason 'none', managed-type: 'external')\n[   89.547186] tb371fc-research4-vm NetworkManager[204]: <info>  [1792195286.6244] device (lo): state change: unavailable -> disconnected (reason 'connection-assumed', managed-type: 'external')\n[   56.600287] tb371fc-research4-vm systemd-userwork: processing[179]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   56.383484] tb371fc-research4-vm systemd-userwork: processing[180]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   56.191929] tb371fc-research4-vm systemd-userwork: processing[178]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   56.093777] tb371fc-research4-vm systemd-userwork: processing[179]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   56.001828] tb371fc-research4-vm systemd-userwork: processing[180]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   55.905398] tb371fc-research4-vm systemd-userwork: processing[180]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   55.816892] tb371fc-research4-vm systemd-userwork: processing[179]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   55.725412] tb371fc-research4-vm systemd-userwork: processing[178]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   55.642558] tb371fc-research4-vm systemd-userwork: processing[178]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   55.486069] tb371fc-research4-vm systemd-userwork: processing[179]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   55.385679] tb371fc-research4-vm systemd-userwork: processing[180]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   55.305534] tb371fc-research4-vm systemd-userwork: processing[178]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   55.201788] tb371fc-research4-vm systemd-userwork: processing[179]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   55.145514] tb371fc-research4-vm systemd-userwork: processing[180]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   55.090115] tb371fc-research4-vm systemd-userwork: processing[180]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   54.813703] tb371fc-research4-vm systemd-userwork: processing[179]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   52.041428] tb371fc-research4-vm systemd-userwork: processing[178]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   60.718883] tb371fc-research4-vm journalctl[167]: journal: Changing state idle-client \u2192 disconnected\n[    8.432872] localhost kernel: can: broadcast manager protocol\n[    8.432606] localhost kernel: can: raw protocol\n[    8.432304] localhost kernel: NET: Registered PF_CAN protocol family\n[    8.427497] localhost kernel: NET: Registered PF_KEY protocol family\n[    8.427229] localhost kernel: NET: Registered PF_PACKET protocol family\n[    8.425739] localhost kernel: NET: Registered PF_INET6 protocol family\n[    8.394763] localhost kernel: NET: Registered PF_PPPOX protocol family\n[    8.301240] localhost kernel: NET: Registered PF_UNIX/PF_LOCAL protocol family\n[    8.294265] localhost kernel: NET: Registered PF_INET protocol family\n[    8.292507] localhost kernel: NetLabel:  protocols = UNLABELED CIPSOv4 CALIPSO\n[    8.286198] localhost kernel: NET: Registered PF_BLUETOOTH protocol family\n[    8.263816] localhost kernel: NET: Registered PF_QIPCRTR protocol family\n[    8.261310] localhost kernel: NET: Registered PF_NETLINK/PF_ROUTE protocol family\n",
+        "stdout_bytes": 3781,
+        "stdout_truncated": false
+      },
+      "physical_hardware_tested": false,
+      "stage": "transport_journal"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "command": [
+          "/usr/bin/sync"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_truncated": false,
+        "stdout": "",
+        "stdout_bytes": 0,
+        "stdout_truncated": false
+      },
+      "physical_hardware_tested": false,
+      "stage": "failure_evidence_sync"
+    }
+  ],
+  "guest_result": {},
+  "guest_result_count": 0,
+  "host_filesystem_shared": false,
+  "initramfs_sha256": "2297d486c5bd79984926f129afa7bfa719a3f3490aa7e0dc3752bceeb4ad4958",
+  "invalid_initramfs_seen": false,
+  "kernel_image_sha256": "8ab38b022f7504869443f2469878cd55656b08fb6c56946122710144fc1cc8fb",
+  "kernel_panic_seen": false,
+  "log_limit_bytes": 8388608,
+  "marker_exact_line_count": 0,
+  "network": false,
+  "observed_warning_counts": {
+    "autofs4_module_warning_count": 0,
+    "bpf_lsm_not_supported_count": 0,
+    "pids_max_read_warning_count": 0,
+    "selinux_avc_denial_count": 2,
+    "virtual_gpio_failure_count": 0
+  },
+  "passed": false,
+  "phase": "verify",
+  "physical_device_passthrough": false,
+  "physical_hardware_tested": false,
+  "profile_sha256": "dcd1abf073007a9c6747fb0f0f4d24730d25f3f09ad02982bbb4c76c2d7f5a3a",
+  "qemu_exit_code": 0,
+  "schema_version": 1,
+  "serial_log_bytes": 889309,
+  "serial_log_sha256": "f99f7fca24dab4d97ac12ab76a3c531544f76e06e6f61b61f6911bc33a4cb114",
+  "start_utc": "2026-11-23T03:49:08.912731+00:00",
+  "systemd_debug_logging_for_this_vm_only": true,
+  "systemd_lsm_bpf_attached_messages": [
+    "bpf-restrict-fs: LSM BPF program attached",
+    "bpf-restrict-fs: LSM BPF program attached"
+  ],
+  "termination_reason": "guest reported failure",
+  "timeout_seconds": 900,
+  "validation_failure_seen": true,
+  "vm_module_sig_enforce_argument": "module.sig_enforce=1"
+}

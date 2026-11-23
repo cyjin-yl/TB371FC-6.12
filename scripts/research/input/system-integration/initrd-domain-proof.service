@@ -1,0 +1,18 @@
+[Unit]
+Description=Record actual initrd systemd and udevd SELinux domains
+DefaultDependencies=no
+Requires=systemd-udevd.service
+After=systemd-udevd.service
+Before=initrd-switch-root.target
+ConditionPathExists=/etc/initrd-release
+
+[Service]
+Type=oneshot
+SELinuxContext=system_u:system_r:initrc_t:s0
+ExecStart=/usr/libexec/tb371fc-r4b-initrd-domain-proof.sh
+StandardOutput=journal+console
+StandardError=journal+console
+TimeoutStartSec=20s
+
+[Install]
+WantedBy=initrd.target

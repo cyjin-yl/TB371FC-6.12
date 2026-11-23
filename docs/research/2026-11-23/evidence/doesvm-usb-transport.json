@@ -1,0 +1,441 @@
+{
+  "capture": {
+    "candidate_meaning": "vendor IDs only; neither a tablet identity nor a fastboot/recovery test",
+    "lenovo_google_qualcomm_vendor_candidates": [],
+    "physical_tablet_identity_verified": false,
+    "scope_limit": "this host inventory at this instant only; no claim about other hosts",
+    "usb_device_count": 14,
+    "usb_devices": [
+      {
+        "attributes": {
+          "bConfigurationValue": {
+            "present": true,
+            "readable": true,
+            "value": "1"
+          },
+          "bDeviceClass": {
+            "present": true,
+            "readable": true,
+            "value": "00"
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "c077"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "046d"
+          },
+          "speed": {
+            "present": true,
+            "readable": true,
+            "value": "1.5"
+          }
+        },
+        "sysfs_name": "1-1"
+      },
+      {
+        "attributes": {
+          "bConfigurationValue": {
+            "present": true,
+            "readable": true,
+            "value": "1"
+          },
+          "bDeviceClass": {
+            "present": true,
+            "readable": true,
+            "value": "00"
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "c31d"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "046d"
+          },
+          "speed": {
+            "present": true,
+            "readable": true,
+            "value": "1.5"
+          }
+        },
+        "sysfs_name": "1-2"
+      },
+      {
+        "attributes": {
+          "bConfigurationValue": {
+            "present": true,
+            "readable": true,
+            "value": "1"
+          },
+          "bDeviceClass": {
+            "present": true,
+            "readable": true,
+            "value": "00"
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "7961"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "0e8d"
+          },
+          "speed": {
+            "present": true,
+            "readable": true,
+            "value": "480"
+          }
+        },
+        "sysfs_name": "5-1"
+      },
+      {
+        "attributes": {
+          "bConfigurationValue": {
+            "present": true,
+            "readable": true,
+            "value": "1"
+          },
+          "bDeviceClass": {
+            "present": true,
+            "readable": true,
+            "value": "00"
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "7961"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "0e8d"
+          },
+          "speed": {
+            "present": true,
+            "readable": true,
+            "value": "480"
+          }
+        },
+        "sysfs_name": "5-2"
+      },
+      {
+        "attributes": {
+          "bConfigurationValue": {
+            "present": true,
+            "readable": true,
+            "value": "1"
+          },
+          "bDeviceClass": {
+            "present": true,
+            "readable": true,
+            "value": "09"
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "7000"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "0557"
+          },
+          "speed": {
+            "present": true,
+            "readable": true,
+            "value": "480"
+          }
+        },
+        "sysfs_name": "9-2"
+      },
+      {
+        "attributes": {
+          "bConfigurationValue": {
+            "present": true,
+            "readable": true,
+            "value": "1"
+          },
+          "bDeviceClass": {
+            "present": true,
+            "readable": true,
+            "value": "00"
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "2419"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "0557"
+          },
+          "speed": {
+            "present": true,
+            "readable": true,
+            "value": "1.5"
+          }
+        },
+        "sysfs_name": "9-2.1"
+      },
+      {
+        "attributes": {
+          "bConfigurationValue": {
+            "present": true,
+            "readable": true,
+            "value": "1"
+          },
+          "bDeviceClass": {
+            "present": true,
+            "readable": true,
+            "value": "09"
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "0002"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "1d6b"
+          },
+          "speed": {
+            "present": true,
+            "readable": true,
+            "value": "480"
+          }
+        },
+        "sysfs_name": "usb1"
+      },
+      {
+        "attributes": {
+          "bConfigurationValue": {
+            "present": true,
+            "readable": true,
+            "value": "1"
+          },
+          "bDeviceClass": {
+            "present": true,
+            "readable": true,
+            "value": "09"
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "0003"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "1d6b"
+          },
+          "speed": {
+            "present": true,
+            "readable": true,
+            "value": "10000"
+          }
+        },
+        "sysfs_name": "usb10"
+      },
+      {
+        "attributes": {
+          "bConfigurationValue": {
+            "present": true,
+            "readable": true,
+            "value": "1"
+          },
+          "bDeviceClass": {
+            "present": true,
+            "readable": true,
+            "value": "09"
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "0003"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "1d6b"
+          },
+          "speed": {
+            "present": true,
+            "readable": true,
+            "value": "5000"
+          }
+        },
+        "sysfs_name": "usb2"
+      },
+      {
+        "attributes": {
+          "bConfigurationValue": {
+            "present": true,
+            "readable": true,
+            "value": "1"
+          },
+          "bDeviceClass": {
+            "present": true,
+            "readable": true,
+            "value": "09"
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "0002"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "1d6b"
+          },
+          "speed": {
+            "present": true,
+            "readable": true,
+            "value": "480"
+          }
+        },
+        "sysfs_name": "usb3"
+      },
+      {
+        "attributes": {
+          "bConfigurationValue": {
+            "present": true,
+            "readable": true,
+            "value": "1"
+          },
+          "bDeviceClass": {
+            "present": true,
+            "readable": true,
+            "value": "09"
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "0003"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "1d6b"
+          },
+          "speed": {
+            "present": true,
+            "readable": true,
+            "value": "5000"
+          }
+        },
+        "sysfs_name": "usb4"
+      },
+      {
+        "attributes": {
+          "bConfigurationValue": {
+            "present": true,
+            "readable": true,
+            "value": "1"
+          },
+          "bDeviceClass": {
+            "present": true,
+            "readable": true,
+            "value": "09"
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "0002"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "1d6b"
+          },
+          "speed": {
+            "present": true,
+            "readable": true,
+            "value": "480"
+          }
+        },
+        "sysfs_name": "usb5"
+      },
+      {
+        "attributes": {
+          "bConfigurationValue": {
+            "present": true,
+            "readable": true,
+            "value": "1"
+          },
+          "bDeviceClass": {
+            "present": true,
+            "readable": true,
+            "value": "09"
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "0003"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "1d6b"
+          },
+          "speed": {
+            "present": true,
+            "readable": true,
+            "value": "5000"
+          }
+        },
+        "sysfs_name": "usb6"
+      },
+      {
+        "attributes": {
+          "bConfigurationValue": {
+            "present": true,
+            "readable": true,
+            "value": "1"
+          },
+          "bDeviceClass": {
+            "present": true,
+            "readable": true,
+            "value": "09"
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "0002"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "1d6b"
+          },
+          "speed": {
+            "present": true,
+            "readable": true,
+            "value": "480"
+          }
+        },
+        "sysfs_name": "usb9"
+      }
+    ]
+  },
+  "observed_at_utc": "2026-11-23T03:01:23.513808+00:00",
+  "reboot_or_bootloader_command_issued": false,
+  "role_or_configuration_changed": false,
+  "schema_version": 1,
+  "scope": "host",
+  "serials_read": false,
+  "collector": {
+    "path": "scripts/research/capture_usb_transport.py",
+    "sha256": "70f7e9adc8f2acc2162510bec375ceff94710bfa7fb46da7c287a30db4336ea0"
+  }
+}

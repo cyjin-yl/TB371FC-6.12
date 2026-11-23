@@ -8,6 +8,15 @@ It assembles a NixOS userspace configuration, Mesa, Vulkan tools, a minimal
 Wayland stack, NetworkManager, Bluetooth tools and input diagnostics. It does
 not provide a TB371FC kernel or a bootable Android/recovery image.
 
+**Follow-up, 2026-11-23:** the complete custom system has now actually built
+through an explicitly qualified PRoot/QEMU ARM builder. Its realized closure
+contains 894 store paths / 3,751,712,072 NAR bytes; its ARM systemd 260.5
+executable runs under QEMU. The
+[complete-system report](../../docs/research/2026-11-23/nixos-system-build.md)
+and [recipes](../../scripts/research/nixos-system/) supersede the earlier
+"evaluation only" limitation below. No NixOS rootfs, PID 1 boot or tablet
+hardware result is implied, and the external boot artifacts remain unset.
+
 The official [26.05 channel revision](https://channels.nixos.org/nixos-26.05/git-revision)
 resolved to that commit on 2026-11-23 (Asia/Shanghai), corresponding to
 [`nixos-26.05.14979.94c3211b0ee8`](https://releases.nixos.org/nixos/26.05/nixos-26.05.14979.94c3211b0ee8/).
@@ -123,7 +132,7 @@ Artifact references are not automatically installed into this userspace
 profile. Wiring the matching module and firmware trees into the root/initrd,
 then validating that handoff, remains an explicit integration change.
 
-## Observed container results, 2026-11-23
+## Earlier package/evaluation checkpoint, 2026-11-23
 
 The complete record is
 [nixos-build.json](../../docs/research/2026-11-23/evidence/nixos-build.json).
@@ -179,9 +188,9 @@ qemu-aarch64 \
   /nix/store/67xf635fy5p8pryn15rwfc5iz63gk0kx-hello-2.12.3/bin/hello
 ```
 
-The full custom NixOS system output does not exist yet. Its derivation names
-an `aarch64-linux` builder, so this native x86_64 container still needs an
-explicitly configured AArch64 build route for those new derivations. Running
-one cached ARM program through QEMU does not supply that route automatically.
-No rootfs image was assembled, and no kernel, firmware, boot or tablet hardware
-acceptance is implied by these package results.
+At this earlier checkpoint the full custom NixOS system output did not exist.
+Its `aarch64-linux` derivations still required an explicitly configured ARM
+build route. The later complete-system experiment linked above supplies and
+tests that route; executing one cached ARM program alone would not do so.
+Neither checkpoint assembles a NixOS rootfs image or demonstrates its kernel,
+firmware, boot or tablet hardware integration.

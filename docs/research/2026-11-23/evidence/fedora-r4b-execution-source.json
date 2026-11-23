@@ -1,0 +1,93 @@
+{
+  "actual_recipe_manifest": {
+    "sha256": "660693cac452a8bb8ce6cee14c6381a98fcadb53e11165befa6c702e19e7ff05",
+    "size": 1856
+  },
+  "builder": "tb371fc-build-20261123",
+  "capture_utc": "2026-11-23T04:50:42.320001+00:00",
+  "historical_r4_base_recipe_manifest_sha256": "35fc0c3401cd1402bb2e851fb4223474ccefae08e520b6224e1af98ac3f1288e",
+  "old_sources_modified": false,
+  "physical_tablet_tested": false,
+  "profile_manifest": {
+    "sha256": "186af28df00e39617d9cb12030b881ca31846a228a9ed1f959da85bb75b13df7",
+    "size": 1173
+  },
+  "public_files": {
+    "assemble_system.py": {
+      "path": "scripts/research/input/system-integration/profiles/early-selinux-v5/assemble_system.py",
+      "sha256": "726cb330547b89520771a2caae436efef5c7584dfa7ec4fd0d999e1fd78a6daf",
+      "size": 4372
+    },
+    "boot_system_vm.py": {
+      "path": "scripts/research/input/system-integration/profiles/early-selinux-v5/boot_system_vm.py",
+      "sha256": "bdbe7dd769415bf79c86e931301e80c73a9f823c4130b484d03fa170d01e7f23",
+      "size": 16837
+    },
+    "early_initramfs.py": {
+      "path": "scripts/research/input/system-integration/profiles/early-selinux-v5/early_initramfs.py",
+      "sha256": "7484c51666e95f0b0456c500b1bc0f7a80f0c9686078c64d71da6370655b459a",
+      "size": 14680
+    },
+    "finalize_system.py": {
+      "path": "scripts/research/input/system-integration/profiles/early-selinux-v5/finalize_system.py",
+      "sha256": "2831d4514c704ea1a24b4cf4313f280e85f48f0fd0cfb883ce72fee5df914dae",
+      "size": 7749
+    },
+    "guest_pids_probe.py": {
+      "path": "scripts/research/input/system-integration/profiles/early-selinux-v5/guest_pids_probe.py",
+      "sha256": "ab3cb32c767cb724fd63b4377046fd0f8fa99da514f8e7fad2e4ee1cc82d1e9d",
+      "size": 2498
+    },
+    "guest_verify_system.py": {
+      "path": "scripts/research/input/system-integration/profiles/early-selinux-v5/guest_verify_system.py",
+      "sha256": "3070aa0d71c7572b152adc539cf0fb7025fca702e979469c56b6af98edc52452",
+      "size": 29219
+    },
+    "initrd-domain-proof.service": {
+      "path": "scripts/research/input/system-integration/initrd-domain-proof.service",
+      "sha256": "3d7b318d595f6d43745d0b91ad549d5a7c128ff6253b44e9a90868fa86a20000",
+      "size": 471
+    },
+    "initrd-domain-proof.sh": {
+      "path": "scripts/research/input/system-integration/initrd-domain-proof.sh",
+      "sha256": "c32748f557135f298649d4676681ce05aa977ff4ef02221906e233a72ab82e48",
+      "size": 1506
+    },
+    "probe_loaded_policy.py": {
+      "path": "scripts/research/input/system-integration/probe_loaded_policy.py",
+      "sha256": "f861a0930cb0a9151d99b657c09f05dd7d271a2d51638b3bf0cc2626845d3487",
+      "size": 8612
+    },
+    "run_pipeline.py": {
+      "path": "scripts/research/input/system-integration/profiles/early-selinux-v5/run_pipeline.py",
+      "sha256": "0d54280b239a05a336cfbc01124fc84901fb1d8db6543a7dd249f2b3c2d38067",
+      "size": 4256
+    },
+    "stage_system.py": {
+      "path": "scripts/research/input/system-integration/profiles/early-selinux-v5/stage_system.py",
+      "sha256": "6720804c62552bf7df757089384726fa147900a98930e6585280dada297b4cd6",
+      "size": 12244
+    },
+    "system_common.py": {
+      "path": "scripts/research/input/system-integration/profiles/early-selinux-v5/system_common.py",
+      "sha256": "368445f4200bde467a787f715fbd7303338f7ec8fec793a8b569c0c75a1c08ae",
+      "size": 3593
+    },
+    "verify_early_policy_initramfs.py": {
+      "path": "scripts/research/input/system-integration/verify_early_policy_initramfs.py",
+      "sha256": "58a5dba0186174c7442f73c2f8f0a2333599e6cbbcb1cf332169e5df558bfd1e",
+      "size": 27585
+    },
+    "verify_initramfs.py": {
+      "path": "scripts/research/rootfs/verify_initramfs.py",
+      "sha256": "263866a1943cd43116e69cb0a8b1081d6ccd1cc93ef98866a4b3eacc00bac58a",
+      "size": 20506
+    }
+  },
+  "remote_recipe": "/work/fedora-input-system-recipe-r4-v3",
+  "remote_source_overlay": "/work/fedora-r4-early-profile-source-v1",
+  "schema_version": 1,
+  "scope": "source identity and immutable recipe materialization; not VM success",
+  "source_packet_sha256": "3c8ce7a77564b3935bc5a4eef049766e43635ac81bc922da473a78c848a9490d",
+  "work": "/work/fedora-input-system-v5"
+}

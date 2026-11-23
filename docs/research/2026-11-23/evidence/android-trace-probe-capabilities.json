@@ -1,0 +1,99 @@
+{
+  "schema": "tb371fc-owner-trace-probe-readiness-v1",
+  "evidence_class": "device_android",
+  "capture": {
+    "schema": "tb371fc-android-trace-probe-capabilities-v1",
+    "captured_utc": "2026-11-23T03:32:30.472369+00:00",
+    "kernel": "4.19.157-perf+",
+    "scope": "compiled booleans and fixed interface metadata only; no BPF/perf/probe syscall or attachment",
+    "config": {
+      "CONFIG_BPF_SYSCALL": {
+        "matching_lines": [
+          "CONFIG_BPF_SYSCALL=y"
+        ],
+        "enabled": true,
+        "known_boolean": true
+      },
+      "CONFIG_BPF_EVENTS": {
+        "matching_lines": [
+          "CONFIG_BPF_EVENTS=y"
+        ],
+        "enabled": true,
+        "known_boolean": true
+      },
+      "CONFIG_BPF_JIT": {
+        "matching_lines": [
+          "CONFIG_BPF_JIT=y"
+        ],
+        "enabled": true,
+        "known_boolean": true
+      },
+      "CONFIG_KPROBES": {
+        "matching_lines": [
+          "# CONFIG_KPROBES is not set"
+        ],
+        "enabled": false,
+        "known_boolean": true
+      },
+      "CONFIG_KPROBE_EVENTS": {
+        "matching_lines": [],
+        "enabled": false,
+        "known_boolean": false
+      },
+      "CONFIG_PERF_EVENTS": {
+        "matching_lines": [
+          "CONFIG_PERF_EVENTS=y"
+        ],
+        "enabled": true,
+        "known_boolean": true
+      }
+    },
+    "config_source": {
+      "path": "/proc/config.gz",
+      "compressed_bytes": 38068,
+      "compressed_sha256": "20dcd5ebdb9908d83ee68593b56fc5723bdf287905284b16d1e6753c4a34da59",
+      "decoded_bytes": 171764,
+      "decoded_sha256": "23d3db565be3cd6cfc07bb90541d971dc70e6a6ce3516360155b8fd15590e726",
+      "raw_content_published": false
+    },
+    "config_status": "observed",
+    "kprobe_type": {
+      "path": "/sys/bus/event_source/devices/kprobe/type",
+      "value_read": false,
+      "exists": false,
+      "status": "absent"
+    },
+    "actions": {
+      "bpf_program_loaded": false,
+      "bpf_map_created": false,
+      "perf_event_open_called": false,
+      "probe_attached": false,
+      "trace_instance_created": false,
+      "kernel_memory_read": false,
+      "module_loaded": false,
+      "sysctl_written": false,
+      "debugfs_mounted": false,
+      "radio_restart_or_qmi_call": false
+    }
+  },
+  "acquisition_source": "import os,stat,json,hashlib,signal,zlib\nfrom datetime import datetime,timezone\nout={'schema':'tb371fc-android-trace-probe-capabilities-v1','captured_utc':datetime.now(timezone.utc).isoformat(),'kernel':os.uname().release,'scope':'compiled booleans and fixed interface metadata only; no BPF/perf/probe syscall or attachment','config':{}}\ndef timeout(*args):raise TimeoutError('metadata deadline')\nsignal.signal(signal.SIGALRM,timeout)\ntry:\n signal.setitimer(signal.ITIMER_REAL,1)\n with open('/proc/config.gz','rb') as f:b=f.read(1048577)\n if len(b)>1048576:raise ValueError('compressed config bound')\n d=zlib.decompressobj(16+zlib.MAX_WBITS);t=d.decompress(b,2097153)\n if len(t)>2097152 or not d.eof or d.unconsumed_tail:raise ValueError('config expansion bound')\n lines=t.decode().splitlines()\n for key in ['CONFIG_BPF_SYSCALL','CONFIG_BPF_EVENTS','CONFIG_BPF_JIT','CONFIG_KPROBES','CONFIG_KPROBE_EVENTS','CONFIG_PERF_EVENTS']:\n  vals=[v for v in lines if v.startswith(key+'=') or v=='# '+key+' is not set']\n  out['config'][key]={'matching_lines':vals,'enabled':vals==[key+'=y'],'known_boolean':vals in ([key+'=y'],['# '+key+' is not set'])}\n out['config_source']={'path':'/proc/config.gz','compressed_bytes':len(b),'compressed_sha256':hashlib.sha256(b).hexdigest(),'decoded_bytes':len(t),'decoded_sha256':hashlib.sha256(t).hexdigest(),'raw_content_published':False}\n out['config_status']='observed'\nexcept Exception as e:out['config_status']='unavailable';out['error_type']=type(e).__name__;out['errno']=getattr(e,'errno',None)\nfinally:signal.setitimer(signal.ITIMER_REAL,0)\np='/sys/bus/event_source/devices/kprobe/type'\nout['kprobe_type']={'path':p,'value_read':False}\ntry:\n signal.setitimer(signal.ITIMER_REAL,1)\n s=os.stat(p)\n out['kprobe_type'].update(exists=True,regular=stat.S_ISREG(s.st_mode),mode=oct(stat.S_IMODE(s.st_mode)),status='observed')\nexcept FileNotFoundError:out['kprobe_type'].update(exists=False,status='absent')\nexcept Exception as e:out['kprobe_type'].update(exists=None,status='unavailable',error_type=type(e).__name__,errno=getattr(e,'errno',None))\nfinally:signal.setitimer(signal.ITIMER_REAL,0)\nout['actions']={'bpf_program_loaded':False,'bpf_map_created':False,'perf_event_open_called':False,'probe_attached':False,'trace_instance_created':False,'kernel_memory_read':False,'module_loaded':False,'sysctl_written':False,'debugfs_mounted':False,'radio_restart_or_qmi_call':False}\nprint(json.dumps(out))\n",
+  "interpretation": {
+    "normal_perf_kprobe_attachment_gate_met": false,
+    "blocking_observations": [
+      "CONFIG_KPROBES explicitly disabled",
+      "kprobe perf event-source type interface absent"
+    ],
+    "kprobe_events_line_status": "not emitted in captured config, not represented as an explicit disabled line",
+    "existing_private_trace_instance_support_contradicted": false,
+    "other_bpf_program_types_assessed": false,
+    "cnss_cache_fields_observed": false,
+    "selected_bdf_filename": null
+  },
+  "limits": [
+    "Compiled BPF syscall/events/JIT and perf support does not supply disabled kprobe infrastructure, a functioning BPF program, permission to load one or a verified CNSS data-layout contract.",
+    "The existing private trace-instance experiment used available tracepoints. It does not establish arbitrary dynamic kprobe availability.",
+    "Only six exact config booleans and fixed kprobe/type file metadata were checked. The type value was not opened/read and no probe or BPF/perf syscall was run.",
+    "No raw complete config, arbitrary kernel memory, register, network identifier or firmware payload is published."
+  ],
+  "acquisition_source_sha256": "6f56a2c92ec194e061b739ce573a1845362090ce78eecde0f79e3733a38157a3"
+}

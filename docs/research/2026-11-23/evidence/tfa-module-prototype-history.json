@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "first_attempt": {
+    "prepare": {
+      "job": {
+        "command": [
+          "python3",
+          "-B",
+          "/src/scripts/research/audio/tfa_module_prototype.py",
+          "prepare"
+        ],
+        "start_utc": "2026-11-23T04:28:46.595304+00:00",
+        "exit_code": 0,
+        "elapsed_seconds": 22.236116539977957
+      },
+      "metadata_sha256": "259b98da6897d8e75adda18136dd251c02563cc149f5b4c56f69281030b01425",
+      "log_sha256": "a7b94358bbc2ade3779b47c593712b66ec27946c4dc79de68a12aa13f3bebe67",
+      "log": "TFA_PROTOTYPE_PREPARED\n"
+    },
+    "build": {
+      "job": {
+        "command": [
+          "python3",
+          "-B",
+          "/src/scripts/research/audio/tfa_module_prototype.py",
+          "build"
+        ],
+        "start_utc": "2026-11-23T04:29:08.909685+00:00",
+        "exit_code": 2,
+        "elapsed_seconds": 5.043483415967785
+      },
+      "metadata_sha256": "7a9b41fd367b7c83db659314d1f83afd996cc0645ba8ab928e6d81dda293ea3a",
+      "log_sha256": "436e6ae83e316a897cd24dbe875d7d9870ee178303066eb21495c0a2dc0b1979",
+      "log": "make: Entering directory '/work/tfa-module-prototype-v1/kernel-source'\nmake: jobserver mkfifo: /work/tmp/GMfifo214513: Permission denied\nmake[1]: Entering directory '/work/tfa-module-prototype-v1/kernel-out'\n  CC [M]  /work/tfa-module-prototype-v1/module/tfa98xx.o\n  CC [M]  /work/tfa-module-prototype-v1/module/tfa_container.o\nIn file included from /work/tfa-module-prototype-v1/module/tfa_container.c:12:\nIn file included from /work/tfa-module-prototype-v1/module/tfa_container.h:26:\nIn file included from /work/tfa-module-prototype-v1/module/tfa98xx_parameters.h:26:\nIn file included from /work/tfa-module-prototype-v1/kernel-source/include/linux/types.h:6:\n/work/tfa-module-prototype-v1/kernel-source/include/uapi/linux/types.h:5:10: fatal error: 'asm/types.h' file not found\n    5 | #include <asm/types.h>\n      |          ^~~~~~~~~~~~~\nIn file included from /work/tfa-module-prototype-v1/module/tfa98xx.c:14:\nIn file included from /work/tfa-module-prototype-v1/kernel-source/include/linux/module.h:12:\nIn file included from /work/tfa-module-prototype-v1/kernel-source/include/linux/list.h:5:\nIn file included from /work/tfa-module-prototype-v1/kernel-source/include/linux/container_of.h:5:\nIn file included from /work/tfa-module-prototype-v1/kernel-source/include/linux/build_bug.h:5:\nIn file included from /work/tfa-module-prototype-v1/kernel-source/include/linux/compiler.h:301:\nIn file included from /work/tfa-module-prototype-v1/kernel-source/arch/arm64/include/asm/rwonce.h:71:\nIn file included from /work/tfa-module-prototype-v1/kernel-source/include/asm-generic/rwonce.h:26:\nIn file included from /work/tfa-module-prototype-v1/kernel-source/include/linux/kasan-checks.h:5:\nIn file included from /work/tfa-module-prototype-v1/kernel-source/include/linux/types.h:6:\n/work/tfa-module-prototype-v1/kernel-source/include/uapi/linux/types.h:5:10: fatal error: 'asm/types.h' file not found\n    5 | #include <asm/types.h>\n      |          ^~~~~~~~~~~~~\n1 error generated.\nmake[3]: *** [/work/tfa-module-prototype-v1/kernel-source/scripts/Makefile.build:229: /work/tfa-module-prototype-v1/module/tfa_container.o] Error 1\nmake[3]: *** Waiting for unfinished jobs....\n1 error generated.\nmake[3]: *** [/work/tfa-module-prototype-v1/kernel-source/scripts/Makefile.build:229: /work/tfa-module-prototype-v1/module/tfa98xx.o] Error 1\nmake[2]: *** [/work/tfa-module-prototype-v1/kernel-source/Makefile:1982: /work/tfa-module-prototype-v1/module] Error 2\nmake[1]: *** [/work/tfa-module-prototype-v1/kernel-source/Makefile:224: __sub-make] Error 2\nmake[1]: Leaving directory '/work/tfa-module-prototype-v1/kernel-out'\nmake: *** [Makefile:224: __sub-make] Error 2\nmake: Leaving directory '/work/tfa-module-prototype-v1/kernel-source'\n"
+    }
+  },
+  "successful_inspection": {
+    "job": {
+      "command": [
+        "python3",
+        "-B",
+        "/work/tfa-module-prototype-recipe-v2/tfa_module_prototype.py",
+        "inspect"
+      ],
+      "start_utc": "2026-11-23T04:31:14.710836+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 0.470848435012158
+    },
+    "metadata_sha256": "7b9367deccd31768cdd97657a6444590b8be1d8ada8df970f2a63ef385236359",
+    "log_sha256": "e8557a58b9aaf7af04562e6a3c4d58f29e3584040bca621a8e7460f344086969",
+    "log": "{\"compiled\": true, \"module_sha256\": \"1b42be5150332798a12925aa5c3bdfdec5bb07bb764d07c11fa317c8a7c99dba\", \"imported_crcs\": 75, \"btf\": true, \"physical_audio_tested\": false}\n"
+  },
+  "derivation": {
+    "derived_path": "/work/tfa-module-prototype-recipe-v2/tfa_module_prototype.py",
+    "derived_sha256": "ce5f8a1619086492336d612262a857354e101ca9ad6cf460e4a5ed0b15a9c9b5",
+    "driver_source_changes": false,
+    "first_failed_attempt_modified": false,
+    "frozen_r4_changed": false,
+    "schema_version": 1,
+    "substitutions": {
+      "               SOURCE_DATE_EPOCH='1795392000')\n": "               SOURCE_DATE_EPOCH='1795392000', TMPDIR=str(WORK / 'tmp'))\n",
+      "        subprocess.run(['cp', '-a', '--reflink=auto', str(path), str(output / name)], check=True)\n": "        (output / name).parent.mkdir(parents=True, exist_ok=True)\n        subprocess.run(['cp', '-a', '--reflink=auto', str(path), str(output / name)], check=True)\n",
+      "    WORK.mkdir()\n": "    WORK.mkdir()\n    temporary = WORK / \"tmp\"\n    temporary.mkdir(mode=0o700)\n    os.chown(temporary, 1000, 1000)\n",
+      "    members = ('.config', 'Makefile', 'Module.symvers', 'System.map', 'vmlinux', 'include', 'scripts', 'tools')\n": "    members = ('.config', 'Makefile', 'Module.symvers', 'System.map', 'vmlinux', 'include', 'scripts', 'tools', 'arch/arm64/include')\n",
+      "Path('/work/tfa-module-prototype-jobs-v1')": "Path('/work/tfa-module-prototype-jobs-v2')",
+      "Path('/work/tfa-module-prototype-v1')": "Path('/work/tfa-module-prototype-v2')"
+    },
+    "template_sha256": "73a4a3f48ee95626598dcea2df95963208e5536d1da6af6a1becfe6e8fee968d"
+  },
+  "warning_count": 35,
+  "warning_categories": {
+    "-Wunused-function": 1,
+    "-Wmissing-prototypes": 23,
+    "-Wenum-conversion": 10,
+    "-Wunused-variable": 1
+  },
+  "warnings": [
+    "/work/tfa-module-prototype-v2/module/tfa_container.c:288:27: warning: unused function 'tfaContWriteVstep' [-Wunused-function]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:559:20: warning: no previous prototype for function 'tfa98xx_faim_protect' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:609:20: warning: no previous prototype for function 'tfa98xx_set_osc_powerdown' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:625:20: warning: no previous prototype for function 'tfa98xx_update_lpm' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:639:5: warning: no previous prototype for function 'tfa98xx_powerswitch_is_enabled' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:782:6: warning: no previous prototype for function 'tfa2_manual_mtp_cpy' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:3139:9: warning: implicit conversion from enumeration type 'enum tfa_error' to different enumeration type 'enum Tfa98xx_Error' [-Wenum-conversion]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:3169:9: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:3182:10: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:3184:9: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:3729:10: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:3738:10: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:3771:10: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:3818:6: warning: unused variable 'cold' [-Wunused-variable]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:3890:9: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:3894:9: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]",
+    "/work/tfa-module-prototype-v2/module/tfa_dsp.c:4137:10: warning: implicit conversion from enumeration type 'enum tfa_error' to different enumeration type 'enum Tfa98xx_Error' [-Wenum-conversion]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:112:5: warning: no previous prototype for function 'tfa_set_swprofile' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:187:6: warning: no previous prototype for function 'tfa_set_ops_defaults' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:265:6: warning: no previous prototype for function 'tfanone_ops' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:499:20: warning: no previous prototype for function 'tfa9912_reg_write' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:546:6: warning: no previous prototype for function 'tfa9912_ops' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:688:6: warning: no previous prototype for function 'tfa9872_ops' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:835:6: warning: no previous prototype for function 'tfa9873_ops' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:1005:6: warning: no previous prototype for function 'tfa9874_ops' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:1106:20: warning: no previous prototype for function 'tfa9875_tfa_status' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:1212:6: warning: no previous prototype for function 'tfa9875_ops' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:1358:6: warning: no previous prototype for function 'tfa9878_ops' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:1544:6: warning: no previous prototype for function 'tfa9888_ops' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:1692:6: warning: no previous prototype for function 'tfa9896_ops' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:1800:6: warning: no previous prototype for function 'tfa9897_ops' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:1839:6: warning: no previous prototype for function 'tfa9895_ops' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:1870:6: warning: no previous prototype for function 'tfa9891_ops' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:2023:6: warning: no previous prototype for function 'tfa9890_ops' [-Wmissing-prototypes]",
+    "/work/tfa-module-prototype-v2/module/tfa_init.c:2189:6: warning: no previous prototype for function 'tfa9894_ops' [-Wmissing-prototypes]"
+  ],
+  "original_report_sha256": "29fb3ac7b8952a30cf3bd5c70a27d1e6462b4d61edbfad3302ea6bdee3e9bec0",
+  "prototype_installed_or_loaded": false
+}

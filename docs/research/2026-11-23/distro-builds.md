@@ -1,5 +1,23 @@
 # Reproducible build routes: handoff kernel, Nura/postmarketOS, Fedora and NixOS
 
+## Earlier experiment snapshot and subsequent results
+
+The experiment body below is retained from the earlier build stage. Its
+statements about incomplete full-system builds describe that stage, not the
+latest project status. Before this navigation notice was added, the complete
+report's SHA-256 was
+`8a106a24fe73e022accf1dc489074bce9cac0e46f53d0d21d510c7b49500bb4f`.
+
+Subsequent work completed a [Fedora systemd/Enforcing boot in generic ARM64
+QEMU](fedora-system-integration.md) and the [full 894-path NixOS system
+toplevel closure](nixos-system-build.md). The NixOS root filesystem, activation
+and PID 1 boot remain untested. The [dated overview](README.md) records later
+combined-kernel tests and retained failures. None of those follow-ups adds an
+owner-tablet Linux hardware pass. The original experiment text and results
+below have not been rewritten.
+
+## Original experiment record
+
 Research date: 2026-11-23, Asia/Shanghai. Repository source baseline:
 `d157b92721fbeeab823f56a677b3593babf3afe6`.
 

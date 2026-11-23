@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "evidence_class": "source_and_existing_generic_vm_log",
+  "scope": "Read-only diagnosis of four warning families in frozen research1/research2; no configuration, rootfs, helper or VM changed by this diagnostic.",
+  "kernel_version": "6.12.114",
+  "configs": [
+    {
+      "profile": "research1",
+      "container": "tb371fc-build-20261123",
+      "path": "/work/artifacts/kernel.config",
+      "build_config_path": "/work/kernel-out/.config",
+      "bytes": 216617,
+      "sha256": "1929caefadeb28cf84174c7fe7c100ab7251b3adcfdf547b2165c229b50f66da",
+      "build_and_artifact_equal": true
+    },
+    {
+      "profile": "research2-display",
+      "container": "tb371fc-build-ssd-20261123",
+      "path": "/work/research2-display/artifacts/kernel.config",
+      "build_config_path": "/work/research2-display/kernel-out/.config",
+      "bytes": 216625,
+      "sha256": "e024e6d2094180d31d2b3f64a643801d95c544c0bb9593a64b6d117c2ffb86a8",
+      "build_and_artifact_equal": true
+    }
+  ],
+  "common_config_values": {
+    "CGROUPS": "y",
+    "CGROUP_PIDS": "n",
+    "AUTOFS_FS": "n",
+    "GPIO_PL061": "n",
+    "KEYBOARD_GPIO": "y",
+    "ARM_AMBA": "y",
+    "GPIOLIB": "y",
+    "OF_GPIO": "y",
+    "BPF_SYSCALL": "y",
+    "BPF_JIT": "y",
+    "CGROUP_BPF": "y",
+    "PERF_EVENTS": "y",
+    "SECURITY": "y",
+    "SECURITYFS": "y",
+    "KPROBES": "n",
+    "FTRACE": "n",
+    "DEBUG_KERNEL": "n",
+    "BPF_EVENTS": "not emitted / not enabled",
+    "BPF_LSM": "not emitted / not enabled",
+    "DEBUG_INFO_BTF": "not emitted / not enabled",
+    "LSM": "landlock,lockdown,yama,loadpin,safesetid,selinux,smack,tomoyo,apparmor,ipe,bpf"
+  },
+  "vm": {
+    "log_path": "/work/fedora-system-integration-v1/vm-verify-01/serial.log",
+    "bytes": 75606,
+    "sha256": "688895559c3a7ae7e155b898c95fe0f9e137813ada422408292e0c1ed7a730e9",
+    "warning_lines": {
+      "autofs": [
+        263,
+        508
+      ],
+      "bpf_lsm": [
+        283,
+        524
+      ],
+      "pids_max": [
+        396,
+        398,
+        452,
+        454,
+        460,
+        482,
+        484,
+        528,
+        530,
+        534,
+        536,
+        655,
+        657,
+        903,
+        905,
+        969,
+        978,
+        985,
+        994,
+        1003,
+        1010,
+        1012,
+        1018,
+        1020,
+        1032,
+        1034,
+        1059,
+        1061,
+        1077,
+        1142,
+        1195,
+        1197
+      ],
+      "gpio": [
+        344
+      ]
+    },
+    "counts": {
+      "autofs": 2,
+      "bpf_lsm": 2,
+      "pids_max": 32,
+      "gpio": 1
+    },
+    "result_path": "/work/fedora-system-integration-v1/vm-verify-01/result.json",
+    "passed": true,
+    "qemu_exit_code": 0,
+    "guest_gates_match": true,
+    "kernel_release": "6.12.114-tb371fc-research1",
+    "systemd": "262 (262.1-1.fc45)",
+    "qemu": "10.0.13 (Debian 1:10.0.13+ds-0+deb13u1)",
+    "qemu_version_source": "separate read-only builder qemu-system-aarch64 --version query",
+    "selinux": "Enforcing",
+    "pid1_context": "system_u:system_r:init_t:s0",
+    "failed_units": [],
+    "board_dtb_used": false,
+    "physical_hardware_tested": false
+  },
+  "findings": [
+    {
+      "id": "pids-controller",
+      "warning": "Failed to read pids.max for control group ..., ignoring: No data available",
+      "count": 32,
+      "classification": "missing kernel functionality; warning triggered while individual units are stopped",
+      "root_cause": "CONFIG_CGROUP_PIDS=n excludes pids.o and the PIDs controller registration. systemd 262.1 unit_kill_context() reads pids.max before a SIGKILL phase to temporarily prevent new processes; cg_get_attribute_as_uint64() maps missing-file ENOENT to ENODATA.",
+      "source_locations": [
+        "kernel/cgroup/Makefile:5",
+        "include/linux/cgroup_subsys.h:56-58",
+        "kernel/cgroup/pids.c:395-401,454-463",
+        "systemd v262.1 src/core/unit.c:5114-5140",
+        "systemd v262.1 src/basic/cgroup-util.c:1433-1444"
+      ],
+      "timing": "First occurrences are in initrd-parse-etc and initrd-cleanup, before switch-root; later occurrences also accompany shutdown. Not merely a final power-off race.",
+      "limitation": "The root cgroup intentionally lacks pids.max; these warnings name non-root unit cgroups. Individual warning lines alone cannot rule out cgroup removal, but controller absence is independently established.",
+      "future_config": {
+        "CONFIG_CGROUP_PIDS": "y"
+      },
+      "runtime_acceptance": [
+        "pids present in /sys/fs/cgroup/cgroup.controllers",
+        "pids.max readable in an active non-root service cgroup",
+        "no pids.max warning in the complete new generic-VM serial log"
+      ]
+    },
+    {
+      "id": "autofs",
+      "warning": "Failed to find module 'autofs4'",
+      "count": 2,
+      "classification": "missing kernel automount implementation",
+      "root_cause": "CONFIG_AUTOFS_FS=n. Linux 6.12.114 fs/autofs/Makefile builds autofs4.o from CONFIG_AUTOFS_FS; systemd kmod-setup explicitly asks for autofs4 before udev can auto-load it.",
+      "source_locations": [
+        "fs/autofs/Kconfig:1",
+        "fs/autofs/Makefile:6-8",
+        "systemd v262.1 src/core/kmod-setup.c:186-189"
+      ],
+      "future_config": {
+        "CONFIG_AUTOFS_FS": "m"
+      },
+      "runtime_acceptance": [
+        "autofs4.ko installed with the exact new release and included in initramfs",
+        "/sys/class/misc/autofs exists after module load",
+        "no autofs4 missing-module warning in new log"
+      ],
+      "limitation": "A boot without failed units does not establish that automount units work."
+    },
+    {
+      "id": "bpf-lsm",
+      "warning": "bpf-restrict-fs: BPF LSM hook not enabled in the kernel, BPF LSM not supported.",
+      "count": 2,
+      "classification": "missing optional BPF LSM filesystem-restriction functionality",
+      "root_cause": "The LSM order string includes bpf but CONFIG_BPF_LSM is not enabled. BPF_LSM depends on BPF_EVENTS; BPF_EVENTS is inside FTRACE and needs (KPROBE_EVENTS || UPROBE_EVENTS) && PERF_EVENTS. Current FTRACE=n and KPROBES=n prevent that chain.",
+      "source_locations": [
+        "kernel/bpf/Kconfig:92-102",
+        "kernel/trace/Kconfig:182-189,694-701,733-755",
+        "security/bpf/Makefile:5",
+        "security/bpf/hooks.c:39",
+        "systemd v262.1 src/core/bpf-restrict-fs.c:39-46,69-80",
+        "systemd v262.1 src/shared/lsm-util.c:11-43"
+      ],
+      "minimal_future_config": {
+        "CONFIG_FTRACE": "y",
+        "CONFIG_KPROBES": "y",
+        "CONFIG_KPROBE_EVENTS": "y",
+        "CONFIG_BPF_EVENTS": "derived y by Kconfig",
+        "CONFIG_UPROBE_EVENTS": "n",
+        "CONFIG_BPF_LSM": "y",
+        "CONFIG_DEBUG_KERNEL": "y",
+        "CONFIG_DEBUG_INFO_DWARF4": "y",
+        "CONFIG_DEBUG_INFO_BTF": "y"
+      },
+      "retained_dependencies": [
+        "CONFIG_PERF_EVENTS=y",
+        "CONFIG_BPF_SYSCALL=y",
+        "CONFIG_BPF_JIT=y",
+        "CONFIG_SECURITY=y",
+        "CONFIG_SECURITYFS=y",
+        "existing LSM order including selinux and bpf",
+        "CONFIG_BPF_UNPRIV_DEFAULT_OFF=y"
+      ],
+      "btf_note": "BTF is not a direct CONFIG_BPF_LSM Kconfig dependency; it is retained for the actual BTF-based LSM program attach/CO-RE runtime. DWARF4 with pahole >=1.16 satisfies the 6.12 BTF Kconfig; installed SSD pahole is 1.30. Full function tracing is not required.",
+      "runtime_acceptance": [
+        "mounted securityfs active LSM list contains selinux and bpf",
+        "/sys/kernel/btf/vmlinux is present",
+        "systemd reports LSM BPF program attached without load/link failure",
+        "SELinux remains Enforcing and PID1 remains init_t"
+      ],
+      "limitation": "CGROUP_BPF=y and a successful SELinux boot do not imply BPF LSM is compiled, active or attached."
+    },
+    {
+      "id": "qemu-pl061",
+      "warning": "platform gpio-keys: deferred probe pending: gpio-keys: failed to get gpio",
+      "count": 1,
+      "classification": "missing driver for the generic QEMU virt GPIO supplier",
+      "root_cause": "QEMU virt.c creates a PL061 device and points gpio-keys/poweroff at it. CONFIG_KEYBOARD_GPIO=y binds the consumer, but CONFIG_GPIO_PL061=n omits its GPIO supplier; gpiolib-of returns -EPROBE_DEFER when the GPIO device is absent.",
+      "source_locations": [
+        "drivers/gpio/Kconfig:544-550",
+        "drivers/input/keyboard/gpio_keys.c:520-523",
+        "drivers/gpio/gpiolib-of.c:415-418",
+        "QEMU v10.0.13 hw/arm/virt.c:1024-1040,1079-1127,2421-2425"
+      ],
+      "future_config": {
+        "CONFIG_GPIO_PL061": "y"
+      },
+      "runtime_acceptance": [
+        "PL061 GPIO supplier registered",
+        "QEMU GPIO power-key input device enumerated",
+        "no gpio-keys deferred-probe warning in complete new VM log"
+      ],
+      "limitation": "This virtual power key is not the Lenovo PMIC GPIO/key hardware. Fixing it provides no physical tablet-key acceptance."
+    }
+  ],
+  "kernel_sources": {
+    "research1_root": "/work/linux-6.12.114-research1",
+    "research2_root": "/work/research2-display/linux-6.12.114-research2-display",
+    "files": {
+      "init/Kconfig": {
+        "bytes": 67487,
+        "sha256": "d61b85d828eb2822d923f4fe7e91057cb8c91d48518d453df996258a51ff88ba"
+      },
+      "kernel/cgroup/Makefile": {
+        "bytes": 365,
+        "sha256": "f11270ee7f1f83bdb2cc8595a434dd83fe67aabb3a90ef60b0b1a13d0eba5623"
+      },
+      "include/linux/cgroup_subsys.h": {
+        "bytes": 1259,
+        "sha256": "6bfb6da107b4f67e8bfc86002ac8066c3c41141dc9e3804c1ee9cabdbfdd2c9c"
+      },
+      "kernel/cgroup/pids.c": {
+        "bytes": 11985,
+        "sha256": "ac7cc88499875818cf2f1453c2d0e8066f39f69cafaa80e5d1403fa82e6f1e63"
+      },
+      "fs/autofs/Kconfig": {
+        "bytes": 898,
+        "sha256": "4c8cf6674ab11907f233701d430fa8b0e5330f718457de3c45e778a90ea13e26"
+      },
+      "fs/autofs/Makefile": {
+        "bytes": 213,
+        "sha256": "8f143584d9a9caf2d32913aa26874eab5d83ed659a68f6e9c069857b226eca8d"
+      },
+      "fs/autofs/init.c": {
+        "bytes": 862,
+        "sha256": "9cbe89f782ff64c5c362f0b10bfa2e7d88431cd739122c9ed029460f33e90f08"
+      },
+      "kernel/bpf/Kconfig": {
+        "bytes": 3125,
+        "sha256": "04169c0238a9f5f6e8a302139a2052be7eb661a7eaf740c749fd5e26aaa38777"
+      },
+      "kernel/trace/Kconfig": {
+        "bytes": 39362,
+        "sha256": "03a26f45a064fb441347a69c0107cd112d789aa322f088abbe4319afbbe9a24c"
+      },
+      "lib/Kconfig.debug": {
+        "bytes": 102474,
+        "sha256": "34f3bbb0b347005aa63f04536a3acc61e1c973a2985992de3ee899b3e6744942"
+      },
+      "security/bpf/Makefile": {
+        "bytes": 104,
+        "sha256": "ef1e112647319c33457e1e10275edac62d3e702c530d95a3f274111bffaddaca"
+      },
+      "security/bpf/hooks.c": {
+        "bytes": 1014,
+        "sha256": "6706df011df73db12e2b35ad1433fc25059fcf5fbf20abb9ef5e089c9ac58e00"
+      },
+      "drivers/gpio/Kconfig": {
+        "bytes": 57434,
+        "sha256": "57c42ba3526e63c987e467066f8b905825392940c0d038e729c73ec12b67278f"
+      },
+      "drivers/input/keyboard/gpio_keys.c": {
+        "bytes": 28330,
+        "sha256": "e8d7bf398d4ee41b22b8856b5e54740906d3e5b45c9ae8803494484afb0e178f"
+      },
+      "drivers/gpio/gpiolib-of.c": {
+        "bytes": 33528,
+        "sha256": "ed16a64818bfc6ea6e3b5a4d22cca70b9a240e16b8929970dab1f53b3d7c4ecc"
+      },
+      "Documentation/bpf/prog_lsm.rst": {
+        "bytes": 4562,
+        "sha256": "33d4aa66a274e8e1c30b56e2b8751fd196c30080ab2e3cc7d8cd6bb3b7660532"
+      }
+    },
+    "first_15_source_files_equal_across_research1_research2": true
+  },
+  "official_sources": {
+    "systemd_tag": "v262.1",
+    "systemd_files": [
+      {
+        "url": "https://raw.githubusercontent.com/systemd/systemd/v262.1/src/core/cgroup.c",
+        "bytes": 179588,
+        "sha256": "085612bcfb9203d86f04c58b872174090d29602ad4caf2f7cefa8027bd35bae5"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/systemd/systemd/v262.1/src/core/bpf-restrict-fs.c",
+        "bytes": 9766,
+        "sha256": "e99314f8c40795ca85959fbb151d40a9ef5446b1ec32b377039fe500b582aa14"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/systemd/systemd/v262.1/src/core/kmod-setup.c",
+        "bytes": 10205,
+        "sha256": "5f8b8295768d8d201ce0a9e2c13c96c440a0502079e40f6b9ac609c46567c6a9"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/systemd/systemd/v262.1/src/basic/cgroup-util.c",
+        "bytes": 51868,
+        "sha256": "dad67cb4059fce2602a50652f080652e5861d61cd9664b64f8eec11c30115d81"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/systemd/systemd/v262.1/src/core/unit.c",
+        "bytes": 263849,
+        "sha256": "47e98d394462e05bf4bc0be2d1105fa8c21044cc9f5ebf00464f1742a92efcb7"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/systemd/systemd/v262.1/src/shared/lsm-util.c",
+        "bytes": 1623,
+        "sha256": "1ddaa3230be40e25024a982740b4d27c35a084e19131387144c1910b1ab7f5fd"
+      }
+    ],
+    "qemu_source": {
+      "url": "https://raw.githubusercontent.com/qemu/qemu/v10.0.13/hw/arm/virt.c",
+      "bytes": 136308,
+      "sha256": "25ba8b095c0999cc1e2e9b89e9e75e990c8aa74da2a54c48914f30befdc0e67c"
+    },
+    "fedora_downstream_source_patch_identity_checked": false,
+    "source_scope": "Official upstream versioned source cross-check; exact installed Fedora binary version and warning strings are separately observed."
+  },
+  "non_claims": [
+    "No frozen kernel configuration was changed by this diagnosis.",
+    "No new generic VM or physical tablet boot was run for this diagnosis.",
+    "Future configuration values are recommendations, not existing research1/research2 features.",
+    "Existing full Fedora VM pass remains valid within its recorded gates; it does not cover these missing optional facilities."
+  ]
+}
+

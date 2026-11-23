@@ -1,0 +1,1355 @@
+{
+  "boundaries": [
+    "The map-only candidate source35 identity is0dd46; its new offline conversion33 identity bfe189 is not the earlier aab7 conversion or the older runtime9c79 export.",
+    "Every AV API returned0; two necessary permissions and one diagnostic permission were denied. Exit0 means the query completed, not that the whole candidate contract passed.",
+    "No extra permission was added, no policy was loaded, and no new VM was launched by this query.",
+    "The original candidate, frozen rootfs files and prior query sources/results were not modified.",
+    "The direct QEMU process ended; there is no background query job."
+  ],
+  "candidate_required_contract_complete": false,
+  "completed": true,
+  "date_utc": "2026-11-23",
+  "execution": {
+    "command": [
+      "/usr/bin/qemu-aarch64",
+      "-L",
+      "/work/fedora-input-system-v3/rootfs",
+      "/work/fedora-input-system-v3/rootfs/usr/bin/python3",
+      "-I",
+      "-B",
+      "/work/selinux-postreload-contract-v1/query_postreload_contract.py",
+      "--policy",
+      "/work/selinux-postreload-contract-v1/inputs/policy.35",
+      "--library",
+      "/work/selinux-postreload-contract-v1/inputs/libsepol.so.2"
+    ],
+    "elapsed_seconds": 5.9124656149651855,
+    "exit_code": 0,
+    "inputs": [
+      {
+        "copy": "/work/selinux-postreload-contract-v1/inputs/policy.35",
+        "sha256": "0dd46af3240a02d1c7399c46facf30cce2a71a471fb70c0d0f5e58e571e53c74",
+        "size": 3835432,
+        "source": "/work/selinux-reload-map-20261123/build-02/candidate/etc/selinux/targeted/policy/policy.35"
+      },
+      {
+        "copy": "/work/selinux-postreload-contract-v1/inputs/libsepol.so.2",
+        "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+        "size": 802880,
+        "source": "/work/selinux-runtime-contract-v1/inputs/libsepol.so.2"
+      }
+    ],
+    "kernel_policy_loaded_or_written": false,
+    "proot_used": false,
+    "runtime_files": [
+      {
+        "path": "/work/fedora-input-system-v3/rootfs/usr/bin/python3.15",
+        "sha256": "a12cb0a1160abfbc59d3336fb3713562977fd862b9a3eafc2553c89b887a8d15",
+        "size": 68968
+      },
+      {
+        "path": "/work/fedora-input-system-v3/rootfs/usr/lib64/libpython3.15.so.1.0",
+        "sha256": "0e3dd3fe4f34e527ebc14f4cdd390d44d583dbda5b9ab99c02fc5c226f7e51f4",
+        "size": 7229904
+      },
+      {
+        "path": "/work/fedora-input-system-v3/rootfs/usr/lib64/libc.so.6",
+        "sha256": "620f6221d0cb0a7bc7d0674bcb0682a0b42f7fb593f596f3bf646f02b10cb798",
+        "size": 2303728
+      },
+      {
+        "path": "/work/fedora-input-system-v3/rootfs/usr/lib/ld-linux-aarch64.so.1",
+        "sha256": "8821728d15728a7046deef6d4183fb343716901e0e8119fff53d6b51e2605547",
+        "size": 928784
+      }
+    ],
+    "schema_version": 1,
+    "source": {
+      "path": "/work/selinux-postreload-contract-v1/query_postreload_contract.py",
+      "sha256": "c2e9f490f44202130271fec12626573d7608be39ca7d04c9ee1bc7d60acbe8aa",
+      "size": 12816
+    },
+    "started_utc": "2026-11-23T06:13:09.586887+00:00",
+    "stderr": {
+      "path": "/work/selinux-postreload-contract-v1/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "stdout": {
+      "path": "/work/selinux-postreload-contract-v1/stdout.json",
+      "sha256": "e4ef29089de87797ccb7eb71a40e33287bcd6c5111da1f16e5a1889424e0f4fe",
+      "size": 35034
+    }
+  },
+  "input_policy": {
+    "sha256": "0dd46af3240a02d1c7399c46facf30cce2a71a471fb70c0d0f5e58e571e53c74",
+    "size": 3835432
+  },
+  "interpretation": {
+    "actual_relabel_and_journal_map_success_not_proven": true,
+    "all_other_queried_required_permissions_allowed": true,
+    "libselinux_call_path_and_boot_behavior_owned_by_source_audit": "The matching Fedora libselinux setter cache starts unset after exec. getcon_raw reads do not fill it. The first setcon_raw therefore writes current and reaches both kernel checks; this is a source-derived future path, not a newly observed VM crash.",
+    "necessary_denials": [
+      "init_t self process setcurrent",
+      "init_t self process dyntransition"
+    ],
+    "old_syslogd_tmpfs_file_map_still_denied": true,
+    "same_sid_kernel_bypass_exists": false,
+    "same_sid_kernel_permission_checks": "hooks.c6676-6678 checks self SETCURRENT; current-attribute branch6751 onward checks source/requested DYNTRANSITION at6762-6764 even when the SIDs match",
+    "syslogd_tmpfs_source_presence_is_not_asserted": true
+  },
+  "kernel_source": {
+    "excerpts": [
+      {
+        "start_line": 6648,
+        "text": "6648: static int selinux_lsm_setattr(u64 attr, void *value, size_t size)\n6649: {\n6650: \tstruct task_security_struct *tsec;\n6651: \tstruct cred *new;\n6652: \tu32 mysid = current_sid(), sid = 0, ptsid;\n6653: \tint error;\n6654: \tchar *str = value;\n6655: \n6656: \t/*\n6657: \t * Basic control over ability to set these attributes at all.\n6658: \t */\n6659: \tswitch (attr) {\n6660: \tcase LSM_ATTR_EXEC:\n6661: \t\terror = avc_has_perm(mysid, mysid, SECCLASS_PROCESS,\n6662: \t\t\t\t     PROCESS__SETEXEC, NULL);\n6663: \t\tbreak;\n6664: \tcase LSM_ATTR_FSCREATE:\n6665: \t\terror = avc_has_perm(mysid, mysid, SECCLASS_PROCESS,\n6666: \t\t\t\t     PROCESS__SETFSCREATE, NULL);\n6667: \t\tbreak;\n6668: \tcase LSM_ATTR_KEYCREATE:\n6669: \t\terror = avc_has_perm(mysid, mysid, SECCLASS_PROCESS,\n6670: \t\t\t\t     PROCESS__SETKEYCREATE, NULL);\n6671: \t\tbreak;\n6672: \tcase LSM_ATTR_SOCKCREATE:\n6673: \t\terror = avc_has_perm(mysid, mysid, SECCLASS_PROCESS,\n6674: \t\t\t\t     PROCESS__SETSOCKCREATE, NULL);\n6675: \t\tbreak;\n6676: \tcase LSM_ATTR_CURRENT:\n6677: \t\terror = avc_has_perm(mysid, mysid, SECCLASS_PROCESS,\n6678: \t\t\t\t     PROCESS__SETCURRENT, NULL);\n6679: \t\tbreak;\n6680: \tdefault:\n6681: \t\terror = -EOPNOTSUPP;\n6682: \t\tbreak;\n6683: \t}\n6684: \tif (error)\n6685: \t\treturn error;\n6686: \n6687: \t/* Obtain a SID for the context, if one was specified. */\n6688: \tif (size && str[0] && str[0] != '\\n') {\n6689: \t\tif (str[size-1] == '\\n') {\n6690: \t\t\tstr[size-1] = 0;\n6691: \t\t\tsize--;\n6692: \t\t}\n6693: \t\terror = security_context_to_sid(value, size,\n6694: \t\t\t\t\t\t&sid, GFP_KERNEL);\n6695: \t\tif (error == -EINVAL && attr == LSM_ATTR_FSCREATE) {\n6696: \t\t\tif (!has_cap_mac_admin(true)) {\n6697: \t\t\t\tstruct audit_buffer *ab;\n6698: \t\t\t\tsize_t audit_size;\n6699: \n6700: \t\t\t\t/* We strip a nul only if it is at the end,"
+      },
+      {
+        "start_line": 6738,
+        "text": "6738: \t\ttsec->exec_sid = sid;\n6739: \t} else if (attr == LSM_ATTR_FSCREATE) {\n6740: \t\ttsec->create_sid = sid;\n6741: \t} else if (attr == LSM_ATTR_KEYCREATE) {\n6742: \t\tif (sid) {\n6743: \t\t\terror = avc_has_perm(mysid, sid,\n6744: \t\t\t\t\t     SECCLASS_KEY, KEY__CREATE, NULL);\n6745: \t\t\tif (error)\n6746: \t\t\t\tgoto abort_change;\n6747: \t\t}\n6748: \t\ttsec->keycreate_sid = sid;\n6749: \t} else if (attr == LSM_ATTR_SOCKCREATE) {\n6750: \t\ttsec->sockcreate_sid = sid;\n6751: \t} else if (attr == LSM_ATTR_CURRENT) {\n6752: \t\terror = -EINVAL;\n6753: \t\tif (sid == 0)\n6754: \t\t\tgoto abort_change;\n6755: \n6756: \t\tif (!current_is_single_threaded()) {\n6757: \t\t\terror = security_bounded_transition(tsec->sid, sid);\n6758: \t\t\tif (error)\n6759: \t\t\t\tgoto abort_change;\n6760: \t\t}\n6761: \n6762: \t\t/* Check permissions for the transition. */\n6763: \t\terror = avc_has_perm(tsec->sid, sid, SECCLASS_PROCESS,\n6764: \t\t\t\t     PROCESS__DYNTRANSITION, NULL);\n6765: \t\tif (error)\n6766: \t\t\tgoto abort_change;\n6767: \n6768: \t\t/* Check for ptracing, and update the task SID if ok.\n6769: \t\t   Otherwise, leave SID unchanged and fail. */\n6770: \t\tptsid = ptrace_parent_sid();\n6771: \t\tif (ptsid != 0) {\n6772: \t\t\terror = avc_has_perm(ptsid, sid, SECCLASS_PROCESS,\n6773: \t\t\t\t\t     PROCESS__PTRACE, NULL);\n6774: \t\t\tif (error)\n6775: \t\t\t\tgoto abort_change;\n6776: \t\t}\n6777: \n6778: \t\ttsec->sid = sid;\n6779: \t} else {\n6780: \t\terror = -EINVAL;\n6781: \t\tgoto abort_change;\n6782: \t}\n6783: \n6784: \tcommit_creds(new);\n6785: \treturn size;\n6786: \n6787: abort_change:\n6788: \tabort_creds(new);\n6789: \treturn error;\n6790: }\n6791: \n6792: /**\n6793:  * selinux_getselfattr - Get SELinux current task attributes\n6794:  * @attr: the requested attribute\n6795:  * @ctx: buffer to receive the result\n6796:  * @size: buffer size (input), buffer size used (output)\n6797:  * @flags: unused\n6798:  *\n6799:  * Fill the passed user space @ctx with the details of the requested\n6800:  * attribute."
+      }
+    ],
+    "path": "/work/research4-system/source-input/linux-6.12.114-input-integration/security/selinux/hooks.c",
+    "sha256": "6079b88f15ca1966b640753e35edc291139fe925fca37e5c54d0a2d6e36d8370",
+    "size": 204597
+  },
+  "label_targets_from_fixed_file_contexts": {
+    "/dev/kmsg": "kmsg_device_t",
+    "/dev/null": "null_device_t",
+    "/dev/shm": "tmpfs_t",
+    "/run": "var_run_t",
+    "/run/log(/.*)?": "syslogd_var_run_t"
+  },
+  "libselinux_setter_source": {
+    "excerpts": [
+      {
+        "start_line": 1,
+        "text": "1: #include <assert.h>\n2: #include <sys/syscall.h>\n3: #include <unistd.h>\n4: #include <fcntl.h>\n5: #include <pthread.h>\n6: #include <string.h>\n7: #include <stdlib.h>\n8: #include <stdint.h>\n9: #include <stdio.h>\n10: #include <errno.h>\n11: #include \"selinux_internal.h\"\n12: #include \"policy.h\"\n13: \n14: #define UNSET ((char *)-1)\n15: \n16: /* Cached values so that when a thread calls set*con() then gen*con(), the value\n17:  * which was set is directly returned.\n18:  */\n19: static __thread char *prev_current = UNSET;\n20: static __thread char *prev_exec = UNSET;\n21: static __thread char *prev_fscreate = UNSET;\n22: static __thread char *prev_keycreate = UNSET;\n23: static __thread char *prev_sockcreate = UNSET;\n24: \n25: static pthread_once_t once = PTHREAD_ONCE_INIT;\n26: static pthread_key_t destructor_key;\n27: static int destructor_key_initialized = 0;\n28: static __thread char destructor_initialized;\n29: \n30: /* Bionic and glibc >= 2.30 declare gettid() system call wrapper in unistd.h and\n31:  * has a definition for it */\n32: #ifdef __BIONIC__\n33: #define HAVE_GETTID 1\n34: #elif !defined(__GLIBC_PREREQ)\n35: #define HAVE_GETTID 0\n36: #elif !__GLIBC_PREREQ(2, 30)\n37: #define HAVE_GETTID 0\n38: #else\n39: #define HAVE_GETTID 1\n40: #endif\n41: \n42: static pid_t selinux_gettid(void)\n43: {\n44: #if HAVE_GETTID\n45: \treturn gettid();\n46: #else\n47: \treturn syscall(__NR_gettid);\n48: #endif\n49: }\n50: \n51: static void procattr_thread_destructor(void __attribute__((unused)) * unused)\n52: {\n53: \tif (prev_current != UNSET)\n54: \t\tfree(prev_current);\n55: \tif (prev_exec != UNSET)\n56: \t\tfree(prev_exec);\n57: \tif (prev_fscreate != UNSET)\n58: \t\tfree(prev_fscreate);\n59: \tif (prev_keycreate != UNSET)\n60: \t\tfree(prev_keycreate);\n61: \tif (prev_sockcreate != UNSET)\n62: \t\tfree(prev_sockcreate);\n63: }\n64: \n65: void __attribute__((destructor)) procattr_destructor(void);"
+      },
+      {
+        "start_line": 70,
+        "text": "70: \t\t__selinux_key_delete(destructor_key);\n71: }\n72: \n73: static inline void init_thread_destructor(void)\n74: {\n75: \tif (destructor_initialized == 0) {\n76: \t\t__selinux_setspecific(\n77: \t\t\tdestructor_key,\n78: \t\t\t/* some valid address to please GCC */ &selinux_page_size);\n79: \t\tdestructor_initialized = 1;\n80: \t}\n81: }\n82: \n83: static void init_procattr(void)\n84: {\n85: \tif (__selinux_key_create(&destructor_key, procattr_thread_destructor) ==\n86: \t    0) {\n87: \t\tdestructor_key_initialized = 1;\n88: \t}\n89: }\n90: \n91: static int openattr(pid_t pid, const char *attr, int flags)\n92: {\n93: \tint fd, rc;\n94: \tchar path[44]; /* must hold \"/proc/self/task/%d/attr/sockcreate\" */\n95: \tpid_t tid;\n96: \n97: \tstatic_assert(sizeof(pid_t) <= sizeof(uint32_t),\n98: \t\t      \"content written to path might get truncated\");\n99: \n100: \tif (pid > 0) {\n101: \t\trc = snprintf(path, sizeof(path), \"/proc/%d/attr/%s\", pid,\n102: \t\t\t      attr);\n103: \t} else if (pid == 0) {\n104: \t\trc = snprintf(path, sizeof(path), \"/proc/thread-self/attr/%s\",\n105: \t\t\t      attr);\n106: \t\tif (rc < 0 || (size_t)rc >= sizeof(path)) {\n107: \t\t\terrno = EOVERFLOW;\n108: \t\t\treturn -1;\n109: \t\t}\n110: \t\tfd = open(path, flags | O_CLOEXEC);\n111: \t\tif (fd >= 0 || errno != ENOENT)\n112: \t\t\treturn fd;\n113: \t\ttid = selinux_gettid();\n114: \t\trc = snprintf(path, sizeof(path), \"/proc/self/task/%d/attr/%s\",\n115: \t\t\t      tid, attr);\n116: \t} else {\n117: \t\terrno = EINVAL;\n118: \t\treturn -1;\n119: \t}\n120: \tif (rc < 0 || (size_t)rc >= sizeof(path)) {\n121: \t\terrno = EOVERFLOW;\n122: \t\treturn -1;\n123: \t}\n124: \n125: \treturn open(path, flags | O_CLOEXEC);\n126: }\n127: \n128: static int getprocattrcon_raw(char **context, pid_t pid, const char *attr,\n129: \t\t\t      const char *prev_context)\n130: {\n131: \tchar *buf;\n132: \tsize_t size;\n133: \tint fd;\n134: \tssize_t ret;\n135: \tint errno_hold;\n136: \n137: \t__selinux_once(once, init_procattr);\n138: \tinit_thread_destructor();\n139: \n140: \tif (prev_context && prev_context != UNSET) {\n141: \t\t*context = strdup(prev_context);\n142: \t\tif (!(*context)) {\n143: \t\t\treturn -1;\n144: \t\t}\n145: \t\treturn 0;"
+      },
+      {
+        "start_line": 146,
+        "text": "146: \t}\n147: \n148: \tfd = openattr(pid, attr, O_RDONLY | O_CLOEXEC);\n149: \tif (fd < 0)\n150: \t\treturn -1;\n151: \n152: \tsize = selinux_page_size;\n153: \tbuf = calloc(1, size);\n154: \tif (!buf) {\n155: \t\tret = -1;\n156: \t\tgoto out;\n157: \t}\n158: \n159: \tdo {\n160: \t\tret = read(fd, buf, size - 1);\n161: \t} while (ret < 0 && errno == EINTR);\n162: \tif (ret < 0)\n163: \t\tgoto out;\n164: \n165: \tif (ret == 0) {\n166: \t\t*context = NULL;\n167: \t\tgoto out;\n168: \t}\n169: \n170: \t*context = strdup(buf);\n171: \tif (!(*context)) {\n172: \t\tret = -1;\n173: \t\tgoto out;\n174: \t}\n175: \tret = 0;\n176: out:\n177: \tfree(buf);\n178: \terrno_hold = errno;\n179: \tclose(fd);\n180: \terrno = errno_hold;\n181: \treturn ret;\n182: }\n183: \n184: static int getprocattrcon(char **context, pid_t pid, const char *attr,\n185: \t\t\t  const char *prev_context)\n186: {\n187: \tint ret;\n188: \tchar *rcontext;\n189: \n190: \tret = getprocattrcon_raw(&rcontext, pid, attr, prev_context);\n191: \n192: \tif (!ret) {\n193: \t\tret = selinux_raw_to_trans_context(rcontext, context);\n194: \t\tfreecon(rcontext);\n195: \t}\n196: \n197: \treturn ret;\n198: }\n199: \n200: static int setprocattrcon_raw(const char *context, const char *attr,\n201: \t\t\t      char **prev_context)\n202: {\n203: \tint fd;\n204: \tssize_t ret;\n205: \tint errno_hold;\n206: \tchar *context2 = NULL;\n207: \n208: \t__selinux_once(once, init_procattr);\n209: \tinit_thread_destructor();\n210: \n211: \tif (!context && !*prev_context)\n212: \t\treturn 0;\n213: \tif (context && *prev_context && *prev_context != UNSET &&\n214: \t    !strcmp(context, *prev_context))\n215: \t\treturn 0;\n216: \n217: \tfd = openattr(0, attr, O_RDWR | O_CLOEXEC);\n218: \tif (fd < 0)\n219: \t\treturn -1;\n220: \tif (context) {\n221: \t\tret = -1;\n222: \t\tcontext2 = strdup(context);\n223: \t\tif (!context2)\n224: \t\t\tgoto out;\n225: \t\tdo {\n226: \t\t\tret = write(fd, context2, strlen(context2) + 1);\n227: \t\t} while (ret < 0 && errno == EINTR);\n228: \t} else {\n229: \t\tdo {\n230: \t\t\tret = write(fd, NULL, 0); /* clear */\n231: \t\t} while (ret < 0 && errno == EINTR);\n232: \t}\n233: out:\n234: \terrno_hold = errno;\n235: \tclose(fd);\n236: \terrno = errno_hold;\n237: \tif (ret < 0) {\n238: \t\tfree(context2);\n239: \t\treturn -1;\n240: \t} else {\n241: \t\tif (*prev_context != UNSET)\n242: \t\t\tfree(*prev_context);\n243: \t\t*prev_context = context2;\n244: \t\treturn 0;\n245: \t}\n246: }\n247: \n248: static int setprocattrcon(const char *context, const char *attr,\n249: \t\t\t  char **prev_context)\n250: {\n251: \tint ret;\n252: \tchar *rcontext;\n253: \n254: \tif (selinux_trans_to_raw_context(context, &rcontext))\n255: \t\treturn -1;"
+      }
+    ],
+    "path": "/work/early-selinux-bootstrap-20261123/patched-libselinux/libselinux-3.11/src/procattr.c",
+    "sha256": "cbbc16d3879fbad25e5fbaf3a635272262d8aab8086c2fd0d572741b1b84464f",
+    "size": 7558
+  },
+  "new_kernel_policy_loaded": false,
+  "new_vm_started": false,
+  "policy_rules_added_by_this_task": false,
+  "proot_used": false,
+  "queried_policy": {
+    "sha256": "bfe189488e5b99bd9bdb6571ec5023100be68771a80ebaf2e42e6c51527d83ba",
+    "size": 3835420
+  },
+  "result": {
+    "actual_runtime_enforcement_proven_by_query": false,
+    "all_queried_required_permissions_allowed": false,
+    "booleans_changed": false,
+    "completed": true,
+    "contexts": {
+      "system_u:object_r:device_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 2,
+        "return_code": 0
+      },
+      "system_u:object_r:kmsg_device_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 4,
+        "return_code": 0
+      },
+      "system_u:object_r:null_device_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 3,
+        "return_code": 0
+      },
+      "system_u:object_r:security_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 11,
+        "return_code": 0
+      },
+      "system_u:object_r:semanage_store_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 10,
+        "return_code": 0
+      },
+      "system_u:object_r:syslogd_tmpfs_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 6,
+        "return_code": 0
+      },
+      "system_u:object_r:syslogd_var_run_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 8,
+        "return_code": 0
+      },
+      "system_u:object_r:tmpfs_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 5,
+        "return_code": 0
+      },
+      "system_u:object_r:var_run_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 7,
+        "return_code": 0
+      },
+      "system_u:system_r:init_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 1,
+        "return_code": 0
+      },
+      "system_u:system_r:syslogd_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 9,
+        "return_code": 0
+      }
+    },
+    "diagnostic_rows": [
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "old_journal_label_diagnostic",
+        "permission": "map",
+        "permission_allowed": false,
+        "raw_decision": {
+          "allowed": 36190847,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 1,
+        "requested_mask": 1024,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+      }
+    ],
+    "expected_query_count": 53,
+    "input_policy": {
+      "sha256": "0dd46af3240a02d1c7399c46facf30cce2a71a471fb70c0d0f5e58e571e53c74",
+      "size": 3835432
+    },
+    "kernel_policy_loaded_or_written": false,
+    "library": {
+      "path": "/work/selinux-postreload-contract-v1/inputs/libsepol.so.2",
+      "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+      "size": 802880
+    },
+    "policy_provenance": "independent fixed reload-map candidate35 converted to33 in userspace; offline only",
+    "policy_semantic_equivalence_to_other_hash_asserted": false,
+    "policy_version_converted": true,
+    "proot_used": false,
+    "queried_policy": {
+      "sha256": "bfe189488e5b99bd9bdb6571ec5023100be68771a80ebaf2e42e6c51527d83ba",
+      "size": 3835420
+    },
+    "queries": [
+      {
+        "class": "process",
+        "denial_audit_mask_includes_permission": true,
+        "group": "init_same_domain_setcon",
+        "permission": "setcurrent",
+        "permission_allowed": false,
+        "raw_decision": {
+          "allowed": 812608381,
+          "auditallow": 0,
+          "auditdeny": 4286840831,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 1,
+        "requested_mask": 16777216,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:system_r:init_t:s0"
+      },
+      {
+        "class": "process",
+        "denial_audit_mask_includes_permission": true,
+        "group": "init_same_domain_setcon",
+        "permission": "dyntransition",
+        "permission_allowed": false,
+        "raw_decision": {
+          "allowed": 812608381,
+          "auditallow": 0,
+          "auditdeny": 4286840831,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 1,
+        "requested_mask": 8388608,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:system_r:init_t:s0"
+      },
+      {
+        "class": "chr_file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_source",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 656383,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:device_t:s0"
+      },
+      {
+        "class": "chr_file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_source",
+        "permission": "relabelfrom",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 656383,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:device_t:s0"
+      },
+      {
+        "class": "chr_file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_target",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 656383,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:null_device_t:s0"
+      },
+      {
+        "class": "chr_file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_target",
+        "permission": "relabelto",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 656383,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 256,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:null_device_t:s0"
+      },
+      {
+        "class": "filesystem",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_associate",
+        "permission": "associate",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 128,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:object_r:null_device_t:s0",
+        "target_context": "system_u:object_r:device_t:s0"
+      },
+      {
+        "class": "chr_file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_target",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 656381,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:kmsg_device_t:s0"
+      },
+      {
+        "class": "chr_file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_target",
+        "permission": "relabelto",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 656381,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 256,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:kmsg_device_t:s0"
+      },
+      {
+        "class": "filesystem",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_associate",
+        "permission": "associate",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 128,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:object_r:kmsg_device_t:s0",
+        "target_context": "system_u:object_r:device_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_directory",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_directory",
+        "permission": "search",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1073741824,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_directory",
+        "permission": "relabelfrom",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_file",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 170557439,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_file",
+        "permission": "relabelfrom",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 170557439,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_directory",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 1076494847,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_directory",
+        "permission": "search",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 1076494847,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1073741824,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_directory",
+        "permission": "relabelfrom",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 1076494847,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_file",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 2228624,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_file",
+        "permission": "relabelfrom",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 2228624,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "search",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1073741824,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "relabelto",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 256,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:var_run_t:s0"
+      },
+      {
+        "class": "filesystem",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_associate",
+        "permission": "associate",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 128,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:object_r:var_run_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "search",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1073741824,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "relabelto",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 256,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "filesystem",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_associate",
+        "permission": "associate",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 128,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:object_r:syslogd_var_run_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "search",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1073741824,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "relabelto",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 256,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "filesystem",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_associate",
+        "permission": "associate",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 128,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:object_r:tmpfs_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_target_file",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 2756059,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_target_file",
+        "permission": "relabelto",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 2756059,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 256,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_file_access",
+        "permission": "create",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 36208639,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 8,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_file_access",
+        "permission": "open",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 36208639,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 524288,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_file_access",
+        "permission": "read",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 36208639,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 2,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_file_access",
+        "permission": "write",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 36208639,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 4,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_file_access",
+        "permission": "append",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 36208639,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 512,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_file_access",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 36208639,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_file_access",
+        "permission": "map",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 36208639,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1024,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_directory_access",
+        "permission": "search",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4196939903,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1073741824,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_directory_access",
+        "permission": "add_name",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4196939903,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 134217728,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_directory_access",
+        "permission": "write",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4196939903,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 4,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_directory_access",
+        "permission": "open",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4196939903,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 524288,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_directory_access",
+        "permission": "read",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4196939903,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 2,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_directory_access",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4196939903,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "old_journal_label_diagnostic",
+        "permission": "map",
+        "permission_allowed": false,
+        "raw_decision": {
+          "allowed": 36190847,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 1,
+        "requested_mask": 1024,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "candidate_policy_file",
+        "permission": "read",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 525779,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 2,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:semanage_store_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "candidate_policy_file",
+        "permission": "open",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 525779,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 524288,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:semanage_store_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "candidate_policy_file",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 525779,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:semanage_store_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "candidate_policy_file",
+        "permission": "map",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 525779,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1024,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:semanage_store_t:s0"
+      },
+      {
+        "class": "security",
+        "denial_audit_mask_includes_permission": true,
+        "group": "candidate_policy_load",
+        "permission": "load_policy",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 379,
+          "auditallow": 0,
+          "auditdeny": 4294967287,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:security_t:s0"
+      }
+    ],
+    "query_count": 53,
+    "required_denials": [
+      {
+        "class": "process",
+        "denial_audit_mask_includes_permission": true,
+        "group": "init_same_domain_setcon",
+        "permission": "setcurrent",
+        "permission_allowed": false,
+        "raw_decision": {
+          "allowed": 812608381,
+          "auditallow": 0,
+          "auditdeny": 4286840831,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 1,
+        "requested_mask": 16777216,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:system_r:init_t:s0"
+      },
+      {
+        "class": "process",
+        "denial_audit_mask_includes_permission": true,
+        "group": "init_same_domain_setcon",
+        "permission": "dyntransition",
+        "permission_allowed": false,
+        "raw_decision": {
+          "allowed": 812608381,
+          "auditallow": 0,
+          "auditdeny": 4286840831,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 1,
+        "requested_mask": 8388608,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:system_r:init_t:s0"
+      }
+    ],
+    "return_codes": {
+      "class:chr_file": 0,
+      "class:dir": 0,
+      "class:file": 0,
+      "class:filesystem": 0,
+      "class:process": 0,
+      "class:security": 0,
+      "fclose": 0,
+      "permission:chr_file:getattr": 0,
+      "permission:chr_file:relabelfrom": 0,
+      "permission:chr_file:relabelto": 0,
+      "permission:dir:add_name": 0,
+      "permission:dir:getattr": 0,
+      "permission:dir:open": 0,
+      "permission:dir:read": 0,
+      "permission:dir:relabelfrom": 0,
+      "permission:dir:relabelto": 0,
+      "permission:dir:search": 0,
+      "permission:dir:write": 0,
+      "permission:file:append": 0,
+      "permission:file:create": 0,
+      "permission:file:getattr": 0,
+      "permission:file:map": 0,
+      "permission:file:open": 0,
+      "permission:file:read": 0,
+      "permission:file:relabelfrom": 0,
+      "permission:file:relabelto": 0,
+      "permission:file:write": 0,
+      "permission:filesystem:associate": 0,
+      "permission:process:dyntransition": 0,
+      "permission:process:setcurrent": 0,
+      "permission:security:load_policy": 0,
+      "policydb_create": 0,
+      "policydb_from_image": 0,
+      "policydb_set_vers33": 0,
+      "policydb_to_image": 0,
+      "private_policydb_from_file": 0
+    },
+    "schema_version": 1,
+    "scope": "offline candidate AV contracts; no runtime execution proof",
+    "sids_are_process_private": true
+  },
+  "runtime_labels_observed_by_this_query": false,
+  "runtime_same_domain_setcon_executed": false,
+  "schema_version": 1,
+  "source_script": {
+    "mode": "0755",
+    "path": "scripts/research/selinux/query_postreload_contract.py",
+    "sha256": "c2e9f490f44202130271fec12626573d7608be39ca7d04c9ee1bc7d60acbe8aa",
+    "size": 12816
+  },
+  "tablet_accessed": false,
+  "title": "Offline postreload labeling and same-domain setcon contract for the map-only candidate"
+}

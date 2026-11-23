@@ -1,0 +1,25 @@
+{
+  "elapsed_seconds": 10.256243270996492,
+  "finished_utc": "2026-11-23T06:48:47.537518+00:00",
+  "freeze_completed": true,
+  "steps": [
+    {
+      "command": [
+        "python3",
+        "/work/fedora-input-system-recipe-r4-v5/qualify_udev_handoff.py",
+        "--run",
+        "vm-verify-01"
+      ],
+      "elapsed_seconds": 0.2145681040128693,
+      "exit_code": 1
+    },
+    {
+      "command": [
+        "python3",
+        "/work/fedora-r4d-failure-freeze-recipe-v1/freeze.py"
+      ],
+      "elapsed_seconds": 10.040746166021563,
+      "exit_code": 0
+    }
+  ]
+}

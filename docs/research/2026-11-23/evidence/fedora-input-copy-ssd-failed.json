@@ -1,0 +1,46 @@
+{
+  "complete": false,
+  "destination_container": "tb371fc-build-ssd-20261123",
+  "destination_work": "/work/fedora-input-system-v1",
+  "error": {
+    "message": "canonical copied stream differs: rootfs",
+    "type": "ValueError"
+  },
+  "finished_utc": "2026-11-23T02:24:04.145371+00:00",
+  "manual_host_chown": false,
+  "numeric_ownership_preserved_by_container_tar": true,
+  "schema_version": 1,
+  "source_container": "tb371fc-build-20261123",
+  "source_deleted_or_moved": false,
+  "source_guard": {
+    "guest_result": {
+      "all_runtime_hashes_verified": true,
+      "dbus": "active",
+      "failed_units": [],
+      "firmware_files_verified": 69,
+      "gpu_acceleration_tested": false,
+      "kernel_release": "6.12.114-tb371fc-research1",
+      "kernel_supported_policy_version": "33",
+      "loaded_policy_bytes": 3835420,
+      "loaded_policy_sha256": "9c79cb12810a781d6cb91f9b7dff160a1d768c534b784743b4256015799f22a8",
+      "loaded_policy_version": 33,
+      "module_files_verified": 83,
+      "multi_user_target": "active",
+      "pid1": "/usr/lib/systemd/systemd",
+      "pid1_selinux_context": "system_u:system_r:init_t:s0",
+      "root_label": "tb371fc-f45",
+      "root_source": "/dev/vda",
+      "root_type": "ext4",
+      "scope": "generic ARM64 VM with no physical device passthrough",
+      "selinux": "Enforcing",
+      "systemd": "systemd 262 (262.1-1.fc45)",
+      "tablet_hardware_tested": false,
+      "udev": "active"
+    },
+    "vm_result_sha256": "223f73b253a48995dd238575e64aad055e11f311c658aa03534b49c570095675"
+  },
+  "source_modified_by_this_recipe": false,
+  "source_tree": "/work/fedora-system-integration-v1/rootfs",
+  "started_utc": "2026-11-23T02:23:21.439039+00:00",
+  "streams": {}
+}

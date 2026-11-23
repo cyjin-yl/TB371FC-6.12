@@ -1,0 +1,64 @@
+{
+  "command": [
+    "/usr/bin/qemu-aarch64-static",
+    "-L",
+    "/work/fedora-input-system-v6/rootfs",
+    "/work/early-selinux-reload-map-20261123/build-01/early-init"
+  ],
+  "exit_code": 1,
+  "files": {
+    "build-result.json": {
+      "sha256": "25b3f844bb59245b49c2be134f8f7341aee566e0c50ec72e8fabd6c439964b68",
+      "size": 4453
+    },
+    "early-init": {
+      "sha256": "cc042c9fc4e92c75803215649c99bd87badd301bb05aa16820b43aaeb8fb50bc",
+      "size": 72048
+    },
+    "early_init.c": {
+      "sha256": "ab6cf79bcad7d1306bc0e943ef3a4770d8db1c1db82ad577e117c298cce0fda9",
+      "size": 12548
+    }
+  },
+  "mount_operation_attempted": false,
+  "passed": true,
+  "physical_hardware_tested": false,
+  "policy_load_attempted": false,
+  "reference_directory_metadata_after": {
+    ".": {
+      "ctime_ns": 1795411373755183497,
+      "inode": 16631058,
+      "mtime_ns": 1795411373755183497
+    },
+    "dev": {
+      "ctime_ns": 1795411373754183441,
+      "inode": 16631069,
+      "mtime_ns": 1795411373754183441
+    },
+    "etc": {
+      "ctime_ns": 1795411373755183497,
+      "inode": 16628819,
+      "mtime_ns": 1795411373755183497
+    }
+  },
+  "reference_directory_metadata_before": {
+    ".": {
+      "ctime_ns": 1795411373755183497,
+      "inode": 16631058,
+      "mtime_ns": 1795411373755183497
+    },
+    "dev": {
+      "ctime_ns": 1795411373754183441,
+      "inode": 16631069,
+      "mtime_ns": 1795411373754183441
+    },
+    "etc": {
+      "ctime_ns": 1795411373755183497,
+      "inode": 16628819,
+      "mtime_ns": 1795411373755183497
+    }
+  },
+  "scope": "native cross-container transfer and non-PID1 refusal, not an API or policy-load test",
+  "stderr": "TB371FC_EARLY_SELINUX_V2 FAILED phase=entry reason=pid1-with-no-arguments-required errno=0\n",
+  "stdout": ""
+}

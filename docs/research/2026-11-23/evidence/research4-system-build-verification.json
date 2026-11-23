@@ -1,0 +1,109 @@
+{
+  "collection_note": "First combined result transport exceeded the relay text limit after a large section listing; its report/source/build files were unchanged. The smaller public report transport is hash-verified independently.",
+  "compiled_bpf_instrumentation": {
+    "cmd_path": "/work/research4-system/kernel-out/kernel/bpf/.bpf_lsm.o.cmd",
+    "cmd_sha256": "015240795668352618b2c87cead279e52ea103080fe61f11f5f7930b283dcce9",
+    "compile_flag": "-fpatchable-function-entry=4,2",
+    "compile_flag_present": true,
+    "object_path": "/work/research4-system/kernel-out/kernel/bpf/bpf_lsm.o",
+    "object_sha256": "d6b79492855f3a92ff4ed7f3d5b28b550ff711731e26a7e6369a6c363417efd0",
+    "patchable_section_count": 266,
+    "relocation_section_count": 266
+  },
+  "evidence_class": "host_build",
+  "inspector_log": {
+    "path": "/work/research4-system/jobs/artifact-inspection-01.log",
+    "sha256": "bff359a91c38d405930793438f7fbff22c41b2173da9fd4d9c2834ce50b5d464",
+    "size": 375,
+    "text": "{\"passed\": true, \"kernel_release\": \"6.12.114-tb371fc-research4-system\", \"module_count\": 84, \"report\": \"/work/research4-system/artifacts/research4-system-build.json\", \"report_sha256\": \"0db9a7e6164b44ac845a80974c3a369476ede23ac6f094de9c14c8602fa3faa6\", \"kernel_btf_sha256\": \"322f198f464e9c145cd4889eb7dc4c5e1d91aa9b9dbfb43f24c5a5b98834637a\", \"physical_hardware_tested\": false}\n"
+  },
+  "jobs": {
+    "jobs/artifact-inspection-01.json": {
+      "result": {
+        "command": [
+          "python3",
+          "-B",
+          "/src/scripts/research/system-kernel/research4/inspect_system.py",
+          "--work",
+          "/work/research4-system",
+          "--repo",
+          "/work/research3-system-inspection-repo"
+        ],
+        "elapsed_seconds": 6.447580989974085,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T03:27:30.000802+00:00"
+      },
+      "sha256": "8889ffdefac2d962d5c5ebcd364d6adc095dea2806aaad2991f513104eef369e"
+    },
+    "jobs/configure-01.json": {
+      "result": {
+        "command": [
+          "python3",
+          "-B",
+          "/src/scripts/research/system-kernel/research4/build_system.py",
+          "configure",
+          "--work",
+          "/work/research4-system"
+        ],
+        "elapsed_seconds": 7.379310311982408,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T03:02:56.829643+00:00"
+      },
+      "sha256": "79e642948514dfce17b24c40ef57031b263967d2db958e5880a2c50259f03358"
+    },
+    "jobs/kernel-build-01.json": {
+      "result": {
+        "command": [
+          "python3",
+          "-B",
+          "/src/scripts/research/system-kernel/research4/build_system.py",
+          "build",
+          "--work",
+          "/work/research4-system",
+          "--jobs",
+          "4"
+        ],
+        "elapsed_seconds": 1380.9257125129807,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T03:04:10.898727+00:00"
+      },
+      "sha256": "c5556a98e5ef4e6621973f0fa759cada5f51b9def88a46bc57922796e3ced6f1"
+    },
+    "jobs/source-prepare-01.json": {
+      "result": {
+        "command": [
+          "python3",
+          "/work/input-integration-repo-v3/scripts/research/input/prepare_input.py",
+          "--repo",
+          "/work/input-integration-repo-v3",
+          "--baseline-repo",
+          "/work/research2-repo",
+          "--baseline-work",
+          "/work/research2-display",
+          "--work",
+          "/work/research4-system/source-input",
+          "--cache",
+          "/work/downloads/linux-6.12.114.tar.xz"
+        ],
+        "elapsed_seconds": 37.4275144310086,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T02:58:53.196625+00:00"
+      },
+      "sha256": "4ec22209195ee159cdaecedd1e64a7c089ed1e4cfe0c149e50f4d6e5f9c05711"
+    }
+  },
+  "physical_hardware_tested": false,
+  "profile": "research4-system",
+  "qualified_artifact_index": {
+    "sha256": "220cceb21eb2ac78ba9f0391415efee8e7bad7bbd5ca5264025a866caf4d7f50",
+    "size": 1487,
+    "text": "8ab38b022f7504869443f2469878cd55656b08fb6c56946122710144fc1cc8fb  Image\n68c10e8b5e63761282cbc6005affd059d8037fce5ac434f80285a6f9aac2f9e0  Module.symvers\n2f0e828c1a35573ef414c1762ecf829fda0a5d2c58f96515b8ba021d345b34aa  SHA256SUMS\nc63f6e7034e5e21ebd20c3a2569b17f7bd665644103da50a3bb97157d808f96f  System.map\naf80b06f38b73ea42cb669a2897721ba7ecc5a99a8aa3d6d9c1e9ba132597730  board.dtb\n488f96f01ff4f808ed9cebdce1c705815ad43a5ae57fd87d727d259d758f7dcf  builder-packages.tsv\n2c2c55ce2f139d5ac7586c06ef5685f47bb3c6f76ad0724d95c20e2deb405ed4  configuration.json\n322f198f464e9c145cd4889eb7dc4c5e1d91aa9b9dbfb43f24c5a5b98834637a  kernel.btf\n0236496603f168aacc5586eac7e199ca8f840b5d0c9b5ed111da64e9d28ec275  kernel.config\n1101cacf0a05147146dd13b6a8788dc9d7bb6af2817d3b2ffe9802a52b0f59ef  kernel.release\n9ef1c87254c5422b61c0c365d088b8374a4c323c99da9bda1578170eaa443f03  modules.SHA256SUMS\nc0f2379d0eb93ef5efd8dc11a3443e9228e924ff584a586f7ea2e5ed2a6f5ca4  modules.builtin\n0fa5d39088e52480e6c8715ec1eaf555b9054e98d2293a49ac30cfb7685712bd  modules.builtin.modinfo\n5212403b8f41945250af8d9972f7473e18efdda50717380e4a1ee08064416e64  modules.order\n0db9a7e6164b44ac845a80974c3a369476ede23ac6f094de9c14c8602fa3faa6  research4-system-build.json\nda222772fe59edc2d0efc6826ff4c31504ee9420b057121cd0a2e2503d81788d  signing-cert.der\n5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0  source-manifest-input.json\n840b2b0ae21424061fc218fc9b0f1dcb02165c3aaef77b5398d264234954ad04  source-manifest.json\n"
+  },
+  "report": {
+    "path": "evidence/research4-system-build.json",
+    "sha256": "0db9a7e6164b44ac845a80974c3a369476ede23ac6f094de9c14c8602fa3faa6",
+    "size": 139692
+  },
+  "runtime_bpf_attachment_verified": false,
+  "schema_version": 1
+}

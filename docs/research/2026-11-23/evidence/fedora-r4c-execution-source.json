@@ -1,0 +1,103 @@
+{
+  "actual_recipe_manifest": {
+    "sha256": "ae47f2919847fc311e5f6fba5b2f89c8da1d66615207fcb699e308bf725e7fa7",
+    "size": 2136
+  },
+  "builder": "tb371fc-build-20261123",
+  "capture_utc": "2026-11-23T05:20:05.165113+00:00",
+  "old_sources_modified": false,
+  "physical_tablet_tested": false,
+  "prior_v5_profile_source_manifest_sha256": "186af28df00e39617d9cb12030b881ca31846a228a9ed1f959da85bb75b13df7",
+  "profile_manifest": {
+    "sha256": "e2a3a926296f624f562f76186f13dc4dd319fbd6e49dc73050cfb677bb7a1951",
+    "size": 1580
+  },
+  "public_files": {
+    "assemble_system.py": {
+      "path": "scripts/research/input/system-integration/profiles/tmpfs-early-selinux-v6/assemble_system.py",
+      "sha256": "47e3f187e3db5b2b8be265f1de6e80a979ad430e473c19a710e9f38a02c7b69d",
+      "size": 4372
+    },
+    "boot_system_vm.py": {
+      "path": "scripts/research/input/system-integration/profiles/tmpfs-early-selinux-v6/boot_system_vm.py",
+      "sha256": "cc7d38a39d3f7dae0ed1900afd9850e8ec42f3f7f946a1d947f46f00ce26f086",
+      "size": 19915
+    },
+    "early_initramfs.py": {
+      "path": "scripts/research/input/system-integration/profiles/tmpfs-early-selinux-v6/early_initramfs.py",
+      "sha256": "3a7adb2579200ebcd9ffb7ea5999061ba4bce137b4da2a84e9d1f41e503aa10a",
+      "size": 16396
+    },
+    "finalize_system.py": {
+      "path": "scripts/research/input/system-integration/profiles/tmpfs-early-selinux-v6/finalize_system.py",
+      "sha256": "62028843b3ba733eec6e75a350196a9711fe73cf376465e55396db0e8714f3d7",
+      "size": 8509
+    },
+    "guest_pids_probe.py": {
+      "path": "scripts/research/input/system-integration/profiles/tmpfs-early-selinux-v6/guest_pids_probe.py",
+      "sha256": "05791d637e233459ca42330a63e057d0ed17c4ebdcd903cedc854c816518543d",
+      "size": 2498
+    },
+    "guest_verify_system.py": {
+      "path": "scripts/research/input/system-integration/profiles/tmpfs-early-selinux-v6/guest_verify_system.py",
+      "sha256": "e1f5e5b6bce3c30687c3efbd1d8fbd7c95d60e036654ae8d39be645e0d551098",
+      "size": 30303
+    },
+    "initrd-domain-proof.service": {
+      "path": "scripts/research/input/system-integration/profiles/tmpfs-early-selinux-v6/initrd-domain-proof.service",
+      "sha256": "c45c0163c610c58ab01d570ed32992c6b361a3249bf256c37be6387c6a607543",
+      "size": 471
+    },
+    "initrd-domain-proof.sh": {
+      "path": "scripts/research/input/system-integration/profiles/tmpfs-early-selinux-v6/initrd-domain-proof.sh",
+      "sha256": "cbc552d75f53aae74ea55e2941aa5c573ac042550ff8688ae627ccd854440b7d",
+      "size": 3425
+    },
+    "probe_loaded_policy.py": {
+      "path": "scripts/research/input/system-integration/probe_loaded_policy.py",
+      "sha256": "f861a0930cb0a9151d99b657c09f05dd7d271a2d51638b3bf0cc2626845d3487",
+      "size": 8612
+    },
+    "qualify_udev_handoff.py": {
+      "path": "scripts/research/input/system-integration/profiles/tmpfs-early-selinux-v6/qualify_udev_handoff.py",
+      "sha256": "a3a80dd419770c12c8f66c2519c39a6b493dc8342c2750c72210e0c268e7518f",
+      "size": 6130
+    },
+    "run_pipeline.py": {
+      "path": "scripts/research/input/system-integration/profiles/tmpfs-early-selinux-v6/run_pipeline.py",
+      "sha256": "bc8ee021acd3df36df5f5f0b05286faa315a143e9c558628ba89fddf4783a520",
+      "size": 4359
+    },
+    "stage_system.py": {
+      "path": "scripts/research/input/system-integration/profiles/tmpfs-early-selinux-v6/stage_system.py",
+      "sha256": "30dfa449fc845ad886d018518b22f234bb65131e2237b6edd9031b379a01932a",
+      "size": 12458
+    },
+    "system_common.py": {
+      "path": "scripts/research/input/system-integration/profiles/tmpfs-early-selinux-v6/system_common.py",
+      "sha256": "b2d23de4f05b14bfc082bacc5ef571cb8db377823aad9f134587698e313c1d66",
+      "size": 4080
+    },
+    "verify_early_policy_initramfs.py": {
+      "path": "scripts/research/input/system-integration/verify_early_policy_initramfs.py",
+      "sha256": "58a5dba0186174c7442f73c2f8f0a2333599e6cbbcb1cf332169e5df558bfd1e",
+      "size": 27585
+    },
+    "verify_initramfs.py": {
+      "path": "scripts/research/rootfs/verify_initramfs.py",
+      "sha256": "263866a1943cd43116e69cb0a8b1081d6ccd1cc93ef98866a4b3eacc00bac58a",
+      "size": 20506
+    },
+    "verify_tmpfs_policy_initramfs.py": {
+      "path": "scripts/research/input/system-integration/verify_tmpfs_policy_initramfs.py",
+      "sha256": "92f02fd33fcc5f7aaea6d1d0e06c04589af024b09e8f678f772798909c2ebb07",
+      "size": 27513
+    }
+  },
+  "remote_recipe": "/work/fedora-input-system-recipe-r4-v4",
+  "remote_source_overlay": "/work/fedora-r4-tmpfs-profile-source-v1",
+  "schema_version": 1,
+  "scope": "source identity and immutable recipe materialization; not VM success",
+  "source_packet_sha256": "9899b9cfd0b1648b68cec975529fcdef59cff8f37698a19dc136ae428fa339f2",
+  "work": "/work/fedora-input-system-v6"
+}

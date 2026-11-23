@@ -1,0 +1,125 @@
+From: TB371FC research contributors <tb371fc-research@localhost>
+Subject: [PATCH] input: nt36523: report only declared physical dimensions
+
+The donor driver hard-coded a 148 x 237 mm sensor for pen resolution. That
+is not measured TB371FC digitizer geometry. Read the paired standard
+optional touchscreen-x-mm/y-mm properties, reject incomplete or zero
+values, and derive counts per mm from each input axis. Leave resolution
+unknown (zero) when the board does not declare measured dimensions.
+Keep coordinate, pressure, hover and tilt ranges unchanged.
+
+Applies after the frozen research2-display source combination including
+0013-input-nt36523-preserve-gpio-irq-errors.patch. No electrical timing or
+sensor size is inferred from display pixel counts or panel metadata.
+
+diff --git a/drivers/input/touchscreen/nt36523/nt36xxx.c b/drivers/input/touchscreen/nt36523/nt36xxx.c
+--- a/drivers/input/touchscreen/nt36523/nt36xxx.c
++++ b/drivers/input/touchscreen/nt36523/nt36xxx.c
+@@ -25,6 +25,7 @@
+ #include <linux/input/mt.h>
+ #include <linux/debugfs.h>
+ #include <linux/of_irq.h>
++#include <linux/property.h>
+ 
+ #include "nt36xxx.h"
+ 
+@@ -702,6 +703,47 @@
+ return:
+ 	n.a.
+ *******************************************************/
++/* Physical dimensions are optional, but must describe both sensor axes. */
++static int nvt_parse_phys_size(struct device *dev)
++{
++	bool has_x = device_property_present(dev, "touchscreen-x-mm");
++	bool has_y = device_property_present(dev, "touchscreen-y-mm");
++	int ret;
++
++	if (!has_x && !has_y)
++		return 0;
++	if (!has_x || !has_y)
++		return dev_err_probe(dev, -EINVAL,
++				     "both touchscreen dimensions are required\n");
++
++	ret = device_property_read_u32(dev, "touchscreen-x-mm", &ts->width_mm);
++	if (ret)
++		return ret;
++	ret = device_property_read_u32(dev, "touchscreen-y-mm", &ts->height_mm);
++	if (ret)
++		return ret;
++	if (!ts->width_mm || !ts->height_mm)
++		return dev_err_probe(dev, -EINVAL,
++				     "touchscreen dimensions must be nonzero\n");
++
++	return 0;
++}
++
++static void nvt_set_abs_resolution(struct input_dev *input,
++				  unsigned int x_axis, unsigned int y_axis)
++{
++	/* Zero means unknown; do not export dimensions copied from another panel. */
++	if (!ts->width_mm || !ts->height_mm)
++		return;
++
++	input_abs_set_res(input, x_axis,
++		DIV_ROUND_CLOSEST(input_abs_get_max(input, x_axis) -
++				 input_abs_get_min(input, x_axis), ts->width_mm));
++	input_abs_set_res(input, y_axis,
++		DIV_ROUND_CLOSEST(input_abs_get_max(input, y_axis) -
++				 input_abs_get_min(input, y_axis), ts->height_mm));
++}
++
+ #ifdef CONFIG_OF
+ static int32_t nvt_parse_dt(struct device *dev)
+ {
+@@ -1376,6 +1418,10 @@
+ 
+ 	NVT_LOG("mode=%d, max_speed_hz=%d\n", ts->client->mode, ts->client->max_speed_hz);
+ 
++	ret = nvt_parse_phys_size(&client->dev);
++	if (ret)
++		goto err_spi_setup;
++
+ 	//---parse dts---
+ 	ret = nvt_parse_dt(&client->dev);
+ 	if (ret) {
+@@ -1468,6 +1514,8 @@
+ 			     ts->abs_x_max * ts->super_resolution, 0, 0);
+ 	input_set_abs_params(ts->input_dev, ABS_MT_POSITION_Y, 0,
+ 			     ts->abs_y_max * ts->super_resolution, 0, 0);
++	nvt_set_abs_resolution(ts->input_dev, ABS_MT_POSITION_X,
++			       ABS_MT_POSITION_Y);
+ #if MT_PROTOCOL_B
+ 	// no need to set ABS_MT_TRACKING_ID, input_mt_init_slots() already set it
+ #else
+@@ -1529,8 +1577,7 @@
+ 
+ 		input_set_abs_params(ts->pen_input_dev, ABS_X, 0, x_max, 0, 0);
+ 		input_set_abs_params(ts->pen_input_dev, ABS_Y, 0, y_max , 0, 0);
+-		input_abs_set_res(ts->pen_input_dev, ABS_X, x_max / PANEL_DEFAULT_WIDTH_MM);
+-		input_abs_set_res(ts->pen_input_dev, ABS_Y, y_max / PANEL_DEFAULT_HEIGHT_MM);
++		nvt_set_abs_resolution(ts->pen_input_dev, ABS_X, ABS_Y);
+ 
+ 		input_set_abs_params(ts->pen_input_dev, ABS_PRESSURE, 0, PEN_PRESSURE_MAX, 0, 0);
+ 		input_set_abs_params(ts->pen_input_dev, ABS_DISTANCE, 0, PEN_DISTANCE_MAX, 0, 0);
+diff --git a/drivers/input/touchscreen/nt36523/nt36xxx.h b/drivers/input/touchscreen/nt36523/nt36xxx.h
+--- a/drivers/input/touchscreen/nt36523/nt36xxx.h
++++ b/drivers/input/touchscreen/nt36523/nt36xxx.h
+@@ -71,9 +71,6 @@
+ #define PEN_DISTANCE_MAX (1)
+ #define PEN_TILT_MIN (-60)
+ #define PEN_TILT_MAX (60)
+-//---for pen resolution---
+-#define PANEL_DEFAULT_WIDTH_MM 148  // 148mm
+-#define PANEL_DEFAULT_HEIGHT_MM 237 // 237mm
+ /* Enable only when module have tp reset pin and connected to host */
+ #define NVT_TOUCH_SUPPORT_HW_RST 1
+ 
+@@ -157,6 +154,8 @@
+ 	bool wgp_stylus;
+ 	bool stylus_resol_double;
+ 	u32 super_resolution;
++	u32 width_mm;
++	u32 height_mm;
+ 	uint8_t x_gang_num;
+ 	uint8_t y_gang_num;
+ 	struct input_dev *pen_input_dev;

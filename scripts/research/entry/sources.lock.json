@@ -1,0 +1,29 @@
+{
+  "schema": "tb371fc-first-stage-source-lock-v1",
+  "inputs": {
+    "kernel": {
+      "commit": "9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1",
+      "url": "https://codeload.github.com/tem423/android_kernel_lenovo_tb371fc/tar.gz/9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1",
+      "archive_bytes": 200047079,
+      "archive_sha256": "7fd2e9144f1af6898217d0d3f43ab2a3d16d96635a1acab0040b516cbed4bcff"
+    },
+    "snapdragon-clang": {
+      "commit": "a16fec82a8deaf8f742ea54f8de98c021af200d4",
+      "url": "https://codeload.github.com/sticpaper/Snapdragon-LLVM-ARM-Compiler-10.0.7-for-Android-NDK/tar.gz/a16fec82a8deaf8f742ea54f8de98c021af200d4",
+      "archive_bytes": 644113537,
+      "archive_sha256": "ca3c67e2c66c2f80af631d17637a65cbe9856604590dd512e4e41746ba0e7372"
+    },
+    "gcc-aarch64": {
+      "commit": "606f80986096476912e04e5c2913685a8f2c3b65",
+      "url": "https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/+archive/606f80986096476912e04e5c2913685a8f2c3b65.tar.gz",
+      "archive_bytes": 28993148,
+      "archive_sha256": "f5c33178fd12181252b2e8c62623e2a9ba10c8e98a55d897c1f6cc80430ec5a0"
+    },
+    "gcc-arm": {
+      "commit": "b0c6a654327ca8796bed1e61dffcf523d04dceaa",
+      "url": "https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/b0c6a654327ca8796bed1e61dffcf523d04dceaa.tar.gz",
+      "archive_bytes": 35319107,
+      "archive_sha256": "f99d5cfd0abb5e3a7bcb594ae8abd7327af15a8e7dfd705c3f456f866321104b"
+    }
+  }
+}

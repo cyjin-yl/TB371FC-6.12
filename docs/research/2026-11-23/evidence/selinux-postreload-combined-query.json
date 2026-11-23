@@ -1,0 +1,1350 @@
+{
+  "actual_loaded_policy_queried": false,
+  "actual_relabel_or_systemd_setcon_executed": false,
+  "boundaries": [
+    "The candidate source35 hash e1a63 and its actual offline conversion33 ce6ccb are recorded separately from all prior stock/conversion/runtime hashes.",
+    "The original53-row map-only query and its source/evidence are unchanged.",
+    "This run repeats the original53 row identities and adds1 explicit PID1 read_policy denial control.52 required decisions allow;2 controls deny.",
+    "The same first53 row identities yielded changed allow bits only for init_t self setcurrent and dyntransition. This subset comparison is not a full policy semantic diff.",
+    "No process domain, inode label, kernel policy or SELinux boolean was changed by this query.",
+    "No actual same-boot VM result is claimed; the separate live probe has82 rows and requires runtime qualification.",
+    "The bounded direct-QEMU process has exited and no job remains."
+  ],
+  "completed": true,
+  "date_utc": "2026-11-23",
+  "execution": {
+    "command": [
+      "/usr/bin/qemu-aarch64",
+      "-L",
+      "/work/fedora-input-system-v3/rootfs",
+      "/work/fedora-input-system-v3/rootfs/usr/bin/python3",
+      "-I",
+      "-B",
+      "/work/selinux-postreload-contract-v2/query_postreload_contract_v2.py",
+      "--policy",
+      "/work/selinux-postreload-contract-v2/inputs/policy.35",
+      "--library",
+      "/work/selinux-postreload-contract-v2/inputs/libsepol.so.2"
+    ],
+    "elapsed_seconds": 3.800113602017518,
+    "exit_code": 0,
+    "inputs": [
+      {
+        "copy": "/work/selinux-postreload-contract-v2/inputs/policy.35",
+        "sha256": "e1a63e7e6a97122f207b2df5a28d863fb29852530aa59c0c8d3dd8eefba36269",
+        "size": 3835432,
+        "source": "/work/selinux-reload-map-self-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35"
+      },
+      {
+        "copy": "/work/selinux-postreload-contract-v2/inputs/libsepol.so.2",
+        "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+        "size": 802880,
+        "source": "/work/selinux-runtime-contract-v1/inputs/libsepol.so.2"
+      }
+    ],
+    "kernel_policy_loaded_or_written": false,
+    "proot_used": false,
+    "runtime_files": [
+      {
+        "path": "/work/fedora-input-system-v3/rootfs/usr/bin/python3.15",
+        "sha256": "a12cb0a1160abfbc59d3336fb3713562977fd862b9a3eafc2553c89b887a8d15",
+        "size": 68968
+      },
+      {
+        "path": "/work/fedora-input-system-v3/rootfs/usr/lib64/libpython3.15.so.1.0",
+        "sha256": "0e3dd3fe4f34e527ebc14f4cdd390d44d583dbda5b9ab99c02fc5c226f7e51f4",
+        "size": 7229904
+      },
+      {
+        "path": "/work/fedora-input-system-v3/rootfs/usr/lib64/libc.so.6",
+        "sha256": "620f6221d0cb0a7bc7d0674bcb0682a0b42f7fb593f596f3bf646f02b10cb798",
+        "size": 2303728
+      },
+      {
+        "path": "/work/fedora-input-system-v3/rootfs/usr/lib/ld-linux-aarch64.so.1",
+        "sha256": "8821728d15728a7046deef6d4183fb343716901e0e8119fff53d6b51e2605547",
+        "size": 928784
+      }
+    ],
+    "schema_version": 1,
+    "source": {
+      "path": "/work/selinux-postreload-contract-v2/query_postreload_contract_v2.py",
+      "sha256": "3c23c6d1a4c8cd289a5a4b1bb09ec6351cbf4bae835369e818ce494f13ec3ad1",
+      "size": 13480
+    },
+    "started_utc": "2026-11-23T06:21:34.600475+00:00",
+    "stderr": {
+      "path": "/work/selinux-postreload-contract-v2/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "stdout": {
+      "path": "/work/selinux-postreload-contract-v2/stdout.json",
+      "sha256": "625942264342ae81c65a505a8330510763b09d77afd4ddad93fbb093e5f9c27b",
+      "size": 35172
+    }
+  },
+  "expected_denial_controls": [
+    {
+      "allowed": false,
+      "class": "file",
+      "permission": "map",
+      "source": "syslogd_t",
+      "target": "syslogd_tmpfs_t"
+    },
+    {
+      "allowed": false,
+      "class": "security",
+      "permission": "read_policy",
+      "source": "init_t",
+      "target": "security_t"
+    }
+  ],
+  "hardware_acceptance_pass": false,
+  "kernel_policy_loaded_or_written": false,
+  "new_live_probe_source": {
+    "actual_guest_execution_proven_here": false,
+    "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/probe_fd_route_v2.py",
+    "queries": 82,
+    "sha256": "fee17f6826ad19a25fc431992affc43687699d85ae38c6fe4ab5bd2c14094a61",
+    "size": 15438
+  },
+  "new_vm_started": false,
+  "offline_candidate_permission_contract_passed": true,
+  "policy_rules_added_by_this_query": false,
+  "previous_query": {
+    "changed_allow_results_among_original53": [
+      {
+        "after": true,
+        "before": false,
+        "query": {
+          "class": "process",
+          "group": "init_same_domain_setcon",
+          "permission": "setcurrent",
+          "source_context": "system_u:system_r:init_t:s0",
+          "target_context": "system_u:system_r:init_t:s0"
+        }
+      },
+      {
+        "after": true,
+        "before": false,
+        "query": {
+          "class": "process",
+          "group": "init_same_domain_setcon",
+          "permission": "dyntransition",
+          "source_context": "system_u:system_r:init_t:s0",
+          "target_context": "system_u:system_r:init_t:s0"
+        }
+      }
+    ],
+    "evidence_path": "docs/research/2026-11-23/evidence/selinux-postreload-contract-query.json",
+    "evidence_sha256": "349dd822998ba391dd478fad4f0501b8df88e2cbca1c619c65fcdb618fb53377",
+    "full_policy_semantic_diff_performed_by_this_query": false,
+    "input_policy_sha256": "0dd46af3240a02d1c7399c46facf30cce2a71a471fb70c0d0f5e58e571e53c74",
+    "offline_converted_policy_sha256": "bfe189488e5b99bd9bdb6571ec5023100be68771a80ebaf2e42e6c51527d83ba"
+  },
+  "result": {
+    "actual_runtime_enforcement_proven_by_query": false,
+    "all_queried_required_permissions_allowed": true,
+    "booleans_changed": false,
+    "candidate_permission_contract_complete": true,
+    "completed": true,
+    "contexts": {
+      "system_u:object_r:device_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 2,
+        "return_code": 0
+      },
+      "system_u:object_r:kmsg_device_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 4,
+        "return_code": 0
+      },
+      "system_u:object_r:null_device_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 3,
+        "return_code": 0
+      },
+      "system_u:object_r:security_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 11,
+        "return_code": 0
+      },
+      "system_u:object_r:semanage_store_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 10,
+        "return_code": 0
+      },
+      "system_u:object_r:syslogd_tmpfs_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 6,
+        "return_code": 0
+      },
+      "system_u:object_r:syslogd_var_run_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 8,
+        "return_code": 0
+      },
+      "system_u:object_r:tmpfs_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 5,
+        "return_code": 0
+      },
+      "system_u:object_r:var_run_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 7,
+        "return_code": 0
+      },
+      "system_u:system_r:init_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 1,
+        "return_code": 0
+      },
+      "system_u:system_r:syslogd_t:s0": {
+        "accepted_by_policy": true,
+        "private_sid": 9,
+        "return_code": 0
+      }
+    },
+    "diagnostic_rows": [
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "old_journal_label_diagnostic",
+        "permission": "map",
+        "permission_allowed": false,
+        "raw_decision": {
+          "allowed": 36190847,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 1,
+        "requested_mask": 1024,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+      },
+      {
+        "class": "security",
+        "denial_audit_mask_includes_permission": true,
+        "group": "manager_export_denial_control",
+        "permission": "read_policy",
+        "permission_allowed": false,
+        "raw_decision": {
+          "allowed": 379,
+          "auditallow": 0,
+          "auditdeny": 4294967287,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 1,
+        "requested_mask": 2048,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:security_t:s0"
+      }
+    ],
+    "expected_query_count": 54,
+    "input_policy": {
+      "sha256": "e1a63e7e6a97122f207b2df5a28d863fb29852530aa59c0c8d3dd8eefba36269",
+      "size": 3835432
+    },
+    "kernel_policy_loaded_or_written": false,
+    "library": {
+      "path": "/work/selinux-postreload-contract-v2/inputs/libsepol.so.2",
+      "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+      "size": 802880
+    },
+    "policy_provenance": "independent fixed map-and-self-transition candidate35 converted to33 in userspace; offline only",
+    "policy_semantic_equivalence_to_other_hash_asserted": false,
+    "policy_version_converted": true,
+    "proot_used": false,
+    "queried_policy": {
+      "sha256": "ce6ccbfda2105de32c6f865e883493a98ee4df848d298b703d55904cae3f9875",
+      "size": 3835420
+    },
+    "queries": [
+      {
+        "class": "process",
+        "denial_audit_mask_includes_permission": true,
+        "group": "init_same_domain_setcon",
+        "permission": "setcurrent",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 837774205,
+          "auditallow": 0,
+          "auditdeny": 4286840831,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16777216,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:system_r:init_t:s0"
+      },
+      {
+        "class": "process",
+        "denial_audit_mask_includes_permission": true,
+        "group": "init_same_domain_setcon",
+        "permission": "dyntransition",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 837774205,
+          "auditallow": 0,
+          "auditdeny": 4286840831,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 8388608,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:system_r:init_t:s0"
+      },
+      {
+        "class": "chr_file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_source",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 656383,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:device_t:s0"
+      },
+      {
+        "class": "chr_file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_source",
+        "permission": "relabelfrom",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 656383,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:device_t:s0"
+      },
+      {
+        "class": "chr_file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_target",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 656383,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:null_device_t:s0"
+      },
+      {
+        "class": "chr_file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_target",
+        "permission": "relabelto",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 656383,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 256,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:null_device_t:s0"
+      },
+      {
+        "class": "filesystem",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_associate",
+        "permission": "associate",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 128,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:object_r:null_device_t:s0",
+        "target_context": "system_u:object_r:device_t:s0"
+      },
+      {
+        "class": "chr_file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_target",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 656381,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:kmsg_device_t:s0"
+      },
+      {
+        "class": "chr_file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_target",
+        "permission": "relabelto",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 656381,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 256,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:kmsg_device_t:s0"
+      },
+      {
+        "class": "filesystem",
+        "denial_audit_mask_includes_permission": true,
+        "group": "device_associate",
+        "permission": "associate",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 128,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:object_r:kmsg_device_t:s0",
+        "target_context": "system_u:object_r:device_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_directory",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_directory",
+        "permission": "search",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1073741824,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_directory",
+        "permission": "relabelfrom",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_file",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 170557439,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_file",
+        "permission": "relabelfrom",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 170557439,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_directory",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 1076494847,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_directory",
+        "permission": "search",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 1076494847,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1073741824,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_directory",
+        "permission": "relabelfrom",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 1076494847,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_file",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 2228624,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_source_file",
+        "permission": "relabelfrom",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 2228624,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "search",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1073741824,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "relabelto",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 256,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:var_run_t:s0"
+      },
+      {
+        "class": "filesystem",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_associate",
+        "permission": "associate",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 128,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:object_r:var_run_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "search",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1073741824,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "relabelto",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 256,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "filesystem",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_associate",
+        "permission": "associate",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 128,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:object_r:syslogd_var_run_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "search",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1073741824,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_target_directory",
+        "permission": "relabelto",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4197071359,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 256,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "filesystem",
+        "denial_audit_mask_includes_permission": true,
+        "group": "run_associate",
+        "permission": "associate",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 128,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 128,
+        "return_code": 0,
+        "source_context": "system_u:object_r:tmpfs_t:s0",
+        "target_context": "system_u:object_r:tmpfs_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_target_file",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 2756059,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_target_file",
+        "permission": "relabelto",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 2756059,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 256,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_file_access",
+        "permission": "create",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 36208639,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 8,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_file_access",
+        "permission": "open",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 36208639,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 524288,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_file_access",
+        "permission": "read",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 36208639,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 2,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_file_access",
+        "permission": "write",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 36208639,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 4,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_file_access",
+        "permission": "append",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 36208639,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 512,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_file_access",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 36208639,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_file_access",
+        "permission": "map",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 36208639,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1024,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_directory_access",
+        "permission": "search",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4196939903,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1073741824,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_directory_access",
+        "permission": "add_name",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4196939903,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 134217728,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_directory_access",
+        "permission": "write",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4196939903,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 4,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_directory_access",
+        "permission": "open",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4196939903,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 524288,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_directory_access",
+        "permission": "read",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4196939903,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 2,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "dir",
+        "denial_audit_mask_includes_permission": true,
+        "group": "journal_directory_access",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 4196939903,
+          "auditallow": 0,
+          "auditdeny": 4294966271,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "old_journal_label_diagnostic",
+        "permission": "map",
+        "permission_allowed": false,
+        "raw_decision": {
+          "allowed": 36190847,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 1,
+        "requested_mask": 1024,
+        "return_code": 0,
+        "source_context": "system_u:system_r:syslogd_t:s0",
+        "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "candidate_policy_file",
+        "permission": "read",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 525779,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 2,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:semanage_store_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "candidate_policy_file",
+        "permission": "open",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 525779,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 524288,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:semanage_store_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "candidate_policy_file",
+        "permission": "getattr",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 525779,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:semanage_store_t:s0"
+      },
+      {
+        "class": "file",
+        "denial_audit_mask_includes_permission": true,
+        "group": "candidate_policy_file",
+        "permission": "map",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 525779,
+          "auditallow": 0,
+          "auditdeny": 4294967295,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 1024,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:semanage_store_t:s0"
+      },
+      {
+        "class": "security",
+        "denial_audit_mask_includes_permission": true,
+        "group": "candidate_policy_load",
+        "permission": "load_policy",
+        "permission_allowed": true,
+        "raw_decision": {
+          "allowed": 379,
+          "auditallow": 0,
+          "auditdeny": 4294967287,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 0,
+        "requested_mask": 16,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:security_t:s0"
+      },
+      {
+        "class": "security",
+        "denial_audit_mask_includes_permission": true,
+        "group": "manager_export_denial_control",
+        "permission": "read_policy",
+        "permission_allowed": false,
+        "raw_decision": {
+          "allowed": 379,
+          "auditallow": 0,
+          "auditdeny": 4294967287,
+          "decided": 4294967295,
+          "seqno": 0
+        },
+        "reason_mask": 1,
+        "requested_mask": 2048,
+        "return_code": 0,
+        "source_context": "system_u:system_r:init_t:s0",
+        "target_context": "system_u:object_r:security_t:s0"
+      }
+    ],
+    "query_count": 54,
+    "required_denials": [],
+    "retained_controls_denied": true,
+    "return_codes": {
+      "class:chr_file": 0,
+      "class:dir": 0,
+      "class:file": 0,
+      "class:filesystem": 0,
+      "class:process": 0,
+      "class:security": 0,
+      "fclose": 0,
+      "permission:chr_file:getattr": 0,
+      "permission:chr_file:relabelfrom": 0,
+      "permission:chr_file:relabelto": 0,
+      "permission:dir:add_name": 0,
+      "permission:dir:getattr": 0,
+      "permission:dir:open": 0,
+      "permission:dir:read": 0,
+      "permission:dir:relabelfrom": 0,
+      "permission:dir:relabelto": 0,
+      "permission:dir:search": 0,
+      "permission:dir:write": 0,
+      "permission:file:append": 0,
+      "permission:file:create": 0,
+      "permission:file:getattr": 0,
+      "permission:file:map": 0,
+      "permission:file:open": 0,
+      "permission:file:read": 0,
+      "permission:file:relabelfrom": 0,
+      "permission:file:relabelto": 0,
+      "permission:file:write": 0,
+      "permission:filesystem:associate": 0,
+      "permission:process:dyntransition": 0,
+      "permission:process:setcurrent": 0,
+      "permission:security:load_policy": 0,
+      "permission:security:read_policy": 0,
+      "policydb_create": 0,
+      "policydb_from_image": 0,
+      "policydb_set_vers33": 0,
+      "policydb_to_image": 0,
+      "private_policydb_from_file": 0
+    },
+    "schema_version": 1,
+    "scope": "offline candidate AV contracts; no runtime execution proof",
+    "sids_are_process_private": true
+  },
+  "schema_version": 1,
+  "source_script": {
+    "path": "scripts/research/selinux/query_postreload_contract_v2.py",
+    "sha256": "3c23c6d1a4c8cd289a5a4b1bb09ec6351cbf4bae835369e818ce494f13ec3ad1",
+    "size": 13480
+  },
+  "tablet_accessed": false,
+  "title": "Independent map-and-self-transition candidate postreload AV query"
+}

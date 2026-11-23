@@ -1,0 +1,1048 @@
+{
+  "board_dtb_used": false,
+  "compiled_module_sig_force": false,
+  "early_bootstrap_lines": [
+    "TB371FC_EARLY_SELINUX_V1 POLICY_LOADED enforcing=1 context=system_u:system_r:kernel_t:s0",
+    "TB371FC_EARLY_SELINUX_V1 file=/usr/lib/systemd/systemd context=system_u:object_r:init_exec_t:s0",
+    "TB371FC_EARLY_SELINUX_V1 file=/usr/bin/udevadm context=system_u:object_r:udev_exec_t:s0",
+    "TB371FC_EARLY_SELINUX_V1 EXEC_SYSTEMD enforcing=1 flags=0x828c"
+  ],
+  "early_selinux_argument": "rd.tb371fc.early-selinux=1",
+  "elapsed_seconds": 137.16500025999267,
+  "expected_marker_seen": false,
+  "guest_gates_match": false,
+  "guest_partial_progress": [
+    {
+      "complete_system_pass": false,
+      "details": {
+        "boot_id": "12e7e719-64d1-4383-a05b-03e34aa6284a",
+        "kernel_rdinit": "/init.tmpfs",
+        "pid1_context": "system_u:system_r:init_t:s0",
+        "read_only_process_probe": true,
+        "root_device": "0:20",
+        "root_filesystem": "tmpfs",
+        "root_mount_options": "rw,relatime",
+        "root_source": "tb371fc-initroot",
+        "root_super_options": "rw,seclabel,size=196608k,mode=755",
+        "schema_version": 2,
+        "scope": "initrd before switch-root",
+        "tmpfs_root_opt_in": true,
+        "udevd_context": "system_u:system_r:udev_t:s0-s0:c0.c1023",
+        "udevd_pid": "78"
+      },
+      "physical_hardware_tested": false,
+      "stage": "early_initrd_domains"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "broker_children": [
+          {
+            "command_line": [
+              "dbus-broker",
+              "--log",
+              "10",
+              "--controller",
+              "9",
+              "--machine-id",
+              "a70a7e8a27314be68d0f105afc5eea2a",
+              "--max-bytes",
+              "536870912",
+              "--max-fds",
+              "4096",
+              "--max-matches",
+              "131072",
+              "--audit"
+            ],
+            "open_fd_count": 22,
+            "open_file_limit": [
+              "Max open files            16384                16384                files     "
+            ],
+            "pid": 212,
+            "selinux_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "status": [
+              "Name:\tdbus-broker",
+              "State:\tS (sleeping)",
+              "PPid:\t211",
+              "FDSize:\t64",
+              "Threads:\t1"
+            ]
+          }
+        ],
+        "broker_children_truncated": false,
+        "broker_launcher": {
+          "command_line": [
+            "/usr/bin/dbus-broker-launch",
+            "--scope",
+            "system",
+            "--audit"
+          ],
+          "open_fd_count": 15,
+          "open_file_limit": [
+            "Max open files            16384                16384                files     "
+          ],
+          "pid": 211,
+          "selinux_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+          "status": [
+            "Name:\tdbus-broker-lau",
+            "State:\tS (sleeping)",
+            "PPid:\t1",
+            "FDSize:\t128",
+            "Threads:\t1"
+          ]
+        },
+        "broker_mainpid_lookup": {
+          "command": [
+            "/usr/bin/systemctl",
+            "show",
+            "--property=MainPID",
+            "--value",
+            "dbus-broker.service"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_bytes": 0,
+          "stderr_truncated": false,
+          "stdout": "211\n",
+          "stdout_bytes": 4,
+          "stdout_truncated": false
+        },
+        "pid1": {
+          "command_line": [
+            "/usr/lib/systemd/systemd",
+            "--switched-root",
+            "--system",
+            "--deserialize=58"
+          ],
+          "open_fd_count": 131,
+          "open_file_limit": [
+            "Max open files            2147483584           2147483584           files     "
+          ],
+          "pid": 1,
+          "selinux_context": "system_u:system_r:init_t:s0",
+          "status": [
+            "Name:\tsystemd",
+            "State:\tS (sleeping)",
+            "PPid:\t0",
+            "FDSize:\t256",
+            "Threads:\t1"
+          ]
+        },
+        "validation_process": {
+          "command_line": [
+            "/usr/bin/python3",
+            "/usr/libexec/tb371fc-r4c-vm-verify.py"
+          ],
+          "open_fd_count": 5,
+          "open_file_limit": [
+            "Max open files            1024                 524288               files     "
+          ],
+          "pid": 348,
+          "selinux_context": "system_u:system_r:initrc_t:s0",
+          "status": [
+            "Name:\tpython3",
+            "State:\tR (running)",
+            "PPid:\t1",
+            "FDSize:\t256",
+            "Threads:\t1"
+          ]
+        }
+      },
+      "physical_hardware_tested": false,
+      "stage": "system_bus_context"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "actual_runtime_syscall_enforcement_proven_by_this_query": false,
+        "actual_service_fd_and_fifo_allowed": true,
+        "booleans_changed": false,
+        "input_policy": {
+          "sha256": "9c79cb12810a781d6cb91f9b7dff160a1d768c534b784743b4256015799f22a8",
+          "size": 3835420
+        },
+        "kernel_policy_written_or_loaded": false,
+        "library": {
+          "path": "/usr/lib64/libsepol.so.2",
+          "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+          "size": 802880
+        },
+        "policy_version_converted": false,
+        "queries": [
+          {
+            "class": "fd",
+            "denial_audit_mask_includes_permission": true,
+            "permission": "use",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": 1,
+              "auditallow": 0,
+              "auditdeny": 4294967295,
+              "decided": 4294967295,
+              "seqno": 0
+            },
+            "reason_mask": 0,
+            "requested_mask": 1,
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "denial_audit_mask_includes_permission": true,
+            "permission": "read",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": 599,
+              "auditallow": 0,
+              "auditdeny": 4294967295,
+              "decided": 4294967295,
+              "seqno": 0
+            },
+            "reason_mask": 0,
+            "requested_mask": 2,
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "denial_audit_mask_includes_permission": true,
+            "permission": "write",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": 599,
+              "auditallow": 0,
+              "auditdeny": 4294967295,
+              "decided": 4294967295,
+              "seqno": 0
+            },
+            "reason_mask": 0,
+            "requested_mask": 4,
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "denial_audit_mask_includes_permission": true,
+            "permission": "append",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": 599,
+              "auditallow": 0,
+              "auditdeny": 4294967295,
+              "decided": 4294967295,
+              "seqno": 0
+            },
+            "reason_mask": 0,
+            "requested_mask": 512,
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "denial_audit_mask_includes_permission": true,
+            "permission": "getattr",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": 599,
+              "auditallow": 0,
+              "auditdeny": 4294967295,
+              "decided": 4294967295,
+              "seqno": 0
+            },
+            "reason_mask": 0,
+            "requested_mask": 16,
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "denial_audit_mask_includes_permission": true,
+            "permission": "ioctl",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": 599,
+              "auditallow": 0,
+              "auditdeny": 4294967295,
+              "decided": 4294967295,
+              "seqno": 0
+            },
+            "reason_mask": 0,
+            "requested_mask": 1,
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fd",
+            "denial_audit_mask_includes_permission": true,
+            "permission": "use",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": 1,
+              "auditallow": 0,
+              "auditdeny": 4294967295,
+              "decided": 4294967295,
+              "seqno": 0
+            },
+            "reason_mask": 0,
+            "requested_mask": 1,
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "denial_audit_mask_includes_permission": false,
+            "permission": "read",
+            "permission_allowed": false,
+            "raw_decision": {
+              "allowed": 0,
+              "auditallow": 0,
+              "auditdeny": 4294442408,
+              "decided": 4294967295,
+              "seqno": 0
+            },
+            "reason_mask": 1,
+            "requested_mask": 2,
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "denial_audit_mask_includes_permission": false,
+            "permission": "write",
+            "permission_allowed": false,
+            "raw_decision": {
+              "allowed": 0,
+              "auditallow": 0,
+              "auditdeny": 4294442408,
+              "decided": 4294967295,
+              "seqno": 0
+            },
+            "reason_mask": 1,
+            "requested_mask": 4,
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "denial_audit_mask_includes_permission": false,
+            "permission": "append",
+            "permission_allowed": false,
+            "raw_decision": {
+              "allowed": 0,
+              "auditallow": 0,
+              "auditdeny": 4294442408,
+              "decided": 4294967295,
+              "seqno": 0
+            },
+            "reason_mask": 1,
+            "requested_mask": 512,
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "denial_audit_mask_includes_permission": false,
+            "permission": "getattr",
+            "permission_allowed": false,
+            "raw_decision": {
+              "allowed": 0,
+              "auditallow": 0,
+              "auditdeny": 4294442408,
+              "decided": 4294967295,
+              "seqno": 0
+            },
+            "reason_mask": 1,
+            "requested_mask": 16,
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "denial_audit_mask_includes_permission": false,
+            "permission": "ioctl",
+            "permission_allowed": false,
+            "raw_decision": {
+              "allowed": 0,
+              "auditallow": 0,
+              "auditdeny": 4294442408,
+              "decided": 4294967295,
+              "seqno": 0
+            },
+            "reason_mask": 1,
+            "requested_mask": 1,
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fd",
+            "denial_audit_mask_includes_permission": true,
+            "permission": "use",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": 1,
+              "auditallow": 0,
+              "auditdeny": 4294967295,
+              "decided": 4294967295,
+              "seqno": 0
+            },
+            "reason_mask": 0,
+            "requested_mask": 1,
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:kernel_t:s0"
+          },
+          {
+            "class": "process",
+            "denial_audit_mask_includes_permission": true,
+            "permission": "transition",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": 6883966,
+              "auditallow": 0,
+              "auditdeny": 4289200127,
+              "decided": 4294967295,
+              "seqno": 0
+            },
+            "reason_mask": 0,
+            "requested_mask": 2,
+            "return_code": 0,
+            "source_context": "system_u:system_r:init_t:s0",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "process",
+            "denial_audit_mask_includes_permission": true,
+            "permission": "setexec",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": 812608381,
+              "auditallow": 0,
+              "auditdeny": 4286840831,
+              "decided": 4294967295,
+              "seqno": 0
+            },
+            "reason_mask": 0,
+            "requested_mask": 131072,
+            "return_code": 0,
+            "source_context": "system_u:system_r:init_t:s0",
+            "target_context": "system_u:system_r:init_t:s0"
+          }
+        ],
+        "query_completed": true,
+        "query_count": 15,
+        "return_codes": {
+          "class:fd": 0,
+          "class:fifo_file": 0,
+          "class:process": 0,
+          "context:system_u:system_r:init_t:s0": 0,
+          "context:system_u:system_r:initrc_t:s0": 0,
+          "context:system_u:system_r:kernel_t:s0": 0,
+          "context:system_u:system_r:system_dbusd_t:s0-s0:c0.c1023": 0,
+          "context:system_u:system_r:unconfined_service_t:s0": 0,
+          "fclose": 0,
+          "permission:fd:use": 0,
+          "permission:fifo_file:append": 0,
+          "permission:fifo_file:getattr": 0,
+          "permission:fifo_file:ioctl": 0,
+          "permission:fifo_file:read": 0,
+          "permission:fifo_file:write": 0,
+          "permission:process:setexec": 0,
+          "permission:process:transition": 0,
+          "userspace_policydb_from_exported_bytes": 0
+        },
+        "schema_version": 1,
+        "scope": "userspace AV computation on actual exported VM policy bytes",
+        "sids_are_process_private": true,
+        "unconfined_service_fifo_restriction_retained": true
+      },
+      "physical_hardware_tested": false,
+      "stage": "actual_loaded_policy_access"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "firmware_count": 69,
+        "kernel_release": "6.12.114-tb371fc-research4-system",
+        "loaded_policy_version": 33,
+        "module_count": 84,
+        "selinux_enforce": "1"
+      },
+      "physical_hardware_tested": false,
+      "stage": "runtime_hashes_verified"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "broker_children": [
+          {
+            "command_line": [
+              "dbus-broker",
+              "--log",
+              "10",
+              "--controller",
+              "9",
+              "--machine-id",
+              "a70a7e8a27314be68d0f105afc5eea2a",
+              "--max-bytes",
+              "536870912",
+              "--max-fds",
+              "4096",
+              "--max-matches",
+              "131072",
+              "--audit"
+            ],
+            "open_fd_count": 22,
+            "open_file_limit": [
+              "Max open files            16384                16384                files     "
+            ],
+            "pid": 212,
+            "selinux_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "status": [
+              "Name:\tdbus-broker",
+              "State:\tS (sleeping)",
+              "PPid:\t211",
+              "FDSize:\t64",
+              "Threads:\t1"
+            ]
+          }
+        ],
+        "broker_children_truncated": false,
+        "broker_launcher": {
+          "command_line": [
+            "/usr/bin/dbus-broker-launch",
+            "--scope",
+            "system",
+            "--audit"
+          ],
+          "open_fd_count": 15,
+          "open_file_limit": [
+            "Max open files            16384                16384                files     "
+          ],
+          "pid": 211,
+          "selinux_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+          "status": [
+            "Name:\tdbus-broker-lau",
+            "State:\tS (sleeping)",
+            "PPid:\t1",
+            "FDSize:\t128",
+            "Threads:\t1"
+          ]
+        },
+        "broker_mainpid_lookup": {
+          "command": [
+            "/usr/bin/systemctl",
+            "show",
+            "--property=MainPID",
+            "--value",
+            "dbus-broker.service"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_bytes": 0,
+          "stderr_truncated": false,
+          "stdout": "211\n",
+          "stdout_bytes": 4,
+          "stdout_truncated": false
+        },
+        "pid1": {
+          "command_line": [
+            "/usr/lib/systemd/systemd",
+            "--switched-root",
+            "--system",
+            "--deserialize=58"
+          ],
+          "open_fd_count": 131,
+          "open_file_limit": [
+            "Max open files            2147483584           2147483584           files     "
+          ],
+          "pid": 1,
+          "selinux_context": "system_u:system_r:init_t:s0",
+          "status": [
+            "Name:\tsystemd",
+            "State:\tS (sleeping)",
+            "PPid:\t0",
+            "FDSize:\t256",
+            "Threads:\t1"
+          ]
+        },
+        "validation_process": {
+          "command_line": [
+            "/usr/bin/python3",
+            "/usr/libexec/tb371fc-r4c-vm-verify.py"
+          ],
+          "open_fd_count": 5,
+          "open_file_limit": [
+            "Max open files            1024                 524288               files     "
+          ],
+          "pid": 348,
+          "selinux_context": "system_u:system_r:initrc_t:s0",
+          "status": [
+            "Name:\tpython3",
+            "State:\tR (running)",
+            "PPid:\t1",
+            "FDSize:\t256",
+            "Threads:\t1"
+          ]
+        }
+      },
+      "physical_hardware_tested": false,
+      "stage": "system_bus_context"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "command": [
+          "/usr/bin/busctl",
+          "--system",
+          "--no-pager",
+          "call",
+          "org.freedesktop.DBus",
+          "/org/freedesktop/DBus",
+          "org.freedesktop.DBus",
+          "GetId"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_truncated": false,
+        "stdout": "s \"f926a99c25f188dd36252870872638cd\"\n",
+        "stdout_bytes": 37,
+        "stdout_truncated": false
+      },
+      "physical_hardware_tested": false,
+      "stage": "system_bus_get_id"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "command": [
+          "/usr/bin/busctl",
+          "--system",
+          "--no-pager",
+          "get-property",
+          "org.freedesktop.systemd1",
+          "/org/freedesktop/systemd1",
+          "org.freedesktop.systemd1.Manager",
+          "Version"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_truncated": false,
+        "stdout": "s \"262.1-1.fc45\"\n",
+        "stdout_bytes": 17,
+        "stdout_truncated": false
+      },
+      "physical_hardware_tested": false,
+      "stage": "system_bus_manager_version"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "client": {
+          "command_line": [
+            "/usr/bin/systemd-run",
+            "--quiet",
+            "--wait",
+            "--pipe",
+            "--collect",
+            "--unit=tb371fc-r4c-bus-proof.service",
+            "--property=RuntimeMaxSec=8s",
+            "--setenv=LC_ALL=C",
+            "/usr/bin/true"
+          ],
+          "open_fd_count": 3,
+          "open_file_limit": [
+            "Max open files            1024                 524288               files     "
+          ],
+          "pid": 358,
+          "selinux_context": "system_u:system_r:initrc_t:s0",
+          "status": [
+            "Name:\tsystemd-run",
+            "State:\tR (running)",
+            "PPid:\t348",
+            "FDSize:\t64",
+            "Threads:\t1"
+          ]
+        },
+        "command": [
+          "/usr/bin/true"
+        ],
+        "creator": {
+          "command_line": [
+            "/usr/bin/python3",
+            "/usr/libexec/tb371fc-r4c-vm-verify.py"
+          ],
+          "open_fd_count": 7,
+          "open_file_limit": [
+            "Max open files            1024                 524288               files     "
+          ],
+          "pid": 348,
+          "selinux_context": "system_u:system_r:initrc_t:s0",
+          "status": [
+            "Name:\tpython3",
+            "State:\tR (running)",
+            "PPid:\t1",
+            "FDSize:\t256",
+            "Threads:\t1"
+          ]
+        },
+        "properties": [],
+        "stderr_pipe": {
+          "device": 14,
+          "fd": 6,
+          "inode": 7513,
+          "inode_selinux_context": "system_u:system_r:initrc_t:s0",
+          "mode": 4480,
+          "target": "pipe:[7513]"
+        },
+        "stdin": {
+          "device": 6,
+          "fd": 0,
+          "inode": 5,
+          "inode_selinux_context": "system_u:object_r:null_device_t:s0",
+          "mode": 8630,
+          "target": "/dev/null"
+        },
+        "stdout_pipe": {
+          "device": 14,
+          "fd": 4,
+          "inode": 7512,
+          "inode_selinux_context": "system_u:system_r:initrc_t:s0",
+          "mode": 4480,
+          "target": "pipe:[7512]"
+        },
+        "systemd_client_debug_logging": true,
+        "unit": "tb371fc-r4c-bus-proof.service"
+      },
+      "physical_hardware_tested": false,
+      "stage": "transient_client_started"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "exit_code": 1,
+        "stderr": "Bus n/a: changing state UNSET -> OPENING\nsd-bus: starting bus by connecting to /run/dbus/system_bus_socket...\nBus n/a: changing state OPENING -> AUTHENTICATING\nBus n/a: changing state AUTHENTICATING -> HELLO\nSent message type=method_call sender=n/a destination=org.freedesktop.DBus path=/org/freedesktop/DBus interface=org.freedesktop.DBus member=Hello cookie=1 reply_cookie=0 signature=n/a error-name=n/a error-message=n/a\nGot message type=method_return sender=org.freedesktop.DBus destination=:1.8 path=n/a interface=n/a member=n/a  cookie=4294967295 reply_cookie=1 signature=s error-name=n/a error-message=n/a\nBus n/a: changing state HELLO -> RUNNING\nSent message type=method_call sender=n/a destination=org.freedesktop.systemd1 path=/org/freedesktop/systemd1 interface=org.freedesktop.systemd1.Manager member=StartTransientUnit cookie=2 reply_cookie=0 signature=ssa(sv)a(sa(sv)) error-name=n/a error-message=n/a\nGot message type=error sender=:1.1 destination=:1.8 path=n/a interface=n/a member=n/a  cookie=967 reply_cookie=2 signature=s error-name=org.freedesktop.DBus.Error.InconsistentMessage error-message=Failed to set unit properties: Bad message\nFailed to start transient service unit: Failed to set unit properties: Bad message\nBus n/a: changing state RUNNING -> CLOSED\n",
+        "stdout": ""
+      },
+      "physical_hardware_tested": false,
+      "stage": "system_bus_pipe_baseline"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "broker_children": [
+          {
+            "command_line": [
+              "dbus-broker",
+              "--log",
+              "10",
+              "--controller",
+              "9",
+              "--machine-id",
+              "a70a7e8a27314be68d0f105afc5eea2a",
+              "--max-bytes",
+              "536870912",
+              "--max-fds",
+              "4096",
+              "--max-matches",
+              "131072",
+              "--audit"
+            ],
+            "open_fd_count": 22,
+            "open_file_limit": [
+              "Max open files            16384                16384                files     "
+            ],
+            "pid": 212,
+            "selinux_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "status": [
+              "Name:\tdbus-broker",
+              "State:\tS (sleeping)",
+              "PPid:\t211",
+              "FDSize:\t64",
+              "Threads:\t1"
+            ]
+          }
+        ],
+        "broker_children_truncated": false,
+        "broker_launcher": {
+          "command_line": [
+            "/usr/bin/dbus-broker-launch",
+            "--scope",
+            "system",
+            "--audit"
+          ],
+          "open_fd_count": 15,
+          "open_file_limit": [
+            "Max open files            16384                16384                files     "
+          ],
+          "pid": 211,
+          "selinux_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+          "status": [
+            "Name:\tdbus-broker-lau",
+            "State:\tS (sleeping)",
+            "PPid:\t1",
+            "FDSize:\t128",
+            "Threads:\t1"
+          ]
+        },
+        "broker_mainpid_lookup": {
+          "command": [
+            "/usr/bin/systemctl",
+            "show",
+            "--property=MainPID",
+            "--value",
+            "dbus-broker.service"
+          ],
+          "exit_code": 0,
+          "stderr": "",
+          "stderr_bytes": 0,
+          "stderr_truncated": false,
+          "stdout": "211\n",
+          "stdout_bytes": 4,
+          "stdout_truncated": false
+        },
+        "pid1": {
+          "command_line": [
+            "/usr/lib/systemd/systemd",
+            "--switched-root",
+            "--system",
+            "--deserialize=58"
+          ],
+          "open_fd_count": 131,
+          "open_file_limit": [
+            "Max open files            2147483584           2147483584           files     "
+          ],
+          "pid": 1,
+          "selinux_context": "system_u:system_r:init_t:s0",
+          "status": [
+            "Name:\tsystemd",
+            "State:\tS (sleeping)",
+            "PPid:\t0",
+            "FDSize:\t256",
+            "Threads:\t1"
+          ]
+        },
+        "traceback": "Traceback (most recent call last):\n  File \"/usr/libexec/tb371fc-r4c-vm-verify.py\", line 468, in <module>\n    main()\n    ~~~~^^\n  File \"/usr/libexec/tb371fc-r4c-vm-verify.py\", line 347, in main\n    require(bus_run.returncode == 0 and not bus_run.stdout,\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n            'system-bus --wait/--pipe baseline failed before resource probes')\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/libexec/tb371fc-r4c-vm-verify.py\", line 45, in require\n    raise RuntimeError(message)\nRuntimeError: system-bus --wait/--pipe baseline failed before resource probes\n",
+        "validation_process": {
+          "command_line": [
+            "/usr/bin/python3",
+            "/usr/libexec/tb371fc-r4c-vm-verify.py"
+          ],
+          "open_fd_count": 5,
+          "open_file_limit": [
+            "Max open files            1024                 524288               files     "
+          ],
+          "pid": 348,
+          "selinux_context": "system_u:system_r:initrc_t:s0",
+          "status": [
+            "Name:\tpython3",
+            "State:\tR (running)",
+            "PPid:\t1",
+            "FDSize:\t256",
+            "Threads:\t1"
+          ]
+        }
+      },
+      "physical_hardware_tested": false,
+      "stage": "failure_context"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "command": [
+          "/usr/bin/journalctl",
+          "--sync"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_truncated": false,
+        "stdout": "",
+        "stdout_bytes": 0,
+        "stdout_truncated": false
+      },
+      "physical_hardware_tested": false,
+      "stage": "journal_sync"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "command": [
+          "/usr/bin/journalctl",
+          "--boot=0",
+          "--unit=dbus-broker.service",
+          "--lines=80",
+          "--output=short-monotonic",
+          "--no-pager"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_truncated": false,
+        "stdout": "[   69.944616] tb371fc-research4-vm dbus-broker-launch[211]: Ready\n",
+        "stdout_bytes": 67,
+        "stdout_truncated": false
+      },
+      "physical_hardware_tested": false,
+      "stage": "broker_journal"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "command": [
+          "/usr/bin/journalctl",
+          "--boot=0",
+          "--dmesg",
+          "--grep=avc:|audit:|denied|BPF|bpf|Out of memory",
+          "--lines=100",
+          "--output=short-monotonic",
+          "--no-pager"
+        ],
+        "exit_code": 1,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_truncated": false,
+        "stdout": "-- No entries --\n",
+        "stdout_bytes": 17,
+        "stdout_truncated": false
+      },
+      "physical_hardware_tested": false,
+      "stage": "kernel_security_journal"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "command": [
+          "/usr/bin/journalctl",
+          "--boot=0",
+          "--grep=Peer |disconnected|protocol|file descriptor|Connection reset|pids-proof|fs-proof|bus-proof",
+          "--lines=100",
+          "--output=short-monotonic",
+          "--no-pager"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_truncated": false,
+        "stdout": "[   59.325961] tb371fc-research4-vm systemd-userwork: processing[187]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   59.094982] tb371fc-research4-vm systemd-userwork: processing[185]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   58.893634] tb371fc-research4-vm systemd-userwork: processing[186]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   58.801674] tb371fc-research4-vm systemd-userwork: processing[187]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   58.745389] tb371fc-research4-vm systemd-userwork: processing[185]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   58.696372] tb371fc-research4-vm systemd-userwork: processing[186]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   58.634906] tb371fc-research4-vm systemd-userwork: processing[187]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   58.577483] tb371fc-research4-vm systemd-userwork: processing[185]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   58.528960] tb371fc-research4-vm systemd-userwork: processing[186]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   58.458865] tb371fc-research4-vm systemd-userwork: processing[186]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   58.397480] tb371fc-research4-vm systemd-userwork: processing[185]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   58.321427] tb371fc-research4-vm systemd-userwork: processing[187]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   58.269460] tb371fc-research4-vm systemd-userwork: processing[186]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   58.218658] tb371fc-research4-vm systemd-userwork: processing[185]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   58.055286] tb371fc-research4-vm systemd-userwork: processing[187]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   57.811142] tb371fc-research4-vm systemd-userwork: processing[186]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   54.892572] tb371fc-research4-vm systemd-userwork: processing[185]: varlink-6-6: Changing state processing-disconnect \u2192 disconnected\n[   60.297452] tb371fc-research4-vm journalctl[174]: journal: Changing state idle-client \u2192 disconnected\n",
+        "stdout_bytes": 2452,
+        "stdout_truncated": false
+      },
+      "physical_hardware_tested": false,
+      "stage": "transport_journal"
+    },
+    {
+      "complete_system_pass": false,
+      "details": {
+        "command": [
+          "/usr/bin/sync"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "stderr_bytes": 0,
+        "stderr_truncated": false,
+        "stdout": "",
+        "stdout_bytes": 0,
+        "stdout_truncated": false
+      },
+      "physical_hardware_tested": false,
+      "stage": "failure_evidence_sync"
+    }
+  ],
+  "guest_result": {},
+  "guest_result_count": 0,
+  "host_filesystem_shared": false,
+  "initramfs_role": "production-tmpfs-early-selinux",
+  "initramfs_sha256": "cf89e286c60b5d9faa2798b746a7f6664e166919e1b0f7bb6ef2d6df01a99616",
+  "initrd_domain_records": [
+    {
+      "boot_id": "12e7e719-64d1-4383-a05b-03e34aa6284a",
+      "kernel_rdinit": "/init.tmpfs",
+      "pid1_context": "system_u:system_r:init_t:s0",
+      "read_only_process_probe": true,
+      "root_device": "0:20",
+      "root_filesystem": "tmpfs",
+      "root_mount_options": "rw,relatime",
+      "root_source": "tb371fc-initroot",
+      "root_super_options": "rw,seclabel,size=196608k,mode=755",
+      "schema_version": 2,
+      "scope": "initrd before switch-root",
+      "tmpfs_root_opt_in": true,
+      "udevd_context": "system_u:system_r:udev_t:s0-s0:c0.c1023",
+      "udevd_pid": "78"
+    }
+  ],
+  "invalid_initramfs_seen": false,
+  "kernel_image_sha256": "8ab38b022f7504869443f2469878cd55656b08fb6c56946122710144fc1cc8fb",
+  "kernel_panic_seen": false,
+  "kernel_rdinit_argument": "rdinit=/init.tmpfs",
+  "log_limit_bytes": 8388608,
+  "marker_exact_line_count": 0,
+  "network": false,
+  "observed_warning_counts": {
+    "autofs4_module_warning_count": 0,
+    "bpf_lsm_not_supported_count": 0,
+    "pids_max_read_warning_count": 0,
+    "selinux_avc_denial_count": 83,
+    "udev_event_fd_loss_count": 0,
+    "virtual_gpio_failure_count": 0
+  },
+  "passed": false,
+  "phase": "verify",
+  "physical_device_passthrough": false,
+  "physical_hardware_tested": false,
+  "profile_sha256": "828f106e45b497503b3d1205afaf61d20be4bf0c63cf5c0ea21f12fcc86dd544",
+  "qemu_exit_code": 0,
+  "schema_version": 1,
+  "serial_log_bytes": 1313223,
+  "serial_log_sha256": "e7e5f620a6a7cfe2bb989ddd4ae881b2a988a598d8296a8b2b2af26c3f5ca0b2",
+  "start_utc": "2026-11-23T05:26:44.431888+00:00",
+  "systemd_debug_logging_for_this_vm_only": true,
+  "systemd_lsm_bpf_attached_messages": [
+    "bpf-restrict-fs: LSM BPF program attached",
+    "bpf-restrict-fs: LSM BPF program attached"
+  ],
+  "termination_reason": "guest reported failure",
+  "timeout_seconds": 900,
+  "tmpfs_migration_proof": {
+    "domain_proof_line": 2301,
+    "exec_line": 284,
+    "new_device": "0:20",
+    "old_device": "0:2",
+    "passed": false,
+    "policy_line": 281,
+    "policy_load_count": 1,
+    "postexec_domain_proof_count": 1,
+    "stage0_count": 1,
+    "stage0_line": 269,
+    "stage1_count": 1,
+    "stage1_line": 270,
+    "systemd_exec_count": 1
+  },
+  "udev_event_serialization": {
+    "conditional_restore_gate_passed": true,
+    "handoff_lines": [
+      "\u001b[0;90m\u001b[0;38:5:245msystemd-udevd.service: Got notification message from PID 78: FDSTOREREMOVE=1, FDNAME=event-serialization\u001b[0m",
+      "\u001b[0;90m\u001b[0;38:5:245msystemd-udevd.service: Got notification message from PID 184: FDSTOREREMOVE=1, FDNAME=event-serialization\u001b[0m"
+    ],
+    "positive_event_counts_equal": true,
+    "restored_counts": [],
+    "root_side_accepted_fd_lines": [],
+    "serialized_counts": []
+  },
+  "validation_failure_seen": true,
+  "vm_module_sig_enforce_argument": "module.sig_enforce=1"
+}

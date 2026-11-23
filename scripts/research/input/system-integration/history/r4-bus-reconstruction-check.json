@@ -1,0 +1,7 @@
+{
+  "all_twelve_source_hashes_matched": true,
+  "kernel_or_vm_started": false,
+  "old_r3_templates_unchanged": true,
+  "output_recipe_manifest_sha256": "35fc0c3401cd1402bb2e851fb4223474ccefae08e520b6224e1af98ac3f1288e",
+  "patch_applied_exit_zero": true
+}

@@ -1,0 +1,35 @@
+From: TB371FC entry reconstruction study
+Subject: [PATCH 2/3] cpu: do not abort normal kexec for a suspend wake event
+
+Base: tem423/android_kernel_lenovo_tb371fc
+      9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1
+
+kernel_kexec() sets kexec_in_progress before kernel_restart_prepare() and
+machine_shutdown(). The arm64 machine_shutdown() calls
+disable_nonboot_cpus(), reaching the vendor pm_wakeup_pending() abort in
+freeze_secondary_cpus(). A pending suspend wakeup is not a reason to abandon
+normal kexec's CPU teardown. Preserve the existing suspend behavior and
+the context-preserving KEXEC_JUMP path, which does not set that flag here.
+
+This does not suppress actual CPU-down errors or prove that every secondary
+CPU can stop. It is newly reconstructed code, not the missing historic 0026.
+
+--- a/kernel/cpu.c
++++ b/kernel/cpu.c
+@@ -19,6 +19,7 @@
+ #include <linux/export.h>
+ #include <linux/bug.h>
+ #include <linux/kthread.h>
++#include <linux/kexec.h>
+ #include <linux/stop_machine.h>
+ #include <linux/mutex.h>
+ #include <linux/gfp.h>
+@@ -1355,7 +1356,7 @@
+ 		if (cpu == primary)
+ 			continue;
+ 
+-		if (pm_wakeup_pending()) {
++		if (!kexec_in_progress && pm_wakeup_pending()) {
+ 			pr_info("Wakeup pending. Abort CPU freeze\n");
+ 			error = -EBUSY;
+ 			break;

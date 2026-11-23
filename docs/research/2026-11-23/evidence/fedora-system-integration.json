@@ -1,0 +1,697 @@
+{
+  "all_hardware_accepted": false,
+  "capture_utc": "2026-11-23T02:15:35.540781+00:00",
+  "container": "tb371fc-build-20261123 in doesvm CT102",
+  "enforcing_vm": {
+    "board_dtb_used": false,
+    "elapsed_seconds": 88.59491321298992,
+    "expected_marker_seen": true,
+    "guest_gates_match": true,
+    "guest_result": {
+      "all_runtime_hashes_verified": true,
+      "dbus": "active",
+      "failed_units": [],
+      "firmware_files_verified": 69,
+      "gpu_acceleration_tested": false,
+      "kernel_release": "6.12.114-tb371fc-research1",
+      "kernel_supported_policy_version": "33",
+      "loaded_policy_bytes": 3835420,
+      "loaded_policy_sha256": "9c79cb12810a781d6cb91f9b7dff160a1d768c534b784743b4256015799f22a8",
+      "loaded_policy_version": 33,
+      "module_files_verified": 83,
+      "multi_user_target": "active",
+      "pid1": "/usr/lib/systemd/systemd",
+      "pid1_selinux_context": "system_u:system_r:init_t:s0",
+      "root_label": "tb371fc-f45",
+      "root_source": "/dev/vda",
+      "root_type": "ext4",
+      "scope": "generic ARM64 VM with no physical device passthrough",
+      "selinux": "Enforcing",
+      "systemd": "systemd 262 (262.1-1.fc45)",
+      "tablet_hardware_tested": false,
+      "udev": "active"
+    },
+    "initramfs_sha256": "2741ed3f3b5814b40dd303f4666b6f629c55ad11fd057a6e99f9f6be5e01c543",
+    "invalid_initramfs_seen": false,
+    "kernel_panic_seen": false,
+    "log_limit_bytes": 8388608,
+    "network": false,
+    "passed": true,
+    "phase": "verify",
+    "physical_device_passthrough": false,
+    "physical_hardware_tested": false,
+    "qemu_exit_code": 0,
+    "serial_log_bytes": 75606,
+    "serial_log_sha256": "688895559c3a7ae7e155b898c95fe0f9e137813ada422408292e0c1ed7a730e9",
+    "start_utc": "2026-11-23T02:11:04.631746+00:00",
+    "termination_reason": null,
+    "timeout_seconds": 900,
+    "validation_failure_seen": false
+  },
+  "filesystem_after_boot_check_exit": 0,
+  "final_recipe_files": {
+    "assemble_image.py": {
+      "path": "/src/scripts/research/rootfs/assemble_image.py",
+      "sha256": "fd0affc2838233d9a1c2d5d5eb5dda56271df3ff171022886852d4fb49c3874d",
+      "size_bytes": 10887
+    },
+    "boot_vm.py": {
+      "path": "/src/scripts/research/rootfs/boot_vm.py",
+      "sha256": "acdab3c0e7037ac0675065a97efbe058b90a4d922bbc506531d4fb896feaa721",
+      "size_bytes": 7034
+    },
+    "fedora_system.py": {
+      "path": "/src/scripts/research/rootfs/fedora_system.py",
+      "sha256": "10425d6128e0664b30e9a44b488828dcf56c71fe2875f1cdfd2d84126115a759",
+      "size_bytes": 6739
+    },
+    "finalize_system.py": {
+      "path": "/src/scripts/research/rootfs/finalize_system.py",
+      "sha256": "99dcadb2c8e2d25d4616d531662656eb2ec9b0baf9015d9f3249ee115daa5b05",
+      "size_bytes": 7213
+    },
+    "guest_verify.py": {
+      "path": "/src/scripts/research/rootfs/guest_verify.py",
+      "sha256": "e2416511f8e2b8de0e43fb8f7ae0babb90303cc2ba25696ba286f9fe7dc6d852",
+      "size_bytes": 6559
+    },
+    "stage_runtime.py": {
+      "path": "/src/scripts/research/rootfs/stage_runtime.py",
+      "sha256": "8e14baae948e602450272dbc2326b9d70d2ea9084378bd5dcf76826667d8326c",
+      "size_bytes": 8447
+    },
+    "verify_initramfs.py": {
+      "path": "/src/scripts/research/rootfs/verify_initramfs.py",
+      "sha256": "263866a1943cd43116e69cb0a8b1081d6ccd1cc93ef98866a4b3eacc00bac58a",
+      "size_bytes": 20506
+    }
+  },
+  "gpu_acceleration_tested": false,
+  "historical_failures_and_corrections": [
+    "DNF5 query format lacked an explicit newline; strict parsing failed before package installation; corrected query preserved separately.",
+    "First dracut run lacked descriptor links for shell process substitution; its owned process tree was stopped and its log retained.",
+    "Second dracut produced an archive but nested PRoot ldconfig could not make the target cache; retained tree was repaired using Fedora static AArch64 ldconfig outside PRoot.",
+    "First native repack buffered the early CPIO prefix until after gzip; the first VM could label the filesystem but reported invalid initramfs magic. This image is retained and is not the accepted candidate.",
+    "Corrected prefix order was checked against the original exact early/main archives, a new ext4 image was built, and both labeling and enforcing boots were repeated successfully."
+  ],
+  "independent_bit_identical_rebuild_proven": false,
+  "initramfs": {
+    "archive_entry_counts": {
+      "early": 1,
+      "main": 520
+    },
+    "build_environment": "ARM64 Fedora dracut under qualified PRoot/QEMU",
+    "critical_entries_verified": [
+      "init",
+      "usr/lib/systemd/systemd",
+      "etc/ld.so.cache",
+      "var/lib/dracut/hooks/pre-pivot/50-selinux-loadpolicy.sh"
+    ],
+    "early_prefix_flushed_before_gzip": true,
+    "explicit_firmware_tree_included": true,
+    "firmware_hashes_verified": 69,
+    "hostonly": false,
+    "kernel_release": "6.12.114-tb371fc-research1",
+    "original_sha256": "2c291b988801ab3c4d194aa2326c9ae9e687ddd25219f25848ec27ac20323fc1",
+    "path": "/work/fedora-system-integration-v1/rootfs/boot/initramfs-6.12.114-tb371fc-research1.img",
+    "previous_archive_order_sha256": "6da80a0076eba55b75bcc10c718804056b43d131a38418ffae3c533b5f1f2323",
+    "repacked_with": "native GNU cpio newc and gzip -n; early archive preserved",
+    "sha256": "2741ed3f3b5814b40dd303f4666b6f629c55ad11fd057a6e99f9f6be5e01c543",
+    "size_bytes": 30649939,
+    "target_cache_created_by": "Fedora static AArch64 ldconfig 2.44 through QEMU, outside PRoot",
+    "target_cache_sha256": "4db2c927ed3e93a02b5bdee416ed121c5cca944223634e09884edc85c47a5452"
+  },
+  "installed_package_identities_reread_match": true,
+  "jobs": {
+    "fedora-initrd-cache-01": {
+      "log_bytes": 39,
+      "log_sha256": "074f05112efa53ce05885adc3dc1993a77dcebfd2aac4c0ba93efc726af1311b",
+      "result": {
+        "command": [
+          "python3",
+          "/src/scripts/research/rootfs/assemble_image.py",
+          "repair-initrd"
+        ],
+        "elapsed_seconds": 6.571611514023971,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T02:02:32.867328+00:00"
+      },
+      "result_sha256": "10f8f95cc75c66c17f5f94ee8b781e353e11f82e4a7c5415068b450eb83d4139"
+    },
+    "fedora-runtime-stage-01": {
+      "log_bytes": 51,
+      "log_sha256": "a135e3a440c3635147078f03206cad33e84be52292d09a7fd38c499845c467c2",
+      "result": {
+        "command": [
+          "python3",
+          "/src/scripts/research/rootfs/stage_runtime.py"
+        ],
+        "elapsed_seconds": 4.498875180026516,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T01:52:22.020841+00:00"
+      },
+      "result_sha256": "489a23bf71b0a5bdf1514a98471fd501f25b4ebf24f0754e2f94d50feeb73bb4"
+    },
+    "fedora-system-configure-01": {
+      "log_bytes": 25,
+      "log_sha256": "3d7de85be73da84dfe6c6e3cb56da1ba81b4119c5d168864fe63dd71bce18597",
+      "result": {
+        "command": [
+          "python3",
+          "/src/scripts/research/rootfs/assemble_image.py",
+          "configure"
+        ],
+        "elapsed_seconds": 5.102219627005979,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T01:53:52.854697+00:00"
+      },
+      "result_sha256": "4274b82f62b41860eb547f62048e1dade277540f7bb2d51a494b64c632a2bb75"
+    },
+    "fedora-system-image-01": {
+      "log_bytes": 995,
+      "log_sha256": "61fd7d41ada7d947a2b3bd63fa25d30a51ced0c630495902aa90be6bf619b1ab",
+      "result": {
+        "command": [
+          "python3",
+          "/src/scripts/research/rootfs/assemble_image.py",
+          "image"
+        ],
+        "elapsed_seconds": 50.0054039870156,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T02:02:39.483750+00:00"
+      },
+      "result_sha256": "9bc0088a8cb16dc3922af9ed6199a3acd8a952cb9435f438b5107dc7193e0767"
+    },
+    "fedora-system-image-02": {
+      "log_bytes": 995,
+      "log_sha256": "19d8f5dd48ac8999fdca56f34e775eed86e2e86cfa28da911fbf3355693a7626",
+      "result": {
+        "command": [
+          "python3",
+          "/src/scripts/research/rootfs/assemble_image.py",
+          "image"
+        ],
+        "elapsed_seconds": 50.921009966987185,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T02:07:57.557420+00:00"
+      },
+      "result_sha256": "04735116038aa6245aac1d14f70ea5cc563fa85faecc747ecdbfb7c0ae88bd83"
+    },
+    "fedora-system-initrd-01": {
+      "log_bytes": 610,
+      "log_sha256": "1890e5bf3e411b53baec00517bca4f4a9733090ef6892a5cc269c782d0e18551",
+      "result": {
+        "command": [
+          "python3",
+          "/src/scripts/research/rootfs/assemble_image.py",
+          "initrd"
+        ],
+        "elapsed_seconds": 121.5179287220235,
+        "exit_code": -15,
+        "start_utc": "2026-11-23T01:53:57.999404+00:00"
+      },
+      "result_sha256": "4ce13ed7af0391acb522b88d63dfa0241790c931f3780f8e959381a477f22f9d"
+    },
+    "fedora-system-initrd-02": {
+      "log_bytes": 50501,
+      "log_sha256": "54880c033e3993c665d8125be92115ddae0dfccdd1b0b8260256d4584887d0c8",
+      "result": {
+        "command": [
+          "python3",
+          "/src/scripts/research/rootfs/assemble_image.py",
+          "initrd"
+        ],
+        "elapsed_seconds": 288.9853722190019,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T01:56:33.896898+00:00"
+      },
+      "result_sha256": "5fe4fa725b66f196a006f4ff61d8c5da887de7e7e379de2756db2a56e56f1969"
+    },
+    "fedora-system-install-01": {
+      "log_bytes": 23434,
+      "log_sha256": "52721d197978bd5d22ff2036d4006d198cfe6873ffd4818314f7e0e145c7f54d",
+      "result": {
+        "command": [
+          "python3",
+          "/src/scripts/research/rootfs/fedora_system.py",
+          "install"
+        ],
+        "elapsed_seconds": 287.39718562399503,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T01:45:07.542541+00:00"
+      },
+      "result_sha256": "3c25d18350663670b1a67eae2ff2ffdd3eba6c632256799808ff2bd941b7a3c0"
+    },
+    "fedora-system-prepare-01": {
+      "log_bytes": 34,
+      "log_sha256": "929a0b2d5fb9dd788ed9ca38fb1dcd0b9d6e9783efcb71be5f11af0d9ad6bb43",
+      "result": {
+        "command": [
+          "python3",
+          "/src/scripts/research/rootfs/fedora_system.py",
+          "prepare"
+        ],
+        "elapsed_seconds": 67.20945225900505,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T01:42:04.952829+00:00"
+      },
+      "result_sha256": "865b64946a841c7c9ed07c037c16063c3359a92197ea0b5f8300fd09bd409118"
+    },
+    "fedora-system-query-01": {
+      "log_bytes": 858,
+      "log_sha256": "b6c45183695f2823242afc7a85883a086f49503159f9a4a3404c8e8321702be1",
+      "result": {
+        "command": [
+          "python3",
+          "/src/scripts/research/rootfs/fedora_system.py",
+          "query"
+        ],
+        "elapsed_seconds": 7.086144827015232,
+        "exit_code": 1,
+        "start_utc": "2026-11-23T01:43:57.668679+00:00"
+      },
+      "result_sha256": "8339117e82d7fbd22926dc102d033736fdbdd0e2428f7ef9b9f07176e67fbc55"
+    },
+    "fedora-system-query-02": {
+      "log_bytes": 1228,
+      "log_sha256": "4b51c56b3f986244548505ab4a04cdfebfd7d5a526d5b74f852fe83ca8f7e2c7",
+      "result": {
+        "command": [
+          "python3",
+          "/src/scripts/research/rootfs/fedora_system.py",
+          "query"
+        ],
+        "elapsed_seconds": 5.34822460799478,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T01:45:02.150013+00:00"
+      },
+      "result_sha256": "b643e7511c3d12376edb62831dc058a56ef530a514475cc7e46fca06b7768d2b"
+    },
+    "fedora-vm-enforcing-01": {
+      "log_bytes": 13541,
+      "log_sha256": "735097115179c9a0b9b18c914de3285546f7cf9b63ed2145cfa5fad8c2016e1c",
+      "result": {
+        "command": [
+          "python3",
+          "/src/scripts/research/rootfs/boot_vm.py",
+          "verify",
+          "--run",
+          "vm-verify-01"
+        ],
+        "elapsed_seconds": 88.83681212505326,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T02:11:04.409086+00:00"
+      },
+      "result_sha256": "ab47b7e3ad4d67880da57eb3998ac858522da5b5b23ad8e3722bf1673f39f3e7"
+    },
+    "fedora-vm-label-01": {
+      "log_bytes": 12542,
+      "log_sha256": "fba6955e53c268e0519236dddba45861b220f9ddd4ba14abc068c822642ecf36",
+      "result": {
+        "command": [
+          "python3",
+          "/src/scripts/research/rootfs/boot_vm.py",
+          "label",
+          "--run",
+          "vm-label-01"
+        ],
+        "elapsed_seconds": 136.42042455496266,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T02:03:37.409010+00:00"
+      },
+      "result_sha256": "c80cae36a086b0d92e5830af8b311635a8373a06321cb8fdf31ecf6a64bd12a6"
+    },
+    "fedora-vm-label-02": {
+      "log_bytes": 12607,
+      "log_sha256": "ccfbd7a15b19d161eb8875ef9a7c9708c34db7d51e94b655607d74499c030443",
+      "result": {
+        "command": [
+          "python3",
+          "/src/scripts/research/rootfs/boot_vm.py",
+          "label",
+          "--run",
+          "vm-label-02"
+        ],
+        "elapsed_seconds": 135.83492444100557,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T02:08:48.521149+00:00"
+      },
+      "result_sha256": "ef072be6359eb34a1c5edef553dfc93260a37bc8d125890c88af7bc01c457abd"
+    }
+  },
+  "kernel_release": "6.12.114-tb371fc-research1",
+  "label_vm": {
+    "board_dtb_used": false,
+    "elapsed_seconds": 135.63843947998248,
+    "expected_marker_seen": true,
+    "initramfs_sha256": "2741ed3f3b5814b40dd303f4666b6f629c55ad11fd057a6e99f9f6be5e01c543",
+    "invalid_initramfs_seen": false,
+    "kernel_panic_seen": false,
+    "log_limit_bytes": 8388608,
+    "network": false,
+    "passed": true,
+    "phase": "label",
+    "physical_device_passthrough": false,
+    "physical_hardware_tested": false,
+    "qemu_exit_code": 0,
+    "serial_log_bytes": 82342,
+    "serial_log_sha256": "37f02648ed0d9f44569807caac19249cba5052aa73be637c1d1ed98d5e961490",
+    "start_utc": "2026-11-23T02:08:48.703848+00:00",
+    "termination_reason": null,
+    "timeout_seconds": 900,
+    "validation_failure_seen": false
+  },
+  "limits": [
+    "QEMU virt uses its generated DT and a virtual block device; the Lenovo board DT is packaged only, not executed.",
+    "This fixed research1 profile retains disabled native display/touch. The separately signed research2 display/input combination needs its own image integration and hardware validation.",
+    "Package identities and artifact hashes are fixed and retained, but complete independent offline or byte-identical recreation is not established.",
+    "Virtual boot does not validate firmware authentication, board selection, a physical GPU, sensors, display, input, charging, radio, video codec or suspend.",
+    "autofs4, BPF-LSM, pids.max and virtual GPIO warnings remain recorded; zero failed units is not a claim that every optional kernel feature is configured.",
+    "The image label describes this new test filesystem, not the owner SD-card partition layout or a demonstrated tablet boot path."
+  ],
+  "native_panel_tested": false,
+  "normal_root_configuration": {
+    "automatic_tablet_kexec": false,
+    "selinux": "enforcing",
+    "type": "targeted",
+    "validation_target_is_default": false
+  },
+  "observed_warnings": {
+    "autofs4_module_warning_count": 2,
+    "bpf_lsm_not_supported_count": 2,
+    "invalid_initramfs_count": 0,
+    "kernel_panic_count": 0,
+    "pids_max_no_data_warning_count": 32,
+    "selinux_avc_denial_count": 0,
+    "virtual_gpio_deferred_probe_count": 1
+  },
+  "package_count": 367,
+  "package_pins": {
+    "architecture": "aarch64",
+    "flags": [
+      "--releasever=45",
+      "--forcearch=aarch64",
+      "--setopt=zchunk=False",
+      "--setopt=install_weak_deps=False",
+      "--setopt=keepcache=True",
+      "--repo=fedora",
+      "--repo=updates"
+    ],
+    "packages": {
+      "NetworkManager": {
+        "arch": "aarch64",
+        "evr": "1:1.58.1-3.fc45"
+      },
+      "alsa-utils": {
+        "arch": "aarch64",
+        "evr": "1.2.16-2.fc45"
+      },
+      "bluez": {
+        "arch": "aarch64",
+        "evr": "5.88-1.fc45"
+      },
+      "dracut": {
+        "arch": "aarch64",
+        "evr": "111-5.fc45"
+      },
+      "dracut-network": {
+        "arch": "aarch64",
+        "evr": "111-5.fc45"
+      },
+      "e2fsprogs": {
+        "arch": "aarch64",
+        "evr": "1.47.4-2.fc45"
+      },
+      "kmod": {
+        "arch": "aarch64",
+        "evr": "34.2-6.fc45"
+      },
+      "libselinux-utils": {
+        "arch": "aarch64",
+        "evr": "3.11-5.fc45"
+      },
+      "pipewire": {
+        "arch": "aarch64",
+        "evr": "1.6.11-1.fc45"
+      },
+      "pipewire-alsa": {
+        "arch": "aarch64",
+        "evr": "1.6.11-1.fc45"
+      },
+      "policycoreutils": {
+        "arch": "aarch64",
+        "evr": "3.11-2.fc45"
+      },
+      "selinux-policy-targeted": {
+        "arch": "noarch",
+        "evr": "45.24-1.fc45"
+      },
+      "systemd": {
+        "arch": "aarch64",
+        "evr": "262.1-1.fc45"
+      },
+      "systemd-udev": {
+        "arch": "aarch64",
+        "evr": "262.1-1.fc45"
+      },
+      "util-linux": {
+        "arch": "aarch64",
+        "evr": "2.42.4-1.fc45"
+      },
+      "wireplumber": {
+        "arch": "aarch64",
+        "evr": "0.5.19-1.fc45"
+      }
+    },
+    "release": "45"
+  },
+  "physical_tablet_booted": false,
+  "physical_tablet_modified": false,
+  "retained_metadata": {
+    "archive-order-correction.json": {
+      "path": "/work/fedora-system-integration-v1/archive-order-correction.json",
+      "sha256": "05be195528de5a36a0557c628e96f9db22b547406a00791edb9eafe5d2e354e9",
+      "size_bytes": 520
+    },
+    "configured.json": {
+      "path": "/work/fedora-system-integration-v1/configured.json",
+      "sha256": "08a1429c8763621e2eb19291bb1795188fb6d5d201ed94435f797b2d4cc769de",
+      "size_bytes": 201
+    },
+    "filesystem-after-boot.txt": {
+      "path": "/work/fedora-system-integration-v1/filesystem-after-boot.txt",
+      "sha256": "5bdd55315f30c1f407b1ec6b0a14cdda4571e187be17152f7206157caacdb7ca",
+      "size_bytes": 301
+    },
+    "guest-verifier-revision2.json": {
+      "path": "/work/fedora-system-integration-v1/guest-verifier-revision2.json",
+      "sha256": "1db9d7f30f3648350e3cdb1b6fc0129c0905f539b4bdd8456c50ad993f2638db",
+      "size_bytes": 282
+    },
+    "guest-verifier-revision3.json": {
+      "path": "/work/fedora-system-integration-v1/guest-verifier-revision3.json",
+      "sha256": "cf06b50eca62017fc13870af6850c6aa59841d078af7239ce1e67d62519587b8",
+      "size_bytes": 144
+    },
+    "image.before-boot.json": {
+      "path": "/work/fedora-system-integration-v1/image.before-boot.json",
+      "sha256": "dafa6072255c778779aa8b898e79072962f66eaf0f8e6f2ca6dc0a1c11c3665b",
+      "size_bytes": 272
+    },
+    "initramfs-inventory.json": {
+      "path": "/work/fedora-system-integration-v1/initramfs-inventory.json",
+      "sha256": "ffe542d6f82724625e568abd183e9020368959390aa07ff79d53ec0bcf3e438a",
+      "size_bytes": 24308
+    },
+    "initramfs.json": {
+      "path": "/work/fedora-system-integration-v1/initramfs.json",
+      "sha256": "b93609c7e97d54a7b6b6da5f44682b062ca68dcb89c2ccc6bbb955e51dd903fe",
+      "size_bytes": 1166
+    },
+    "initrd-01-cancellation.json": {
+      "path": "/work/fedora-system-integration-v1/initrd-01-cancellation.json",
+      "sha256": "a5bf337ce31b403ecb61895152e24568137889841c674d2e3bcca1ff71d37c07",
+      "size_bytes": 218
+    },
+    "package-pins.json": {
+      "path": "/work/fedora-system-integration-v1/package-pins.json",
+      "sha256": "75a37ac1266d81a7576a39eb23d511b9fad499a76977d3fce44dfcfd0a919115",
+      "size_bytes": 1578
+    },
+    "packages.after.tsv": {
+      "path": "/work/fedora-system-integration-v1/packages.after.tsv",
+      "sha256": "6daee65e1e3b07e7aee764b2ec4bc75cac2864f47fa7372b709097782a20bdaa",
+      "size_bytes": 12747
+    },
+    "packages.before.tsv": {
+      "path": "/work/fedora-system-integration-v1/packages.before.tsv",
+      "sha256": "03d0afbe2289c93e68be756682458dbb11c362805436642d8924426e7f8025d6",
+      "size_bytes": 10744
+    },
+    "runtime.json": {
+      "path": "/work/fedora-system-integration-v1/runtime.json",
+      "sha256": "10a373bfc3291aabe564c8f7af90265900763eadfe3167a7384cc4dcd596544b",
+      "size_bytes": 28679
+    },
+    "seed.json": {
+      "path": "/work/fedora-system-integration-v1/seed.json",
+      "sha256": "26bc707018004b2d8feece0e4f775b3dca5abba261b5a741329dd283e79882fe",
+      "size_bytes": 510
+    }
+  },
+  "runtime": {
+    "cross_profile_comparison_scope": "loader bytes and firmware-name properties only; enabled devices and display behavior differ",
+    "cross_profile_dt_firmware_properties": [
+      {
+        "node": "/qca6390-pmu",
+        "property": "firmware-name",
+        "value": null
+      },
+      {
+        "node": "/soc@0/geniqup@8c0000/i2c@884000/amplifier@34",
+        "property": "firmware-name",
+        "value": null
+      },
+      {
+        "node": "/soc@0/geniqup@8c0000/i2c@884000/amplifier@35",
+        "property": "firmware-name",
+        "value": null
+      },
+      {
+        "node": "/soc@0/geniqup@8c0000/i2c@884000/amplifier@36",
+        "property": "firmware-name",
+        "value": null
+      },
+      {
+        "node": "/soc@0/geniqup@8c0000/i2c@884000/amplifier@37",
+        "property": "firmware-name",
+        "value": null
+      },
+      {
+        "node": "/soc@0/geniqup@8c0000/spi@880000/touchscreen@0",
+        "property": "firmware-name",
+        "value": null
+      },
+      {
+        "node": "/soc@0/geniqup@8c0000/spi@880000/touchscreen@0",
+        "property": "novatek,boe-firmware-name",
+        "value": [
+          "lenovo/tb371fc/novatek_ts_fw_boe_6.bin"
+        ]
+      },
+      {
+        "node": "/soc@0/geniqup@8c0000/spi@880000/touchscreen@0",
+        "property": "novatek,tianma-firmware-name",
+        "value": [
+          "lenovo/tb371fc/novatek_ts_tm_fw_6.bin"
+        ]
+      },
+      {
+        "node": "/soc@0/geniqup@9c0000/serial@998000/bluetooth",
+        "property": "firmware-name",
+        "value": null
+      },
+      {
+        "node": "/soc@0/gmu@3d6a000",
+        "property": "firmware-name",
+        "value": null
+      },
+      {
+        "node": "/soc@0/gpu@3d00000",
+        "property": "firmware-name",
+        "value": null
+      },
+      {
+        "node": "/soc@0/gpu@3d00000/zap-shader",
+        "property": "firmware-name",
+        "value": [
+          "qcom/sm8250/lenovo/tb371fc/a650_zap.mbn"
+        ]
+      },
+      {
+        "node": "/soc@0/pcie@1c00000",
+        "property": "firmware-name",
+        "value": null
+      },
+      {
+        "node": "/soc@0/pcie@1c08000",
+        "property": "firmware-name",
+        "value": null
+      },
+      {
+        "node": "/soc@0/pcie@1c10000",
+        "property": "firmware-name",
+        "value": null
+      },
+      {
+        "node": "/soc@0/remoteproc@17300000",
+        "property": "firmware-name",
+        "value": [
+          "qcom/sm8250/lenovo/tb371fc/adsp.mbn"
+        ]
+      },
+      {
+        "node": "/soc@0/remoteproc@5c00000",
+        "property": "firmware-name",
+        "value": [
+          "qcom/sm8250/lenovo/tb371fc/slpi.mbn"
+        ]
+      },
+      {
+        "node": "/soc@0/remoteproc@8300000",
+        "property": "firmware-name",
+        "value": [
+          "qcom/sm8250/lenovo/tb371fc/cdsp.mbn"
+        ]
+      },
+      {
+        "node": "/soc@0/video-codec@aa00000",
+        "property": "firmware-name",
+        "value": null
+      }
+    ],
+    "cross_profile_loader_source_hashes": {
+      "drivers/base/firmware_loader/main.c": "3978495072e91a47c362f0af8f122860ce6f4ee3a980f7f3ccf32d6b443b5bea",
+      "drivers/bluetooth/btqca.c": "b06f073df6ae85f3ca544d7c98830d0e98739067707bee9c55d3e50f9a520605",
+      "drivers/bluetooth/hci_qca.c": "800bc5747eeea9391f307456451f5f5313f033f39288f30ad1cc0454dc99a2cb",
+      "drivers/bus/mhi/host/boot.c": "ca5805fe73a6123bfec722f2caf9295e934b1f58f08d82117994a34e4c0f7dff",
+      "drivers/gpu/drm/msm/adreno/a6xx_catalog.c": "3db6ce0d10dad36533ba832f3fcaae9409bb95376c677b5cab29b5b7e9cc5f37",
+      "drivers/gpu/drm/msm/adreno/adreno_gpu.c": "9e6d5789545d381a25f708085d0c3f5b36c0a5c841b708c42332738d30400295",
+      "drivers/input/touchscreen/nt36523/nt36xxx.c": "bcc8e60eb6c10d97b84680224d1118462e5d121daa62d6b8732ec8938a09e0a2",
+      "drivers/input/touchscreen/nt36523/nt36xxx.h": "68f848aea0524d82278fd1651c29e6108d7e326426fca531db6282a16d9758e4",
+      "drivers/input/touchscreen/nt36523/nt36xxx_fw_update.c": "cbd363cd60c7850519704e6b7291ea5d6b937184f0f660d4e24fdc140586c1ba",
+      "drivers/media/platform/qcom/venus/core.c": "cf0dfba57615501ffd43e51367a6bc203402263b370fbc0ef9411b9701c69699",
+      "drivers/media/platform/qcom/venus/firmware.c": "faf2f558e6a3c559f37783956c699a578580e2f8ee30a0bd45514bc4909bb8a6",
+      "drivers/net/wireless/ath/ath11k/core.c": "90ffda5ab8e80f86480cef39fe0037562f3371323b24dbae9d323e322954c7e2",
+      "drivers/net/wireless/ath/ath11k/core.h": "50008ace7d402b916621924cd3e39e2c14dd4df4b058e8110d67f5b69da48877",
+      "drivers/net/wireless/ath/ath11k/fw.c": "4f6877fe8544543a1b168ae5b1f3687926b3e200d5bfb550030751104dab3c9c",
+      "drivers/net/wireless/ath/ath11k/fw.h": "09a79f490cf83be9c2f31414b9e9e306752d797e3200ef451493b45423202c64",
+      "drivers/net/wireless/ath/ath11k/hw.h": "866beba694ada79e6fc44954bcebb46eeafb4b4222a9c0941bae3a4c853d46dd",
+      "drivers/net/wireless/ath/ath11k/mhi.c": "ceecc1012319c9de8dd8c166567de1a1511ca88a13729b263ecf8730b54fe0a5",
+      "drivers/net/wireless/ath/ath11k/qmi.c": "831887aceaff71f8ec0201e0ad423645790364de82e3192d3669b296140866c7",
+      "drivers/remoteproc/qcom_q6v5_pas.c": "63543c300f7e6710243f9aa27407d6d719ced408730238bbe0499621a3142c4a",
+      "drivers/remoteproc/remoteproc_core.c": "c13eb281612fed04927c35964ec57e9c8d22c34d2816066469884ebb0c3d4012",
+      "drivers/soc/qcom/mdt_loader.c": "135cca918b03f795d31cd12831aa84cab03a21ee39cda8665d09218d2cca5567",
+      "sound/soc/codecs/tfa989x.c": "d840c60789a58fa3943e0277484a598937c6399859e3438985c24acf60268c27"
+    },
+    "firmware_authenticated_or_loaded_on_tablet": false,
+    "firmware_contract_sha256": "26ab16aa3e71f2317e736aa0877572616fb13c64f29ff5ea3381278bc931644a",
+    "firmware_file_count": 69,
+    "firmware_manifest_sha256": "4feb4264605198fc56114fb8b8044ffcd51f662107270a857f59fdaf2e8bcf7c",
+    "hardware_tested": false,
+    "kernel_release": "6.12.114-tb371fc-research1",
+    "kernel_report_sha256": "7ad22ac18bbd83859ff0535bcbcbe98ad76d9acfb548558e21442d55064655ee",
+    "module_count": 83,
+    "omitted_nonruntime_module_links": [
+      "build"
+    ]
+  },
+  "schema_version": 1,
+  "scope": "actual generic ARM64 full-system boot of a separately assembled Fedora root; not owner tablet execution",
+  "status": "generic_systemd_enforcing_boot_pass",
+  "tested_rootfs_after_clean_poweroff": {
+    "path": "/work/fedora-system-integration-v1/fedora45-research1.ext4",
+    "sha256": "6a759bd9a7072b004b55c80cd6fa3bd584c5e6d6a8aa45584af91ec8a2fc4eaf",
+    "size_bytes": 4294967296
+  }
+}

@@ -1,0 +1,218 @@
+make: Entering directory '/work/tfa-module-prototype-v2/kernel-source'
+make[1]: Entering directory '/work/tfa-module-prototype-v2/kernel-out'
+  CC [M]  /work/tfa-module-prototype-v2/module/tfa98xx.o
+  CC [M]  /work/tfa-module-prototype-v2/module/tfa_container.o
+/work/tfa-module-prototype-v2/module/tfa_container.c:288:27: warning: unused function 'tfaContWriteVstep' [-Wunused-function]
+  288 | static enum Tfa98xx_Error tfaContWriteVstep(struct tfa_device *tfa,
+      |                           ^~~~~~~~~~~~~~~~~
+  CC [M]  /work/tfa-module-prototype-v2/module/tfa_dsp.o
+1 warning generated.
+  CC [M]  /work/tfa-module-prototype-v2/module/tfa_init.o
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:559:20: warning: no previous prototype for function 'tfa98xx_faim_protect' [-Wmissing-prototypes]
+  559 | enum Tfa98xx_Error tfa98xx_faim_protect(struct tfa_device *tfa, int state)
+      |                    ^
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:559:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+  559 | enum Tfa98xx_Error tfa98xx_faim_protect(struct tfa_device *tfa, int state)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:609:20: warning: no previous prototype for function 'tfa98xx_set_osc_powerdown' [-Wmissing-prototypes]
+  609 | enum Tfa98xx_Error tfa98xx_set_osc_powerdown(struct tfa_device *tfa, int state)
+      |                    ^
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:609:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+  609 | enum Tfa98xx_Error tfa98xx_set_osc_powerdown(struct tfa_device *tfa, int state)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:625:20: warning: no previous prototype for function 'tfa98xx_update_lpm' [-Wmissing-prototypes]
+  625 | enum Tfa98xx_Error tfa98xx_update_lpm(struct tfa_device *tfa, int state)
+      |                    ^
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:625:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+  625 | enum Tfa98xx_Error tfa98xx_update_lpm(struct tfa_device *tfa, int state)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:639:5: warning: no previous prototype for function 'tfa98xx_powerswitch_is_enabled' [-Wmissing-prototypes]
+  639 | int tfa98xx_powerswitch_is_enabled(struct tfa_device *tfa)
+      |     ^
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:639:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+  639 | int tfa98xx_powerswitch_is_enabled(struct tfa_device *tfa)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:782:6: warning: no previous prototype for function 'tfa2_manual_mtp_cpy' [-Wmissing-prototypes]
+  782 | void tfa2_manual_mtp_cpy(struct tfa_device *tfa, uint16_t reg_row_to_keep,
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:782:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+  782 | void tfa2_manual_mtp_cpy(struct tfa_device *tfa, uint16_t reg_row_to_keep,
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:3139:9: warning: implicit conversion from enumeration type 'enum tfa_error' to different enumeration type 'enum Tfa98xx_Error' [-Wenum-conversion]
+ 3139 |                 err = tfa_dev_stop(tfa);
+      |                     ~ ^~~~~~~~~~~~~~~~~
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:3169:9: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]
+ 3169 |         return err;
+      |         ~~~~~~ ^~~
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:3182:10: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]
+ 3182 |                 return err;
+      |                 ~~~~~~ ^~~
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:3184:9: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]
+ 3184 |         return err;
+      |         ~~~~~~ ^~~
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:3729:10: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]
+ 3729 |                         err = tfa98xx_dsp_system_stable(tfa, &ready);
+      |                             ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:3738:10: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]
+ 3738 |                         err = tfa98xx_faim_protect(tfa, 1);
+      |                             ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:3771:10: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]
+ 3771 |                         err = tfa98xx_faim_protect(tfa, 0);
+      |                             ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:3818:6: warning: unused variable 'cold' [-Wunused-variable]
+ 3818 |         int cold = 0;
+      |             ^~~~
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:3890:9: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]
+ 3890 |                 err = tfa98xx_set_mtp(tfa, (uint16_t)value,
+      |                     ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 3891 |                                       TFA98XX_KEY2_PROTECTED_MTP0_MTPOTC_MSK);
+      |                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:3894:9: warning: implicit conversion from enumeration type 'enum Tfa98xx_Error' to different enumeration type 'enum tfa_error' [-Wenum-conversion]
+ 3894 |                 err = tfa98xx_set_mtp(tfa, (uint16_t)value,
+      |                     ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 3895 |                                       TFA98XX_KEY2_PROTECTED_MTP0_MTPEX_MSK);
+      |                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/tfa-module-prototype-v2/module/tfa_dsp.c:4137:10: warning: implicit conversion from enumeration type 'enum tfa_error' to different enumeration type 'enum Tfa98xx_Error' [-Wenum-conversion]
+ 4137 |                         err = tfa_dev_start(tfa, profile, vstep);
+      |                             ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/work/tfa-module-prototype-v2/module/tfa_init.c:112:5: warning: no previous prototype for function 'tfa_set_swprofile' [-Wmissing-prototypes]
+  112 | int tfa_set_swprofile(struct tfa_device *tfa, unsigned short new_value)
+      |     ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:112:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+  112 | int tfa_set_swprofile(struct tfa_device *tfa, unsigned short new_value)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:187:6: warning: no previous prototype for function 'tfa_set_ops_defaults' [-Wmissing-prototypes]
+  187 | void tfa_set_ops_defaults(struct tfa_device_ops *ops)
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:187:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+  187 | void tfa_set_ops_defaults(struct tfa_device_ops *ops)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:265:6: warning: no previous prototype for function 'tfanone_ops' [-Wmissing-prototypes]
+  265 | void tfanone_ops(struct tfa_device_ops *ops)
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:265:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+  265 | void tfanone_ops(struct tfa_device_ops *ops)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:499:20: warning: no previous prototype for function 'tfa9912_reg_write' [-Wmissing-prototypes]
+  499 | enum Tfa98xx_Error tfa9912_reg_write(struct tfa_device *tfa,
+      |                    ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:499:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+  499 | enum Tfa98xx_Error tfa9912_reg_write(struct tfa_device *tfa,
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:546:6: warning: no previous prototype for function 'tfa9912_ops' [-Wmissing-prototypes]
+  546 | void tfa9912_ops(struct tfa_device_ops *ops)
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:546:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+  546 | void tfa9912_ops(struct tfa_device_ops *ops)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:688:6: warning: no previous prototype for function 'tfa9872_ops' [-Wmissing-prototypes]
+  688 | void tfa9872_ops(struct tfa_device_ops *ops)
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:688:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+  688 | void tfa9872_ops(struct tfa_device_ops *ops)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:835:6: warning: no previous prototype for function 'tfa9873_ops' [-Wmissing-prototypes]
+  835 | void tfa9873_ops(struct tfa_device_ops *ops)
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:835:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+  835 | void tfa9873_ops(struct tfa_device_ops *ops)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:1005:6: warning: no previous prototype for function 'tfa9874_ops' [-Wmissing-prototypes]
+ 1005 | void tfa9874_ops(struct tfa_device_ops *ops)
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:1005:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+ 1005 | void tfa9874_ops(struct tfa_device_ops *ops)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:1106:20: warning: no previous prototype for function 'tfa9875_tfa_status' [-Wmissing-prototypes]
+ 1106 | enum Tfa98xx_Error tfa9875_tfa_status(struct tfa_device *tfa)
+      |                    ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:1106:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+ 1106 | enum Tfa98xx_Error tfa9875_tfa_status(struct tfa_device *tfa)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:1212:6: warning: no previous prototype for function 'tfa9875_ops' [-Wmissing-prototypes]
+ 1212 | void tfa9875_ops(struct tfa_device_ops *ops)
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:1212:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+ 1212 | void tfa9875_ops(struct tfa_device_ops *ops)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:1358:6: warning: no previous prototype for function 'tfa9878_ops' [-Wmissing-prototypes]
+ 1358 | void tfa9878_ops(struct tfa_device_ops *ops)
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:1358:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+ 1358 | void tfa9878_ops(struct tfa_device_ops *ops)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:1544:6: warning: no previous prototype for function 'tfa9888_ops' [-Wmissing-prototypes]
+ 1544 | void tfa9888_ops(struct tfa_device_ops *ops)
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:1544:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+ 1544 | void tfa9888_ops(struct tfa_device_ops *ops)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:1692:6: warning: no previous prototype for function 'tfa9896_ops' [-Wmissing-prototypes]
+ 1692 | void tfa9896_ops(struct tfa_device_ops *ops)
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:1692:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+ 1692 | void tfa9896_ops(struct tfa_device_ops *ops)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:1800:6: warning: no previous prototype for function 'tfa9897_ops' [-Wmissing-prototypes]
+ 1800 | void tfa9897_ops(struct tfa_device_ops *ops)
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:1800:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+ 1800 | void tfa9897_ops(struct tfa_device_ops *ops)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:1839:6: warning: no previous prototype for function 'tfa9895_ops' [-Wmissing-prototypes]
+ 1839 | void tfa9895_ops(struct tfa_device_ops *ops)
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:1839:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+ 1839 | void tfa9895_ops(struct tfa_device_ops *ops)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:1870:6: warning: no previous prototype for function 'tfa9891_ops' [-Wmissing-prototypes]
+ 1870 | void tfa9891_ops(struct tfa_device_ops *ops)
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:1870:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+ 1870 | void tfa9891_ops(struct tfa_device_ops *ops)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:2023:6: warning: no previous prototype for function 'tfa9890_ops' [-Wmissing-prototypes]
+ 2023 | void tfa9890_ops(struct tfa_device_ops *ops)
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:2023:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+ 2023 | void tfa9890_ops(struct tfa_device_ops *ops)
+      | ^
+      | static 
+/work/tfa-module-prototype-v2/module/tfa_init.c:2189:6: warning: no previous prototype for function 'tfa9894_ops' [-Wmissing-prototypes]
+ 2189 | void tfa9894_ops(struct tfa_device_ops *ops)
+      |      ^
+/work/tfa-module-prototype-v2/module/tfa_init.c:2189:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+ 2189 | void tfa9894_ops(struct tfa_device_ops *ops)
+      | ^
+      | static 
+18 warnings generated.
+16 warnings generated.
+  LD [M]  /work/tfa-module-prototype-v2/module/snd-soc-tfa98xx.o
+  MODPOST /work/tfa-module-prototype-v2/module/Module.symvers
+  CC [M]  /work/tfa-module-prototype-v2/module/snd-soc-tfa98xx.mod.o
+  CC [M]  /work/tfa-module-prototype-v2/module/.module-common.o
+  LD [M]  /work/tfa-module-prototype-v2/module/snd-soc-tfa98xx.ko
+  BTF [M] /work/tfa-module-prototype-v2/module/snd-soc-tfa98xx.ko
+make[1]: Leaving directory '/work/tfa-module-prototype-v2/kernel-out'
+make: Leaving directory '/work/tfa-module-prototype-v2/kernel-source'

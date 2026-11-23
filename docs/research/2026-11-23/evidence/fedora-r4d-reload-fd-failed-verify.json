@@ -1,0 +1,31 @@
+{
+  "board_dtb_used": false,
+  "compiled_module_sig_force": false,
+  "early_selinux_argument": "rd.tb371fc.early-selinux=1",
+  "elapsed_seconds": 130.7265443339711,
+  "host_filesystem_shared": false,
+  "initramfs_role": "production-tmpfs-early-selinux",
+  "initramfs_sha256": "025a6a91d03ccf7804eaf13c41045dcc5eaefe460c5c554886b2b17ba34cff3a",
+  "kernel_image_sha256": "8ab38b022f7504869443f2469878cd55656b08fb6c56946122710144fc1cc8fb",
+  "kernel_rdinit_argument": "rdinit=/init.tmpfs",
+  "log_limit_bytes": 8388608,
+  "network": false,
+  "parse_error": {
+    "message": "Extra data: line 1 column 344 (char 343)",
+    "type": "JSONDecodeError"
+  },
+  "passed": false,
+  "phase": "verify",
+  "physical_device_passthrough": false,
+  "physical_hardware_tested": false,
+  "profile_sha256": "4ea240ace9d45f49d9b594085eb7b8d59f3aafdcdcd427082b86a7a307bbb2a6",
+  "qemu_exit_code": 0,
+  "schema_version": 1,
+  "serial_log_bytes": 1115806,
+  "serial_log_sha256": "cfe215d2a33dc01f8ffdf7ab5bc2d7dd2f7fafec309d06c82eb3db48bb5658aa",
+  "start_utc": "2026-11-23T06:36:52.311055+00:00",
+  "systemd_debug_logging_for_this_vm_only": true,
+  "termination_reason": "guest reported failure",
+  "timeout_seconds": 900,
+  "vm_module_sig_enforce_argument": "module.sig_enforce=1"
+}

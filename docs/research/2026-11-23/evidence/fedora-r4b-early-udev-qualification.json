@@ -1,0 +1,49 @@
+{
+  "capture_utc": "2026-11-23T04:52:30.040431+00:00",
+  "conditional_count_gate_passed": true,
+  "counts_scope": "successful device_monitor_send and event_queue_insert operations only",
+  "debug_count_absence_means_empty_queue": false,
+  "entire_original_queue_independently_inventoried": false,
+  "failure_prefix_matches": {
+    "Failed to create new device monitor instance:": [],
+    "Failed to get address of device monitor socket:": [],
+    "Failed to initialize event storage:": [],
+    "Failed to insert device into event queue, ignoring:": [],
+    "Failed to push event serialization fd to service manager:": [],
+    "Failed to receive device from event storage, ignoring:": [],
+    "Failed to save event to socket storage, ignoring:": [],
+    "Failed to set trusted sender for event storage:": [],
+    "Failed to store deserialized fd 'event-serialization'": [],
+    "Failed to verify type of event storage socket (": [],
+    "Failed to wait for event from event storage:": [],
+    "Received invalid event storage socket (": [],
+    "Received multiple event storage socket (": []
+  },
+  "full_serial": {
+    "sha256": "4bcf21659de6f20fe700626897f26deafa3ed125fd394d14d65ca3f206005a75",
+    "size": 19359
+  },
+  "no_observed_storage_or_restore_failure": true,
+  "original_controller_result": {
+    "sha256": "0debd6eb20b5f08c6ada549ff994d57215b7ba476543360e6d7351d7d1c40e8a",
+    "size": 2161
+  },
+  "original_vm_passed": false,
+  "passed": false,
+  "physical_tablet_tested": false,
+  "positive_count_proof_observed": false,
+  "qualifier": {
+    "sha256": "1eddb80693eec755cad7cfbc4aa53681c6b923863e6a8f9c331f22fc91de42c2",
+    "size": 6130
+  },
+  "root_accepted_fd_lines": [],
+  "root_restored_counts": [],
+  "root_state_deserialization_delimiter_lines": [],
+  "run": "vm-verify-01",
+  "schema_version": 1,
+  "scope": "read-only qualification of this generic VM full raw serial",
+  "serialized_counts": [],
+  "source_file": "matched Fedora systemd v262.1 src/udev/udev-manager.c",
+  "source_sha256": "49ece39cdd38f83c7112dc94df2cb8ba0e6a570bd42939b31c98bce64392ed4e",
+  "vm_result_or_log_modified": false
+}

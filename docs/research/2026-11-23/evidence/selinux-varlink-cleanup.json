@@ -1,0 +1,4159 @@
+{
+  "actual_records": {
+    "actual_export": {
+      "file": {
+        "gid": 0,
+        "mode": "0o600",
+        "path": "/work/fedora-r4d-closed-image-evidence-v1/loaded-policy.33",
+        "sha256": "0fe3c0e16007f42cb15f05e5ec35fe4b20c5d876a7d1219a558fc3593a3a0e29",
+        "size": 3835420,
+        "uid": 0
+      },
+      "same_boot_record": {
+        "boot_id": "a1c78c2d-227d-4862-a607-f6a6bf5e28ff",
+        "guest_path": "/var/lib/tb371fc-r4d-proof/loaded-policy.33",
+        "inode_selinux_context": "system_u:object_r:var_lib_t:s0",
+        "kernel_policy_written": false,
+        "mode": 384,
+        "new_profile_ordinary_file_only": true,
+        "schema_version": 1,
+        "sha256": "0fe3c0e16007f42cb15f05e5ec35fe4b20c5d876a7d1219a558fc3593a3a0e29",
+        "size": 3835420,
+        "source": "/sys/fs/selinux/policy",
+        "version": 33
+      },
+      "same_boot_record_file": {
+        "gid": 0,
+        "mode": "0o600",
+        "path": "/work/fedora-r4d-closed-image-evidence-v1/loaded-policy-export.json",
+        "sha256": "5ea7d40462c980caf6d6e39a1099493b8e695bc03860e7ad1c62a7ea238dc40d",
+        "size": 424,
+        "uid": 0
+      }
+    },
+    "excerpts": {
+      "src/basic/socket-util.c": {
+        "file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/source-03/src/basic/socket-util.c",
+          "sha256": "874724d1cf2a189d9e2959cf9821fa752720227f0d720cc636dd6f9e7e35aa6a",
+          "size": 61797,
+          "uid": 0
+        },
+        "lines": {
+          "1625": "int connect_unix_path(int fd, int dir_fd, const char *path) {",
+          "1626": "        _cleanup_close_ int inode_fd = -EBADF;",
+          "1627": "",
+          "1628": "        assert(fd >= 0);",
+          "1629": "        assert(wildcard_fd_is_valid(dir_fd));",
+          "1630": "",
+          "1631": "        /* Connects to the specified AF_UNIX socket in the file system. Works around the 108 byte size limit",
+          "1632": "         * in sockaddr_un, by going via O_PATH if needed. This hence works for any kind of path. */",
+          "1633": "",
+          "1634": "        if (!path) {",
+          "1635": "                if (dir_fd < 0)",
+          "1636": "                        return -EISDIR;",
+          "1637": "",
+          "1638": "                return connect_unix_inode(fd, dir_fd); /* If no path is specified, then dir_fd refers to the socket inode to connect to. */",
+          "1639": "        }",
+          "1640": "",
+          "1641": "        /* Refuse zero length path early, to make sure AF_UNIX stack won't mistake this for an abstract",
+          "1642": "         * namespace path, since first char is NUL */",
+          "1643": "        if (isempty(path))",
+          "1644": "                return -EINVAL;",
+          "1645": "",
+          "1646": "        /* Shortcut for the simple case */",
+          "1647": "        if (dir_fd == AT_FDCWD && strlen(path) < sizeof_field(struct sockaddr_un, sun_path))",
+          "1648": "                return connect_unix_path_simple(fd, path);",
+          "1649": "",
+          "1650": "        /* If dir_fd is specified, then we need to go the indirect O_PATH route, because connectat() does not",
+          "1651": "         * exist. If the path is too long, we also need to take the indirect route, since we can't fit this",
+          "1652": "         * into a sockaddr_un directly. */",
+          "1653": "",
+          "1654": "        if (dir_fd == XAT_FDROOT) {",
+          "1655": "                _cleanup_free_ char *j = strjoin(\"/\", path);",
+          "1656": "                if (!j)",
+          "1657": "                        return -ENOMEM;",
+          "1658": "",
+          "1659": "                inode_fd = open(j, O_PATH|O_CLOEXEC);",
+          "1660": "        } else",
+          "1661": "                inode_fd = openat(dir_fd, path, O_PATH|O_CLOEXEC);",
+          "1662": "        if (inode_fd < 0)",
+          "1663": "                return -errno;",
+          "1664": "",
+          "1665": "        return connect_unix_inode(fd, inode_fd);",
+          "1666": "}"
+        }
+      },
+      "src/core/socket.c": {
+        "file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/source-02/src/core/socket.c",
+          "sha256": "7abb8cecc09c6d150c7fa9eba7816f4335bd3546218d0f5d5ffcb76c56211476",
+          "size": 133980,
+          "uid": 0
+        },
+        "lines": {
+          "1000": "",
+          "1001": "                case SOCKET_MQUEUE:",
+          "1002": "                        (void) mq_unlink(p->path);",
+          "1003": "                        break;",
+          "1004": "",
+          "1005": "                case SOCKET_SOCKET:",
+          "1006": "                        (void) socket_address_unlink(&p->address);",
+          "1007": "                        break;",
+          "1008": "",
+          "1009": "                default:",
+          "1010": "                        ;",
+          "1011": "                }",
+          "1012": "        }",
+          "1013": "",
+          "1014": "        if (s->remove_on_stop)",
+          "1015": "                STRV_FOREACH(i, s->symlinks)",
+          "1016": "                        (void) unlink(*i);",
+          "1017": "",
+          "1018": "        /* Note that we don't return NULL here, since s has not been freed. */",
+          "1019": "}",
+          "1343": "static int socket_symlink(Socket *s) {",
+          "1344": "        int r;",
+          "1345": "",
+          "1346": "        assert(s);",
+          "1347": "",
+          "1348": "        const char *target = socket_find_symlink_target(s);",
+          "1349": "        if (!target)",
+          "1350": "                return 0;",
+          "1351": "",
+          "1352": "        STRV_FOREACH(linkpath, s->symlinks) {",
+          "1353": "                (void) mkdir_parents_label(*linkpath, s->directory_mode);",
+          "1354": "",
+          "1355": "                r = symlink_idempotent(target, *linkpath, false);",
+          "1356": "                if (r == -EEXIST && s->remove_on_stop) {",
+          "1357": "                        /* If there's already something where we want to create the symlink, and the",
+          "1358": "                         * destructive RemoveOnStop= mode is set, then we might as well try to remove what",
+          "1359": "                         * already exists and try again. */",
+          "1360": "",
+          "1361": "                        if (unlink(*linkpath) >= 0)",
+          "1362": "                                r = symlink_idempotent(target, *linkpath, false);",
+          "1363": "                }",
+          "1364": "                if (r < 0)",
+          "1365": "                        log_unit_warning_errno(UNIT(s), r, \"Failed to create symlink %s %s %s, ignoring: %m\",",
+          "1366": "                                               *linkpath, glyph(GLYPH_ARROW_RIGHT), target);",
+          "1367": "        }",
+          "1368": "",
+          "1369": "        return 0;",
+          "958": "                                \"%u-%\" PRIu64 \"-%u:%u-%u:%u\",",
+          "959": "                                nr,",
+          "960": "                                cookie,",
+          "961": "                                local.vm.svm_cid, local.vm.svm_port,",
+          "962": "                                remote.vm.svm_cid, remote.vm.svm_port);",
+          "963": "                break;",
+          "964": "",
+          "965": "        default:",
+          "966": "                assert_not_reached();",
+          "967": "        }",
+          "968": "",
+          "969": "        if (!s)",
+          "970": "                return -ENOMEM;",
+          "971": "",
+          "972": "        *ret = s;",
+          "973": "        return 0;",
+          "974": "}",
+          "975": "",
+          "976": "static void socket_close_fds(Socket *s) {",
+          "977": "        assert(s);",
+          "978": "",
+          "979": "        LIST_FOREACH(port, p, s->ports) {",
+          "980": "                bool was_open = p->fd >= 0;",
+          "981": "",
+          "982": "                p->event_source = sd_event_source_disable_unref(p->event_source);",
+          "983": "                p->fd = safe_close(p->fd);",
+          "984": "                socket_port_close_auxiliary_fds(p);",
+          "985": "",
+          "986": "                /* One little note: we should normally not delete any sockets in the file system here! After all some",
+          "987": "                 * other process we spawned might still have a reference of this fd and wants to continue to use",
+          "988": "                 * it. Therefore we normally delete sockets in the file system before we create a new one, not after we",
+          "989": "                 * stopped using one! That all said, if the user explicitly requested this, we'll delete them here",
+          "990": "                 * anyway, but only then. */",
+          "991": "",
+          "992": "                if (!was_open || !s->remove_on_stop)",
+          "993": "                        continue;",
+          "994": "",
+          "995": "                switch (p->type) {",
+          "996": "",
+          "997": "                case SOCKET_FIFO:",
+          "998": "                        (void) unlink(p->path);",
+          "999": "                        break;"
+        }
+      },
+      "src/journal/journalctl-varlink.c": {
+        "file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/source-02/src/journal/journalctl-varlink.c",
+          "sha256": "99f8127911e56e4f3595dc6dac08234d1ec60a7482c7dfa725a196d200f612fe",
+          "size": 5225,
+          "uid": 0
+        },
+        "lines": {
+          "131": "int action_sync(void) {",
+          "132": "        _cleanup_(sd_varlink_flush_close_unrefp) sd_varlink *link = NULL;",
+          "133": "        int r;",
+          "134": "",
+          "135": "        assert(arg_action == ACTION_SYNC);",
+          "136": "",
+          "137": "        if (arg_machine)",
+          "138": "                return log_error_errno(SYNTHETIC_ERRNO(EOPNOTSUPP),",
+          "139": "                                       \"--sync is not supported in conjunction with --machine=.\");",
+          "140": "",
+          "141": "        r = varlink_connect_journal(&link);",
+          "142": "        if (ERRNO_IS_NEG_DISCONNECT(r) && arg_namespace)",
+          "143": "                /* If the namespaced sd-journald instance was shut down due to inactivity, it should already",
+          "144": "                 * be synchronized */",
+          "145": "                return 0;",
+          "146": "        if (r < 0)",
+          "147": "                return log_error_errno(r, \"Failed to connect to Varlink socket: %m\");",
+          "148": "",
+          "149": "        return varlink_call_and_log(link, \"io.systemd.Journal.Synchronize\", /* parameters= */ NULL, /* ret_parameters= */ NULL);",
+          "150": "}",
+          "19": "int varlink_connect_journal(sd_varlink **ret) {",
+          "20": "        _cleanup_(sd_varlink_flush_close_unrefp) sd_varlink *vl = NULL;",
+          "21": "        const char *address;",
+          "22": "        int r;",
+          "23": "",
+          "24": "        assert(ret);",
+          "25": "",
+          "26": "        address = arg_namespace ?",
+          "27": "                  strjoina(\"/run/systemd/journal.\", arg_namespace, \"/io.systemd.journal\") :",
+          "28": "                  \"/run/systemd/journal/io.systemd.journal\";",
+          "29": "",
+          "30": "        r = sd_varlink_connect_address(&vl, address);",
+          "31": "        if (r < 0)",
+          "32": "                return r;",
+          "33": "",
+          "34": "        (void) sd_varlink_set_description(vl, \"journal\");",
+          "35": "        (void) sd_varlink_set_relative_timeout(vl, USEC_INFINITY);",
+          "36": "",
+          "37": "        *ret = TAKE_PTR(vl);",
+          "38": "        return 0;",
+          "39": "}"
+        }
+      },
+      "src/libsystemd/sd-json/json-stream.c": {
+        "file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/source-03/src/libsystemd/sd-json/json-stream.c",
+          "sha256": "5f01d36883e10d67eccffd5ed32181d11eaf4b09e4ec8c8f3d6b0024fac428dc",
+          "size": 50884,
+          "uid": 0
+        },
+        "lines": {
+          "181": "int json_stream_connect_address(JsonStream *s, const char *address) {",
+          "182": "        union sockaddr_union sockaddr;",
+          "183": "        int r;",
+          "184": "",
+          "185": "        assert(s);",
+          "186": "        assert(address);",
+          "187": "",
+          "188": "        _cleanup_close_ int sock_fd = socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0);",
+          "189": "        if (sock_fd < 0)",
+          "190": "                return json_stream_log_errno(s, errno, \"Failed to create AF_UNIX socket: %m\");",
+          "191": "",
+          "192": "        sock_fd = fd_move_above_stdio(sock_fd);",
+          "193": "",
+          "194": "        r = sockaddr_un_set_path(&sockaddr.un, address);",
+          "195": "        if (r < 0) {",
+          "196": "                if (r != -ENAMETOOLONG)",
+          "197": "                        return json_stream_log_errno(s, r, \"Failed to set socket address '%s': %m\", address);",
+          "198": "",
+          "199": "                /* Path too long to fit into sockaddr_un, connect via O_PATH instead. */",
+          "200": "                r = connect_unix_path(sock_fd, AT_FDCWD, address);",
+          "201": "        } else",
+          "202": "                r = RET_NERRNO(connect(sock_fd, &sockaddr.sa, r));",
+          "203": "        if (r < 0) {",
+          "204": "                if (!IN_SET(r, -EAGAIN, -EINPROGRESS))",
+          "205": "                        return json_stream_log_errno(s, r, \"Failed to connect to %s: %m\", address);",
+          "206": "",
+          "207": "                /* The connect() is being processed in the background. As long as that's the",
+          "208": "                 * case the socket is in a special state: we can poll it for POLLOUT, but",
+          "209": "                 * write()s before POLLOUT will fail with ENOTCONN (rather than EAGAIN). Since",
+          "210": "                 * ENOTCONN can mean two different things (not yet connected vs. already",
+          "211": "                 * disconnected), we track this as a separate flag. */",
+          "212": "                s->flags |= JSON_STREAM_CONNECTING;",
+          "213": "        }",
+          "214": "",
+          "215": "        r = json_stream_attach_fds(s, sock_fd, sock_fd);",
+          "216": "        if (r < 0)",
+          "217": "                return r;",
+          "218": "",
+          "219": "        TAKE_FD(sock_fd);",
+          "220": "        return 0;",
+          "221": "}",
+          "222": "",
+          "223": "int json_stream_attach_fds(JsonStream *s, int input_fd, int output_fd) {",
+          "224": "        struct stat st;",
+          "225": "        int input_socket_type = 0, r;",
+          "226": "",
+          "227": "        assert(s);",
+          "228": "        assert(input_fd >= 0);",
+          "229": "        assert(input_fd != s->input_fd);",
+          "230": "        assert(input_fd != s->output_fd);",
+          "231": "        assert(output_fd >= 0);",
+          "232": "        assert(output_fd != s->input_fd);",
+          "233": "        assert(output_fd != s->output_fd);",
+          "234": "",
+          "235": "        /* NB: input_fd and output_fd are donated to the JsonStream instance on success. */",
+          "236": "",
+          "237": "        JsonStreamFlags flags = s->flags & ~(JSON_STREAM_PREFER_READ|JSON_STREAM_PREFER_WRITE);",
+          "238": "",
+          "239": "        /* Detect non-socket fds up front so the read/write paths use read()/write() for",
+          "240": "         * non-socket fds and send()/recv() for sockets (mostly for MSG_NOSIGNAL). */",
+          "241": "        if (input_fd >= 0) {",
+          "242": "                if (fstat(input_fd, &st) < 0)",
+          "243": "                        return -errno;",
+          "244": "                if (!S_ISSOCK(st.st_mode))",
+          "245": "                        flags |= JSON_STREAM_PREFER_READ;",
+          "246": "                else {",
+          "247": "                        r = getsockopt_int(input_fd, SOL_SOCKET, SO_TYPE, &input_socket_type);",
+          "248": "                        if (r < 0)",
+          "249": "                                return r;",
+          "250": "                }",
+          "251": "        }",
+          "252": "",
+          "253": "        if (output_fd >= 0 && output_fd != input_fd) {",
+          "254": "                if (fstat(output_fd, &st) < 0)",
+          "255": "                        return -errno;",
+          "256": "                if (!S_ISSOCK(st.st_mode))",
+          "257": "                        flags |= JSON_STREAM_PREFER_WRITE;",
+          "258": "        } else if (FLAGS_SET(flags, JSON_STREAM_PREFER_READ))",
+          "259": "                flags |= JSON_STREAM_PREFER_WRITE;",
+          "260": "",
+          "261": "        if (s->input_fd != s->output_fd)",
+          "262": "                safe_close(s->output_fd);",
+          "263": "        safe_close(s->input_fd);",
+          "264": "",
+          "265": "        s->input_fd = input_fd;",
+          "266": "        s->output_fd = output_fd;",
+          "267": "        s->input_socket_type = input_socket_type;",
+          "268": "        s->flags = flags;",
+          "269": "        return 0;"
+        }
+      },
+      "src/libsystemd/sd-varlink/sd-varlink.c": {
+        "file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/source-02/src/libsystemd/sd-varlink/sd-varlink.c",
+          "sha256": "b1a31c60ba829f58ebe47feaa5fed0f1645681752574b1feb05d0881946058df",
+          "size": 160383,
+          "uid": 0
+        },
+        "lines": {
+          "189": "_public_ int sd_varlink_connect_address(sd_varlink **ret, const char *address) {",
+          "190": "        _cleanup_(sd_varlink_unrefp) sd_varlink *v = NULL;",
+          "191": "        int r;",
+          "192": "",
+          "193": "        assert_return(ret, -EINVAL);",
+          "194": "        assert_return(address, -EINVAL);",
+          "195": "",
+          "196": "        r = varlink_new(&v);",
+          "197": "        if (r < 0)",
+          "198": "                return log_debug_errno(r, \"Failed to create varlink object: %m\");",
+          "199": "",
+          "200": "        r = json_stream_connect_address(&v->stream, address);",
+          "201": "        if (r < 0)",
+          "202": "                return r;",
+          "203": "",
+          "204": "        (void) mark_varlink_socket(v->stream.input_fd, /* path= */ NULL, \"client\");",
+          "205": "",
+          "206": "        varlink_set_state(v, VARLINK_IDLE_CLIENT);",
+          "207": "",
+          "208": "        *ret = TAKE_PTR(v);",
+          "209": "        return 0;",
+          "210": "}",
+          "211": "",
+          "212": "static int varlink_socketpair(int *ret_client_fd, int *ret_server_fd) {",
+          "213": "        assert(ret_client_fd);",
+          "214": "        assert(ret_server_fd);",
+          "215": "",
+          "216": "        _cleanup_close_pair_ int pair[2] = EBADF_PAIR;",
+          "217": "        if (socketpair(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0, pair) < 0)",
+          "218": "                return log_debug_errno(errno, \"Failed to allocate AF_UNIX socket pair: %m\");",
+          "219": "",
+          "220": "        (void) mark_varlink_socket(pair[0], /* path= */ NULL, \"client\");"
+        }
+      },
+      "units/systemd-udevd-varlink.socket": {
+        "file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/source-02/units/systemd-udevd-varlink.socket",
+          "sha256": "534eb2448cd3c6e5c2c840f183029ef43d62f129800e42f0dd11962bb0833e61",
+          "size": 809,
+          "uid": 0
+        },
+        "lines": {
+          "10": "[Unit]",
+          "11": "Description=udev Varlink Socket",
+          "12": "Documentation=man:systemd-udevd-varlink.socket(8) man:udev(7)",
+          "13": "DefaultDependencies=no",
+          "14": "Before=sockets.target",
+          "15": "ConditionPathIsReadWrite=/sys",
+          "16": "",
+          "17": "[Socket]",
+          "18": "Service=systemd-udevd.service",
+          "19": "ListenStream=/run/udev/io.systemd.Udev",
+          "20": "Symlinks=/run/varlink/registry/io.systemd.Udev /run/udev/control",
+          "21": "FileDescriptorName=varlink",
+          "22": "SocketMode=0644",
+          "23": "RemoveOnStop=yes",
+          "24": "DeferTrigger=yes",
+          "25": "XAttrEntryPoint=user.varlink=entrypoint",
+          "26": "XAttrListen=user.varlink=listen"
+        }
+      }
+    },
+    "policy_context_sources": {
+      "file_contexts": {
+        "file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/fedora-input-system-v3/rootfs/etc/selinux/targeted/contexts/files/file_contexts",
+          "sha256": "df39f62b57af725bec5c4fbe2ec8bf82f12be5e2f432ad8dc63e2cdcced98f44",
+          "size": 408747,
+          "uid": 0
+        },
+        "lines": {
+          "197": "/run/log(/.*)?\tsystem_u:object_r:syslogd_var_run_t:s0",
+          "2017": "/run/log/bootchart.*\t--\tsystem_u:object_r:systemd_bootchart_var_run_t:s0",
+          "2350": "/run/systemd/journal(/.*)?\tsystem_u:object_r:syslogd_var_run_t:s0",
+          "2513": "/run/systemd/journal\\.[^/]+(/.*)?\tsystem_u:object_r:syslogd_var_run_t:s0",
+          "2517": "/run/systemd/journal\\.[^/]+/syslog\t-s\tsystem_u:object_r:devlog_t:s0",
+          "2518": "/run/systemd/journal\\.[^/]+/dev-log\t-s\tsystem_u:object_r:devlog_t:s0",
+          "2548": "/run/varlink/registry/.+\t-l\tsystem_u:object_r:systemd_varlink_registry_t:s0",
+          "3383": "/run/log\t-s\tsystem_u:object_r:devlog_t:s0",
+          "3535": "/run/varlink\t-d\tsystem_u:object_r:systemd_varlink_t:s0",
+          "4956": "/run/varlink/registry\t-d\tsystem_u:object_r:systemd_varlink_registry_t:s0",
+          "5658": "/run/systemd/journal/syslog\t-s\tsystem_u:object_r:devlog_t:s0",
+          "5723": "/run/systemd/journal/dev-log\t-s\tsystem_u:object_r:devlog_t:s0"
+        }
+      },
+      "init": {
+        "decoded_sha256": "6baf9f06ff85388b3176da4d8bd70357570db8d4e51500ec35ed97f5589feea6",
+        "decoded_size": 523756,
+        "file": {
+          "gid": 0,
+          "mode": "0o600",
+          "path": "/work/fedora-input-system-v3/rootfs/var/lib/selinux/targeted/active/modules/100/init/cil",
+          "sha256": "55484740ada88a8b4cf7a29e0484b55696af73c60ddb906e5a8b8bcb5369b0d1",
+          "size": 21453,
+          "uid": 0
+        },
+        "lines": {
+          "4855": "    (typeattributeset cil_gen_require systemd_varlink_registry_t)",
+          "4876": "    (allow init_t systemd_varlink_registry_t (dir (ioctl write getattr lock open add_name search)))",
+          "4877": "    (allow init_t systemd_varlink_registry_t (lnk_file (create getattr)))"
+        }
+      },
+      "journalctl": {
+        "decoded_sha256": "48c089907e5d8aca18752e4f5dad8b825068ef1ccec43ecf178b20c24d363889",
+        "decoded_size": 9396,
+        "file": {
+          "gid": 0,
+          "mode": "0o600",
+          "path": "/work/fedora-input-system-v3/rootfs/var/lib/selinux/targeted/active/modules/100/journalctl/cil",
+          "sha256": "442ddf2574430e37c03cf60a6fe5074800a691c5f4b4ca0478d613cfa7a6fd1a",
+          "size": 1181,
+          "uid": 0
+        },
+        "lines": {
+          "123": "(allow journalctl_t syslogd_var_run_t (dir (getattr open search)))",
+          "124": "(allow journalctl_t syslogd_var_run_t (file (ioctl read getattr lock open)))",
+          "125": "(allow journalctl_t syslogd_var_run_t (dir (getattr open search)))",
+          "126": "(allow journalctl_t syslogd_var_run_t (dir (ioctl read getattr lock open search)))",
+          "127": "(allow journalctl_t syslogd_var_run_t (file (map)))",
+          "128": "(allow journalctl_t syslogd_var_run_t (dir (getattr watch)))",
+          "52": "(typeattributeset cil_gen_require syslogd_var_run_t)",
+          "78": "(allow journalctl_t kernel_t (unix_stream_socket (getattr connectto)))"
+        }
+      },
+      "logging": {
+        "decoded_sha256": "e21fcf9ba0dfc870dac069879934749acbf96ccf241ad352cc717f0d67a62fc5",
+        "decoded_size": 180032,
+        "file": {
+          "gid": 0,
+          "mode": "0o600",
+          "path": "/work/fedora-input-system-v3/rootfs/var/lib/selinux/targeted/active/modules/100/logging/cil",
+          "sha256": "d27143346de6223eda6855963391c912b52c8c5d4247025f5bdf6ffbb79bf5d2",
+          "size": 9724,
+          "uid": 0
+        },
+        "lines": {
+          "2598": "(filecon \"/run/log(/.*)?\" any (system_u object_r syslogd_var_run_t ((s0) (s0))))",
+          "2599": "(filecon \"/run/systemd/journal(/.*)?\" any (system_u object_r syslogd_var_run_t ((s0) (s0))))",
+          "2600": "(filecon \"/run/systemd/journal\\.[^/]+(/.*)?\" any (system_u object_r syslogd_var_run_t ((s0) (s0))))",
+          "2612": "(filecon \"/run/log\" socket (system_u object_r devlog_t ((s0) (s0))))",
+          "2617": "(filecon \"/run/systemd/journal/syslog\" socket (system_u object_r devlog_t ((s0) (s0))))",
+          "2618": "(filecon \"/run/systemd/journal\\.[^/]+/syslog\" socket (system_u object_r devlog_t ((s0) (s0))))",
+          "2619": "(filecon \"/run/systemd/journal\\.[^/]+/dev-log\" socket (system_u object_r devlog_t ((s0) (s0))))"
+        }
+      },
+      "systemd": {
+        "decoded_sha256": "63abc6a2b8c08b591bbf4bde69fe5527a583cccaa75ea63863be7a7cb0e09a18",
+        "decoded_size": 838375,
+        "file": {
+          "gid": 0,
+          "mode": "0o600",
+          "path": "/work/fedora-input-system-v3/rootfs/var/lib/selinux/targeted/active/modules/100/systemd/cil",
+          "sha256": "36ba91476b4866c4fb1204059598828bfa877dd71b63adba49f5ef21413f0e72",
+          "size": 23844,
+          "uid": 0
+        },
+        "lines": {
+          "446": "(type systemd_varlink_registry_t)",
+          "447": "(roletype object_r systemd_varlink_registry_t)",
+          "485": "(typeattributeset file_type (systemd_logger_exec_t systemd_logind_exec_t systemd_user_runtimedir_exec_t systemd_conf_t systemd_logind_sessions_t systemd_logind_var_lib_t systemd_logind_var_run_t systemd_logind_inhibit_var_run_t systemd_home_t random_seed_t systemd_coredump_exec_t systemd_coredump_tmpfs_t systemd_coredump_var_lib_t systemd_coredump_var_run_t systemd_hibernate_resume_exec_t systemd_hwdb_exec_t systemd_hwdb_unit_file_t systemd_networkd_exec_t systemd_networkd_tmpfs_t systemd_networkd_unit_file_t systemd_cache_t systemd_networkd_var_lib_t systemd_networkd_var_run_t systemd_initctl_exec_t systemd_bootchart_exec_t systemd_bootchart_unit_file_t systemd_bootchart_var_run_t systemd_bootchart_tmpfs_t systemd_journal_upload_exec_t systemd_journal_upload_var_lib_t systemd_resolved_exec_t systemd_resolved_var_run_t systemd_resolved_unit_file_t systemd_modules_load_exec_t systemd_modules_load_unit_file_t systemd_passwd_agent_exec_t systemd_passwd_var_run_t systemd_tmpfiles_exec_t systemd_notify_exec_t systemd_unit_file_t systemd_runtime_unit_file_t power_unit_file_t systemd_vconsole_unit_file_t systemd_systemctl_exec_t systemd_localed_exec_t systemd_hostnamed_exec_t hostname_etc_t systemd_hwdb_etc_t systemd_rfkill_exec_t systemd_rfkill_unit_file_t systemd_rfkill_var_lib_t systemd_socket_proxyd_exec_t systemd_socket_proxyd_unit_file_t systemd_ssh_issue_exec_t systemd_timedated_exec_t systemd_timedated_unit_file_t systemd_timedated_var_run_t systemd_timedated_var_lib_t systemd_sysctl_exec_t systemd_anaconda_generator_exec_t systemd_anaconda_generator_unit_file_t systemd_bless_boot_generator_exec_t systemd_bless_boot_generator_unit_file_t systemd_bootc_generator_exec_t systemd_bootc_generator_unit_file_t systemd_clonesetup_generator_exec_t systemd_clonesetup_generator_unit_file_t systemd_cryptsetup_generator_exec_t systemd_cryptsetup_generator_unit_file_t systemd_debug_generator_exec_t systemd_debug_generator_unit_file_t systemd_factory_reset_generator_exec_t systemd_factory_reset_generator_unit_file_t systemd_fstab_generator_exec_t systemd_fstab_generator_unit_file_t systemd_getty_generator_exec_t systemd_getty_generator_unit_file_t systemd_gpt_generator_exec_t systemd_gpt_generator_unit_file_t systemd_hibernate_resume_generator_exec_t systemd_hibernate_resume_generator_unit_file_t systemd_imds_generator_exec_t systemd_imds_generator_unit_file_t systemd_import_generator_exec_t systemd_import_generator_unit_file_t systemd_integritysetup_generator_exec_t systemd_integritysetup_generator_unit_file_t systemd_kdump_dep_generator_exec_t systemd_kdump_dep_generator_unit_file_t systemd_nfs_generator_exec_t systemd_nfs_generator_unit_file_t systemd_nm_initrd_generator_exec_t systemd_nm_initrd_generator_unit_file_t systemd_rc_local_generator_exec_t systemd_rc_local_generator_unit_file_t systemd_run_generator_exec_t systemd_run_generator_unit_file_t systemd_selinux_autorelabel_generator_exec_t systemd_selinux_autorelabel_generator_unit_file_t systemd_ssh_generator_exec_t systemd_ssh_generator_unit_file_t systemd_system_update_generator_exec_t systemd_system_update_generator_unit_file_t systemd_sysv_generator_exec_t systemd_sysv_generator_unit_file_t systemd_tpm2_generator_exec_t systemd_tpm2_generator_unit_file_t systemd_veritysetup_generator_exec_t systemd_veritysetup_generator_unit_file_t systemd_vsftpd_generator_exec_t systemd_vsftpd_generator_unit_file_t systemd_zram_generator_exec_t systemd_zram_generator_unit_file_t systemd_zram_generator_conf_t systemd_generic_generator_exec_t systemd_generic_generator_unit_file_t systemd_generator_unit_file_t systemd_network_generator_exec_t systemd_machined_exec_t systemd_machined_unit_file_t systemd_machined_tmp_t systemd_machined_tmpfs_t systemd_machined_var_run_t systemd_machined_var_lib_t systemd_importd_exec_t systemd_importd_var_run_t systemd_importd_tmp_t systemd_userdbd_exec_t systemd_userdbd_unit_file_t systemd_userdbd_runtime_t systemd_sleep_exec_t systemd_sleep_var_lib_t systemd_pstore_exec_t systemd_pstore_var_lib_t systemd_nsresourced_exec_t systemd_nsresourced_runtime_t systemd_mountfsd_exec_t systemd_oomd_exec_t systemd_oomd_tmpfs_t systemd_oomd_var_run_t systemd_pcrextend_exec_t systemd_pcrlock_exec_t systemd_varlink_t systemd_varlink_registry_t systemd_ssh_issue_var_run_t systemd_cryptsetup_generator_var_run_t ))",
+          "487": "(typeattributeset non_security_file_type (systemd_logger_exec_t systemd_logind_exec_t systemd_user_runtimedir_exec_t systemd_conf_t systemd_logind_sessions_t systemd_logind_var_lib_t systemd_logind_var_run_t systemd_logind_inhibit_var_run_t systemd_home_t random_seed_t systemd_coredump_exec_t systemd_coredump_tmpfs_t systemd_coredump_var_lib_t systemd_coredump_var_run_t systemd_hibernate_resume_exec_t systemd_hwdb_exec_t systemd_hwdb_unit_file_t systemd_networkd_exec_t systemd_networkd_tmpfs_t systemd_networkd_unit_file_t systemd_cache_t systemd_networkd_var_lib_t systemd_networkd_var_run_t systemd_initctl_exec_t systemd_bootchart_exec_t systemd_bootchart_unit_file_t systemd_bootchart_var_run_t systemd_bootchart_tmpfs_t systemd_journal_upload_exec_t systemd_journal_upload_var_lib_t systemd_resolved_exec_t systemd_resolved_var_run_t systemd_resolved_unit_file_t systemd_modules_load_exec_t systemd_modules_load_unit_file_t systemd_passwd_agent_exec_t systemd_passwd_var_run_t systemd_tmpfiles_exec_t systemd_notify_exec_t systemd_unit_file_t systemd_runtime_unit_file_t power_unit_file_t systemd_vconsole_unit_file_t systemd_systemctl_exec_t systemd_localed_exec_t systemd_hostnamed_exec_t hostname_etc_t systemd_hwdb_etc_t systemd_rfkill_exec_t systemd_rfkill_unit_file_t systemd_rfkill_var_lib_t systemd_socket_proxyd_exec_t systemd_socket_proxyd_unit_file_t systemd_ssh_issue_exec_t systemd_timedated_exec_t systemd_timedated_unit_file_t systemd_timedated_var_run_t systemd_timedated_var_lib_t systemd_sysctl_exec_t systemd_anaconda_generator_exec_t systemd_anaconda_generator_unit_file_t systemd_bless_boot_generator_exec_t systemd_bless_boot_generator_unit_file_t systemd_bootc_generator_exec_t systemd_bootc_generator_unit_file_t systemd_clonesetup_generator_exec_t systemd_clonesetup_generator_unit_file_t systemd_cryptsetup_generator_exec_t systemd_cryptsetup_generator_unit_file_t systemd_debug_generator_exec_t systemd_debug_generator_unit_file_t systemd_factory_reset_generator_exec_t systemd_factory_reset_generator_unit_file_t systemd_fstab_generator_exec_t systemd_fstab_generator_unit_file_t systemd_getty_generator_exec_t systemd_getty_generator_unit_file_t systemd_gpt_generator_exec_t systemd_gpt_generator_unit_file_t systemd_hibernate_resume_generator_exec_t systemd_hibernate_resume_generator_unit_file_t systemd_imds_generator_exec_t systemd_imds_generator_unit_file_t systemd_import_generator_exec_t systemd_import_generator_unit_file_t systemd_integritysetup_generator_exec_t systemd_integritysetup_generator_unit_file_t systemd_kdump_dep_generator_exec_t systemd_kdump_dep_generator_unit_file_t systemd_nfs_generator_exec_t systemd_nfs_generator_unit_file_t systemd_nm_initrd_generator_exec_t systemd_nm_initrd_generator_unit_file_t systemd_rc_local_generator_exec_t systemd_rc_local_generator_unit_file_t systemd_run_generator_exec_t systemd_run_generator_unit_file_t systemd_selinux_autorelabel_generator_exec_t systemd_selinux_autorelabel_generator_unit_file_t systemd_ssh_generator_exec_t systemd_ssh_generator_unit_file_t systemd_system_update_generator_exec_t systemd_system_update_generator_unit_file_t systemd_sysv_generator_exec_t systemd_sysv_generator_unit_file_t systemd_tpm2_generator_exec_t systemd_tpm2_generator_unit_file_t systemd_veritysetup_generator_exec_t systemd_veritysetup_generator_unit_file_t systemd_vsftpd_generator_exec_t systemd_vsftpd_generator_unit_file_t systemd_zram_generator_exec_t systemd_zram_generator_unit_file_t systemd_zram_generator_conf_t systemd_generic_generator_exec_t systemd_generic_generator_unit_file_t systemd_generator_unit_file_t systemd_network_generator_exec_t systemd_machined_exec_t systemd_machined_unit_file_t systemd_machined_tmp_t systemd_machined_tmpfs_t systemd_machined_var_run_t systemd_machined_var_lib_t systemd_importd_exec_t systemd_importd_var_run_t systemd_importd_tmp_t systemd_userdbd_exec_t systemd_userdbd_unit_file_t systemd_userdbd_runtime_t systemd_sleep_exec_t systemd_sleep_var_lib_t systemd_pstore_exec_t systemd_pstore_var_lib_t systemd_nsresourced_exec_t systemd_nsresourced_runtime_t systemd_mountfsd_exec_t systemd_oomd_exec_t systemd_oomd_tmpfs_t systemd_oomd_var_run_t systemd_pcrextend_exec_t systemd_pcrlock_exec_t systemd_varlink_t systemd_varlink_registry_t systemd_ssh_issue_var_run_t systemd_cryptsetup_generator_var_run_t ))",
+          "4886": "                                                                                                                        (typeattributeset pidfile (systemd_logind_sessions_t systemd_logind_var_run_t systemd_logind_inhibit_var_run_t systemd_coredump_var_run_t systemd_networkd_var_run_t systemd_bootchart_var_run_t systemd_resolved_var_run_t systemd_passwd_var_run_t systemd_timedated_var_run_t systemd_machined_var_run_t systemd_importd_var_run_t systemd_userdbd_runtime_t systemd_nsresourced_runtime_t systemd_oomd_var_run_t systemd_varlink_t systemd_varlink_registry_t systemd_ssh_issue_var_run_t ))",
+          "489": "(typeattributeset non_auth_file_type (systemd_logger_exec_t systemd_logind_exec_t systemd_user_runtimedir_exec_t systemd_conf_t systemd_logind_sessions_t systemd_logind_var_lib_t systemd_logind_var_run_t systemd_logind_inhibit_var_run_t systemd_home_t random_seed_t systemd_coredump_exec_t systemd_coredump_tmpfs_t systemd_coredump_var_lib_t systemd_coredump_var_run_t systemd_hibernate_resume_exec_t systemd_hwdb_exec_t systemd_hwdb_unit_file_t systemd_networkd_exec_t systemd_networkd_tmpfs_t systemd_networkd_unit_file_t systemd_cache_t systemd_networkd_var_lib_t systemd_networkd_var_run_t systemd_initctl_exec_t systemd_bootchart_exec_t systemd_bootchart_unit_file_t systemd_bootchart_var_run_t systemd_bootchart_tmpfs_t systemd_journal_upload_exec_t systemd_journal_upload_var_lib_t systemd_resolved_exec_t systemd_resolved_var_run_t systemd_resolved_unit_file_t systemd_modules_load_exec_t systemd_modules_load_unit_file_t systemd_passwd_agent_exec_t systemd_passwd_var_run_t systemd_tmpfiles_exec_t systemd_notify_exec_t systemd_unit_file_t systemd_runtime_unit_file_t power_unit_file_t systemd_vconsole_unit_file_t systemd_systemctl_exec_t systemd_localed_exec_t systemd_hostnamed_exec_t hostname_etc_t systemd_hwdb_etc_t systemd_rfkill_exec_t systemd_rfkill_unit_file_t systemd_rfkill_var_lib_t systemd_socket_proxyd_exec_t systemd_socket_proxyd_unit_file_t systemd_ssh_issue_exec_t systemd_timedated_exec_t systemd_timedated_unit_file_t systemd_timedated_var_run_t systemd_timedated_var_lib_t systemd_sysctl_exec_t systemd_anaconda_generator_exec_t systemd_anaconda_generator_unit_file_t systemd_bless_boot_generator_exec_t systemd_bless_boot_generator_unit_file_t systemd_bootc_generator_exec_t systemd_bootc_generator_unit_file_t systemd_clonesetup_generator_exec_t systemd_clonesetup_generator_unit_file_t systemd_cryptsetup_generator_exec_t systemd_cryptsetup_generator_unit_file_t systemd_debug_generator_exec_t systemd_debug_generator_unit_file_t systemd_factory_reset_generator_exec_t systemd_factory_reset_generator_unit_file_t systemd_fstab_generator_exec_t systemd_fstab_generator_unit_file_t systemd_getty_generator_exec_t systemd_getty_generator_unit_file_t systemd_gpt_generator_exec_t systemd_gpt_generator_unit_file_t systemd_hibernate_resume_generator_exec_t systemd_hibernate_resume_generator_unit_file_t systemd_imds_generator_exec_t systemd_imds_generator_unit_file_t systemd_import_generator_exec_t systemd_import_generator_unit_file_t systemd_integritysetup_generator_exec_t systemd_integritysetup_generator_unit_file_t systemd_kdump_dep_generator_exec_t systemd_kdump_dep_generator_unit_file_t systemd_nfs_generator_exec_t systemd_nfs_generator_unit_file_t systemd_nm_initrd_generator_exec_t systemd_nm_initrd_generator_unit_file_t systemd_rc_local_generator_exec_t systemd_rc_local_generator_unit_file_t systemd_run_generator_exec_t systemd_run_generator_unit_file_t systemd_selinux_autorelabel_generator_exec_t systemd_selinux_autorelabel_generator_unit_file_t systemd_ssh_generator_exec_t systemd_ssh_generator_unit_file_t systemd_system_update_generator_exec_t systemd_system_update_generator_unit_file_t systemd_sysv_generator_exec_t systemd_sysv_generator_unit_file_t systemd_tpm2_generator_exec_t systemd_tpm2_generator_unit_file_t systemd_veritysetup_generator_exec_t systemd_veritysetup_generator_unit_file_t systemd_vsftpd_generator_exec_t systemd_vsftpd_generator_unit_file_t systemd_zram_generator_exec_t systemd_zram_generator_unit_file_t systemd_zram_generator_conf_t systemd_generic_generator_exec_t systemd_generic_generator_unit_file_t systemd_generator_unit_file_t systemd_network_generator_exec_t systemd_machined_exec_t systemd_machined_unit_file_t systemd_machined_tmp_t systemd_machined_tmpfs_t systemd_machined_var_run_t systemd_machined_var_lib_t systemd_importd_exec_t systemd_importd_var_run_t systemd_importd_tmp_t systemd_userdbd_exec_t systemd_userdbd_unit_file_t systemd_userdbd_runtime_t systemd_sleep_exec_t systemd_sleep_var_lib_t systemd_pstore_exec_t systemd_pstore_var_lib_t systemd_nsresourced_exec_t systemd_nsresourced_runtime_t systemd_mountfsd_exec_t systemd_oomd_exec_t systemd_oomd_tmpfs_t systemd_oomd_var_run_t systemd_pcrextend_exec_t systemd_pcrlock_exec_t systemd_varlink_t systemd_varlink_registry_t systemd_ssh_issue_var_run_t systemd_cryptsetup_generator_var_run_t ))",
+          "502": "(typeattributeset pidfile (systemd_logind_sessions_t systemd_logind_var_run_t systemd_logind_inhibit_var_run_t systemd_coredump_var_run_t systemd_networkd_var_run_t systemd_bootchart_var_run_t systemd_resolved_var_run_t systemd_passwd_var_run_t systemd_timedated_var_run_t systemd_machined_var_run_t systemd_importd_var_run_t systemd_userdbd_runtime_t systemd_nsresourced_runtime_t systemd_oomd_var_run_t systemd_varlink_t systemd_varlink_registry_t systemd_ssh_issue_var_run_t ))",
+          "6807": "(filecon \"/run/varlink\" dir (system_u object_r systemd_varlink_t ((s0) (s0))))",
+          "6808": "(filecon \"/run/varlink/registry\" dir (system_u object_r systemd_varlink_registry_t ((s0) (s0))))",
+          "6809": "(filecon \"/run/varlink/registry/.+\" symlink (system_u object_r systemd_varlink_registry_t ((s0) (s0))))"
+        }
+      }
+    },
+    "queries": {
+      "01": {
+        "execution": {
+          "command": [
+            "/usr/bin/qemu-aarch64",
+            "-L",
+            "/work/fedora-input-system-v3/rootfs",
+            "/work/fedora-input-system-v3/rootfs/usr/bin/python3",
+            "-I",
+            "-B",
+            "/work/selinux-varlink-cleanup-query-v1/query-01/query_varlink_cleanup_contract.py",
+            "--policy",
+            "/work/selinux-varlink-cleanup-query-v1/query-01/policy.35",
+            "--library",
+            "/work/selinux-varlink-cleanup-query-v1/query-01/libsepol.so.2"
+          ],
+          "elapsed_seconds": 5.127423587022349,
+          "exit_code": 0,
+          "source_sha256": "99541034b31a6f91d068104b7155a3cab821ba2a50517c422b8bbda3e0e0b7d8",
+          "start_utc": "2026-11-23T06:47:42.412083+00:00",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "145354766a3d82fb3eb8253564bfa5f3def066cf6bafff44c2b613b810b24247"
+        },
+        "execution_file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/query-01/execution.json",
+          "sha256": "2c6a41e9a062542b6d0de18479571a6c699041feafa8ee4046eb35ec3bba499c",
+          "size": 809,
+          "uid": 0
+        },
+        "result": {
+          "actual_runtime_enforcement_proven_by_query": false,
+          "all_queried_required_permissions_allowed": false,
+          "booleans_changed": false,
+          "completed": true,
+          "contexts": {
+            "system_u:object_r:init_var_run_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 8,
+              "return_code": 0
+            },
+            "system_u:object_r:security_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 9,
+              "return_code": 0
+            },
+            "system_u:object_r:semanage_store_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 13,
+              "return_code": 0
+            },
+            "system_u:object_r:syslogd_tmpfs_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 10,
+              "return_code": 0
+            },
+            "system_u:object_r:syslogd_var_run_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 5,
+              "return_code": 0
+            },
+            "system_u:object_r:systemd_varlink_registry_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 2,
+              "return_code": 0
+            },
+            "system_u:object_r:systemd_varlink_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 3,
+              "return_code": 0
+            },
+            "system_u:object_r:var_run_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 7,
+              "return_code": 0
+            },
+            "system_u:system_r:init_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 1,
+              "return_code": 0
+            },
+            "system_u:system_r:journalctl_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 4,
+              "return_code": 0
+            },
+            "system_u:system_r:syslogd_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 6,
+              "return_code": 0
+            },
+            "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023": {
+              "accepted_by_policy": true,
+              "private_sid": 11,
+              "return_code": 0
+            },
+            "system_u:system_r:unconfined_service_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 12,
+              "return_code": 0
+            }
+          },
+          "diagnostic_rows": [
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_setup_diagnostic",
+              "permission": "create",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 8,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_setup_diagnostic",
+              "permission": "getattr",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 16,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_setup_diagnostic",
+              "permission": "setattr",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 32,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "getattr",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 16,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "getopt",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 32768,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "setopt",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 65536,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "shutdown",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 131072,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "sock_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_socket_metadata_diagnostic",
+              "permission": "getattr",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 0,
+                "auditallow": 0,
+                "auditdeny": 4294950911,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 16,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+            }
+          ],
+          "expected_query_count": 32,
+          "input_policy": {
+            "sha256": "e1a63e7e6a97122f207b2df5a28d863fb29852530aa59c0c8d3dd8eefba36269",
+            "size": 3835432
+          },
+          "kernel_policy_loaded_or_written": false,
+          "library": {
+            "path": "/work/selinux-varlink-cleanup-query-v1/query-01/libsepol.so.2",
+            "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+            "size": 802880
+          },
+          "policy_provenance": "independent fixed map-and-self-transition candidate35 converted to33 in userspace; offline only",
+          "policy_semantic_equivalence_to_other_hash_asserted": false,
+          "policy_version_converted": true,
+          "proot_used": false,
+          "queried_policy": {
+            "sha256": "ce6ccbfda2105de32c6f865e883493a98ee4df848d298b703d55904cae3f9875",
+            "size": 3835420
+          },
+          "queries": [
+            {
+              "class": "lnk_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_create",
+              "permission": "create",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 2097562,
+                "auditallow": 0,
+                "auditdeny": 4294967295,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 8,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "lnk_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_idempotent_link_check",
+              "permission": "getattr",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 2097562,
+                "auditallow": 0,
+                "auditdeny": 4294967295,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 16,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "lnk_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_idempotent_link_check",
+              "permission": "read",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 2097562,
+                "auditallow": 0,
+                "auditdeny": 4294967295,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 2,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "lnk_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_remove_on_stop",
+              "permission": "unlink",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 2097562,
+                "auditallow": 0,
+                "auditdeny": 4294967295,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 2048,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_lifecycle",
+              "permission": "search",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 1073741824,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_lifecycle",
+              "permission": "write",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 4,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_lifecycle",
+              "permission": "add_name",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 134217728,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_lifecycle",
+              "permission": "remove_name",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 268435456,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_parent_traversal",
+              "permission": "search",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 1073741824,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_setup_diagnostic",
+              "permission": "create",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 8,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_setup_diagnostic",
+              "permission": "getattr",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 16,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_setup_diagnostic",
+              "permission": "setattr",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 32,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "sock_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_socket_path",
+              "permission": "write",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 0,
+                "auditallow": 0,
+                "auditdeny": 4294950911,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 4,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_server_connection",
+              "permission": "connectto",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 0,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 8388608,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:syslogd_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket",
+              "permission": "create",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 8,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket",
+              "permission": "connect",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 4096,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": false,
+              "group": "journal_client_socket",
+              "permission": "read",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 2,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": false,
+              "group": "journal_client_socket",
+              "permission": "write",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 4,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "getattr",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 16,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "getopt",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 32768,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "setopt",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 65536,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "shutdown",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 131072,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": false,
+              "group": "journal_parent_traversal",
+              "permission": "search",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 1074266195,
+                "auditallow": 0,
+                "auditdeny": 3220700143,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 1073741824,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:object_r:var_run_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": false,
+              "group": "journal_parent_traversal",
+              "permission": "search",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 1074266128,
+                "auditallow": 0,
+                "auditdeny": 3220700143,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 1073741824,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:object_r:init_var_run_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": false,
+              "group": "journal_parent_traversal",
+              "permission": "search",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 1076363347,
+                "auditallow": 0,
+                "auditdeny": 3220700143,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 1073741824,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+            },
+            {
+              "class": "sock_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_socket_metadata_diagnostic",
+              "permission": "getattr",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 0,
+                "auditallow": 0,
+                "auditdeny": 4294950911,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 16,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+            },
+            {
+              "class": "security",
+              "denial_audit_mask_includes_permission": true,
+              "group": "expected_denial_control",
+              "permission": "read_policy",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 379,
+                "auditallow": 0,
+                "auditdeny": 4294967287,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 2048,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:security_t:s0"
+            },
+            {
+              "class": "file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "expected_denial_control",
+              "permission": "map",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 36190847,
+                "auditallow": 0,
+                "auditdeny": 4294967295,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 1024,
+              "return_code": 0,
+              "source_context": "system_u:system_r:syslogd_t:s0",
+              "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+            },
+            {
+              "class": "fifo_file",
+              "denial_audit_mask_includes_permission": false,
+              "group": "expected_denial_control",
+              "permission": "write",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 0,
+                "auditallow": 0,
+                "auditdeny": 4294442408,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 4,
+              "return_code": 0,
+              "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+              "target_context": "system_u:system_r:unconfined_service_t:s0"
+            },
+            {
+              "class": "process",
+              "denial_audit_mask_includes_permission": true,
+              "group": "prior_required_permission",
+              "permission": "setcurrent",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 837774205,
+                "auditallow": 0,
+                "auditdeny": 4286840831,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 16777216,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:system_r:init_t:s0"
+            },
+            {
+              "class": "process",
+              "denial_audit_mask_includes_permission": true,
+              "group": "prior_required_permission",
+              "permission": "dyntransition",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 837774205,
+                "auditallow": 0,
+                "auditdeny": 4286840831,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 8388608,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:system_r:init_t:s0"
+            },
+            {
+              "class": "file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "prior_required_permission",
+              "permission": "map",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 525779,
+                "auditallow": 0,
+                "auditdeny": 4294967295,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 1024,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:semanage_store_t:s0"
+            }
+          ],
+          "query_count": 32,
+          "repair_performed": false,
+          "required_denials": [
+            {
+              "class": "lnk_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_remove_on_stop",
+              "permission": "unlink",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 2097562,
+                "auditallow": 0,
+                "auditdeny": 4294967295,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 2048,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "sock_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_socket_path",
+              "permission": "write",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 0,
+                "auditallow": 0,
+                "auditdeny": 4294950911,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 4,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_server_connection",
+              "permission": "connectto",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 0,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 8388608,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:syslogd_t:s0"
+            }
+          ],
+          "retained_controls_denied": true,
+          "return_codes": {
+            "class:dir": 0,
+            "class:fifo_file": 0,
+            "class:file": 0,
+            "class:lnk_file": 0,
+            "class:process": 0,
+            "class:security": 0,
+            "class:sock_file": 0,
+            "class:unix_stream_socket": 0,
+            "fclose": 0,
+            "permission:dir:add_name": 0,
+            "permission:dir:create": 0,
+            "permission:dir:getattr": 0,
+            "permission:dir:remove_name": 0,
+            "permission:dir:search": 0,
+            "permission:dir:setattr": 0,
+            "permission:dir:write": 0,
+            "permission:fifo_file:write": 0,
+            "permission:file:map": 0,
+            "permission:lnk_file:create": 0,
+            "permission:lnk_file:getattr": 0,
+            "permission:lnk_file:read": 0,
+            "permission:lnk_file:unlink": 0,
+            "permission:process:dyntransition": 0,
+            "permission:process:setcurrent": 0,
+            "permission:security:read_policy": 0,
+            "permission:sock_file:getattr": 0,
+            "permission:sock_file:write": 0,
+            "permission:unix_stream_socket:connect": 0,
+            "permission:unix_stream_socket:connectto": 0,
+            "permission:unix_stream_socket:create": 0,
+            "permission:unix_stream_socket:getattr": 0,
+            "permission:unix_stream_socket:getopt": 0,
+            "permission:unix_stream_socket:read": 0,
+            "permission:unix_stream_socket:setopt": 0,
+            "permission:unix_stream_socket:shutdown": 0,
+            "permission:unix_stream_socket:write": 0,
+            "policydb_create": 0,
+            "policydb_from_image": 0,
+            "policydb_set_vers33": 0,
+            "policydb_to_image": 0,
+            "private_policydb_from_file": 0
+          },
+          "schema_version": 1,
+          "scope": "offline candidate AV contracts; no runtime execution proof",
+          "sids_are_process_private": true
+        },
+        "script_file": {
+          "gid": 0,
+          "mode": "0o755",
+          "path": "/work/selinux-varlink-cleanup-query-v1/query-01/query_varlink_cleanup_contract.py",
+          "sha256": "99541034b31a6f91d068104b7155a3cab821ba2a50517c422b8bbda3e0e0b7d8",
+          "size": 14002,
+          "uid": 0
+        },
+        "stderr_file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/query-01/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size": 0,
+          "uid": 0
+        },
+        "stdout_file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/query-01/stdout.json",
+          "sha256": "145354766a3d82fb3eb8253564bfa5f3def066cf6bafff44c2b613b810b24247",
+          "size": 29266,
+          "uid": 0
+        }
+      },
+      "02": {
+        "execution": {
+          "command": [
+            "/usr/bin/qemu-aarch64",
+            "-L",
+            "/work/fedora-input-system-v3/rootfs",
+            "/work/fedora-input-system-v3/rootfs/usr/bin/python3",
+            "-I",
+            "-B",
+            "/work/selinux-varlink-cleanup-query-v1/query-02/query_varlink_cleanup_contract.py",
+            "--policy",
+            "/work/selinux-varlink-cleanup-query-v1/query-02/loaded-policy.33",
+            "--library",
+            "/work/selinux-varlink-cleanup-query-v1/query-02/libsepol.so.2"
+          ],
+          "elapsed_seconds": 2.1804347680299543,
+          "exit_code": 0,
+          "source_sha256": "99541034b31a6f91d068104b7155a3cab821ba2a50517c422b8bbda3e0e0b7d8",
+          "start_utc": "2026-11-23T06:50:13.158793+00:00",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "992067affbc578c601fe050bfb9aad35794e002d129e292113acd2db6e8667a6"
+        },
+        "execution_file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/query-02/execution.json",
+          "sha256": "40862d79438d905655bf3c91d461eb8667143fa1ab92989a08dcd97186701c85",
+          "size": 817,
+          "uid": 0
+        },
+        "result": {
+          "actual_runtime_enforcement_proven_by_query": false,
+          "all_queried_required_permissions_allowed": false,
+          "booleans_changed": false,
+          "completed": true,
+          "contexts": {
+            "system_u:object_r:init_var_run_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 8,
+              "return_code": 0
+            },
+            "system_u:object_r:security_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 9,
+              "return_code": 0
+            },
+            "system_u:object_r:semanage_store_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 13,
+              "return_code": 0
+            },
+            "system_u:object_r:syslogd_tmpfs_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 10,
+              "return_code": 0
+            },
+            "system_u:object_r:syslogd_var_run_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 5,
+              "return_code": 0
+            },
+            "system_u:object_r:systemd_varlink_registry_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 2,
+              "return_code": 0
+            },
+            "system_u:object_r:systemd_varlink_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 3,
+              "return_code": 0
+            },
+            "system_u:object_r:var_run_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 7,
+              "return_code": 0
+            },
+            "system_u:system_r:init_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 1,
+              "return_code": 0
+            },
+            "system_u:system_r:journalctl_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 4,
+              "return_code": 0
+            },
+            "system_u:system_r:syslogd_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 6,
+              "return_code": 0
+            },
+            "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023": {
+              "accepted_by_policy": true,
+              "private_sid": 11,
+              "return_code": 0
+            },
+            "system_u:system_r:unconfined_service_t:s0": {
+              "accepted_by_policy": true,
+              "private_sid": 12,
+              "return_code": 0
+            }
+          },
+          "diagnostic_rows": [
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_setup_diagnostic",
+              "permission": "create",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 8,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_setup_diagnostic",
+              "permission": "getattr",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 16,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_setup_diagnostic",
+              "permission": "setattr",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 32,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "getattr",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 16,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "getopt",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 32768,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "setopt",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 65536,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "shutdown",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 131072,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "sock_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_socket_metadata_diagnostic",
+              "permission": "getattr",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 0,
+                "auditallow": 0,
+                "auditdeny": 4294950911,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 16,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+            }
+          ],
+          "expected_query_count": 32,
+          "input_policy": {
+            "sha256": "0fe3c0e16007f42cb15f05e5ec35fe4b20c5d876a7d1219a558fc3593a3a0e29",
+            "size": 3835420
+          },
+          "kernel_policy_loaded_or_written": false,
+          "library": {
+            "path": "/work/selinux-varlink-cleanup-query-v1/query-02/libsepol.so.2",
+            "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+            "size": 802880
+          },
+          "policy_provenance": "separately preserved actual v7 exported33 file; offline userspace query of captured bytes",
+          "policy_semantic_equivalence_to_other_hash_asserted": false,
+          "policy_version_converted": false,
+          "proot_used": false,
+          "queried_policy": {
+            "sha256": "0fe3c0e16007f42cb15f05e5ec35fe4b20c5d876a7d1219a558fc3593a3a0e29",
+            "size": 3835420
+          },
+          "queries": [
+            {
+              "class": "lnk_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_create",
+              "permission": "create",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 2097562,
+                "auditallow": 0,
+                "auditdeny": 4294967295,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 8,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "lnk_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_idempotent_link_check",
+              "permission": "getattr",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 2097562,
+                "auditallow": 0,
+                "auditdeny": 4294967295,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 16,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "lnk_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_idempotent_link_check",
+              "permission": "read",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 2097562,
+                "auditallow": 0,
+                "auditdeny": 4294967295,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 2,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "lnk_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_remove_on_stop",
+              "permission": "unlink",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 2097562,
+                "auditallow": 0,
+                "auditdeny": 4294967295,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 2048,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_lifecycle",
+              "permission": "search",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 1073741824,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_lifecycle",
+              "permission": "write",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 4,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_lifecycle",
+              "permission": "add_name",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 134217728,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_lifecycle",
+              "permission": "remove_name",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 268435456,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_parent_traversal",
+              "permission": "search",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 1073741824,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_setup_diagnostic",
+              "permission": "create",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 8,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_setup_diagnostic",
+              "permission": "getattr",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 16,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_directory_setup_diagnostic",
+              "permission": "setattr",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 4197071359,
+                "auditallow": 0,
+                "auditdeny": 4294966271,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 32,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "sock_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_socket_path",
+              "permission": "write",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 0,
+                "auditallow": 0,
+                "auditdeny": 4294950911,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 4,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_server_connection",
+              "permission": "connectto",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 0,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 8388608,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:syslogd_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket",
+              "permission": "create",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 8,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket",
+              "permission": "connect",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 4096,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": false,
+              "group": "journal_client_socket",
+              "permission": "read",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 2,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": false,
+              "group": "journal_client_socket",
+              "permission": "write",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 4,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "getattr",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 16,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "getopt",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 32768,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "setopt",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 65536,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_client_socket_diagnostic",
+              "permission": "shutdown",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 260735,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 131072,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:journalctl_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": false,
+              "group": "journal_parent_traversal",
+              "permission": "search",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 1074266195,
+                "auditallow": 0,
+                "auditdeny": 3220700143,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 1073741824,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:object_r:var_run_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": false,
+              "group": "journal_parent_traversal",
+              "permission": "search",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 1074266128,
+                "auditallow": 0,
+                "auditdeny": 3220700143,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 1073741824,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:object_r:init_var_run_t:s0"
+            },
+            {
+              "class": "dir",
+              "denial_audit_mask_includes_permission": false,
+              "group": "journal_parent_traversal",
+              "permission": "search",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 1076363347,
+                "auditallow": 0,
+                "auditdeny": 3220700143,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 1073741824,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+            },
+            {
+              "class": "sock_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_socket_metadata_diagnostic",
+              "permission": "getattr",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 0,
+                "auditallow": 0,
+                "auditdeny": 4294950911,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 16,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+            },
+            {
+              "class": "security",
+              "denial_audit_mask_includes_permission": true,
+              "group": "expected_denial_control",
+              "permission": "read_policy",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 379,
+                "auditallow": 0,
+                "auditdeny": 4294967287,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 2048,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:security_t:s0"
+            },
+            {
+              "class": "file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "expected_denial_control",
+              "permission": "map",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 36190847,
+                "auditallow": 0,
+                "auditdeny": 4294967295,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 1024,
+              "return_code": 0,
+              "source_context": "system_u:system_r:syslogd_t:s0",
+              "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+            },
+            {
+              "class": "fifo_file",
+              "denial_audit_mask_includes_permission": false,
+              "group": "expected_denial_control",
+              "permission": "write",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 0,
+                "auditallow": 0,
+                "auditdeny": 4294442408,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 4,
+              "return_code": 0,
+              "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+              "target_context": "system_u:system_r:unconfined_service_t:s0"
+            },
+            {
+              "class": "process",
+              "denial_audit_mask_includes_permission": true,
+              "group": "prior_required_permission",
+              "permission": "setcurrent",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 837774205,
+                "auditallow": 0,
+                "auditdeny": 4286840831,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 16777216,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:system_r:init_t:s0"
+            },
+            {
+              "class": "process",
+              "denial_audit_mask_includes_permission": true,
+              "group": "prior_required_permission",
+              "permission": "dyntransition",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 837774205,
+                "auditallow": 0,
+                "auditdeny": 4286840831,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 8388608,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:system_r:init_t:s0"
+            },
+            {
+              "class": "file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "prior_required_permission",
+              "permission": "map",
+              "permission_allowed": true,
+              "raw_decision": {
+                "allowed": 525779,
+                "auditallow": 0,
+                "auditdeny": 4294967295,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 0,
+              "requested_mask": 1024,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:semanage_store_t:s0"
+            }
+          ],
+          "query_count": 32,
+          "repair_performed": false,
+          "required_denials": [
+            {
+              "class": "lnk_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "registry_remove_on_stop",
+              "permission": "unlink",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 2097562,
+                "auditallow": 0,
+                "auditdeny": 4294967295,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 2048,
+              "return_code": 0,
+              "source_context": "system_u:system_r:init_t:s0",
+              "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+            },
+            {
+              "class": "sock_file",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_socket_path",
+              "permission": "write",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 0,
+                "auditallow": 0,
+                "auditdeny": 4294950911,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 4,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+            },
+            {
+              "class": "unix_stream_socket",
+              "denial_audit_mask_includes_permission": true,
+              "group": "journal_server_connection",
+              "permission": "connectto",
+              "permission_allowed": false,
+              "raw_decision": {
+                "allowed": 0,
+                "auditallow": 0,
+                "auditdeny": 4294967289,
+                "decided": 4294967295,
+                "seqno": 0
+              },
+              "reason_mask": 1,
+              "requested_mask": 8388608,
+              "return_code": 0,
+              "source_context": "system_u:system_r:journalctl_t:s0",
+              "target_context": "system_u:system_r:syslogd_t:s0"
+            }
+          ],
+          "retained_controls_denied": true,
+          "return_codes": {
+            "class:dir": 0,
+            "class:fifo_file": 0,
+            "class:file": 0,
+            "class:lnk_file": 0,
+            "class:process": 0,
+            "class:security": 0,
+            "class:sock_file": 0,
+            "class:unix_stream_socket": 0,
+            "fclose": 0,
+            "permission:dir:add_name": 0,
+            "permission:dir:create": 0,
+            "permission:dir:getattr": 0,
+            "permission:dir:remove_name": 0,
+            "permission:dir:search": 0,
+            "permission:dir:setattr": 0,
+            "permission:dir:write": 0,
+            "permission:fifo_file:write": 0,
+            "permission:file:map": 0,
+            "permission:lnk_file:create": 0,
+            "permission:lnk_file:getattr": 0,
+            "permission:lnk_file:read": 0,
+            "permission:lnk_file:unlink": 0,
+            "permission:process:dyntransition": 0,
+            "permission:process:setcurrent": 0,
+            "permission:security:read_policy": 0,
+            "permission:sock_file:getattr": 0,
+            "permission:sock_file:write": 0,
+            "permission:unix_stream_socket:connect": 0,
+            "permission:unix_stream_socket:connectto": 0,
+            "permission:unix_stream_socket:create": 0,
+            "permission:unix_stream_socket:getattr": 0,
+            "permission:unix_stream_socket:getopt": 0,
+            "permission:unix_stream_socket:read": 0,
+            "permission:unix_stream_socket:setopt": 0,
+            "permission:unix_stream_socket:shutdown": 0,
+            "permission:unix_stream_socket:write": 0,
+            "private_policydb_from_file": 0
+          },
+          "schema_version": 1,
+          "scope": "offline candidate AV contracts; no runtime execution proof",
+          "sids_are_process_private": true
+        },
+        "script_file": {
+          "gid": 0,
+          "mode": "0o755",
+          "path": "/work/selinux-varlink-cleanup-query-v1/query-02/query_varlink_cleanup_contract.py",
+          "sha256": "99541034b31a6f91d068104b7155a3cab821ba2a50517c422b8bbda3e0e0b7d8",
+          "size": 14002,
+          "uid": 0
+        },
+        "stderr_file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/query-02/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size": 0,
+          "uid": 0
+        },
+        "stdout_file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/query-02/stdout.json",
+          "sha256": "992067affbc578c601fe050bfb9aad35794e002d129e292113acd2db6e8667a6",
+          "size": 29147,
+          "uid": 0
+        }
+      }
+    },
+    "source_indexes": {
+      "01": {
+        "file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/source/source-index.json",
+          "sha256": "c956432e48317d83944f8f6a4c07195b0aed0c0caac18ea93bfc0f35af98b2b8",
+          "size": 37505,
+          "uid": 0
+        },
+        "record": {
+          "archive": {
+            "sha256": "100fc873b848b9b0297d8a705e8e2ed326256c8483d9960ee1ffe264c8a5c3e3",
+            "size": 19088198
+          },
+          "archive_root": "systemd-262.1",
+          "files": {
+            "src/basic/fs-util.c": {
+              "sha256": "e0e9bd31314db9ef2a31bbfb76e6df0819e45f3cec48f26a545f6fb889cfcea4",
+              "size": 60318
+            },
+            "src/core/dbus-socket.c": {
+              "sha256": "60732319094e3fbd7c7fe36032c7ea6e159b9cc41c2fd76f48e84dfffaceb84e",
+              "size": 30065
+            },
+            "src/core/socket.c": {
+              "sha256": "7abb8cecc09c6d150c7fa9eba7816f4335bd3546218d0f5d5ffcb76c56211476",
+              "size": 133980
+            },
+            "src/journal/journald-varlink.c": {
+              "sha256": "bed7ad77206c485fd08a5f3c2b6aab4b03f535e16813927b3cfe0863d6c904cb",
+              "size": 8233
+            },
+            "src/libsystemd/sd-varlink/sd-varlink-idl.c": {
+              "sha256": "fee51daf0de573368fa64a4576e4dd5982b62a55e28314367e267e0cd1c53da6",
+              "size": 79450
+            },
+            "src/libsystemd/sd-varlink/sd-varlink.c": {
+              "sha256": "b1a31c60ba829f58ebe47feaa5fed0f1645681752574b1feb05d0881946058df",
+              "size": 160383
+            },
+            "src/libsystemd/sd-varlink/test-varlink-idl.c": {
+              "sha256": "4af4d5723488332bdae0f051e7e8d0175bc352ec287483910b5dc574fab2b3d6",
+              "size": 31496
+            },
+            "src/libsystemd/sd-varlink/test-varlink.c": {
+              "sha256": "cbba893895b301011785fb149e1b7167ff6809756566001d046bd329302189f0",
+              "size": 75065
+            },
+            "src/libsystemd/sd-varlink/varlink-idl-util.h": {
+              "sha256": "3885c396732c87ef94275301cd0c637d48c14ec08aa4a181654691796607cd9d",
+              "size": 1114
+            },
+            "src/libsystemd/sd-varlink/varlink-internal.h": {
+              "sha256": "7e01e1f7e241a62ce98fb10ce2100a062c514819f61a72fb59c293c053f3ee87",
+              "size": 6952
+            },
+            "src/libsystemd/sd-varlink/varlink-io.systemd.c": {
+              "sha256": "cadc8e62136ecbe03d6b9eb477e4bf5d82f8a7a0b7af02479a25e485099b9513",
+              "size": 1813
+            },
+            "src/libsystemd/sd-varlink/varlink-io.systemd.h": {
+              "sha256": "ef6f7db2c1c028960d55dea330d96038ab77257e66461c4a51eaab53a554c825",
+              "size": 151
+            },
+            "src/libsystemd/sd-varlink/varlink-org.varlink.service.c": {
+              "sha256": "17231cf37acc3dfd764a73b6dcb18665f6f141e20b43a388fb0e0af1dd4caa12",
+              "size": 3869
+            },
+            "src/libsystemd/sd-varlink/varlink-org.varlink.service.h": {
+              "sha256": "fe2fb177fca81afd15dfcd5f25ba2b7ca242ab99c3ac05f8696abdf12b77e87f",
+              "size": 160
+            },
+            "src/libsystemd/sd-varlink/varlink-util.c": {
+              "sha256": "fb956cd9600ad22d3fa9c60c263ce3fe77c3bf841f9d85d0ee39432191358759",
+              "size": 12190
+            },
+            "src/libsystemd/sd-varlink/varlink-util.h": {
+              "sha256": "47923342b637d7927787f144f13ea2b56bf5a20f5423f7f2ff185e274b05ba7e",
+              "size": 1722
+            },
+            "src/shared/label-util.c": {
+              "sha256": "ed2ee4276c7a056e85e4216ccf0457934407d5a10192251e27e10fa58e4d259f",
+              "size": 3682
+            },
+            "src/shared/resolve-varlink-util.c": {
+              "sha256": "e7a544a0949dbcda1be761afc922b00a6a03884dfe6aeb62cf89d6419cb80872",
+              "size": 16954
+            },
+            "src/shared/resolve-varlink-util.h": {
+              "sha256": "f922a528b9f7547d97b57bf602fd751f40d7e1da6eb06d3bd3a06357dc37f44f",
+              "size": 2563
+            },
+            "src/shared/test-varlink-idl-util.h": {
+              "sha256": "7112b8aafd752258cf3285b343aced51f1b8a4ef76f5a80a567610ee74cb72ec",
+              "size": 2306
+            },
+            "src/shared/varlink-idl-common.c": {
+              "sha256": "cc5f39bc82481de87e61f657b6e3b8ec6c65fb906d682ea0ffe4b8f1ca84102d",
+              "size": 8182
+            },
+            "src/shared/varlink-idl-common.h": {
+              "sha256": "96c11c9b966038739bc75936c907a0e3769b9d7cac0d42b7d19cc9818c55219c",
+              "size": 741
+            },
+            "src/shared/varlink-io.systemd.AskPassword.c": {
+              "sha256": "14e74ddf70c0a7a2d989e17f2f086983a8e155acc6d5aca5092353a3f2718e55",
+              "size": 4101
+            },
+            "src/shared/varlink-io.systemd.AskPassword.h": {
+              "sha256": "a4bd68a6600dd48b23f4d0275121702139083e3a7e03652245ba90a05208baa5",
+              "size": 163
+            },
+            "src/shared/varlink-io.systemd.BootControl.c": {
+              "sha256": "2b6ad70bc327ce81b50758edd6cd55af91722003c4a948f3740669f5a5de09b7",
+              "size": 23704
+            },
+            "src/shared/varlink-io.systemd.BootControl.h": {
+              "sha256": "48f5db95cccde766bf5ae247d7022dea6b8e2ebd75bd00876f6edcfd76898ff7",
+              "size": 274
+            },
+            "src/shared/varlink-io.systemd.Credentials.c": {
+              "sha256": "6073dac611acffb4d4de9a2d76fe855e188c074281f61551f42f4c9904d497cd",
+              "size": 9896
+            },
+            "src/shared/varlink-io.systemd.Credentials.h": {
+              "sha256": "236895c345804a1fddd19752abf80fcb832df7647ab786e56954563a287ceb6f",
+              "size": 163
+            },
+            "src/shared/varlink-io.systemd.CryptEnroll.c": {
+              "sha256": "e970da0734fff2428c0bbff134bb5fc61cefb91a14e6c392a68f4e085f26bc7d",
+              "size": 8860
+            },
+            "src/shared/varlink-io.systemd.CryptEnroll.h": {
+              "sha256": "16be371533a71d704d8d47c7051de09729f45185cc79983a21e4dc895fbdc09d",
+              "size": 163
+            },
+            "src/shared/varlink-io.systemd.FactoryReset.c": {
+              "sha256": "bae64e950c59a5ef071d2be7f495ee83de2e43de336c12f3aa0abb2c148b2574",
+              "size": 2063
+            },
+            "src/shared/varlink-io.systemd.FactoryReset.h": {
+              "sha256": "2ab7095c12692dde01d1726c39a8f9a5122a5faa10b3a6aee0d684bc45199ce0",
+              "size": 164
+            },
+            "src/shared/varlink-io.systemd.Hostname.c": {
+              "sha256": "58271c969eedd1d9f47ed99f08858def5acee3b173e19b06c5fb265c4b94561c",
+              "size": 12573
+            },
+            "src/shared/varlink-io.systemd.Hostname.h": {
+              "sha256": "e210e4a100eb7bbb959f946087c91cda55cfba46b3e8572e619ecc31b42035df",
+              "size": 160
+            },
+            "src/shared/varlink-io.systemd.Import.c": {
+              "sha256": "0edae48a8515cf757312f067514855765905947217501da4974bd9960c3a229f",
+              "size": 8671
+            },
+            "src/shared/varlink-io.systemd.Import.h": {
+              "sha256": "a30cf08e208a7a96f2a3c44b0bce3e0f9e68fd990c34eafaaac8ff4d35cd4caf",
+              "size": 158
+            },
+            "src/shared/varlink-io.systemd.InstanceMetadata.c": {
+              "sha256": "8141edc9be6626cc3cf42fee98cf7d0e43c39438ead01af1d017deb8b08cb8de",
+              "size": 5897
+            },
+            "src/shared/varlink-io.systemd.InstanceMetadata.h": {
+              "sha256": "cbf531336d6139ad983e09069c27fce167aa48d7d71237c57cf38df9468c3dee",
+              "size": 168
+            },
+            "src/shared/varlink-io.systemd.Job.c": {
+              "sha256": "22a9c686e442f4af5fd3d8e75df45858179e132bcb6c619d8369e568f09b7843",
+              "size": 5610
+            },
+            "src/shared/varlink-io.systemd.Job.h": {
+              "sha256": "cd003a0a89c4a96f2b0dc83ae93ed913d0818b1a459567b95a7334227043c33a",
+              "size": 346
+            },
+            "src/shared/varlink-io.systemd.Journal.c": {
+              "sha256": "f04e881241cd894244cb3e8e54a7cfc659be8ee8abe1180bcc46b9fd36b0a624",
+              "size": 1669
+            },
+            "src/shared/varlink-io.systemd.Journal.h": {
+              "sha256": "9c97115df1f44342e714df1f43c4958af279f73e386ea53500cf3f09127c658a",
+              "size": 159
+            },
+            "src/shared/varlink-io.systemd.JournalAccess.c": {
+              "sha256": "eec8b171726097e61dcbfce63c0fbf055f39cfadbe6f12675cc51cadf4b6245f",
+              "size": 2688
+            },
+            "src/shared/varlink-io.systemd.JournalAccess.h": {
+              "sha256": "11d4ccfde93f071918b777fc23aeba8267110715e6cda0c4d5d9eeca2a0ae37e",
+              "size": 165
+            },
+            "src/shared/varlink-io.systemd.Login.c": {
+              "sha256": "86bfa08ac4de9b1c270196596e389329d01b293fe18cb93c0a274a92a0b0a77d",
+              "size": 22328
+            },
+            "src/shared/varlink-io.systemd.Login.h": {
+              "sha256": "35c04a08f4cbbc9bd16eae2b15af5f630fa071f80dad341cf642edf0e052aaaa",
+              "size": 367
+            },
+            "src/shared/varlink-io.systemd.Machine.c": {
+              "sha256": "b5a2b404aa7689a4792af7c2204c261458c18eb88f80ad30f41033a85da3fb1a",
+              "size": 21093
+            },
+            "src/shared/varlink-io.systemd.Machine.h": {
+              "sha256": "6748e4b9d15f4bb9006e53ee66c33155277370cadef1d3a3d6af9b4421fe1a66",
+              "size": 262
+            },
+            "src/shared/varlink-io.systemd.MachineImage.c": {
+              "sha256": "0626f7342320b4009091b950c9b13c6e602b7194ee9bf9db628507fe3a83382f",
+              "size": 8139
+            },
+            "src/shared/varlink-io.systemd.MachineImage.h": {
+              "sha256": "d0b2a3c696b5e1a00b37d693cbeaf877b7590c383ef3591cec3b5edc0fe5738b",
+              "size": 164
+            },
+            "src/shared/varlink-io.systemd.MachineInstance.c": {
+              "sha256": "6825b7d654cda684e5f8e7ae317d14b0d89e60c392bc11a2a4391034e672b134",
+              "size": 5560
+            },
+            "src/shared/varlink-io.systemd.MachineInstance.h": {
+              "sha256": "7bbf3f55de584812f0dd040a869edf079e9fee8459eebdfb8cf39738f7765fc8",
+              "size": 167
+            },
+            "src/shared/varlink-io.systemd.ManagedOOM.c": {
+              "sha256": "cd4f5621c7bb90b05263496c50709d1f9f2ca2d4f64518ba74358994587f2c6f",
+              "size": 986
+            },
+            "src/shared/varlink-io.systemd.ManagedOOM.h": {
+              "sha256": "048b8a20dce7b0204eacc357590fcbc9fcfde6281bf276431d1488d85601ea07",
+              "size": 162
+            },
+            "src/shared/varlink-io.systemd.Manager.c": {
+              "sha256": "ce63ba91441517ef2f4b48054a702289b1be449f6bf5c9ed59316df196981e4d",
+              "size": 24185
+            },
+            "src/shared/varlink-io.systemd.Manager.h": {
+              "sha256": "85db0d5008afe7a903cd680ef12b1e01efae2068fc7e7b0bb4e269de089ee8f5",
+              "size": 210
+            },
+            "src/shared/varlink-io.systemd.Metrics.c": {
+              "sha256": "2f2823e33ab14c095d434c9f3d34568be95f40be40f98749146652459b42697e",
+              "size": 3080
+            },
+            "src/shared/varlink-io.systemd.Metrics.h": {
+              "sha256": "3c8922233e1f5e3047c5b493b522ad4665faff8616176a111ce23723bb00c074",
+              "size": 159
+            },
+            "src/shared/varlink-io.systemd.MountFileSystem.c": {
+              "sha256": "6aef827af3374f350c34130b53ce81a4cfb4e9a95f892a947a8a359083ebd962",
+              "size": 13612
+            },
+            "src/shared/varlink-io.systemd.MountFileSystem.h": {
+              "sha256": "bb3dd6f3c8a3da905a7f5c961d1a0af5f68fd5585ada1f98537b55e0a652ffa4",
+              "size": 228
+            },
+            "src/shared/varlink-io.systemd.MuteConsole.c": {
+              "sha256": "6a85d1771cbca18000a7f2969c61525b5f9bdc3826aa89f06c3903a9e99893f8",
+              "size": 960
+            },
+            "src/shared/varlink-io.systemd.MuteConsole.h": {
+              "sha256": "51368e3e4891399b0865203cb554c32efe79e5e6ee241c2472177801f77685f6",
+              "size": 163
+            },
+            "src/shared/varlink-io.systemd.NamespaceResource.c": {
+              "sha256": "2d06ea2b3ec3e14e6a15c0ee8c93ebabd5bdd501373f2cf0aaadd19ac6062f1f",
+              "size": 11403
+            },
+            "src/shared/varlink-io.systemd.NamespaceResource.h": {
+              "sha256": "346b023bc70d6af549e9a4ad86caf564be55ab8341436368aea663bf188f6911",
+              "size": 169
+            },
+            "src/shared/varlink-io.systemd.Network.Link.c": {
+              "sha256": "207a43b32cfdd2914af5d06162c45bb947b64226b8ad0947390f146c08973ed9",
+              "size": 3793
+            },
+            "src/shared/varlink-io.systemd.Network.Link.h": {
+              "sha256": "e05fd704d9fefa5bea8b7d756a1657c0325fa7038b775f7c6f8c6b4621ddda8c",
+              "size": 164
+            },
+            "src/shared/varlink-io.systemd.Network.c": {
+              "sha256": "27e18f2d9914ef43a8c586947e95836e6980f3a0fc7e770cdaed433c8c223d12",
+              "size": 47836
+            },
+            "src/shared/varlink-io.systemd.Network.h": {
+              "sha256": "fbd8f6d9109bce9db994bc848d456d1221bb920043de63c37d64ce8a90999516",
+              "size": 1557
+            },
+            "src/shared/varlink-io.systemd.PCRExtend.c": {
+              "sha256": "90825353071c749e9bada75f02f6d23ec8cac8867cf19b60c448632488c87bcd",
+              "size": 2919
+            },
+            "src/shared/varlink-io.systemd.PCRExtend.h": {
+              "sha256": "041bec88ae608cbf47da09184c7ed2e56c321df722b9fa2afde9c54c80887480",
+              "size": 161
+            },
+            "src/shared/varlink-io.systemd.PCRLock.c": {
+              "sha256": "c03bfae259c0ca05ad0c7ba28b47090c13adeea27264b4d9bb03c688be4e1ada",
+              "size": 3803
+            },
+            "src/shared/varlink-io.systemd.PCRLock.h": {
+              "sha256": "b3720aa7a31bf16946af26b93376ed49d245c5026dcad60a8ff9b6e80f7653ab",
+              "size": 159
+            },
+            "src/shared/varlink-io.systemd.Repart.c": {
+              "sha256": "5240a647439ccc3d2f513bf3198ee278ed2771231a25b0967ab79fc0ca4a6cad",
+              "size": 12137
+            },
+            "src/shared/varlink-io.systemd.Repart.h": {
+              "sha256": "4f2587882e53197bb54b184f161b66abb9aeda2d28532d5c392962a108b47eeb",
+              "size": 463
+            },
+            "src/shared/varlink-io.systemd.Report.Signer.c": {
+              "sha256": "db0d315885e2a159c0b468f24556fd864b39cde03fac771f9bc6beadf5587c47",
+              "size": 1317
+            },
+            "src/shared/varlink-io.systemd.Report.Signer.h": {
+              "sha256": "5fdd086d5e4fe495db7dc980358dc55b3714963ea153a872bbd0b44abc4f3f8d",
+              "size": 165
+            },
+            "src/shared/varlink-io.systemd.Report.Uploader.c": {
+              "sha256": "b95e6aae1a50d89aa441c9e108083469416960ee4ae0d0fe2c026df41b361a15",
+              "size": 1368
+            },
+            "src/shared/varlink-io.systemd.Report.Uploader.h": {
+              "sha256": "fb38b869066e6877603e9b12aa2cdf66ed4d9b2a6017376a568139c5cdcb27e6",
+              "size": 167
+            },
+            "src/shared/varlink-io.systemd.Report.c": {
+              "sha256": "cd0aa790b00b124c02fbba45e39152ce59f1dc9e1830ac0a471a3a92959a0e82",
+              "size": 3160
+            },
+            "src/shared/varlink-io.systemd.Report.h": {
+              "sha256": "ccb13529e7c1003936f57f19c6aabd355864678b790d533bac981049265c9979",
+              "size": 158
+            },
+            "src/shared/varlink-io.systemd.Resolve.Hook.c": {
+              "sha256": "b2ca6ae8bd19f5f6456b7eb95a17a69abc358d616c1f99c3cf94aa032f435cbf",
+              "size": 7038
+            },
+            "src/shared/varlink-io.systemd.Resolve.Hook.h": {
+              "sha256": "cc7d3268b8e8ab24a4f24f827054fc8c6491b602d16997100c1ad1e5ccb153d9",
+              "size": 164
+            },
+            "src/shared/varlink-io.systemd.Resolve.Monitor.c": {
+              "sha256": "2ab3eb5165921bcb3429101e2d9d4ff577d998b053c8ccb9dd8e7079e51c3f1b",
+              "size": 9595
+            },
+            "src/shared/varlink-io.systemd.Resolve.Monitor.h": {
+              "sha256": "9e8dd73753356c8b0982cc90d56a57e246fad82f285c94b4391f0ea9d2a3e845",
+              "size": 167
+            },
+            "src/shared/varlink-io.systemd.Resolve.c": {
+              "sha256": "2dc3ffaead623acd3417c89429af952b27796e42cde1cc05caf26fa605e492eb",
+              "size": 29575
+            },
+            "src/shared/varlink-io.systemd.Resolve.h": {
+              "sha256": "7e6aaf8c3522ab17334392eb2e555378b56c3f39bb161003be105991146f3cc6",
+              "size": 693
+            },
+            "src/shared/varlink-io.systemd.Shutdown.c": {
+              "sha256": "86efebf2317c9af44ce65b19235a852b20a469385e4d35b99c3039e584f914d3",
+              "size": 3013
+            },
+            "src/shared/varlink-io.systemd.Shutdown.h": {
+              "sha256": "8ed8e8cb33d8c057d86b25e94cc4e6e4ea3bce5451d505c799d73aca7d1fb7b8",
+              "size": 160
+            },
+            "src/shared/varlink-io.systemd.StorageProvider.c": {
+              "sha256": "4859100c8fc0de2d61c4fceee8a62d0fbe371b3aff665fae261d8d6bf3bcc571",
+              "size": 8687
+            },
+            "src/shared/varlink-io.systemd.StorageProvider.h": {
+              "sha256": "8c4534c33bfd62aae2419b52de2f37bfeb35d70a39ab55ea7916b463c351efa0",
+              "size": 167
+            },
+            "src/shared/varlink-io.systemd.SysInstall.c": {
+              "sha256": "fb299a6604c5e336e752b38f417098da3e74d7d1419e206480a8027fa127741e",
+              "size": 9280
+            },
+            "src/shared/varlink-io.systemd.SysInstall.h": {
+              "sha256": "37c572dc74f546333a10c791a6fd6c721592ff7d0bdf94689cbb04ca5509a3cb",
+              "size": 162
+            },
+            "src/shared/varlink-io.systemd.SysUpdate.Notify.c": {
+              "sha256": "0c2c5ad084bc71cb805e1cf476fa01c29efaf1c859193baf57024c589dbe5e82",
+              "size": 889
+            },
+            "src/shared/varlink-io.systemd.SysUpdate.Notify.h": {
+              "sha256": "b53aa63edf01e160404d292b8c6ae8b3b4b504aad8c0cffb6ea6c8bf7090d697",
+              "size": 168
+            },
+            "src/shared/varlink-io.systemd.SysUpdate.c": {
+              "sha256": "505e5e10ed170bd712d3af638e278094037fa2eb3fd625072f2bfd4fc0081cb2",
+              "size": 5653
+            },
+            "src/shared/varlink-io.systemd.SysUpdate.h": {
+              "sha256": "4d4dc210fc880d0afe4ea0f43e6645c7b170961c26fb3ea2ad678757e65cbd69",
+              "size": 161
+            },
+            "src/shared/varlink-io.systemd.Udev.c": {
+              "sha256": "e8469a00db15fac4fde17a93e43c37d39807fa566423d9c96d12fae8659ca6db",
+              "size": 2180
+            },
+            "src/shared/varlink-io.systemd.Udev.h": {
+              "sha256": "22e2c37b00e45ed7e3441e7e59c6e68778ccdd6c98ff4ff6bb939f1aed7d48da",
+              "size": 156
+            },
+            "src/shared/varlink-io.systemd.Unit.c": {
+              "sha256": "c6ad05351f95601e02189c2174c65c0eee4dc2e4563d68cb0405b4667cd4d790",
+              "size": 178941
+            },
+            "src/shared/varlink-io.systemd.Unit.h": {
+              "sha256": "87754ff7a9d97baf600a4cc01aeaa570756433dfb6da5b6dbb96115a11dbbfe1",
+              "size": 2554
+            },
+            "src/shared/varlink-io.systemd.UserDatabase.c": {
+              "sha256": "41d59183df4636b9c5a7a4f6b1bedd377a3c30117e248a3e6e1ff873fb336952",
+              "size": 8592
+            },
+            "src/shared/varlink-io.systemd.UserDatabase.h": {
+              "sha256": "a79f41d2ad6ab4b11517f5582cd87a2c7c35501b4979d32a634285e6abcfe87d",
+              "size": 164
+            },
+            "src/shared/varlink-io.systemd.VirtualMachineInstance.c": {
+              "sha256": "111ac1b2896e22af7adde5db6e63d03a50ffbcad1eef184b1a4941e2c5cbf45d",
+              "size": 430
+            },
+            "src/shared/varlink-io.systemd.VirtualMachineInstance.h": {
+              "sha256": "65448fd134a949edac733f86ea108864baf5bd8c2056add208371e2fb8860b9a",
+              "size": 174
+            },
+            "src/shared/varlink-io.systemd.oom.Prekill.c": {
+              "sha256": "e523e41d860c996f2866c5f6dd0426bac559a03e38612bb4398722240ce59888",
+              "size": 758
+            },
+            "src/shared/varlink-io.systemd.oom.Prekill.h": {
+              "sha256": "18bea90157c1fcad39b3d2dac0edcc9715a83303ae65c8c629de00ee190750ba",
+              "size": 163
+            },
+            "src/shared/varlink-io.systemd.oom.c": {
+              "sha256": "d26d80b5d89be6b1fb819f535a01a4f460caf1e2730bdcc4b598d24c009eb6d0",
+              "size": 1283
+            },
+            "src/shared/varlink-io.systemd.oom.h": {
+              "sha256": "aa8631b67383eb759b5b56aa4e01123913861c6042243a934a3de6a72a486d0a",
+              "size": 208
+            },
+            "src/shared/varlink-io.systemd.service.c": {
+              "sha256": "f0137f1a2d9b73165935937b494421cde7fdca3a06166f34cac4894abb674675",
+              "size": 5906
+            },
+            "src/shared/varlink-io.systemd.service.h": {
+              "sha256": "206e3553041d71f9d6f75dbe686768cb6dbabfa6f24adcc7d93f21016ab9d812",
+              "size": 697
+            },
+            "src/shared/varlink-io.systemd.sysext.c": {
+              "sha256": "ed50d1639ec98d9c813c9e1df9f0710ce55704cfaaec24922c7b0f4c01e0bf87",
+              "size": 3661
+            },
+            "src/shared/varlink-io.systemd.sysext.h": {
+              "sha256": "1260797cd72b815c934aa5bb3f9822b742d443a30bc18af2225d186c10bd8498",
+              "size": 208
+            },
+            "src/shared/varlink-serialize.c": {
+              "sha256": "df7bbc3895a80cab07c9f1e0588ffa92888e7d5309c0fa2b5881d36e714de97e",
+              "size": 3664
+            },
+            "src/shared/varlink-serialize.h": {
+              "sha256": "de16e0b5998b61eb68b84b5aedb80784d573dcb2b9840f55f89d7fc324606ae6",
+              "size": 346
+            },
+            "srpm/0001-core-create-userdb-root-directory-with-correct-label.patch": {
+              "sha256": "1a469977168a0a43d87e49b0c89fff9ab4bbaf6f0c456439c54746f71f1f5ced",
+              "size": 1800
+            },
+            "srpm/0002-machined-continue-without-resolve.hook-socket.patch": {
+              "sha256": "2010af26e0d9cd5c34fd3fac80105868a9242a60bfcf8dbbe5c35b52426d181d",
+              "size": 1523
+            },
+            "srpm/30846.patch": {
+              "sha256": "70143c0f62e0a76d18eb1abbbab3ca33640d904490eaaac2fec674c5cfe33938",
+              "size": 3197
+            },
+            "srpm/systemd.spec": {
+              "sha256": "b8bccdffaf7aa0b06ef21e051aa19d4180d8846125e5f4214298ee8562888883",
+              "size": 74527
+            },
+            "units/systemd-journald-audit.socket": {
+              "sha256": "7beadc84b52c3b02b7e30901f4e514c5840d360bf80c87325333c621519962c9",
+              "size": 741
+            },
+            "units/systemd-journald-dev-log.socket": {
+              "sha256": "f3a1838110d76876c411606f88450bb34218191454b35f697ac3ac3c6f6197fc",
+              "size": 1199
+            },
+            "units/systemd-journald-sync@.service": {
+              "sha256": "8b681b74900a211077def8598bad9a073b8333396cb49bfaaa66214866729606",
+              "size": 880
+            },
+            "units/systemd-journald-varlink@.socket": {
+              "sha256": "22b5e1e42498ebb1ddc82a692534ba0433b70e8d9f14277696d2b767ae124afe",
+              "size": 677
+            },
+            "units/systemd-journald.service.in": {
+              "sha256": "3c60e091124a289d8cac891d4c6e66b56db9b7d047ae96b185711e03bfea1fad",
+              "size": 2864
+            },
+            "units/systemd-journald.socket": {
+              "sha256": "4d5933d28949a7602e2fcf9227d55d0ffa732255a1c6ed271fbbbe76b01979d9",
+              "size": 952
+            },
+            "units/systemd-journald@.service.in": {
+              "sha256": "2500ceef22a54877832025c18bd8f43cb969efc3d8e340f8ae68c87818ad310c",
+              "size": 1476
+            },
+            "units/systemd-journald@.socket": {
+              "sha256": "ad206121f5e0f3d670f4750892f97f6fe4ea3b8d9fb4df04c38253da4823eb6a",
+              "size": 798
+            },
+            "units/systemd-udevd-varlink.socket": {
+              "sha256": "534eb2448cd3c6e5c2c840f183029ef43d62f129800e42f0dd11962bb0833e61",
+              "size": 809
+            }
+          },
+          "kernel_policy_loaded_or_written": false,
+          "rootfs_modified": false,
+          "schema_version": 1,
+          "scope": "fixed official package source inspection only",
+          "script": {
+            "sha256": "f8f31cda0af115e18db6a608cc219bde5cc918f400c4e6c8884afa46f6e8bfce",
+            "size": 5594
+          },
+          "srpm": {
+            "path": "/work/early-selinux-analysis-20261123/systemd-262.1-1.fc45.src.rpm",
+            "sha256": "de8e6ebb2fb7b7aa0e1297c0c27c3339d15c37b24b57ca16a762483580ea7168",
+            "size": 19165235
+          },
+          "target_program_executed": false,
+          "vm_started": false
+        }
+      },
+      "02": {
+        "file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/source-02/source-index.json",
+          "sha256": "ad250eb9f5688b6622cc266a354d0c5519ca68d03d08a08327d5fc479cbe607e",
+          "size": 54911,
+          "uid": 0
+        },
+        "record": {
+          "archive": {
+            "sha256": "100fc873b848b9b0297d8a705e8e2ed326256c8483d9960ee1ffe264c8a5c3e3",
+            "size": 19088198
+          },
+          "archive_root": "systemd-262.1",
+          "files": {
+            "src/basic/fs-util.c": {
+              "sha256": "e0e9bd31314db9ef2a31bbfb76e6df0819e45f3cec48f26a545f6fb889cfcea4",
+              "size": 60318
+            },
+            "src/core/dbus-socket.c": {
+              "sha256": "60732319094e3fbd7c7fe36032c7ea6e159b9cc41c2fd76f48e84dfffaceb84e",
+              "size": 30065
+            },
+            "src/core/socket.c": {
+              "sha256": "7abb8cecc09c6d150c7fa9eba7816f4335bd3546218d0f5d5ffcb76c56211476",
+              "size": 133980
+            },
+            "src/journal/audit-type.c": {
+              "sha256": "181cc0704b51ab1d7c012a306cf6ce7ffc9d54659a21b20bb1020e7be705f240",
+              "size": 84
+            },
+            "src/journal/audit-type.h": {
+              "sha256": "df2b041aa85735f68adafcac5a181c71eaa9e3e5be6061a9c2966b5d6135048c",
+              "size": 966
+            },
+            "src/journal/bsod.c": {
+              "sha256": "97d6df017d7a27619f6e18c514535907c5d724f235e92382f5f14432771e2f21",
+              "size": 9760
+            },
+            "src/journal/cat.c": {
+              "sha256": "6d50d10fa51d531a1ee478b89a267fc082ba5f3bf6867876f949fb41188f6b35",
+              "size": 5246
+            },
+            "src/journal/fuzz-journald-audit.c": {
+              "sha256": "803e1cfee6d2e1ced943c5b9b485312d3bb2627b2f40185e3d12626b0fee2cd0",
+              "size": 393
+            },
+            "src/journal/fuzz-journald-kmsg.c": {
+              "sha256": "36eb17d62cee9c530ab8c8b933e86c68073c2c8aa629a9ec414e9e92637e1215",
+              "size": 434
+            },
+            "src/journal/fuzz-journald-native-fd.c": {
+              "sha256": "b9edc80818be57de431786408e3e8a91c876d195ec68c34796ffa28d99f24596",
+              "size": 1311
+            },
+            "src/journal/fuzz-journald-native.c": {
+              "sha256": "bbdd70d1ca467bcf22f9c53dc52518dcccdc1eb722d6efa21e4ce426039e8d09",
+              "size": 331
+            },
+            "src/journal/fuzz-journald-stream.c": {
+              "sha256": "688ae2d33f2ff245fcc7990e377401dedd46280ae4f4cf40e86fe7fd076c82db",
+              "size": 1191
+            },
+            "src/journal/fuzz-journald-syslog.c": {
+              "sha256": "ac36fd9405fb4b6b92726d04ca645f12c28070767a6fb1898dd1f4360717d453",
+              "size": 331
+            },
+            "src/journal/fuzz-journald-util.c": {
+              "sha256": "44a8e7102096a8fc10f3640465bcb8673c69bd018d81edd9bf4e0ce873af5802",
+              "size": 994
+            },
+            "src/journal/fuzz-journald-util.h": {
+              "sha256": "09d1835d9114ed7af1872bc790533c0c1be595e562ccc98edd751ec5a9d81774",
+              "size": 564
+            },
+            "src/journal/journalctl-authenticate.c": {
+              "sha256": "06ff9bad76b5f14cc5d8ef5da66a13635b7d3123e43b17a4fa0ef7dedb67ff5d",
+              "size": 8871
+            },
+            "src/journal/journalctl-authenticate.h": {
+              "sha256": "53d61ecadaa1249f670e8fad7b140608258507af77300f500c89a087e8fba002",
+              "size": 92
+            },
+            "src/journal/journalctl-catalog.c": {
+              "sha256": "680350686b0a0da7433b0c79eaf024e959d11e615902d882fc81bc37509b85a7",
+              "size": 1584
+            },
+            "src/journal/journalctl-catalog.h": {
+              "sha256": "2f521c7a7f9c04d9967b0f05faecade22d863c19a4a666e69a04e8f5982e91cb",
+              "size": 135
+            },
+            "src/journal/journalctl-filter.c": {
+              "sha256": "480f7a03040c0ddc93b1b65c0b49d6f0e8a4a377ee1b94168655132dcfd72f48",
+              "size": 15249
+            },
+            "src/journal/journalctl-filter.h": {
+              "sha256": "6a70df199be5d8167410ea8c161ebcde18aad1d28b97edc61a0c34497bce86a3",
+              "size": 432
+            },
+            "src/journal/journalctl-metrics.c": {
+              "sha256": "ac537b3e94660fc8d2040dd431ebbc12030b40ca437962f20d78f2ff5701a5a7",
+              "size": 3788
+            },
+            "src/journal/journalctl-metrics.h": {
+              "sha256": "729f89cca9f60411a2ecba615ed2e03f3ebd64a1d32c496ba435cdc10e7e669e",
+              "size": 401
+            },
+            "src/journal/journalctl-misc.c": {
+              "sha256": "c7ae2e71f168b12994d7ec8eaeaf1e89fe62fa7b0971279b37630945f78f6216",
+              "size": 11914
+            },
+            "src/journal/journalctl-misc.h": {
+              "sha256": "5932a397814436f19a0fe356d8e34ef4e222922a3bedc719b62822d535271eec",
+              "size": 333
+            },
+            "src/journal/journalctl-show.c": {
+              "sha256": "c61d8534e11f2b212372ae70dac593f0b8f33879ebf1034d470d9dc41da75f65",
+              "size": 24642
+            },
+            "src/journal/journalctl-show.h": {
+              "sha256": "8a0f6a9d04e01d3d4d68828f238755be8e79d5184c9ecc784f55f961fdc92f7b",
+              "size": 96
+            },
+            "src/journal/journalctl-util.c": {
+              "sha256": "a2385abed40d6417c8bf3acb308010a803ad0105bc72b6053054a8ad2797c64b",
+              "size": 11114
+            },
+            "src/journal/journalctl-util.h": {
+              "sha256": "5d5d172fcac2f59d48dc1349062fd23a1dbea328a008a7e141f693f5ee2310e5",
+              "size": 1309
+            },
+            "src/journal/journalctl-varlink-server.c": {
+              "sha256": "c814750f26b0d734bccc520b63d54080096a845341a08c286aebbb1ce728b76c",
+              "size": 10006
+            },
+            "src/journal/journalctl-varlink-server.h": {
+              "sha256": "544457fbdc1e985084e3e7af02294e1f6f8c28d945b6f991e69dbb006e6be977",
+              "size": 295
+            },
+            "src/journal/journalctl-varlink.c": {
+              "sha256": "99f8127911e56e4f3595dc6dac08234d1ec60a7482c7dfa725a196d200f612fe",
+              "size": 5225
+            },
+            "src/journal/journalctl-varlink.h": {
+              "sha256": "5a225a35155516f58effed448ce622647e42872969d2bf1c2a298efdfa8431f7",
+              "size": 309
+            },
+            "src/journal/journalctl.c": {
+              "sha256": "285b3d0c1217b9a3be90dca2ed4591eb8cf0192e2d3c75f303df3c5f18d5d0ab",
+              "size": 47020
+            },
+            "src/journal/journalctl.h": {
+              "sha256": "e3ebbbfa83cf03cf05cf03265260dbe44a542b54145a97b238df47b1bc9285d0",
+              "size": 2794
+            },
+            "src/journal/journald-audit.c": {
+              "sha256": "f5dca79b2fefc14368319d49bc238de7f7ac8a0aebd9768f987b25a96252c682",
+              "size": 19055
+            },
+            "src/journal/journald-audit.h": {
+              "sha256": "529edd84cd5aee2a3bb250a92f15b154b35b9c2e736b47538b4d294789cb110e",
+              "size": 474
+            },
+            "src/journal/journald-client.c": {
+              "sha256": "72c7d51eebdf00162c1b40d677f72e6fed4bc4edfb29e0f9b38d63bdafd3ad46",
+              "size": 4619
+            },
+            "src/journal/journald-client.h": {
+              "sha256": "088a58321e943bd9fb98c1d51d2e59b868cc9e763c551cd1b295e2966e6ed7c2",
+              "size": 263
+            },
+            "src/journal/journald-config.c": {
+              "sha256": "99f3e972cc639985ff60f637a505938a65b164e9510fdcc30b15d9634bf81a9d",
+              "size": 20807
+            },
+            "src/journal/journald-config.h": {
+              "sha256": "2974f3d156b44a6cd4253c29d6a7b8a91ef92392d95324728bc4d0e57b29966f",
+              "size": 3944
+            },
+            "src/journal/journald-console.c": {
+              "sha256": "451b0d223eca2ce345a8081ecc2af93f2742e4c9157e0d2df27622e9d3f18872",
+              "size": 3521
+            },
+            "src/journal/journald-console.h": {
+              "sha256": "47844b9f5fdddfa3c320fe298219767d6eb46b8f4d7d7ef45fe5f9c00ee9dccb",
+              "size": 222
+            },
+            "src/journal/journald-context.c": {
+              "sha256": "5fc99b68ad6822604b5279daa43e76eba93990c25f6b19153e6e982ca5c88d53",
+              "size": 28182
+            },
+            "src/journal/journald-context.h": {
+              "sha256": "68bfce9191e6d8e19f74c417c33ef647dfdb3b570a4ea955f6864970d40e45a0",
+              "size": 2601
+            },
+            "src/journal/journald-forward.h": {
+              "sha256": "4b3474ed7d5144bffba3b1a7f87af1a04385194f789fb4f655f4567433ec1fa6",
+              "size": 625
+            },
+            "src/journal/journald-kmsg.c": {
+              "sha256": "1d35af27b447bef6c9b3dbd428331ff9794213241e96541aac2df6185f9b5805",
+              "size": 16108
+            },
+            "src/journal/journald-kmsg.h": {
+              "sha256": "c02b55628d879671cc5155516c7b9c9d03b40576e49c9e8f3b8f0f08530df820",
+              "size": 505
+            },
+            "src/journal/journald-manager.c": {
+              "sha256": "428dc8308d5caf70faee074e87888264c3708aa8e24c6069854790b952a7ffa2",
+              "size": 101383
+            },
+            "src/journal/journald-manager.h": {
+              "sha256": "b723c61e9610250b9404f5badf4573e70c15e72cf72c0362648bb6941d1cfe5a",
+              "size": 6867
+            },
+            "src/journal/journald-native.c": {
+              "sha256": "226a4c01562a972261f0ed0c8238b27447d318e368341a7100476260d9bd3521",
+              "size": 22950
+            },
+            "src/journal/journald-native.h": {
+              "sha256": "aff04bdd1fd26e067cea5d8ef7d63726e8844859bd5d88a7e664678b93f60bb3",
+              "size": 631
+            },
+            "src/journal/journald-rate-limit.c": {
+              "sha256": "dfe42099dd8adb3d6c1ad663b8a5a9b8d6550147b6932f65f71fed11b5d6780a",
+              "size": 6167
+            },
+            "src/journal/journald-rate-limit.h": {
+              "sha256": "fb1a6b508ad11753736fe1e767c7b83578c4b570d65ee1ed350be8c388c03004",
+              "size": 339
+            },
+            "src/journal/journald-socket.c": {
+              "sha256": "6cb575c9f43d1293004b2d6184826a4a819b222ad6fdcaa69a1778f8cda5d926",
+              "size": 6874
+            },
+            "src/journal/journald-socket.h": {
+              "sha256": "59e5217358523af47e4aeb2d0dfd783492af62b01f7b9283b19a8dedbf967f2f",
+              "size": 285
+            },
+            "src/journal/journald-stream.c": {
+              "sha256": "e919ebe8c8d8fb435082d01bfd951ff0626196ae514dec4509a8c7a3d8617175",
+              "size": 34022
+            },
+            "src/journal/journald-stream.h": {
+              "sha256": "8095de6947bc622020ba1ff48e783df4113b97615f35d7410d3d7ac8837a1f51",
+              "size": 1653
+            },
+            "src/journal/journald-sync.c": {
+              "sha256": "49349c8ba504b4b80ae6c70a8eeff7abe2ccfb57e0db4ebaf2ff525a7ecc1a1a",
+              "size": 15228
+            },
+            "src/journal/journald-sync.h": {
+              "sha256": "0a7fcdd656c5d066db5a8ac4676b0e099818a639d2af396d42f2f7d8d1575b03",
+              "size": 1865
+            },
+            "src/journal/journald-syslog.c": {
+              "sha256": "00088ac7c30f15f65179e1ff7383c89adb19fb6a20a4b9381049a52a499e9c59",
+              "size": 18606
+            },
+            "src/journal/journald-syslog.h": {
+              "sha256": "50ec332c2430cf7de2122386cff88711de2b405ac058791fb7303d1d63b9ce22",
+              "size": 673
+            },
+            "src/journal/journald-varlink.c": {
+              "sha256": "bed7ad77206c485fd08a5f3c2b6aab4b03f535e16813927b3cfe0863d6c904cb",
+              "size": 8233
+            },
+            "src/journal/journald-varlink.h": {
+              "sha256": "fc2b32e385be0c22cccb283f727da6e1a7f187a710932d08fc585351e32d2511",
+              "size": 204
+            },
+            "src/journal/journald-wall.c": {
+              "sha256": "9c3a0908359657e983202586a391dbcdf4da18cab933671fdc1c2065e1474ea5",
+              "size": 1503
+            },
+            "src/journal/journald-wall.h": {
+              "sha256": "f3a3c1a410d66091beac1a240ed1696178bc7df220b63391fdf0d6e002ce5f50",
+              "size": 219
+            },
+            "src/journal/journald.c": {
+              "sha256": "5e075e0bcaf3aaa95f8d6dc6e929bf98f1009139df209647dae6f3811b2c9ca7",
+              "size": 5225
+            },
+            "src/journal/test-audit-type.c": {
+              "sha256": "837d83dedcbfb3a1c0e902de8f16180269572bc8be464751505f6bfafca19ae6",
+              "size": 535
+            },
+            "src/journal/test-journald-config.c": {
+              "sha256": "f18265587b2d00c12fdef36a192eddd434098a65c3fbf93c32aa5cb94db26d31",
+              "size": 6951
+            },
+            "src/journal/test-journald-rate-limit.c": {
+              "sha256": "50d8c9fad806f23810d2e2b4dda95bde8e6614a47d8e73d22e98d1117af2f6cf",
+              "size": 2001
+            },
+            "src/journal/test-journald-syslog.c": {
+              "sha256": "0a75c60eaa6f6943b4de10f28100aaa4f4316236f454155e233687d901ffdd2d",
+              "size": 4334
+            },
+            "src/journal/test-journald-tables.c": {
+              "sha256": "b6877469fb675991b256b2c07de36581208a6d32b7e4be415f1efdf6a5188f99",
+              "size": 327
+            },
+            "src/libsystemd/sd-varlink/sd-varlink-idl.c": {
+              "sha256": "fee51daf0de573368fa64a4576e4dd5982b62a55e28314367e267e0cd1c53da6",
+              "size": 79450
+            },
+            "src/libsystemd/sd-varlink/sd-varlink.c": {
+              "sha256": "b1a31c60ba829f58ebe47feaa5fed0f1645681752574b1feb05d0881946058df",
+              "size": 160383
+            },
+            "src/libsystemd/sd-varlink/test-varlink-idl.c": {
+              "sha256": "4af4d5723488332bdae0f051e7e8d0175bc352ec287483910b5dc574fab2b3d6",
+              "size": 31496
+            },
+            "src/libsystemd/sd-varlink/test-varlink.c": {
+              "sha256": "cbba893895b301011785fb149e1b7167ff6809756566001d046bd329302189f0",
+              "size": 75065
+            },
+            "src/libsystemd/sd-varlink/varlink-idl-util.h": {
+              "sha256": "3885c396732c87ef94275301cd0c637d48c14ec08aa4a181654691796607cd9d",
+              "size": 1114
+            },
+            "src/libsystemd/sd-varlink/varlink-internal.h": {
+              "sha256": "7e01e1f7e241a62ce98fb10ce2100a062c514819f61a72fb59c293c053f3ee87",
+              "size": 6952
+            },
+            "src/libsystemd/sd-varlink/varlink-io.systemd.c": {
+              "sha256": "cadc8e62136ecbe03d6b9eb477e4bf5d82f8a7a0b7af02479a25e485099b9513",
+              "size": 1813
+            },
+            "src/libsystemd/sd-varlink/varlink-io.systemd.h": {
+              "sha256": "ef6f7db2c1c028960d55dea330d96038ab77257e66461c4a51eaab53a554c825",
+              "size": 151
+            },
+            "src/libsystemd/sd-varlink/varlink-org.varlink.service.c": {
+              "sha256": "17231cf37acc3dfd764a73b6dcb18665f6f141e20b43a388fb0e0af1dd4caa12",
+              "size": 3869
+            },
+            "src/libsystemd/sd-varlink/varlink-org.varlink.service.h": {
+              "sha256": "fe2fb177fca81afd15dfcd5f25ba2b7ca242ab99c3ac05f8696abdf12b77e87f",
+              "size": 160
+            },
+            "src/libsystemd/sd-varlink/varlink-util.c": {
+              "sha256": "fb956cd9600ad22d3fa9c60c263ce3fe77c3bf841f9d85d0ee39432191358759",
+              "size": 12190
+            },
+            "src/libsystemd/sd-varlink/varlink-util.h": {
+              "sha256": "47923342b637d7927787f144f13ea2b56bf5a20f5423f7f2ff185e274b05ba7e",
+              "size": 1722
+            },
+            "src/shared/label-util.c": {
+              "sha256": "ed2ee4276c7a056e85e4216ccf0457934407d5a10192251e27e10fa58e4d259f",
+              "size": 3682
+            },
+            "src/shared/resolve-varlink-util.c": {
+              "sha256": "e7a544a0949dbcda1be761afc922b00a6a03884dfe6aeb62cf89d6419cb80872",
+              "size": 16954
+            },
+            "src/shared/resolve-varlink-util.h": {
+              "sha256": "f922a528b9f7547d97b57bf602fd751f40d7e1da6eb06d3bd3a06357dc37f44f",
+              "size": 2563
+            },
+            "src/shared/test-varlink-idl-util.h": {
+              "sha256": "7112b8aafd752258cf3285b343aced51f1b8a4ef76f5a80a567610ee74cb72ec",
+              "size": 2306
+            },
+            "src/shared/varlink-idl-common.c": {
+              "sha256": "cc5f39bc82481de87e61f657b6e3b8ec6c65fb906d682ea0ffe4b8f1ca84102d",
+              "size": 8182
+            },
+            "src/shared/varlink-idl-common.h": {
+              "sha256": "96c11c9b966038739bc75936c907a0e3769b9d7cac0d42b7d19cc9818c55219c",
+              "size": 741
+            },
+            "src/shared/varlink-io.systemd.AskPassword.c": {
+              "sha256": "14e74ddf70c0a7a2d989e17f2f086983a8e155acc6d5aca5092353a3f2718e55",
+              "size": 4101
+            },
+            "src/shared/varlink-io.systemd.AskPassword.h": {
+              "sha256": "a4bd68a6600dd48b23f4d0275121702139083e3a7e03652245ba90a05208baa5",
+              "size": 163
+            },
+            "src/shared/varlink-io.systemd.BootControl.c": {
+              "sha256": "2b6ad70bc327ce81b50758edd6cd55af91722003c4a948f3740669f5a5de09b7",
+              "size": 23704
+            },
+            "src/shared/varlink-io.systemd.BootControl.h": {
+              "sha256": "48f5db95cccde766bf5ae247d7022dea6b8e2ebd75bd00876f6edcfd76898ff7",
+              "size": 274
+            },
+            "src/shared/varlink-io.systemd.Credentials.c": {
+              "sha256": "6073dac611acffb4d4de9a2d76fe855e188c074281f61551f42f4c9904d497cd",
+              "size": 9896
+            },
+            "src/shared/varlink-io.systemd.Credentials.h": {
+              "sha256": "236895c345804a1fddd19752abf80fcb832df7647ab786e56954563a287ceb6f",
+              "size": 163
+            },
+            "src/shared/varlink-io.systemd.CryptEnroll.c": {
+              "sha256": "e970da0734fff2428c0bbff134bb5fc61cefb91a14e6c392a68f4e085f26bc7d",
+              "size": 8860
+            },
+            "src/shared/varlink-io.systemd.CryptEnroll.h": {
+              "sha256": "16be371533a71d704d8d47c7051de09729f45185cc79983a21e4dc895fbdc09d",
+              "size": 163
+            },
+            "src/shared/varlink-io.systemd.FactoryReset.c": {
+              "sha256": "bae64e950c59a5ef071d2be7f495ee83de2e43de336c12f3aa0abb2c148b2574",
+              "size": 2063
+            },
+            "src/shared/varlink-io.systemd.FactoryReset.h": {
+              "sha256": "2ab7095c12692dde01d1726c39a8f9a5122a5faa10b3a6aee0d684bc45199ce0",
+              "size": 164
+            },
+            "src/shared/varlink-io.systemd.Hostname.c": {
+              "sha256": "58271c969eedd1d9f47ed99f08858def5acee3b173e19b06c5fb265c4b94561c",
+              "size": 12573
+            },
+            "src/shared/varlink-io.systemd.Hostname.h": {
+              "sha256": "e210e4a100eb7bbb959f946087c91cda55cfba46b3e8572e619ecc31b42035df",
+              "size": 160
+            },
+            "src/shared/varlink-io.systemd.Import.c": {
+              "sha256": "0edae48a8515cf757312f067514855765905947217501da4974bd9960c3a229f",
+              "size": 8671
+            },
+            "src/shared/varlink-io.systemd.Import.h": {
+              "sha256": "a30cf08e208a7a96f2a3c44b0bce3e0f9e68fd990c34eafaaac8ff4d35cd4caf",
+              "size": 158
+            },
+            "src/shared/varlink-io.systemd.InstanceMetadata.c": {
+              "sha256": "8141edc9be6626cc3cf42fee98cf7d0e43c39438ead01af1d017deb8b08cb8de",
+              "size": 5897
+            },
+            "src/shared/varlink-io.systemd.InstanceMetadata.h": {
+              "sha256": "cbf531336d6139ad983e09069c27fce167aa48d7d71237c57cf38df9468c3dee",
+              "size": 168
+            },
+            "src/shared/varlink-io.systemd.Job.c": {
+              "sha256": "22a9c686e442f4af5fd3d8e75df45858179e132bcb6c619d8369e568f09b7843",
+              "size": 5610
+            },
+            "src/shared/varlink-io.systemd.Job.h": {
+              "sha256": "cd003a0a89c4a96f2b0dc83ae93ed913d0818b1a459567b95a7334227043c33a",
+              "size": 346
+            },
+            "src/shared/varlink-io.systemd.Journal.c": {
+              "sha256": "f04e881241cd894244cb3e8e54a7cfc659be8ee8abe1180bcc46b9fd36b0a624",
+              "size": 1669
+            },
+            "src/shared/varlink-io.systemd.Journal.h": {
+              "sha256": "9c97115df1f44342e714df1f43c4958af279f73e386ea53500cf3f09127c658a",
+              "size": 159
+            },
+            "src/shared/varlink-io.systemd.JournalAccess.c": {
+              "sha256": "eec8b171726097e61dcbfce63c0fbf055f39cfadbe6f12675cc51cadf4b6245f",
+              "size": 2688
+            },
+            "src/shared/varlink-io.systemd.JournalAccess.h": {
+              "sha256": "11d4ccfde93f071918b777fc23aeba8267110715e6cda0c4d5d9eeca2a0ae37e",
+              "size": 165
+            },
+            "src/shared/varlink-io.systemd.Login.c": {
+              "sha256": "86bfa08ac4de9b1c270196596e389329d01b293fe18cb93c0a274a92a0b0a77d",
+              "size": 22328
+            },
+            "src/shared/varlink-io.systemd.Login.h": {
+              "sha256": "35c04a08f4cbbc9bd16eae2b15af5f630fa071f80dad341cf642edf0e052aaaa",
+              "size": 367
+            },
+            "src/shared/varlink-io.systemd.Machine.c": {
+              "sha256": "b5a2b404aa7689a4792af7c2204c261458c18eb88f80ad30f41033a85da3fb1a",
+              "size": 21093
+            },
+            "src/shared/varlink-io.systemd.Machine.h": {
+              "sha256": "6748e4b9d15f4bb9006e53ee66c33155277370cadef1d3a3d6af9b4421fe1a66",
+              "size": 262
+            },
+            "src/shared/varlink-io.systemd.MachineImage.c": {
+              "sha256": "0626f7342320b4009091b950c9b13c6e602b7194ee9bf9db628507fe3a83382f",
+              "size": 8139
+            },
+            "src/shared/varlink-io.systemd.MachineImage.h": {
+              "sha256": "d0b2a3c696b5e1a00b37d693cbeaf877b7590c383ef3591cec3b5edc0fe5738b",
+              "size": 164
+            },
+            "src/shared/varlink-io.systemd.MachineInstance.c": {
+              "sha256": "6825b7d654cda684e5f8e7ae317d14b0d89e60c392bc11a2a4391034e672b134",
+              "size": 5560
+            },
+            "src/shared/varlink-io.systemd.MachineInstance.h": {
+              "sha256": "7bbf3f55de584812f0dd040a869edf079e9fee8459eebdfb8cf39738f7765fc8",
+              "size": 167
+            },
+            "src/shared/varlink-io.systemd.ManagedOOM.c": {
+              "sha256": "cd4f5621c7bb90b05263496c50709d1f9f2ca2d4f64518ba74358994587f2c6f",
+              "size": 986
+            },
+            "src/shared/varlink-io.systemd.ManagedOOM.h": {
+              "sha256": "048b8a20dce7b0204eacc357590fcbc9fcfde6281bf276431d1488d85601ea07",
+              "size": 162
+            },
+            "src/shared/varlink-io.systemd.Manager.c": {
+              "sha256": "ce63ba91441517ef2f4b48054a702289b1be449f6bf5c9ed59316df196981e4d",
+              "size": 24185
+            },
+            "src/shared/varlink-io.systemd.Manager.h": {
+              "sha256": "85db0d5008afe7a903cd680ef12b1e01efae2068fc7e7b0bb4e269de089ee8f5",
+              "size": 210
+            },
+            "src/shared/varlink-io.systemd.Metrics.c": {
+              "sha256": "2f2823e33ab14c095d434c9f3d34568be95f40be40f98749146652459b42697e",
+              "size": 3080
+            },
+            "src/shared/varlink-io.systemd.Metrics.h": {
+              "sha256": "3c8922233e1f5e3047c5b493b522ad4665faff8616176a111ce23723bb00c074",
+              "size": 159
+            },
+            "src/shared/varlink-io.systemd.MountFileSystem.c": {
+              "sha256": "6aef827af3374f350c34130b53ce81a4cfb4e9a95f892a947a8a359083ebd962",
+              "size": 13612
+            },
+            "src/shared/varlink-io.systemd.MountFileSystem.h": {
+              "sha256": "bb3dd6f3c8a3da905a7f5c961d1a0af5f68fd5585ada1f98537b55e0a652ffa4",
+              "size": 228
+            },
+            "src/shared/varlink-io.systemd.MuteConsole.c": {
+              "sha256": "6a85d1771cbca18000a7f2969c61525b5f9bdc3826aa89f06c3903a9e99893f8",
+              "size": 960
+            },
+            "src/shared/varlink-io.systemd.MuteConsole.h": {
+              "sha256": "51368e3e4891399b0865203cb554c32efe79e5e6ee241c2472177801f77685f6",
+              "size": 163
+            },
+            "src/shared/varlink-io.systemd.NamespaceResource.c": {
+              "sha256": "2d06ea2b3ec3e14e6a15c0ee8c93ebabd5bdd501373f2cf0aaadd19ac6062f1f",
+              "size": 11403
+            },
+            "src/shared/varlink-io.systemd.NamespaceResource.h": {
+              "sha256": "346b023bc70d6af549e9a4ad86caf564be55ab8341436368aea663bf188f6911",
+              "size": 169
+            },
+            "src/shared/varlink-io.systemd.Network.Link.c": {
+              "sha256": "207a43b32cfdd2914af5d06162c45bb947b64226b8ad0947390f146c08973ed9",
+              "size": 3793
+            },
+            "src/shared/varlink-io.systemd.Network.Link.h": {
+              "sha256": "e05fd704d9fefa5bea8b7d756a1657c0325fa7038b775f7c6f8c6b4621ddda8c",
+              "size": 164
+            },
+            "src/shared/varlink-io.systemd.Network.c": {
+              "sha256": "27e18f2d9914ef43a8c586947e95836e6980f3a0fc7e770cdaed433c8c223d12",
+              "size": 47836
+            },
+            "src/shared/varlink-io.systemd.Network.h": {
+              "sha256": "fbd8f6d9109bce9db994bc848d456d1221bb920043de63c37d64ce8a90999516",
+              "size": 1557
+            },
+            "src/shared/varlink-io.systemd.PCRExtend.c": {
+              "sha256": "90825353071c749e9bada75f02f6d23ec8cac8867cf19b60c448632488c87bcd",
+              "size": 2919
+            },
+            "src/shared/varlink-io.systemd.PCRExtend.h": {
+              "sha256": "041bec88ae608cbf47da09184c7ed2e56c321df722b9fa2afde9c54c80887480",
+              "size": 161
+            },
+            "src/shared/varlink-io.systemd.PCRLock.c": {
+              "sha256": "c03bfae259c0ca05ad0c7ba28b47090c13adeea27264b4d9bb03c688be4e1ada",
+              "size": 3803
+            },
+            "src/shared/varlink-io.systemd.PCRLock.h": {
+              "sha256": "b3720aa7a31bf16946af26b93376ed49d245c5026dcad60a8ff9b6e80f7653ab",
+              "size": 159
+            },
+            "src/shared/varlink-io.systemd.Repart.c": {
+              "sha256": "5240a647439ccc3d2f513bf3198ee278ed2771231a25b0967ab79fc0ca4a6cad",
+              "size": 12137
+            },
+            "src/shared/varlink-io.systemd.Repart.h": {
+              "sha256": "4f2587882e53197bb54b184f161b66abb9aeda2d28532d5c392962a108b47eeb",
+              "size": 463
+            },
+            "src/shared/varlink-io.systemd.Report.Signer.c": {
+              "sha256": "db0d315885e2a159c0b468f24556fd864b39cde03fac771f9bc6beadf5587c47",
+              "size": 1317
+            },
+            "src/shared/varlink-io.systemd.Report.Signer.h": {
+              "sha256": "5fdd086d5e4fe495db7dc980358dc55b3714963ea153a872bbd0b44abc4f3f8d",
+              "size": 165
+            },
+            "src/shared/varlink-io.systemd.Report.Uploader.c": {
+              "sha256": "b95e6aae1a50d89aa441c9e108083469416960ee4ae0d0fe2c026df41b361a15",
+              "size": 1368
+            },
+            "src/shared/varlink-io.systemd.Report.Uploader.h": {
+              "sha256": "fb38b869066e6877603e9b12aa2cdf66ed4d9b2a6017376a568139c5cdcb27e6",
+              "size": 167
+            },
+            "src/shared/varlink-io.systemd.Report.c": {
+              "sha256": "cd0aa790b00b124c02fbba45e39152ce59f1dc9e1830ac0a471a3a92959a0e82",
+              "size": 3160
+            },
+            "src/shared/varlink-io.systemd.Report.h": {
+              "sha256": "ccb13529e7c1003936f57f19c6aabd355864678b790d533bac981049265c9979",
+              "size": 158
+            },
+            "src/shared/varlink-io.systemd.Resolve.Hook.c": {
+              "sha256": "b2ca6ae8bd19f5f6456b7eb95a17a69abc358d616c1f99c3cf94aa032f435cbf",
+              "size": 7038
+            },
+            "src/shared/varlink-io.systemd.Resolve.Hook.h": {
+              "sha256": "cc7d3268b8e8ab24a4f24f827054fc8c6491b602d16997100c1ad1e5ccb153d9",
+              "size": 164
+            },
+            "src/shared/varlink-io.systemd.Resolve.Monitor.c": {
+              "sha256": "2ab3eb5165921bcb3429101e2d9d4ff577d998b053c8ccb9dd8e7079e51c3f1b",
+              "size": 9595
+            },
+            "src/shared/varlink-io.systemd.Resolve.Monitor.h": {
+              "sha256": "9e8dd73753356c8b0982cc90d56a57e246fad82f285c94b4391f0ea9d2a3e845",
+              "size": 167
+            },
+            "src/shared/varlink-io.systemd.Resolve.c": {
+              "sha256": "2dc3ffaead623acd3417c89429af952b27796e42cde1cc05caf26fa605e492eb",
+              "size": 29575
+            },
+            "src/shared/varlink-io.systemd.Resolve.h": {
+              "sha256": "7e6aaf8c3522ab17334392eb2e555378b56c3f39bb161003be105991146f3cc6",
+              "size": 693
+            },
+            "src/shared/varlink-io.systemd.Shutdown.c": {
+              "sha256": "86efebf2317c9af44ce65b19235a852b20a469385e4d35b99c3039e584f914d3",
+              "size": 3013
+            },
+            "src/shared/varlink-io.systemd.Shutdown.h": {
+              "sha256": "8ed8e8cb33d8c057d86b25e94cc4e6e4ea3bce5451d505c799d73aca7d1fb7b8",
+              "size": 160
+            },
+            "src/shared/varlink-io.systemd.StorageProvider.c": {
+              "sha256": "4859100c8fc0de2d61c4fceee8a62d0fbe371b3aff665fae261d8d6bf3bcc571",
+              "size": 8687
+            },
+            "src/shared/varlink-io.systemd.StorageProvider.h": {
+              "sha256": "8c4534c33bfd62aae2419b52de2f37bfeb35d70a39ab55ea7916b463c351efa0",
+              "size": 167
+            },
+            "src/shared/varlink-io.systemd.SysInstall.c": {
+              "sha256": "fb299a6604c5e336e752b38f417098da3e74d7d1419e206480a8027fa127741e",
+              "size": 9280
+            },
+            "src/shared/varlink-io.systemd.SysInstall.h": {
+              "sha256": "37c572dc74f546333a10c791a6fd6c721592ff7d0bdf94689cbb04ca5509a3cb",
+              "size": 162
+            },
+            "src/shared/varlink-io.systemd.SysUpdate.Notify.c": {
+              "sha256": "0c2c5ad084bc71cb805e1cf476fa01c29efaf1c859193baf57024c589dbe5e82",
+              "size": 889
+            },
+            "src/shared/varlink-io.systemd.SysUpdate.Notify.h": {
+              "sha256": "b53aa63edf01e160404d292b8c6ae8b3b4b504aad8c0cffb6ea6c8bf7090d697",
+              "size": 168
+            },
+            "src/shared/varlink-io.systemd.SysUpdate.c": {
+              "sha256": "505e5e10ed170bd712d3af638e278094037fa2eb3fd625072f2bfd4fc0081cb2",
+              "size": 5653
+            },
+            "src/shared/varlink-io.systemd.SysUpdate.h": {
+              "sha256": "4d4dc210fc880d0afe4ea0f43e6645c7b170961c26fb3ea2ad678757e65cbd69",
+              "size": 161
+            },
+            "src/shared/varlink-io.systemd.Udev.c": {
+              "sha256": "e8469a00db15fac4fde17a93e43c37d39807fa566423d9c96d12fae8659ca6db",
+              "size": 2180
+            },
+            "src/shared/varlink-io.systemd.Udev.h": {
+              "sha256": "22e2c37b00e45ed7e3441e7e59c6e68778ccdd6c98ff4ff6bb939f1aed7d48da",
+              "size": 156
+            },
+            "src/shared/varlink-io.systemd.Unit.c": {
+              "sha256": "c6ad05351f95601e02189c2174c65c0eee4dc2e4563d68cb0405b4667cd4d790",
+              "size": 178941
+            },
+            "src/shared/varlink-io.systemd.Unit.h": {
+              "sha256": "87754ff7a9d97baf600a4cc01aeaa570756433dfb6da5b6dbb96115a11dbbfe1",
+              "size": 2554
+            },
+            "src/shared/varlink-io.systemd.UserDatabase.c": {
+              "sha256": "41d59183df4636b9c5a7a4f6b1bedd377a3c30117e248a3e6e1ff873fb336952",
+              "size": 8592
+            },
+            "src/shared/varlink-io.systemd.UserDatabase.h": {
+              "sha256": "a79f41d2ad6ab4b11517f5582cd87a2c7c35501b4979d32a634285e6abcfe87d",
+              "size": 164
+            },
+            "src/shared/varlink-io.systemd.VirtualMachineInstance.c": {
+              "sha256": "111ac1b2896e22af7adde5db6e63d03a50ffbcad1eef184b1a4941e2c5cbf45d",
+              "size": 430
+            },
+            "src/shared/varlink-io.systemd.VirtualMachineInstance.h": {
+              "sha256": "65448fd134a949edac733f86ea108864baf5bd8c2056add208371e2fb8860b9a",
+              "size": 174
+            },
+            "src/shared/varlink-io.systemd.oom.Prekill.c": {
+              "sha256": "e523e41d860c996f2866c5f6dd0426bac559a03e38612bb4398722240ce59888",
+              "size": 758
+            },
+            "src/shared/varlink-io.systemd.oom.Prekill.h": {
+              "sha256": "18bea90157c1fcad39b3d2dac0edcc9715a83303ae65c8c629de00ee190750ba",
+              "size": 163
+            },
+            "src/shared/varlink-io.systemd.oom.c": {
+              "sha256": "d26d80b5d89be6b1fb819f535a01a4f460caf1e2730bdcc4b598d24c009eb6d0",
+              "size": 1283
+            },
+            "src/shared/varlink-io.systemd.oom.h": {
+              "sha256": "aa8631b67383eb759b5b56aa4e01123913861c6042243a934a3de6a72a486d0a",
+              "size": 208
+            },
+            "src/shared/varlink-io.systemd.service.c": {
+              "sha256": "f0137f1a2d9b73165935937b494421cde7fdca3a06166f34cac4894abb674675",
+              "size": 5906
+            },
+            "src/shared/varlink-io.systemd.service.h": {
+              "sha256": "206e3553041d71f9d6f75dbe686768cb6dbabfa6f24adcc7d93f21016ab9d812",
+              "size": 697
+            },
+            "src/shared/varlink-io.systemd.sysext.c": {
+              "sha256": "ed50d1639ec98d9c813c9e1df9f0710ce55704cfaaec24922c7b0f4c01e0bf87",
+              "size": 3661
+            },
+            "src/shared/varlink-io.systemd.sysext.h": {
+              "sha256": "1260797cd72b815c934aa5bb3f9822b742d443a30bc18af2225d186c10bd8498",
+              "size": 208
+            },
+            "src/shared/varlink-serialize.c": {
+              "sha256": "df7bbc3895a80cab07c9f1e0588ffa92888e7d5309c0fa2b5881d36e714de97e",
+              "size": 3664
+            },
+            "src/shared/varlink-serialize.h": {
+              "sha256": "de16e0b5998b61eb68b84b5aedb80784d573dcb2b9840f55f89d7fc324606ae6",
+              "size": 346
+            },
+            "srpm/0001-core-create-userdb-root-directory-with-correct-label.patch": {
+              "sha256": "1a469977168a0a43d87e49b0c89fff9ab4bbaf6f0c456439c54746f71f1f5ced",
+              "size": 1800
+            },
+            "srpm/0002-machined-continue-without-resolve.hook-socket.patch": {
+              "sha256": "2010af26e0d9cd5c34fd3fac80105868a9242a60bfcf8dbbe5c35b52426d181d",
+              "size": 1523
+            },
+            "srpm/30846.patch": {
+              "sha256": "70143c0f62e0a76d18eb1abbbab3ca33640d904490eaaac2fec674c5cfe33938",
+              "size": 3197
+            },
+            "srpm/systemd.spec": {
+              "sha256": "b8bccdffaf7aa0b06ef21e051aa19d4180d8846125e5f4214298ee8562888883",
+              "size": 74527
+            },
+            "units/systemd-journald-audit.socket": {
+              "sha256": "7beadc84b52c3b02b7e30901f4e514c5840d360bf80c87325333c621519962c9",
+              "size": 741
+            },
+            "units/systemd-journald-dev-log.socket": {
+              "sha256": "f3a1838110d76876c411606f88450bb34218191454b35f697ac3ac3c6f6197fc",
+              "size": 1199
+            },
+            "units/systemd-journald-sync@.service": {
+              "sha256": "8b681b74900a211077def8598bad9a073b8333396cb49bfaaa66214866729606",
+              "size": 880
+            },
+            "units/systemd-journald-varlink@.socket": {
+              "sha256": "22b5e1e42498ebb1ddc82a692534ba0433b70e8d9f14277696d2b767ae124afe",
+              "size": 677
+            },
+            "units/systemd-journald.service.in": {
+              "sha256": "3c60e091124a289d8cac891d4c6e66b56db9b7d047ae96b185711e03bfea1fad",
+              "size": 2864
+            },
+            "units/systemd-journald.socket": {
+              "sha256": "4d5933d28949a7602e2fcf9227d55d0ffa732255a1c6ed271fbbbe76b01979d9",
+              "size": 952
+            },
+            "units/systemd-journald@.service.in": {
+              "sha256": "2500ceef22a54877832025c18bd8f43cb969efc3d8e340f8ae68c87818ad310c",
+              "size": 1476
+            },
+            "units/systemd-journald@.socket": {
+              "sha256": "ad206121f5e0f3d670f4750892f97f6fe4ea3b8d9fb4df04c38253da4823eb6a",
+              "size": 798
+            },
+            "units/systemd-udevd-varlink.socket": {
+              "sha256": "534eb2448cd3c6e5c2c840f183029ef43d62f129800e42f0dd11962bb0833e61",
+              "size": 809
+            }
+          },
+          "kernel_policy_loaded_or_written": false,
+          "rootfs_modified": false,
+          "schema_version": 1,
+          "scope": "fixed official package source inspection only",
+          "script": {
+            "sha256": "b5cdd226233bb85358432895d056cede7e8d71ddf1ec39aa023fe17a760d12cf",
+            "size": 5750
+          },
+          "srpm": {
+            "path": "/work/early-selinux-analysis-20261123/systemd-262.1-1.fc45.src.rpm",
+            "sha256": "de8e6ebb2fb7b7aa0e1297c0c27c3339d15c37b24b57ca16a762483580ea7168",
+            "size": 19165235
+          },
+          "target_program_executed": false,
+          "vm_started": false
+        }
+      },
+      "03": {
+        "file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/source-03/source-index.json",
+          "sha256": "936453c04abac60eb777a78547f866865de9f71548d4f1647c2e1570d2db15bf",
+          "size": 494,
+          "uid": 0
+        },
+        "record": {
+          "archive_sha256": "100fc873b848b9b0297d8a705e8e2ed326256c8483d9960ee1ffe264c8a5c3e3",
+          "files": {
+            "src/basic/socket-util.c": {
+              "sha256": "874724d1cf2a189d9e2959cf9821fa752720227f0d720cc636dd6f9e7e35aa6a",
+              "size": 61797
+            },
+            "src/libsystemd/sd-json/json-stream.c": {
+              "sha256": "5f01d36883e10d67eccffd5ed32181d11eaf4b09e4ec8c8f3d6b0024fac428dc",
+              "size": 50884
+            }
+          },
+          "srpm_sha256": "de8e6ebb2fb7b7aa0e1297c0c27c3339d15c37b24b57ca16a762483580ea7168"
+        }
+      }
+    },
+    "source_jobs": {
+      "01": {
+        "file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/source-01.json",
+          "sha256": "79e5b99f1c3fe1d773ec5ad583b1fd8c9c235757d000f478882700bb0ed47e53",
+          "size": 384,
+          "uid": 0
+        },
+        "record": {
+          "command": [
+            "python3",
+            "/work/selinux-varlink-cleanup-query-v1/inspect_varlink_cleanup_source.py",
+            "--srpm",
+            "/work/early-selinux-analysis-20261123/systemd-262.1-1.fc45.src.rpm",
+            "--output",
+            "/work/selinux-varlink-cleanup-query-v1/source"
+          ],
+          "elapsed_seconds": 1.1383444399689324,
+          "exit_code": 0,
+          "start_utc": "2026-11-23T06:44:28.158000+00:00"
+        }
+      },
+      "02": {
+        "file": {
+          "gid": 0,
+          "mode": "0o644",
+          "path": "/work/selinux-varlink-cleanup-query-v1/source-02-execution.json",
+          "sha256": "dba42a7d37fc5f8adf9b945db9a081d23c41c900deda722affe7c0a18c8aa1bf",
+          "size": 651,
+          "uid": 0
+        },
+        "record": {
+          "command": [
+            "python3",
+            "/work/selinux-varlink-cleanup-query-v1/inspect_varlink_cleanup_source_v2.py",
+            "--srpm",
+            "/work/early-selinux-analysis-20261123/systemd-262.1-1.fc45.src.rpm",
+            "--output",
+            "/work/selinux-varlink-cleanup-query-v1/source-02"
+          ],
+          "elapsed_seconds": 1.3855749369831756,
+          "exit_code": 0,
+          "source_sha256": "b5cdd226233bb85358432895d056cede7e8d71ddf1ec39aa023fe17a760d12cf",
+          "start_utc": "2026-11-23T06:49:15.389379+00:00",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "18eaf02bf6d67b944862b3c81a7ec71f4c2e72d42ff319d92517feb37bd51886"
+        }
+      }
+    },
+    "v7_serial": {
+      "file": {
+        "gid": 0,
+        "mode": "0o644",
+        "path": "/work/fedora-input-system-v7/vm-verify-01/serial.log",
+        "sha256": "cfe215d2a33dc01f8ffdf7ab5bc2d7dd2f7fafec309d06c82eb3db48bb5658aa",
+        "size": 1115806,
+        "uid": 0
+      },
+      "raw_console_avcs": [
+        {
+          "line": 3632,
+          "text": "[   36.352137] audit: type=1400 audit(1792195223.492:4): avc:  denied  { unlink } for  pid=1 comm=\"systemd\" name=\"io.systemd.Udev\" dev=\"tmpfs\" ino=48 scontext=system_u:system_r:init_t:s0 tcontext=system_u:object_r:systemd_varlink_registry_t:s0 tclass=lnk_file permissive=0"
+        },
+        {
+          "line": 14549,
+          "text": "[  126.049789] audit: type=1400 audit(1792195313.188:68): avc:  denied  { write } for  pid=329 comm=\"journalctl\" name=\"io.systemd.journal\" dev=\"tmpfs\" ino=500 scontext=system_u:system_r:journalctl_t:s0 tcontext=system_u:object_r:syslogd_var_run_t:s0 tclass=sock_file permissive=0"
+        }
+      ]
+    }
+  },
+  "additional_denial_not_requested": {
+    "class": "sock_file",
+    "permission": "getattr",
+    "reason": "fixed non-namespaced short pathname connects directly; fstat/getopt after connection refer to the new client socket FD, whose self unix_stream_socket permissions already allow those operations",
+    "source_type": "journalctl_t",
+    "target_type": "syslogd_var_run_t"
+  },
+  "booleans_changed": false,
+  "date_utc": "2026-11-23",
+  "diagnostic_row_scope_followup": {
+    "journal_client_socket_getattr_and_getopt": "queried in the initial diagnostic group; subsequent source reading confirms these two are exercised on the client FD and both results are ALLOW",
+    "journal_socket_metadata_getattr": "remains diagnostic only and DENY; no target-path stat in the reviewed --sync route"
+  },
+  "hardware_acceptance_pass_added": false,
+  "interpretation_limits": [
+    "The actual v7 console has two distinct AVC events. Embedded journal output is not counted as additional events.",
+    "The journalctl denial arose during failure diagnostics; it does not cause or explain the earlier PL061 assertion.",
+    "connectto is a necessary next-check prediction, not a fabricated AVC from the current log.",
+    "Permission rules operate on existing types, not only a single filename or Varlink method.",
+    "The old 9c79 export remains an earlier memory-only observation; the new 0fe3 file is a separately retained v7 artifact.",
+    "No source label, previous policy, frozen candidate, kernel or helper was changed.",
+    "A future corrected candidate still needs full semantic delta comparison and actual integration verification."
+  ],
+  "kernel_policy_loaded_or_written": false,
+  "label_contract": {
+    "devlog_t_substitution_proposed": false,
+    "journal_socket": "/run/systemd/journal/io.systemd.journal -> syslogd_var_run_t",
+    "labels_rewritten": false,
+    "registry_symlink": "/run/varlink/registry/io.systemd.Udev -> systemd_varlink_registry_t"
+  },
+  "minimum_reviewed_permission_delta": [
+    {
+      "actual_v7_avc": true,
+      "audit_id": 4,
+      "class": "lnk_file",
+      "permission": "unlink",
+      "source_type": "init_t",
+      "target_type": "systemd_varlink_registry_t"
+    },
+    {
+      "actual_v7_avc": true,
+      "audit_id": 68,
+      "class": "sock_file",
+      "permission": "write",
+      "source_type": "journalctl_t",
+      "target_type": "syslogd_var_run_t"
+    },
+    {
+      "actual_v7_avc": false,
+      "basis": "next necessary kernel access check predicted by fixed client source and effective captured-policy AV; not an observed denial event",
+      "class": "unix_stream_socket",
+      "permission": "connectto",
+      "source_type": "journalctl_t",
+      "target_type": "syslogd_t"
+    }
+  ],
+  "new_virtual_machine_started": false,
+  "own_jobs_complete": true,
+  "owner_linux_runs_added": 0,
+  "policy_rules_added_by_this_work": false,
+  "proot_used": false,
+  "r1_rootfs_used_for_execution": false,
+  "receipt_identity": {
+    "remote_path": "/work/selinux-varlink-cleanup-query-v1/public-receipt.json",
+    "sha256": "b5127533772a315c3e323172bc3d7caf87b448790c1df44d1f277a5a44224f12",
+    "size": 179063
+  },
+  "related_evidence": {
+    "candidate_policy_report": {
+      "mode": "0o644",
+      "repository_path": "docs/research/2026-11-23/evidence/selinux-policy-map-self-candidate.json",
+      "sha256": "43362ae663d5dc124590f7f20d1d895cdbbece9b3a2ce08d7e468cfc927a4570",
+      "size": 36062
+    },
+    "v7_raw_console": {
+      "mode": "0o644",
+      "repository_path": "docs/research/2026-11-23/evidence/fedora-r4d-reload-fd-failed-verify.log",
+      "sha256": "cfe215d2a33dc01f8ffdf7ab5bc2d7dd2f7fafec309d06c82eb3db48bb5658aa",
+      "size": 1115806
+    },
+    "v7_same_boot_export_record": {
+      "mode": "0o644",
+      "repository_path": "docs/research/2026-11-23/evidence/fedora-r4d-loaded-policy-export.json",
+      "sha256": "5ea7d40462c980caf6d6e39a1099493b8e695bc03860e7ad1c62a7ea238dc40d",
+      "size": 424
+    }
+  },
+  "retained_source_read_failures": [
+    {
+      "reason": "rg executable unavailable; changed to ordinary Python source reads",
+      "step": "initial container rg search",
+      "tool_reported_exit_code": 127
+    },
+    {
+      "correction": "read-only member listing showed ./systemd-262.1.tar.gz; final captures use that exact name",
+      "reason": "empty unmatched extraction rejected by fixed source-archive digest assertion",
+      "step": "first exact cpio member selection without leading ./",
+      "tool_reported_exit_code": 1
+    },
+    {
+      "command_exit_known": false,
+      "followup": "independent source-01 job has explicit exit 0 and retained metadata",
+      "result_used_as_source_evidence": false,
+      "step": "one corrected inline source search",
+      "tool_error": "device tool call timed out"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "source audit plus offline private-libsepol queries of a fixed candidate and the actually preserved v7 kernel-exported policy bytes",
+  "source_scripts": {
+    "inspect_varlink_cleanup_source.py": {
+      "mode": "0o644",
+      "repository_path": "scripts/research/selinux/inspect_varlink_cleanup_source.py",
+      "sha256": "f8f31cda0af115e18db6a608cc219bde5cc918f400c4e6c8884afa46f6e8bfce",
+      "size": 5594
+    },
+    "inspect_varlink_cleanup_source_v2.py": {
+      "mode": "0o755",
+      "repository_path": "scripts/research/selinux/inspect_varlink_cleanup_source_v2.py",
+      "sha256": "b5cdd226233bb85358432895d056cede7e8d71ddf1ec39aa023fe17a760d12cf",
+      "size": 5750
+    },
+    "query_varlink_cleanup_contract.py": {
+      "mode": "0o755",
+      "repository_path": "scripts/research/selinux/query_varlink_cleanup_contract.py",
+      "sha256": "99541034b31a6f91d068104b7155a3cab821ba2a50517c422b8bbda3e0e0b7d8",
+      "size": 14002
+    }
+  },
+  "status": "diagnosis_complete_three_required_permission_gaps_no_repair_applied",
+  "subset_comparison": {
+    "actual_export_converted": false,
+    "all_32_context_class_permission_allow_decisions_equal": true,
+    "allowed_rows_each": 25,
+    "candidate_converted_in_memory": true,
+    "denied_rows_each": 7,
+    "global_policy_semantic_equivalence_asserted": false,
+    "rows": 32
+  },
+  "tablet_accessed": false,
+  "title": "v7 Varlink cleanup and journalctl sync: fixed source and effective AV diagnosis"
+}

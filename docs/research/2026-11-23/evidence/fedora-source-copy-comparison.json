@@ -1,0 +1,90 @@
+{
+  "capture_utc": "2026-11-23T04:21:03.653876+00:00",
+  "differences": [
+    {
+      "different_fields": [
+        "mtime_ns"
+      ],
+      "path": ".",
+      "quiescent": {
+        "gid": 0,
+        "mode": 16749,
+        "mtime_ns": 1795406548350890246,
+        "rdev": 0,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "retained": {
+        "gid": 0,
+        "mode": 16749,
+        "mtime_ns": 1795406432089521771,
+        "rdev": 0,
+        "uid": 0,
+        "xattrs": {}
+      }
+    },
+    {
+      "different_fields": [
+        "mtime_ns"
+      ],
+      "path": "dev",
+      "quiescent": {
+        "gid": 0,
+        "mode": 16877,
+        "mtime_ns": 1795406548350890246,
+        "rdev": 0,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "retained": {
+        "gid": 0,
+        "mode": 16877,
+        "mtime_ns": 1795406432089521771,
+        "rdev": 0,
+        "uid": 0,
+        "xattrs": {}
+      }
+    },
+    {
+      "different_fields": [
+        "mtime_ns"
+      ],
+      "path": "etc",
+      "quiescent": {
+        "gid": 0,
+        "mode": 16877,
+        "mtime_ns": 1795406548350890246,
+        "rdev": 0,
+        "uid": 0,
+        "xattrs": {}
+      },
+      "retained": {
+        "gid": 0,
+        "mode": 16877,
+        "mtime_ns": 1795406432089521771,
+        "rdev": 0,
+        "uid": 0,
+        "xattrs": {}
+      }
+    }
+  ],
+  "first": "/work/fedora-input-system-v4/rootfs",
+  "hardlink_groups_equal": true,
+  "historical_tar_hash_reconstructed": false,
+  "manifests": {
+    "quiescent-copy.json": {
+      "sha256": "2d110bdb628b4890154689791480824af33abf43af27c6ff997a240c4a03400c",
+      "size": 7708567
+    },
+    "retained-copy.json": {
+      "sha256": "90e7c7f9a7b9aa493c1110d05b2713706f6e6b32b896f4d4682a21ba57749677",
+      "size": 7708567
+    }
+  },
+  "original_failed_copy_reclassified_as_pass": false,
+  "recipe_sha256": "e25e2a42d082acbdcb01a8eedbea17c342ec456b04e49812b4108b4415f27e48",
+  "schema_version": 1,
+  "second": "/work/fedora-input-system-v5/rootfs",
+  "source_timestamps_reset": false,
+  "special_devices_opened": false
+}

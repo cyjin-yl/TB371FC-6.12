@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "evidence_class": "source_and_resolved_configuration",
+  "scope": "ARM64-specific correction to the initial BPF LSM configuration advice. Existing research3 build outputs are retained unchanged; research4 is independent.",
+  "source_root": "/work/research3-system/source-input/linux-6.12.114-input-integration",
+  "source_parent_manifest_sha256": "5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0",
+  "kernel_version": "6.12.114",
+  "correction": {
+    "earlier_report": "runtime-config-gaps.md / evidence/runtime-config-gaps.json",
+    "earlier_limit": "The initial minimal chain satisfied BPF_LSM Kconfig compilation dependencies, but did not establish the ARM64 native-function attachment path.",
+    "research3_offline_pass_does_not_prove_lsm_link": true,
+    "kconfig_only_sufficiency_retracted_for_arm64": true,
+    "runtime_all_function_tracing_requested": false,
+    "required_build_instrumentation": true
+  },
+  "source_files": {
+    "kernel/bpf/trampoline.c": {
+      "sha256": "88c007bd763bacdb7bfe76bf3a5ece353674dee8149b206df0f2456cdafabc0c",
+      "bytes": null
+    },
+    "arch/arm64/Kconfig": {
+      "sha256": "05ad845c5d6b5de58e3e848c7d6cd891f4bf59b8f5d3658c9b4ad7a153d122b7",
+      "bytes": 89201
+    },
+    "kernel/trace/Kconfig": {
+      "sha256": "03a26f45a064fb441347a69c0107cd112d789aa322f088abbe4319afbbe9a24c",
+      "bytes": 39362
+    },
+    "arch/arm64/net/bpf_jit_comp.c": {
+      "sha256": "13dd301419a286d89d7be628613ae780150be646808876f42be3cab477e62bff",
+      "bytes": null
+    },
+    "arch/arm64/Makefile": {
+      "sha256": "5f5bd495541ee157d1688d217ee72bb17eaca09d3e198b9a14daf65f0a5ccd93",
+      "bytes": null
+    },
+    "kernel/bpf/Makefile": {
+      "sha256": "ae1e87573e14afaf6cf62cbd2c56ed1f2361ad510fae63249c3a6bded873e1fd",
+      "bytes": null
+    },
+    "include/linux/ftrace.h": {
+      "sha256": "c124769b2b3e68024f4f052109a94efe68e600f34a7ec03f59a8a713c8eba420",
+      "bytes": 43516
+    }
+  },
+  "call_chain": [
+    {
+      "file": "kernel/bpf/trampoline.c",
+      "lines": [
+        155,
+        164
+      ],
+      "finding": "A trampoline ftrace_ops object is allocated only with CONFIG_DYNAMIC_FTRACE_WITH_DIRECT_CALLS."
+    },
+    {
+      "file": "kernel/bpf/trampoline.c",
+      "lines": [
+        209,
+        231
+      ],
+      "finding": "register_fentry() checks ftrace_location(). A managed native function uses ftrace_set_filter_ip() and register_ftrace_direct(); the other branch uses bpf_arch_text_poke(). Missing fops is rejected."
+    },
+    {
+      "file": "include/linux/ftrace.h",
+      "lines": [
+        964,
+        967
+      ],
+      "finding": "The disabled dynamic-ftrace fallback ftrace_location() returns zero."
+    },
+    {
+      "file": "arch/arm64/net/bpf_jit_comp.c",
+      "lines": [
+        2584,
+        2589
+      ],
+      "finding": "bpf_arch_text_poke() accepts JIT BPF text found by __bpf_address_lookup(); native kernel function entry is delegated to ftrace, otherwise it returns -ENOTSUPP."
+    },
+    {
+      "file": "arch/arm64/Makefile",
+      "lines": [
+        150,
+        155
+      ],
+      "finding": "WITH_CALL_OPS adds -fpatchable-function-entry=4,2; the ARGS alternative adds =2."
+    },
+    {
+      "file": "arch/arm64/Kconfig",
+      "lines": [
+        134,
+        134
+      ],
+      "finding": "FUNCTION_TRACER selects DYNAMIC_FTRACE on this architecture."
+    },
+    {
+      "file": "arch/arm64/Kconfig",
+      "lines": [
+        203,
+        213
+      ],
+      "finding": "Clang support supplies ARGS. CALL_OPS requires ARGS, !CFI_CLANG, and this compiler/optimization combination. DIRECT_CALLS requires ARGS and CALL_OPS; patchable-entry recording is selected with ARGS."
+    },
+    {
+      "file": "kernel/trace/Kconfig",
+      "lines": [
+        245,
+        285
+      ],
+      "finding": "DYNAMIC_FTRACE depends on FUNCTION_TRACER; direct-call/argument/call-ops capabilities are derived rather than manually invented."
+    },
+    {
+      "file": "kernel/bpf/Makefile",
+      "lines": [
+        1,
+        45
+      ],
+      "finding": "bpf_lsm.o is built for CONFIG_BPF_LSM; there is no separate function-entry-instrumentation exception for that object."
+    }
+  ],
+  "research3": {
+    "release": "6.12.114-tb371fc-research3-system",
+    "config_sha256": "17479c824b087d888f586c1800729ab01746db568685a2bd21c008aea9ca0d51",
+    "offline_report_sha256": "c785afdeb088dc59d2bb9403a5296509399bf3393a29efaeeb28e0f44efa82dc",
+    "function_tracer": "n",
+    "bpf_lsm": "y",
+    "bpf_lsm_object_command_file": {
+      "path": "/work/research3-system/kernel-out/kernel/bpf/.bpf_lsm.o.cmd",
+      "sha256": "76cc3665d87605f6dd4b11d251d2bb3051a1d1107650805a901c3708845802b1",
+      "bytes": 126924,
+      "patchable_function_entry_flag_present": false
+    },
+    "prediction": "Native-function LSM attachment lacks the ARM64 supported ftrace path. This is a source-based prediction; actual VM outcomes belong to their separate retained record.",
+    "physical_hardware_tested": false
+  },
+  "research4": {
+    "release": "6.12.114-tb371fc-research4-system",
+    "work": "/work/research4-system",
+    "recipe_directory": "scripts/research/system-kernel/research4",
+    "source_prepare_exit": 0,
+    "source_prepare_seconds": 37.4275144310086,
+    "configure_exit": 0,
+    "configure_seconds": 7.379310311982408,
+    "config_sha256": "0236496603f168aacc5586eac7e199ca8f840b5d0c9b5ed111da64e9d28ec275",
+    "required_resolved_values": {
+      "CONFIG_FUNCTION_TRACER": "y",
+      "CONFIG_DYNAMIC_FTRACE": "y",
+      "CONFIG_DYNAMIC_FTRACE_WITH_ARGS": "y",
+      "CONFIG_DYNAMIC_FTRACE_WITH_CALL_OPS": "y",
+      "CONFIG_DYNAMIC_FTRACE_WITH_DIRECT_CALLS": "y",
+      "CONFIG_FTRACE_MCOUNT_RECORD": "y",
+      "CONFIG_FTRACE_MCOUNT_USE_PATCHABLE_FUNCTION_ENTRY": "y",
+      "CONFIG_FUNCTION_GRAPH_TRACER": "n",
+      "CONFIG_UPROBE_EVENTS": "n"
+    },
+    "cfi_clang": "n",
+    "changes_from_research3": {
+      "CONFIG_BUILDTIME_MCOUNT_SORT": {
+        "research3": "n",
+        "research4": "y"
+      },
+      "CONFIG_DYNAMIC_FTRACE": {
+        "research3": "n",
+        "research4": "y"
+      },
+      "CONFIG_DYNAMIC_FTRACE_WITH_ARGS": {
+        "research3": "n",
+        "research4": "y"
+      },
+      "CONFIG_DYNAMIC_FTRACE_WITH_CALL_OPS": {
+        "research3": "n",
+        "research4": "y"
+      },
+      "CONFIG_DYNAMIC_FTRACE_WITH_DIRECT_CALLS": {
+        "research3": "n",
+        "research4": "y"
+      },
+      "CONFIG_FTRACE_MCOUNT_RECORD": {
+        "research3": "n",
+        "research4": "y"
+      },
+      "CONFIG_FTRACE_MCOUNT_USE_PATCHABLE_FUNCTION_ENTRY": {
+        "research3": "n",
+        "research4": "y"
+      },
+      "CONFIG_FUNCTION_ALIGNMENT": {
+        "research3": "4",
+        "research4": "8"
+      },
+      "CONFIG_FUNCTION_ALIGNMENT_8B": {
+        "research3": "n",
+        "research4": "y"
+      },
+      "CONFIG_FUNCTION_TRACER": {
+        "research3": "n",
+        "research4": "y"
+      },
+      "CONFIG_GENERIC_TRACER": {
+        "research3": "n",
+        "research4": "y"
+      },
+      "CONFIG_HAVE_DYNAMIC_FTRACE_WITH_CALL_OPS": {
+        "research3": "n",
+        "research4": "y"
+      },
+      "CONFIG_HAVE_DYNAMIC_FTRACE_WITH_DIRECT_CALLS": {
+        "research3": "n",
+        "research4": "y"
+      },
+      "CONFIG_LOCALVERSION": {
+        "research3": "\"-tb371fc-research3-system\"",
+        "research4": "\"-tb371fc-research4-system\""
+      },
+      "CONFIG_TASKS_RUDE_RCU": {
+        "research3": "n",
+        "research4": "y"
+      }
+    },
+    "build_started": true,
+    "build_completion_claimed_by_this_source_audit": false,
+    "runtime_link_claimed_by_this_source_audit": false
+  },
+  "runtime_acceptance": [
+    "Active securityfs LSM list includes selinux and bpf.",
+    "Kernel BTF matches this candidate's exact artifact.",
+    "systemd successfully attaches the filesystem LSM program.",
+    "A controlled service's RestrictFileSystems rule actually denies its disallowed operation.",
+    "Full boot log contains no contradictory BPF load/link failure; SELinux Enforcing and all other system gates still hold."
+  ],
+  "separate_signature_note": "CONFIG_MODULE_SIG_FORCE=n is preserved from the baseline. An explicit module.sig_enforce=1 VM boot argument and observed runtime enforcement are separate evidence; offline CMS verification is not a claim that all unsigned modules are refused."
+}
+

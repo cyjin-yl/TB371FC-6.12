@@ -1,0 +1,17 @@
+{
+  "base_recipe_manifest_sha256": "c532046cfb8458c8ee6a8ab545e95118f53b913c74b8e9882fce13aaf8a6f9c1",
+  "changed_files": {
+    "boot_system_vm.py": {
+      "sha256": "36c857d202059420724004244f6fb20e154336c8a3de1ea7b689b74028fb9af3",
+      "size": 12418
+    },
+    "guest_verify_system.py": {
+      "sha256": "6ac07365728d57ea185e4ebbd87c8261d6fff21a10627f6885cf1bad5f66ff07",
+      "size": 24852
+    }
+  },
+  "patch": {
+    "sha256": "eec79e767b2bce6d86d96b38846ffdae9788efa7cae2dac4f94f1100baabf990",
+    "size": 12852
+  }
+}

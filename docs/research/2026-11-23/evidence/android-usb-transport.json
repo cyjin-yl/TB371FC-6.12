@@ -1,0 +1,123 @@
+{
+  "capture": {
+    "fastboot_observed": false,
+    "gadget_identifiers": [
+      {
+        "attributes": {
+          "UDC": {
+            "present": true,
+            "readable": true,
+            "value": "a600000.dwc3"
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "0x7e31"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "0x17ef"
+          }
+        },
+        "path": "/config/usb_gadget/g1"
+      },
+      {
+        "attributes": {
+          "UDC": {
+            "present": true,
+            "readable": true,
+            "value": ""
+          },
+          "idProduct": {
+            "present": true,
+            "readable": true,
+            "value": "0x0000"
+          },
+          "idVendor": {
+            "present": true,
+            "readable": true,
+            "value": "0x0000"
+          }
+        },
+        "path": "/config/usb_gadget/g2"
+      }
+    ],
+    "recovery_transport_verified": false,
+    "scope_limit": "live Android cached/sysfs state; no bootloader or recovery transition",
+    "typec": [
+      {
+        "attributes": {
+          "data_role": {
+            "present": true,
+            "readable": true,
+            "value": "host [device]"
+          },
+          "port_type": {
+            "present": true,
+            "readable": true,
+            "value": "[dual] source sink"
+          },
+          "power_role": {
+            "present": true,
+            "readable": true,
+            "value": "source [sink]"
+          }
+        },
+        "sysfs_name": "port0"
+      }
+    ],
+    "udc": [
+      {
+        "attributes": {
+          "current_speed": {
+            "present": true,
+            "readable": true,
+            "value": "UNKNOWN"
+          },
+          "maximum_speed": {
+            "present": true,
+            "readable": true,
+            "value": "super-speed-plus"
+          },
+          "state": {
+            "present": true,
+            "readable": true,
+            "value": "not attached"
+          }
+        },
+        "sysfs_name": "a600000.dwc3"
+      },
+      {
+        "attributes": {
+          "current_speed": {
+            "present": true,
+            "readable": true,
+            "value": "UNKNOWN"
+          },
+          "maximum_speed": {
+            "present": true,
+            "readable": true,
+            "value": "super-speed"
+          },
+          "state": {
+            "present": true,
+            "readable": true,
+            "value": "not attached"
+          }
+        },
+        "sysfs_name": "a800000.dwc3"
+      }
+    ]
+  },
+  "observed_at_utc": "2026-11-23T03:01:21.841003+00:00",
+  "reboot_or_bootloader_command_issued": false,
+  "role_or_configuration_changed": false,
+  "schema_version": 1,
+  "scope": "android",
+  "serials_read": false,
+  "collector": {
+    "path": "scripts/research/capture_usb_transport.py",
+    "sha256": "70f7e9adc8f2acc2162510bec375ceff94710bfa7fb46da7c287a30db4336ea0"
+  }
+}

@@ -1,0 +1,971 @@
+{
+  "schema": "tb371fc-owner-udc-qualification-v1",
+  "captured_utc": "2026-11-23T03:13:59.318112+00:00",
+  "scope": "host selector logic, reference-kernel userspace and private Android v2 format only",
+  "container": "tb371fc-build-ssd-20261123",
+  "work": "/work/first-stage-research/userspace-r2-owner-udc",
+  "job": {
+    "path": "/work/first-stage-research/owner-udc-r2-qualify.json",
+    "bytes": 200,
+    "sha256": "66ae377e1cafe12a11b1381262f8ed755c926abcda60313b59ebefa23007fa93",
+    "mode": "0o644",
+    "data": {
+      "command": [
+        "bash",
+        "/src/scripts/research/entry/owner-udc/qualify.sh"
+      ],
+      "start_utc": "2026-11-23T03:09:48.634222+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 11.712236827996094
+    }
+  },
+  "job_log": {
+    "path": "/work/first-stage-research/owner-udc-r2-qualify.log",
+    "bytes": 19076,
+    "sha256": "8ea816deb21162395442db126ea67884e623385327104e633f77eff07225133a",
+    "mode": "0o644"
+  },
+  "repack": {
+    "path": "/work/first-stage-research/userspace-r2-owner-udc/build.json",
+    "bytes": 14502,
+    "sha256": "f388996a70a8d2deded1853d6213ed6896cb06ec6cd4dba34b4ba6e64e5400bc",
+    "mode": "0o600",
+    "data": {
+      "schema": "tb371fc-clean-entry-userspace-v1",
+      "profile": "owner-udc-r2",
+      "started_utc": "2026-11-23T03:09:48.726170+00:00",
+      "default_action": "hold",
+      "completed": true,
+      "new_binary_compilation_performed": false,
+      "physical_device_tested": false,
+      "physical_usb_tested": false,
+      "role_or_pd_configuration_changed": false,
+      "kexec_load_or_execute_tested": false,
+      "artifacts": {
+        "busybox": {
+          "bytes": 1253520,
+          "sha256": "f4480b232a952cf1960c96db6b8b9f2d5cef09336321ffc6b13f1f02f3e1d60e",
+          "elf_machine": 183,
+          "pt_interp": false
+        },
+        "kexec": {
+          "bytes": 1003472,
+          "sha256": "70ecd56d8acc1857eaa286ebf7b30796f34d3477d21192e55c13f2797734da60",
+          "elf_machine": 183,
+          "pt_interp": false
+        },
+        "entry-return-bootloader": {
+          "bytes": 708680,
+          "sha256": "d5b989c22c190eb7edcf20d64707b7961fc8b9dd70fc5bb98a2484c3f14869eb",
+          "elf_machine": 183,
+          "pt_interp": false
+        },
+        "entry-initramfs.cpio.gz": {
+          "bytes": 1351720,
+          "sha256": "4e89de6d7de7535eb0e70a2557a3ad123f0e89d5d2724ec9104984aeb7db92a5"
+        }
+      },
+      "commands": [
+        {
+          "argv": [
+            "qemu-aarch64",
+            "/work/first-stage-research/userspace-r2-owner-udc/artifacts/busybox",
+            "sh",
+            "-n",
+            "/work/first-stage-research/userspace-r2-owner-udc/artifacts/ramdisk-init"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "qemu-aarch64",
+            "/work/first-stage-research/userspace-r2-owner-udc/artifacts/kexec",
+            "--version"
+          ],
+          "exit_code": 0,
+          "stdout": "kexec-tools 2.0.32\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "qemu-aarch64",
+            "/work/first-stage-research/userspace-r2-owner-udc/artifacts/entry-return-bootloader",
+            "--version"
+          ],
+          "exit_code": 0,
+          "stdout": "tb371fc-entry-return-bootloader 1 (physical return unverified)\n",
+          "stderr": ""
+        }
+      ],
+      "owner_usb_capture_sha256": "1cb624874a33a5698fab497b0a76a1870817a8299b1f7f264eecb7b2d9f7b445",
+      "baseline_userspace_manifest_sha256": "4851e02c7016d6f1288f46e78290cbccecd472951cff116c2059c67a4655bbc9",
+      "reused_helpers": {
+        "build_first_stage_userspace.py": "c7eb63b41738ba830fefe007a02ba81b627ea520d2386ca26dab953bb69bbb56",
+        "package_owner_v2.py": "911ff4530a78173f28af167b02b2843703c5ee0180d6c7c65a00d372fd73c270"
+      },
+      "init_diff": "--- frozen/ramdisk-init\n+++ owner-udc/ramdisk-init\n@@ -36,11 +36,20 @@\n         ;;\n esac\n \n+# OWNER_UDC_SELECTOR_BEGIN\n+select_owner_udc() {\n+    # Fixed owner observation; no argument, environment override or fallback.\n+    owner_udc=/sys/class/udc/a600000.dwc3\n+    test -d \"$owner_udc\" &&\n+    test -f \"$owner_udc/state\" && test -r \"$owner_udc/state\" &&\n+    test -f \"$owner_udc/maximum_speed\" && test -r \"$owner_udc/maximum_speed\" || return 1\n+    echo a600000.dwc3\n+}\n+# OWNER_UDC_SELECTOR_END\n+\n mkdir -p /sys/kernel/config\n if mount -t configfs configfs /sys/kernel/config; then\n-    set -- /sys/class/udc/*\n-    if [ \"$#\" = 1 ] && [ -e \"$1\" ]; then\n-        udc=${1##*/}\n+    if udc=$(select_owner_udc); then\n         gadget=/sys/kernel/config/usb_gadget/tb371fc_entry\n         if mkdir \"$gadget\"; then\n             echo 0x1d6b >\"$gadget/idVendor\"\n@@ -64,7 +73,7 @@\n             fi\n         fi\n     else\n-        echo \"TB371FC_ENTRY_UDC_UNRESOLVED: require exactly one enumerated UDC\"\n+        echo \"TB371FC_ENTRY_UDC_UNRESOLVED: require observed a600000.dwc3 with readable UDC metadata\"\n     fi\n fi\n \n",
+      "recipe_hashes": {
+        "ramdisk-init": "442a69181a7e8bb9802afbe23d94929d9844eb9163ee0be2a3080aa2a65c829f",
+        "repack.py": "5900579a1d844a2929886254d3275d1a09b768a0922067a68e3f9af103f26974"
+      },
+      "selector_tests": {
+        "scope": "source-derived selector logic under ARM BusyBox with mocked file predicates; no hardware access",
+        "function_sha256": "a00394a1e0d8286ec987f7388dc4210cd8e3a5143010890c4747d546176fe5db",
+        "production_function_used_without_path_substitution": true,
+        "production_init_test_override_added": false,
+        "fixtures": [
+          {
+            "name": "both_observed_controllers",
+            "fixture_controller_names": [
+              "a600000.dwc3",
+              "a800000.dwc3"
+            ],
+            "target_metadata_predicates": {
+              "-d:/sys/class/udc/a600000.dwc3": true,
+              "-f:/sys/class/udc/a600000.dwc3/state": true,
+              "-r:/sys/class/udc/a600000.dwc3/state": true,
+              "-f:/sys/class/udc/a600000.dwc3/maximum_speed": true,
+              "-r:/sys/class/udc/a600000.dwc3/maximum_speed": true
+            },
+            "exit_code": 0,
+            "observed": "SELECTED=a600000.dwc3",
+            "queries": [
+              "CHECK=-d:/sys/class/udc/a600000.dwc3",
+              "CHECK=-f:/sys/class/udc/a600000.dwc3/state",
+              "CHECK=-r:/sys/class/udc/a600000.dwc3/state",
+              "CHECK=-f:/sys/class/udc/a600000.dwc3/maximum_speed",
+              "CHECK=-r:/sys/class/udc/a600000.dwc3/maximum_speed"
+            ],
+            "no_secondary_or_unknown_controller_queried": true,
+            "passed": true
+          },
+          {
+            "name": "observed_target_only",
+            "fixture_controller_names": [
+              "a600000.dwc3"
+            ],
+            "target_metadata_predicates": {
+              "-d:/sys/class/udc/a600000.dwc3": true,
+              "-f:/sys/class/udc/a600000.dwc3/state": true,
+              "-r:/sys/class/udc/a600000.dwc3/state": true,
+              "-f:/sys/class/udc/a600000.dwc3/maximum_speed": true,
+              "-r:/sys/class/udc/a600000.dwc3/maximum_speed": true
+            },
+            "exit_code": 0,
+            "observed": "SELECTED=a600000.dwc3",
+            "queries": [
+              "CHECK=-d:/sys/class/udc/a600000.dwc3",
+              "CHECK=-f:/sys/class/udc/a600000.dwc3/state",
+              "CHECK=-r:/sys/class/udc/a600000.dwc3/state",
+              "CHECK=-f:/sys/class/udc/a600000.dwc3/maximum_speed",
+              "CHECK=-r:/sys/class/udc/a600000.dwc3/maximum_speed"
+            ],
+            "no_secondary_or_unknown_controller_queried": true,
+            "passed": true
+          },
+          {
+            "name": "secondary_only_no_fallback",
+            "fixture_controller_names": [
+              "a800000.dwc3"
+            ],
+            "target_metadata_predicates": {
+              "-d:/sys/class/udc/a600000.dwc3": false,
+              "-f:/sys/class/udc/a600000.dwc3/state": false,
+              "-r:/sys/class/udc/a600000.dwc3/state": false,
+              "-f:/sys/class/udc/a600000.dwc3/maximum_speed": false,
+              "-r:/sys/class/udc/a600000.dwc3/maximum_speed": false
+            },
+            "exit_code": 0,
+            "observed": "HOLD",
+            "queries": [
+              "CHECK=-d:/sys/class/udc/a600000.dwc3"
+            ],
+            "no_secondary_or_unknown_controller_queried": true,
+            "passed": true
+          },
+          {
+            "name": "no_controller",
+            "fixture_controller_names": [],
+            "target_metadata_predicates": {
+              "-d:/sys/class/udc/a600000.dwc3": false,
+              "-f:/sys/class/udc/a600000.dwc3/state": false,
+              "-r:/sys/class/udc/a600000.dwc3/state": false,
+              "-f:/sys/class/udc/a600000.dwc3/maximum_speed": false,
+              "-r:/sys/class/udc/a600000.dwc3/maximum_speed": false
+            },
+            "exit_code": 0,
+            "observed": "HOLD",
+            "queries": [
+              "CHECK=-d:/sys/class/udc/a600000.dwc3"
+            ],
+            "no_secondary_or_unknown_controller_queried": true,
+            "passed": true
+          },
+          {
+            "name": "unknown_controller_only",
+            "fixture_controller_names": [
+              "unobserved.dwc3"
+            ],
+            "target_metadata_predicates": {
+              "-d:/sys/class/udc/a600000.dwc3": false,
+              "-f:/sys/class/udc/a600000.dwc3/state": false,
+              "-r:/sys/class/udc/a600000.dwc3/state": false,
+              "-f:/sys/class/udc/a600000.dwc3/maximum_speed": false,
+              "-r:/sys/class/udc/a600000.dwc3/maximum_speed": false
+            },
+            "exit_code": 0,
+            "observed": "HOLD",
+            "queries": [
+              "CHECK=-d:/sys/class/udc/a600000.dwc3"
+            ],
+            "no_secondary_or_unknown_controller_queried": true,
+            "passed": true
+          },
+          {
+            "name": "target_not_directory",
+            "fixture_controller_names": [
+              "a600000.dwc3",
+              "a800000.dwc3"
+            ],
+            "target_metadata_predicates": {
+              "-d:/sys/class/udc/a600000.dwc3": false,
+              "-f:/sys/class/udc/a600000.dwc3/state": true,
+              "-r:/sys/class/udc/a600000.dwc3/state": true,
+              "-f:/sys/class/udc/a600000.dwc3/maximum_speed": true,
+              "-r:/sys/class/udc/a600000.dwc3/maximum_speed": true
+            },
+            "exit_code": 0,
+            "observed": "HOLD",
+            "queries": [
+              "CHECK=-d:/sys/class/udc/a600000.dwc3"
+            ],
+            "no_secondary_or_unknown_controller_queried": true,
+            "passed": true
+          },
+          {
+            "name": "state_missing_or_nonregular",
+            "fixture_controller_names": [
+              "a600000.dwc3",
+              "a800000.dwc3"
+            ],
+            "target_metadata_predicates": {
+              "-d:/sys/class/udc/a600000.dwc3": true,
+              "-f:/sys/class/udc/a600000.dwc3/state": false,
+              "-r:/sys/class/udc/a600000.dwc3/state": true,
+              "-f:/sys/class/udc/a600000.dwc3/maximum_speed": true,
+              "-r:/sys/class/udc/a600000.dwc3/maximum_speed": true
+            },
+            "exit_code": 0,
+            "observed": "HOLD",
+            "queries": [
+              "CHECK=-d:/sys/class/udc/a600000.dwc3",
+              "CHECK=-f:/sys/class/udc/a600000.dwc3/state"
+            ],
+            "no_secondary_or_unknown_controller_queried": true,
+            "passed": true
+          },
+          {
+            "name": "state_unreadable",
+            "fixture_controller_names": [
+              "a600000.dwc3",
+              "a800000.dwc3"
+            ],
+            "target_metadata_predicates": {
+              "-d:/sys/class/udc/a600000.dwc3": true,
+              "-f:/sys/class/udc/a600000.dwc3/state": true,
+              "-r:/sys/class/udc/a600000.dwc3/state": false,
+              "-f:/sys/class/udc/a600000.dwc3/maximum_speed": true,
+              "-r:/sys/class/udc/a600000.dwc3/maximum_speed": true
+            },
+            "exit_code": 0,
+            "observed": "HOLD",
+            "queries": [
+              "CHECK=-d:/sys/class/udc/a600000.dwc3",
+              "CHECK=-f:/sys/class/udc/a600000.dwc3/state",
+              "CHECK=-r:/sys/class/udc/a600000.dwc3/state"
+            ],
+            "no_secondary_or_unknown_controller_queried": true,
+            "passed": true
+          },
+          {
+            "name": "maximum_speed_missing_or_nonregular",
+            "fixture_controller_names": [
+              "a600000.dwc3",
+              "a800000.dwc3"
+            ],
+            "target_metadata_predicates": {
+              "-d:/sys/class/udc/a600000.dwc3": true,
+              "-f:/sys/class/udc/a600000.dwc3/state": true,
+              "-r:/sys/class/udc/a600000.dwc3/state": true,
+              "-f:/sys/class/udc/a600000.dwc3/maximum_speed": false,
+              "-r:/sys/class/udc/a600000.dwc3/maximum_speed": true
+            },
+            "exit_code": 0,
+            "observed": "HOLD",
+            "queries": [
+              "CHECK=-d:/sys/class/udc/a600000.dwc3",
+              "CHECK=-f:/sys/class/udc/a600000.dwc3/state",
+              "CHECK=-r:/sys/class/udc/a600000.dwc3/state",
+              "CHECK=-f:/sys/class/udc/a600000.dwc3/maximum_speed"
+            ],
+            "no_secondary_or_unknown_controller_queried": true,
+            "passed": true
+          },
+          {
+            "name": "maximum_speed_unreadable",
+            "fixture_controller_names": [
+              "a600000.dwc3",
+              "a800000.dwc3"
+            ],
+            "target_metadata_predicates": {
+              "-d:/sys/class/udc/a600000.dwc3": true,
+              "-f:/sys/class/udc/a600000.dwc3/state": true,
+              "-r:/sys/class/udc/a600000.dwc3/state": true,
+              "-f:/sys/class/udc/a600000.dwc3/maximum_speed": true,
+              "-r:/sys/class/udc/a600000.dwc3/maximum_speed": false
+            },
+            "exit_code": 0,
+            "observed": "HOLD",
+            "queries": [
+              "CHECK=-d:/sys/class/udc/a600000.dwc3",
+              "CHECK=-f:/sys/class/udc/a600000.dwc3/state",
+              "CHECK=-r:/sys/class/udc/a600000.dwc3/state",
+              "CHECK=-f:/sys/class/udc/a600000.dwc3/maximum_speed",
+              "CHECK=-r:/sys/class/udc/a600000.dwc3/maximum_speed"
+            ],
+            "no_secondary_or_unknown_controller_queried": true,
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "cpio_entries": [
+        {
+          "path": "bin",
+          "mode": "0o40755",
+          "bytes": 0,
+          "rdev": [
+            0,
+            0
+          ]
+        },
+        {
+          "path": "sbin",
+          "mode": "0o40755",
+          "bytes": 0,
+          "rdev": [
+            0,
+            0
+          ]
+        },
+        {
+          "path": "dev",
+          "mode": "0o40755",
+          "bytes": 0,
+          "rdev": [
+            0,
+            0
+          ]
+        },
+        {
+          "path": "dev/pts",
+          "mode": "0o40755",
+          "bytes": 0,
+          "rdev": [
+            0,
+            0
+          ]
+        },
+        {
+          "path": "proc",
+          "mode": "0o40755",
+          "bytes": 0,
+          "rdev": [
+            0,
+            0
+          ]
+        },
+        {
+          "path": "sys",
+          "mode": "0o40755",
+          "bytes": 0,
+          "rdev": [
+            0,
+            0
+          ]
+        },
+        {
+          "path": "run",
+          "mode": "0o40755",
+          "bytes": 0,
+          "rdev": [
+            0,
+            0
+          ]
+        },
+        {
+          "path": "tmp",
+          "mode": "0o40755",
+          "bytes": 0,
+          "rdev": [
+            0,
+            0
+          ]
+        },
+        {
+          "path": "dev/console",
+          "mode": "0o20600",
+          "bytes": 0,
+          "rdev": [
+            5,
+            1
+          ]
+        },
+        {
+          "path": "dev/null",
+          "mode": "0o20666",
+          "bytes": 0,
+          "rdev": [
+            1,
+            3
+          ]
+        },
+        {
+          "path": "bin/sh",
+          "mode": "0o120777",
+          "bytes": 7,
+          "rdev": [
+            0,
+            0
+          ]
+        },
+        {
+          "path": "init",
+          "mode": "0o100755",
+          "bytes": 3336,
+          "rdev": [
+            0,
+            0
+          ]
+        },
+        {
+          "path": "bin/busybox",
+          "mode": "0o100755",
+          "bytes": 1253520,
+          "rdev": [
+            0,
+            0
+          ]
+        },
+        {
+          "path": "bin/kexec",
+          "mode": "0o100755",
+          "bytes": 1003472,
+          "rdev": [
+            0,
+            0
+          ]
+        },
+        {
+          "path": "bin/entry-return-bootloader",
+          "mode": "0o100755",
+          "bytes": 708680,
+          "rdev": [
+            0,
+            0
+          ]
+        }
+      ],
+      "archive_changed_entries": [
+        "init"
+      ],
+      "all_other_archive_entries_identical": true,
+      "frozen_inputs_rechecked_unchanged": true,
+      "elapsed_seconds": 2.9004604760557413,
+      "ended_utc": "2026-11-23T03:09:51.626629+00:00"
+    }
+  },
+  "reference_vm": {
+    "path": "/work/first-stage-research/userspace-r2-owner-udc/qemu-reference/result.json",
+    "bytes": 2432,
+    "sha256": "951713a0923a941000651ee1a40e556ae84d66d8fd4499d3319d6426c47cc194",
+    "mode": "0o644",
+    "data": {
+      "schema": "tb371fc-new-entry-qemu-v1",
+      "started_utc": "2026-11-23T03:09:51.756866+00:00",
+      "scope": "rescue userspace only on the frozen research2 reference kernel; NOT a downstream entry-kernel pass",
+      "downstream_entry_kernel_used": false,
+      "command": [
+        "qemu-system-aarch64",
+        "-machine",
+        "virt",
+        "-accel",
+        "tcg",
+        "-cpu",
+        "cortex-a76",
+        "-smp",
+        "2",
+        "-m",
+        "1024",
+        "-nographic",
+        "-monitor",
+        "none",
+        "-nic",
+        "none",
+        "-no-reboot",
+        "-kernel",
+        "/work/research2-display/artifacts/Image",
+        "-initrd",
+        "/work/first-stage-research/userspace-r2-owner-udc/artifacts/entry-initramfs.cpio.gz",
+        "-append",
+        "console=ttyAMA0 earlycon=pl011,0x9000000 rdinit=/init loglevel=7 panic=1 tb371fc.entry_smoke=1"
+      ],
+      "image_sha256": "181f0152868a2dc501191f09cb839ff295f6814f38f0bf027d6f55833382b27d",
+      "initramfs_sha256": "4e89de6d7de7535eb0e70a2557a3ad123f0e89d5d2724ec9104984aeb7db92a5",
+      "kernel_manifest_sha256": "845914d9cc1c876f10704f3334ee942b2c26deaa8045ce9c2ef82ef2920cde21",
+      "userspace_manifest_sha256": "f388996a70a8d2deded1853d6213ed6896cb06ec6cd4dba34b4ba6e64e5400bc",
+      "script_sha256": "293dc5a31037eb496deef6774a561457161c371996d278e080f310bf43289c51",
+      "controller_sha256": "e3bcf5a7fe442b3e0065e513d82e4774891de98b3b61a4331971a2ab112a5473",
+      "expected_release": "6.12.114-tb371fc-research2-display",
+      "qemu_version": "QEMU emulator version 10.0.13 (Debian 1:10.0.13+ds-0+deb13u1)",
+      "tablet_tested": false,
+      "bootloader_acceptance_tested": false,
+      "kexec_load_or_execute_tested": false,
+      "recovery_return_tested": false,
+      "tablet_usb_tested": false,
+      "tablet_dt_used": false,
+      "controller_result": "pass",
+      "stop_reason": "observed_el0_marker",
+      "qemu_returncode": 0,
+      "elapsed_seconds": 3.8647814599680714,
+      "interrupted_signal": null,
+      "serial_output_truncated": false,
+      "observed_lines": {
+        "release": true,
+        "machine": true,
+        "el0_marker": true,
+        "guest_error": false
+      },
+      "cleanup": {
+        "terminate_sent": true,
+        "kill_sent": false,
+        "child_reaped": true,
+        "errors": []
+      },
+      "entry_ready_observed": true,
+      "kexec_loaded_zero_observed": true,
+      "busybox_sha_observed": true,
+      "kexec_sha_observed": true,
+      "kexec_loaded_zero_required": false,
+      "serial_sha256": "c82842509d1d7aee64bb676834be9ef17f7c914cfc53e46e7a7961018f1c749c",
+      "ended_utc": "2026-11-23T03:09:56.980383+00:00"
+    }
+  },
+  "reference_vm_serial": {
+    "path": "/work/first-stage-research/userspace-r2-owner-udc/qemu-reference/serial.log",
+    "bytes": 17441,
+    "sha256": "c82842509d1d7aee64bb676834be9ef17f7c914cfc53e46e7a7961018f1c749c",
+    "mode": "0o644",
+    "encoding": "base64",
+    "data": "WyAgICAwLjAwMDAwMF0gQm9vdGluZyBMaW51eCBvbiBwaHlzaWNhbCBDUFUgMHgwMDAwMDAwMDAwIFsweDQxNGZkMGIxXQ0KWyAgICAwLjAwMDAwMF0gTGludXggdmVyc2lvbiA2LjEyLjExNC10YjM3MWZjLXJlc2VhcmNoMi1kaXNwbGF5ICh0YjM3MWZjLXJlc2VhcmNoQGlzb2xhdGVkLWJ1aWxkZXIpIChEZWJpYW4gY2xhbmcgdmVyc2lvbiAxOS4xLjcgKDMrYjEpLCBEZWJpYW4gTExEIDE5LjEuNykgIzEgU01QIFBSRUVNUFQgMjAyNi0xMS0yMyAwMDowMDowMCArMDAwMA0KWyAgICAwLjAwMDAwMF0gcmFuZG9tOiBjcm5nIGluaXQgZG9uZQ0KWyAgICAwLjAwMDAwMF0gTWFjaGluZSBtb2RlbDogbGludXgsZHVtbXktdmlydA0KWyAgICAwLjAwMDAwMF0gZWFybHljb246IHBsMTEgYXQgTU1JTyAweDAwMDAwMDAwMDkwMDAwMDAgKG9wdGlvbnMgJycpDQpbICAgIDAuMDAwMDAwXSBwcmludGs6IGxlZ2FjeSBib290Y29uc29sZSBbcGwxMV0gZW5hYmxlZA0KWyAgICAwLjAwMDAwMF0gT0Y6IHJlc2VydmVkIG1lbTogUmVzZXJ2ZWQgbWVtb3J5OiBObyByZXNlcnZlZC1tZW1vcnkgbm9kZSBpbiB0aGUgRFQNClsgICAgMC4wMDAwMDBdIFpvbmUgcmFuZ2VzOg0KWyAgICAwLjAwMDAwMF0gICBETUEgICAgICBbbWVtIDB4MDAwMDAwMDA0MDAwMDAwMC0weDAwMDAwMDAwN2ZmZmZmZmZdDQpbICAgIDAuMDAwMDAwXSAgIERNQTMyICAgIGVtcHR5DQpbICAgIDAuMDAwMDAwXSAgIE5vcm1hbCAgIGVtcHR5DQpbICAgIDAuMDAwMDAwXSBNb3ZhYmxlIHpvbmUgc3RhcnQgZm9yIGVhY2ggbm9kZQ0KWyAgICAwLjAwMDAwMF0gRWFybHkgbWVtb3J5IG5vZGUgcmFuZ2VzDQpbICAgIDAuMDAwMDAwXSAgIG5vZGUgICAwOiBbbWVtIDB4MDAwMDAwMDA0MDAwMDAwMC0weDAwMDAwMDAwN2ZmZmZmZmZdDQpbICAgIDAuMDAwMDAwXSBJbml0bWVtIHNldHVwIG5vZGUgMCBbbWVtIDB4MDAwMDAwMDA0MDAwMDAwMC0weDAwMDAwMDAwN2ZmZmZmZmZdDQpbICAgIDAuMDAwMDAwXSBjbWE6IFJlc2VydmVkIDE2IE1pQiBhdCAweDAwMDAwMDAwN2RjMDAwMDAgb24gbm9kZSAtMQ0KWyAgICAwLjAwMDAwMF0gcHNjaTogcHJvYmluZyBmb3IgY29uZHVpdCBtZXRob2QgZnJvbSBEVC4NClsgICAgMC4wMDAwMDBdIHBzY2k6IFBTQ0l2MS4xIGRldGVjdGVkIGluIGZpcm13YXJlLg0KWyAgICAwLjAwMDAwMF0gcHNjaTogVXNpbmcgc3RhbmRhcmQgUFNDSSB2MC4yIGZ1bmN0aW9uIElEcw0KWyAgICAwLjAwMDAwMF0gcHNjaTogVHJ1c3RlZCBPUyBtaWdyYXRpb24gbm90IHJlcXVpcmVkDQpbICAgIDAuMDAwMDAwXSBwc2NpOiBTTUMgQ2FsbGluZyBDb252ZW50aW9uIHYxLjANClsgICAgMC4wMDAwMDBdIHBlcmNwdTogRW1iZWRkZWQgMjIgcGFnZXMvY3B1IHM1MDU4NCByODE5MiBkMzEzMzYgdTkwMTEyDQpbICAgIDAuMDAwMDAwXSBEZXRlY3RlZCBQSVBUIEktY2FjaGUgb24gQ1BVMA0KWyAgICAwLjAwMDAwMF0gQ1BVIGZlYXR1cmVzOiBkZXRlY3RlZDogU3BlY3RyZS12NA0KWyAgICAwLjAwMDAwMF0gQ1BVIGZlYXR1cmVzOiBkZXRlY3RlZDogU3BlY3RyZS1CSEINClsgICAgMC4wMDAwMDBdIENQVSBmZWF0dXJlczogZGV0ZWN0ZWQ6IEJyb2tlbiBicm9hZGNhc3QgVExCSSBjb21wbGV0aW9uDQpbICAgIDAuMDAwMDAwXSBDUFUgZmVhdHVyZXM6IGRldGVjdGVkOiBTU0JTIG5vdCBmdWxseSBzZWxmLXN5bmNocm9uaXppbmcNClsgICAgMC4wMDAwMDBdIGFsdGVybmF0aXZlczogYXBwbHlpbmcgYm9vdCBhbHRlcm5hdGl2ZXMNClsgICAgMC4wMDAwMDBdIEtlcm5lbCBjb21tYW5kIGxpbmU6IGNvbnNvbGU9dHR5QU1BMCBlYXJseWNvbj1wbDAxMSwweDkwMDAwMDAgcmRpbml0PS9pbml0IGxvZ2xldmVsPTcgcGFuaWM9MSB0YjM3MWZjLmVudHJ5X3Ntb2tlPTENClsgICAgMC4wMDAwMDBdIHByaW50azogbG9nX2J1Zl9sZW4gaW5kaXZpZHVhbCBtYXggY3B1IGNvbnRyaWJ1dGlvbjogMTMxMDcyIGJ5dGVzDQpbICAgIDAuMDAwMDAwXSBwcmludGs6IGxvZ19idWZfbGVuIHRvdGFsIGNwdV9leHRyYSBjb250cmlidXRpb25zOiAxMzEwNzIgYnl0ZXMNClsgICAgMC4wMDAwMDBdIHByaW50azogbG9nX2J1Zl9sZW4gbWluIHNpemU6IDEzMTA3MiBieXRlcw0KWyAgICAwLjAwMDAwMF0gcHJpbnRrOiBsb2dfYnVmX2xlbjogMjYyMTQ0IGJ5dGVzDQpbICAgIDAuMDAwMDAwXSBwcmludGs6IGVhcmx5IGxvZyBidWYgZnJlZTogMTI5MDY0KDk4JSkNClsgICAgMC4wMDAwMDBdIERlbnRyeSBjYWNoZSBoYXNoIHRhYmxlIGVudHJpZXM6IDEzMTA3MiAob3JkZXI6IDgsIDEwNDg1NzYgYnl0ZXMsIGxpbmVhcikNClsgICAgMC4wMDAwMDBdIElub2RlLWNhY2hlIGhhc2ggdGFibGUgZW50cmllczogNjU1MzYgKG9yZGVyOiA3LCA1MjQyODggYnl0ZXMsIGxpbmVhcikNClsgICAgMC4wMDAwMDBdIEJ1aWx0IDEgem9uZWxpc3RzLCBtb2JpbGl0eSBncm91cGluZyBvbi4gIFRvdGFsIHBhZ2VzOiAyNjIxNDQNClsgICAgMC4wMDAwMDBdIG1lbSBhdXRvLWluaXQ6IHN0YWNrOmFsbCh6ZXJvKSwgaGVhcCBhbGxvYzpvZmYsIGhlYXAgZnJlZTpvZmYNClsgICAgMC4wMDAwMDBdIHNvZnR3YXJlIElPIFRMQjogU1dJT1RMQiBib3VuY2UgYnVmZmVyIHNpemUgYWRqdXN0ZWQgdG8gMU1CDQpbICAgIDAuMDAwMDAwXSBzb2Z0d2FyZSBJTyBUTEI6IGFyZWEgbnVtIDIuDQpbICAgIDAuMDAwMDAwXSBzb2Z0d2FyZSBJTyBUTEI6IG1hcHBlZCBbbWVtIDB4MDAwMDAwMDA3ZGEwMDAwMC0weDAwMDAwMDAwN2RiMDAwMDBdICgxTUIpDQpbICAgIDAuMDAwMDAwXSBTTFVCOiBIV2FsaWduPTY0LCBPcmRlcj0wLTMsIE1pbk9iamVjdHM9MCwgQ1BVcz0yLCBOb2Rlcz0xDQpbICAgIDAuMDAwMDAwXSByY3U6IFByZWVtcHRpYmxlIGhpZXJhcmNoaWNhbCBSQ1UgaW1wbGVtZW50YXRpb24uDQpbICAgIDAuMDAwMDAwXSByY3U6IAlSQ1UgcmVzdHJpY3RpbmcgQ1BVcyBmcm9tIE5SX0NQVVM9OCB0byBucl9jcHVfaWRzPTIuDQpbICAgIDAuMDAwMDAwXSAJVHJhbXBvbGluZSB2YXJpYW50IG9mIFRhc2tzIFJDVSBlbmFibGVkLg0KWyAgICAwLjAwMDAwMF0gCVRyYWNpbmcgdmFyaWFudCBvZiBUYXNrcyBSQ1UgZW5hYmxlZC4NClsgICAgMC4wMDAwMDBdIHJjdTogUkNVIGNhbGN1bGF0ZWQgdmFsdWUgb2Ygc2NoZWR1bGVyLWVubGlzdG1lbnQgZGVsYXkgaXMgMjUgamlmZmllcy4NClsgICAgMC4wMDAwMDBdIHJjdTogQWRqdXN0aW5nIGdlb21ldHJ5IGZvciByY3VfZmFub3V0X2xlYWY9MTYsIG5yX2NwdV9pZHM9Mg0KWyAgICAwLjAwMDAwMF0gUkNVIFRhc2tzOiBTZXR0aW5nIHNoaWZ0IHRvIDEgYW5kIGxpbSB0byAxIHJjdV90YXNrX2NiX2FkanVzdD0xIHJjdV90YXNrX2NwdV9pZHM9Mi4NClsgICAgMC4wMDAwMDBdIFJDVSBUYXNrcyBUcmFjZTogU2V0dGluZyBzaGlmdCB0byAxIGFuZCBsaW0gdG8gMSByY3VfdGFza19jYl9hZGp1c3Q9MSByY3VfdGFza19jcHVfaWRzPTIuDQpbICAgIDAuMDAwMDAwXSBOUl9JUlFTOiA2NCwgbnJfaXJxczogNjQsIHByZWFsbG9jYXRlZCBpcnFzOiAwDQpbICAgIDAuMDAwMDAwXSBSb290IElSUSBoYW5kbGVyOiBnaWNfaGFuZGxlX2lycQ0KWyAgICAwLjAwMDAwMF0gR0lDdjJtOiByYW5nZVttZW0gMHgwODAyMDAwMC0weDA4MDIwZmZmXSwgU1BJWzgwOjE0M10NClsgICAgMC4wMDAwMDBdIHJjdTogc3JjdV9pbml0OiBTZXR0aW5nIHNyY3Vfc3RydWN0IHNpemVzIGJhc2VkIG9uIGNvbnRlbnRpb24uDQpbICAgIDAuMDAwMDAwXSBjbG9ja3NvdXJjZTogamlmZmllczogbWFzazogMHhmZmZmZmZmZiBtYXhfY3ljbGVzOiAweGZmZmZmZmZmLCBtYXhfaWRsZV9uczogNzY0NTA0MTc4NTEwMDAwMCBucw0KWyAgICAwLjAwMDAwMF0gYXJjaF90aW1lcjogY3AxNSB0aW1lcihzKSBydW5uaW5nIGF0IDYyLjUwTUh6ICh2aXJ0KS4NClsgICAgMC4wMDAwMDBdIGNsb2Nrc291cmNlOiBhcmNoX3N5c19jb3VudGVyOiBtYXNrOiAweDFmZmZmZmZmZmZmZmZmZiBtYXhfY3ljbGVzOiAweDFjZDQyZTIwOGMsIG1heF9pZGxlX25zOiA4ODE1OTA0MDUzMTQgbnMNClsgICAgMC4wMDAxMDVdIHNjaGVkX2Nsb2NrOiA1NyBiaXRzIGF0IDYzTUh6LCByZXNvbHV0aW9uIDE2bnMsIHdyYXBzIGV2ZXJ5IDQzOTgwNDY1MTEwOTZucw0KWyAgICAwLjAxMzI5Nl0gQ29uc29sZTogY29sb3VyIGR1bW15IGRldmljZSA4MHg0DQpbICAgIDAuMDE0OTg4XSBDYWxpYnJhdGluZyBkZWxheSBsb29wIChza2lwcGVkKSwgdmFsdWUgY2FsY3VsYXRlZCB1c2luZyB0aW1lciBmcmVxdWVuY3kuLiAxMjUuMDAgQm9nb01JUFMgKGxwaj0yNTAwMDApDQpbICAgIDAuMDE1NDk2XSBwaWRfbWF4OiBkZWZhdWx0OiAzMjc2OCBtaW5pbXVtOiAzMDENClsgICAgMC4wMTg1ODBdIExTTTogaW5pdGlhbGl6aW5nIGxzbT1jYXBhYmlsaXR5LHNlbGludXgNClsgICAgMC4wMTk3NjBdIFNFTGludXg6ICBJbml0aWFsaXppbmcuDQpbICAgIDAuMDIzNjcxXSBNb3VudC1jYWNoZSBoYXNoIHRhYmxlIGVudHJpZXM6IDIwNDggKG9yZGVyOiAyLCAxNjM4NCBieXRlcywgbGluZWFyKQ0KWyAgICAwLjAyMzkzMF0gTW91bnRwb2ludC1jYWNoZSBoYXNoIHRhYmxlIGVudHJpZXM6IDIwNDggKG9yZGVyOiAyLCAxNjM4NCBieXRlcywgbGluZWFyKQ0KWyAgICAwLjEwNTA3MV0gcmN1OiBIaWVyYXJjaGljYWwgU1JDVSBpbXBsZW1lbnRhdGlvbi4NClsgICAgMC4xMDUzNTFdIHJjdTogCU1heCBwaGFzZSBuby1kZWxheSBpbnN0YW5jZXMgaXMgMTAwMC4NClsgICAgMC4xMDg4NTVdIFRpbWVyIG1pZ3JhdGlvbjogMSBoaWVyYXJjaHkgbGV2ZWxzOyA4IGNoaWxkcmVuIHBlciBncm91cDsgMSBjcm9zc25vZGUgbGV2ZWwNClsgICAgMC4xMTg2NDldIHNtcDogQnJpbmdpbmcgdXAgc2Vjb25kYXJ5IENQVXMgLi4uDQpbICAgIDAuMTI1MDkwXSBEZXRlY3RlZCBQSVBUIEktY2FjaGUgb24gQ1BVMQ0KWyAgICAwLjEyNzE5Ml0gQ1BVMTogQm9vdGVkIHNlY29uZGFyeSBwcm9jZXNzb3IgMHgwMDAwMDAwMDAxIFsweDQxNGZkMGIxXQ0KWyAgICAwLjE1NjQ5NV0gc21wOiBCcm91Z2h0IHVwIDEgbm9kZSwgMiBDUFVzDQpbICAgIDAuMTU3MDkyXSBTTVA6IFRvdGFsIG9mIDIgcHJvY2Vzc29ycyBhY3RpdmF0ZWQuDQpbICAgIDAuMTU3MzM5XSBDUFU6IEFsbCBDUFUocykgc3RhcnRlZCBhdCBFTDENClsgICAgMC4xNTc2MzFdIENQVSBmZWF0dXJlczogZGV0ZWN0ZWQ6IDMyLWJpdCBFTDAgU3VwcG9ydA0KWyAgICAwLjE1Nzg5MV0gQ1BVIGZlYXR1cmVzOiBkZXRlY3RlZDogRGF0YSBjYWNoZSBjbGVhbiB0byB0aGUgUG9VIG5vdCByZXF1aXJlZCBmb3IgSS9EIGNvaGVyZW5jZQ0KWyAgICAwLjE1ODI3MV0gQ1BVIGZlYXR1cmVzOiBkZXRlY3RlZDogQ29tbW9uIG5vdCBQcml2YXRlIHRyYW5zbGF0aW9ucw0KWyAgICAwLjE1ODUwNV0gQ1BVIGZlYXR1cmVzOiBkZXRlY3RlZDogQ1JDMzIgaW5zdHJ1Y3Rpb25zDQpbICAgIDAuMTU4ODQ2XSBDUFUgZmVhdHVyZXM6IGRldGVjdGVkOiBSQ3BjIGxvYWQtYWNxdWlyZSAoTERBUFIpDQpbICAgIDAuMTU5MTM1XSBDUFUgZmVhdHVyZXM6IGRldGVjdGVkOiBMU0UgYXRvbWljIGluc3RydWN0aW9ucw0KWyAgICAwLjE1OTM1MF0gQ1BVIGZlYXR1cmVzOiBkZXRlY3RlZDogUHJpdmlsZWdlZCBBY2Nlc3MgTmV2ZXINClsgICAgMC4xNTk1MDFdIENQVSBmZWF0dXJlczogZGV0ZWN0ZWQ6IFJBUyBFeHRlbnNpb24gU3VwcG9ydA0KWyAgICAwLjE1OTkzMl0gQ1BVIGZlYXR1cmVzOiBkZXRlY3RlZDogU3BlY3VsYXRpdmUgU3RvcmUgQnlwYXNzaW5nIFNhZmUgKFNTQlMpDQpbICAgIDAuMTgxNzc0XSBhbHRlcm5hdGl2ZXM6IGFwcGx5aW5nIHN5c3RlbS13aWRlIGFsdGVybmF0aXZlcw0KWyAgICAwLjIxNjgzOF0gQ1BVIGZlYXR1cmVzOiBkZXRlY3RlZDogSGFyZHdhcmUgZGlydHkgYml0IG1hbmFnZW1lbnQgb24gQ1BVMC0xDQpbICAgIDAuMjcxMjI3XSBNZW1vcnk6IDk3MzIyMEsvMTA0ODU3NksgYXZhaWxhYmxlICgxNzQwOEsga2VybmVsIGNvZGUsIDE1MDJLIHJ3ZGF0YSwgOTI0NEsgcm9kYXRhLCA4OTZLIGluaXQsIDE1MTlLIGJzcywgNTU1NTJLIHJlc2VydmVkLCAxNjM4NEsgY21hLXJlc2VydmVkKQ0KWyAgICAwLjMxNzMxN10gZGV2dG1wZnM6IGluaXRpYWxpemVkDQpbICAgIDAuMzc0MzY0XSBmdXRleCBoYXNoIHRhYmxlIGVudHJpZXM6IDUxMiAob3JkZXI6IDMsIDMyNzY4IGJ5dGVzLCBsaW5lYXIpDQpbICAgIDAuMzc3MTEwXSAyNTA3MiBwYWdlcyBpbiByYW5nZSBmb3Igbm9uLVBMVCB1c2FnZQ0KWyAgICAwLjM3NzI1NV0gNTE2NTkyIHBhZ2VzIGluIHJhbmdlIGZvciBQTFQgdXNhZ2UNClsgICAgMC4zODE3NTJdIHBpbmN0cmwgY29yZTogaW5pdGlhbGl6ZWQgcGluY3RybCBzdWJzeXN0ZW0NClsgICAgMC40MTg2OThdIE5FVDogUmVnaXN0ZXJlZCBQRl9ORVRMSU5LL1BGX1JPVVRFIHByb3RvY29sIGZhbWlseQ0KWyAgICAwLjQ1NjM2MV0gRE1BOiBwcmVhbGxvY2F0ZWQgMTI4IEtpQiBHRlBfS0VSTkVMIHBvb2wgZm9yIGF0b21pYyBhbGxvY2F0aW9ucw0KWyAgICAwLjQ1ODIxNV0gRE1BOiBwcmVhbGxvY2F0ZWQgMTI4IEtpQiBHRlBfS0VSTkVMfEdGUF9ETUEgcG9vbCBmb3IgYXRvbWljIGFsbG9jYXRpb25zDQpbICAgIDAuNDU5OTIxXSBETUE6IHByZWFsbG9jYXRlZCAxMjggS2lCIEdGUF9LRVJORUx8R0ZQX0RNQTMyIHBvb2wgZm9yIGF0b21pYyBhbGxvY2F0aW9ucw0KWyAgICAwLjQ2MDY3OF0gYXVkaXQ6IGluaXRpYWxpemluZyBuZXRsaW5rIHN1YnN5cyAoZGlzYWJsZWQpDQpbICAgIDAuNDY0MjQzXSBhdWRpdDogdHlwZT0yMDAwIGF1ZGl0KDAuMzA0OjEpOiBzdGF0ZT1pbml0aWFsaXplZCBhdWRpdF9lbmFibGVkPTAgcmVzPTENClsgICAgMC40NjkwNzldIHRoZXJtYWxfc3lzOiBSZWdpc3RlcmVkIHRoZXJtYWwgZ292ZXJub3IgJ3N0ZXBfd2lzZScNClsgICAgMC40NjkxOTNdIHRoZXJtYWxfc3lzOiBSZWdpc3RlcmVkIHRoZXJtYWwgZ292ZXJub3IgJ3VzZXJfc3BhY2UnDQpbICAgIDAuNDcwMjM3XSBjcHVpZGxlOiB1c2luZyBnb3Zlcm5vciBtZW51DQpbICAgIDAuNDcxNDk3XSBORVQ6IFJlZ2lzdGVyZWQgUEZfUUlQQ1JUUiBwcm90b2NvbCBmYW1pbHkNClsgICAgMC40NzcwMDldIGh3LWJyZWFrcG9pbnQ6IGZvdW5kIDYgYnJlYWtwb2ludCBhbmQgNCB3YXRjaHBvaW50IHJlZ2lzdGVycy4NClsgICAgMC40Nzg3NjJdIEFTSUQgYWxsb2NhdG9yIGluaXRpYWxpc2VkIHdpdGggNjU1MzYgZW50cmllcw0KWyAgICAwLjQ4MTc0OV0gU2VyaWFsOiBBTUJBIFBMMDExIFVBUlQgZHJpdmVyDQpbICAgIDAuNTYxMTM4XSA5MDAwMDAwLnBsMDExOiB0dHlBTUEwIGF0IE1NSU8gMHg5MDAwMDAwIChpcnEgPSAxMywgYmFzZV9iYXVkID0gMCkgaXMgYSBQTDAxMSByZXYxDQpbICAgIDAuNTY0Njc2XSBwcmludGs6IGxlZ2FjeSBjb25zb2xlIFt0dHlBTUEwXSBlbmFibGVkDQpbICAgIDAuNTY0Njc2XSBwcmludGs6IGxlZ2FjeSBjb25zb2xlIFt0dHlBTUEwXSBlbmFibGVkDQpbICAgIDAuNTY4NDExXSBwcmludGs6IGxlZ2FjeSBib290Y29uc29sZSBbcGwxMV0gZGlzYWJsZWQNClsgICAgMC41Njg0MTFdIHByaW50azogbGVnYWN5IGJvb3Rjb25zb2xlIFtwbDExXSBkaXNhYmxlZA0KWyAgICAwLjc2MDA2OV0gcmFpZDY6IG5lb254OCAgIGdlbigpICAyMTAyIE1CL3MNClsgICAgMC44MzAzMDldIHJhaWQ2OiBuZW9ueDQgICBnZW4oKSAgMjAwMSBNQi9zDQpbICAgIDAuOTE3NDc3XSByYWlkNjogbmVvbngyICAgZ2VuKCkgIDE2NjYgTUIvcw0KWyAgICAxLjAwNjYwNF0gcmFpZDY6IG5lb254MSAgIGdlbigpICAgNjM2IE1CL3MNClsgICAgMS4wOTcyOTBdIHJhaWQ2OiBpbnQ2NHg4ICBnZW4oKSAgMTAwNSBNQi9zDQpbICAgIDEuMTg0MjkyXSByYWlkNjogaW50NjR4NCAgZ2VuKCkgIDE3MTAgTUIvcw0KWyAgICAxLjI3Mjg4NF0gcmFpZDY6IGludDY0eDIgIGdlbigpICAxMzI5IE1CL3MNClsgICAgMS4zNTk2OTldIHJhaWQ2OiBpbnQ2NHgxICBnZW4oKSAgMTAwNyBNQi9zDQpbICAgIDEuMzU5OTc2XSByYWlkNjogdXNpbmcgYWxnb3JpdGhtIG5lb254OCBnZW4oKSAyMTAyIE1CL3MNClsgICAgMS40NTE2NTBdIHJhaWQ2OiAuLi4uIHhvcigpIDc2OSBNQi9zLCBybXcgZW5hYmxlZA0KWyAgICAxLjQ1MTk5N10gcmFpZDY6IHVzaW5nIG5lb24gcmVjb3ZlcnkgYWxnb3JpdGhtDQpbICAgIDEuNDU2NTU1XSBpb21tdTogRGVmYXVsdCBkb21haW4gdHlwZTogVHJhbnNsYXRlZA0KWyAgICAxLjQ1Njc4OV0gaW9tbXU6IERNQSBkb21haW4gVExCIGludmFsaWRhdGlvbiBwb2xpY3k6IHN0cmljdCBtb2RlDQpbICAgIDEuNDYxNjM5XSBTQ1NJIHN1YnN5c3RlbSBpbml0aWFsaXplZA0KWyAgICAxLjQ2MzQzNV0gdXNiY29yZTogcmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciB1c2Jmcw0KWyAgICAxLjQ2NDMxM10gdXNiY29yZTogcmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciBodWINClsgICAgMS40NjQ3NjddIHVzYmNvcmU6IHJlZ2lzdGVyZWQgbmV3IGRldmljZSBkcml2ZXIgdXNiDQpbICAgIDEuNDY2Mzk4XSBtYzogTGludXggbWVkaWEgaW50ZXJmYWNlOiB2MC4xMA0KWyAgICAxLjQ2NjgyNF0gdmlkZW9kZXY6IExpbnV4IHZpZGVvIGNhcHR1cmUgaW50ZXJmYWNlOiB2Mi4wMA0KWyAgICAxLjQ2NzM4OV0gcHBzX2NvcmU6IExpbnV4UFBTIEFQSSB2ZXIuIDEgcmVnaXN0ZXJlZA0KWyAgICAxLjQ2NzY1MV0gcHBzX2NvcmU6IFNvZnR3YXJlIHZlci4gNS4zLjYgLSBDb3B5cmlnaHQgMjAwNS0yMDA3IFJvZG9sZm8gR2lvbWV0dGkgPGdpb21ldHRpQGxpbnV4Lml0Pg0KWyAgICAxLjQ2ODMzNV0gUFRQIGNsb2NrIHN1cHBvcnQgcmVnaXN0ZXJlZA0KWyAgICAxLjQ2ODg0MF0gRURBQyBNQzogVmVyOiAzLjAuMA0KWyAgICAxLjQ4ODkzN10gQWR2YW5jZWQgTGludXggU291bmQgQXJjaGl0ZWN0dXJlIERyaXZlciBJbml0aWFsaXplZC4NClsgICAgMS41MDkzMTNdIEJsdWV0b290aDogQ29yZSB2ZXIgMi4yMg0KWyAgICAxLjUwOTkwOF0gTkVUOiBSZWdpc3RlcmVkIFBGX0JMVUVUT09USCBwcm90b2NvbCBmYW1pbHkNClsgICAgMS41MTAzMDFdIEJsdWV0b290aDogSENJIGRldmljZSBhbmQgY29ubmVjdGlvbiBtYW5hZ2VyIGluaXRpYWxpemVkDQpbICAgIDEuNTEwNzc2XSBCbHVldG9vdGg6IEhDSSBzb2NrZXQgbGF5ZXIgaW5pdGlhbGl6ZWQNClsgICAgMS41MTExNDldIEJsdWV0b290aDogTDJDQVAgc29ja2V0IGxheWVyIGluaXRpYWxpemVkDQpbICAgIDEuNTExNjQ4XSBCbHVldG9vdGg6IFNDTyBzb2NrZXQgbGF5ZXIgaW5pdGlhbGl6ZWQNClsgICAgMS41MTIxNzFdIE5ldExhYmVsOiBJbml0aWFsaXppbmcNClsgICAgMS41MTIzMjldIE5ldExhYmVsOiAgZG9tYWluIGhhc2ggc2l6ZSA9IDEyOA0KWyAgICAxLjUxMjUwNl0gTmV0TGFiZWw6ICBwcm90b2NvbHMgPSBVTkxBQkVMRUQgQ0lQU092NCBDQUxJUFNPDQpbICAgIDEuNTE0NDI3XSBOZXRMYWJlbDogIHVubGFiZWxlZCB0cmFmZmljIGFsbG93ZWQgYnkgZGVmYXVsdA0KWyAgICAxLjUyOTAyN10gdmdhYXJiOiBsb2FkZWQNClsgICAgMS41MzI3MTRdIGNsb2Nrc291cmNlOiBTd2l0Y2hlZCB0byBjbG9ja3NvdXJjZSBhcmNoX3N5c19jb3VudGVyDQpbICAgIDEuNTU2NzExXSBWRlM6IERpc2sgcXVvdGFzIGRxdW90XzYuNi4wDQpbICAgIDEuNTU3MTQ2XSBWRlM6IERxdW90LWNhY2hlIGhhc2ggdGFibGUgZW50cmllczogNTEyIChvcmRlciAwLCA0MDk2IGJ5dGVzKQ0KWyAgICAxLjYyNDM4N10gTkVUOiBSZWdpc3RlcmVkIFBGX0lORVQgcHJvdG9jb2wgZmFtaWx5DQpbICAgIDEuNjU2ODUyXSBJUCBpZGVudHMgaGFzaCB0YWJsZSBlbnRyaWVzOiAxNjM4NCAob3JkZXI6IDUsIDEzMTA3MiBieXRlcywgbGluZWFyKQ0KWyAgICAxLjY3NDk1OV0gdGNwX2xpc3Rlbl9wb3J0YWRkcl9oYXNoIGhhc2ggdGFibGUgZW50cmllczogNTEyIChvcmRlcjogMSwgODE5MiBieXRlcywgbGluZWFyKQ0KWyAgICAxLjY3NTYyN10gVGFibGUtcGVydHVyYiBoYXNoIHRhYmxlIGVudHJpZXM6IDY1NTM2IChvcmRlcjogNiwgMjYyMTQ0IGJ5dGVzLCBsaW5lYXIpDQpbICAgIDEuNjc2MDE1XSBUQ1AgZXN0YWJsaXNoZWQgaGFzaCB0YWJsZSBlbnRyaWVzOiA4MTkyIChvcmRlcjogNCwgNjU1MzYgYnl0ZXMsIGxpbmVhcikNClsgICAgMS42NzY2NDFdIFRDUCBiaW5kIGhhc2ggdGFibGUgZW50cmllczogODE5MiAob3JkZXI6IDYsIDI2MjE0NCBieXRlcywgbGluZWFyKQ0KWyAgICAxLjY3NzYwNl0gVENQOiBIYXNoIHRhYmxlcyBjb25maWd1cmVkIChlc3RhYmxpc2hlZCA4MTkyIGJpbmQgODE5MikNClsgICAgMS42ODQ1MDZdIFVEUCBoYXNoIHRhYmxlIGVudHJpZXM6IDUxMiAob3JkZXI6IDIsIDE2Mzg0IGJ5dGVzLCBsaW5lYXIpDQpbICAgIDEuNjg1MjIzXSBVRFAtTGl0ZSBoYXNoIHRhYmxlIGVudHJpZXM6IDUxMiAob3JkZXI6IDIsIDE2Mzg0IGJ5dGVzLCBsaW5lYXIpDQpbICAgIDEuNjg3NTUzXSBORVQ6IFJlZ2lzdGVyZWQgUEZfVU5JWC9QRl9MT0NBTCBwcm90b2NvbCBmYW1pbHkNClsgICAgMS42ODg4NjBdIFBDSTogQ0xTIDAgYnl0ZXMsIGRlZmF1bHQgNjQNClsgICAgMS43MDM3OThdIFRyeWluZyB0byB1bnBhY2sgcm9vdGZzIGltYWdlIGFzIGluaXRyYW1mcy4uLg0KWyAgICAxLjcwOTExMF0gSW5pdGlhbGlzZSBzeXN0ZW0gdHJ1c3RlZCBrZXlyaW5ncw0KWyAgICAxLjcxNjkxNl0gd29ya2luZ3NldDogdGltZXN0YW1wX2JpdHM9NDYgbWF4X29yZGVyPTE4IGJ1Y2tldF9vcmRlcj0wDQpbICAgIDEuNzY1MjIwXSBmdXNlOiBpbml0IChBUEkgdmVyc2lvbiA3LjQxKQ0KWyAgICAxLjg1Mjk3M10geG9yOiBtZWFzdXJpbmcgc29mdHdhcmUgY2hlY2tzdW0gc3BlZWQNClsgICAgMS44NTQ1NjBdICAgIDhyZWdzICAgICAgICAgICA6ICAyNjM5IE1CL3NlYw0KWyAgICAxLjg1NjM1MF0gICAgMzJyZWdzICAgICAgICAgIDogIDIxNjUgTUIvc2VjDQpbICAgIDEuODU5MDAzXSAgICBhcm02NF9uZW9uICAgICAgOiAgMTMzMyBNQi9zZWMNClsgICAgMS44NTk2MjBdIHhvcjogdXNpbmcgZnVuY3Rpb246IDhyZWdzICgyNjM5IE1CL3NlYykNClsgICAgMS44NjAwOTRdIEtleSB0eXBlIGFzeW1tZXRyaWMgcmVnaXN0ZXJlZA0KWyAgICAxLjg2MDQwMF0gQXN5bW1ldHJpYyBrZXkgcGFyc2VyICd4NTA5JyByZWdpc3RlcmVkDQpbICAgIDEuODYyMDMyXSBCbG9jayBsYXllciBTQ1NJIGdlbmVyaWMgKGJzZykgZHJpdmVyIHZlcnNpb24gMC40IGxvYWRlZCAobWFqb3IgMjQ3KQ0KWyAgICAxLjg2MjUwMV0gaW8gc2NoZWR1bGVyIG1xLWRlYWRsaW5lIHJlZ2lzdGVyZWQNClsgICAgMS44NjI3NzhdIGlvIHNjaGVkdWxlciBreWJlciByZWdpc3RlcmVkDQpbICAgIDEuODY0NTY4XSBpbyBzY2hlZHVsZXIgYmZxIHJlZ2lzdGVyZWQNClsgICAgMS44ODYwNDVdIEZyZWVpbmcgaW5pdHJkIG1lbW9yeTogMTMyMEsNClsgICAgMS45OTQ2MDhdIGJyZDogbW9kdWxlIGxvYWRlZA0KWyAgICAyLjA3Mzg4Nl0gbG9vcDogbW9kdWxlIGxvYWRlZA0KWyAgICAyLjA3NzYzN10genJhbTogQWRkZWQgZGV2aWNlOiB6cmFtMA0KWyAgICAyLjA3ODYyMV0gU0NTSSBNZWRpYSBDaGFuZ2VyIGRyaXZlciB2MC4yNSANClsgICAgMi4xMDA3NzNdIHR1bjogVW5pdmVyc2FsIFRVTi9UQVAgZGV2aWNlIGRyaXZlciwgMS42DQpbICAgIDIuMTAyMzU5XSBDQU4gZGV2aWNlIGRyaXZlciBpbnRlcmZhY2UNClsgICAgMi4xMDI1MTZdIGlnYjogSW50ZWwoUikgR2lnYWJpdCBFdGhlcm5ldCBOZXR3b3JrIERyaXZlcg0KWyAgICAyLjEwMjY1Nl0gaWdiOiBDb3B5cmlnaHQgKGMpIDIwMDctMjAxNCBJbnRlbCBDb3Jwb3JhdGlvbi4NClsgICAgMi4xMDI5NTRdIHNreTI6IGRyaXZlciB2ZXJzaW9uIDEuMzANClsgICAgMi4xMDM5NTJdIFBQUCBnZW5lcmljIGRyaXZlciB2ZXJzaW9uIDIuNC4yDQpbICAgIDIuMTA0OTY1XSBQUFAgQlNEIENvbXByZXNzaW9uIG1vZHVsZSByZWdpc3RlcmVkDQpbICAgIDIuMTA1MTk2XSBQUFAgRGVmbGF0ZSBDb21wcmVzc2lvbiBtb2R1bGUgcmVnaXN0ZXJlZA0KWyAgICAyLjEwNTU0OV0gUFBQIE1QUEUgQ29tcHJlc3Npb24gbW9kdWxlIHJlZ2lzdGVyZWQNClsgICAgMi4xMDU3MDZdIE5FVDogUmVnaXN0ZXJlZCBQRl9QUFBPWCBwcm90b2NvbCBmYW1pbHkNClsgICAgMi4xMDU4NDhdIFBQVFAgZHJpdmVyIHZlcnNpb24gMC44LjUNClsgICAgMi4xMDY4OThdIHVzYmNvcmU6IHJlZ2lzdGVyZWQgbmV3IGludGVyZmFjZSBkcml2ZXIgbGFuNzh4eA0KWyAgICAyLjEwNzQ1MV0gdXNiY29yZTogcmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciBhc2l4DQpbICAgIDIuMTA3NzM1XSB1c2Jjb3JlOiByZWdpc3RlcmVkIG5ldyBpbnRlcmZhY2UgZHJpdmVyIGF4ODgxNzlfMTc4YQ0KWyAgICAyLjEwODA2Ml0gdXNiY29yZTogcmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciBjZGNfZXRoZXINClsgICAgMi4xMDg0NzNdIHVzYmNvcmU6IHJlZ2lzdGVyZWQgbmV3IGludGVyZmFjZSBkcml2ZXIgbmV0MTA4MA0KWyAgICAyLjEwODgwM10gdXNiY29yZTogcmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciBjZGNfc3Vic2V0DQpbICAgIDIuMTA5MTkxXSB1c2Jjb3JlOiByZWdpc3RlcmVkIG5ldyBpbnRlcmZhY2UgZHJpdmVyIHphdXJ1cw0KWyAgICAyLjEwOTQ4OV0gdXNiY29yZTogcmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciBjZGNfbmNtDQpbICAgIDIuMTEzODIxXSB1c2Jjb3JlOiByZWdpc3RlcmVkIG5ldyBpbnRlcmZhY2UgZHJpdmVyIGNkY19hY20NClsgICAgMi4xMTQwMjRdIGNkY19hY206IFVTQiBBYnN0cmFjdCBDb250cm9sIE1vZGVsIGRyaXZlciBmb3IgVVNCIG1vZGVtcyBhbmQgSVNETiBhZGFwdGVycw0KWyAgICAyLjExNDQ0NF0gdXNiY29yZTogcmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciB1c2Itc3RvcmFnZQ0KWyAgICAyLjExNTM4N10gdXNiY29yZTogcmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciBjcDIxMHgNClsgICAgMi4xMTU5ODZdIHVzYnNlcmlhbDogVVNCIFNlcmlhbCBzdXBwb3J0IHJlZ2lzdGVyZWQgZm9yIGNwMjEweA0KWyAgICAyLjExNjQyM10gdXNiY29yZTogcmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciBmdGRpX3Npbw0KWyAgICAyLjExNjY5NF0gdXNic2VyaWFsOiBVU0IgU2VyaWFsIHN1cHBvcnQgcmVnaXN0ZXJlZCBmb3IgRlRESSBVU0IgU2VyaWFsIERldmljZQ0KWyAgICAyLjExNzAzOF0gdXNiY29yZTogcmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciB1c2JfZWhzZXRfdGVzdA0KWyAgICAyLjExNzM2Ml0gdXNiY29yZTogcmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciBsdnMNClsgICAgMi4xMjAxMDBdIHVzYmNvcmU6IHJlZ2lzdGVyZWQgbmV3IGludGVyZmFjZSBkcml2ZXIgeHBhZA0KWyAgICAyLjEyMDQzNF0gdXNiY29yZTogcmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciB1c2JfYWNlY2FkDQpbICAgIDIuMTIwNzUzXSB1c2Jjb3JlOiByZWdpc3RlcmVkIG5ldyBpbnRlcmZhY2UgZHJpdmVyIGFpcHRlaw0KWyAgICAyLjEyMTA1NF0gdXNiY29yZTogcmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciBoYW53YW5nDQpbICAgIDIuMTIxMzYyXSB1c2Jjb3JlOiByZWdpc3RlcmVkIG5ldyBpbnRlcmZhY2UgZHJpdmVyIGtidGFiDQpbICAgIDIuMTIyNjU5XSBpMmNfZGV2OiBpMmMgL2RldiBlbnRyaWVzIGRyaXZlcg0KWyAgICAyLjEyMzc1OF0gdXNiY29yZTogcmVnaXN0ZXJlZCBuZXcgaW50ZXJmYWNlIGRyaXZlciB1dmN2aWRlbw0KWyAgICAyLjEyNTM1N10gZGV2aWNlLW1hcHBlcjogdWV2ZW50OiB2ZXJzaW9uIDEuMC4zDQpbICAgIDIuMTI2NzM1XSBkZXZpY2UtbWFwcGVyOiBpb2N0bDogNC40OC4wLWlvY3RsICgyMDIzLTAzLTAxKSBpbml0aWFsaXNlZDogZG0tZGV2ZWxAbGlzdHMubGludXguZGV2DQpbICAgIDIuMTUzMjQyXSBzZGhjaTogU2VjdXJlIERpZ2l0YWwgSG9zdCBDb250cm9sbGVyIEludGVyZmFjZSBkcml2ZXINClsgICAgMi4xNTM0NTRdIHNkaGNpOiBDb3B5cmlnaHQoYykgUGllcnJlIE9zc21hbg0KWyAgICAyLjE1MzU4MV0gc2RoY2ktcGx0Zm06IFNESENJIHBsYXRmb3JtIGFuZCBPRiBkcml2ZXIgaGVscGVyDQpbICAgIDIuMTU0ODkzXSBoaWQ6IHJhdyBISUQgZXZlbnRzIGRyaXZlciAoQykgSmlyaSBLb3NpbmENClsgICAgMi4xNjA1MzBdIHVzYmNvcmU6IHJlZ2lzdGVyZWQgbmV3IGludGVyZmFjZSBkcml2ZXIgdXNiaGlkDQpbICAgIDIuMTYwNzEwXSB1c2JoaWQ6IFVTQiBISUQgY29yZSBkcml2ZXINClsgICAgMi4xNzYxMzFdIGh3IHBlcmZldmVudHM6IGVuYWJsZWQgd2l0aCBhcm12OF9wbXV2MyBQTVUgZHJpdmVyLCA3ICgwLDgwMDAwMDNmKSBjb3VudGVycyBhdmFpbGFibGUNClsgICAgMi4xNzg2MjBdICBjc19zeXN0ZW1fY2ZnOiBDb3JlU2lnaHQgQ29uZmlndXJhdGlvbiBtYW5hZ2VyIGluaXRpYWxpc2VkDQpbICAgIDIuMTg1NjUzXSB1c2Jjb3JlOiByZWdpc3RlcmVkIG5ldyBpbnRlcmZhY2UgZHJpdmVyIHNuZC11c2ItYXVkaW8NClsgICAgMi4xODk0MDBdIEdBQ1QgcHJvYmFiaWxpdHkgTk9UIG9uDQpbICAgIDIuMTg5ODgxXSBNaXJyb3IvcmVkaXJlY3QgYWN0aW9uIG9uDQpbICAgIDIuMTkwNDA0XSBuZXRlbTogdmVyc2lvbiAxLjMNClsgICAgMi4xOTA1MjRdIHUzMiBjbGFzc2lmaWVyDQpbICAgIDIuMTkwNjA2XSAgICAgaW5wdXQgZGV2aWNlIGNoZWNrIG9uDQpbICAgIDIuMTkwNzA0XSAgICAgQWN0aW9ucyBjb25maWd1cmVkDQpbICAgIDIuMjAxNzM1XSB4dF90aW1lOiBrZXJuZWwgdGltZXpvbmUgaXMgLTAwMDANClsgICAgMi4yMDIzMzJdIGdyZTogR1JFIG92ZXIgSVB2NCBkZW11bHRpcGxleG9yIGRyaXZlcg0KWyAgICAyLjIwMjQ5OV0gSVB2NCBvdmVyIElQc2VjIHR1bm5lbGluZyBkcml2ZXINClsgICAgMi4yMDc3MzZdIEluaXRpYWxpemluZyBYRlJNIG5ldGxpbmsgc29ja2V0DQpbICAgIDIuMjA4MTA3XSBJUHNlYyBYRlJNIGRldmljZSBkcml2ZXINClsgICAgMi4yMDkyMDFdIE5FVDogUmVnaXN0ZXJlZCBQRl9JTkVUNiBwcm90b2NvbCBmYW1pbHkNClsgICAgMi4yMjE5OThdIFNlZ21lbnQgUm91dGluZyB3aXRoIElQdjYNClsgICAgMi4yMjM2MzldIEluLXNpdHUgT0FNIChJT0FNKSB3aXRoIElQdjYNClsgICAgMi4yMjQ4MDldIG1pcDY6IE1vYmlsZSBJUHY2DQpbICAgIDIuMjU1NDU2XSBzaXQ6IElQdjYsIElQdjQgYW5kIE1QTFMgb3ZlciBJUHY0IHR1bm5lbGluZyBkcml2ZXINClsgICAgMi4yNjA1NzddIE5FVDogUmVnaXN0ZXJlZCBQRl9QQUNLRVQgcHJvdG9jb2wgZmFtaWx5DQpbICAgIDIuMjYwOTg5XSBORVQ6IFJlZ2lzdGVyZWQgUEZfS0VZIHByb3RvY29sIGZhbWlseQ0KWyAgICAyLjI2MjAyNl0gY2FuOiBjb250cm9sbGVyIGFyZWEgbmV0d29yayBjb3JlDQpbICAgIDIuMjYyNjY0XSBORVQ6IFJlZ2lzdGVyZWQgUEZfQ0FOIHByb3RvY29sIGZhbWlseQ0KWyAgICAyLjI2Mjg1OF0gY2FuOiByYXcgcHJvdG9jb2wNClsgICAgMi4yNjMzMTBdIGNhbjogYnJvYWRjYXN0IG1hbmFnZXIgcHJvdG9jb2wNClsgICAgMi4yNjM1OTNdIGNhbjogbmV0bGluayBnYXRld2F5IC0gbWF4X2hvcHM9MQ0KWyAgICAyLjI2NTM5MF0gQmx1ZXRvb3RoOiBSRkNPTU0gc29ja2V0IGxheWVyIGluaXRpYWxpemVkDQpbICAgIDIuMjY1OTgwXSBCbHVldG9vdGg6IFJGQ09NTSB2ZXIgMS4xMQ0KWyAgICAyLjI2NjMxM10gQmx1ZXRvb3RoOiBISURQIChIdW1hbiBJbnRlcmZhY2UgRW11bGF0aW9uKSB2ZXIgMS4yDQpbICAgIDIuMjY2NjI1XSBCbHVldG9vdGg6IEhJRFAgc29ja2V0IGxheWVyIGluaXRpYWxpemVkDQpbICAgIDIuMjY3NDQ5XSBsMnRwX2NvcmU6IEwyVFAgY29yZSBkcml2ZXIsIFYyLjANClsgICAgMi4yNjc5MTJdIGwydHBfcHBwOiBQUFBvTDJUUCBrZXJuZWwgZHJpdmVyLCBWMi4wDQpbICAgIDIuMjY4MTI4XSBsMnRwX2lwOiBMMlRQIElQIGVuY2Fwc3VsYXRpb24gc3VwcG9ydCAoTDJUUHYzKQ0KWyAgICAyLjI2ODU1MV0gbDJ0cF9uZXRsaW5rOiBMMlRQIG5ldGxpbmsgaW50ZXJmYWNlDQpbICAgIDIuMjY4OTYxXSBsMnRwX2V0aDogTDJUUCBldGhlcm5ldCBwc2V1ZG93aXJlIHN1cHBvcnQgKEwyVFB2MykNClsgICAgMi4yNjkyMTddIGwydHBfaXA2OiBMMlRQIElQIGVuY2Fwc3VsYXRpb24gc3VwcG9ydCBmb3IgSVB2NiAoTDJUUHYzKQ0KWyAgICAyLjI2OTk4M10gc2N0cDogSGFzaCB0YWJsZXMgY29uZmlndXJlZCAoYmluZCAyNTYvMjU2KQ0KWyAgICAyLjM2ODY5NV0gcmVnaXN0ZXJlZCB0YXNrc3RhdHMgdmVyc2lvbiAxDQpbICAgIDIuMzcxNTY4XSBMb2FkaW5nIGNvbXBpbGVkLWluIFguNTA5IGNlcnRpZmljYXRlcw0KWyAgICAyLjM5OTg1M10gTG9hZGVkIFguNTA5IGNlcnQgJ0J1aWxkIHRpbWUgYXV0b2dlbmVyYXRlZCBrZXJuZWwga2V5OiA2ZWQyZDI0ODAxMTlhZGZiMTk3NTE1MTYwYmM0YWQzYWUxOTMxODc0Jw0KWyAgICAyLjQ3NDE5MV0gQnRyZnMgbG9hZGVkLCB6b25lZD1ubywgZnN2ZXJpdHk9eWVzDQpbICAgIDIuNDkxNDYyXSBjbGs6IERpc2FibGluZyB1bnVzZWQgY2xvY2tzDQpbICAgIDIuNDkyMjA5XSBQTTogZ2VucGQ6IERpc2FibGluZyB1bnVzZWQgcG93ZXIgZG9tYWlucw0KWyAgICAyLjQ5MjU3Nl0gQUxTQSBkZXZpY2UgbGlzdDoNClsgICAgMi40OTI4MzBdICAgTm8gc291bmRjYXJkcyBmb3VuZC4NClsgICAgMi42MDk2NDZdIEZyZWVpbmcgdW51c2VkIGtlcm5lbCBtZW1vcnk6IDg5NksNClsgICAgMi42MTU0MjBdIFJ1biAvaW5pdCBhcyBpbml0IHByb2Nlc3MNClRCMzcxRkNfRU5UUllfUElEMTogNi4xMi4xMTQtdGIzNzFmYy1yZXNlYXJjaDItZGlzcGxheQ0KVGhpcyBpcyB0aGUgbmV3IHB1YmxpYy1zb3VyY2UgZW50cnkgc3R1ZHkuIE5vIHN0b3JhZ2UgbW91bnQgb3IgcGF5bG9hZCBhdXRvLWV4ZWN1dGlvbi4NCmtleGVjLXRvb2xzIDIuMC4zMg0Ka2V4ZWMtdG9vbHMgMi4wLjMyDQpmNDQ4MGIyMzJhOTUyY2YxOTYwYzk2ZGI2YjhiOWYyZDVjZWYwOTMzNjMyMWZmYzZiMTNmMWYwMmYzZTFkNjBlICAvYmluL2J1c3lib3gNCjcwZWNkNTZkOGFjYzE4NTdlYWEyODZlYmY3YjMwNzk2ZjM0ZDM0NzdkMjExOTJlNTVjMTNmMjc5NzczNGRhNjAgIC9iaW4va2V4ZWMNCnRiMzcxZmMtZW50cnktcmV0dXJuLWJvb3Rsb2FkZXIgMSAocGh5c2ljYWwgcmV0dXJuIHVudmVyaWZpZWQpDQpUQjM3MUZDX0VOVFJZX0tFWEVDX0xPQURFRD0wDQpUQjM3MUZDX0VOVFJZX1NNT0tFX1JFQURZDQpUQjM3MUZDX1FFTVVfUkVMRUFTRT02LjEyLjExNC10YjM3MWZjLXJlc2VhcmNoMi1kaXNwbGF5DQpUQjM3MUZDX1FFTVVfTUFDSElORT1hYXJjaDY0DQpUQjM3MUZDX1FFTVVfRUwwX1JFQURZDQpxZW11LXN5c3RlbS1hYXJjaDY0OiB0ZXJtaW5hdGluZyBvbiBzaWduYWwgMTUgZnJvbSBwaWQgMTgxMTQ4IChweXRob24zKQo="
+  },
+  "format": {
+    "path": "/work/first-stage-research/userspace-r2-owner-udc/private-owner-v2/format-manifest.json",
+    "bytes": 6868,
+    "sha256": "656e207404ed1dca080f8de6fdcf7f04fac259406066c65eb4414cf1a1f9342d",
+    "mode": "0o600",
+    "data": {
+      "schema": "tb371fc-owner-v2-format-only-v1",
+      "started_utc": "2026-11-23T03:09:57.132226+00:00",
+      "scope": "private unsigned Android v2 container format only",
+      "default_action": "hold",
+      "format_verified": true,
+      "tablet_booted": false,
+      "bootloader_acceptance_tested": false,
+      "runtime_load_addresses_verified": false,
+      "board_driver_contract_verified": false,
+      "avb_signature_verified": false,
+      "rollback_compatibility_verified": false,
+      "kexec_handoff_tested": false,
+      "recovery_return_tested": false,
+      "source_backup_permissions_changed": false,
+      "recipe_sha256": "911ff4530a78173f28af167b02b2843703c5ee0180d6c7c65a00d372fd73c270",
+      "owner": {
+        "partition_sha256": "94649360140db672e861729927011984e9714459b4e19c9aab02b7ab79466668",
+        "partition_bytes": 104857600,
+        "layout_evidence_sha256": "831ee408abed2e9ca0b3f4ac093cab760f7ee4a53dda0638658c463815ba97a7",
+        "inspector_sha256": "b24f1c36248cd1203347549be500ef7e3274d1586a4e00bbb9db1a3fc9da87b4",
+        "header_page_sha256": "16c702eb7662604cc91017e9e2e6b3fe214e9b6cf441cf2e382d66f98ff1db8f",
+        "stored_cmdline_sha256": "3cf933553224b2db7856e09a5f987c5348e7cd3cd6eb17298e97bc0174855f19",
+        "stored_cmdline_token_count": 15,
+        "stored_init_override_conflicts": [],
+        "bootloader_appended_cmdline_observed": false
+      },
+      "build_inputs": {
+        "kernel_manifest": {
+          "path": "/work/first-stage-research/entry-r1-attempt4/build.json",
+          "bytes": 31930,
+          "sha256": "2b491f63f47b24f830b4447290fab6bfd4b5ad5ce9126f3a8f1c8860334a6cf2"
+        },
+        "userspace_manifest": {
+          "path": "/work/first-stage-research/userspace-r2-owner-udc/build.json",
+          "bytes": 14502,
+          "sha256": "f388996a70a8d2deded1853d6213ed6896cb06ec6cd4dba34b4ba6e64e5400bc"
+        },
+        "userspace_vm": {
+          "path": "/work/first-stage-research/userspace-r2-owner-udc/qemu-reference/result.json",
+          "bytes": 2432,
+          "sha256": "951713a0923a941000651ee1a40e556ae84d66d8fd4499d3319d6426c47cc194"
+        },
+        "kernel_release": "4.19.325-cip134-st18-tb371fc-entry-r1",
+        "userspace_vm_scope": "rescue userspace only on the frozen research2 reference kernel; NOT a downstream entry-kernel pass",
+        "init_source_sha256": "442a69181a7e8bb9802afbe23d94929d9844eb9163ee0be2a3080aa2a65c829f"
+      },
+      "candidate": {
+        "path": "/work/first-stage-research/userspace-r2-owner-udc/private-owner-v2/entry-r1-owner-recovery-a-unsigned-v2.img",
+        "bytes": 53587968,
+        "sha256": "7239c215ebb56ff5580a9b7ac9599859ab8242443e5204d70e4b618ef51587a6",
+        "layout": {
+          "header": {
+            "kernel_size": 46315536,
+            "kernel_addr": 32768,
+            "ramdisk_size": 1351720,
+            "ramdisk_addr": 16777216,
+            "second_size": 0,
+            "second_addr": 0,
+            "tags_addr": 256,
+            "page_size": 4096,
+            "header_version": 2,
+            "os_version": 369099138,
+            "recovery_dtbo_size": 4299963,
+            "recovery_dtbo_offset": 47677440,
+            "header_size": 1660,
+            "dtb_size": 1609107,
+            "dtb_addr": 32505856
+          },
+          "components": [
+            {
+              "name": "kernel",
+              "offset": 4096,
+              "bytes": 46315536,
+              "sha256": "f8effadc219ff50b87f07563bb56255982e3ce94589adeae0f3feff68655882c",
+              "signature": "arm64_image",
+              "release_strings": [
+                "4.19.325-cip134-st18-tb371fc-entry-r1"
+              ],
+              "arm64_image_header": {
+                "text_offset": 524288,
+                "image_size": 56471552,
+                "flags": 10
+              }
+            },
+            {
+              "name": "ramdisk",
+              "offset": 46321664,
+              "bytes": 1351720,
+              "sha256": "4e89de6d7de7535eb0e70a2557a3ad123f0e89d5d2724ec9104984aeb7db92a5",
+              "signature": "gzip"
+            },
+            {
+              "name": "recovery_dtbo",
+              "offset": 47677440,
+              "bytes": 4299963,
+              "sha256": "279910628e61cad149ccdb16ae0aa0a3a2f46441e21132ac3a1323e565219679",
+              "signature": "unclassified"
+            },
+            {
+              "name": "dtb",
+              "offset": 51978240,
+              "bytes": 1609107,
+              "sha256": "cb0f50f13fd70b5dcd0b12d330ae09d070ae4d6f20f4873b1a9815883726ee0e",
+              "signature": "fdt"
+            }
+          ],
+          "page_aligned_payload_end": 53587968,
+          "partition_padding_or_trailer_bytes": 0
+        },
+        "header_page_sha256": "a21729322909ae039bbb454eb6db2675312d14667f6f04ef32c351a09d41df1e",
+        "changed_header_byte_offsets": [
+          9,
+          10,
+          16,
+          17,
+          18,
+          576,
+          577,
+          578,
+          579,
+          580,
+          581,
+          582,
+          583,
+          584,
+          585,
+          586,
+          587,
+          588,
+          589,
+          590,
+          591,
+          592,
+          593,
+          594,
+          595,
+          1637,
+          1638
+        ],
+        "all_other_header_bytes_identical": true,
+        "owner_dtb_and_recovery_dtbo_identical": true,
+        "source_partition_padding_or_avb_copied": false,
+        "avb_footer_present": false,
+        "partition_padded": false
+      },
+      "aosp_tools": {
+        "unpack_bootimg.py": {
+          "commit": "8d0922bfb932ee532226728b1bf2fe54a2055f5a",
+          "url": "https://android.googlesource.com/platform/system/tools/mkbootimg/+/8d0922bfb932ee532226728b1bf2fe54a2055f5a/unpack_bootimg.py?format=TEXT",
+          "sha256": "64e5440b190e96a7b51243bcfdc72320a8d77e17b0986ece88607e0868ca2465"
+        },
+        "mkbootimg.py": {
+          "commit": "8d0922bfb932ee532226728b1bf2fe54a2055f5a",
+          "url": "https://android.googlesource.com/platform/system/tools/mkbootimg/+/8d0922bfb932ee532226728b1bf2fe54a2055f5a/mkbootimg.py?format=TEXT",
+          "sha256": "beedcf77c9dd2603ef21f01dcf2bf9043579facc22a9973f749055162e4d510b"
+        }
+      },
+      "independent_aosp_verification": {
+        "exit_code": 0,
+        "payloads": {
+          "kernel": {
+            "path": "/work/first-stage-research/userspace-r2-owner-udc/private-owner-v2/aosp-extracted/kernel",
+            "bytes": 46315536,
+            "sha256": "f8effadc219ff50b87f07563bb56255982e3ce94589adeae0f3feff68655882c"
+          },
+          "ramdisk": {
+            "path": "/work/first-stage-research/userspace-r2-owner-udc/private-owner-v2/aosp-extracted/ramdisk",
+            "bytes": 1351720,
+            "sha256": "4e89de6d7de7535eb0e70a2557a3ad123f0e89d5d2724ec9104984aeb7db92a5"
+          },
+          "recovery_dtbo": {
+            "path": "/work/first-stage-research/userspace-r2-owner-udc/private-owner-v2/aosp-extracted/recovery_dtbo",
+            "bytes": 4299963,
+            "sha256": "279910628e61cad149ccdb16ae0aa0a3a2f46441e21132ac3a1323e565219679"
+          },
+          "dtb": {
+            "path": "/work/first-stage-research/userspace-r2-owner-udc/private-owner-v2/aosp-extracted/dtb",
+            "bytes": 1609107,
+            "sha256": "cb0f50f13fd70b5dcd0b12d330ae09d070ae4d6f20f4873b1a9815883726ee0e"
+          }
+        },
+        "image_id_matches": true,
+        "private_stdout_published": false,
+        "source_hashes_verified": true
+      },
+      "ended_utc": "2026-11-23T03:10:00.304648+00:00"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "/work/first-stage-research/userspace-r2-owner-udc/artifacts/busybox",
+      "bytes": 1253520,
+      "sha256": "f4480b232a952cf1960c96db6b8b9f2d5cef09336321ffc6b13f1f02f3e1d60e",
+      "mode": "0o755"
+    },
+    {
+      "path": "/work/first-stage-research/userspace-r2-owner-udc/artifacts/kexec",
+      "bytes": 1003472,
+      "sha256": "70ecd56d8acc1857eaa286ebf7b30796f34d3477d21192e55c13f2797734da60",
+      "mode": "0o755"
+    },
+    {
+      "path": "/work/first-stage-research/userspace-r2-owner-udc/artifacts/entry-return-bootloader",
+      "bytes": 708680,
+      "sha256": "d5b989c22c190eb7edcf20d64707b7961fc8b9dd70fc5bb98a2484c3f14869eb",
+      "mode": "0o755"
+    },
+    {
+      "path": "/work/first-stage-research/userspace-r2-owner-udc/artifacts/ramdisk-init",
+      "bytes": 3336,
+      "sha256": "442a69181a7e8bb9802afbe23d94929d9844eb9163ee0be2a3080aa2a65c829f",
+      "mode": "0o755"
+    },
+    {
+      "path": "/work/first-stage-research/userspace-r2-owner-udc/artifacts/entry-initramfs.cpio.gz",
+      "bytes": 1351720,
+      "sha256": "4e89de6d7de7535eb0e70a2557a3ad123f0e89d5d2724ec9104984aeb7db92a5",
+      "mode": "0o600"
+    }
+  ],
+  "private_candidate": {
+    "path": "/work/first-stage-research/userspace-r2-owner-udc/private-owner-v2/entry-r1-owner-recovery-a-unsigned-v2.img",
+    "bytes": 53587968,
+    "sha256": "7239c215ebb56ff5580a9b7ac9599859ab8242443e5204d70e4b618ef51587a6",
+    "mode": "0o600"
+  },
+  "source_files": [
+    {
+      "path": "/src/scripts/research/entry/owner-udc/ramdisk-init",
+      "bytes": 3336,
+      "sha256": "442a69181a7e8bb9802afbe23d94929d9844eb9163ee0be2a3080aa2a65c829f",
+      "mode": "0o644"
+    },
+    {
+      "path": "/src/scripts/research/entry/owner-udc/repack.py",
+      "bytes": 13936,
+      "sha256": "5900579a1d844a2929886254d3275d1a09b768a0922067a68e3f9af103f26974",
+      "mode": "0o644"
+    },
+    {
+      "path": "/src/scripts/research/entry/owner-udc/qualify.sh",
+      "bytes": 1523,
+      "sha256": "eee790221b0469d7ccc132d7cf9118eda33b53836f97d4efcd1a19a64324be48",
+      "mode": "0o644"
+    },
+    {
+      "path": "/src/scripts/research/entry/ramdisk-init",
+      "bytes": 2968,
+      "sha256": "ae33ff124ffdca598642a1753e9b5e50de02e8c95b9645c539aae5d5978c9a25",
+      "mode": "0o644"
+    },
+    {
+      "path": "/src/scripts/research/entry/build_first_stage_userspace.py",
+      "bytes": 11666,
+      "sha256": "c7eb63b41738ba830fefe007a02ba81b627ea520d2386ca26dab953bb69bbb56",
+      "mode": "0o644"
+    },
+    {
+      "path": "/src/scripts/research/entry/package_owner_v2.py",
+      "bytes": 15293,
+      "sha256": "911ff4530a78173f28af167b02b2843703c5ee0180d6c7c65a00d372fd73c270",
+      "mode": "0o644"
+    },
+    {
+      "path": "/src/scripts/research/entry/smoke_first_stage.py",
+      "bytes": 7140,
+      "sha256": "293dc5a31037eb496deef6774a561457161c371996d278e080f310bf43289c51",
+      "mode": "0o644"
+    },
+    {
+      "path": "/src/scripts/research/build/smoke_qemu.py",
+      "bytes": 11863,
+      "sha256": "e3bcf5a7fe442b3e0065e513d82e4774891de98b3b61a4331971a2ab112a5473",
+      "mode": "0o644"
+    },
+    {
+      "path": "/src/docs/research/2026-11-23/evidence/android-usb-transport.json",
+      "bytes": 3033,
+      "sha256": "1cb624874a33a5698fab497b0a76a1870817a8299b1f7f264eecb7b2d9f7b445",
+      "mode": "0o644"
+    }
+  ],
+  "frozen_inputs": [
+    {
+      "path": "/work/first-stage-research/userspace-r1-attempt7/build.json",
+      "bytes": 19733,
+      "sha256": "4851e02c7016d6f1288f46e78290cbccecd472951cff116c2059c67a4655bbc9",
+      "mode": "0o644"
+    },
+    {
+      "path": "/work/first-stage-research/entry-r1-attempt4/build.json",
+      "bytes": 31930,
+      "sha256": "2b491f63f47b24f830b4447290fab6bfd4b5ad5ce9126f3a8f1c8860334a6cf2",
+      "mode": "0o644"
+    },
+    {
+      "path": "/work/first-stage-research/private-input/recovery_a.img",
+      "bytes": 104857600,
+      "sha256": "94649360140db672e861729927011984e9714459b4e19c9aab02b7ab79466668",
+      "mode": "0o600"
+    },
+    {
+      "path": "/work/research2-display/artifacts/Image",
+      "bytes": 29849608,
+      "sha256": "181f0152868a2dc501191f09cb839ff295f6814f38f0bf027d6f55833382b27d",
+      "mode": "0o755"
+    },
+    {
+      "path": "/work/research2-display/artifacts/source-manifest.json",
+      "bytes": 9679,
+      "sha256": "845914d9cc1c876f10704f3334ee942b2c26deaa8045ce9c2ef82ef2920cde21",
+      "mode": "0o644"
+    }
+  ],
+  "evidence_class": "host_build",
+  "qualification": {
+    "default_action": "hold",
+    "selector_target": "a600000.dwc3",
+    "selector_fixture_count": 10,
+    "selector_fixtures_passed": true,
+    "production_selector_path_override_added": false,
+    "reference_userspace_vm_passed": true,
+    "private_android_v2_format_verified": true,
+    "downstream_kernel_rebuilt": false,
+    "downstream_kernel_runtime_passed": false,
+    "owner_linux_booted": false,
+    "owner_usb_gadget_bound": false,
+    "owner_usb_host_enumeration_verified": false,
+    "usb_role_or_pd_changed": false,
+    "kexec_loaded_or_executed": false,
+    "owner_recovery_return_verified": false,
+    "bootloader_acceptance_verified": false,
+    "avb_signature_verified": false,
+    "rollback_compatibility_verified": false,
+    "runtime_load_addresses_verified": false,
+    "partition_or_slot_changed": false,
+    "private_backup_permissions_changed": false
+  },
+  "public_evidence_inputs": [
+    {
+      "path": "docs/research/2026-11-23/first-stage-reconstruction.md",
+      "bytes": 25922,
+      "sha256": "b2622d0f4fa37fbaf30c9dccaa14083ea71db7df3e42a63fea2d87fbb58af210"
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/first-stage-reconstruction.json",
+      "bytes": 209066,
+      "sha256": "15913e94c2753926842553e60bc48f00bf8f7b96dd6880554efb2bfa899a72e7"
+    },
+    {
+      "path": "docs/research/2026-11-23/usb-transport-readiness.md",
+      "bytes": 4211,
+      "sha256": "48d90ce38a8f7405ce373f18ae14c1fd8207372fed60f3c72cae0d4888d005c0"
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/android-usb-transport.json",
+      "bytes": 3033,
+      "sha256": "1cb624874a33a5698fab497b0a76a1870817a8299b1f7f264eecb7b2d9f7b445"
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/doesvm-usb-transport.json",
+      "bytes": 10642,
+      "sha256": "07216ad5aa39ca9349c3a749a2f4c63a536934d5681a65e2dd32c33890e8df7c"
+    }
+  ],
+  "limits": [
+    "The selector tests execute the exact fixed-path production function under ARM BusyBox with mocked shell test predicates. They do not access or bind a real UDC.",
+    "The generic virt VM sets tb371fc.entry_smoke=1, which deliberately skips the gadget branch. Its pass proves the repacked rescue userland reaches PID 1 on the frozen research2 kernel, not USB selection or enumeration in a VM or on the tablet.",
+    "The Android observation identifies the configured a600000.dwc3 controller at capture time. Readable UDC metadata does not prove bindability, cable connectivity, peripheral role, or driver equivalence in the newly compiled downstream kernel.",
+    "The old compiled public 4.19.325 entry kernel and its prior generic-virt Qualcomm SCM failure are unchanged. No missing Lenovo board driver or historical handoff patch is supplied by this ramdisk change.",
+    "The private image preserves the owner recovery header fields, DTB and recovery DTBO as previously defined. Format verification does not authenticate the image or establish that its board contracts and load addresses are valid at runtime.",
+    "All original entry source and artifacts remain immutable. The private candidate uses the original kernel-oriented entry-r1 filename inside a new userspace-r2-owner-udc prefix; it does not overwrite the old candidate."
+  ],
+  "reproduction": {
+    "prerequisites": "Frozen first-stage kernel and userspace manifests/artifacts, owner recovery_a private input, frozen research2 artifacts, exact helper sources and USB capture hashes listed in this record. Run only inside the authorized isolated build container.",
+    "command": [
+      "python3",
+      "-B",
+      "/src/scripts/research/build/run_job.py",
+      "--work",
+      "/work/first-stage-research",
+      "--name",
+      "owner-udc-r2-qualify-02",
+      "--",
+      "bash",
+      "/src/scripts/research/entry/owner-udc/qualify.sh",
+      "userspace-r2-owner-udc-02"
+    ],
+    "existing_output_reuse_allowed": false,
+    "notes": "Use a fresh accepted -NN prefix for another attempt. The old helper names and private candidate basename refer to the unchanged entry-r1 kernel; the containing prefix and manifests identify the new ramdisk."
+  }
+}

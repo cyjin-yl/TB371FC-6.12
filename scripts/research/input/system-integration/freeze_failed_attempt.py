@@ -1,0 +1,85 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: GPL-2.0-only
+"""Retain a completed failed generic-VM attempt without inventing a pass."""
+import argparse
+import datetime
+import hashlib
+import json
+from pathlib import Path
+import re
+
+
+def identity(path):
+    if path.is_symlink() or not path.is_file():
+        raise ValueError('ordinary closed evidence file required: ' + str(path))
+    with path.open('rb') as stream:
+        digest = hashlib.file_digest(stream, 'sha256').hexdigest()
+    return {'size': path.stat().st_size, 'sha256': digest}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--work', type=Path, required=True)
+    args = parser.parse_args()
+    work = args.work
+    if str(work) not in ('/work/fedora-input-system-v2', '/work/fedora-input-system-v3') or work.is_symlink():
+        parser.error('explicit independent project system prefix required')
+    profile = json.loads((work / 'system-profile.json').read_text())
+    release = profile['kernel_release']
+    if not re.fullmatch(r'6\.12\.114-tb371fc-research[34]-system', release):
+        raise ValueError('unexpected candidate release')
+    results = {path.parent.name: json.loads(path.read_text())
+               for path in sorted(work.glob('vm-*-??/result.json'))}
+    failures = [name for name, result in results.items() if name.startswith('vm-verify-') and
+                result.get('passed') is False and result.get('qemu_exit_code') is not None]
+    if not failures:
+        raise ValueError('a completed failed verification VM is required')
+    latest = sorted(failures)[-1]
+    if any(name > latest and name.startswith('vm-verify-') for name in results):
+        raise ValueError('refusing to describe an earlier failure as the latest outcome')
+    jobs = {path.name: json.loads(path.read_text()) for path in sorted((work / 'jobs').glob('*.json'))}
+    vm_records = {}
+    for name, result in results.items():
+        vm_records[name] = {'result': result, 'metadata': identity(work / name / 'result.json'),
+                           'serial': identity(work / name / 'serial.log')}
+    metadata = {}
+    for name in ('baseline-copy.json', 'stage01-prewrite-check.json', 'kernel-transfer.json',
+                 'runtime.json', 'system-profile.json', 'configured.json', 'initramfs.json',
+                 'initramfs-archive-verification.json', 'image.before-boot.json'):
+        path = work / name
+        if path.is_file():
+            metadata[name] = identity(path)
+    images = list(work.glob('fedora45-research*-system.ext4'))
+    if len(images) != 1:
+        raise ValueError('exactly one candidate image expected')
+    report = {
+        'schema_version': 1, 'capture_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        'status': 'generic_vm_verification_failed', 'overall_passed': False,
+        'scope': 'host_build and isolated generic ARM64 virtual machine',
+        'work': str(work), 'kernel_release': release, 'profile': profile,
+        'latest_verification_run': latest, 'vm_runs': vm_records, 'phase_jobs': jobs,
+        'retained_metadata': metadata,
+        'failed_image_after_owned_qemu_exit': {'path': str(images[0]), **identity(images[0]),
+                                              'clean_poweroff_claimed': False,
+                                              'filesystem_repaired': False},
+        'partial_progress_is_complete_acceptance': False,
+        'physical_tablet_booted': False, 'physical_tablet_modified': False,
+        'tablet_hardware_tested': False, 'all_hardware_accepted': False,
+        'source_recipe': identity(Path(__file__)),
+        'limits': [
+            'Partial progress reports only the named checks reached before failure.',
+            'The completed failed VM is retained; no gate, image or log is overwritten.',
+            'Every gate must execute again for any later kernel candidate.',
+            'QEMU uses generic virt DT. The packaged Lenovo DT and firmware are not hardware tests.',
+            'The compiled MODULE_SIG_FORCE setting and the explicit VM module.sig_enforce argument are distinct.',
+        ],
+    }
+    output = work / 'fedora-input-system-attempt.json'
+    with output.open('x') as stream:
+        json.dump(report, stream, sort_keys=True, indent=2)
+        stream.write('\n')
+    print(json.dumps({'status': report['status'], 'latest_run': latest, 'report': identity(output)}, sort_keys=True), flush=True)
+
+
+if __name__ == '__main__':
+    main()

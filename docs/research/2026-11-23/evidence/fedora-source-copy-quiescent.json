@@ -1,0 +1,45 @@
+{
+  "canonical_streams": {
+    "destination": {
+      "bytes": 1323141120,
+      "exit_code": 0,
+      "sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96"
+    },
+    "source": {
+      "bytes": 1323141120,
+      "exit_code": 0,
+      "sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96"
+    }
+  },
+  "complete": true,
+  "container": "tb371fc-build-20261123",
+  "copy_exit_code": 0,
+  "destination_tree": "/work/fedora-input-system-v5/rootfs",
+  "finished_utc": "2026-11-23T04:18:44.427405+00:00",
+  "host_storage_or_daemon_modified": false,
+  "input_hashes": {
+    "/usr/bin/qemu-aarch64": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943",
+    "/work/fedora-proot-src/src/proot": "313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f",
+    "/work/fedora-system-integration-v1/fedora-system-integration.json": "66ac854b2bc938aed147afe0355b57fcbba856c874e9d82cec4cad663b1c87d9",
+    "/work/fedora-system-integration-v1/runtime.json": "10a373bfc3291aabe564c8f7af90265900763eadfe3167a7384cc4dcd596544b",
+    "/work/fedora-system-integration-v1/vm-verify-01/result.json": "223f73b253a48995dd238575e64aad055e11f311c658aa03534b49c570095675"
+  },
+  "journal_acl_check": {
+    "system.posix_acl_access": {
+      "byte_identical": true,
+      "sha256": "fc742256255ddf9fd3878c1a93c0a2f49b1f9cf2793a30b23ea9d64ea5740aff",
+      "size": 52
+    },
+    "system.posix_acl_default": {
+      "byte_identical": true,
+      "sha256": "fc742256255ddf9fd3878c1a93c0a2f49b1f9cf2793a30b23ea9d64ea5740aff",
+      "size": 52
+    }
+  },
+  "previous_ssd_container": "tb371fc-build-ssd-20261123",
+  "previous_ssd_partial_retained": "/work/fedora-input-system-v1",
+  "schema_version": 1,
+  "source_modified": false,
+  "source_tree": "/work/fedora-system-integration-v1/rootfs",
+  "started_utc": "2026-11-23T04:17:34.589246+00:00"
+}

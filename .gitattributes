@@ -3,3 +3,4 @@
 # Preserve exact serial evidence bytes; its SHA-256 covers original CR/LF.
 docs/research/2026-11-23/evidence/kernel-qemu-*.log -text
 docs/research/2026-11-23/evidence/research2-display-qemu.log -text
+docs/research/2026-11-23/evidence/fedora-*.log -text

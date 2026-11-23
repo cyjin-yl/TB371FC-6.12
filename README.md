@@ -13,8 +13,13 @@
 ([中文](docs/research/2026-11-23/README.zh-CN.md)) — дисплей, клавиатура, перо,
 зарядка и управление питанием. Дополнение включает собранное
 [исследовательское ядро и запуск в ARM64 QEMU](docs/research/2026-11-23/kernel-build.md),
-подготовку GPU firmware и эксперименты Fedora/Nura/NixOS. Новых проверок на
-физическом планшете это не добавляет; см. [критерии приёмки всех устройств](docs/research/2026-11-23/acceptance.md).
+[полную загрузку Fedora с SELinux Enforcing в QEMU](docs/research/2026-11-23/fedora-system-integration.md),
+[собранную ARM-систему NixOS](docs/research/2026-11-23/nixos-system-build.md),
+подготовку firmware, исправления ввода и
+[выбор USB-контроллера аварийной среды](docs/research/2026-11-23/first-stage-owner-udc.md).
+Дальнейшие проверки общего ядра и сохранённые ошибки перечислены в обзоре.
+Новых успешных проверок на планшете владельца это не добавляет;
+см. [критерии приёмки всех устройств](docs/research/2026-11-23/acceptance.md).
 
 Arch Linux ARM с KDE Plasma на планшете Lenovo **TB371FC** с ядром **Linux 6.12**,
 которое запускается с microSD. Android на встроенной памяти (UFS) не трогается:

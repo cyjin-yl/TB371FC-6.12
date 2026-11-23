@@ -1,0 +1,38 @@
+{
+  "capture_utc": "2026-11-23T02:33:51.174313+00:00",
+  "dtb_sha256": "129bbee33b0c71be120d1d724be6267d0e4f99c07ec9ed951a823ab9241998dc",
+  "gpu": {
+    "compatible": [
+      "qcom,adreno-650.2",
+      "qcom,adreno"
+    ],
+    "iommus": [
+      121,
+      0,
+      1025
+    ],
+    "path": "/soc@0/gpu@3d00000",
+    "status": [
+      "okay"
+    ]
+  },
+  "gpu_references_this_smmu": true,
+  "historical_r185_adreno_compatible_removal_applied": false,
+  "kernel_release": "6.12.114-tb371fc-research1",
+  "per_process_gpu_isolation_runtime_verified": false,
+  "scope": "compiled research1 GPU/SMMU DT contract only; no hardware execution",
+  "smmu": {
+    "compatible": [
+      "qcom,sm8250-smmu-500",
+      "qcom,adreno-smmu",
+      "qcom,smmu-500",
+      "arm,mmu-500"
+    ],
+    "dma_coherent_property_present": true,
+    "path": "/soc@0/iommu@3da0000",
+    "phandle": [
+      121
+    ],
+    "status": null
+  }
+}
