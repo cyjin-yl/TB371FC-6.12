@@ -1,0 +1,18 @@
+name: R5 VM image lineage
+on:
+  pull_request:
+    paths:
+      - 'scripts/research/rootfs/run_r5_vm_phase.py'
+      - 'scripts/research/rootfs/test_run_r5_vm_phase.py'
+      - '.github/workflows/r5-vm-image-lineage.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lineage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test the image-lineage gate (synthetic, not a VM boot)
+        run: python3 -m unittest discover -s scripts/research/rootfs -p test_run_r5_vm_phase.py -v
