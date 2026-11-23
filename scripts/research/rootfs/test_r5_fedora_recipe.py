@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: GPL-2.0-only
 from pathlib import Path
 import json
+import os
+import struct
 import subprocess
 import tempfile
 import unittest
@@ -47,7 +49,19 @@ class RecipeTests(unittest.TestCase):
             base = Path(tmp)
             root = base / "root"
             root.mkdir()
-            (root / "payload").write_bytes(b"R5 image fixture\n")
+            payload = root / "payload"
+            payload.write_bytes(b"R5 image fixture\n")
+            os.setxattr(payload, "user.tb371fc", b"retained-xattr")
+            # Linux POSIX ACL xattr: named user makes this a nontrivial ACL.
+            acl = struct.pack("<I", 2) + b"".join(struct.pack("<HHI", tag, perm, uid)
+                for tag, perm, uid in [(1, 6, 0xffffffff), (2, 4, 12345),
+                                       (4, 4, 0xffffffff), (16, 4, 0xffffffff),
+                                       (32, 0, 0xffffffff)])
+            os.setxattr(payload, "system.posix_acl_access", acl)
+            acl = os.getxattr(payload, "system.posix_acl_access")
+            with self.assertRaises(ValueError):
+                common.create_ext4(root, root / "recursive.ext4", "tb371fc-r5-f45",
+                                   size_bytes=64 * 1024**2, mkfs_timeout=60)
             image = base / "fixture.ext4"
             result = common.create_ext4(root, image, "tb371fc-r5-f45",
                                        size_bytes=64 * 1024**2, mkfs_timeout=60)
@@ -56,6 +70,12 @@ class RecipeTests(unittest.TestCase):
             self.assertEqual(result["sha256"], s.identity(image)["sha256"])
             data = subprocess.check_output(["/usr/sbin/debugfs", "-R", "cat /payload", str(image)])
             self.assertEqual(data, b"R5 image fixture\n")
+            for name, expected in (("user.tb371fc", b"retained-xattr"),
+                                   ("system.posix_acl_access", acl)):
+                target = base / ("export-" + name)
+                subprocess.run(["/usr/sbin/debugfs", "-R",
+                    f"ea_get -f {target} /payload {name}", str(image)], check=True)
+                self.assertEqual(target.read_bytes(), expected)
             for suffix in ("mkfs", "fsck", "label"):
                 receipt = json.loads((base / ("fixture.ext4." + suffix + ".json")).read_text())
                 self.assertEqual(receipt["exit_code"], 0)
