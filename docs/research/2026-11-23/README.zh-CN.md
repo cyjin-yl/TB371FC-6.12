@@ -12,13 +12,16 @@ R5 AArch64 模块编译成功。修前修后的有效分区信息和离线复制
 候选模块尚未签名、装载或做实机触控/笔验收。
 
 新增 [R5 启动候选包校验](boot-bundle-contract.md)：可执行地核对完整 106 文件输入、
-当前产物身份和最终 root 的模块依赖。真实 root loader、入口和恢复通道仍分别保留
+当前产物身份和最终 root 的模块依赖。实机入口、板级根卷选择和恢复通道仍分别保留
 未完成条件，不因文件校验成功而增加本机 Linux 通过数。
 
-**最新构建检查：[research5](research5-services-kernel.md) 已编译并完成传输；
-[首次 Fedora v9 镜像尝试](fedora-r4f-image-failed.md) 在任何 VM 之前失败。
-最近一次实际生产启动仍是 [v8](fedora-r4e-persistent-result-failed.md)：guest
-检查通过，但一条 Enforcing AVC 使整轮失败。本机 Linux 仍为 0 次启动、0 项通过。**
+**最新接续见 [2026-11-24 R5 运行检查点](../2026-11-24/r5-runtime.md)：
+run04 的真实 initramfs、镜像构建及维护、生产两阶段 VM 均通过。修复后的 R5
+进入 systemd 多用户目标，SELinux Enforcing、运行时模块签名强制执行及原有
+生产门槛全部通过。run03 的 worker 身份失败仍保留，
+[v8 的 AVC 失败](fedora-r4e-persistent-result-failed.md)和
+[首次 v9 镜像超时](fedora-r4f-image-failed.md)仍保留原记录。
+本机 Linux 仍为 0 次启动、0 项通过。**
 
 已在 doesvm CT102 的隔离容器内构建 `6.12.114-tb371fc-research1` 内核、
 配套模块和设备树。实际启动测试发现并修复了历史页表池在通用 ARM 虚拟机
@@ -181,6 +184,7 @@ CIL 比较和 19 元组离线查询通过，12 项拒绝控制／诊断保持拒
 | --- | --- | --- |
 | Fedora，冻结 research1 系统 | systemd 多用户和 Enforcing 完整启动，83 模块与 69 固件哈希匹配 | 基线资源/GPIO 提示仍保留；未测试平板硬件 |
 | Fedora，research3/research4 后续 | 两份 84 模块完整内核；v8 完成早期标签、真实 FD/TasksMax/BPF 行为、PL061 绑定及正常关机结果传输 | v8 失败保留；首次 v9 镜像在 VM 之前超时；后续运行/收尾及平板验收未完成 |
+| [Fedora，R5 run04](../2026-11-24/r5-runtime.md) | 新 root/initramfs/镜像及维护、生产两阶段通过；多用户、Enforcing、签名强制执行、真实 TasksMax/BPF 行为和持久结果均合格 | 仅 generic virt，无 Lenovo 板级 DT 或物理直通；实机入口、恢复和硬件验收仍未完成 |
 | NixOS | 完整 894 路径闭包，ARM 版本/语法检查；独立 R5 服务前提已编译 | 源校验后首次签名缓存复制超时；无合格注册根／镜像、激活或 PID 1 启动 |
 | Nura/postmarketOS 实验 | 382 包目标 rootfs 已导出；实际 BusyBox/OpenRC 入口盘点与独立 R5 前提编译 | 目标未启动；早期缓存仅留 371 个版本，完整重建和硬件集成仍未完成 |
 
