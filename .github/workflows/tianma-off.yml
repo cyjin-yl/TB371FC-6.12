@@ -1,0 +1,32 @@
+name: Tianma OFF sequence C regression
+on:
+  pull_request:
+    paths:
+      - 'mainline-port/backports/linux-6.12/panel-novatek-nt36523.c'
+      - 'mainline-port/backports/linux-6.12/0022-drm-panel-tb371fc-tianma-off-sequence.patch'
+      - 'scripts/research/display/test_tianma_off.py'
+      - 'docs/research/2026-11-24/evidence/tianma-off/**'
+      - '.github/workflows/tianma-off.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  off-sequence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check source and observed test identities
+        run: |
+          python3 - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          index = json.loads(Path('docs/research/2026-11-24/evidence/tianma-off/index.json').read_text())
+          for entry in index['files'] + [index['source']]:
+              data = Path(entry['path']).read_bytes()
+              if hashlib.sha256(data).hexdigest() != entry['sha256'] or ('bytes' in entry and len(data) != entry['bytes']):
+                  raise SystemExit('retained input differs: ' + entry['path'])
+          PY
+      - name: Reproduce original behavior and exercise isolated correction
+        run: |
+          python3 -O scripts/research/display/test_tianma_off.py --original
+          python3 -O scripts/research/display/test_tianma_off.py
