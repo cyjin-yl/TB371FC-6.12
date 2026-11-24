@@ -1,0 +1,12 @@
+{
+  "schema": "tb371fc-runtime-copy-pipeline-v1",
+  "finished_utc": "2026-11-24T12:08:42.614955+00:00",
+  "source_exit_code": 0,
+  "receiver_exit_code": 1,
+  "source_container": "tb371fc-build-20261123",
+  "receiver_container": "tb371fc-build-ssd-20261123",
+  "source_directory": "/work/fedora-system-integration-v1/rootfs",
+  "receiver_source_sha256": "63cb331c63ca2fd1e659811fefa614955e0fdd6a331aaa7b873370e478cdc1c2",
+  "source_stream_timeout_seconds": 3600,
+  "target_gate_timeout_changed": false
+}

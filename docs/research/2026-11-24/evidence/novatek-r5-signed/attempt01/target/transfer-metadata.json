@@ -1,0 +1,16 @@
+{
+  "files": [
+    {
+      "bytes": 1399,
+      "path": "r5-novatek-depmod-c1296-run01.log",
+      "sha256": "b26593fe56a96d9b9dd920e680cd8abfeee74eb5d82bf6612a02bc48dc825928"
+    },
+    {
+      "bytes": 2,
+      "path": "r5-novatek-depmod-c1296-run01.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    }
+  ],
+  "schema": "recovered-transfer-file-manifest-v1",
+  "source": "Recovered original tool result file values; each content file verified against its saved byte count and SHA-256"
+}

@@ -1,0 +1,759 @@
+{
+  "archive": {
+    "bytes": 1323141120,
+    "sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96"
+  },
+  "cgroup_at_finish": {
+    "memory.current": "2828177408",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+    "memory.max": "4294967296",
+    "memory.peak": "2854940672",
+    "memory.swap.max": "0"
+  },
+  "complete": true,
+  "exit_code": 0,
+  "exported_target_files": [
+    {
+      "bytes": 325,
+      "name": "copy-runtime.json",
+      "sha256": "1f84653d440fc16be062fd4b914333084938e5863862fee9a4d9b89b951f986a"
+    },
+    {
+      "bytes": 0,
+      "name": "copy-runtime.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "name": "copy-runtime.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 32418,
+      "name": "derived-candidate.json",
+      "sha256": "395a2b81be08cabec8882efb52b2991d0b765e45335b9f88709bfbd97785abf3"
+    },
+    {
+      "bytes": 34486,
+      "name": "r5-novatek-target-depmod.json",
+      "sha256": "e43372c19d3ae4af72835fbfd47c9a1d81b472504ce3d78f60fb5800d0849598"
+    },
+    {
+      "bytes": 0,
+      "name": "runtime-copy.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "name": "runtime-reference-after.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "name": "runtime-reference-before.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "name": "runtime-source-after.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "name": "runtime-source.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 20697,
+      "name": "signed-input-gate.json",
+      "sha256": "e4c283d766c501946ed812fac830100fa588d4dd35c4fbf5589d8ed4fe10e6cb"
+    },
+    {
+      "bytes": 589,
+      "name": "target-depmod-version.json",
+      "sha256": "1ef1fd2f49f0e0a2228ab9838d7d09d44009fa60ffc820c07739d1dcbf8d6e60"
+    },
+    {
+      "bytes": 0,
+      "name": "target-depmod-version.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 45,
+      "name": "target-depmod-version.stdout",
+      "sha256": "9260633fb503b27b01585a3423b89286e90dd602a425828d898b80fffe8122eb"
+    },
+    {
+      "bytes": 653,
+      "name": "target-depmod.json",
+      "sha256": "8f661f68f3cf9684814f3995597290779d2542b602f58a84d98dc790f182ac63"
+    },
+    {
+      "bytes": 0,
+      "name": "target-depmod.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "name": "target-depmod.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 722,
+      "name": "target-load-plan.json",
+      "sha256": "0fd32153cfae12e99fd431a5a45abeaee4ff6dbc14cf2b9c78d04ba0d0d87baa"
+    },
+    {
+      "bytes": 0,
+      "name": "target-load-plan.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 122,
+      "name": "target-load-plan.stdout",
+      "sha256": "1a4646083407cc05290be1e95c8fd0307ee5be677777e24aa4a2419037b59cba"
+    },
+    {
+      "bytes": 724,
+      "name": "target-modinfo-sig_hashalgo.json",
+      "sha256": "2c18cedc4ab2fd74bca320e7fb3cfef1ea03675f04bb190a981dbba05d5e77ce"
+    },
+    {
+      "bytes": 0,
+      "name": "target-modinfo-sig_hashalgo.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 7,
+      "name": "target-modinfo-sig_hashalgo.stdout",
+      "sha256": "722f6029e0eab200f0bae0040199c7d12f1e3c361a5f514788a778bf84ecc6ec"
+    },
+    {
+      "bytes": 719,
+      "name": "target-modinfo-sig_key.json",
+      "sha256": "54fad4369c30389ac5f2bb254c9124c0a878f99cf4ffd3bad3e82c5777de436c"
+    },
+    {
+      "bytes": 0,
+      "name": "target-modinfo-sig_key.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 60,
+      "name": "target-modinfo-sig_key.stdout",
+      "sha256": "b239ddfc5c1843f730bb068fb1063c299d889dba0499ef60aa6b2993c8115fea"
+    },
+    {
+      "bytes": 718,
+      "name": "target-modinfo-signer.json",
+      "sha256": "7364681cfdde58e5b997331d5059dd7400b0e2d74e043498a2198731e0200b12"
+    },
+    {
+      "bytes": 0,
+      "name": "target-modinfo-signer.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 36,
+      "name": "target-modinfo-signer.stdout",
+      "sha256": "79c9d2b44f876286786c07df753485bd4fa89a79d1c386a771b5111f77a327bb"
+    },
+    {
+      "bytes": 720,
+      "name": "target-modinfo-vermagic.json",
+      "sha256": "b344039e7b6d4bf1d310c7001923b04ad84257c6460847542d6b6cde1b041c45"
+    },
+    {
+      "bytes": 0,
+      "name": "target-modinfo-vermagic.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 79,
+      "name": "target-modinfo-vermagic.stdout",
+      "sha256": "edfcd0f433dcaf0f9b98afd0b7095be69f91912f3a8134a6a23d486a387deca2"
+    },
+    {
+      "bytes": 721,
+      "name": "target-modversions.json",
+      "sha256": "c9c487ffe7815eb26b7370d8c6dba5aeb24fcf26c8468d9527ba97e1752b3da2"
+    },
+    {
+      "bytes": 0,
+      "name": "target-modversions.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1780,
+      "name": "target-modversions.stdout",
+      "sha256": "756b93df9a055561dc5598161170e26c5648f373dbf7626a4243c52b13e67fdd"
+    },
+    {
+      "bytes": 20712,
+      "name": "target-root-module-gate.json",
+      "sha256": "daf1d65940bab8e6d70d81fd1e98419d5191a4dd249d2dffac392e3f0f42fbe5"
+    }
+  ],
+  "finished_utc": "2026-11-24T12:27:07.438854+00:00",
+  "gate_source_patched_by_controller": false,
+  "host_tools": {
+    "cp": {
+      "bytes": 149960,
+      "path": "/usr/bin/cp",
+      "sha256": "5a3a8808bab81a67c6ac578670f5608595f1569948d4dc7d7d604c1d08d596d9"
+    },
+    "git": {
+      "bytes": 4082768,
+      "path": "/usr/bin/git",
+      "sha256": "356db14e102d68a1a37d8a1ac577dfd678d45d46e92f468bef8b7154e7bfdc60"
+    },
+    "openssl": {
+      "bytes": 1103272,
+      "path": "/usr/bin/openssl",
+      "sha256": "238d03b1d3a7f5aa3c9cf8171d483a32c227df0f5a606a55ab31f154c8aa60be"
+    },
+    "python3": {
+      "bytes": 6832784,
+      "path": "/usr/bin/python3.13",
+      "sha256": "889c603f0d17cb54060951bcf4c4f9b8c9ebd9e52b392c70209bbb9755d797d9"
+    },
+    "sha256sum": {
+      "bytes": 55752,
+      "path": "/usr/bin/sha256sum",
+      "sha256": "89f8c1d1ba3c76138f3771e1a91e2796ade6180b1c1e4258c04698ff32787c97"
+    },
+    "tar": {
+      "bytes": 458280,
+      "path": "/usr/bin/tar",
+      "sha256": "38adf50825f773d353d6bda1a7cd70c22f8877823e44821c1d2bd0a52ddc3871"
+    },
+    "timeout": {
+      "bytes": 47984,
+      "path": "/usr/bin/timeout",
+      "sha256": "6ca1891dfc0b05d7680770c2884c0391b92467c7bb6500a5c84677e6481739f1"
+    }
+  },
+  "journal_acls": {
+    "system.posix_acl_access": {
+      "bytes": 52,
+      "sha256": "fc742256255ddf9fd3878c1a93c0a2f49b1f9cf2793a30b23ea9d64ea5740aff"
+    },
+    "system.posix_acl_default": {
+      "bytes": 52,
+      "sha256": "fc742256255ddf9fd3878c1a93c0a2f49b1f9cf2793a30b23ea9d64ea5740aff"
+    }
+  },
+  "locale_environment": {
+    "LC_CTYPE": "C.UTF-8"
+  },
+  "memory_estimate": {
+    "archive_members": 27549,
+    "container_memory_limit_bytes": 4294967296,
+    "one_tree_data_pages_bytes": 1340669952,
+    "two_trees_plus_conservative_metadata_and_tools_bytes": 3456475136
+  },
+  "module_loaded": false,
+  "mounts": {
+    "/": {
+      "filesystem": "overlay",
+      "options": [
+        "ro",
+        "relatime"
+      ]
+    },
+    "/dev": {
+      "filesystem": "tmpfs",
+      "options": [
+        "rw",
+        "nosuid"
+      ]
+    },
+    "/dev/full": {
+      "filesystem": "devtmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "relatime"
+      ]
+    },
+    "/dev/mqueue": {
+      "filesystem": "mqueue",
+      "options": [
+        "rw",
+        "nosuid",
+        "nodev",
+        "noexec",
+        "relatime"
+      ]
+    },
+    "/dev/null": {
+      "filesystem": "devtmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "relatime"
+      ]
+    },
+    "/dev/pts": {
+      "filesystem": "devpts",
+      "options": [
+        "rw",
+        "nosuid",
+        "noexec",
+        "relatime"
+      ]
+    },
+    "/dev/random": {
+      "filesystem": "devtmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "relatime"
+      ]
+    },
+    "/dev/shm": {
+      "filesystem": "tmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "nodev",
+        "noexec",
+        "relatime"
+      ]
+    },
+    "/dev/tty": {
+      "filesystem": "devtmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "relatime"
+      ]
+    },
+    "/dev/urandom": {
+      "filesystem": "devtmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "relatime"
+      ]
+    },
+    "/dev/zero": {
+      "filesystem": "devtmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "relatime"
+      ]
+    },
+    "/etc/hostname": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    },
+    "/etc/hosts": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    },
+    "/etc/resolv.conf": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    },
+    "/evidence": {
+      "filesystem": "zfs",
+      "options": [
+        "rw",
+        "noatime"
+      ]
+    },
+    "/inputs/archive-pipeline.json": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    },
+    "/inputs/archive-receipt.json": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    },
+    "/inputs/repo": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    },
+    "/inputs/runtime.canonical.tar": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    },
+    "/inputs/signed-stage": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    },
+    "/inputs/source.exit": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    },
+    "/inputs/source.stderr": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    },
+    "/proc": {
+      "filesystem": "proc",
+      "options": [
+        "rw",
+        "nosuid",
+        "nodev",
+        "noexec",
+        "relatime"
+      ]
+    },
+    "/proc/acpi": {
+      "filesystem": "tmpfs",
+      "options": [
+        "ro",
+        "relatime"
+      ]
+    },
+    "/proc/asound": {
+      "filesystem": "tmpfs",
+      "options": [
+        "ro",
+        "relatime"
+      ]
+    },
+    "/proc/bus": {
+      "filesystem": "proc",
+      "options": [
+        "ro",
+        "nosuid",
+        "nodev",
+        "noexec",
+        "relatime"
+      ]
+    },
+    "/proc/fs": {
+      "filesystem": "proc",
+      "options": [
+        "ro",
+        "nosuid",
+        "nodev",
+        "noexec",
+        "relatime"
+      ]
+    },
+    "/proc/interrupts": {
+      "filesystem": "devtmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "relatime"
+      ]
+    },
+    "/proc/irq": {
+      "filesystem": "proc",
+      "options": [
+        "ro",
+        "nosuid",
+        "nodev",
+        "noexec",
+        "relatime"
+      ]
+    },
+    "/proc/kcore": {
+      "filesystem": "devtmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "relatime"
+      ]
+    },
+    "/proc/keys": {
+      "filesystem": "devtmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "relatime"
+      ]
+    },
+    "/proc/latency_stats": {
+      "filesystem": "devtmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "relatime"
+      ]
+    },
+    "/proc/scsi": {
+      "filesystem": "tmpfs",
+      "options": [
+        "ro",
+        "relatime"
+      ]
+    },
+    "/proc/sys": {
+      "filesystem": "proc",
+      "options": [
+        "ro",
+        "nosuid",
+        "nodev",
+        "noexec",
+        "relatime"
+      ]
+    },
+    "/proc/sysrq-trigger": {
+      "filesystem": "proc",
+      "options": [
+        "ro",
+        "nosuid",
+        "nodev",
+        "noexec",
+        "relatime"
+      ]
+    },
+    "/proc/timer_list": {
+      "filesystem": "devtmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "relatime"
+      ]
+    },
+    "/recipes": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    },
+    "/sys": {
+      "filesystem": "sysfs",
+      "options": [
+        "ro",
+        "nosuid",
+        "nodev",
+        "noexec",
+        "relatime"
+      ]
+    },
+    "/sys/devices/virtual/powercap": {
+      "filesystem": "tmpfs",
+      "options": [
+        "ro",
+        "relatime"
+      ]
+    },
+    "/sys/firmware": {
+      "filesystem": "tmpfs",
+      "options": [
+        "ro",
+        "relatime"
+      ]
+    },
+    "/sys/fs/cgroup": {
+      "filesystem": "cgroup2",
+      "options": [
+        "ro",
+        "nosuid",
+        "nodev",
+        "noexec",
+        "relatime"
+      ]
+    },
+    "/tmp": {
+      "filesystem": "tmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "nodev",
+        "relatime"
+      ]
+    },
+    "/usr": {
+      "filesystem": "overlay",
+      "options": [
+        "ro",
+        "relatime"
+      ]
+    },
+    "/work": {
+      "filesystem": "tmpfs",
+      "options": [
+        "rw",
+        "nosuid",
+        "nodev",
+        "relatime"
+      ]
+    },
+    "/work/fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    },
+    "/work/fedora-proot-src/src/proot": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    },
+    "/work/fedora-system-integration-v1/fedora-system-integration.json": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    },
+    "/work/fedora-system-integration-v1/runtime.json": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    },
+    "/work/fedora-system-integration-v1/vm-verify-01/result.json": {
+      "filesystem": "zfs",
+      "options": [
+        "ro",
+        "noatime"
+      ]
+    }
+  },
+  "original_stream_proofs": {
+    "archive_receipt_identity": {
+      "bytes": 2641,
+      "sha256": "a5f9af40957623afbeeebca40fc4a7aed5b809f6fc112bb30fed3fb04082e473"
+    },
+    "pipeline": {
+      "finished_utc": "2026-11-24T12:08:42.614955+00:00",
+      "receiver_container": "tb371fc-build-ssd-20261123",
+      "receiver_exit_code": 1,
+      "receiver_source_sha256": "63cb331c63ca2fd1e659811fefa614955e0fdd6a331aaa7b873370e478cdc1c2",
+      "schema": "tb371fc-runtime-copy-pipeline-v1",
+      "source_container": "tb371fc-build-20261123",
+      "source_directory": "/work/fedora-system-integration-v1/rootfs",
+      "source_exit_code": 0,
+      "source_stream_timeout_seconds": 3600,
+      "target_gate_timeout_changed": false
+    },
+    "ssd_receiver_complete": false,
+    "ssd_receiver_phase": "extract"
+  },
+  "phase": "verified",
+  "physical_hardware_tested": false,
+  "pinned_inputs": {
+    "/usr/bin/qemu-aarch64": {
+      "bytes": 16661520,
+      "sha256": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943"
+    },
+    "/work/fedora-proot-src/src/proot": {
+      "bytes": 832232,
+      "sha256": "313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f"
+    },
+    "/work/fedora-system-integration-v1/fedora-system-integration.json": {
+      "bytes": 26899,
+      "sha256": "66ac854b2bc938aed147afe0355b57fcbba856c874e9d82cec4cad663b1c87d9"
+    },
+    "/work/fedora-system-integration-v1/runtime.json": {
+      "bytes": 28679,
+      "sha256": "10a373bfc3291aabe564c8f7af90265900763eadfe3167a7384cc4dcd596544b"
+    },
+    "/work/fedora-system-integration-v1/vm-verify-01/result.json": {
+      "bytes": 1641,
+      "sha256": "223f73b253a48995dd238575e64aad055e11f311c658aa03534b49c570095675"
+    }
+  },
+  "runtime_comparison_mode": "reference_archive_unique_pax_order",
+  "schema": "tb371fc-novatek-tmpfs-controller-v1",
+  "signed_stage_receipt": {
+    "bytes": 22669,
+    "sha256": "405e92520d641dbf967630935c886ce664a013ced959926a13cdf25ca6606683"
+  },
+  "source_contract": {
+    "commit": "ff3b485190f9d589c7600da41590f221cb14ec2f",
+    "tree": "42f9b5b10ac65f1ca59ba30e73ca1f5c861cb03e"
+  },
+  "source_files": {
+    "docs/research/2026-11-23/boot-candidate-r5.json": {
+      "bytes": 32411,
+      "sha256": "cbd40dbd9acdf26645c11647fb29079e5c4c8f8d1a6fadafaf154d3a3e72570b"
+    },
+    "scripts/research/boot_formats.py": {
+      "bytes": 17028,
+      "sha256": "b0936334329df6bab43fe47a5536c3cb4e279804163ffb880987530166c3d64e"
+    },
+    "scripts/research/boot_rootfs.py": {
+      "bytes": 15876,
+      "sha256": "6bcfb231179f2c2495e45d93cd4b6503c7f6408c5901ce1898533d2e8ad8a806"
+    },
+    "scripts/research/derive_boot_candidate.py": {
+      "bytes": 17700,
+      "sha256": "b77daada7463320e68f1a4b52679da0a03be97cf60167095002582fc250dbd1c"
+    },
+    "scripts/research/input/signing/runtime_archive.py": {
+      "bytes": 10503,
+      "sha256": "07d2c015a1fc267a28db228e1dd43009568c112ff7216e89fda231aa95456ef0"
+    },
+    "scripts/research/input/signing/stage_r5_novatek.py": {
+      "bytes": 13649,
+      "sha256": "12b95c75b1b2b7939b0cfbedf6e97353a67a43bb3d48748c44553a91ddee856b"
+    },
+    "scripts/research/input/signing/stage_signed.py": {
+      "bytes": 14828,
+      "sha256": "ad270d83f89ce08d2488906b8246167227e0e352a91294042489d0a0737908df"
+    },
+    "scripts/research/input/signing/target_r5_depmod.py": {
+      "bytes": 15122,
+      "sha256": "b1a93d57cedfb0dee57cffa7411d95b96b1f0f1f92d18b99f393fd7d38074cf9"
+    },
+    "scripts/research/qualify_boot_bundle.py": {
+      "bytes": 16900,
+      "sha256": "5cd0c3f649ace02c1d8f7166ebefb3c9710f7d3eb7bb9f2b034cab5122eb7210"
+    },
+    "scripts/research/rootfs/stage_r5_fedora.py": {
+      "bytes": 14845,
+      "sha256": "4a4f8ea16a154b6ef2cfcb49766412c99df5d3ca3945cfc691841f3a8060fbfb"
+    }
+  },
+  "source_head": "ff3b485190f9d589c7600da41590f221cb14ec2f",
+  "source_tracked_status": "",
+  "source_tree": "42f9b5b10ac65f1ca59ba30e73ca1f5c861cb03e",
+  "started_utc": "2026-11-24T12:26:05.393159+00:00",
+  "target_executed": true,
+  "target_outer_timeout_seconds": 2400,
+  "target_result": {
+    "bytes": 34486,
+    "sha256": "e43372c19d3ae4af72835fbfd47c9a1d81b472504ce3d78f60fb5800d0849598"
+  },
+  "text_export_complete": true,
+  "worker_source": {
+    "bytes": 16450,
+    "sha256": "56da0aab714982e0660cb461217d7bd52e45a125e23f38c501b9824296f9f868"
+  }
+}

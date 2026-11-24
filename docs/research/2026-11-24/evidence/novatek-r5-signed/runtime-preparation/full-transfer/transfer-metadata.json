@@ -1,0 +1,42 @@
+{
+  "captured_utc": "2026-11-24T12:17:20.900139+00:00",
+  "description": "Recovered exact file values and their original byte identities; large stderr is retained remotely and represented separately by its complete identity and bounded sample.",
+  "files": [
+    {
+      "bytes": 2641,
+      "name": "ssd-mirror/receipt.json",
+      "sha256": "a5f9af40957623afbeeebca40fc4a7aed5b809f6fc112bb30fed3fb04082e473",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-runtime-mirror-c1296-01/receipt.json"
+    },
+    {
+      "bytes": 312,
+      "name": "ssd-mirror/progress.json",
+      "sha256": "8cde16e54e67d275a654dfb41e2bcd5ffd18cfd7c5822cf69eb7597c1ed7bb15",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-runtime-mirror-c1296-01/progress.json"
+    },
+    {
+      "bytes": 0,
+      "name": "ssd-mirror/extract.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-runtime-mirror-c1296-01/extract.stdout"
+    },
+    {
+      "bytes": 2,
+      "name": "general-export/source.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/r5-novatek-runtime-export-c1296-01/source.exit"
+    },
+    {
+      "bytes": 0,
+      "name": "general-export/source.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/r5-novatek-runtime-export-c1296-01/source.stderr"
+    },
+    {
+      "bytes": 503,
+      "name": "pipeline.json",
+      "sha256": "329b761edf5a4a9ae605ecfaeff7a6a9bf2787a26c6e70928172e873ab997fb9",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-runtime-transfer-pipeline-c1296-01.json"
+    }
+  ]
+}

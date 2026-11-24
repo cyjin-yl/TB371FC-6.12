@@ -1,0 +1,21 @@
+{
+  "scope": "Actual no-recursion journal directory metadata; contains no journal file bodies",
+  "files": [
+    {
+      "path": "journal-source.tar",
+      "bytes": 10240,
+      "sha256": "caa6484314f6421fe1f1b9f906da5148f5e6df85823a17e5182a5a9aca54df10"
+    },
+    {
+      "path": "journal-target.tar",
+      "bytes": 10240,
+      "sha256": "1e9dc9584cb6d7e82599c2309610514efa2810e87d00c0232fa1b2d648e1ca59"
+    },
+    {
+      "path": "journal-diagnostic.json",
+      "bytes": 6638,
+      "sha256": "c190a3e9b9f4975120508139a9fe16aa81b84c0e383a0b303bdbed70bbc90161"
+    }
+  ],
+  "normalized_sha256": "d4d9569fcf5dfbdcd6cd5c1a4094002e246afdc63ca8eb16f258c29c5c11ff1c"
+}

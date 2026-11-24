@@ -1,0 +1,22 @@
+{
+  "files": [
+    {
+      "bytes": 22320,
+      "path": "r5-novatek-signed-c1296-run01/r5-novatek-stage.json",
+      "sha256": "25e4921b0cca0120561d89b43f2e655d69936a2028f88a237550307e19624b5b"
+    },
+    {
+      "bytes": 0,
+      "path": "r5-novatek-signed-c1296-run01.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 2,
+      "path": "r5-novatek-signed-c1296-run01.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    }
+  ],
+  "readback_utc": "2026-11-24T12:01:01.838167+00:00",
+  "schema": "recovered-transfer-file-manifest-v1",
+  "source": "Recovered original tool result file values; each content file verified against its saved byte count and SHA-256"
+}

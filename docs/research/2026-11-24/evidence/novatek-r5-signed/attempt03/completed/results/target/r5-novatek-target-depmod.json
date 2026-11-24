@@ -1,0 +1,1033 @@
+{
+  "command_receipts": {
+    "target-depmod-version.json": {
+      "bytes": 589,
+      "mode": 420,
+      "sha256": "1ef1fd2f49f0e0a2228ab9838d7d09d44009fa60ffc820c07739d1dcbf8d6e60"
+    },
+    "target-depmod-version.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "target-depmod-version.stdout": {
+      "bytes": 45,
+      "mode": 420,
+      "sha256": "9260633fb503b27b01585a3423b89286e90dd602a425828d898b80fffe8122eb"
+    },
+    "target-depmod.json": {
+      "bytes": 653,
+      "mode": 420,
+      "sha256": "8f661f68f3cf9684814f3995597290779d2542b602f58a84d98dc790f182ac63"
+    },
+    "target-depmod.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "target-depmod.stdout": {
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "target-load-plan.json": {
+      "bytes": 722,
+      "mode": 420,
+      "sha256": "0fd32153cfae12e99fd431a5a45abeaee4ff6dbc14cf2b9c78d04ba0d0d87baa"
+    },
+    "target-load-plan.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "target-load-plan.stdout": {
+      "bytes": 122,
+      "mode": 420,
+      "sha256": "1a4646083407cc05290be1e95c8fd0307ee5be677777e24aa4a2419037b59cba"
+    },
+    "target-modinfo-sig_hashalgo.json": {
+      "bytes": 724,
+      "mode": 420,
+      "sha256": "2c18cedc4ab2fd74bca320e7fb3cfef1ea03675f04bb190a981dbba05d5e77ce"
+    },
+    "target-modinfo-sig_hashalgo.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "target-modinfo-sig_hashalgo.stdout": {
+      "bytes": 7,
+      "mode": 420,
+      "sha256": "722f6029e0eab200f0bae0040199c7d12f1e3c361a5f514788a778bf84ecc6ec"
+    },
+    "target-modinfo-sig_key.json": {
+      "bytes": 719,
+      "mode": 420,
+      "sha256": "54fad4369c30389ac5f2bb254c9124c0a878f99cf4ffd3bad3e82c5777de436c"
+    },
+    "target-modinfo-sig_key.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "target-modinfo-sig_key.stdout": {
+      "bytes": 60,
+      "mode": 420,
+      "sha256": "b239ddfc5c1843f730bb068fb1063c299d889dba0499ef60aa6b2993c8115fea"
+    },
+    "target-modinfo-signer.json": {
+      "bytes": 718,
+      "mode": 420,
+      "sha256": "7364681cfdde58e5b997331d5059dd7400b0e2d74e043498a2198731e0200b12"
+    },
+    "target-modinfo-signer.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "target-modinfo-signer.stdout": {
+      "bytes": 36,
+      "mode": 420,
+      "sha256": "79c9d2b44f876286786c07df753485bd4fa89a79d1c386a771b5111f77a327bb"
+    },
+    "target-modinfo-vermagic.json": {
+      "bytes": 720,
+      "mode": 420,
+      "sha256": "b344039e7b6d4bf1d310c7001923b04ad84257c6460847542d6b6cde1b041c45"
+    },
+    "target-modinfo-vermagic.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "target-modinfo-vermagic.stdout": {
+      "bytes": 79,
+      "mode": 420,
+      "sha256": "edfcd0f433dcaf0f9b98afd0b7095be69f91912f3a8134a6a23d486a387deca2"
+    },
+    "target-modversions.json": {
+      "bytes": 721,
+      "mode": 420,
+      "sha256": "c9c487ffe7815eb26b7370d8c6dba5aeb24fcf26c8468d9527ba97e1752b3da2"
+    },
+    "target-modversions.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "target-modversions.stdout": {
+      "bytes": 1780,
+      "mode": 420,
+      "sha256": "756b93df9a055561dc5598161170e26c5648f373dbf7626a4243c52b13e67fdd"
+    }
+  },
+  "complete": true,
+  "finished_utc": "2026-11-24T12:27:07.359386+00:00",
+  "inputs_unchanged": true,
+  "kernel_release": "6.12.114-tb371fc-research5-services",
+  "load_plan": {
+    "binary_index_lookup_executed": true,
+    "module_count": 1,
+    "module_loaded": false,
+    "modules": [
+      "kernel/drivers/input/touchscreen/nt36523/nt36523_ts.ko"
+    ]
+  },
+  "module_count": 84,
+  "module_loaded": false,
+  "module_tree": {
+    "kernel/crypto/michael_mic.ko": {
+      "bytes": 9569,
+      "mode": 384,
+      "sha256": "d326ec07d585b1575885c9503730070172f03da13aad22366d66bf9a123577c1"
+    },
+    "kernel/drivers/base/regmap/regmap-sdw.ko": {
+      "bytes": 14385,
+      "mode": 384,
+      "sha256": "e56c12351db3800b71740fd34ab3eb70ac446121b6edeedab37d8a4abc5a32a1"
+    },
+    "kernel/drivers/bluetooth/btqca.ko": {
+      "bytes": 42601,
+      "mode": 384,
+      "sha256": "f3a9afbcd0e09e8632681d9e57cebc63f4e40c2551f587be290ee646d3e05c70"
+    },
+    "kernel/drivers/bluetooth/hci_uart.ko": {
+      "bytes": 140473,
+      "mode": 384,
+      "sha256": "5ee02894ea6c6b713848cbc261e85d813b61c485ea46f655e4d4969de9b2a3d8"
+    },
+    "kernel/drivers/clk/qcom/camcc-sm8250.ko": {
+      "bytes": 75497,
+      "mode": 384,
+      "sha256": "d5a68ff3dc2bca85425e2638cb645f95930565781d456b5d2ce9e04d1e2a7ea5"
+    },
+    "kernel/drivers/clk/qcom/dispcc-sm8250.ko": {
+      "bytes": 49585,
+      "mode": 384,
+      "sha256": "cadf819c0978addaf1d76992a0e3f3719f4a62330c4c4808f6941e8ecd677975"
+    },
+    "kernel/drivers/clk/qcom/videocc-sm8250.ko": {
+      "bytes": 24441,
+      "mode": 384,
+      "sha256": "b3e0a0a0bbddf19b6b49263284d9c005827414b082ef13319c95e69c3334c1f8"
+    },
+    "kernel/drivers/gpu/drm/panel/panel-novatek-nt36523.ko": {
+      "bytes": 217913,
+      "mode": 384,
+      "sha256": "e743091844bced2b13d6749dfe76042b6531b97b920f04efb8fbb082786aacf4"
+    },
+    "kernel/drivers/gpu/drm/virtio/virtio-gpu.ko": {
+      "bytes": 160137,
+      "mode": 384,
+      "sha256": "a0b1af8c6903b8485c1978ab3743511a1c4e729414f8e255a722b76ded033931"
+    },
+    "kernel/drivers/i2c/busses/i2c-qcom-cci.ko": {
+      "bytes": 27017,
+      "mode": 384,
+      "sha256": "3448f18c30a5a3ebfb2116a2446bc5ba64a58d59ad02d681296ecc5c69fad87b"
+    },
+    "kernel/drivers/input/misc/pm8941-pwrkey.ko": {
+      "bytes": 21537,
+      "mode": 384,
+      "sha256": "43b00052af4c49d42512e2583d866d7bb752f485f3682fc63791e98ee24838a8"
+    },
+    "kernel/drivers/input/touchscreen/novatek-nvt-ts.ko": {
+      "bytes": 16801,
+      "mode": 384,
+      "sha256": "b4eca7723a61a4f0a5f2afa1c2fb027e663b2529d89a79e40df2f41939717603"
+    },
+    "kernel/drivers/input/touchscreen/nt36523/nt36523_ts.ko": {
+      "bytes": 104929,
+      "mode": 384,
+      "sha256": "3428b2ac0acdab29a46282331da4afdbd000b86b463b99781a0f134011b375c9"
+    },
+    "kernel/drivers/interconnect/qcom/icc-bcm-voter.ko": {
+      "bytes": 17409,
+      "mode": 384,
+      "sha256": "302c369d33bf70841d2ce6caede9d320efcac7e112fa792b3710447c017d41ba"
+    },
+    "kernel/drivers/interconnect/qcom/icc-rpmh.ko": {
+      "bytes": 17393,
+      "mode": 384,
+      "sha256": "dfe312d9a1779656fdbd662ef093251db3353a604ddc19555637f508bcc8e13c"
+    },
+    "kernel/drivers/interconnect/qcom/interconnect_qcom.ko": {
+      "bytes": 7209,
+      "mode": 384,
+      "sha256": "ef0140f850c5c4eaab4243aae709963df395f802f6a9d41b8edb8c0632aace7d"
+    },
+    "kernel/drivers/interconnect/qcom/qnoc-sm8250.ko": {
+      "bytes": 96841,
+      "mode": 384,
+      "sha256": "b70f4ccc6ea12afe398ef1a6d262d7602b5ea8d291c966910d1c3aa706310c09"
+    },
+    "kernel/drivers/media/common/videobuf2/videobuf2-dma-contig.ko": {
+      "bytes": 29369,
+      "mode": 384,
+      "sha256": "904ab7cf912f64299fae5f904ba07d8ee919417f07c9d653b0aa428a8ef3d2f4"
+    },
+    "kernel/drivers/media/i2c/gc08a3.ko": {
+      "bytes": 37121,
+      "mode": 384,
+      "sha256": "9e7a2351cdc0ce434aefa305062ecde7ecd0f1315527ba6490dafdf7a89f12b3"
+    },
+    "kernel/drivers/media/platform/qcom/camss/qcom-camss.ko": {
+      "bytes": 405249,
+      "mode": 384,
+      "sha256": "d78d38d2db7d48fafcd069b1a0279cc566663ecd94789d8ca5ac15975138516d"
+    },
+    "kernel/drivers/media/platform/qcom/venus/venus-core.ko": {
+      "bytes": 252217,
+      "mode": 384,
+      "sha256": "9d9d21d0abb792a2d730e5ebe69b572c54e10c9b32d62df0b44cf1a738cd153b"
+    },
+    "kernel/drivers/media/platform/qcom/venus/venus-dec.ko": {
+      "bytes": 71545,
+      "mode": 384,
+      "sha256": "45964ec491a4b3b84196d72537e24b2ed2851fc32db3e439323a611ab5064858"
+    },
+    "kernel/drivers/media/platform/qcom/venus/venus-enc.ko": {
+      "bytes": 71009,
+      "mode": 384,
+      "sha256": "3d9203b6778fde6339238b75ef4864f2828ce3e9c681dc9fe76d608a5bf27f02"
+    },
+    "kernel/drivers/media/v4l2-core/v4l2-cci.ko": {
+      "bytes": 11553,
+      "mode": 384,
+      "sha256": "28bc10a18c313593f714f74d35f4f6a0db18cf90c067205a8ed2f5323d22bf45"
+    },
+    "kernel/drivers/media/v4l2-core/v4l2-mem2mem.ko": {
+      "bytes": 69409,
+      "mode": 384,
+      "sha256": "0678c1d762c21af5a1f64d951ad10e4b4a8e2d152e4b530468c80fef864725ae"
+    },
+    "kernel/drivers/net/usb/r8152.ko": {
+      "bytes": 219857,
+      "mode": 384,
+      "sha256": "e28741b06c5293b70483553b264fedfa83fa35639e49abbe990899af000bd775"
+    },
+    "kernel/drivers/net/usb/r8153_ecm.ko": {
+      "bytes": 12105,
+      "mode": 384,
+      "sha256": "2a5e95ba083ce3cdbef78b6d36e8a3e6d46afbd898a72dc88d1184888034bfda"
+    },
+    "kernel/drivers/net/wireless/ath/ath.ko": {
+      "bytes": 91961,
+      "mode": 384,
+      "sha256": "fef5d7504c2c18dad87af11899a640b4d405562aa76f84b3fa9c139c77072bef"
+    },
+    "kernel/drivers/net/wireless/ath/ath11k/ath11k.ko": {
+      "bytes": 1051057,
+      "mode": 384,
+      "sha256": "98b3751805fe1401baa92a4749e6a1d815ce88b1294e61c6d90affb9c787e521"
+    },
+    "kernel/drivers/net/wireless/ath/ath11k/ath11k_pci.ko": {
+      "bytes": 108121,
+      "mode": 384,
+      "sha256": "c210005d9a447d1a092caed084f0cc6a4bb45473dcb9695fbb83f15978d9c467"
+    },
+    "kernel/drivers/net/wireless/ath/wil6210/wil6210.ko": {
+      "bytes": 898817,
+      "mode": 384,
+      "sha256": "37a7207fc85f210382f2994e36342d3cb3b346413b3b93d2f33dff1f745408cb"
+    },
+    "kernel/drivers/pci/pwrctl/pci-pwrctl-core.ko": {
+      "bytes": 12361,
+      "mode": 384,
+      "sha256": "fed40e3f70031858913eaf77fd655cfb54950d06c7133911702afecc81bd79b5"
+    },
+    "kernel/drivers/pci/pwrctl/pci-pwrctl-pwrseq.ko": {
+      "bytes": 12593,
+      "mode": 384,
+      "sha256": "81805519d9ee4ece3d910ea0f239d6c4800b0fae54f41462009cc754a9ba15de"
+    },
+    "kernel/drivers/phy/qualcomm/phy-qcom-qmp-pcie.ko": {
+      "bytes": 199553,
+      "mode": 384,
+      "sha256": "169b7da7708d289cc56aaf6c84a967c2d6a4efda554bfc43f0a40d61498baa7f"
+    },
+    "kernel/drivers/phy/qualcomm/phy-qcom-snps-femto-v2.ko": {
+      "bytes": 26257,
+      "mode": 384,
+      "sha256": "2d4e3cb07619b4a3c5e292a11376d13ebf0c8495049475be1f68bdec86c0acd3"
+    },
+    "kernel/drivers/pinctrl/qcom/pinctrl-lpass-lpi.ko": {
+      "bytes": 22265,
+      "mode": 384,
+      "sha256": "39ea05813783707394b783a4d7a11613a0deb9d562e732ec6aef63b605fb7653"
+    },
+    "kernel/drivers/pinctrl/qcom/pinctrl-sm8250-lpass-lpi.ko": {
+      "bytes": 15241,
+      "mode": 384,
+      "sha256": "c3440e43316909847d4eaa1cd62c3c955fffd618cf295f91233a2c100abd2f26"
+    },
+    "kernel/drivers/power/sequencing/pwrseq-core.ko": {
+      "bytes": 35985,
+      "mode": 384,
+      "sha256": "301ebdd88ba85a597f0d177c7ab9e5b4788d2603ffcc14ed58d512f649f815d6"
+    },
+    "kernel/drivers/power/sequencing/pwrseq-qcom-wcn.ko": {
+      "bytes": 20625,
+      "mode": 384,
+      "sha256": "24969e49b28c5b8176c1b78d404a425e2d97c2954c0e003ee61c55b52a32c891"
+    },
+    "kernel/drivers/regulator/qcom-rpmh-regulator.ko": {
+      "bytes": 106065,
+      "mode": 384,
+      "sha256": "6e069aec81595b84d88eef92a95b3bf30fc1d24ae6f2a88f85c63901927ddf6b"
+    },
+    "kernel/drivers/remoteproc/qcom_common.ko": {
+      "bytes": 26257,
+      "mode": 384,
+      "sha256": "8c331f133efa4664a82b8805b74720391d252e7ef4ff095b54222dbff6c44940"
+    },
+    "kernel/drivers/remoteproc/qcom_pil_info.ko": {
+      "bytes": 10769,
+      "mode": 384,
+      "sha256": "822fb797f065f0fcd402e2067d5dc54aa54e738462bf361586979158133e5105"
+    },
+    "kernel/drivers/remoteproc/qcom_q6v5.ko": {
+      "bytes": 19329,
+      "mode": 384,
+      "sha256": "defbb62078c49833672ec93576ca79c5e4bb32b6381c2e02c239321a4ee0ddac"
+    },
+    "kernel/drivers/remoteproc/qcom_q6v5_pas.ko": {
+      "bytes": 71841,
+      "mode": 384,
+      "sha256": "7d8a5e3e3e27f2c8c7f81d586d44a9bca9321bd4870a7ea8719b44a8f3688198"
+    },
+    "kernel/drivers/remoteproc/qcom_sysmon.ko": {
+      "bytes": 32097,
+      "mode": 384,
+      "sha256": "7fc5c7375c793984f832b017dd1654bda53f617eb2a1d5e2ab3b4844ed597cf9"
+    },
+    "kernel/drivers/soc/qcom/apr.ko": {
+      "bytes": 31825,
+      "mode": 384,
+      "sha256": "1041f895bd50c518a75ce28b3b30624fc388411744e54a12832f2b68a3bbb241"
+    },
+    "kernel/drivers/soc/qcom/pdr_interface.ko": {
+      "bytes": 29057,
+      "mode": 384,
+      "sha256": "17649c96306561662fdc226ffc443560ce67f8c92027661b17b62a15a1ac5b3c"
+    },
+    "kernel/drivers/soc/qcom/qcom_pdr_msg.ko": {
+      "bytes": 13097,
+      "mode": 384,
+      "sha256": "9dee26cdfea2c651227972ac8fe9b4137190fc7f1dad004cc07fad329dd316a3"
+    },
+    "kernel/drivers/soc/qcom/qmi_helpers.ko": {
+      "bytes": 35473,
+      "mode": 384,
+      "sha256": "5e444ee6de03b2fb5d23eba4d3bcdb163912644534b2a3720005f1a576f345ed"
+    },
+    "kernel/drivers/soundwire/soundwire-bus.ko": {
+      "bytes": 184801,
+      "mode": 384,
+      "sha256": "74dad126fa4e4ace1f133418e0ac4a278052594d26051ac7e998a31424c2cea7"
+    },
+    "kernel/drivers/soundwire/soundwire-qcom.ko": {
+      "bytes": 57721,
+      "mode": 384,
+      "sha256": "2843fef25f348f4618d4ac81e3cede94b3181b587004ad9c4a8aeeb1d81da55a"
+    },
+    "kernel/drivers/usb/dwc3/dwc3-qcom.ko": {
+      "bytes": 31161,
+      "mode": 384,
+      "sha256": "4df2dd097e12f5c63bfe2710e791435d0e1efece4df103cf9610b1088cfdf1f8"
+    },
+    "kernel/drivers/video/backlight/tb371fc-ktz8866.ko": {
+      "bytes": 14233,
+      "mode": 384,
+      "sha256": "f67aedc99616e6ccfd60ef5c6cd31bb4cc1755fa6f9ffe3eedbe2e43154f719e"
+    },
+    "kernel/drivers/virtio/virtio_dma_buf.ko": {
+      "bytes": 8561,
+      "mode": 384,
+      "sha256": "8c67b5105ded359cca210badecdcfa82a4f1695537bece6c038b203b2069962c"
+    },
+    "kernel/drivers/watchdog/qcom-wdt.ko": {
+      "bytes": 18505,
+      "mode": 384,
+      "sha256": "7244b94688d5142fdb079844dd69c472b07f75c7583da6e819547be5754092f0"
+    },
+    "kernel/drivers/watchdog/watchdog.ko": {
+      "bytes": 61649,
+      "mode": 384,
+      "sha256": "b0d01a38d35df08540bb609718909f2a90dc3b9bf5163f0887a0e99ddb2eef54"
+    },
+    "kernel/fs/autofs/autofs4.ko": {
+      "bytes": 96713,
+      "mode": 384,
+      "sha256": "dee73812c20528c3b9de43cf484e83d55f7a74c0668c1f87966b7fd9d2c37d9c"
+    },
+    "kernel/net/mac80211/mac80211.ko": {
+      "bytes": 1821601,
+      "mode": 384,
+      "sha256": "9a6a8df8c03c8685554ef2e854b2b760b8c11dab0ed489b1d10c71d449531c37"
+    },
+    "kernel/net/wireless/cfg80211.ko": {
+      "bytes": 1842561,
+      "mode": 384,
+      "sha256": "3585e3f2fb8aa0d37df51f8813790e4cba89f385e777f3a3ce31a26c71a92aaf"
+    },
+    "kernel/sound/soc/codecs/snd-soc-lpass-macro-common.ko": {
+      "bytes": 11737,
+      "mode": 384,
+      "sha256": "2ecfccd259d8f6b02acf0720df6649d2be5f029816b9828d50ce60a2dcb4a382"
+    },
+    "kernel/sound/soc/codecs/snd-soc-lpass-rx-macro.ko": {
+      "bytes": 172529,
+      "mode": 384,
+      "sha256": "2e7de4c7582356dc79971fb0b9325239b222a420278b3d023784b9d27fecb6b5"
+    },
+    "kernel/sound/soc/codecs/snd-soc-lpass-tx-macro.ko": {
+      "bytes": 156321,
+      "mode": 384,
+      "sha256": "47686d2d95ca8666ebcd5501fb163ab43848722c759c8fa078f7da2212e157f0"
+    },
+    "kernel/sound/soc/codecs/snd-soc-lpass-va-macro.ko": {
+      "bytes": 82481,
+      "mode": 384,
+      "sha256": "b099856552daed329a4b67561df33d8b443ff9145a58ab0faea3b8a73aea0eea"
+    },
+    "kernel/sound/soc/codecs/snd-soc-wcd-classh.ko": {
+      "bytes": 23193,
+      "mode": 384,
+      "sha256": "4ae6eed0e44f5b6cc449562f841947b46f13bf1d48ef9ea005586a7f6850c4df"
+    },
+    "kernel/sound/soc/codecs/snd-soc-wcd-mbhc.ko": {
+      "bytes": 51561,
+      "mode": 384,
+      "sha256": "63105e2328fe388e1ce884a3863171d7e6970911f0ac4ae159a67fb31a91e148"
+    },
+    "kernel/sound/soc/codecs/snd-soc-wcd938x-sdw.ko": {
+      "bytes": 36481,
+      "mode": 384,
+      "sha256": "31c0ba7e1a173eaac2b69fe5338d1ace22d397ed7b0f6e1518f5193958bb4e76"
+    },
+    "kernel/sound/soc/codecs/snd-soc-wcd938x.ko": {
+      "bytes": 163401,
+      "mode": 384,
+      "sha256": "bc15f2d4013571725ee8060cd59de27be51a2a15e4b97c04fe2f8d11fa210e58"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6adm.ko": {
+      "bytes": 25713,
+      "mode": 384,
+      "sha256": "68035108e0b1efdfcb1065d8a1d37087201590153a6618cff0ffe5324834b7f6"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6afe-clocks.ko": {
+      "bytes": 14225,
+      "mode": 384,
+      "sha256": "cbfb27c739922f901bcc25680c36c736eb8ad719487dc49a6d49b91b2c48395b"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6afe-dai.ko": {
+      "bytes": 94569,
+      "mode": 384,
+      "sha256": "0d2092eb71fee2a22f647a913935be8975d3258aa95ea8abee9bb515eb6200ba"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6afe.ko": {
+      "bytes": 37665,
+      "mode": 384,
+      "sha256": "10a1a7baece9171489dd4ff52744b695727c038fdd6adea57f5ce0db1b9fc51c"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6apm-dai.ko": {
+      "bytes": 42553,
+      "mode": 384,
+      "sha256": "c33563bcb5187edfdee9bc2203b79f0d058b4b71117a7a261533fcefc730b32d"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6apm-lpass-dais.ko": {
+      "bytes": 19321,
+      "mode": 384,
+      "sha256": "43d8cfba502f1be9a1828ff2db3256f66554944ae0ccbb6e7801b8d09a0d1ca3"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6asm-dai.ko": {
+      "bytes": 55953,
+      "mode": 384,
+      "sha256": "58ea3a144647cc37bb2973e35eb06415160dfa5c08c0959e98a9d97fff3336f0"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6asm.ko": {
+      "bytes": 47769,
+      "mode": 384,
+      "sha256": "d46905f94ec5135c13aa8b66ddf194a8e90bf96d3b11ceb7863a3f9c46399d77"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6core.ko": {
+      "bytes": 18249,
+      "mode": 384,
+      "sha256": "cef74863e43a5018b32c328cb10fc96c81f02d6468634b846e1bf779eb1f4709"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6prm-clocks.ko": {
+      "bytes": 12761,
+      "mode": 384,
+      "sha256": "f18bcf6ef48073fbe6c1dd973da6b5b6022812a36ef8613d52c5c9fbb9e39671"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6prm.ko": {
+      "bytes": 15729,
+      "mode": 384,
+      "sha256": "a4bb2bb250a72300b1c03211a7467ad31a98ecc26347f04212a6e2575acd3aa7"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6routing.ko": {
+      "bytes": 594353,
+      "mode": 384,
+      "sha256": "d05d164aae16e7abfbf0dd0788a201d12a9acfbe4577cb8b350c24da7b37fd41"
+    },
+    "kernel/sound/soc/qcom/qdsp6/snd-q6apm.ko": {
+      "bytes": 80401,
+      "mode": 384,
+      "sha256": "31097f06e5f712973b135d1af88a64b0392609f4e90430b73c0b13c7c3fd56ba"
+    },
+    "kernel/sound/soc/qcom/qdsp6/snd-q6dsp-common.ko": {
+      "bytes": 55017,
+      "mode": 384,
+      "sha256": "7858423093f798e592c9dea49bb9a2ef4a1a191409ae0610028566337117161c"
+    },
+    "kernel/sound/soc/qcom/snd-soc-qcom-common.ko": {
+      "bytes": 18721,
+      "mode": 384,
+      "sha256": "a2abf0966baf96749142c5acc8983951b1e90df5d5f6a912b42b9b4e00e9d6da"
+    },
+    "kernel/sound/soc/qcom/snd-soc-qcom-sdw.ko": {
+      "bytes": 11401,
+      "mode": 384,
+      "sha256": "2e2f9f63c1d1f549394cd781f8a72a7655c41f6194f5bb02d1e060b307d70b30"
+    },
+    "kernel/sound/soc/qcom/snd-soc-sm8250.ko": {
+      "bytes": 14409,
+      "mode": 384,
+      "sha256": "4480f8985f07472457c4bb39ddb0e5cf1568662de9d71eddac5b78f73a803fbf"
+    },
+    "modules.alias": {
+      "bytes": 29244,
+      "mode": 420,
+      "sha256": "6d33f528c5f7c01dc80db139110c4dd791aa6967e2f96ad5c10e2502806a99de"
+    },
+    "modules.alias.bin": {
+      "bytes": 26246,
+      "mode": 420,
+      "sha256": "f1bb0966865d49198e682ce27c5af05fa8fbbecf53fe3a4474eeabceb7415f2d"
+    },
+    "modules.builtin": {
+      "bytes": 22046,
+      "mode": 384,
+      "sha256": "f967533e4428fed3b15cdb2343e43162e9b62668649a8bbda3d7f51e2f597cfc"
+    },
+    "modules.builtin.alias.bin": {
+      "bytes": 26379,
+      "mode": 420,
+      "sha256": "2867c12d8ac56fc5f01a78d4ccb51c914a6313aae809b7a2daf22c3e79a160f9"
+    },
+    "modules.builtin.bin": {
+      "bytes": 25885,
+      "mode": 420,
+      "sha256": "a73014c81793880934e530aed5be60b2eba391071f47144a10515bd3b7a97df8"
+    },
+    "modules.builtin.modinfo": {
+      "bytes": 168694,
+      "mode": 384,
+      "sha256": "1b1297a5ea932bb13eb4d7d25ced301f87eeff2e0f4500cc791a85e442a76d59"
+    },
+    "modules.dep": {
+      "bytes": 9595,
+      "mode": 420,
+      "sha256": "0731a90fb1ad28af8039faa317a209adf6076c5d2bcc2dee45c03c5ef1948218"
+    },
+    "modules.dep.bin": {
+      "bytes": 13508,
+      "mode": 420,
+      "sha256": "004323c253fd1a107ee504c202b629ea76ec256d7551d226b3a6d03781db84b3"
+    },
+    "modules.devname": {
+      "bytes": 75,
+      "mode": 420,
+      "sha256": "aa43bc07a3ce1403e0a2d7f30c5fa4d595148469bf873940493ee5e8f85d3d97"
+    },
+    "modules.order": {
+      "bytes": 3681,
+      "mode": 384,
+      "sha256": "5212403b8f41945250af8d9972f7473e18efdda50717380e4a1ee08064416e64"
+    },
+    "modules.softdep": {
+      "bytes": 55,
+      "mode": 420,
+      "sha256": "ac2de753255c506934be29e69261f1485f51ee9cf9c2bf467bcc0c4cf95f8713"
+    },
+    "modules.symbols": {
+      "bytes": 36006,
+      "mode": 420,
+      "sha256": "c766104a133e0997b20ff730b5ebed8540cf18fab9e786f531efe96e59a17431"
+    },
+    "modules.symbols.bin": {
+      "bytes": 42157,
+      "mode": 420,
+      "sha256": "3916704c7811e58b0cd94b70c702afcce010c195c78d48bb1cac8ea6082a2d54"
+    },
+    "modules.weakdep": {
+      "bytes": 55,
+      "mode": 420,
+      "sha256": "a1fffe1059d8150b5d402b3f284f507025a8d4b5881810cb17b3fda8b8ab9304"
+    }
+  },
+  "native_boot_readiness": "blocked",
+  "owner_native_linux_passes_added": 0,
+  "physical_hardware_tested": false,
+  "pinned_tools": {
+    "/usr/bin/qemu-aarch64": {
+      "bytes": 16661520,
+      "mode": 493,
+      "sha256": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943"
+    },
+    "/work/fedora-proot-src/src/proot": {
+      "bytes": 832232,
+      "mode": 493,
+      "sha256": "313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f"
+    },
+    "/work/fedora-system-integration-v1/fedora-system-integration.json": {
+      "bytes": 26899,
+      "mode": 420,
+      "sha256": "66ac854b2bc938aed147afe0355b57fcbba856c874e9d82cec4cad663b1c87d9"
+    },
+    "/work/fedora-system-integration-v1/runtime.json": {
+      "bytes": 28679,
+      "mode": 420,
+      "sha256": "10a373bfc3291aabe564c8f7af90265900763eadfe3167a7384cc4dcd596544b"
+    },
+    "/work/fedora-system-integration-v1/vm-verify-01/result.json": {
+      "bytes": 1641,
+      "mode": 420,
+      "sha256": "223f73b253a48995dd238575e64aad055e11f311c658aa03534b49c570095675"
+    }
+  },
+  "recipe": {
+    "bytes": 15122,
+    "mode": 420,
+    "sha256": "b1a93d57cedfb0dee57cffa7411d95b96b1f0f1f92d18b99f393fd7d38074cf9"
+  },
+  "replacement_cms": {
+    "diagnostic": "CMS Verification successful",
+    "exit_code": 0,
+    "public_ca_chain_checked": false,
+    "signature_verified": true
+  },
+  "runtime_comparison_mode": "reference_archive_unique_pax_order",
+  "runtime_copy": {
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=10s",
+      "1800s",
+      "tar",
+      "--sort=name",
+      "--format=posix",
+      "--pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime",
+      "--numeric-owner",
+      "--acls",
+      "--selinux",
+      "--xattrs",
+      "--xattrs-include=*",
+      "-cf",
+      "-",
+      "-C",
+      "/work/r5-novatek-depmod-c1296-run03/tool-root",
+      "."
+    ],
+    "bytes": 1323141120,
+    "exit_code": 0,
+    "header_types": {
+      "0": 16871,
+      "1": 2017,
+      "2": 3388,
+      "5": 5273,
+      "x": 5098
+    },
+    "max_pax_payload_bytes": 394,
+    "normalization": "unique-pax-record-order-v1",
+    "normalized_sha256": "aee1cc942d4f73c648078702d32e9db69b528c910f08c21771872d10cd884b18",
+    "pax_headers": 5098,
+    "pax_keywords": [
+      "SCHILY.acl.access",
+      "SCHILY.acl.default",
+      "SCHILY.xattr.security.capability",
+      "SCHILY.xattr.system.posix_acl_access",
+      "SCHILY.xattr.system.posix_acl_default",
+      "SCHILY.xattr.user.librepo.checksum.mtime",
+      "SCHILY.xattr.user.librepo.checksum.sha256",
+      "SCHILY.xattr.user.librepo.checksum.sha512",
+      "SCHILY.xattr.user.random-seed-creditable",
+      "SCHILY.xattr.user.rootlesscontainers",
+      "linkpath",
+      "mtime",
+      "path"
+    ],
+    "pax_records": 5568,
+    "raw_sha256": "7c84d83f307d86b9239aa2ebeb60b64ddc6df04b8c7a61a20cadfddce8414e67",
+    "reordered_pax_headers": 229,
+    "reordered_pax_records": 485,
+    "stderr_bytes": 0,
+    "tar_headers": 32647
+  },
+  "runtime_reference_after": {
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=10s",
+      "1800s",
+      "cat",
+      "--",
+      "/inputs/runtime.canonical.tar"
+    ],
+    "bytes": 1323141120,
+    "exit_code": 0,
+    "header_types": {
+      "0": 16871,
+      "1": 2017,
+      "2": 3388,
+      "5": 5273,
+      "x": 5098
+    },
+    "identity": {
+      "bytes": 1323141120,
+      "mode": 384,
+      "sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96"
+    },
+    "max_pax_payload_bytes": 394,
+    "normalization": "unique-pax-record-order-v1",
+    "normalized_sha256": "aee1cc942d4f73c648078702d32e9db69b528c910f08c21771872d10cd884b18",
+    "path": "/inputs/runtime.canonical.tar",
+    "pax_headers": 5098,
+    "pax_keywords": [
+      "SCHILY.acl.access",
+      "SCHILY.acl.default",
+      "SCHILY.xattr.security.capability",
+      "SCHILY.xattr.system.posix_acl_access",
+      "SCHILY.xattr.system.posix_acl_default",
+      "SCHILY.xattr.user.librepo.checksum.mtime",
+      "SCHILY.xattr.user.librepo.checksum.sha256",
+      "SCHILY.xattr.user.librepo.checksum.sha512",
+      "SCHILY.xattr.user.random-seed-creditable",
+      "SCHILY.xattr.user.rootlesscontainers",
+      "linkpath",
+      "mtime",
+      "path"
+    ],
+    "pax_records": 5568,
+    "raw_frozen_identity_verified": true,
+    "raw_sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96",
+    "reordered_pax_headers": 229,
+    "reordered_pax_records": 698,
+    "stderr_bytes": 0,
+    "tar_headers": 32647
+  },
+  "runtime_reference_before": {
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=10s",
+      "1800s",
+      "cat",
+      "--",
+      "/inputs/runtime.canonical.tar"
+    ],
+    "bytes": 1323141120,
+    "exit_code": 0,
+    "header_types": {
+      "0": 16871,
+      "1": 2017,
+      "2": 3388,
+      "5": 5273,
+      "x": 5098
+    },
+    "identity": {
+      "bytes": 1323141120,
+      "mode": 384,
+      "sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96"
+    },
+    "max_pax_payload_bytes": 394,
+    "normalization": "unique-pax-record-order-v1",
+    "normalized_sha256": "aee1cc942d4f73c648078702d32e9db69b528c910f08c21771872d10cd884b18",
+    "path": "/inputs/runtime.canonical.tar",
+    "pax_headers": 5098,
+    "pax_keywords": [
+      "SCHILY.acl.access",
+      "SCHILY.acl.default",
+      "SCHILY.xattr.security.capability",
+      "SCHILY.xattr.system.posix_acl_access",
+      "SCHILY.xattr.system.posix_acl_default",
+      "SCHILY.xattr.user.librepo.checksum.mtime",
+      "SCHILY.xattr.user.librepo.checksum.sha256",
+      "SCHILY.xattr.user.librepo.checksum.sha512",
+      "SCHILY.xattr.user.random-seed-creditable",
+      "SCHILY.xattr.user.rootlesscontainers",
+      "linkpath",
+      "mtime",
+      "path"
+    ],
+    "pax_records": 5568,
+    "raw_frozen_identity_verified": true,
+    "raw_sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96",
+    "reordered_pax_headers": 229,
+    "reordered_pax_records": 698,
+    "stderr_bytes": 0,
+    "tar_headers": 32647
+  },
+  "runtime_source": {
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=10s",
+      "1800s",
+      "tar",
+      "--sort=name",
+      "--format=posix",
+      "--pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime",
+      "--numeric-owner",
+      "--acls",
+      "--selinux",
+      "--xattrs",
+      "--xattrs-include=*",
+      "-cf",
+      "-",
+      "-C",
+      "/work/fedora-system-integration-v1/rootfs",
+      "."
+    ],
+    "bytes": 1323141120,
+    "exit_code": 0,
+    "header_types": {
+      "0": 16871,
+      "1": 2017,
+      "2": 3388,
+      "5": 5273,
+      "x": 5098
+    },
+    "max_pax_payload_bytes": 394,
+    "normalization": "unique-pax-record-order-v1",
+    "normalized_sha256": "aee1cc942d4f73c648078702d32e9db69b528c910f08c21771872d10cd884b18",
+    "pax_headers": 5098,
+    "pax_keywords": [
+      "SCHILY.acl.access",
+      "SCHILY.acl.default",
+      "SCHILY.xattr.security.capability",
+      "SCHILY.xattr.system.posix_acl_access",
+      "SCHILY.xattr.system.posix_acl_default",
+      "SCHILY.xattr.user.librepo.checksum.mtime",
+      "SCHILY.xattr.user.librepo.checksum.sha256",
+      "SCHILY.xattr.user.librepo.checksum.sha512",
+      "SCHILY.xattr.user.random-seed-creditable",
+      "SCHILY.xattr.user.rootlesscontainers",
+      "linkpath",
+      "mtime",
+      "path"
+    ],
+    "pax_records": 5568,
+    "raw_sha256": "7c84d83f307d86b9239aa2ebeb60b64ddc6df04b8c7a61a20cadfddce8414e67",
+    "reordered_pax_headers": 229,
+    "reordered_pax_records": 485,
+    "stderr_bytes": 0,
+    "tar_headers": 32647
+  },
+  "runtime_source_after": {
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=10s",
+      "1800s",
+      "tar",
+      "--sort=name",
+      "--format=posix",
+      "--pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime",
+      "--numeric-owner",
+      "--acls",
+      "--selinux",
+      "--xattrs",
+      "--xattrs-include=*",
+      "-cf",
+      "-",
+      "-C",
+      "/work/fedora-system-integration-v1/rootfs",
+      "."
+    ],
+    "bytes": 1323141120,
+    "exit_code": 0,
+    "header_types": {
+      "0": 16871,
+      "1": 2017,
+      "2": 3388,
+      "5": 5273,
+      "x": 5098
+    },
+    "max_pax_payload_bytes": 394,
+    "normalization": "unique-pax-record-order-v1",
+    "normalized_sha256": "aee1cc942d4f73c648078702d32e9db69b528c910f08c21771872d10cd884b18",
+    "pax_headers": 5098,
+    "pax_keywords": [
+      "SCHILY.acl.access",
+      "SCHILY.acl.default",
+      "SCHILY.xattr.security.capability",
+      "SCHILY.xattr.system.posix_acl_access",
+      "SCHILY.xattr.system.posix_acl_default",
+      "SCHILY.xattr.user.librepo.checksum.mtime",
+      "SCHILY.xattr.user.librepo.checksum.sha256",
+      "SCHILY.xattr.user.librepo.checksum.sha512",
+      "SCHILY.xattr.user.random-seed-creditable",
+      "SCHILY.xattr.user.rootlesscontainers",
+      "linkpath",
+      "mtime",
+      "path"
+    ],
+    "pax_records": 5568,
+    "raw_sha256": "7c84d83f307d86b9239aa2ebeb60b64ddc6df04b8c7a61a20cadfddce8414e67",
+    "reordered_pax_headers": 229,
+    "reordered_pax_records": 485,
+    "stderr_bytes": 0,
+    "tar_headers": 32647
+  },
+  "runtime_source_raw_digest_stable": true,
+  "schema_version": 1,
+  "scope": "offline Fedora ARM64 depmod and binary-index dry run",
+  "signed_stage_receipt": {
+    "bytes": 22669,
+    "mode": 420,
+    "sha256": "405e92520d641dbf967630935c886ce664a013ced959926a13cdf25ca6606683"
+  },
+  "started_utc": "2026-11-24T12:26:36.503440+00:00",
+  "target_depmod_exit_code": 0,
+  "target_depmod_verified": true,
+  "target_imported_crcs": {
+    "__const_udelay": 3940802518,
+    "__init_swait_queue_head": 1619476917,
+    "__kmalloc_cache_noprof": 2667057438,
+    "__kmalloc_large_noprof": 1142754793,
+    "__kmalloc_noprof": 1388693905,
+    "__mutex_init": 3472559263,
+    "__spi_register_driver": 2461783848,
+    "__stack_chk_fail": 4043175627,
+    "_dev_warn": 3578317454,
+    "_printk": 2459533016,
+    "alloc_workqueue": 1238181357,
+    "cancel_delayed_work_sync": 2678528074,
+    "complete": 2787473967,
+    "delayed_work_timer_fn": 4293844842,
+    "destroy_workqueue": 2349060620,
+    "dev_err_probe": 393307643,
+    "device_property_present": 3760631312,
+    "device_property_read_u32_array": 2652472626,
+    "devm_gpiod_get": 2362262923,
+    "devm_gpiod_get_optional": 963712991,
+    "disable_irq": 1021626991,
+    "driver_unregister": 865301247,
+    "enable_irq": 4243327367,
+    "free_irq": 3243330107,
+    "gpiod_get_value_cansleep": 4195269726,
+    "gpiod_set_value_cansleep": 3107281992,
+    "gpiod_to_irq": 2414056741,
+    "init_timer_key": 3337904953,
+    "input_alloc_absinfo": 526354034,
+    "input_allocate_device": 1027674913,
+    "input_event": 1422689853,
+    "input_free_device": 2568261818,
+    "input_mt_init_slots": 2269536459,
+    "input_mt_report_slot_state": 4138365156,
+    "input_register_device": 998078739,
+    "input_set_abs_params": 3598170654,
+    "input_unregister_device": 1380466928,
+    "irq_set_irq_wake": 3458744551,
+    "jiffies": 364531878,
+    "jiffies_to_msecs": 935263344,
+    "kfree": 58330298,
+    "kmalloc_caches": 2055498785,
+    "ktime_get": 3024065381,
+    "memcpy": 1210688638,
+    "memset": 3703006381,
+    "module_layout": 4200571253,
+    "msleep": 4188308217,
+    "mutex_lock": 1308265803,
+    "mutex_unlock": 840167480,
+    "of_find_property": 1303130719,
+    "of_property_read_string": 2788880837,
+    "of_property_read_variable_u32_array": 3345794087,
+    "pm_relax": 3263753596,
+    "pm_stay_awake": 655461808,
+    "queue_delayed_work_on": 3002905965,
+    "release_firmware": 3335559849,
+    "request_firmware": 565340347,
+    "request_threaded_irq": 2463466382,
+    "snprintf": 1701726830,
+    "spi_setup": 2090365694,
+    "spi_sync": 3698091113,
+    "sprintf": 1010825725,
+    "usleep_range_state": 3271908640,
+    "wait_for_completion_timeout": 1245370126
+  },
+  "target_kmod": {
+    "bytes": 202456,
+    "mode": 493,
+    "sha256": "bbcc9efbb7f828e68eb8a9e6d81b0019e765e5f113d2c26262d9dcee4b42c6bf"
+  },
+  "target_module_info": {
+    "sig_hashalgo": "sha512",
+    "sig_key": "6E:4F:50:28:67:A2:C5:AE:D1:80:84:39:6A:37:82:44:25:43:8F:90",
+    "signer": "Build time autogenerated kernel key",
+    "vermagic": "6.12.114-tb371fc-research5-services SMP preempt mod_unload modversions aarch64"
+  },
+  "unchanged_modules": 83
+}

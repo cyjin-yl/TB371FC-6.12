@@ -1,0 +1,391 @@
+{
+  "complete": true,
+  "container_id": "6d2faf7e40305934917fb5f40e64d9f9f09536db932532e8d3063b2e67c9504e",
+  "container_state": {
+    "Dead": false,
+    "Error": "",
+    "ExitCode": 0,
+    "FinishedAt": "2026-11-24T12:27:08.224783574Z",
+    "OOMKilled": false,
+    "Paused": false,
+    "Pid": 0,
+    "Restarting": false,
+    "Running": false,
+    "StartedAt": "2026-11-24T12:25:45.903430548Z",
+    "Status": "exited"
+  },
+  "controller": {
+    "bytes": 16150,
+    "sha256": "6b420082b2439300a6b142bc66eb64140a039a49e0e3e7f2d597cfaaa61eebab"
+  },
+  "docker_start_exit_code": 0,
+  "exit_code": 0,
+  "finished_utc": "2026-11-24T12:27:11.725414+00:00",
+  "frozen_inputs_after": {
+    "launcher.exit": {
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "launcher.json": {
+      "bytes": 8883,
+      "sha256": "b996d2a8007d83e6ccd4efdc20f701dbcdfc12be539b954b0c895534828dd396"
+    },
+    "recipes/launch_tmpfs_target.py": {
+      "bytes": 13536,
+      "sha256": "ce9c5694621462da1dfb5a530238d1cde4f97149766468b300a8b4762d628e2a"
+    },
+    "recipes/run_tmpfs_target.py": {
+      "bytes": 16450,
+      "sha256": "56da0aab714982e0660cb461217d7bd52e45a125e23f38c501b9824296f9f868"
+    },
+    "recipes/source-contract.json": {
+      "bytes": 113,
+      "sha256": "fca2adb4646740c1bd07067224f3f58d8fff5a34897a53d17b2407c81b4fdf8b"
+    }
+  },
+  "frozen_inputs_before": {
+    "launcher.exit": {
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "launcher.json": {
+      "bytes": 8883,
+      "sha256": "b996d2a8007d83e6ccd4efdc20f701dbcdfc12be539b954b0c895534828dd396"
+    },
+    "recipes/launch_tmpfs_target.py": {
+      "bytes": 13536,
+      "sha256": "ce9c5694621462da1dfb5a530238d1cde4f97149766468b300a8b4762d628e2a"
+    },
+    "recipes/run_tmpfs_target.py": {
+      "bytes": 16450,
+      "sha256": "56da0aab714982e0660cb461217d7bd52e45a125e23f38c501b9824296f9f868"
+    },
+    "recipes/source-contract.json": {
+      "bytes": 113,
+      "sha256": "fca2adb4646740c1bd07067224f3f58d8fff5a34897a53d17b2407c81b4fdf8b"
+    }
+  },
+  "input_containers": {
+    "tb371fc-build-20261123": {
+      "id": "1b1381050decaa1cb54724e4cdd719b9bb5740898c374b5092b645c3e7b6c1a1",
+      "image": "sha256:ec92d6b34c6a7e6372d87dc9ef2fd6e8ca8125353fe7d033c676f51cf923a13b",
+      "work": {
+        "Destination": "/work",
+        "Driver": "local",
+        "Mode": "z",
+        "Name": "tb371fc-build-20261123",
+        "Propagation": "",
+        "RW": true,
+        "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data",
+        "Type": "volume"
+      }
+    },
+    "tb371fc-build-ssd-20261123": {
+      "id": "c1b39497c162b3d43f2dad1f85ccc8627f88f91df7a4d76def482143178176d9",
+      "image": "sha256:ec92d6b34c6a7e6372d87dc9ef2fd6e8ca8125353fe7d033c676f51cf923a13b",
+      "work": {
+        "Destination": "/work",
+        "Mode": "",
+        "Propagation": "rprivate",
+        "RW": true,
+        "Source": "/tank/hot/tb371fc-build-20261123",
+        "Type": "bind"
+      }
+    }
+  },
+  "mem_available_before_bytes": 20561487872,
+  "new_container_created": false,
+  "original_failure": {
+    "message": "Command '['docker', 'create', '--name', 'tb371fc-novatek-tmpfs-c1296-run03', '--network', 'none', '--read-only', '--memory', '4g', '--memory-swap', '4g', '--pids-limit', '128', '--security-opt', 'no-new-privileges', '--stop-timeout', '30', '--tmpfs', '/work:rw,exec,nosuid,nodev,size=5g,mode=755', '--tmpfs', '/tmp:rw,exec,nosuid,nodev,size=128m,mode=1777', '--env', 'PYTHONDONTWRITEBYTECODE=1', '--entrypoint', '/usr/bin/env', '--mount', 'type=bind,source=/tank/docker/doescontainer/docker/overlay2/af1e8d1b0b43bd828ff8759c878c17f267180be32717537b0249777b15c15390/merged/usr,destination=/usr,readonly', '--mount', 'type=bind,source=/tank/hot/tb371fc-build-20261123/r5-novatek-runtime-mirror-c1296-01/runtime.canonical.tar,destination=/inputs/runtime.canonical.tar,readonly', '--mount', 'type=bind,source=/tank/hot/tb371fc-build-20261123/r5-novatek-runtime-mirror-c1296-01/receipt.json,destination=/inputs/archive-receipt.json,readonly', '--mount', 'type=bind,source=/tank/hot/tb371fc-build-20261123/r5-novatek-runtime-transfer-pipeline-c1296-01.json,destination=/inputs/archive-pipeline.json,readonly', '--mount', 'type=bind,source=/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/r5-novatek-runtime-export-c1296-01/source.exit,destination=/inputs/source.exit,readonly', '--mount', 'type=bind,source=/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/r5-novatek-runtime-export-c1296-01/source.stderr,destination=/inputs/source.stderr,readonly', '--mount', 'type=bind,source=/tank/hot/tb371fc-build-20261123/r5-novatek-source-c1296-run03,destination=/inputs/repo,readonly', '--mount', 'type=bind,source=/tank/hot/tb371fc-build-20261123/r5-novatek-signed-c1296-run02,destination=/inputs/signed-stage,readonly', '--mount', 'type=bind,source=/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-proot-src/src/proot,destination=/work/fedora-proot-src/src/proot,readonly', '--mount', 'type=bind,source=/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu,destination=/work/fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu,readonly', '--mount', 'type=bind,source=/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-system-integration-v1/fedora-system-integration.json,destination=/work/fedora-system-integration-v1/fedora-system-integration.json,readonly', '--mount', 'type=bind,source=/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-system-integration-v1/runtime.json,destination=/work/fedora-system-integration-v1/runtime.json,readonly', '--mount', 'type=bind,source=/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-system-integration-v1/vm-verify-01/result.json,destination=/work/fedora-system-integration-v1/vm-verify-01/result.json,readonly', '--mount', 'type=bind,source=/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/recipes,destination=/recipes,readonly', '--mount', 'type=bind,source=/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results,destination=/evidence', 'sha256:ec92d6b34c6a7e6372d87dc9ef2fd6e8ca8125353fe7d033c676f51cf923a13b', 'python3', '-B', '/recipes/run_tmpfs_target.py']' timed out after 60 seconds",
+    "type": "TimeoutExpired"
+  },
+  "original_failure_and_recipes_unchanged": true,
+  "original_launcher_rewritten": false,
+  "outer_timeout_seconds": 3300,
+  "physical_hardware_tested": false,
+  "schema": "tb371fc-created-helper-resume-v1",
+  "source_contract": {
+    "commit": "ff3b485190f9d589c7600da41590f221cb14ec2f",
+    "tree": "42f9b5b10ac65f1ca59ba30e73ca1f5c861cb03e"
+  },
+  "start_attempted": true,
+  "start_utc": "2026-11-24T12:25:03.057200+00:00",
+  "started_utc": "2026-11-24T12:25:02.946604+00:00",
+  "state_before": {
+    "Dead": false,
+    "Error": "",
+    "ExitCode": 0,
+    "FinishedAt": "0001-01-01T00:00:00Z",
+    "OOMKilled": false,
+    "Paused": false,
+    "Pid": 0,
+    "Restarting": false,
+    "Running": false,
+    "StartedAt": "0001-01-01T00:00:00Z",
+    "Status": "created"
+  },
+  "verified_created_spec": {
+    "Config": {
+      "Cmd": [
+        "python3",
+        "-B",
+        "/recipes/run_tmpfs_target.py"
+      ],
+      "Entrypoint": [
+        "/usr/bin/env"
+      ],
+      "Env": [
+        "PYTHONDONTWRITEBYTECODE=1",
+        "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      ],
+      "StopTimeout": 30,
+      "User": "",
+      "WorkingDir": ""
+    },
+    "HostConfig": {
+      "CapAdd": null,
+      "CapDrop": null,
+      "DeviceRequests": null,
+      "Devices": [],
+      "Memory": 4294967296,
+      "MemorySwap": 4294967296,
+      "Mounts": [
+        {
+          "Source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results",
+          "Target": "/evidence",
+          "Type": "bind"
+        },
+        {
+          "ReadOnly": true,
+          "Source": "/tank/hot/tb371fc-build-20261123/r5-novatek-runtime-transfer-pipeline-c1296-01.json",
+          "Target": "/inputs/archive-pipeline.json",
+          "Type": "bind"
+        },
+        {
+          "ReadOnly": true,
+          "Source": "/tank/hot/tb371fc-build-20261123/r5-novatek-runtime-mirror-c1296-01/receipt.json",
+          "Target": "/inputs/archive-receipt.json",
+          "Type": "bind"
+        },
+        {
+          "ReadOnly": true,
+          "Source": "/tank/hot/tb371fc-build-20261123/r5-novatek-source-c1296-run03",
+          "Target": "/inputs/repo",
+          "Type": "bind"
+        },
+        {
+          "ReadOnly": true,
+          "Source": "/tank/hot/tb371fc-build-20261123/r5-novatek-runtime-mirror-c1296-01/runtime.canonical.tar",
+          "Target": "/inputs/runtime.canonical.tar",
+          "Type": "bind"
+        },
+        {
+          "ReadOnly": true,
+          "Source": "/tank/hot/tb371fc-build-20261123/r5-novatek-signed-c1296-run02",
+          "Target": "/inputs/signed-stage",
+          "Type": "bind"
+        },
+        {
+          "ReadOnly": true,
+          "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/r5-novatek-runtime-export-c1296-01/source.exit",
+          "Target": "/inputs/source.exit",
+          "Type": "bind"
+        },
+        {
+          "ReadOnly": true,
+          "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/r5-novatek-runtime-export-c1296-01/source.stderr",
+          "Target": "/inputs/source.stderr",
+          "Type": "bind"
+        },
+        {
+          "ReadOnly": true,
+          "Source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/recipes",
+          "Target": "/recipes",
+          "Type": "bind"
+        },
+        {
+          "ReadOnly": true,
+          "Source": "/tank/docker/doescontainer/docker/overlay2/af1e8d1b0b43bd828ff8759c878c17f267180be32717537b0249777b15c15390/merged/usr",
+          "Target": "/usr",
+          "Type": "bind"
+        },
+        {
+          "ReadOnly": true,
+          "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu",
+          "Target": "/work/fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu",
+          "Type": "bind"
+        },
+        {
+          "ReadOnly": true,
+          "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-proot-src/src/proot",
+          "Target": "/work/fedora-proot-src/src/proot",
+          "Type": "bind"
+        },
+        {
+          "ReadOnly": true,
+          "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-system-integration-v1/fedora-system-integration.json",
+          "Target": "/work/fedora-system-integration-v1/fedora-system-integration.json",
+          "Type": "bind"
+        },
+        {
+          "ReadOnly": true,
+          "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-system-integration-v1/runtime.json",
+          "Target": "/work/fedora-system-integration-v1/runtime.json",
+          "Type": "bind"
+        },
+        {
+          "ReadOnly": true,
+          "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-system-integration-v1/vm-verify-01/result.json",
+          "Target": "/work/fedora-system-integration-v1/vm-verify-01/result.json",
+          "Type": "bind"
+        }
+      ],
+      "NetworkMode": "none",
+      "PidsLimit": 128,
+      "Privileged": false,
+      "ReadonlyRootfs": true,
+      "SecurityOpt": [
+        "no-new-privileges"
+      ],
+      "Tmpfs": {
+        "/tmp": "rw,exec,nosuid,nodev,size=128m,mode=1777",
+        "/work": "rw,exec,nosuid,nodev,size=5g,mode=755"
+      }
+    },
+    "Id": "6d2faf7e40305934917fb5f40e64d9f9f09536db932532e8d3063b2e67c9504e",
+    "Image": "sha256:ec92d6b34c6a7e6372d87dc9ef2fd6e8ca8125353fe7d033c676f51cf923a13b",
+    "Mounts": [
+      {
+        "Destination": "/evidence",
+        "Mode": "",
+        "Propagation": "rprivate",
+        "RW": true,
+        "Source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/inputs/archive-pipeline.json",
+        "Mode": "",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/tank/hot/tb371fc-build-20261123/r5-novatek-runtime-transfer-pipeline-c1296-01.json",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/inputs/archive-receipt.json",
+        "Mode": "",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/tank/hot/tb371fc-build-20261123/r5-novatek-runtime-mirror-c1296-01/receipt.json",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/inputs/repo",
+        "Mode": "",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/tank/hot/tb371fc-build-20261123/r5-novatek-source-c1296-run03",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/inputs/runtime.canonical.tar",
+        "Mode": "",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/tank/hot/tb371fc-build-20261123/r5-novatek-runtime-mirror-c1296-01/runtime.canonical.tar",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/inputs/signed-stage",
+        "Mode": "",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/tank/hot/tb371fc-build-20261123/r5-novatek-signed-c1296-run02",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/inputs/source.exit",
+        "Mode": "",
+        "Propagation": "rslave",
+        "RW": false,
+        "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/r5-novatek-runtime-export-c1296-01/source.exit",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/inputs/source.stderr",
+        "Mode": "",
+        "Propagation": "rslave",
+        "RW": false,
+        "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/r5-novatek-runtime-export-c1296-01/source.stderr",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/recipes",
+        "Mode": "",
+        "Propagation": "rprivate",
+        "RW": false,
+        "Source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/recipes",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/usr",
+        "Mode": "",
+        "Propagation": "rslave",
+        "RW": false,
+        "Source": "/tank/docker/doescontainer/docker/overlay2/af1e8d1b0b43bd828ff8759c878c17f267180be32717537b0249777b15c15390/merged/usr",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/work/fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu",
+        "Mode": "",
+        "Propagation": "rslave",
+        "RW": false,
+        "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/work/fedora-proot-src/src/proot",
+        "Mode": "",
+        "Propagation": "rslave",
+        "RW": false,
+        "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-proot-src/src/proot",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/work/fedora-system-integration-v1/fedora-system-integration.json",
+        "Mode": "",
+        "Propagation": "rslave",
+        "RW": false,
+        "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-system-integration-v1/fedora-system-integration.json",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/work/fedora-system-integration-v1/runtime.json",
+        "Mode": "",
+        "Propagation": "rslave",
+        "RW": false,
+        "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-system-integration-v1/runtime.json",
+        "Type": "bind"
+      },
+      {
+        "Destination": "/work/fedora-system-integration-v1/vm-verify-01/result.json",
+        "Mode": "",
+        "Propagation": "rslave",
+        "RW": false,
+        "Source": "/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-system-integration-v1/vm-verify-01/result.json",
+        "Type": "bind"
+      }
+    ]
+  },
+  "worker_receipt": {
+    "bytes": 19226,
+    "sha256": "2bc5eecd22843ec152739c52ce7a00cc59831b66fae49194561d0238301052db"
+  },
+  "worker_summary": {
+    "complete": true,
+    "exit_code": 0,
+    "failure": null,
+    "phase": "verified",
+    "text_export_complete": true
+  }
+}

@@ -1,0 +1,27 @@
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-system-integration-v1/fedora-system-integration.json': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-system-integration-v1/runtime.json': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-system-integration-v1/vm-verify-01/result.json': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-proot-src/src/proot': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu/libpkgconf.so.3.0.0': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu/libtalloc.so.2.4.3': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu/pkgconfig/talloc.pc': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu/pkgconfig': Operation not supported
+tar: acl_delete_def_file_at: Cannot drop default POSIX ACLs for file 'fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu/pkgconfig': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu': Operation not supported
+tar: acl_delete_def_file_at: Cannot drop default POSIX ACLs for file 'fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-host-tools/unpacked/usr/lib': Operation not supported
+tar: acl_delete_def_file_at: Cannot drop default POSIX ACLs for file 'fedora-host-tools/unpacked/usr/lib': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-host-tools/unpacked/usr': Operation not supported
+tar: acl_delete_def_file_at: Cannot drop default POSIX ACLs for file 'fedora-host-tools/unpacked/usr': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-host-tools/unpacked': Operation not supported
+tar: acl_delete_def_file_at: Cannot drop default POSIX ACLs for file 'fedora-host-tools/unpacked': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-host-tools': Operation not supported
+tar: acl_delete_def_file_at: Cannot drop default POSIX ACLs for file 'fedora-host-tools': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-proot-src/src': Operation not supported
+tar: acl_delete_def_file_at: Cannot drop default POSIX ACLs for file 'fedora-proot-src/src': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-proot-src': Operation not supported
+tar: acl_delete_def_file_at: Cannot drop default POSIX ACLs for file 'fedora-proot-src': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-system-integration-v1/vm-verify-01': Operation not supported
+tar: acl_delete_def_file_at: Cannot drop default POSIX ACLs for file 'fedora-system-integration-v1/vm-verify-01': Operation not supported
+tar: acl_set_file_at: Cannot set POSIX ACLs for file 'fedora-system-integration-v1': Operation not supported
+tar: acl_delete_def_file_at: Cannot drop default POSIX ACLs for file 'fedora-system-integration-v1': Operation not supported

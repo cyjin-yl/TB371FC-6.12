@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/work/r5-novatek-source-c1296-run02/scripts/research/input/signing/target_r5_depmod.py", line 241, in <module>
+    main()
+    ~~~~^^
+  File "/work/r5-novatek-source-c1296-run02/scripts/research/input/signing/target_r5_depmod.py", line 237, in main
+    run(args.repo, args.signed_stage, args.work)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/r5-novatek-source-c1296-run02/scripts/research/input/signing/target_r5_depmod.py", line 169, in run
+    report["runtime_source"] = common.canonical(runtime, work / "runtime-source.stderr")
+                               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/r5-novatek-source-c1296-run02/scripts/research/rootfs/stage_r5_fedora.py", line 118, in canonical
+    raise ValueError("canonical stream failed: " + str(log))
+ValueError: canonical stream failed: /work/r5-novatek-depmod-c1296-run02/runtime-source.stderr

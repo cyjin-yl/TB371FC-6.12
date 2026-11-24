@@ -1,0 +1,216 @@
+{
+  "all_modules_identical_to_signed_run02": true,
+  "binary_index_query_scope": "Novatek only; the printed insmod line is modprobe --show-depends output",
+  "candidate_retention": "Signed run02 inputs remain on SSD; helper RAM trees were temporary; only bounded text receipts were exported",
+  "commands": [
+    {
+      "exit_code": 0,
+      "name": "target-depmod-version",
+      "stderr_bytes": 0,
+      "stdout_bytes": 45
+    },
+    {
+      "exit_code": 0,
+      "name": "target-depmod",
+      "stderr_bytes": 0,
+      "stdout_bytes": 0
+    },
+    {
+      "exit_code": 0,
+      "name": "target-load-plan",
+      "stderr_bytes": 0,
+      "stdout_bytes": 122
+    },
+    {
+      "exit_code": 0,
+      "name": "target-modinfo-sig_hashalgo",
+      "stderr_bytes": 0,
+      "stdout_bytes": 7
+    },
+    {
+      "exit_code": 0,
+      "name": "target-modinfo-sig_key",
+      "stderr_bytes": 0,
+      "stdout_bytes": 60
+    },
+    {
+      "exit_code": 0,
+      "name": "target-modinfo-signer",
+      "stderr_bytes": 0,
+      "stdout_bytes": 36
+    },
+    {
+      "exit_code": 0,
+      "name": "target-modinfo-vermagic",
+      "stderr_bytes": 0,
+      "stdout_bytes": 79
+    },
+    {
+      "exit_code": 0,
+      "name": "target-modversions",
+      "stderr_bytes": 0,
+      "stdout_bytes": 1780
+    }
+  ],
+  "container_exit_code": 0,
+  "container_id": "6d2faf7e40305934917fb5f40e64d9f9f09536db932532e8d3063b2e67c9504e",
+  "container_oom_killed": false,
+  "dependency_graph_comparison_basis": "Executed exact-source check_load_plan plus retained report/static-gate index identity; no independent reread of unexported modules.dep is claimed",
+  "exported_target_bytes": 116333,
+  "exported_target_file_count": 36,
+  "imported_crcs_compared": 64,
+  "memory_events": {
+    "high": 0,
+    "low": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_group_kill": 0,
+    "oom_kill": 0,
+    "sock_throttled": 0
+  },
+  "memory_limit_bytes": 4294967296,
+  "memory_peak_bytes": 2854940672,
+  "module_files_compared": 84,
+  "module_loaded": false,
+  "modules_dep_raw_exported": false,
+  "original_file_bytes": 160661,
+  "original_file_count": 60,
+  "owner_native_linux_passes_added": 0,
+  "physical_hardware_tested": false,
+  "raw_reference_identity_before_after_equal": true,
+  "replacement": {
+    "bytes": 104929,
+    "mode": 384,
+    "sha256": "3428b2ac0acdab29a46282331da4afdbd000b86b463b99781a0f134011b375c9"
+  },
+  "resume_finished_utc": "2026-11-24T12:27:11.725414+00:00",
+  "resume_report": {
+    "bytes": 16803,
+    "sha256": "7d9e2b20b608a343071ca90bf382c03a851a3187886104cc23337ef088e5c461"
+  },
+  "resume_started_utc": "2026-11-24T12:25:02.946604+00:00",
+  "runtime_streams": {
+    "runtime_copy": {
+      "bytes": 1323141120,
+      "normalized_sha256": "aee1cc942d4f73c648078702d32e9db69b528c910f08c21771872d10cd884b18",
+      "pax_headers": 5098,
+      "pax_records": 5568,
+      "raw_sha256": "7c84d83f307d86b9239aa2ebeb60b64ddc6df04b8c7a61a20cadfddce8414e67",
+      "reordered_pax_headers": 229,
+      "reordered_pax_records": 485,
+      "tar_headers": 32647
+    },
+    "runtime_reference_after": {
+      "bytes": 1323141120,
+      "normalized_sha256": "aee1cc942d4f73c648078702d32e9db69b528c910f08c21771872d10cd884b18",
+      "pax_headers": 5098,
+      "pax_records": 5568,
+      "raw_sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96",
+      "reordered_pax_headers": 229,
+      "reordered_pax_records": 698,
+      "tar_headers": 32647
+    },
+    "runtime_reference_before": {
+      "bytes": 1323141120,
+      "normalized_sha256": "aee1cc942d4f73c648078702d32e9db69b528c910f08c21771872d10cd884b18",
+      "pax_headers": 5098,
+      "pax_records": 5568,
+      "raw_sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96",
+      "reordered_pax_headers": 229,
+      "reordered_pax_records": 698,
+      "tar_headers": 32647
+    },
+    "runtime_source": {
+      "bytes": 1323141120,
+      "normalized_sha256": "aee1cc942d4f73c648078702d32e9db69b528c910f08c21771872d10cd884b18",
+      "pax_headers": 5098,
+      "pax_records": 5568,
+      "raw_sha256": "7c84d83f307d86b9239aa2ebeb60b64ddc6df04b8c7a61a20cadfddce8414e67",
+      "reordered_pax_headers": 229,
+      "reordered_pax_records": 485,
+      "tar_headers": 32647
+    },
+    "runtime_source_after": {
+      "bytes": 1323141120,
+      "normalized_sha256": "aee1cc942d4f73c648078702d32e9db69b528c910f08c21771872d10cd884b18",
+      "pax_headers": 5098,
+      "pax_records": 5568,
+      "raw_sha256": "7c84d83f307d86b9239aa2ebeb60b64ddc6df04b8c7a61a20cadfddce8414e67",
+      "reordered_pax_headers": 229,
+      "reordered_pax_records": 485,
+      "tar_headers": 32647
+    }
+  },
+  "schema": "tb371fc-novatek-run03-source-binding-v1",
+  "signed_stage_report": {
+    "bytes": 22669,
+    "sha256": "405e92520d641dbf967630935c886ce664a013ced959926a13cdf25ca6606683"
+  },
+  "source_commit": "ff3b485190f9d589c7600da41590f221cb14ec2f",
+  "source_files": {
+    "docs/research/2026-11-23/boot-candidate-r5.json": {
+      "bytes": 32411,
+      "sha256": "cbd40dbd9acdf26645c11647fb29079e5c4c8f8d1a6fadafaf154d3a3e72570b"
+    },
+    "scripts/research/boot_formats.py": {
+      "bytes": 17028,
+      "sha256": "b0936334329df6bab43fe47a5536c3cb4e279804163ffb880987530166c3d64e"
+    },
+    "scripts/research/boot_rootfs.py": {
+      "bytes": 15876,
+      "sha256": "6bcfb231179f2c2495e45d93cd4b6503c7f6408c5901ce1898533d2e8ad8a806"
+    },
+    "scripts/research/derive_boot_candidate.py": {
+      "bytes": 17700,
+      "sha256": "b77daada7463320e68f1a4b52679da0a03be97cf60167095002582fc250dbd1c"
+    },
+    "scripts/research/input/signing/runtime_archive.py": {
+      "bytes": 10503,
+      "sha256": "07d2c015a1fc267a28db228e1dd43009568c112ff7216e89fda231aa95456ef0"
+    },
+    "scripts/research/input/signing/stage_r5_novatek.py": {
+      "bytes": 13649,
+      "sha256": "12b95c75b1b2b7939b0cfbedf6e97353a67a43bb3d48748c44553a91ddee856b"
+    },
+    "scripts/research/input/signing/stage_signed.py": {
+      "bytes": 14828,
+      "sha256": "ad270d83f89ce08d2488906b8246167227e0e352a91294042489d0a0737908df"
+    },
+    "scripts/research/input/signing/target_r5_depmod.py": {
+      "bytes": 15122,
+      "sha256": "b1a93d57cedfb0dee57cffa7411d95b96b1f0f1f92d18b99f393fd7d38074cf9"
+    },
+    "scripts/research/qualify_boot_bundle.py": {
+      "bytes": 16900,
+      "sha256": "5cd0c3f649ace02c1d8f7166ebefb3c9710f7d3eb7bb9f2b034cab5122eb7210"
+    },
+    "scripts/research/rootfs/stage_r5_fedora.py": {
+      "bytes": 14845,
+      "sha256": "4a4f8ea16a154b6ef2cfcb49766412c99df5d3ca3945cfc691841f3a8060fbfb"
+    }
+  },
+  "source_tracked_status": "",
+  "source_tree": "42f9b5b10ac65f1ca59ba30e73ca1f5c861cb03e",
+  "swap_limit_bytes": 0,
+  "target_elapsed_seconds": 30.855946,
+  "target_finished_utc": "2026-11-24T12:27:07.359386+00:00",
+  "target_module_info": {
+    "sig_hashalgo": "sha512",
+    "sig_key": "6E:4F:50:28:67:A2:C5:AE:D1:80:84:39:6A:37:82:44:25:43:8F:90",
+    "signer": "Build time autogenerated kernel key",
+    "vermagic": "6.12.114-tb371fc-research5-services SMP preempt mod_unload modversions aarch64"
+  },
+  "target_report": {
+    "bytes": 34486,
+    "sha256": "e43372c19d3ae4af72835fbfd47c9a1d81b472504ce3d78f60fb5800d0849598"
+  },
+  "target_started_utc": "2026-11-24T12:26:36.503440+00:00",
+  "unchanged_from_frozen_R5": 83,
+  "verified_against_retained_raw_files": true,
+  "worker_finished_utc": "2026-11-24T12:27:07.438854+00:00",
+  "worker_report": {
+    "bytes": 19226,
+    "sha256": "2bc5eecd22843ec152739c52ce7a00cc59831b66fae49194561d0238301052db"
+  },
+  "worker_started_utc": "2026-11-24T12:26:05.393159+00:00"
+}

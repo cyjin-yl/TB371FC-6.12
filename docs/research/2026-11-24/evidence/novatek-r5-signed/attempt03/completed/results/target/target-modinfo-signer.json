@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "/work/fedora-proot-src/src/proot",
+    "-0",
+    "-r",
+    "/work/r5-novatek-depmod-c1296-run03/tool-root",
+    "-q",
+    "/usr/bin/qemu-aarch64",
+    "-b",
+    "/work/r5-novatek-depmod-c1296-run03/rootfs:/candidate",
+    "-b",
+    "/proc",
+    "-b",
+    "/dev/null",
+    "-b",
+    "/dev/zero",
+    "-b",
+    "/dev/random",
+    "-b",
+    "/dev/urandom",
+    "-w",
+    "/",
+    "/usr/sbin/modinfo",
+    "-F",
+    "signer",
+    "/candidate/lib/modules/6.12.114-tb371fc-research5-services/kernel/drivers/input/touchscreen/nt36523/nt36523_ts.ko"
+  ],
+  "exit_code": 0,
+  "finished_utc": "2026-11-24T12:26:54.433780+00:00",
+  "started_utc": "2026-11-24T12:26:54.319723+00:00",
+  "timeout_seconds": 120
+}

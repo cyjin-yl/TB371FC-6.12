@@ -1,0 +1,62 @@
+{
+  "complete": false,
+  "failure": "canonical stream failed: /work/r5-novatek-depmod-c1296-run02/runtime-source.stderr",
+  "finished_utc": "2026-11-24T11:05:38.703133+00:00",
+  "kernel_release": "6.12.114-tb371fc-research5-services",
+  "module_loaded": false,
+  "native_boot_readiness": "blocked",
+  "owner_native_linux_passes_added": 0,
+  "physical_hardware_tested": false,
+  "pinned_tools": {
+    "/usr/bin/qemu-aarch64": {
+      "bytes": 16661520,
+      "mode": 493,
+      "sha256": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943"
+    },
+    "/work/fedora-proot-src/src/proot": {
+      "bytes": 832232,
+      "mode": 493,
+      "sha256": "313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f"
+    },
+    "/work/fedora-system-integration-v1/fedora-system-integration.json": {
+      "bytes": 26899,
+      "mode": 420,
+      "sha256": "66ac854b2bc938aed147afe0355b57fcbba856c874e9d82cec4cad663b1c87d9"
+    },
+    "/work/fedora-system-integration-v1/runtime.json": {
+      "bytes": 28679,
+      "mode": 420,
+      "sha256": "10a373bfc3291aabe564c8f7af90265900763eadfe3167a7384cc4dcd596544b"
+    },
+    "/work/fedora-system-integration-v1/vm-verify-01/result.json": {
+      "bytes": 1641,
+      "mode": 420,
+      "sha256": "223f73b253a48995dd238575e64aad055e11f311c658aa03534b49c570095675"
+    }
+  },
+  "recipe": {
+    "bytes": 13169,
+    "mode": 420,
+    "sha256": "96dae2e40623ab4d59c1043e8a5b75892e9976b2b75b3f449848d29053b289b4"
+  },
+  "replacement_cms": {
+    "diagnostic": "CMS Verification successful",
+    "exit_code": 0,
+    "public_ca_chain_checked": false,
+    "signature_verified": true
+  },
+  "schema_version": 1,
+  "scope": "offline Fedora ARM64 depmod and binary-index dry run",
+  "signed_stage_receipt": {
+    "bytes": 22669,
+    "mode": 420,
+    "sha256": "405e92520d641dbf967630935c886ce664a013ced959926a13cdf25ca6606683"
+  },
+  "started_utc": "2026-11-24T10:35:33.717334+00:00",
+  "target_depmod_verified": false,
+  "target_kmod": {
+    "bytes": 202456,
+    "mode": 493,
+    "sha256": "bbcc9efbb7f828e68eb8a9e6d81b0019e765e5f113d2c26262d9dcee4b42c6bf"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "captured_utc": "2026-11-24T12:19:24.535564+00:00",
+  "files": [
+    {
+      "bytes": 8883,
+      "name": "launcher.json",
+      "sha256": "b996d2a8007d83e6ccd4efdc20f701dbcdfc12be539b954b0c895534828dd396"
+    },
+    {
+      "bytes": 2,
+      "name": "launcher.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "bytes": 113,
+      "name": "recipes/source-contract.json",
+      "sha256": "fca2adb4646740c1bd07067224f3f58d8fff5a34897a53d17b2407c81b4fdf8b"
+    }
+  ],
+  "scope": "Original failed Docker-create client launch files plus a later structured created/not-running container snapshot; worker had not started."
+}

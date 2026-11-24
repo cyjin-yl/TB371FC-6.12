@@ -1,0 +1,21 @@
+{
+  "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-runtime-mirror-c1296-01/extract.stderr",
+  "bytes": 3773902,
+  "sha256": "3dc093f080d725e76bf4cb2795b8b77fd0e833e52e49d0f3a8fab7aafa82db4d",
+  "line_count": 27419,
+  "sample_first_lines": [
+    "/usr/bin/tar: acl_set_file_at: Cannot set POSIX ACLs for file './.profile': Operation not supported\n",
+    "/usr/bin/tar: acl_set_file_at: Cannot set POSIX ACLs for file './boot/Image-6.12.114-tb371fc-research1': Operation not supported\n",
+    "/usr/bin/tar: acl_set_file_at: Cannot set POSIX ACLs for file './boot/config-6.12.114-tb371fc-research1': Operation not supported\n",
+    "/usr/bin/tar: acl_set_file_at: Cannot set POSIX ACLs for file './boot/dtb-6.12.114-tb371fc-research1/qcom/sm8250-lenovo-tb371fc.dtb': Operation not supported\n",
+    "/usr/bin/tar: acl_set_file_at: Cannot set POSIX ACLs for file './boot/initramfs-6.12.114-tb371fc-research1.img': Operation not supported\n",
+    "/usr/bin/tar: acl_set_file_at: Cannot set POSIX ACLs for file './etc/.pwd.lock': Operation not supported\n",
+    "/usr/bin/tar: acl_set_file_at: Cannot set POSIX ACLs for file './etc/.updated': Operation not supported\n",
+    "/usr/bin/tar: acl_set_file_at: Cannot set POSIX ACLs for file './etc/DIR_COLORS': Operation not supported\n",
+    "/usr/bin/tar: acl_set_file_at: Cannot set POSIX ACLs for file './etc/DIR_COLORS.lightbgcolor': Operation not supported\n",
+    "/usr/bin/tar: acl_set_file_at: Cannot set POSIX ACLs for file './etc/GREP_COLORS': Operation not supported\n",
+    "/usr/bin/tar: acl_set_file_at: Cannot set POSIX ACLs for file './etc/NetworkManager/NetworkManager.conf': Operation not supported\n",
+    "/usr/bin/tar: acl_set_file_at: Cannot set POSIX ACLs for file './etc/X11/xinit/xinitrc.d/50-systemd-user.sh': Operation not supported\n"
+  ],
+  "full_raw_retained_at_source": true
+}

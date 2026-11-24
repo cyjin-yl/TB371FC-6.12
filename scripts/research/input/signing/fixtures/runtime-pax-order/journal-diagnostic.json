@@ -1,0 +1,132 @@
+{
+  "schema": "tb371fc-journal-canonical-difference-v1",
+  "utc": "2026-11-24T11:48:50.621714+00:00",
+  "extract_exit_code": 0,
+  "extract_stderr_bytes": 0,
+  "source": {
+    "archive_bytes": 10240,
+    "archive_sha256": "caa6484314f6421fe1f1b9f906da5148f5e6df85823a17e5182a5a9aca54df10",
+    "xattrs_in_filesystem_order": [
+      {
+        "name": "system.posix_acl_default",
+        "value_hex": "0200000001000700ffffffff04000500ffffffff0800050004000000080005000a00000010000500ffffffff20000500ffffffff"
+      },
+      {
+        "name": "system.posix_acl_access",
+        "value_hex": "0200000001000700ffffffff04000500ffffffff0800050004000000080005000a00000010000500ffffffff20000500ffffffff"
+      }
+    ],
+    "mode": 1517,
+    "uid": 0,
+    "gid": 190,
+    "mtime_ns": 1795398377179503258,
+    "tar_entries": [
+      {
+        "offset": 0,
+        "type": "x",
+        "name": "./PaxHeaders/journal",
+        "size": 394,
+        "header_sha256": "d6a8c2574cf120f8b7323808506e5674d50cc691ad92ec3d93b247afeee1adc0",
+        "body_sha256": "e6befc030a48555f47adecabfa9382ab3922f518cd44528a15bc51500e0c021e",
+        "pax_records": [
+          {
+            "key": "mtime",
+            "value_hex": "313739353339383337372e313739353033323538",
+            "record_hex": "3330206d74696d653d313739353339383337372e3137393530333235380a"
+          },
+          {
+            "key": "SCHILY.acl.access",
+            "value_hex": "757365723a3a7277780a67726f75703a3a722d780a67726f75703a343a722d780a67726f75703a31303a722d780a6d61736b3a3a722d780a6f746865723a3a722d78",
+            "record_hex": "383820534348494c592e61636c2e6163636573733d757365723a3a7277780a67726f75703a3a722d780a67726f75703a343a722d780a67726f75703a31303a722d780a6d61736b3a3a722d780a6f746865723a3a722d780a"
+          },
+          {
+            "key": "SCHILY.acl.default",
+            "value_hex": "757365723a3a7277780a67726f75703a3a722d780a67726f75703a343a722d780a67726f75703a31303a722d780a6d61736b3a3a722d780a6f746865723a3a722d78",
+            "record_hex": "383920534348494c592e61636c2e64656661756c743d757365723a3a7277780a67726f75703a3a722d780a67726f75703a343a722d780a67726f75703a31303a722d780a6d61736b3a3a722d780a6f746865723a3a722d780a"
+          },
+          {
+            "key": "SCHILY.xattr.system.posix_acl_default",
+            "value_hex": "0200000001000700ffffffff04000500ffffffff0800050004000000080005000a00000010000500ffffffff20000500ffffffff",
+            "record_hex": "393420534348494c592e78617474722e73797374656d2e706f7369785f61636c5f64656661756c743d0200000001000700ffffffff04000500ffffffff0800050004000000080005000a00000010000500ffffffff20000500ffffffff0a"
+          },
+          {
+            "key": "SCHILY.xattr.system.posix_acl_access",
+            "value_hex": "0200000001000700ffffffff04000500ffffffff0800050004000000080005000a00000010000500ffffffff20000500ffffffff",
+            "record_hex": "393320534348494c592e78617474722e73797374656d2e706f7369785f61636c5f6163636573733d0200000001000700ffffffff04000500ffffffff0800050004000000080005000a00000010000500ffffffff20000500ffffffff0a"
+          }
+        ]
+      },
+      {
+        "offset": 1024,
+        "type": "5",
+        "name": "journal/",
+        "size": 0,
+        "header_sha256": "7f95ea446e515b0a3e0d9bc2a1375f6b158661b88a95f7e2779b3c048725e3ef",
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+  "target": {
+    "archive_bytes": 10240,
+    "archive_sha256": "1e9dc9584cb6d7e82599c2309610514efa2810e87d00c0232fa1b2d648e1ca59",
+    "xattrs_in_filesystem_order": [
+      {
+        "name": "system.posix_acl_access",
+        "value_hex": "0200000001000700ffffffff04000500ffffffff0800050004000000080005000a00000010000500ffffffff20000500ffffffff"
+      },
+      {
+        "name": "system.posix_acl_default",
+        "value_hex": "0200000001000700ffffffff04000500ffffffff0800050004000000080005000a00000010000500ffffffff20000500ffffffff"
+      }
+    ],
+    "mode": 1517,
+    "uid": 0,
+    "gid": 190,
+    "mtime_ns": 1795398377179503258,
+    "tar_entries": [
+      {
+        "offset": 0,
+        "type": "x",
+        "name": "./PaxHeaders/journal",
+        "size": 394,
+        "header_sha256": "d6a8c2574cf120f8b7323808506e5674d50cc691ad92ec3d93b247afeee1adc0",
+        "body_sha256": "6f6169c0f29202f482f74f4774f18db028dad2cf5ea46caf7e009b053d81ac27",
+        "pax_records": [
+          {
+            "key": "mtime",
+            "value_hex": "313739353339383337372e313739353033323538",
+            "record_hex": "3330206d74696d653d313739353339383337372e3137393530333235380a"
+          },
+          {
+            "key": "SCHILY.acl.access",
+            "value_hex": "757365723a3a7277780a67726f75703a3a722d780a67726f75703a343a722d780a67726f75703a31303a722d780a6d61736b3a3a722d780a6f746865723a3a722d78",
+            "record_hex": "383820534348494c592e61636c2e6163636573733d757365723a3a7277780a67726f75703a3a722d780a67726f75703a343a722d780a67726f75703a31303a722d780a6d61736b3a3a722d780a6f746865723a3a722d780a"
+          },
+          {
+            "key": "SCHILY.acl.default",
+            "value_hex": "757365723a3a7277780a67726f75703a3a722d780a67726f75703a343a722d780a67726f75703a31303a722d780a6d61736b3a3a722d780a6f746865723a3a722d78",
+            "record_hex": "383920534348494c592e61636c2e64656661756c743d757365723a3a7277780a67726f75703a3a722d780a67726f75703a343a722d780a67726f75703a31303a722d780a6d61736b3a3a722d780a6f746865723a3a722d780a"
+          },
+          {
+            "key": "SCHILY.xattr.system.posix_acl_access",
+            "value_hex": "0200000001000700ffffffff04000500ffffffff0800050004000000080005000a00000010000500ffffffff20000500ffffffff",
+            "record_hex": "393320534348494c592e78617474722e73797374656d2e706f7369785f61636c5f6163636573733d0200000001000700ffffffff04000500ffffffff0800050004000000080005000a00000010000500ffffffff20000500ffffffff0a"
+          },
+          {
+            "key": "SCHILY.xattr.system.posix_acl_default",
+            "value_hex": "0200000001000700ffffffff04000500ffffffff0800050004000000080005000a00000010000500ffffffff20000500ffffffff",
+            "record_hex": "393420534348494c592e78617474722e73797374656d2e706f7369785f61636c5f64656661756c743d0200000001000700ffffffff04000500ffffffff0800050004000000080005000a00000010000500ffffffff20000500ffffffff0a"
+          }
+        ]
+      },
+      {
+        "offset": 1024,
+        "type": "5",
+        "name": "journal/",
+        "size": 0,
+        "header_sha256": "7f95ea446e515b0a3e0d9bc2a1375f6b158661b88a95f7e2779b3c048725e3ef",
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  }
+}
