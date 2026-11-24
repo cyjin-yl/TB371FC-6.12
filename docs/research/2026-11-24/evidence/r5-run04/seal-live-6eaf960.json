@@ -1,0 +1,28 @@
+{
+  "archives": {
+    "label": "4b09577be4a3848361617de47e4a4e8c9c8a5593057ff19538eb5328944d71c8",
+    "verify": "6f63a7048f6664d1ff4473c0ddf580412172b50f9495073a4e7af5cd23465321"
+  },
+  "final_image": {
+    "bytes": 4294967296,
+    "sha256": "f3d260f5e91ed6a2b67e84fd4f7b3d07b1ff2dda5c88be43d1dac242774043ad"
+  },
+  "generic_release_identity_verified": true,
+  "host_result": {
+    "bytes": 675980,
+    "sha256": "9f67a541172b9711fd05fdc76e6501ad6ddd956464aa86c43d515da086144c5f"
+  },
+  "kernel_image_sha256": "d80bfce0feb5f6c0cec1b0b0dd4691323720ec3f34a373c7a109001e2cf42e76",
+  "live_artifacts_verified": true,
+  "native_boot_readiness": "blocked",
+  "owner_native_linux_passes_added": 0,
+  "physical_hardware_tested": false,
+  "profile_sha256": "b4895772ff512baad132216a988de13bfe928d113c16cbe369b1aa9ee2525bec",
+  "raw_guest_result": {
+    "bytes": 413725,
+    "sha256": "aa0fa8b3ba2394bad9394ad0dd3c7c279f4f209027770756300fbd5b973d07e9"
+  },
+  "release_package_created": false,
+  "scope": "generic ARM64 virt; no owner hardware or GPU validation",
+  "source_revision": "6b24e66087e80c6847f0a759e1f6e9a2b9bd4f0d"
+}
