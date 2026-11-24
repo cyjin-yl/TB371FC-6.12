@@ -1,0 +1,505 @@
+{
+  "capture_utc": "2026-11-24T09:58:25.727828+00:00",
+  "completed_utc": "2026-11-24T09:58:25.739591+00:00",
+  "cpu_lists": {
+    "offline": {
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "value": []
+    },
+    "online": {
+      "bytes": 4,
+      "sha256": "68bd8f51bd4ae191549e051a0b542d13dc5fad2132a46ba5705e5db88837083c",
+      "value": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "possible": {
+      "bytes": 4,
+      "sha256": "68bd8f51bd4ae191549e051a0b542d13dc5fad2132a46ba5705e5db88837083c",
+      "value": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "present": {
+      "bytes": 4,
+      "sha256": "68bd8f51bd4ae191549e051a0b542d13dc5fad2132a46ba5705e5db88837083c",
+      "value": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  "cpu_memory_workload_performed": false,
+  "cpu_topology": {
+    "0": {
+      "core_id": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "value": 0
+      },
+      "core_siblings_list": {
+        "bytes": 4,
+        "sha256": "b2f03f42d35e331b1b8f8b03648dab495a27d703b10d8df4fe5c3346f34de4cc",
+        "value": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "physical_package_id": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "value": 0
+      },
+      "thread_siblings_list": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "value": [
+          0
+        ]
+      }
+    },
+    "1": {
+      "core_id": {
+        "bytes": 2,
+        "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+        "value": 1
+      },
+      "core_siblings_list": {
+        "bytes": 4,
+        "sha256": "b2f03f42d35e331b1b8f8b03648dab495a27d703b10d8df4fe5c3346f34de4cc",
+        "value": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "physical_package_id": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "value": 0
+      },
+      "thread_siblings_list": {
+        "bytes": 2,
+        "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+        "value": [
+          1
+        ]
+      }
+    },
+    "2": {
+      "core_id": {
+        "bytes": 2,
+        "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+        "value": 2
+      },
+      "core_siblings_list": {
+        "bytes": 4,
+        "sha256": "b2f03f42d35e331b1b8f8b03648dab495a27d703b10d8df4fe5c3346f34de4cc",
+        "value": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "physical_package_id": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "value": 0
+      },
+      "thread_siblings_list": {
+        "bytes": 2,
+        "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+        "value": [
+          2
+        ]
+      }
+    },
+    "3": {
+      "core_id": {
+        "bytes": 2,
+        "sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+        "value": 3
+      },
+      "core_siblings_list": {
+        "bytes": 4,
+        "sha256": "b2f03f42d35e331b1b8f8b03648dab495a27d703b10d8df4fe5c3346f34de4cc",
+        "value": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "physical_package_id": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "value": 0
+      },
+      "thread_siblings_list": {
+        "bytes": 2,
+        "sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+        "value": [
+          3
+        ]
+      }
+    },
+    "4": {
+      "core_id": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "value": 0
+      },
+      "core_siblings_list": {
+        "bytes": 4,
+        "sha256": "8af9eaec55120c4ece2b844cbf1ac2af44bce33851ab7c9650223806d1af7c84",
+        "value": [
+          4,
+          5,
+          6
+        ]
+      },
+      "physical_package_id": {
+        "bytes": 2,
+        "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+        "value": 1
+      },
+      "thread_siblings_list": {
+        "bytes": 2,
+        "sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+        "value": [
+          4
+        ]
+      }
+    },
+    "5": {
+      "core_id": {
+        "bytes": 2,
+        "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+        "value": 1
+      },
+      "core_siblings_list": {
+        "bytes": 4,
+        "sha256": "8af9eaec55120c4ece2b844cbf1ac2af44bce33851ab7c9650223806d1af7c84",
+        "value": [
+          4,
+          5,
+          6
+        ]
+      },
+      "physical_package_id": {
+        "bytes": 2,
+        "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+        "value": 1
+      },
+      "thread_siblings_list": {
+        "bytes": 2,
+        "sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+        "value": [
+          5
+        ]
+      }
+    },
+    "6": {
+      "core_id": {
+        "bytes": 2,
+        "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+        "value": 2
+      },
+      "core_siblings_list": {
+        "bytes": 4,
+        "sha256": "8af9eaec55120c4ece2b844cbf1ac2af44bce33851ab7c9650223806d1af7c84",
+        "value": [
+          4,
+          5,
+          6
+        ]
+      },
+      "physical_package_id": {
+        "bytes": 2,
+        "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+        "value": 1
+      },
+      "thread_siblings_list": {
+        "bytes": 2,
+        "sha256": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+        "value": [
+          6
+        ]
+      }
+    },
+    "7": {
+      "core_id": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "value": 0
+      },
+      "core_siblings_list": {
+        "bytes": 2,
+        "sha256": "10159baf262b43a92d95db59dae1f72c645127301661e0a3ce4e38b295a97c58",
+        "value": [
+          7
+        ]
+      },
+      "physical_package_id": {
+        "bytes": 2,
+        "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+        "value": 2
+      },
+      "thread_siblings_list": {
+        "bytes": 2,
+        "sha256": "10159baf262b43a92d95db59dae1f72c645127301661e0a3ce4e38b295a97c58",
+        "value": [
+          7
+        ]
+      }
+    }
+  },
+  "device_state_writes_performed": false,
+  "evidence_class": "owner_android_read_only",
+  "execution_mode": "in_memory_modules_from_exact_source_bytes",
+  "fdt": {
+    "bytes": 973052,
+    "second_sha256": "5114262a0dea5ef82b53db69b3d489ddbe57040e1a50b57365e87a28d2946207",
+    "sha256": "5114262a0dea5ef82b53db69b3d489ddbe57040e1a50b57365e87a28d2946207",
+    "stable_across_two_reads": true
+  },
+  "interface_presence_scope": "stat only; no debugfs traversal, reads or mounts",
+  "iomem": {
+    "bytes": 10834,
+    "parsed": {
+      "address_visibility": "nonzero_resource_addresses",
+      "geometry_qualified": true,
+      "ram_children": [
+        {
+          "end": 2654994432,
+          "kind": "reserved",
+          "ram_resource_index": 323,
+          "resource_index": 324,
+          "start": 2617245696
+        },
+        {
+          "end": 2715811840,
+          "kind": "Kernel code",
+          "ram_resource_index": 323,
+          "resource_index": 325,
+          "start": 2684878848
+        },
+        {
+          "end": 2720006144,
+          "kind": "reserved",
+          "ram_resource_index": 323,
+          "resource_index": 326,
+          "start": 2715811840
+        },
+        {
+          "end": 2729664512,
+          "kind": "Kernel data",
+          "ram_resource_index": 323,
+          "resource_index": 327,
+          "start": 2720006144
+        },
+        {
+          "end": 2950361088,
+          "kind": "reserved",
+          "ram_resource_index": 323,
+          "resource_index": 328,
+          "start": 2949386240
+        },
+        {
+          "end": 2952785920,
+          "kind": "reserved",
+          "ram_resource_index": 323,
+          "resource_index": 329,
+          "start": 2951487488
+        },
+        {
+          "end": 3148873728,
+          "kind": "reserved",
+          "ram_resource_index": 330,
+          "resource_index": 331,
+          "start": 3148869632
+        },
+        {
+          "end": 4290772992,
+          "kind": "reserved",
+          "ram_resource_index": 332,
+          "resource_index": 333,
+          "start": 3925868544
+        },
+        {
+          "end": 8482979840,
+          "kind": "reserved",
+          "ram_resource_index": 334,
+          "resource_index": 335,
+          "start": 8468299776
+        },
+        {
+          "end": 8583643136,
+          "kind": "reserved",
+          "ram_resource_index": 334,
+          "resource_index": 336,
+          "start": 8485015552
+        },
+        {
+          "end": 8584884224,
+          "kind": "reserved",
+          "ram_resource_index": 334,
+          "resource_index": 337,
+          "start": 8583831552
+        },
+        {
+          "end": 8585670656,
+          "kind": "reserved",
+          "ram_resource_index": 334,
+          "resource_index": 338,
+          "start": 8584884224
+        },
+        {
+          "end": 8585682944,
+          "kind": "reserved",
+          "ram_resource_index": 334,
+          "resource_index": 339,
+          "start": 8585678848
+        },
+        {
+          "end": 8585687040,
+          "kind": "reserved",
+          "ram_resource_index": 334,
+          "resource_index": 340,
+          "start": 8585682944
+        },
+        {
+          "end": 8585707520,
+          "kind": "reserved",
+          "ram_resource_index": 334,
+          "resource_index": 341,
+          "start": 8585687040
+        },
+        {
+          "end": 8589934592,
+          "kind": "reserved",
+          "ram_resource_index": 334,
+          "resource_index": 342,
+          "start": 8585707520
+        }
+      ],
+      "resource_count": 347,
+      "system_ram": [
+        {
+          "end": 2154823680,
+          "resource_index": 319,
+          "start": 2153775104
+        },
+        {
+          "end": 2156920832,
+          "resource_index": 320,
+          "start": 2156478464
+        },
+        {
+          "end": 2250244096,
+          "resource_index": 321,
+          "start": 2246049792
+        },
+        {
+          "end": 2257584128,
+          "resource_index": 322,
+          "start": 2256650240
+        },
+        {
+          "end": 2952790016,
+          "resource_index": 323,
+          "start": 2421161984
+        },
+        {
+          "end": 3148873728,
+          "resource_index": 330,
+          "start": 2953314304
+        },
+        {
+          "end": 4290772992,
+          "resource_index": 332,
+          "start": 3221225472
+        },
+        {
+          "end": 8589934592,
+          "resource_index": 334,
+          "start": 4290904064
+        },
+        {
+          "end": 9126805504,
+          "resource_index": 343,
+          "start": 8589934592
+        },
+        {
+          "end": 9663676416,
+          "resource_index": 344,
+          "start": 9126805504
+        },
+        {
+          "end": 10200547328,
+          "resource_index": 345,
+          "start": 9663676416
+        },
+        {
+          "end": 10737418240,
+          "resource_index": 346,
+          "start": 10200547328
+        }
+      ]
+    },
+    "second_sha256": "3c288281658a748d92157c7fc849b6fe389c2a72fe18dece3ab6ad3b76e23b3c",
+    "sha256": "3c288281658a748d92157c7fc849b6fe389c2a72fe18dece3ab6ad3b76e23b3c",
+    "stable_across_two_reads": true
+  },
+  "kernel_release": "4.19.157-perf+",
+  "machine": "aarch64",
+  "meminfo": {
+    "bytes": 1066,
+    "sha256": "39e065f83af80c9dd9638017003ce863265de679555bfd1ecb449e9a0ae30994",
+    "values_bytes": {
+      "CmaFree": 0,
+      "CmaTotal": 364904448,
+      "MemAvailable": 2320437248,
+      "MemFree": 178139136,
+      "MemTotal": 8080510976,
+      "SwapFree": 2475515904,
+      "SwapTotal": 4294963200
+    }
+  },
+  "optional_interface_presence": {
+    "/sys/kernel/debug/cma": false,
+    "/sys/kernel/debug/memblock": false,
+    "/sys/kernel/mm/cma": false
+  },
+  "owner_native_linux_passes_added": 0,
+  "parser_sha256": "6cd860dcafe704198787e368afb059debe1445ce7468cd240f7157550cd22d44",
+  "physical_mainline_linux_tested": false,
+  "raw_fdt_or_resource_labels_emitted": false,
+  "schema": "tb371fc-android-memory-observation-v1",
+  "source_sha256": "485cdb25599e622651049ad068685890e0b7920014739aba61c2759caf78a222"
+}

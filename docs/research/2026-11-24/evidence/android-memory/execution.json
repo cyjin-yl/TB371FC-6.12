@@ -1,0 +1,88 @@
+{
+  "bounded_after_observation": {
+    "battery_capacity_percent": 100,
+    "battery_temperature_raw": 266,
+    "scope": "separate read-only spot check; no controlled thermal or power test",
+    "temperature_unit": "tenths Celsius per existing Android battery attribute",
+    "uptime_seconds": 374935.99
+  },
+  "correlation": {
+    "command": "python3 -O scripts/research/correlate_android_memory.py --live-dt docs/research/2026-11-24/evidence/native-dt/live-android.json --memory-observation docs/research/2026-11-24/evidence/android-memory/observation.json",
+    "exit_code": 0,
+    "live_dt_metadata_sha256": "e071f91b43a063ff6f96cb401269469e20703ab695e64dd37a1d5b86113ba745"
+  },
+  "device_execution": {
+    "bytecode_cache_disabled": true,
+    "capture_utc": "2026-11-24T09:58:25.727828+00:00",
+    "command_profile": "python3 -B - with exact in-memory module runner supplied on stdin",
+    "completed_utc": "2026-11-24T09:58:25.739591+00:00",
+    "deadline_seconds": 20,
+    "dependency_scope": "Python standard library only",
+    "exit_code": 0,
+    "privilege": "existing su root shell",
+    "python_path": "/data/data/com.termux/files/usr/bin/python3",
+    "python_version": "3.12.11",
+    "python_version_source": "separate read-only version check after collection",
+    "rpc_end_utc": null,
+    "rpc_start_utc": null,
+    "runner_bytes": 17609,
+    "runner_sha256": "139c766b8343160464dbff00ea99dae4f49290d4055f4844397abd5c894a0a06",
+    "source_files_written_to_device": false,
+    "source_modules_loaded_in_memory": true,
+    "timing_scope": "collector timestamps; RPC wall-clock boundaries were not returned"
+  },
+  "device_identity": {
+    "identity_scope": "existing root read-only baseline, no serial or account identifier",
+    "kernel_release": "4.19.157-perf+",
+    "model": "TB371FC"
+  },
+  "evidence_class": "owner_android_read_only",
+  "files": {
+    "docs/research/2026-11-24/evidence/android-memory/correlation.json": {
+      "bytes": 3907,
+      "sha256": "27b55240b8b4c0ef4815670dc3e1c94f81a9afc0c955dbbb877f333dffb55a99"
+    },
+    "docs/research/2026-11-24/evidence/android-memory/observation.json": {
+      "bytes": 13055,
+      "sha256": "83c413e7687145e163434cc0d796cf7358b8fbcf99a66a0e9c9bf54538c697ca"
+    },
+    "docs/research/2026-11-24/evidence/android-memory/tests.stderr.log": {
+      "bytes": 2177,
+      "sha256": "234e38af548f50bfe0cbb53610135a1a139cfa513372d81e30641cb82d45edce"
+    },
+    "docs/research/2026-11-24/evidence/android-memory/tests.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "scripts/research/android_memory.py": {
+      "bytes": 12135,
+      "sha256": "6cd860dcafe704198787e368afb059debe1445ce7468cd240f7157550cd22d44"
+    },
+    "scripts/research/collect_android_memory.py": {
+      "bytes": 4234,
+      "sha256": "485cdb25599e622651049ad068685890e0b7920014739aba61c2759caf78a222"
+    },
+    "scripts/research/correlate_android_memory.py": {
+      "bytes": 1245,
+      "sha256": "79bb9c0e747cdac5725ba3ed38c931168a8102e3f89f2df65abd3e734172dda6"
+    },
+    "scripts/research/test_android_memory.py": {
+      "bytes": 7931,
+      "sha256": "a154931fc0a983be219d1369a7b0b3fbcfd2e4cb660dabff762819a553375a4e"
+    }
+  },
+  "host_tests": {
+    "command": "python3 -O -m unittest discover -s scripts/research -p test_android_memory.py -v",
+    "errors": 0,
+    "exit_code": 0,
+    "failures": 0,
+    "python_version": "3.12.14",
+    "tests_run": 15
+  },
+  "individual_dynamic_allocations_resolved": 0,
+  "owner_native_linux_passes_added": 0,
+  "repository_base_commit": "9839536419a2f567f274c178da40e6b0e3224909",
+  "safe_load_addresses_selected": false,
+  "schema": "tb371fc-android-memory-execution-v1",
+  "stdout_retention": "Exact JSON stdout bytes extracted from successful relay result; no normalization. Unrelated relay framing and earlier exploratory output are omitted."
+}

@@ -1,0 +1,149 @@
+{
+  "capture_utc": "2026-11-24T09:58:25.727828+00:00",
+  "cma_total_equals_dynamic_reusable_request_sum": true,
+  "complete_memory_ownership_verified": false,
+  "dma_quiescence_tested": false,
+  "dt_declared_ram": [
+    {
+      "end": 3148873728,
+      "size": 1001390080,
+      "start": 2147483648
+    },
+    {
+      "end": 10737418240,
+      "size": 7516192768,
+      "start": 3221225472
+    }
+  ],
+  "dt_declared_ram_bytes": 8517582848,
+  "dynamic_no_map_gap_candidates": [
+    {
+      "matching_gap_geometry": [
+        {
+          "end": 4290904064,
+          "size": 131072,
+          "start": 4290772992
+        }
+      ],
+      "path": "/reserved-memory/mailbox_region",
+      "runtime_ownership_verified": false
+    }
+  ],
+  "dynamic_reusable_request_count": 11,
+  "dynamic_reusable_requested_bytes": 364904448,
+  "evidence_class": "owner_android_read_only",
+  "fdt_sha256": "5114262a0dea5ef82b53db69b3d489ddbe57040e1a50b57365e87a28d2946207",
+  "individual_dynamic_allocations_resolved": 0,
+  "inputs": {
+    "live_dt_sha256": "e071f91b43a063ff6f96cb401269469e20703ab695e64dd37a1d5b86113ba745",
+    "memory_observation_sha256": "83c413e7687145e163434cc0d796cf7358b8fbcf99a66a0e9c9bf54538c697ca"
+  },
+  "iomem_system_ram": [
+    {
+      "end": 2154823680,
+      "size": 1048576,
+      "start": 2153775104
+    },
+    {
+      "end": 2156920832,
+      "size": 442368,
+      "start": 2156478464
+    },
+    {
+      "end": 2250244096,
+      "size": 4194304,
+      "start": 2246049792
+    },
+    {
+      "end": 2257584128,
+      "size": 933888,
+      "start": 2256650240
+    },
+    {
+      "end": 2952790016,
+      "size": 531628032,
+      "start": 2421161984
+    },
+    {
+      "end": 3148873728,
+      "size": 195559424,
+      "start": 2953314304
+    },
+    {
+      "end": 4290772992,
+      "size": 1069547520,
+      "start": 3221225472
+    },
+    {
+      "end": 10737418240,
+      "size": 6446514176,
+      "start": 4290904064
+    }
+  ],
+  "iomem_system_ram_bytes": 8249868288,
+  "kernel_release": "4.19.157-perf+",
+  "limitations": [
+    "Equal aggregate sizes and matching gaps do not identify individual allocations or owners.",
+    "CMA pages remain managed System RAM; reserved labels are resource-tree observations, not live allocation states.",
+    "MemTotal differs from physical resource geometry; the difference has not been assigned to individual kernel overheads.",
+    "No unoccupied or safely reusable physical range is inferred from this Android snapshot."
+  ],
+  "meminfo_cma_total_bytes": 364904448,
+  "meminfo_total_bytes": 8080510976,
+  "owner_native_linux_passes_added": 0,
+  "parser_sha256": "6cd860dcafe704198787e368afb059debe1445ce7468cd240f7157550cd22d44",
+  "physical_mainline_linux_tested": false,
+  "ram_gaps_after_static_no_map": [
+    {
+      "end": 4290904064,
+      "size": 131072,
+      "start": 4290772992
+    }
+  ],
+  "reserved_children_equal_to_cma_request_sum": [
+    {
+      "end": 4290772992,
+      "size": 364904448,
+      "start": 3925868544
+    }
+  ],
+  "safe_load_addresses_selected": false,
+  "schema": "tb371fc-android-memory-correlation-v1",
+  "source_sha256": "79bb9c0e747cdac5725ba3ed38c931168a8102e3f89f2df65abd3e734172dda6",
+  "static_no_map_intersection_with_system_ram": [],
+  "static_no_map_union": [
+    {
+      "end": 2153775104,
+      "size": 6291456,
+      "start": 2147483648
+    },
+    {
+      "end": 2156478464,
+      "size": 1654784,
+      "start": 2154823680
+    },
+    {
+      "end": 2246049792,
+      "size": 89128960,
+      "start": 2156920832
+    },
+    {
+      "end": 2256650240,
+      "size": 6406144,
+      "start": 2250244096
+    },
+    {
+      "end": 2421161984,
+      "size": 163577856,
+      "start": 2257584128
+    },
+    {
+      "end": 2953314304,
+      "size": 524288,
+      "start": 2952790016
+    }
+  ],
+  "static_no_map_union_bytes": 267583488,
+  "system_ram_minus_memtotal_bytes": 169357312,
+  "system_ram_outside_dt": []
+}

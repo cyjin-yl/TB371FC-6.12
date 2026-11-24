@@ -1,0 +1,20 @@
+test_aggregate_geometry_does_not_resolve_allocation_ownership (test_android_memory.CorrelationTests.test_aggregate_geometry_does_not_resolve_allocation_ownership) ... ok
+test_exact_fdt_and_stability_are_required (test_android_memory.CorrelationTests.test_exact_fdt_and_stability_are_required) ... ok
+test_meminfo_cma_mismatch_is_reported_not_hidden (test_android_memory.CorrelationTests.test_meminfo_cma_mismatch_is_reported_not_hidden) ... ok
+test_redacted_resources_rejected_for_correlation (test_android_memory.CorrelationTests.test_redacted_resources_rejected_for_correlation) ... ok
+test_size_match_outside_alloc_range_does_not_become_candidate (test_android_memory.CorrelationTests.test_size_match_outside_alloc_range_does_not_become_candidate) ... ok
+test_bad_resource_tree_rejected (test_android_memory.MemoryParsingTests.test_bad_resource_tree_rejected) ... ok
+test_cpu_list_and_empty_offline (test_android_memory.MemoryParsingTests.test_cpu_list_and_empty_offline) ... ok
+test_duplicate_or_wrong_unit_meminfo_rejected (test_android_memory.MemoryParsingTests.test_duplicate_or_wrong_unit_meminfo_rejected) ... ok
+test_full_width_last_address_can_be_exclusive_u64_end (test_android_memory.MemoryParsingTests.test_full_width_last_address_can_be_exclusive_u64_end) ... ok
+test_iomem_inclusive_end_and_over_4g (test_android_memory.MemoryParsingTests.test_iomem_inclusive_end_and_over_4g) ... ok
+test_meminfo_units_and_allowlist (test_android_memory.MemoryParsingTests.test_meminfo_units_and_allowlist) ... ok
+test_private_unknown_resource_label_not_returned (test_android_memory.MemoryParsingTests.test_private_unknown_resource_label_not_returned) ... ok
+test_redacted_addresses_are_not_one_byte_memory (test_android_memory.MemoryParsingTests.test_redacted_addresses_are_not_one_byte_memory) ... ok
+test_repeated_child_geometry_is_not_double_counted (test_android_memory.MemoryParsingTests.test_repeated_child_geometry_is_not_double_counted) ... ok
+test_subtraction_boundaries_and_union (test_android_memory.MemoryParsingTests.test_subtraction_boundaries_and_union) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.008s
+
+OK
