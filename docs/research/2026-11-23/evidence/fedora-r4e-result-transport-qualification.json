@@ -1,0 +1,138 @@
+{
+  "cases": {
+    "duplicate_receipt": {
+      "error_type": "ValueError",
+      "message": "exactly one complete same-boot result receipt is required",
+      "passed": true,
+      "rejected": true
+    },
+    "exact_closed_ext4_file": {
+      "guest_inode": {
+        "gid": 0,
+        "inode": 16,
+        "mode": 384,
+        "nlink": 1,
+        "size": 677,
+        "type": "regular",
+        "uid": 0
+      },
+      "passed": true,
+      "receipt": {
+        "boot_id": "00000000-0000-0000-0000-000000000001",
+        "profile_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "sha256": "fc7e9636b4a4d57bc8ad152bf83299eac3b0412e7737f1d8b5091b5ad5c92f09",
+        "size": 677,
+        "status": "pass"
+      },
+      "source_image_sha256_before_and_after": "b455e295034fd8257ba0175551d77d87bff7c0dd987f0c5e82604ebdaa946e24"
+    },
+    "interleaved_receipt": {
+      "error_type": "ValueError",
+      "message": "result receipt is malformed or interleaved",
+      "passed": true,
+      "rejected": true
+    },
+    "symlink_guest_member": {
+      "error_type": "ValueError",
+      "message": "guest result is not the exact ordinary private file",
+      "passed": true,
+      "rejected": true
+    },
+    "wrong_boot_in_receipt": {
+      "error_type": "ValueError",
+      "message": "closed image result envelope differs from the receipt/contract",
+      "passed": true,
+      "rejected": true
+    },
+    "wrong_file_digest": {
+      "error_type": "ValueError",
+      "message": "closed image result differs from its same-boot receipt",
+      "passed": true,
+      "rejected": true
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "/usr/sbin/mke2fs",
+        "-q",
+        "-F",
+        "-t",
+        "ext4",
+        "/work/r4e-result-transport-qualification-v1/synthetic-01/synthetic.ext4"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "/usr/sbin/debugfs",
+        "-w",
+        "-f",
+        "/work/r4e-result-transport-qualification-v1/synthetic-01/debugfs.commands",
+        "/work/r4e-result-transport-qualification-v1/synthetic-01/synthetic.ext4"
+      ],
+      "exit_code": 0,
+      "stderr": "debugfs 1.47.2 (1-Jan-2025)\n",
+      "stdout": "debugfs: mkdir /var\ndebugfs: mkdir /var/lib\ndebugfs: mkdir /var/lib/tb371fc-r4e-proof\ndebugfs: set_inode_field /var/lib/tb371fc-r4e-proof mode 040700\ndebugfs: write /work/r4e-result-transport-qualification-v1/synthetic-01/payload.json /var/lib/tb371fc-r4e-proof/system-result.json\nAllocated inode: 16\n"
+    },
+    {
+      "argv": [
+        "/usr/sbin/debugfs",
+        "-w",
+        "-R",
+        "rm /var/lib/tb371fc-r4e-proof/system-result.json",
+        "/work/r4e-result-transport-qualification-v1/synthetic-01/symlink.ext4"
+      ],
+      "exit_code": 0,
+      "stderr": "debugfs 1.47.2 (1-Jan-2025)\n",
+      "stdout": "\n"
+    },
+    {
+      "argv": [
+        "/usr/sbin/debugfs",
+        "-w",
+        "-R",
+        "symlink /var/lib/tb371fc-r4e-proof/system-result.json /outside-result.json",
+        "/work/r4e-result-transport-qualification-v1/synthetic-01/symlink.ext4"
+      ],
+      "exit_code": 0,
+      "stderr": "debugfs 1.47.2 (1-Jan-2025)\n",
+      "stdout": ""
+    },
+    {
+      "argv": [
+        "/usr/sbin/debugfs",
+        "-R",
+        "stat /var/lib/tb371fc-r4e-proof/system-result.json",
+        "/work/r4e-result-transport-qualification-v1/synthetic-01/symlink.ext4"
+      ],
+      "exit_code": 0,
+      "stderr": "debugfs 1.47.2 (1-Jan-2025)\n",
+      "stdout": "Inode: 16   Type: symlink    Mode:  0777   Flags: 0x0\nGeneration: 0    Version: 0x00000000:00000000\nUser:     0   Group:     0   Project:     0   Size: 20\nFile ACL: 0\nLinks: 1   Blockcount: 0\nFragment:  Address: 0    Number: 0    Size: 0\n ctime: 0x6b03e552:00000000 -- Mon Nov 23 07:03:46 2026\n atime: 0x6b03e552:00000000 -- Mon Nov 23 07:03:46 2026\n mtime: 0x6b03e552:00000000 -- Mon Nov 23 07:03:46 2026\ncrtime: 0x6b03e552:00000000 -- Mon Nov 23 07:03:46 2026\nSize of extra inode fields: 32\nInode checksum: 0x03f062f3\nFast link dest: \"/outside-result.json\"\n"
+    }
+  ],
+  "image_mounted": false,
+  "kernel_policy_loaded_or_written": false,
+  "limits": [
+    "Synthetic evidence-file qualification is not a VM/system gate pass.",
+    "Guest writer syscall/domain/runtime qualification still requires the new VM."
+  ],
+  "old_candidate_modified": false,
+  "passed": true,
+  "physical_hardware_tested": false,
+  "schema_version": 1,
+  "scope": "synthetic offline ext4 transport only",
+  "source": {
+    "qualify_result_transport_offline.py": {
+      "sha256": "4452a72157fcddd17a4e49492360cdcb294e2a14d5b082604c2055adc66f9d78",
+      "size": 6378
+    },
+    "read_vm_result.py": {
+      "sha256": "71df5f32894a0f8b232173378786c39f39aca567af801dc3c5e035b04577dc25",
+      "size": 8311
+    }
+  },
+  "vm_started": false
+}

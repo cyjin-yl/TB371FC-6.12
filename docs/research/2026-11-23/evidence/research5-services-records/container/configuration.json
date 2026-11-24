@@ -1,0 +1,249 @@
+{
+  "all_other_r4_config_values_preserved": true,
+  "changes": {
+    "CONFIG_LOCALVERSION": {
+      "after": "\"-tb371fc-research5-services\"",
+      "before": "\"-tb371fc-research4-system\""
+    },
+    "CONFIG_NFT_COMPAT": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NFT_CT": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NFT_REJECT": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NFT_REJECT_INET": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NFT_REJECT_IPV4": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NFT_REJECT_IPV6": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NF_TABLES": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NF_TABLES_INET": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NF_TABLES_IPV4": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NF_TABLES_IPV6": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_RTC_DRV_PL031": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_ZRAM_BACKEND_FORCE_LZO": {
+      "after": "n",
+      "before": "y"
+    },
+    "CONFIG_ZRAM_BACKEND_ZSTD": {
+      "after": "y",
+      "before": "n"
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "bash",
+        "/work/research5-services/source-input/linux-6.12.114-input-integration/scripts/kconfig/merge_config.sh",
+        "-m",
+        "-O",
+        "/work/research5-services/kernel-out",
+        "/work/research5-services/kernel-out/base.config",
+        "/work/research5-services/system.config"
+      ],
+      "elapsed_seconds": 2.256062805012334,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "make",
+        "-C",
+        "/work/research5-services/source-input/linux-6.12.114-input-integration",
+        "O=/work/research5-services/kernel-out",
+        "ARCH=arm64",
+        "LLVM=1",
+        "CC=clang --sysroot=/work/research5-services/target-sysroot",
+        "olddefconfig"
+      ],
+      "elapsed_seconds": 33.76703893399099,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "clang",
+        "--version"
+      ],
+      "elapsed_seconds": 0.031003895041067153,
+      "exit_code": 0,
+      "output": "Debian clang version 19.1.7 (3+b1)\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /usr/lib/llvm-19/bin\n"
+    },
+    {
+      "argv": [
+        "ld.lld",
+        "--version"
+      ],
+      "elapsed_seconds": 0.019117957970593125,
+      "exit_code": 0,
+      "output": "Debian LLD 19.1.7 (compatible with GNU linkers)\n"
+    },
+    {
+      "argv": [
+        "pahole",
+        "--version"
+      ],
+      "elapsed_seconds": 0.0018985929782502353,
+      "exit_code": 0,
+      "output": "v1.30\n"
+    },
+    {
+      "argv": [
+        "openssl",
+        "version"
+      ],
+      "elapsed_seconds": 0.17500849900534377,
+      "exit_code": 0,
+      "output": "OpenSSL 3.5.9 29 Sep 2026 (Library: OpenSSL 3.5.9 29 Sep 2026)\n"
+    }
+  ],
+  "config_sha256": "a4980121abcc3e2bac47f7020e63c8c00949c53c289019c22b67808d84cd3afa",
+  "input_source_manifest_sha256": "5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0",
+  "kernel_release": "6.12.114-tb371fc-research5-services",
+  "old_private_key_copied": false,
+  "physical_hardware_tested": false,
+  "preserved_security": {
+    "CONFIG_LSM": "\"landlock,lockdown,yama,loadpin,safesetid,selinux,smack,tomoyo,apparmor,ipe,bpf\"",
+    "CONFIG_MODULE_SIG": "y",
+    "CONFIG_MODULE_SIG_ALL": "y",
+    "CONFIG_MODULE_SIG_FORCE": "n",
+    "CONFIG_MODULE_SIG_FORMAT": "y",
+    "CONFIG_MODULE_SIG_HASH": "\"sha512\"",
+    "CONFIG_MODULE_SIG_KEY": "\"certs/signing_key.pem\"",
+    "CONFIG_MODULE_SIG_KEY_TYPE_ECDSA": "n",
+    "CONFIG_MODULE_SIG_KEY_TYPE_RSA": "y",
+    "CONFIG_MODULE_SIG_SHA1": "n",
+    "CONFIG_MODULE_SIG_SHA256": "n",
+    "CONFIG_MODULE_SIG_SHA384": "n",
+    "CONFIG_MODULE_SIG_SHA3_256": "n",
+    "CONFIG_MODULE_SIG_SHA3_384": "n",
+    "CONFIG_MODULE_SIG_SHA3_512": "n",
+    "CONFIG_MODULE_SIG_SHA512": "y",
+    "CONFIG_SECURITY_APPARMOR": "y",
+    "CONFIG_SECURITY_APPARMOR_DEBUG": "n",
+    "CONFIG_SECURITY_APPARMOR_EXPORT_BINARY": "y",
+    "CONFIG_SECURITY_APPARMOR_HASH": "y",
+    "CONFIG_SECURITY_APPARMOR_HASH_DEFAULT": "y",
+    "CONFIG_SECURITY_APPARMOR_INTROSPECT_POLICY": "y",
+    "CONFIG_SECURITY_APPARMOR_PARANOID_LOAD": "y",
+    "CONFIG_SECURITY_DMESG_RESTRICT": "n",
+    "CONFIG_SECURITY_IPE": "n",
+    "CONFIG_SECURITY_LANDLOCK": "n",
+    "CONFIG_SECURITY_LOADPIN": "n",
+    "CONFIG_SECURITY_LOCKDOWN_LSM": "n",
+    "CONFIG_SECURITY_NETWORK": "y",
+    "CONFIG_SECURITY_NETWORK_XFRM": "n",
+    "CONFIG_SECURITY_PATH": "y",
+    "CONFIG_SECURITY_SAFESETID": "n",
+    "CONFIG_SECURITY_SELINUX": "y",
+    "CONFIG_SECURITY_SELINUX_AVC_STATS": "y",
+    "CONFIG_SECURITY_SELINUX_BOOTPARAM": "n",
+    "CONFIG_SECURITY_SELINUX_DEBUG": "n",
+    "CONFIG_SECURITY_SELINUX_DEVELOP": "y",
+    "CONFIG_SECURITY_SELINUX_SID2STR_CACHE_SIZE": "256",
+    "CONFIG_SECURITY_SELINUX_SIDTAB_HASH_BITS": "9",
+    "CONFIG_SECURITY_SMACK": "y",
+    "CONFIG_SECURITY_SMACK_APPEND_SIGNALS": "n",
+    "CONFIG_SECURITY_SMACK_BRINGUP": "n",
+    "CONFIG_SECURITY_SMACK_NETFILTER": "n",
+    "CONFIG_SECURITY_TOMOYO": "n",
+    "CONFIG_SECURITY_YAMA": "n"
+  },
+  "recipe": {
+    "build_system.py": {
+      "sha256": "053178a79838a69440a5e18f01f4fc9a9dc8a81c11347f1689c8e062d530439a",
+      "size": 14314
+    },
+    "services-contract.json": {
+      "sha256": "3b9730335d5573d98f2f9382f83ba79810c9dd563a9e9eed83668a9b3f24ce21",
+      "size": 6039
+    },
+    "system.config": {
+      "sha256": "5f2ed320c037194509cba247eaebdf36b63cf1663081d0b7a347ca28233b13b1",
+      "size": 356
+    }
+  },
+  "required": {
+    "CONFIG_BPF_EVENTS": "y",
+    "CONFIG_BPF_JIT": "y",
+    "CONFIG_BPF_SYSCALL": "y",
+    "CONFIG_BPF_UNPRIV_DEFAULT_OFF": "y",
+    "CONFIG_DEBUG_INFO": "y",
+    "CONFIG_DEBUG_INFO_BTF": "y",
+    "CONFIG_DEBUG_INFO_BTF_MODULES": "y",
+    "CONFIG_DYNAMIC_FTRACE": "y",
+    "CONFIG_DYNAMIC_FTRACE_WITH_ARGS": "y",
+    "CONFIG_DYNAMIC_FTRACE_WITH_CALL_OPS": "y",
+    "CONFIG_DYNAMIC_FTRACE_WITH_DIRECT_CALLS": "y",
+    "CONFIG_FTRACE_MCOUNT_RECORD": "y",
+    "CONFIG_FTRACE_MCOUNT_USE_PATCHABLE_FUNCTION_ENTRY": "y",
+    "CONFIG_FUNCTION_TRACER": "y",
+    "CONFIG_IP6_NF_MATCH_RPFILTER": "y",
+    "CONFIG_IP_NF_MATCH_RPFILTER": "y",
+    "CONFIG_LOCALVERSION": "\"-tb371fc-research5-services\"",
+    "CONFIG_MODULE_SIG": "y",
+    "CONFIG_MODULE_SIG_ALL": "y",
+    "CONFIG_MODVERSIONS": "y",
+    "CONFIG_NETFILTER_XTABLES": "y",
+    "CONFIG_NETFILTER_XT_MATCH_CONNTRACK": "y",
+    "CONFIG_NETFILTER_XT_MATCH_PKTTYPE": "y",
+    "CONFIG_NFT_COMPAT": "y",
+    "CONFIG_NFT_CT": "y",
+    "CONFIG_NFT_REJECT": "y",
+    "CONFIG_NFT_REJECT_INET": "y",
+    "CONFIG_NFT_REJECT_IPV4": "y",
+    "CONFIG_NFT_REJECT_IPV6": "y",
+    "CONFIG_NF_TABLES": "y",
+    "CONFIG_NF_TABLES_INET": "y",
+    "CONFIG_NF_TABLES_IPV4": "y",
+    "CONFIG_NF_TABLES_IPV6": "y",
+    "CONFIG_PERF_EVENTS": "y",
+    "CONFIG_RTC_DRV_PL031": "y",
+    "CONFIG_SECURITY": "y",
+    "CONFIG_SECURITYFS": "y",
+    "CONFIG_SECURITY_SELINUX": "y",
+    "CONFIG_ZRAM_BACKEND_FORCE_LZO": "n",
+    "CONFIG_ZRAM_BACKEND_LZO": "y",
+    "CONFIG_ZRAM_BACKEND_ZSTD": "y",
+    "CONFIG_ZRAM_DEF_COMP": "\"lzo-rle\"",
+    "CONFIG_ZRAM_DEF_COMP_LZORLE": "y",
+    "CONFIG_ZSTD_COMPRESS": "y",
+    "CONFIG_ZSTD_DECOMPRESS": "y"
+  },
+  "schema_version": 1,
+  "services_contract_sha256": "3b9730335d5573d98f2f9382f83ba79810c9dd563a9e9eed83668a9b3f24ce21",
+  "stage": "configure",
+  "start_utc": "2026-11-23T09:35:13.311017+00:00",
+  "tool_versions": {
+    "clang": "Debian clang version 19.1.7 (3+b1)",
+    "ld.lld": "Debian LLD 19.1.7 (compatible with GNU linkers)",
+    "openssl": "OpenSSL 3.5.9 29 Sep 2026 (Library: OpenSSL 3.5.9 29 Sep 2026)",
+    "pahole": "v1.30"
+  }
+}

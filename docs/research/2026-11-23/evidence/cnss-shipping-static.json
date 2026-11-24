@@ -1,0 +1,606 @@
+{
+  "schema": "tb371fc-owner-cnss-shipping-audit-v1",
+  "evidence_class": "source_clue",
+  "owner_kernel_release": "4.19.157-perf+",
+  "input_provenance": {
+    "image_origin": "Previously retained owner recovery_a kernel member, matching owner boot_a kernel member in the frozen boot-header inspection",
+    "image_size": 37445648,
+    "image_sha256": "ef9e7b5cdb9ef3c66977a04d6b6e21cf83e83f2f45476390c861827d1bb1cf0f",
+    "private_input_path": "/work/tfa9894-static-20261123/owner-Image",
+    "boot_header_reference": "docs/research/2026-11-23/evidence/boot-header-inspection.json",
+    "binary_executed": false,
+    "live_kernel_memory_read": false
+  },
+  "actual_run": {
+    "container": "tb371fc-build-ssd-20261123",
+    "isolated_analysis_prefix": "/work/cnss-shipping-audit-20261123",
+    "tmux_at_launch": "tb371fc-ssd:cnss-static:%33",
+    "job": {
+      "command": [
+        "python3",
+        "-B",
+        "/src/scripts/research/radio/inspect_cnss_shipping.py",
+        "--image",
+        "/work/tfa9894-static-20261123/owner-Image"
+      ],
+      "start_utc": "2026-11-23T03:52:08.333653+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 2.7890787569922395
+    },
+    "log_size": 17965,
+    "log_sha256": "91194b21b511507b02de955645809d3284609112bab06ca3ce6aab9520f2974b",
+    "job_sha256": "3fe703653e5e7b2619aafa4071cf17a1416c94aae5d5aebdc5846f74cc2b0f5e",
+    "source": "scripts/research/radio/inspect_cnss_shipping.py",
+    "source_sha256": "72972b0d83bf44e0ee46ac0141d7bf77057234095e1b369d9e09241f38b1d916"
+  },
+  "inspection": {
+    "actions": {
+      "bpf_program_or_map_created": false,
+      "device_accessed": false,
+      "live_kernel_memory_read": false,
+      "module_loaded": false,
+      "perf_event_open_called": false,
+      "probe_attached": false,
+      "radio_or_qmi_action": false,
+      "tracepoint_enabled": false
+    },
+    "analyzed_utc": "2026-11-23T03:52:11.083952+00:00",
+    "audited_functions": {
+      "bpf_probe_read": {
+        "relative_text_offset": 1444688,
+        "sha256": "29261c4f57510d00ae5b19e4c398171890a17551c355c8da0c3ee853b84cd260",
+        "size_to_next_symbol": 88
+      },
+      "cnss_bus_add_fw_prefix_name": {
+        "relative_text_offset": 9611608,
+        "sha256": "2dfea6a723a21d773259236b748d7d74fa3f5e73f1e34177ac475e128f4b99a0",
+        "size_to_next_symbol": 112
+      },
+      "cnss_bus_dev_to_plat_priv": {
+        "relative_text_offset": 9611280,
+        "sha256": "5506e5a6a6dcd62d8e72704dabc1e11c32d071a34e8de66197c257459160a529",
+        "size_to_next_symbol": 96
+      },
+      "cnss_driver_event_work": {
+        "relative_text_offset": 9607448,
+        "sha256": "87efaccd729887774e83a4d92fe61c74cea7792dc32f901b5e5a08d9598a8ac6",
+        "size_to_next_symbol": 3336
+      },
+      "cnss_get_plat_priv": {
+        "relative_text_offset": 9592024,
+        "sha256": "d9d04c3a1ee117ad29a991bf78a484375b7e98d8923ef8efd678a245afc8633f",
+        "size_to_next_symbol": 16
+      },
+      "cnss_get_soc_info": {
+        "relative_text_offset": 9637176,
+        "sha256": "19f12352fb234df2b3a83eccb80f9d2fbd401da1d85fed11fb9bc209327dfa24",
+        "size_to_next_symbol": 168
+      },
+      "cnss_pci_add_fw_prefix_name": {
+        "relative_text_offset": 9635480,
+        "sha256": "e96a101ba8013fcb2e82211268063c4d1126c4dcafdc9c32a03580006afde1ff",
+        "size_to_next_symbol": 200
+      },
+      "cnss_probe": {
+        "relative_text_offset": 9603216,
+        "sha256": "b270e12cd25102fb2cb096d2f9e70c620e5728110a83800688bdf62f95adfa56",
+        "size_to_next_symbol": 2616
+      },
+      "cnss_remove": {
+        "relative_text_offset": 9605832,
+        "sha256": "1cb67bd8f29a43e643162b4d2d610f77e2703021dd6967578478b47c448db203",
+        "size_to_next_symbol": 336
+      },
+      "cnss_wlfw_bdf_dnld_send_sync": {
+        "relative_text_offset": 9674624,
+        "sha256": "32156eb95fb39e6c126c54bb17cb673be696a095e7ff2d9c0e5e90589df05812",
+        "size_to_next_symbol": 1520
+      },
+      "cnss_wlfw_server_exit": {
+        "relative_text_offset": 9689072,
+        "sha256": "fd391f2493b02d551a850e6fb68d538e6fb76ec76c275cf6554960e0c3587514",
+        "size_to_next_symbol": 304
+      },
+      "cnss_wlfw_tgt_cap_send_sync": {
+        "relative_text_offset": 9673240,
+        "sha256": "60638a44b1e506934b4c05ec54f91cf88fa4e761374cc7e49cc7c12322e865fa",
+        "size_to_next_symbol": 1384
+      },
+      "probe_kernel_read": {
+        "relative_text_offset": 1789952,
+        "sha256": "35a2cc05ec26a6b27488fa2c059b2ea67cadc3e087bc10028eb4ff7c66d1e576",
+        "size_to_next_symbol": 232
+      },
+      "tp_prog_func_proto": {
+        "relative_text_offset": 1447896,
+        "sha256": "de5d649e8555126229a2d427dbe1bd52c509bcdb5383ccbe3ac9ca5aa879b0c2",
+        "size_to_next_symbol": 80
+      },
+      "tracing_func_proto": {
+        "relative_text_offset": 1453160,
+        "sha256": "8ceb2618adc6bfb4eed01f27daab9ecfbf38ed214e8e23941afe4ce936512ac3",
+        "size_to_next_symbol": 424
+      }
+    },
+    "bdf_selection": {
+      "basename_stack_offset": 48,
+      "bdf_type_control_offset": 4964,
+      "pci_device_id_offset": 24,
+      "pci_private_pointer_offset": 8,
+      "persistent_selected_filename_established": false,
+      "prefixed_name_stack_offset": 28,
+      "reviewed_input_loads": [
+        {
+          "base_register": 22,
+          "instruction_relative_offset": 9675076,
+          "operation": "load",
+          "structure_displacement": 1720,
+          "value_register": 3,
+          "width_bytes": 4
+        },
+        {
+          "base_register": 22,
+          "instruction_relative_offset": 9675088,
+          "operation": "load",
+          "structure_displacement": 1712,
+          "value_register": 8,
+          "width_bytes": 1
+        },
+        {
+          "base_register": 19,
+          "instruction_relative_offset": 9608184,
+          "operation": "load",
+          "structure_displacement": 4964,
+          "value_register": 1,
+          "width_bytes": 4
+        }
+      ],
+      "runtime_board_id_observed": false,
+      "runtime_requested_filename": null,
+      "static_format_constants": [
+        {
+          "relative_text_offset": 28291389,
+          "value": "bdwlang.elf"
+        },
+        {
+          "relative_text_offset": 28291401,
+          "value": "bdwlan.elf"
+        },
+        {
+          "relative_text_offset": 28291412,
+          "value": "bdwlang.e%02x"
+        },
+        {
+          "relative_text_offset": 28291426,
+          "value": "bdwlan.e%02x"
+        },
+        {
+          "relative_text_offset": 28291439,
+          "value": "bdwlan%02x.e%02x"
+        },
+        {
+          "relative_text_offset": 28291456,
+          "value": "bdwlang.bin"
+        },
+        {
+          "relative_text_offset": 28291468,
+          "value": "bdwlan.bin"
+        },
+        {
+          "relative_text_offset": 28291479,
+          "value": "bdwlang.b%02x"
+        },
+        {
+          "relative_text_offset": 28291493,
+          "value": "bdwlan.b%02x"
+        },
+        {
+          "relative_text_offset": 28291506,
+          "value": "bdwlan%02x.b%02x"
+        },
+        {
+          "relative_text_offset": 28318805,
+          "value": "%s"
+        },
+        {
+          "relative_text_offset": 28274181,
+          "value": "qca6390/%s"
+        },
+        {
+          "relative_text_offset": 28274192,
+          "value": "qca6490/%s"
+        }
+      ],
+      "use_firmware_prefix_boolean_offset": 4834
+    },
+    "cache_fields": [
+      {
+        "getter": {
+          "base_register": 20,
+          "instruction_relative_offset": 9637236,
+          "operation": "load",
+          "structure_displacement": 1712,
+          "value_register": 8,
+          "width_bytes": 4
+        },
+        "name": "chip_id",
+        "structure_offset": 1712,
+        "width_bytes": 4,
+        "writer": {
+          "base_register": 21,
+          "instruction_relative_offset": 9673768,
+          "operation": "store",
+          "structure_displacement": 1712,
+          "value_register": 8,
+          "width_bytes": 4
+        }
+      },
+      {
+        "getter": {
+          "base_register": 20,
+          "instruction_relative_offset": 9637244,
+          "operation": "load",
+          "structure_displacement": 1716,
+          "value_register": 8,
+          "width_bytes": 4
+        },
+        "name": "chip_family",
+        "structure_offset": 1716,
+        "width_bytes": 4,
+        "writer": {
+          "base_register": 21,
+          "instruction_relative_offset": 9673772,
+          "operation": "store",
+          "structure_displacement": 1716,
+          "value_register": 9,
+          "width_bytes": 4
+        }
+      },
+      {
+        "getter": {
+          "base_register": 20,
+          "instruction_relative_offset": 9637252,
+          "operation": "load",
+          "structure_displacement": 1720,
+          "value_register": 8,
+          "width_bytes": 4
+        },
+        "name": "board_id_cache",
+        "structure_offset": 1720,
+        "width_bytes": 4,
+        "writer": {
+          "base_register": 21,
+          "instruction_relative_offset": 9673872,
+          "operation": "store",
+          "structure_displacement": 1720,
+          "value_register": 8,
+          "width_bytes": 4
+        }
+      },
+      {
+        "getter": {
+          "base_register": 20,
+          "instruction_relative_offset": 9637260,
+          "operation": "load",
+          "structure_displacement": 1724,
+          "value_register": 8,
+          "width_bytes": 4
+        },
+        "name": "soc_id",
+        "structure_offset": 1724,
+        "width_bytes": 4,
+        "writer": {
+          "base_register": 21,
+          "instruction_relative_offset": 9673920,
+          "operation": "store",
+          "structure_displacement": 1724,
+          "value_register": 8,
+          "width_bytes": 4
+        }
+      },
+      {
+        "getter": {
+          "base_register": 20,
+          "instruction_relative_offset": 9637272,
+          "operation": "load",
+          "structure_displacement": 1728,
+          "value_register": 8,
+          "width_bytes": 4
+        },
+        "name": "firmware_version",
+        "structure_offset": 1728,
+        "width_bytes": 4,
+        "writer": {
+          "base_register": 21,
+          "instruction_relative_offset": 9673952,
+          "operation": "store",
+          "structure_displacement": 1728,
+          "value_register": 8,
+          "width_bytes": 4
+        }
+      }
+    ],
+    "cnss_pointer": {
+      "get_soc_info_device_pointer_chain": [
+        {
+          "base_register": 0,
+          "instruction_relative_offset": 9637188,
+          "operation": "load",
+          "structure_displacement": 184,
+          "value_register": 8,
+          "width_bytes": 8
+        },
+        {
+          "base_register": 8,
+          "instruction_relative_offset": 9637196,
+          "operation": "load",
+          "structure_displacement": 8,
+          "value_register": 20,
+          "width_bytes": 8
+        }
+      ],
+      "getter_load": {
+        "base_register": 8,
+        "global_relative_text_offset": 38151416,
+        "instruction_relative_offset": 9592028,
+        "operation": "load",
+        "structure_displacement": 1272,
+        "value_register": 0,
+        "width_bytes": 8
+      },
+      "lifetime_pin_or_synchronized_live_snapshot_proven": false,
+      "live_pointer_or_static_link_base_published": false,
+      "probe_publication": {
+        "base_register": 23,
+        "instruction_relative_offset": 9603612,
+        "operation": "store",
+        "structure_displacement": 1272,
+        "value_register": 19,
+        "width_bytes": 8
+      },
+      "relative_text_offset": 38151416,
+      "remove_clear": {
+        "base_register": 8,
+        "instruction_relative_offset": 9606152,
+        "operation": "store",
+        "structure_displacement": 1272,
+        "value_register": 31,
+        "width_bytes": 8
+      },
+      "runtime_address_or_KASLR_slide_derived": false,
+      "storage": "BSS pointer slot, not a file-backed cache value",
+      "symbol": "plat_env",
+      "symbol_in_file_backed_bytes": false
+    },
+    "decision": {
+      "dynamic_probe_implemented": false,
+      "dynamic_probe_prerequisites_fully_closed": false,
+      "hold_reasons": [
+        "No verified current address/lifetime/synchronization contract was established by this offline audit.",
+        "Original optional QMI response-validity bits are not preserved in the audited cache writes.",
+        "A cached selection input is not an observed historical request filename or firmware success.",
+        "BPF verifier, permission and perf attachment behavior have not been exercised on the owner."
+      ]
+    },
+    "direct_calls": [
+      {
+        "instruction_relative_offset": 1447964,
+        "target_relative_offset": 1453160,
+        "target_symbol": "tracing_func_proto"
+      },
+      {
+        "instruction_relative_offset": 1444720,
+        "target_relative_offset": 1789952,
+        "target_symbol": "probe_kernel_read"
+      },
+      {
+        "instruction_relative_offset": 1444764,
+        "target_relative_offset": 19865984,
+        "target_symbol": "memset"
+      },
+      {
+        "instruction_relative_offset": 9673740,
+        "target_relative_offset": 2186840,
+        "target_symbol": "kfree"
+      },
+      {
+        "instruction_relative_offset": 9673412,
+        "target_relative_offset": 2186840,
+        "target_symbol": "kfree"
+      },
+      {
+        "instruction_relative_offset": 9675336,
+        "target_relative_offset": 9611608,
+        "target_symbol": "cnss_bus_add_fw_prefix_name"
+      },
+      {
+        "instruction_relative_offset": 9675356,
+        "target_relative_offset": 8134408,
+        "target_symbol": "request_firmware"
+      },
+      {
+        "instruction_relative_offset": 9675708,
+        "target_relative_offset": 8136088,
+        "target_symbol": "release_firmware"
+      },
+      {
+        "instruction_relative_offset": 9608160,
+        "target_relative_offset": 9673240,
+        "target_symbol": "cnss_wlfw_tgt_cap_send_sync"
+      },
+      {
+        "instruction_relative_offset": 9608192,
+        "target_relative_offset": 9674624,
+        "target_symbol": "cnss_wlfw_bdf_dnld_send_sync"
+      }
+    ],
+    "evidence_class": "source_clue",
+    "helper_dispatch": {
+      "actual_program_load_or_attachment_tested": false,
+      "argument_types_numeric": [
+        6,
+        8,
+        10,
+        0,
+        0
+      ],
+      "compiled_helper_dispatch_supported": true,
+      "gpl_only": true,
+      "helper_id": 4,
+      "helper_name": "BPF_FUNC_probe_read",
+      "helper_table_byte": 16,
+      "jump_table_relative_offset": 23974632,
+      "pkt_access": false,
+      "program_type": 5,
+      "program_type_name": "BPF_PROG_TYPE_TRACEPOINT",
+      "prototype_relative_offset": 23975072,
+      "return_type_numeric": 0,
+      "switch_destination_relative_offset": 1453276
+    },
+    "input": {
+      "sha256": "ef9e7b5cdb9ef3c66977a04d6b6e21cf83e83f2f45476390c861827d1bb1cf0f",
+      "size": 37445648
+    },
+    "inspector_sha256": "72972b0d83bf44e0ee46ac0141d7bf77057234095e1b369d9e09241f38b1d916",
+    "limits": [
+      "Mechanical identity, table and instruction checks corroborate the fixed manual review; this is not whole-program formal verification.",
+      "Offsets are relative to this exact Image's _text or to the stated private structure, never live addresses. The BSS pointer slot lies beyond the Image's file-backed bytes.",
+      "No private firmware, complete kernel image, raw relocation base, full symbol map or network identifier is published.",
+      "No owner Linux hardware acceptance result follows from this offline Android-binary inspection."
+    ],
+    "manual_control_flow_review": [
+      "Helper 4 follows tp_prog_func_proto's default to tracing_func_proto and its reviewed switch entry returns bpf_probe_read_proto; the implementation calls probe_kernel_read and clears the destination on a negative result.",
+      "cnss_get_plat_priv directly returns the global pointer. cnss_probe publishes a managed allocation; error/removal paths clear the global. These instructions do not provide a lifetime pin to an unrelated tracepoint reader.",
+      "The successful target-capability reply conditionally copies chip fields; board_info_valid selects response board_id versus 0xff. The response flags are not copied into the audited cached fields, and the temporary response is freed.",
+      "The event worker sets driver_state bit 1 before calling target-capability exchange. That bit cannot prove exchange success or either optional TLV's validity.",
+      "BIN type 0 and ELF type 1 select formats from the cached board ID and chip ID bit 4. Board 0xff selects generic names; IDs up to 0xfe use one suffix; larger IDs use masked upper/lower bytes and the two-part format.",
+      "The optional prefix checks a cached byte and the PCI device ID: 0x1101 uses qca6390, 0x1103 qca6490, otherwise no prefix. These current inputs do not establish the past request or successful firmware processing.",
+      "The reviewed download function builds names in its stack frame, passes the prefixed name to request_firmware, and later releases firmware; it does not preserve that name in the audited platform cache."
+    ],
+    "mechanical_checks_passed": true,
+    "response_validity": {
+      "board_id_response_offset": 20,
+      "board_info_valid_response_offset": 16,
+      "board_invalid_response_cache_value": 255,
+      "board_validity_copied_to_cache_in_audited_function": false,
+      "chip_info_valid_response_offset": 4,
+      "chip_validity_copied_to_cache_in_audited_function": false,
+      "persistent_equivalent_validity_flag_proven": false,
+      "reviewed_loads": [
+        {
+          "base_register": 20,
+          "instruction_relative_offset": 9673756,
+          "operation": "load",
+          "structure_displacement": 4,
+          "value_register": 8,
+          "width_bytes": 1
+        },
+        {
+          "base_register": 20,
+          "instruction_relative_offset": 9673776,
+          "operation": "load",
+          "structure_displacement": 16,
+          "value_register": 8,
+          "width_bytes": 1
+        },
+        {
+          "base_register": 20,
+          "instruction_relative_offset": 9673864,
+          "operation": "load",
+          "structure_displacement": 20,
+          "value_register": 8,
+          "width_bytes": 4
+        }
+      ],
+      "temporary_response_freed_before_return": true
+    },
+    "schema": "tb371fc-shipping-cnss-static-inspection-v1",
+    "selected_static_relocations": [
+      {
+        "field": "tracepoint_verifier_ops.get_func_proto",
+        "field_relative_offset": 23974848,
+        "record_file_offset": 32193512,
+        "relocation_type": 1027,
+        "target_relative_offset": 1447896,
+        "target_symbol": "tp_prog_func_proto"
+      },
+      {
+        "field": "bpf_probe_read_proto.func",
+        "field_relative_offset": 23975072,
+        "record_file_offset": 32193728,
+        "relocation_type": 1027,
+        "target_relative_offset": 1444688,
+        "target_symbol": "bpf_probe_read"
+      },
+      {
+        "field": "bpf_verifier_ops[5]",
+        "field_relative_offset": 23982768,
+        "record_file_offset": 32200880,
+        "relocation_type": 1027,
+        "target_relative_offset": 23974848,
+        "target_symbol": "tracepoint_verifier_ops"
+      }
+    ],
+    "source_kind": "matching_owner_kernel_binary",
+    "symbol_decoding": {
+      "all_markers_checked": true,
+      "complete_symbol_map_published": false,
+      "count": 121415,
+      "layout": {
+        "count": 25798144,
+        "markers": 27436288,
+        "names": 25798400,
+        "names_end": 27436274,
+        "offsets": 25312000,
+        "relative_base_field": 25797888,
+        "token_index": 27441152,
+        "token_table": 27440128
+      },
+      "marker_count": 475,
+      "selected_name_occurrences": {
+        "bpf_probe_read": 1,
+        "bpf_probe_read_proto": 1,
+        "bpf_verifier_ops": 1,
+        "cnss_bus_add_fw_prefix_name": 1,
+        "cnss_bus_dev_to_plat_priv": 1,
+        "cnss_driver_event_work": 1,
+        "cnss_get_plat_priv": 1,
+        "cnss_get_soc_info": 1,
+        "cnss_pci_add_fw_prefix_name": 1,
+        "cnss_probe": 1,
+        "cnss_remove": 1,
+        "cnss_wlfw_bdf_dnld_send_sync": 1,
+        "cnss_wlfw_server_exit": 1,
+        "cnss_wlfw_tgt_cap_send_sync": 1,
+        "plat_env": 1,
+        "probe_kernel_read": 1,
+        "tp_prog_func_proto": 1,
+        "tracepoint_verifier_ops": 1,
+        "tracing_func_proto": 1
+      }
+    }
+  },
+  "comparison_sources": [
+    {
+      "url": "https://raw.githubusercontent.com/torvalds/linux/v4.19/include/linux/bpf.h",
+      "size": 25696,
+      "sha256": "9f3d2582c427725a02387926cd239fff5e038cd5fb24cc4c8e1ec3b2aded1e77",
+      "role": "Historical helper prototype argument-number interpretation only; not source equivalence for owner Image"
+    },
+    {
+      "repository": "https://github.com/tem423/android_kernel_lenovo_tb371fc",
+      "commit": "9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1",
+      "file": "kernel/trace/bpf_trace.c",
+      "sha256": "882701ba941cd0a1532712a47921d8065ba8951db1cfb91d7e4b57cf75a8203a",
+      "role": "Earlier 4.19.325 clue only; actual owner 4.19.157 helper dispatch and offsets were verified from the pinned binary"
+    }
+  ],
+  "related_android_evidence": {
+    "tracepoint_interface": "docs/research/2026-11-23/evidence/android-tracepoint-capabilities.json",
+    "tracepoint_interface_sha256": "cde40194591d1fc2ae4c504e0ab3b0008897c95eb94797f5fa5e21cbd92f4047",
+    "tracepoint_id_value_read": false,
+    "kprobe_capabilities": "docs/research/2026-11-23/evidence/android-trace-probe-capabilities.json",
+    "ipc_readiness": "docs/research/2026-11-23/evidence/android-radio-ipc-readiness.json"
+  },
+  "bridge_delivery_note": "One fixed-file read timed out and the next reported device disconnected; later fixed-file reads succeeded. No host/container/radio restart or probe was used to restore the bridge."
+}

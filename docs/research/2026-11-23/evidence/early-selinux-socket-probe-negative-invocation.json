@@ -1,0 +1,29 @@
+{
+  "command": [
+    "sudo",
+    "-n",
+    "/usr/sbin/pct",
+    "exec",
+    "102",
+    "--",
+    "docker",
+    "exec",
+    "tb371fc-build-20261123",
+    "python3",
+    "/work/early-selinux-socket-probe-20261123/recipe-v1/qualify_non_pid1.py",
+    "--sha256",
+    "0bc3f0fbb814ece1133b16e36c6b3c402fbf5456d366fb99f4fe2783c87c1d14",
+    "--size",
+    "72528",
+    "--result",
+    "/work/early-selinux-socket-probe-20261123/negative-nonpid1.json"
+  ],
+  "exit_code": 0,
+  "finished_utc": "2026-11-23T08:56:28.435373+00:00",
+  "seconds": 2.715431088989135,
+  "started_utc": "2026-11-23T08:56:25.719960+00:00",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_bytes": 2142,
+  "stdout_sha256": "786f0d3b536ef93e15f91c22dff949a216035f3a017b589f4d2a1812b0e9888b"
+}

@@ -1,0 +1,136 @@
+{
+  "audit_loss_signals": {
+    "any_kernel_callback_suppression": [
+      {
+        "line": 4394,
+        "text": "[   41.996663] kauditd_printk_skb: 35 callbacks suppressed"
+      },
+      {
+        "line": 7365,
+        "text": "[   54.501666] kauditd_printk_skb: 9 callbacks suppressed"
+      },
+      {
+        "line": 8178,
+        "text": "[   59.730201] kauditd_printk_skb: 4 callbacks suppressed"
+      },
+      {
+        "line": 8749,
+        "text": "[   65.632211] kauditd_printk_skb: 76 callbacks suppressed"
+      },
+      {
+        "line": 10265,
+        "text": "[   81.168443] kauditd_printk_skb: 39 callbacks suppressed"
+      },
+      {
+        "line": 10830,
+        "text": "[   86.347179] kauditd_printk_skb: 22 callbacks suppressed"
+      },
+      {
+        "line": 11934,
+        "text": "[   99.318367] kauditd_printk_skb: 7 callbacks suppressed"
+      },
+      {
+        "line": 13790,
+        "text": "[  174.918299] kauditd_printk_skb: 3 callbacks suppressed"
+      },
+      {
+        "line": 15621,
+        "text": "[  180.099460] kauditd_printk_skb: 38 callbacks suppressed"
+      }
+    ],
+    "audit_backlog_overflow": [],
+    "audit_loss_reason": [],
+    "audit_lost_positive": [],
+    "audit_printk_suppression": [
+      {
+        "line": 4394,
+        "text": "[   41.996663] kauditd_printk_skb: 35 callbacks suppressed"
+      },
+      {
+        "line": 7365,
+        "text": "[   54.501666] kauditd_printk_skb: 9 callbacks suppressed"
+      },
+      {
+        "line": 8178,
+        "text": "[   59.730201] kauditd_printk_skb: 4 callbacks suppressed"
+      },
+      {
+        "line": 8749,
+        "text": "[   65.632211] kauditd_printk_skb: 76 callbacks suppressed"
+      },
+      {
+        "line": 10265,
+        "text": "[   81.168443] kauditd_printk_skb: 39 callbacks suppressed"
+      },
+      {
+        "line": 10830,
+        "text": "[   86.347179] kauditd_printk_skb: 22 callbacks suppressed"
+      },
+      {
+        "line": 11934,
+        "text": "[   99.318367] kauditd_printk_skb: 7 callbacks suppressed"
+      },
+      {
+        "line": 13790,
+        "text": "[  174.918299] kauditd_printk_skb: 3 callbacks suppressed"
+      },
+      {
+        "line": 15621,
+        "text": "[  180.099460] kauditd_printk_skb: 38 callbacks suppressed"
+      }
+    ]
+  },
+  "audit_printk_observation_argument": null,
+  "board_dtb_used": false,
+  "compiled_module_sig_force": false,
+  "early_selinux_argument": null,
+  "elapsed_seconds": 187.70099169499008,
+  "expected_marker_seen": true,
+  "guest_file_status": null,
+  "guest_partial_progress": [],
+  "guest_reported_failure": null,
+  "host_filesystem_shared": false,
+  "initramfs_role": "maintenance-label-only",
+  "initramfs_sha256": "63d49544b2134249b5a1d3dad3e26906c1c7ca807625fd2f7230d499d97cf8c0",
+  "invalid_initramfs_seen": false,
+  "kernel_image_sha256": "8ab38b022f7504869443f2469878cd55656b08fb6c56946122710144fc1cc8fb",
+  "kernel_panic_seen": false,
+  "kernel_rdinit_argument": null,
+  "log_limit_bytes": 8388608,
+  "marker_exact_line_count": 1,
+  "network": false,
+  "observed_warning_counts": {
+    "any_kernel_callback_suppression_count": 9,
+    "audit_backlog_overflow_count": 0,
+    "audit_loss_reason_count": 0,
+    "audit_lost_positive_count": 0,
+    "audit_printk_suppression_count": 9,
+    "autofs4_module_warning_count": 0,
+    "bpf_lsm_not_supported_count": 0,
+    "pids_max_read_warning_count": 0,
+    "selinux_avc_denial_count": 47,
+    "udev_event_fd_loss_count": 0,
+    "virtual_gpio_failure_count": 0
+  },
+  "passed": true,
+  "persistent_result_metadata": null,
+  "persistent_result_qualified": false,
+  "phase": "label",
+  "physical_device_passthrough": false,
+  "physical_hardware_tested": false,
+  "profile_sha256": "08219c35262b1db44ed2ad55beea78785a7826057b24eb2f41861a4072a9c3fc",
+  "qemu_exit_code": 0,
+  "schema_version": 2,
+  "serial_log_bytes": 1095153,
+  "serial_log_sha256": "ede72b8afc61c2310cff7c7e499040df06df5a57381b6a47041309422c3f584f",
+  "start_utc": "2026-11-23T07:51:02.667283+00:00",
+  "systemd_debug_logging_for_this_vm_only": true,
+  "systemd_lsm_bpf_attached_messages": [
+    "bpf-restrict-fs: LSM BPF program attached",
+    "bpf-restrict-fs: LSM BPF program attached"
+  ],
+  "termination_reason": null,
+  "timeout_seconds": 900,
+  "validation_failure_seen": false,
+  "vm_module_sig_enforce_argument": "module.sig_enforce=1"
+}

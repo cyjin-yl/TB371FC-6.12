@@ -1,0 +1,9 @@
+{
+  "path": "/work/nixos-system-boot-v1/store-jobs/source-verify.stderr",
+  "size": 68837,
+  "sha256": "9a04bc44277539077171ce0a384c2064b7d45bb5fb703651d25621ffd82e8b1a",
+  "mode": "0o600",
+  "uid": 0,
+  "gid": 0,
+  "captured_utc": "2026-11-23T10:41:24.674559+00:00"
+}

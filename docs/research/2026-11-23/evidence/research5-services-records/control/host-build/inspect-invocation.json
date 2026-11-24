@@ -1,0 +1,43 @@
+{
+  "child_pid": 649369,
+  "command": [
+    "sudo",
+    "-n",
+    "/usr/sbin/pct",
+    "exec",
+    "102",
+    "--",
+    "docker",
+    "exec",
+    "tb371fc-build-ssd-20261123",
+    "python3",
+    "/work/research5-services/recipe-v1/run_job.py",
+    "--work",
+    "/work/research5-services/jobs",
+    "--name",
+    "inspect-01",
+    "--",
+    "python3",
+    "/work/research5-services/recipe-v1/inspect_system.py",
+    "--work",
+    "/work/research5-services",
+    "--repo",
+    "/src",
+    "--baseline-repo",
+    "/work/research2-repo",
+    "--attempt",
+    "1"
+  ],
+  "elapsed_seconds": 15.76526727702003,
+  "ended_utc": "2026-11-23T10:04:06.696267+00:00",
+  "exit_code": 0,
+  "start_utc": "2026-11-23T10:03:50.930970+00:00",
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 381,
+    "sha256": "928384e1181c243e265a61f97195b4f8982c815fe6080f8b52c793caf096eb09"
+  }
+}

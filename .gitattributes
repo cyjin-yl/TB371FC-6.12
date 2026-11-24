@@ -1,2 +1,10 @@
 * text=auto eol=lf
 *.ps1 text eol=crlf
+# Preserve exact serial evidence bytes; its SHA-256 covers original CR/LF.
+docs/research/2026-11-23/evidence/kernel-qemu-*.log -text
+docs/research/2026-11-23/evidence/research2-display-qemu.log -text
+docs/research/2026-11-23/evidence/fedora-*.log -text
+# Preserve the original bytes of nested build records and captured inputs.
+docs/research/2026-11-23/evidence/research5-services-records/** -text
+docs/research/2026-11-23/evidence/research5-services-source-inputs/** -text
+docs/research/2026-11-23/evidence/nixos-store-preparation-failed-records/** -text

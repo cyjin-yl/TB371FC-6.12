@@ -1,0 +1,43 @@
+{
+  "failure_prefixes": [
+    "Failed to create new device monitor instance:",
+    "Failed to get address of device monitor socket:",
+    "Failed to save event to socket storage, ignoring:",
+    "Failed to push event serialization fd to service manager:",
+    "Received multiple event storage socket (",
+    "Failed to verify type of event storage socket (",
+    "Received invalid event storage socket (",
+    "Failed to initialize event storage:",
+    "Failed to set trusted sender for event storage:",
+    "Failed to wait for event from event storage:",
+    "Failed to receive device from event storage, ignoring:",
+    "Failed to insert device into event queue, ignoring:",
+    "Failed to store deserialized fd 'event-serialization'"
+  ],
+  "fixed_utc": "2026-11-23T04:47:54.405937+00:00",
+  "new_vm_executed_by_this_check": false,
+  "physical_tablet_tested": false,
+  "qualifier_sha256": "1eddb80693eec755cad7cfbc4aa53681c6b923863e6a8f9c331f22fc91de42c2",
+  "real_retained_failure_negative_control": {
+    "expected_rejection_confirmed": true,
+    "matching_line_counts": {
+      "Failed to create new device monitor instance:": 0,
+      "Failed to get address of device monitor socket:": 0,
+      "Failed to initialize event storage:": 0,
+      "Failed to insert device into event queue, ignoring:": 0,
+      "Failed to push event serialization fd to service manager:": 0,
+      "Failed to receive device from event storage, ignoring:": 0,
+      "Failed to save event to socket storage, ignoring:": 0,
+      "Failed to set trusted sender for event storage:": 0,
+      "Failed to store deserialized fd 'event-serialization'": 1,
+      "Failed to verify type of event storage socket (": 0,
+      "Failed to wait for event from event storage:": 0,
+      "Received invalid event storage socket (": 0,
+      "Received multiple event storage socket (": 0
+    },
+    "sha256": "f99f7fca24dab4d97ac12ab76a3c531544f76e06e6f61b61f6911bc33a4cb114",
+    "source": "docs/research/2026-11-23/evidence/fedora-research4-bus-failed-verify.log"
+  },
+  "schema_version": 1,
+  "source_sha256": "49ece39cdd38f83c7112dc94df2cb8ba0e6a570bd42939b31c98bce64392ed4e"
+}

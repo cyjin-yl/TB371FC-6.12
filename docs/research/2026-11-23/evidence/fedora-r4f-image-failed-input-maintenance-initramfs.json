@@ -1,0 +1,20 @@
+{
+  "archive_entry_counts": {
+    "early": 1,
+    "main": 523
+  },
+  "archive_validator_sha256": "263866a1943cd43116e69cb0a8b1081d6ccd1cc93ef98866a4b3eacc00bac58a",
+  "archive_verified": true,
+  "enforcing_argument": 0,
+  "kernel_release": "6.12.114-tb371fc-research4-system",
+  "original_proot_archive": {
+    "sha256": "dcc6f8aa92307b0f74afbfdc303a11bdd7161d61dab56ef78d3d3f9ee5238844",
+    "size": 31364372
+  },
+  "path": "/work/fedora-input-system-v9/rootfs/boot/initramfs-6.12.114-tb371fc-research4-system-maintenance.img",
+  "physical_hardware_tested": false,
+  "production_early_policy": false,
+  "role": "maintenance-label-only",
+  "sha256": "721af9be1c6c23b5b6dc1778c48c447eb197d1a7ec0a8d7f83a0e113815e33dd",
+  "size_bytes": 30709930
+}

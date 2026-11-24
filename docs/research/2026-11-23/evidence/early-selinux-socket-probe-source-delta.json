@@ -1,0 +1,22 @@
+{
+  "compiled_by_this_check": false,
+  "exact_changes": [
+    {
+      "new": "TB371FC_EARLY_SELINUX_V4",
+      "old": "TB371FC_EARLY_SELINUX_V3"
+    },
+    {
+      "new": "st.st_size != 3835468",
+      "old": "st.st_size != 3835456"
+    }
+  ],
+  "guard_unchanged": true,
+  "new_source": {
+    "bytes": 20011,
+    "sha256": "7badcfe780ff18e906ad03de6e907f038b3c80505a64c631c0579c62850548f5"
+  },
+  "old_source": {
+    "bytes": 20011,
+    "sha256": "58fe1187109bc0feaedec249274815490ac69aa2e892cb3534c32a2f793cf4b8"
+  }
+}

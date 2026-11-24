@@ -1,0 +1,6 @@
+Error obtaining file context handle: No such file or directory
+Ok: return value of 0.
+Attempting to install module '/work/selinux-standard-services-20261123/build-01/tb371fc_standard_services.cil':
+Ok: return value of 0.
+Committing changes:
+Ok: transaction number 4.

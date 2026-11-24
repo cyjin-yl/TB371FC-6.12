@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "scope": "fixed Fedora systemd source audit for the new generic-VM behavioral gate",
+  "runtime_attachment_observed_by_this_audit": false,
+  "policy_loaded": false,
+  "hardware_tested": false,
+  "source_rpm": {
+    "path": "/work/early-selinux-analysis-20261123/systemd-262.1-1.fc45.src.rpm",
+    "url": "https://kojipkgs.fedoraproject.org/packages/systemd/262.1/1.fc45/src/systemd-262.1-1.fc45.src.rpm",
+    "size": 19165235,
+    "sha256": "de8e6ebb2fb7b7aa0e1297c0c27c3339d15c37b24b57ca16a762483580ea7168"
+  },
+  "source_archive": {
+    "member": "systemd-262.1.tar.gz",
+    "size": 19088198,
+    "sha256": "100fc873b848b9b0297d8a705e8e2ed326256c8483d9960ee1ffe264c8a5c3e3"
+  },
+  "spec": {
+    "member": "systemd.spec",
+    "size": 74527,
+    "sha256": "b8bccdffaf7aa0b06ef21e051aa19d4180d8846125e5f4214298ee8562888883",
+    "obsolete_patch_condition": "26494.patch is under Fedora <40 AND RHEL <10; it is not active for Fedora 45.",
+    "patch_application": "%autosetup -p1",
+    "active_packaged_patches": [
+      {
+        "member": "30846.patch",
+        "sha256": "70143c0f62e0a76d18eb1abbbab3ca33640d904490eaaac2fec674c5cfe33938",
+        "targets": [
+          "src/basic/uid-classification.c"
+        ]
+      },
+      {
+        "member": "0001-core-create-userdb-root-directory-with-correct-label.patch",
+        "sha256": "1a469977168a0a43d87e49b0c89fff9ab4bbaf6f0c456439c54746f71f1f5ced",
+        "targets": [
+          "src/core/varlink.c"
+        ]
+      },
+      {
+        "member": "0002-machined-continue-without-resolve.hook-socket.patch",
+        "sha256": "2010af26e0d9cd5c34fd3fac80105868a9242a60bfcf8dbbe5c35b52426d181d",
+        "targets": [
+          "src/machine/machined-varlink.c"
+        ]
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "src/core/bpf-restrict-fs.c",
+      "size": 9766,
+      "sha256": "e99314f8c40795ca85959fbb151d40a9ef5446b1ec32b377039fe500b582aa14",
+      "function": "bpf_restrict_fs_setup",
+      "load_line": 69,
+      "attach_line": 74,
+      "attach_error_check_lines": [
+        75,
+        78
+      ],
+      "success_message_line": 80,
+      "retained_link_manager_lines": [
+        82,
+        83
+      ],
+      "success_message": "bpf-restrict-fs: LSM BPF program attached",
+      "map_update_function": "bpf_restrict_fs_update",
+      "cgroup_map_update_line": 107,
+      "allow_or_deny_selector_update_line": 113,
+      "filesystem_magic_update_lines": [
+        125,
+        139
+      ]
+    },
+    {
+      "path": "src/bpf/restrict-fs.bpf.c",
+      "size": 2740,
+      "sha256": "0674d7a0e740bd4f347aaa96a942c416872735965d9b426e23dcb9b00b2bfe4c",
+      "function": "restrict_filesystems",
+      "section": "lsm/file_open",
+      "prior_bpf_error_propagation_lines": [
+        46,
+        49
+      ],
+      "superblock_magic_read_line": 51,
+      "current_cgroup_id_line": 57,
+      "no_cgroup_rule_allows_lines": [
+        59,
+        61
+      ],
+      "malformed_map_allows_lines": [
+        63,
+        67
+      ],
+      "deny_list_match_returns_minus_eperm_lines": [
+        73,
+        76
+      ]
+    }
+  ],
+  "qualification_boundary": {
+    "success_marker": "Evidence of a successful LSM attach call, not by itself proof that the intended cgroup map or operation was enforced.",
+    "required_runtime_pair": "Same worker identity/hash, direct open/read, argv, SELinux context and unit settings; only RestrictFileSystems=~proc differs.",
+    "required_restricted_result": {
+      "failure_phase": "open",
+      "errno": 1,
+      "errno_name": "EPERM",
+      "data_bytes": 0,
+      "stdout_bytes": 0
+    },
+    "additional_required_runtime_evidence": [
+      "actual held-worker context/cgroup/FD identity",
+      "actual unit property readback",
+      "unrestricted read returns the matching Linux release",
+      "successful attachment marker",
+      "SELinux Enforcing and zero observed AVCs",
+      "live BTF/LSM and kernel identity",
+      "owned-unit cleanup"
+    ],
+    "broader_errors_are_not_passes": [
+      "EACCES without the expected EPERM",
+      "error at read rather than file_open",
+      "nonzero exit without the explicit syscall observation"
+    ],
+    "previous_failed_vm_results_unchanged": true
+  }
+}

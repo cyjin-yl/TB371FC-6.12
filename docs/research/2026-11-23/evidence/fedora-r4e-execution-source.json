@@ -1,0 +1,193 @@
+{
+  "actual_recipe_manifest": {
+    "sha256": "c453d67a35b466be76924eceb7f3af96bfd15ed313ee5cba11963a9de91fcb94",
+    "size": 2674
+  },
+  "actual_remote_readback_passed": true,
+  "builder": "tb371fc-build-20261123",
+  "capture_utc": "2026-11-23T07:44:57.927206+00:00",
+  "joint_inputs": [
+    {
+      "path": "/work/early-selinux-standard-services-20261123/build-01/early-init",
+      "sha256": "84cc4868317fd1799ab1ff8f8ba5ae8bf85445dda5d65c3f11e1637aadb599c3",
+      "size": 72528
+    },
+    {
+      "path": "/work/tmpfs-waiter-v2-20261123/build-01/init.tmpfs-wait",
+      "sha256": "7e593ef9b2c40834b97ad35b1bc21fcd54b00e34dce72381832f88329e28b3ec",
+      "size": 71872
+    },
+    {
+      "path": "/work/selinux-standard-services-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35",
+      "sha256": "727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502",
+      "size": 3835456
+    },
+    {
+      "path": "/work/fedora-input-system-v8/baseline-copy-qualification.json",
+      "sha256": "d1136513b108ebc0a18abe859d28d2a913fbf75446b4ebacb02fd926f281a840",
+      "size": 1020
+    }
+  ],
+  "materializer_output": {
+    "file_count": 20,
+    "output": "/work/fedora-input-system-recipe-r4-v6",
+    "recipe_manifest": {
+      "sha256": "c453d67a35b466be76924eceb7f3af96bfd15ed313ee5cba11963a9de91fcb94",
+      "size": 2674
+    }
+  },
+  "old_sources_modified": false,
+  "physical_tablet_tested": false,
+  "pipeline_started": true,
+  "profile_manifest": {
+    "sha256": "f705c87a1c5efe082ae134febc139e8ce437818951c83a9709bd475d17fc60d2",
+    "size": 2397
+  },
+  "recipe_files": {
+    "assemble_system.py": {
+      "sha256": "1c0a3088b8e39a6bdf6b7e828eacca70a51ee00e85a931f9e3e778352c140fe2",
+      "size": 6046
+    },
+    "boot_system_vm.py": {
+      "sha256": "0cc213bfa45f3f419adc39c6917ccecbb9dfcb5ea851388a61ef7f1d27523076",
+      "size": 40810
+    },
+    "early_initramfs.py": {
+      "sha256": "ec2ad218094aed7c1d8c99ae180aed8d36f43a83e9cd0b4106299963ed243d5a",
+      "size": 18222
+    },
+    "finalize_system.py": {
+      "sha256": "de72a5a1f60a0b56895bc8b595feb9d5c0c0ef09081fc8de9383fff3a9c6cb4a",
+      "size": 10874
+    },
+    "guest_result_file.py": {
+      "sha256": "89089a01d19113ac42d93f30cf86809e47dadfc7da28027733bf8a19c340c8a0",
+      "size": 5302
+    },
+    "guest_transient_worker.py": {
+      "sha256": "85f23dc3afdcca5a3bdce16349d51f8b84076380482b7c39fb5673555922907f",
+      "size": 8776
+    },
+    "guest_verify_system.py": {
+      "sha256": "9a897ad69789b8f29416ae1ef44d93dbd202563119932ce842f247c944988b7a",
+      "size": 41210
+    },
+    "initrd-domain-proof.service": {
+      "sha256": "f0dedb803142b5633f4431aef31f25c4308523cde460fb56251c9eb80a3286f5",
+      "size": 521
+    },
+    "initrd-domain-proof.sh": {
+      "sha256": "da45ac48debefb1eb282adb5574694a66d16522c3de8e668b191e264181adbfc",
+      "size": 5312
+    },
+    "probe_fd_route_v2.py": {
+      "sha256": "a9fbf6c6515e5652e80b328b3fdad2637938cc6133e02364256c616b41a8c755",
+      "size": 15438
+    },
+    "qualify_udev_handoff.py": {
+      "sha256": "7df5da2562ff9c5152c2d45304d0cdaf7f052917f7ef3edc4917f72f03aec110",
+      "size": 6132
+    },
+    "read_vm_result.py": {
+      "sha256": "71df5f32894a0f8b232173378786c39f39aca567af801dc3c5e035b04577dc25",
+      "size": 8311
+    },
+    "retain_policy_export.py": {
+      "sha256": "20fa7f3784cf07a707205c34ef1d5d6fbdab28dae785a5d20b66475a48d62f61",
+      "size": 3993
+    },
+    "run_pipeline.py": {
+      "sha256": "acc4649f6db53b8b23e642e8bf5f71f56f2c93077fdcfe55205e28d88a9471b8",
+      "size": 5905
+    },
+    "stage_system.py": {
+      "sha256": "78bc14c913c7aba1408da094f95c32183d3981a6744668352ad416ab4294d2dd",
+      "size": 13569
+    },
+    "system_common.py": {
+      "sha256": "ec3c0bc8c870f62af4acf6694d2134f86928fd61791b1e989f56a31404eebd12",
+      "size": 4209
+    },
+    "transient_protocol.py": {
+      "sha256": "69c8dcde80734ad3c71b6fdf0eaae0df330c5a760270aba560a971139955032d",
+      "size": 17436
+    },
+    "verify_early_policy_initramfs.py": {
+      "sha256": "58a5dba0186174c7442f73c2f8f0a2333599e6cbbcb1cf332169e5df558bfd1e",
+      "size": 27585
+    },
+    "verify_initramfs.py": {
+      "sha256": "263866a1943cd43116e69cb0a8b1081d6ccd1cc93ef98866a4b3eacc00bac58a",
+      "size": 20506
+    },
+    "verify_runtime_policy_initramfs.py": {
+      "sha256": "0ced7a067f49371049502548c3685374f8c4b8b398b6c498afcfb4cebf9eda6d",
+      "size": 30122
+    }
+  },
+  "remote_recipe": "/work/fedora-input-system-recipe-r4-v6",
+  "remote_source_overlay": "/work/fedora-r4e-source-overlay-v1",
+  "schema_version": 1,
+  "scope": "actual immutable R4E source materialization and input identities; no VM passed by this record",
+  "source_packet_bytes": 90499,
+  "source_packet_sha256": "b844cda5e2cbb488248205eb974ee2c6dbc614a2d42656c760db5b1326f46698",
+  "unique_pipeline_ct_unit": "tb371fc-r4e-full-01",
+  "vm_passed_by_this_record": false,
+  "work": "/work/fedora-input-system-v8",
+  "base_git_commit": "f1c5b9a7d3c8e1cdd8ef17e52c201a8f3fafea2a",
+  "launch": {
+    "capture_utc": "2026-11-23T07:45:46.070699+00:00",
+    "command": [
+      "systemd-run",
+      "--unit=tb371fc-r4e-full-01",
+      "--description=TB371FC R4E immutable system qualification",
+      "--property=Type=exec",
+      "--property=TimeoutStopSec=75",
+      "--",
+      "docker",
+      "exec",
+      "tb371fc-build-20261123",
+      "python3",
+      "/work/fedora-r4e-source-overlay-v1/scripts/research/input/system-integration/profiles/persistent-result-v8/launch_pipeline.py"
+    ],
+    "launch_exit_code": 0,
+    "outer_record": "/work/fedora-input-system-v8/pipeline.exit.json",
+    "phase_records": "/work/fedora-input-system-v8/jobs",
+    "pipeline_work": "/work/fedora-input-system-v8",
+    "properties": {
+      "ActiveState": "active",
+      "ExecMainCode": "0",
+      "ExecMainStatus": "0",
+      "InvocationID": "1627fbd7f92047d490302551aa1d3f98",
+      "LoadState": "loaded",
+      "MainPID": "1928133",
+      "SubState": "running"
+    },
+    "stderr": "Running as unit: tb371fc-r4e-full-01.service; invocation ID: 1627fbd7f92047d490302551aa1d3f98\n",
+    "stdout": "",
+    "unit": "tb371fc-r4e-full-01.service",
+    "vm_passed_by_launch": false
+  },
+  "source_readback_precedes_pipeline_launch": true,
+  "materializer": {
+    "path": "scripts/research/input/system-integration/profiles/persistent-result-v8/materialize_recipe.py",
+    "mode": 420,
+    "sha256": "45771a4eabb712466c0330d8bd1d03882d28be1a707830157fd0569be165ecf3",
+    "size": 4626
+  },
+  "launcher": {
+    "path": "scripts/research/input/system-integration/profiles/persistent-result-v8/launch_pipeline.py",
+    "mode": 420,
+    "sha256": "487c1262387eec65c64c1e46ac95ced60b9de9096a1df66ec95b29dd078f0b55",
+    "size": 4148
+  },
+  "public_source_directory": "scripts/research/input/system-integration/profiles/persistent-result-v8/",
+  "prior_v7_profile_source_manifest_sha256": "8b70be328295fa01789a34b7a8212c9424c926890889b2881002a7163d8c619f",
+  "qualification_scope": "Source identity, ordinary joint inputs and actual unique job launch. No archive/VM success is inferred.",
+  "local_environment_interruption": {
+    "temporary_unavailable": true,
+    "remote_fallback_base": "/work/fedora-r4e-source-draft-v2",
+    "fallback_derived_code_executed": false,
+    "original_local_draft_recovered": true
+  }
+}

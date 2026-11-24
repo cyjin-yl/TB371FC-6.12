@@ -1,0 +1,233 @@
+{
+  "capture_utc": "2026-11-23T03:00:01.500875+00:00",
+  "device_mutated": false,
+  "discovery": {
+    "/sys/kernel": {
+      "matched_names_only": [
+        "wifi"
+      ],
+      "status": "read"
+    },
+    "/sys/kernel/wifi": {
+      "matched_names_only": [
+        "wlan"
+      ],
+      "status": "read"
+    },
+    "/sys/kernel/wifi/wlan": {
+      "matched_names_only": [
+        "driver_version",
+        "fw"
+      ],
+      "status": "read"
+    },
+    "/sys/kernel/wifi/wlan/fw": {
+      "matched_names_only": [
+        "1"
+      ],
+      "status": "read"
+    },
+    "/sys/kernel/wifi/wlan/fw/1": {
+      "matched_names_only": [
+        "version"
+      ],
+      "status": "read"
+    }
+  },
+  "kernel_release": "4.19.157-perf+",
+  "limits": [
+    "BDF descriptor fields are not the CNSS QMI board_id and do not select a stock bdwlan candidate by themselves.",
+    "A bounded metadata read establishes no association, throughput, firmware authentication or native Linux operation.",
+    "Public source is a pinned interface clue, not a byte-equivalent identification of the shipping Android binary."
+  ],
+  "mmio_read": false,
+  "per_operation_timeout_seconds": 1,
+  "qmi_board_id_observed": false,
+  "qmi_query_sent": false,
+  "radio_restarted": false,
+  "raw_logs_read": false,
+  "read_limit_bytes": 4096,
+  "schema_version": 1,
+  "scope": "fixed cached WLAN firmware/BDF descriptor sysfs only; no radio or logging controls",
+  "selected_bdf_filename": null,
+  "status": "cached_bdf_descriptors_observed",
+  "versions": {
+    "/sys/kernel/wifi/wlan/fw/1/version": {
+      "all_five_bdf_descriptor_fields_present": true,
+      "bdf_descriptor_hex": {
+        "bdf_version": "0x8",
+        "board_data_rev": "0x1",
+        "customer_id": "0x0",
+        "project_id": "0x0",
+        "ref_design_id": "0x0"
+      },
+      "elapsed_seconds": 0.0004911449941573665,
+      "extraction": "allowlisted field names only; no whole-line publication",
+      "firmware_version_components": [
+        1,
+        0,
+        1,
+        0,
+        1596,
+        0
+      ],
+      "other_contents_omitted": true,
+      "sha256": "d154227c68f046413ffbd2a9f5e7f27abc1a7fee8fc37065922568b3454867e5",
+      "size_bytes": 123,
+      "status": "parsed_cached_metadata"
+    }
+  },
+  "source_review": {
+    "repository": "https://github.com/tem423/android_kernel_lenovo_tb371fc",
+    "revision": "9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1",
+    "file_provenance": "Read from the already acquired, pinned first-stage public source in the isolated CT102 SSD builder; no new source mutation.",
+    "files": [
+      {
+        "path": "drivers/staging/qcacld-3.0/core/hdd/src/wlan_hdd_sysfs.c",
+        "sha256": "16d6cfc6cd250eb6b5aa989b1dcc2e71024265239c1758002115c382830ea995",
+        "symbols": [
+          "__show_fw_version",
+          "show_fw_version",
+          "hdd_sysfs_create_version_interface",
+          "hdd_sysfs_create_driver_root_obj"
+        ],
+        "url": "https://github.com/tem423/android_kernel_lenovo_tb371fc/blob/9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1/drivers/staging/qcacld-3.0/core/hdd/src/wlan_hdd_sysfs.c"
+      },
+      {
+        "path": "drivers/net/wireless/cnss2/qmi.c",
+        "sha256": "3facb40945088a385ef2281d7eed529da5fd975c042278d3ea506a98b70ef64b",
+        "symbols": [
+          "cnss_wlfw_tgt_cap_send_sync",
+          "cnss_get_bdf_file_name",
+          "cnss_wlfw_bdf_dnld_send_sync"
+        ],
+        "url": "https://github.com/tem423/android_kernel_lenovo_tb371fc/blob/9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1/drivers/net/wireless/cnss2/qmi.c"
+      },
+      {
+        "path": "drivers/net/wireless/cnss2/pci.c",
+        "sha256": "4ca227532ffa5df9381f1816381947e9df71a1baa53bf4b75cd02005d2dcfd60",
+        "symbols": [
+          "cnss_get_soc_info",
+          "cnss_pci_add_fw_prefix_name"
+        ],
+        "url": "https://github.com/tem423/android_kernel_lenovo_tb371fc/blob/9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1/drivers/net/wireless/cnss2/pci.c"
+      },
+      {
+        "path": "drivers/net/wireless/cnss2/debug.c",
+        "sha256": "61674fbf5bab8ba5e2e16ab1e1fbcb5d68ac10c34ff1bfce38484a1630f65b32",
+        "symbols": [
+          "cnss_control_params_debug_show",
+          "cnss_debugfs_create"
+        ],
+        "url": "https://github.com/tem423/android_kernel_lenovo_tb371fc/blob/9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1/drivers/net/wireless/cnss2/debug.c"
+      },
+      {
+        "path": "drivers/net/wireless/cnss2/debug.h",
+        "sha256": "67ddce1868a2c429e79e17cf136c3a988d42df5f2c29f69f931c165eeff7727d",
+        "symbols": [
+          "cnss_pr_dbg"
+        ],
+        "url": "https://github.com/tem423/android_kernel_lenovo_tb371fc/blob/9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1/drivers/net/wireless/cnss2/debug.h"
+      }
+    ],
+    "sysfs_contract": {
+      "path_template": "/sys/kernel/wifi/wlan/fw/<numeric psoc>/version",
+      "driver_directory_default": "wifi",
+      "alternative_directory_condition": "MULTI_IF_NAME compile definition, if present",
+      "inspected_show_behavior": "Context and synchronization guards, then formatting cached hdd_context firmware version, target hardware name and hw_bd_info fields. No QMI request or register read in the inspected show path.",
+      "fields_are": "Cached BDF descriptor fields, distinct from cnss_plat_data.board_info.board_id"
+    },
+    "selection_contract": {
+      "qmi_board_id": "Cached from a valid QMI target-capability board-info response; otherwise 0xff fallback.",
+      "bdf_name_inputs": [
+        "bdf_type (ELF/BIN/etc.)",
+        "cached QMI board_id",
+        "chip GF mask branch",
+        "optional qca6390/ path prefix"
+      ],
+      "board_id_is_pci_subsystem_id": false,
+      "sysfs_bdf_fields_are_qmi_board_id": false,
+      "kernel_only_cache_export": "cnss_get_soc_info() exposes cached board_id to kernel callers, not a demonstrated owner userspace getter.",
+      "debug_control_params_limit": "Its inspected read side exposes bdf_type, not the cached board_id or selected filename."
+    },
+    "shipping_android_binary_equivalence_verified": false
+  },
+  "acquisition": {
+    "interpreter": "/data/data/com.termux/files/usr/bin/python",
+    "privilege_entry": "su -c",
+    "final_collector_sha256": "e3ca0d43d15f012fb4747c451b676a3458a773434202e1c3aa49cc34a0cabf15",
+    "collector_source": "import datetime\nimport hashlib\nimport json\nimport os\nfrom pathlib import Path\nimport platform\nimport re\nimport signal\nimport stat\nimport time\n\nLIMIT = 4096\nTIMEOUT = 1.0\nout = {'schema_version': 1, 'capture_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),\n       'kernel_release': platform.release(),\n       'scope': 'fixed cached WLAN firmware/BDF descriptor sysfs only; no radio or logging controls',\n       'read_limit_bytes': LIMIT, 'per_operation_timeout_seconds': TIMEOUT,\n       'discovery': {}, 'versions': {}, 'device_mutated': False, 'radio_restarted': False,\n       'qmi_query_sent': False, 'mmio_read': False, 'raw_logs_read': False,\n       'qmi_board_id_observed': False, 'selected_bdf_filename': None}\n\ndef alarm(_number, _frame):\n    raise TimeoutError('bounded metadata operation exceeded one second')\nsignal.signal(signal.SIGALRM, alarm)\n\ndef bounded(action):\n    signal.setitimer(signal.ITIMER_REAL, TIMEOUT)\n    try:\n        return action()\n    finally:\n        signal.setitimer(signal.ITIMER_REAL, 0)\n\ndef directories(path, allowed, maximum):\n    def inspect():\n        if not stat.S_ISDIR(path.lstat().st_mode):\n            raise ValueError('metadata parent is not a real directory')\n        names = []\n        with os.scandir(path) as iterator:\n            for index, entry in enumerate(iterator):\n                if index >= maximum:\n                    raise ValueError('directory count exceeds bound')\n                if allowed.fullmatch(entry.name):\n                    names.append(entry.name)\n        return sorted(names)\n    try:\n        names = bounded(inspect)\n        out['discovery'][str(path)] = {'matched_names_only': names, 'status': 'read'}\n        return names\n    except (OSError, ValueError, TimeoutError) as exc:\n        out['discovery'][str(path)] = {'status': 'unavailable', 'reason': type(exc).__name__}\n        return []\n\nroots = directories(Path('/sys/kernel'), re.compile(r'(?:wifi|wlan)[A-Za-z0-9_.-]{0,32}'), 1024)\nformat_re = re.compile(r'FW:(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+) HW:([A-Za-z0-9._ +()/:-]{1,128}) Board version: ([0-9a-fA-F]{1,8}) Ref design id: ([0-9a-fA-F]{1,8}) Customer id: ([0-9a-fA-F]{1,8}) Project id: ([0-9a-fA-F]{1,8}) Board Data Rev: ([0-9a-fA-F]{1,8})')\nfor root_name in roots:\n    parent = Path('/sys/kernel') / root_name\n    names = directories(parent, re.compile(r'wlan'), 64)\n    if 'wlan' not in names:\n        continue\n    wlan = parent / 'wlan'\n    names = directories(wlan, re.compile(r'fw|driver_version'), 64)\n    if 'fw' not in names:\n        continue\n    fw = wlan / 'fw'\n    ids = directories(fw, re.compile(r'[0-9]{1,5}'), 16)\n    for identity in ids:\n        directory = fw / identity\n        names = directories(directory, re.compile(r'version'), 16)\n        if 'version' not in names:\n            continue\n        path = directory / 'version'\n        started = time.monotonic()\n        def read_version():\n            fd = os.open(path, os.O_RDONLY | os.O_CLOEXEC | os.O_NOFOLLOW | os.O_NONBLOCK)\n            try:\n                if not stat.S_ISREG(os.fstat(fd).st_mode):\n                    raise ValueError('not a metadata regular file')\n                data = os.read(fd, LIMIT + 1)\n                if len(data) > LIMIT:\n                    raise ValueError('metadata exceeds byte bound')\n                return data\n            finally:\n                os.close(fd)\n        try:\n            data = bounded(read_version)\n            record = {'size_bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest(),\n                      'elapsed_seconds': time.monotonic() - started}\n            text = data.decode('ascii', errors='replace')\n            parsed = {}\n            fw_match = re.search(r'(?<![A-Za-z])FW\\s*:\\s*([0-9]+(?:\\.[0-9]+){2,7})(?=\\s|$)', text)\n            if fw_match:\n                parsed['firmware_version_components'] = [int(value) for value in fw_match.group(1).split('.')]\n            descriptors = {}\n            for label, key in [('Board version', 'bdf_version'), ('Ref design id', 'ref_design_id'),\n                               ('Customer id', 'customer_id'), ('Project id', 'project_id'),\n                               ('Board Data Rev', 'board_data_rev')]:\n                match = re.search(re.escape(label) + r'\\s*:\\s*(?:0[xX])?([0-9a-fA-F]{1,8})(?=\\s|$)', text)\n                if match:\n                    descriptors[key] = '0x' + match.group(1).lower()\n            if descriptors:\n                parsed['bdf_descriptor_hex'] = descriptors\n            hardware = re.search(r'(?<![A-Za-z])HW\\s*:\\s*([A-Za-z][A-Za-z0-9._() /+-]{0,96}?)\\s+Board version\\s*:', text)\n            if hardware:\n                parsed['hardware_name'] = hardware.group(1).strip()\n            record.update(parsed)\n            record.update(status='parsed_cached_metadata' if descriptors else 'no_named_bdf_descriptors',\n                          extraction='allowlisted field names only; no whole-line publication',\n                          other_contents_omitted=True,\n                          all_five_bdf_descriptor_fields_present=len(descriptors) == 5)\n            out['versions'][str(path)] = record\n        except (OSError, ValueError, TimeoutError) as exc:\n            out['versions'][str(path)] = {'status': 'unavailable', 'reason': type(exc).__name__,\n                                         'elapsed_seconds': time.monotonic() - started}\nout['status'] = ('cached_bdf_descriptors_observed' if any(v['status'] == 'parsed_cached_metadata' for v in out['versions'].values())\n                 else 'no_parsed_cached_version_in_fixed_discovery')\nout['limits'] = ['BDF descriptor fields are not the CNSS QMI board_id and do not select a stock bdwlan candidate by themselves.',\n                 'A bounded metadata read establishes no association, throughput, firmware authentication or native Linux operation.',\n                 'Public source is a pinned interface clue, not a byte-equivalent identification of the shipping Android binary.']\nprint(json.dumps(out, indent=2, sort_keys=True))\n",
+    "first_strict_parser_sha256": "f3dba63238ccbfb45dec7f17e4b56a8e79a596b8b2f611c46af5fe46c1f15aac",
+    "first_strict_parser_source": "import datetime\nimport hashlib\nimport json\nimport os\nfrom pathlib import Path\nimport platform\nimport re\nimport signal\nimport stat\nimport time\n\nLIMIT = 4096\nTIMEOUT = 1.0\nout = {'schema_version': 1, 'capture_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),\n       'kernel_release': platform.release(),\n       'scope': 'fixed cached WLAN firmware/BDF descriptor sysfs only; no radio or logging controls',\n       'read_limit_bytes': LIMIT, 'per_operation_timeout_seconds': TIMEOUT,\n       'discovery': {}, 'versions': {}, 'device_mutated': False, 'radio_restarted': False,\n       'qmi_query_sent': False, 'mmio_read': False, 'raw_logs_read': False,\n       'qmi_board_id_observed': False, 'selected_bdf_filename': None}\n\ndef alarm(_number, _frame):\n    raise TimeoutError('bounded metadata operation exceeded one second')\nsignal.signal(signal.SIGALRM, alarm)\n\ndef bounded(action):\n    signal.setitimer(signal.ITIMER_REAL, TIMEOUT)\n    try:\n        return action()\n    finally:\n        signal.setitimer(signal.ITIMER_REAL, 0)\n\ndef directories(path, allowed, maximum):\n    def inspect():\n        if not stat.S_ISDIR(path.lstat().st_mode):\n            raise ValueError('metadata parent is not a real directory')\n        names = []\n        with os.scandir(path) as iterator:\n            for index, entry in enumerate(iterator):\n                if index >= maximum:\n                    raise ValueError('directory count exceeds bound')\n                if allowed.fullmatch(entry.name):\n                    names.append(entry.name)\n        return sorted(names)\n    try:\n        names = bounded(inspect)\n        out['discovery'][str(path)] = {'matched_names_only': names, 'status': 'read'}\n        return names\n    except (OSError, ValueError, TimeoutError) as exc:\n        out['discovery'][str(path)] = {'status': 'unavailable', 'reason': type(exc).__name__}\n        return []\n\nroots = directories(Path('/sys/kernel'), re.compile(r'(?:wifi|wlan)[A-Za-z0-9_.-]{0,32}'), 1024)\nformat_re = re.compile(r'FW:(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+) HW:([A-Za-z0-9._ +()/:-]{1,128}) Board version: ([0-9a-fA-F]{1,8}) Ref design id: ([0-9a-fA-F]{1,8}) Customer id: ([0-9a-fA-F]{1,8}) Project id: ([0-9a-fA-F]{1,8}) Board Data Rev: ([0-9a-fA-F]{1,8})')\nfor root_name in roots:\n    parent = Path('/sys/kernel') / root_name\n    names = directories(parent, re.compile(r'wlan'), 64)\n    if 'wlan' not in names:\n        continue\n    wlan = parent / 'wlan'\n    names = directories(wlan, re.compile(r'fw|driver_version'), 64)\n    if 'fw' not in names:\n        continue\n    fw = wlan / 'fw'\n    ids = directories(fw, re.compile(r'[0-9]{1,5}'), 16)\n    for identity in ids:\n        directory = fw / identity\n        names = directories(directory, re.compile(r'version'), 16)\n        if 'version' not in names:\n            continue\n        path = directory / 'version'\n        started = time.monotonic()\n        def read_version():\n            fd = os.open(path, os.O_RDONLY | os.O_CLOEXEC | os.O_NOFOLLOW | os.O_NONBLOCK)\n            try:\n                if not stat.S_ISREG(os.fstat(fd).st_mode):\n                    raise ValueError('not a metadata regular file')\n                data = os.read(fd, LIMIT + 1)\n                if len(data) > LIMIT:\n                    raise ValueError('metadata exceeds byte bound')\n                return data\n            finally:\n                os.close(fd)\n        try:\n            data = bounded(read_version)\n            record = {'size_bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest(),\n                      'elapsed_seconds': time.monotonic() - started}\n            try:\n                match = format_re.fullmatch(data.decode('ascii').strip())\n            except UnicodeDecodeError:\n                match = None\n            if not match:\n                record.update(status='unrecognized_format', contents_omitted=True)\n            else:\n                fields = match.groups()\n                record.update(status='parsed_cached_metadata',\n                              firmware_version_components=[int(value) for value in fields[:6]],\n                              hardware_name=fields[6],\n                              bdf_descriptor_hex={key: '0x' + value.lower() for key, value in zip(\n                                  ['bdf_version', 'ref_design_id', 'customer_id', 'project_id', 'board_data_rev'], fields[7:])})\n            out['versions'][str(path)] = record\n        except (OSError, ValueError, TimeoutError) as exc:\n            out['versions'][str(path)] = {'status': 'unavailable', 'reason': type(exc).__name__,\n                                         'elapsed_seconds': time.monotonic() - started}\nout['status'] = ('cached_bdf_descriptors_observed' if any(v['status'] == 'parsed_cached_metadata' for v in out['versions'].values())\n                 else 'no_parsed_cached_version_in_fixed_discovery')\nout['limits'] = ['BDF descriptor fields are not the CNSS QMI board_id and do not select a stock bdwlan candidate by themselves.',\n                 'A bounded metadata read establishes no association, throughput, firmware authentication or native Linux operation.',\n                 'Public source is a pinned interface clue, not a byte-equivalent identification of the shipping Android binary.']\nprint(json.dumps(out, indent=2, sort_keys=True))\n",
+    "first_read": {
+      "capture_utc": "2026-11-23T02:59:06.917843+00:00",
+      "device_mutated": false,
+      "discovery": {
+        "/sys/kernel": {
+          "matched_names_only": [
+            "wifi"
+          ],
+          "status": "read"
+        },
+        "/sys/kernel/wifi": {
+          "matched_names_only": [
+            "wlan"
+          ],
+          "status": "read"
+        },
+        "/sys/kernel/wifi/wlan": {
+          "matched_names_only": [
+            "driver_version",
+            "fw"
+          ],
+          "status": "read"
+        },
+        "/sys/kernel/wifi/wlan/fw": {
+          "matched_names_only": [
+            "1"
+          ],
+          "status": "read"
+        },
+        "/sys/kernel/wifi/wlan/fw/1": {
+          "matched_names_only": [
+            "version"
+          ],
+          "status": "read"
+        }
+      },
+      "kernel_release": "4.19.157-perf+",
+      "limits": [
+        "BDF descriptor fields are not the CNSS QMI board_id and do not select a stock bdwlan candidate by themselves.",
+        "A bounded metadata read establishes no association, throughput, firmware authentication or native Linux operation.",
+        "Public source is a pinned interface clue, not a byte-equivalent identification of the shipping Android binary."
+      ],
+      "mmio_read": false,
+      "per_operation_timeout_seconds": 1,
+      "qmi_board_id_observed": false,
+      "qmi_query_sent": false,
+      "radio_restarted": false,
+      "raw_logs_read": false,
+      "read_limit_bytes": 4096,
+      "schema_version": 1,
+      "scope": "fixed cached WLAN firmware/BDF descriptor sysfs only; no radio or logging controls",
+      "selected_bdf_filename": null,
+      "status": "no_parsed_cached_version_in_fixed_discovery",
+      "versions": {
+        "/sys/kernel/wifi/wlan/fw/1/version": {
+          "contents_omitted": true,
+          "elapsed_seconds": 0.0002525000018067658,
+          "sha256": "d154227c68f046413ffbd2a9f5e7f27abc1a7fee8fc37065922568b3454867e5",
+          "size_bytes": 123,
+          "status": "unrecognized_format"
+        }
+      }
+    },
+    "retained_result": "The two 123-byte reads have the same SHA256; first whole-line formatting rejected, then an allowlisted named-field parser succeeded. Unrecognized text, including any unmatched hardware-name text, was never published.",
+    "exact_sysfs_value_reads": 2,
+    "driver_version_value_read": false,
+    "other_state_attributes_read": false,
+    "saved_raw_sysfs_value": false,
+    "flags_scope": "No-query/no-MMIO/no-mutation flags describe collector actions and the inspected public getter; no instrumentation or byte-equivalence proof of the shipping driver is claimed."
+  }
+}
+

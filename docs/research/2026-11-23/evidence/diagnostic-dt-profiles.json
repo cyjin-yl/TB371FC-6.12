@@ -1,0 +1,4473 @@
+{
+  "analog_patch_not_applied": {
+    "path": "mainline-port/backports/linux-6.12/0003-tb371fc-v56-analog.patch",
+    "sha256": "340ff2ef1cda4e9b147e409dcbdad109f73610a888b214f6635255dbcd37b2c9",
+    "size": 647
+  },
+  "baseline_tables": {
+    "backlight": {
+      "config": "CONFIG_BACKLIGHT_TB371FC_KTZ8866",
+      "scope_selectors": [
+        "lenovo,tb371fc-ktz8866"
+      ],
+      "source": "drivers/video/backlight/tb371fc-ktz8866.c",
+      "source_sha256": "5e52309b0c1d6b836273efd1161bf862683dbf6b8b58b3095d04a360f9faab59",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "lenovo,tb371fc-ktz8866"
+          ],
+          "line": 173,
+          "name": "tb371fc_ktz8866_of_match"
+        }
+      ]
+    },
+    "dpu": {
+      "config": "CONFIG_DRM_MSM_DPU",
+      "scope_selectors": [
+        "qcom,sm8250-dpu",
+        "lenovo,tb371fc-dpu"
+      ],
+      "source": "drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c",
+      "source_sha256": "6f86b0306f15e8726c6eb9a88e70cdc79c219bbf7c7e86fc8ca973fced20550c",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "qcom,msm8998-dpu",
+            "qcom,qcm2290-dpu",
+            "qcom,sdm630-mdp5",
+            "qcom,sdm660-mdp5",
+            "qcom,sdm670-dpu",
+            "qcom,sdm845-dpu",
+            "qcom,sc7180-dpu",
+            "qcom,sc7280-dpu",
+            "qcom,sc8180x-dpu",
+            "qcom,sc8280xp-dpu",
+            "qcom,sm6115-dpu",
+            "qcom,sm6125-dpu",
+            "qcom,sm6350-dpu",
+            "qcom,sm6375-dpu",
+            "qcom,sm7150-dpu",
+            "qcom,sm8150-dpu",
+            "qcom,sm8250-dpu",
+            "qcom,sm8350-dpu",
+            "qcom,sm8450-dpu",
+            "qcom,sm8550-dpu",
+            "qcom,sm8650-dpu",
+            "qcom,x1e80100-dpu"
+          ],
+          "line": 1445,
+          "name": "dpu_dt_match"
+        }
+      ]
+    },
+    "dsi_host": {
+      "config": "CONFIG_DRM_MSM_DSI",
+      "scope_selectors": [
+        "qcom,mdss-dsi-ctrl"
+      ],
+      "source": "drivers/gpu/drm/msm/dsi/dsi.c",
+      "source_sha256": "15f47cdcd5c80adc0c79de1c46f1218063babfd727f30e6dbb2d130ff44c186d",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "qcom,mdss-dsi-ctrl",
+            "qcom,dsi-ctrl-6g-qcm2290"
+          ],
+          "line": 194,
+          "name": "dt_match"
+        }
+      ]
+    },
+    "dsi_phy": {
+      "config": "CONFIG_DRM_MSM_DSI_7NM_PHY",
+      "scope_selectors": [
+        "qcom,dsi-phy-7nm",
+        "lenovo,tb371fc-dsi-phy-7nm"
+      ],
+      "source": "drivers/gpu/drm/msm/dsi/phy/dsi_phy.c",
+      "source_sha256": "c98aca774158d4a03c32a6d58660a6d128638df7b11ecfe31cc60a8cf7dd395e",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "qcom,dsi-phy-28nm-hpm",
+            "qcom,dsi-phy-28nm-hpm-fam-b",
+            "qcom,dsi-phy-28nm-lp",
+            "qcom,dsi-phy-28nm-8226",
+            "qcom,dsi-phy-28nm-8937",
+            "qcom,dsi-phy-20nm",
+            "qcom,dsi-phy-28nm-8960",
+            "qcom,dsi-phy-14nm",
+            "qcom,dsi-phy-14nm-2290",
+            "qcom,dsi-phy-14nm-660",
+            "qcom,dsi-phy-14nm-8953",
+            "qcom,sm6125-dsi-phy-14nm",
+            "qcom,dsi-phy-10nm",
+            "qcom,dsi-phy-10nm-8998",
+            "qcom,dsi-phy-7nm",
+            "qcom,dsi-phy-7nm-8150",
+            "qcom,sc7280-dsi-phy-7nm",
+            "qcom,sm6375-dsi-phy-7nm",
+            "qcom,sm8350-dsi-phy-5nm",
+            "qcom,sm8450-dsi-phy-5nm",
+            "qcom,sm8550-dsi-phy-4nm",
+            "qcom,sm8650-dsi-phy-4nm"
+          ],
+          "line": 538,
+          "name": "dsi_phy_dt_match"
+        }
+      ]
+    },
+    "i2c": {
+      "config": "CONFIG_I2C_QCOM_GENI",
+      "scope_selectors": [
+        "qcom,geni-i2c"
+      ],
+      "source": "drivers/i2c/busses/i2c-qcom-geni.c",
+      "source_sha256": "5725e0024085b484c2a7201c451be4dc63f9514de5cb9f9aa107a4007e624df1",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "qcom,geni-i2c",
+            "qcom,geni-i2c-master-hub"
+          ],
+          "line": 1069,
+          "name": "geni_i2c_dt_match"
+        }
+      ]
+    },
+    "mdss": {
+      "config": "CONFIG_DRM_MSM_MDSS",
+      "scope_selectors": [
+        "qcom,sm8250-mdss"
+      ],
+      "source": "drivers/gpu/drm/msm/msm_mdss.c",
+      "source_sha256": "7633343141c618efeeb46abd186d70ee0d487f956f6f7b84186de6a86d9d72e9",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "qcom,mdss",
+            "qcom,msm8998-mdss",
+            "qcom,qcm2290-mdss",
+            "qcom,sdm670-mdss",
+            "qcom,sdm845-mdss",
+            "qcom,sc7180-mdss",
+            "qcom,sc7280-mdss",
+            "qcom,sc8180x-mdss",
+            "qcom,sc8280xp-mdss",
+            "qcom,sm6115-mdss",
+            "qcom,sm6125-mdss",
+            "qcom,sm6350-mdss",
+            "qcom,sm6375-mdss",
+            "qcom,sm7150-mdss",
+            "qcom,sm8150-mdss",
+            "qcom,sm8250-mdss",
+            "qcom,sm8350-mdss",
+            "qcom,sm8450-mdss",
+            "qcom,sm8550-mdss",
+            "qcom,sm8650-mdss",
+            "qcom,x1e80100-mdss"
+          ],
+          "line": 709,
+          "name": "mdss_dt_match"
+        }
+      ]
+    },
+    "panel": {
+      "config": "CONFIG_DRM_PANEL_NOVATEK_NT36523",
+      "scope_selectors": [
+        "lenovo,tb371fc-tianma-nt36532",
+        "lenovo,tb371fc-boe-nt36532"
+      ],
+      "source": "drivers/gpu/drm/panel/panel-novatek-nt36523.c",
+      "source_sha256": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "lenovo,tb371fc-boe-nt36532",
+            "lenovo,tb371fc-tianma-nt36532",
+            "lenovo,j606f-boe-nt36523w",
+            "xiaomi,elish-boe-nt36523",
+            "xiaomi,elish-csot-nt36523"
+          ],
+          "line": 1526,
+          "name": "nt36523_of_match"
+        }
+      ]
+    },
+    "spi": {
+      "config": "CONFIG_SPI_QCOM_GENI",
+      "scope_selectors": [
+        "qcom,geni-spi"
+      ],
+      "source": "drivers/spi/spi-geni-qcom.c",
+      "source_sha256": "c28d523bbcd230a8b2f36908fd26b64ebc4b7dfd0967b55a289165fdc2a516c6",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "qcom,geni-spi"
+          ],
+          "line": 1240,
+          "name": "spi_geni_dt_match"
+        }
+      ]
+    },
+    "touch": {
+      "config": "CONFIG_TOUCHSCREEN_NT36523_SPI",
+      "scope_selectors": [
+        "novatek,NVT-ts-spi"
+      ],
+      "source": "drivers/input/touchscreen/nt36523/nt36xxx.c",
+      "source_sha256": "bcc8e60eb6c10d97b84680224d1118462e5d121daa62d6b8732ec8938a09e0a2",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "novatek,NVT-ts-spi"
+          ],
+          "line": 1945,
+          "name": "nvt_match_table"
+        }
+      ]
+    }
+  },
+  "candidate_source_files": {
+    "drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_6_0_sm8250.h": "9e0aa98c6460fedc5b7b039f286ffe1fc49a0fcaf33b7a53b73a46bbd95d69a6",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.h": "98daac09b803bab1cb4bb5aad1b3b7c1ec27cf2174884b9897e1293ef3ea13cb",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c": "d28352bcdad53cd1bae0301138b17c5736ab3ead8bf98b0eefca368a58b8d2df",
+    "drivers/gpu/drm/msm/dsi/phy/dsi_phy.c": "dd0feba0e7f75f04c9e537354eee377c1c8a33943ee9a346178bf0a2b58a7539",
+    "drivers/gpu/drm/msm/dsi/phy/dsi_phy.h": "4837d449c078ab3417a6c001ed85f0598de0c24ef3b3baba390d802da8d04728",
+    "drivers/gpu/drm/msm/dsi/phy/dsi_phy_7nm.c": "188eb7e650a6045f685d669edefa957412e624220bfe21fa0a3097f9d19fe3be"
+  },
+  "candidate_tables": {
+    "backlight": {
+      "config": "CONFIG_BACKLIGHT_TB371FC_KTZ8866",
+      "scope_selectors": [
+        "lenovo,tb371fc-ktz8866"
+      ],
+      "source": "drivers/video/backlight/tb371fc-ktz8866.c",
+      "source_sha256": "5e52309b0c1d6b836273efd1161bf862683dbf6b8b58b3095d04a360f9faab59",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "lenovo,tb371fc-ktz8866"
+          ],
+          "line": 173,
+          "name": "tb371fc_ktz8866_of_match"
+        }
+      ]
+    },
+    "dpu": {
+      "config": "CONFIG_DRM_MSM_DPU",
+      "scope_selectors": [
+        "qcom,sm8250-dpu",
+        "lenovo,tb371fc-dpu"
+      ],
+      "source": "drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c",
+      "source_sha256": "d28352bcdad53cd1bae0301138b17c5736ab3ead8bf98b0eefca368a58b8d2df",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "qcom,msm8998-dpu",
+            "qcom,qcm2290-dpu",
+            "qcom,sdm630-mdp5",
+            "qcom,sdm660-mdp5",
+            "qcom,sdm670-dpu",
+            "qcom,sdm845-dpu",
+            "qcom,sc7180-dpu",
+            "qcom,sc7280-dpu",
+            "qcom,sc8180x-dpu",
+            "qcom,sc8280xp-dpu",
+            "qcom,sm6115-dpu",
+            "qcom,sm6125-dpu",
+            "qcom,sm6350-dpu",
+            "qcom,sm6375-dpu",
+            "qcom,sm7150-dpu",
+            "qcom,sm8150-dpu",
+            "lenovo,tb371fc-dpu",
+            "qcom,sm8250-dpu",
+            "qcom,sm8350-dpu",
+            "qcom,sm8450-dpu",
+            "qcom,sm8550-dpu",
+            "qcom,sm8650-dpu",
+            "qcom,x1e80100-dpu"
+          ],
+          "line": 1445,
+          "name": "dpu_dt_match"
+        }
+      ]
+    },
+    "dsi_host": {
+      "config": "CONFIG_DRM_MSM_DSI",
+      "scope_selectors": [
+        "qcom,mdss-dsi-ctrl"
+      ],
+      "source": "drivers/gpu/drm/msm/dsi/dsi.c",
+      "source_sha256": "15f47cdcd5c80adc0c79de1c46f1218063babfd727f30e6dbb2d130ff44c186d",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "qcom,mdss-dsi-ctrl",
+            "qcom,dsi-ctrl-6g-qcm2290"
+          ],
+          "line": 194,
+          "name": "dt_match"
+        }
+      ]
+    },
+    "dsi_phy": {
+      "config": "CONFIG_DRM_MSM_DSI_7NM_PHY",
+      "scope_selectors": [
+        "qcom,dsi-phy-7nm",
+        "lenovo,tb371fc-dsi-phy-7nm"
+      ],
+      "source": "drivers/gpu/drm/msm/dsi/phy/dsi_phy.c",
+      "source_sha256": "dd0feba0e7f75f04c9e537354eee377c1c8a33943ee9a346178bf0a2b58a7539",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "qcom,dsi-phy-28nm-hpm",
+            "qcom,dsi-phy-28nm-hpm-fam-b",
+            "qcom,dsi-phy-28nm-lp",
+            "qcom,dsi-phy-28nm-8226",
+            "qcom,dsi-phy-28nm-8937",
+            "qcom,dsi-phy-20nm",
+            "qcom,dsi-phy-28nm-8960",
+            "qcom,dsi-phy-14nm",
+            "qcom,dsi-phy-14nm-2290",
+            "qcom,dsi-phy-14nm-660",
+            "qcom,dsi-phy-14nm-8953",
+            "qcom,sm6125-dsi-phy-14nm",
+            "qcom,dsi-phy-10nm",
+            "qcom,dsi-phy-10nm-8998",
+            "lenovo,tb371fc-dsi-phy-7nm",
+            "qcom,dsi-phy-7nm",
+            "qcom,dsi-phy-7nm-8150",
+            "qcom,sc7280-dsi-phy-7nm",
+            "qcom,sm6375-dsi-phy-7nm",
+            "qcom,sm8350-dsi-phy-5nm",
+            "qcom,sm8450-dsi-phy-5nm",
+            "qcom,sm8550-dsi-phy-4nm",
+            "qcom,sm8650-dsi-phy-4nm"
+          ],
+          "line": 538,
+          "name": "dsi_phy_dt_match"
+        }
+      ]
+    },
+    "i2c": {
+      "config": "CONFIG_I2C_QCOM_GENI",
+      "scope_selectors": [
+        "qcom,geni-i2c"
+      ],
+      "source": "drivers/i2c/busses/i2c-qcom-geni.c",
+      "source_sha256": "5725e0024085b484c2a7201c451be4dc63f9514de5cb9f9aa107a4007e624df1",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "qcom,geni-i2c",
+            "qcom,geni-i2c-master-hub"
+          ],
+          "line": 1069,
+          "name": "geni_i2c_dt_match"
+        }
+      ]
+    },
+    "mdss": {
+      "config": "CONFIG_DRM_MSM_MDSS",
+      "scope_selectors": [
+        "qcom,sm8250-mdss"
+      ],
+      "source": "drivers/gpu/drm/msm/msm_mdss.c",
+      "source_sha256": "7633343141c618efeeb46abd186d70ee0d487f956f6f7b84186de6a86d9d72e9",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "qcom,mdss",
+            "qcom,msm8998-mdss",
+            "qcom,qcm2290-mdss",
+            "qcom,sdm670-mdss",
+            "qcom,sdm845-mdss",
+            "qcom,sc7180-mdss",
+            "qcom,sc7280-mdss",
+            "qcom,sc8180x-mdss",
+            "qcom,sc8280xp-mdss",
+            "qcom,sm6115-mdss",
+            "qcom,sm6125-mdss",
+            "qcom,sm6350-mdss",
+            "qcom,sm6375-mdss",
+            "qcom,sm7150-mdss",
+            "qcom,sm8150-mdss",
+            "qcom,sm8250-mdss",
+            "qcom,sm8350-mdss",
+            "qcom,sm8450-mdss",
+            "qcom,sm8550-mdss",
+            "qcom,sm8650-mdss",
+            "qcom,x1e80100-mdss"
+          ],
+          "line": 709,
+          "name": "mdss_dt_match"
+        }
+      ]
+    },
+    "panel": {
+      "config": "CONFIG_DRM_PANEL_NOVATEK_NT36523",
+      "scope_selectors": [
+        "lenovo,tb371fc-tianma-nt36532",
+        "lenovo,tb371fc-boe-nt36532"
+      ],
+      "source": "drivers/gpu/drm/panel/panel-novatek-nt36523.c",
+      "source_sha256": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "lenovo,tb371fc-boe-nt36532",
+            "lenovo,tb371fc-tianma-nt36532",
+            "lenovo,j606f-boe-nt36523w",
+            "xiaomi,elish-boe-nt36523",
+            "xiaomi,elish-csot-nt36523"
+          ],
+          "line": 1526,
+          "name": "nt36523_of_match"
+        }
+      ]
+    },
+    "spi": {
+      "config": "CONFIG_SPI_QCOM_GENI",
+      "scope_selectors": [
+        "qcom,geni-spi"
+      ],
+      "source": "drivers/spi/spi-geni-qcom.c",
+      "source_sha256": "c28d523bbcd230a8b2f36908fd26b64ebc4b7dfd0967b55a289165fdc2a516c6",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "qcom,geni-spi"
+          ],
+          "line": 1240,
+          "name": "spi_geni_dt_match"
+        }
+      ]
+    },
+    "touch": {
+      "config": "CONFIG_TOUCHSCREEN_NT36523_SPI",
+      "scope_selectors": [
+        "novatek,NVT-ts-spi"
+      ],
+      "source": "drivers/input/touchscreen/nt36523/nt36xxx.c",
+      "source_sha256": "bcc8e60eb6c10d97b84680224d1118462e5d121daa62d6b8732ec8938a09e0a2",
+      "tables": [
+        {
+          "driver_references_table": true,
+          "entries": [
+            "novatek,NVT-ts-spi"
+          ],
+          "line": 1945,
+          "name": "nvt_match_table"
+        }
+      ]
+    }
+  },
+  "compiler": [
+    "Debian clang version 19.1.7 (3+b1)",
+    "Target: x86_64-pc-linux-gnu",
+    "Thread model: posix",
+    "InstalledDir: /usr/lib/llvm-19/bin"
+  ],
+  "completed_utc": "2026-11-22T22:30:55.967872+00:00",
+  "drivers_loaded": false,
+  "existing_module_aliases": {
+    "backlight": {
+      "aliases": [
+        "of:N*T*Clenovo,tb371fc-ktz8866",
+        "of:N*T*Clenovo,tb371fc-ktz8866C*"
+      ],
+      "path": "/work/modules/lib/modules/6.12.114-tb371fc-research1/kernel/drivers/video/backlight/tb371fc-ktz8866.ko",
+      "sha256": "68add8e0ba17d1c5aea5071803ef34d83c507e777f9729b99b2938940fc49d16",
+      "size": 13073
+    },
+    "panel": {
+      "aliases": [
+        "of:N*T*Clenovo,tb371fc-boe-nt36532",
+        "of:N*T*Clenovo,tb371fc-boe-nt36532C*",
+        "of:N*T*Clenovo,tb371fc-tianma-nt36532",
+        "of:N*T*Clenovo,tb371fc-tianma-nt36532C*",
+        "of:N*T*Clenovo,j606f-boe-nt36523w",
+        "of:N*T*Clenovo,j606f-boe-nt36523wC*",
+        "of:N*T*Cxiaomi,elish-boe-nt36523",
+        "of:N*T*Cxiaomi,elish-boe-nt36523C*",
+        "of:N*T*Cxiaomi,elish-csot-nt36523",
+        "of:N*T*Cxiaomi,elish-csot-nt36523C*"
+      ],
+      "path": "/work/modules/lib/modules/6.12.114-tb371fc-research1/kernel/drivers/gpu/drm/panel/panel-novatek-nt36523.ko",
+      "sha256": "95e4628a2dd6f39d841cd0ae1a4fdbb8cdc4c816824ce237bd246685afff88e8",
+      "size": 214329
+    },
+    "touch": {
+      "aliases": [
+        "spi:NVT-ts-spi",
+        "of:N*T*Cnovatek,NVT-ts-spi",
+        "of:N*T*Cnovatek,NVT-ts-spiC*"
+      ],
+      "path": "/work/modules/lib/modules/6.12.114-tb371fc-research1/kernel/drivers/input/touchscreen/nt36523/nt36523_ts.ko",
+      "sha256": "9b17b42ee432fb3d452d33f7134b5e8d6aeeb782369b5ee8db7bb125788a98cb",
+      "size": 90329
+    }
+  },
+  "frozen_config_sha256": "1929caefadeb28cf84174c7fe7c100ab7251b3adcfdf547b2165c229b50f66da",
+  "frozen_manifest_sha256": "1a8788a8e5700287870d9e9ca44ad2be8c69e6f28d927321edd89508c5501821",
+  "isolated_config_sha256": "1929caefadeb28cf84174c7fe7c100ab7251b3adcfdf547b2165c229b50f66da",
+  "jobs": {
+    "analog_patch_check_only": {
+      "command": [
+        "git",
+        "apply",
+        "--recount",
+        "--check",
+        "/src/mainline-port/backports/linux-6.12/0003-tb371fc-v56-analog.patch"
+      ],
+      "cwd": "/work/dtb-profile-qualification-v2/source",
+      "elapsed_seconds": 0.0029114909702911973,
+      "exit_code": 0,
+      "log": "analog-patch-check-only.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "config": {
+      "command": [
+        "make",
+        "-C",
+        "/work/dtb-profile-qualification-v2/source",
+        "O=/work/dtb-profile-qualification-v2/out",
+        "ARCH=arm64",
+        "LLVM=1",
+        "-j2",
+        "olddefconfig"
+      ],
+      "cwd": null,
+      "elapsed_seconds": 299.8237826449913,
+      "exit_code": 0,
+      "log": "config.log",
+      "log_sha256": "7f91b45e4b783b5468957d06f9cccf7f1191da6c786f93ac7fbaed2fc80b6377"
+    },
+    "dtbs": {
+      "command": [
+        "make",
+        "-C",
+        "/work/dtb-profile-qualification-v2/source",
+        "O=/work/dtb-profile-qualification-v2/out",
+        "ARCH=arm64",
+        "LLVM=1",
+        "-j2",
+        "V=1",
+        "qcom/sm8250-lenovo-tb371fc-touch-test.dtb",
+        "qcom/sm8250-lenovo-tb371fc-display-test.dtb"
+      ],
+      "cwd": null,
+      "elapsed_seconds": 35.81665297597647,
+      "exit_code": 0,
+      "log": "dtbs.log",
+      "log_sha256": "147cb40c9d7fef1a90c1f066343e120ef32b6ef5e20e7aa60c810df8528e50a2"
+    },
+    "native_patch_apply": {
+      "command": [
+        "git",
+        "apply",
+        "--recount",
+        "/src/mainline-port/backports/linux-6.12/0002-tb371fc-phy-wideplane.patch"
+      ],
+      "cwd": "/work/dtb-profile-qualification-v2/source",
+      "elapsed_seconds": 0.0049664939870126545,
+      "exit_code": 0,
+      "log": "native-patch-apply.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "native_patch_check": {
+      "command": [
+        "git",
+        "apply",
+        "--recount",
+        "--check",
+        "/src/mainline-port/backports/linux-6.12/0002-tb371fc-phy-wideplane.patch"
+      ],
+      "cwd": "/work/dtb-profile-qualification-v2/source",
+      "elapsed_seconds": 0.8253974709659815,
+      "exit_code": 0,
+      "log": "native-patch-check.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "objects": {
+      "command": [
+        "make",
+        "-C",
+        "/work/dtb-profile-qualification-v2/source",
+        "O=/work/dtb-profile-qualification-v2/out",
+        "ARCH=arm64",
+        "LLVM=1",
+        "-j2",
+        "V=1",
+        "drivers/gpu/drm/msm/dsi/phy/dsi_phy.o",
+        "drivers/gpu/drm/msm/dsi/phy/dsi_phy_7nm.o",
+        "drivers/gpu/drm/msm/disp/dpu1/dpu_kms.o",
+        "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.o",
+        "drivers/gpu/drm/msm/disp/dpu1/dpu_plane.o"
+      ],
+      "cwd": null,
+      "elapsed_seconds": 41.55564325599698,
+      "exit_code": 0,
+      "log": "objects.log",
+      "log_sha256": "3b794f00b99a1fdb8e4b0e1f602c919fd49d6a28215a409f82a840391195332c"
+    }
+  },
+  "native_candidate_status": "affected_objects_compiled_hardware_untested",
+  "native_patch": {
+    "path": "mainline-port/backports/linux-6.12/0002-tb371fc-phy-wideplane.patch",
+    "sha256": "839699e055d8959232f2912895cbd71f5fd85f3e07a1d3f033a1fd728e08ce56",
+    "size": 4783
+  },
+  "objects": {
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.o": {
+      "elf_aarch64": true,
+      "sha256": "926e18cfb6a30a79bbc5488e23762e064c38c7b9c6715243ed7186c3d7a6a14b",
+      "size": 89408
+    },
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_kms.o": {
+      "elf_aarch64": true,
+      "sha256": "e8dce2dbda72a1675c284be67605b3ff08b6485a26d515a88ec25db2904268c3",
+      "size": 45032
+    },
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_plane.o": {
+      "elf_aarch64": true,
+      "sha256": "d2c6a7c19325830b938ceeb36a6a3e189f4059e395b7ef84dac7f6e1c4fad279",
+      "size": 22232
+    },
+    "drivers/gpu/drm/msm/dsi/phy/dsi_phy.o": {
+      "elf_aarch64": true,
+      "sha256": "595475f47efd61e8d61767a2bb575da75d45280143cf5efd1b0da5789a1e4784",
+      "size": 22360
+    },
+    "drivers/gpu/drm/msm/dsi/phy/dsi_phy_7nm.o": {
+      "elf_aarch64": true,
+      "sha256": "d4a412324e47a59a6452a6f8dca8db7375510a4ef89f84dd6f7d8fda735995c9",
+      "size": 20168
+    }
+  },
+  "physical_hardware_tested": false,
+  "primary_artifacts_after": {
+    "Image": {
+      "sha256": "5b7dbf8ac810ef4b488d394f6b976d876e52372621428f751f02f8deac5667f5",
+      "size": 29849608
+    },
+    "board.dtb": {
+      "sha256": "129bbee33b0c71be120d1d724be6267d0e4f99c07ec9ed951a823ab9241998dc",
+      "size": 126236
+    },
+    "kernel.config": {
+      "sha256": "1929caefadeb28cf84174c7fe7c100ab7251b3adcfdf547b2165c229b50f66da",
+      "size": 216617
+    },
+    "source-manifest.json": {
+      "sha256": "1a8788a8e5700287870d9e9ca44ad2be8c69e6f28d927321edd89508c5501821",
+      "size": 3269
+    }
+  },
+  "primary_artifacts_before": {
+    "Image": {
+      "sha256": "5b7dbf8ac810ef4b488d394f6b976d876e52372621428f751f02f8deac5667f5",
+      "size": 29849608
+    },
+    "board.dtb": {
+      "sha256": "129bbee33b0c71be120d1d724be6267d0e4f99c07ec9ed951a823ab9241998dc",
+      "size": 126236
+    },
+    "kernel.config": {
+      "sha256": "1929caefadeb28cf84174c7fe7c100ab7251b3adcfdf547b2165c229b50f66da",
+      "size": 216617
+    },
+    "source-manifest.json": {
+      "sha256": "1a8788a8e5700287870d9e9ca44ad2be8c69e6f28d927321edd89508c5501821",
+      "size": 3269
+    }
+  },
+  "primary_artifacts_unchanged": true,
+  "primary_output_config_unchanged": true,
+  "profiles": {
+    "display-test": {
+      "baseline_binding_checks": [
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@880000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@880000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@880000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@880000"
+          ]
+        },
+        {
+          "compatible": [
+            "novatek,NVT-ts-spi"
+          ],
+          "config": "CONFIG_TOUCHSCREEN_NT36523_SPI",
+          "config_value": "m",
+          "driver": "touch",
+          "effectively_available": false,
+          "matched_compatible": [
+            "novatek,NVT-ts-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@880000/touchscreen@0",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@880000",
+            "/soc@0/geniqup@8c0000/spi@880000/touchscreen@0"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@884000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@884000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@884000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@888000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@888000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@888000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@888000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@88c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@88c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@88c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@88c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@890000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@890000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@890000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@890000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@894000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@894000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@894000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@980000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@980000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@980000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@980000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@984000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@984000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@984000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@988000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@988000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@988000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@988000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@98c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@98c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@98c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@990000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@990000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@990000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@994000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "lenovo,tb371fc-ktz8866"
+          ],
+          "config": "CONFIG_BACKLIGHT_TB371FC_KTZ8866",
+          "config_value": "m",
+          "driver": "backlight",
+          "effectively_available": true,
+          "matched_compatible": [
+            "lenovo,tb371fc-ktz8866"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@994000/backlight@11",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@994000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@994000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@998000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@998000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@998000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@998000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@99c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@99c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@99c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@99c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a80000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a80000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a80000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a80000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a84000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a84000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a84000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a84000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a88000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a88000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a88000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a88000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a8c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "lenovo,tb371fc-ktz8866"
+          ],
+          "config": "CONFIG_BACKLIGHT_TB371FC_KTZ8866",
+          "config_value": "m",
+          "driver": "backlight",
+          "effectively_available": true,
+          "matched_compatible": [
+            "lenovo,tb371fc-ktz8866"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a8c000/backlight@11",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a8c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a8c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a90000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a90000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a90000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a90000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a94000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a94000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a94000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,sm8250-mdss"
+          ],
+          "config": "CONFIG_DRM_MSM_MDSS",
+          "config_value": "y",
+          "driver": "mdss",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,sm8250-mdss"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "lenovo,tb371fc-dpu"
+          ],
+          "config": "CONFIG_DRM_MSM_DPU",
+          "config_value": "y",
+          "driver": "dpu",
+          "effectively_available": true,
+          "matched_compatible": [],
+          "node": "/soc@0/display-subsystem@ae00000/display-controller@ae01000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": false,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,sm8250-dsi-ctrl",
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI",
+          "config_value": "y",
+          "driver": "dsi_host",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/dsi@ae94000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "lenovo,tb371fc-tianma-nt36532",
+            "novatek,nt36523"
+          ],
+          "config": "CONFIG_DRM_PANEL_NOVATEK_NT36523",
+          "config_value": "m",
+          "driver": "panel",
+          "effectively_available": true,
+          "matched_compatible": [
+            "lenovo,tb371fc-tianma-nt36532"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/dsi@ae94000/panel@0",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "lenovo,tb371fc-dsi-phy-7nm"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI_7NM_PHY",
+          "config_value": "y",
+          "driver": "dsi_phy",
+          "effectively_available": true,
+          "matched_compatible": [],
+          "node": "/soc@0/display-subsystem@ae00000/phy@ae94400",
+          "runtime_probe_tested": false,
+          "static_of_match_available": false,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,sm8250-dsi-ctrl",
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI",
+          "config_value": "y",
+          "driver": "dsi_host",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/dsi@ae96000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "lenovo,tb371fc-dsi-phy-7nm"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI_7NM_PHY",
+          "config_value": "y",
+          "driver": "dsi_phy",
+          "effectively_available": true,
+          "matched_compatible": [],
+          "node": "/soc@0/display-subsystem@ae00000/phy@ae96400",
+          "runtime_probe_tested": false,
+          "static_of_match_available": false,
+          "status": "okay",
+          "unavailable_ancestors": []
+        }
+      ],
+      "candidate_binding_checks": [
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@880000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@880000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@880000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@880000"
+          ]
+        },
+        {
+          "compatible": [
+            "novatek,NVT-ts-spi"
+          ],
+          "config": "CONFIG_TOUCHSCREEN_NT36523_SPI",
+          "config_value": "m",
+          "driver": "touch",
+          "effectively_available": false,
+          "matched_compatible": [
+            "novatek,NVT-ts-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@880000/touchscreen@0",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@880000",
+            "/soc@0/geniqup@8c0000/spi@880000/touchscreen@0"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@884000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@884000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@884000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@888000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@888000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@888000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@888000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@88c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@88c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@88c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@88c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@890000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@890000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@890000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@890000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@894000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@894000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@894000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@980000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@980000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@980000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@980000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@984000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@984000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@984000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@988000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@988000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@988000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@988000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@98c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@98c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@98c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@990000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@990000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@990000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@994000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "lenovo,tb371fc-ktz8866"
+          ],
+          "config": "CONFIG_BACKLIGHT_TB371FC_KTZ8866",
+          "config_value": "m",
+          "driver": "backlight",
+          "effectively_available": true,
+          "matched_compatible": [
+            "lenovo,tb371fc-ktz8866"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@994000/backlight@11",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@994000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@994000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@998000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@998000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@998000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@998000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@99c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@99c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@99c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@99c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a80000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a80000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a80000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a80000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a84000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a84000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a84000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a84000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a88000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a88000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a88000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a88000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a8c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "lenovo,tb371fc-ktz8866"
+          ],
+          "config": "CONFIG_BACKLIGHT_TB371FC_KTZ8866",
+          "config_value": "m",
+          "driver": "backlight",
+          "effectively_available": true,
+          "matched_compatible": [
+            "lenovo,tb371fc-ktz8866"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a8c000/backlight@11",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a8c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a8c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a90000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a90000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a90000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a90000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a94000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a94000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a94000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,sm8250-mdss"
+          ],
+          "config": "CONFIG_DRM_MSM_MDSS",
+          "config_value": "y",
+          "driver": "mdss",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,sm8250-mdss"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "lenovo,tb371fc-dpu"
+          ],
+          "config": "CONFIG_DRM_MSM_DPU",
+          "config_value": "y",
+          "driver": "dpu",
+          "effectively_available": true,
+          "matched_compatible": [
+            "lenovo,tb371fc-dpu"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/display-controller@ae01000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,sm8250-dsi-ctrl",
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI",
+          "config_value": "y",
+          "driver": "dsi_host",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/dsi@ae94000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "lenovo,tb371fc-tianma-nt36532",
+            "novatek,nt36523"
+          ],
+          "config": "CONFIG_DRM_PANEL_NOVATEK_NT36523",
+          "config_value": "m",
+          "driver": "panel",
+          "effectively_available": true,
+          "matched_compatible": [
+            "lenovo,tb371fc-tianma-nt36532"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/dsi@ae94000/panel@0",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "lenovo,tb371fc-dsi-phy-7nm"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI_7NM_PHY",
+          "config_value": "y",
+          "driver": "dsi_phy",
+          "effectively_available": true,
+          "matched_compatible": [
+            "lenovo,tb371fc-dsi-phy-7nm"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/phy@ae94400",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,sm8250-dsi-ctrl",
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI",
+          "config_value": "y",
+          "driver": "dsi_host",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/dsi@ae96000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "lenovo,tb371fc-dsi-phy-7nm"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI_7NM_PHY",
+          "config_value": "y",
+          "driver": "dsi_phy",
+          "effectively_available": true,
+          "matched_compatible": [
+            "lenovo,tb371fc-dsi-phy-7nm"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/phy@ae96400",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        }
+      ],
+      "dtb": "out/arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc-display-test.dtb",
+      "dtc_compiled": true,
+      "model": "Lenovo TB371FC (Tianma native display test)",
+      "sha256": "c72dc90cb4597501d8ea19c69442cef739d159264b5b8fa18dc05bd383f465be",
+      "size": 126857,
+      "source": "mainline-port/arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc-display-test.dts",
+      "source_modified": false,
+      "source_sha256": "cbb4a34fb144d01f2df5804049b6de1fc58cd3fdb0417cec04ee44b01a5b0cef"
+    },
+    "touch-test": {
+      "baseline_binding_checks": [
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@880000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@880000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@880000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "novatek,NVT-ts-spi"
+          ],
+          "config": "CONFIG_TOUCHSCREEN_NT36523_SPI",
+          "config_value": "m",
+          "driver": "touch",
+          "effectively_available": true,
+          "matched_compatible": [
+            "novatek,NVT-ts-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@880000/touchscreen@0",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@884000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@884000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@884000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@888000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@888000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@888000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@888000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@88c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@88c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@88c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@88c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@890000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@890000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@890000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@890000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@894000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@894000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@894000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@980000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@980000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@980000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@980000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@984000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@984000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@984000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@988000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@988000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@988000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@988000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@98c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@98c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@98c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@990000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@990000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@990000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@994000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@994000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@994000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@994000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@998000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@998000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@998000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@998000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@99c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@99c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@99c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@99c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a80000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a80000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a80000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a80000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a84000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a84000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a84000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a84000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a88000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a88000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a88000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a88000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a8c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a8c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a8c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a8c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a90000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a90000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a90000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a90000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a94000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a94000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a94000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,sm8250-mdss"
+          ],
+          "config": "CONFIG_DRM_MSM_MDSS",
+          "config_value": "y",
+          "driver": "mdss",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,sm8250-mdss"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,sm8250-dpu"
+          ],
+          "config": "CONFIG_DRM_MSM_DPU",
+          "config_value": "y",
+          "driver": "dpu",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,sm8250-dpu"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/display-controller@ae01000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,sm8250-dsi-ctrl",
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI",
+          "config_value": "y",
+          "driver": "dsi_host",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/dsi@ae94000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/display-subsystem@ae00000/dsi@ae94000"
+          ]
+        },
+        {
+          "compatible": [
+            "lenovo,tb371fc-boe-nt36532",
+            "novatek,nt36523"
+          ],
+          "config": "CONFIG_DRM_PANEL_NOVATEK_NT36523",
+          "config_value": "m",
+          "driver": "panel",
+          "effectively_available": false,
+          "matched_compatible": [
+            "lenovo,tb371fc-boe-nt36532"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/dsi@ae94000/panel@0",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/display-subsystem@ae00000/dsi@ae94000",
+            "/soc@0/display-subsystem@ae00000/dsi@ae94000/panel@0"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,dsi-phy-7nm"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI_7NM_PHY",
+          "config_value": "y",
+          "driver": "dsi_phy",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,dsi-phy-7nm"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/phy@ae94400",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/display-subsystem@ae00000/phy@ae94400"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,sm8250-dsi-ctrl",
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI",
+          "config_value": "y",
+          "driver": "dsi_host",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/dsi@ae96000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/display-subsystem@ae00000/dsi@ae96000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,dsi-phy-7nm"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI_7NM_PHY",
+          "config_value": "y",
+          "driver": "dsi_phy",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,dsi-phy-7nm"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/phy@ae96400",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/display-subsystem@ae00000/phy@ae96400"
+          ]
+        }
+      ],
+      "candidate_binding_checks": [
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@880000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@880000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@880000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "novatek,NVT-ts-spi"
+          ],
+          "config": "CONFIG_TOUCHSCREEN_NT36523_SPI",
+          "config_value": "m",
+          "driver": "touch",
+          "effectively_available": true,
+          "matched_compatible": [
+            "novatek,NVT-ts-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@880000/touchscreen@0",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@884000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@884000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@884000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@888000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@888000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@888000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@888000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@88c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@88c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@88c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@88c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@890000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/i2c@890000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@890000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@890000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@8c0000/i2c@894000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@8c0000/spi@894000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@8c0000/spi@894000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@980000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@980000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@980000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@980000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@984000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@984000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@984000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@988000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@988000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@988000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@988000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@98c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@98c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@98c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@990000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@990000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@990000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@994000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@994000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@994000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@994000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@998000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@998000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@998000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@998000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@9c0000/i2c@99c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/i2c@99c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@9c0000/spi@99c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@9c0000/spi@99c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a80000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a80000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a80000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a80000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a84000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a84000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a84000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a84000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a88000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a88000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a88000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a88000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a8c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a8c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a8c000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a8c000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a90000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/i2c@a90000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a90000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a90000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,geni-i2c"
+          ],
+          "config": "CONFIG_I2C_QCOM_GENI",
+          "config_value": "y",
+          "driver": "i2c",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,geni-i2c"
+          ],
+          "node": "/soc@0/geniqup@ac0000/i2c@a94000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,geni-spi"
+          ],
+          "config": "CONFIG_SPI_QCOM_GENI",
+          "config_value": "y",
+          "driver": "spi",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,geni-spi"
+          ],
+          "node": "/soc@0/geniqup@ac0000/spi@a94000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/geniqup@ac0000/spi@a94000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,sm8250-mdss"
+          ],
+          "config": "CONFIG_DRM_MSM_MDSS",
+          "config_value": "y",
+          "driver": "mdss",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,sm8250-mdss"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,sm8250-dpu"
+          ],
+          "config": "CONFIG_DRM_MSM_DPU",
+          "config_value": "y",
+          "driver": "dpu",
+          "effectively_available": true,
+          "matched_compatible": [
+            "qcom,sm8250-dpu"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/display-controller@ae01000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "okay",
+          "unavailable_ancestors": []
+        },
+        {
+          "compatible": [
+            "qcom,sm8250-dsi-ctrl",
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI",
+          "config_value": "y",
+          "driver": "dsi_host",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/dsi@ae94000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/display-subsystem@ae00000/dsi@ae94000"
+          ]
+        },
+        {
+          "compatible": [
+            "lenovo,tb371fc-boe-nt36532",
+            "novatek,nt36523"
+          ],
+          "config": "CONFIG_DRM_PANEL_NOVATEK_NT36523",
+          "config_value": "m",
+          "driver": "panel",
+          "effectively_available": false,
+          "matched_compatible": [
+            "lenovo,tb371fc-boe-nt36532"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/dsi@ae94000/panel@0",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/display-subsystem@ae00000/dsi@ae94000",
+            "/soc@0/display-subsystem@ae00000/dsi@ae94000/panel@0"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,dsi-phy-7nm"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI_7NM_PHY",
+          "config_value": "y",
+          "driver": "dsi_phy",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,dsi-phy-7nm"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/phy@ae94400",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/display-subsystem@ae00000/phy@ae94400"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,sm8250-dsi-ctrl",
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI",
+          "config_value": "y",
+          "driver": "dsi_host",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,mdss-dsi-ctrl"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/dsi@ae96000",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/display-subsystem@ae00000/dsi@ae96000"
+          ]
+        },
+        {
+          "compatible": [
+            "qcom,dsi-phy-7nm"
+          ],
+          "config": "CONFIG_DRM_MSM_DSI_7NM_PHY",
+          "config_value": "y",
+          "driver": "dsi_phy",
+          "effectively_available": false,
+          "matched_compatible": [
+            "qcom,dsi-phy-7nm"
+          ],
+          "node": "/soc@0/display-subsystem@ae00000/phy@ae96400",
+          "runtime_probe_tested": false,
+          "static_of_match_available": true,
+          "status": "disabled",
+          "unavailable_ancestors": [
+            "/soc@0/display-subsystem@ae00000/phy@ae96400"
+          ]
+        }
+      ],
+      "dtb": "out/arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc-touch-test.dtb",
+      "dtc_compiled": true,
+      "model": "Lenovo Xiaoxin Pad Pro 12.7 TB371FC (touch diagnostic)",
+      "sha256": "540401ca6f4f867471b8104d855ea4addd706b0d291e7bb530fb7e57f52129e5",
+      "size": 126248,
+      "source": "mainline-port/arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc-touch-test.dts",
+      "source_modified": false,
+      "source_sha256": "c63bc7d5fd6a42556c2dc8d34ed91f90670c176d442ec3023f1244baccefb579"
+    }
+  },
+  "protected_source_unchanged": true,
+  "qualification_command_exit": 0,
+  "qualifier_script_sha256": "ca71975e0b54efb4335aaa9af667941751ac20215cdbb6d60cec477ebbc48a26",
+  "replacement_kernel_linked": false,
+  "resolved_config": {
+    "CONFIG_BACKLIGHT_TB371FC_KTZ8866": "m",
+    "CONFIG_DRM_MSM": "y",
+    "CONFIG_DRM_MSM_DPU": "y",
+    "CONFIG_DRM_MSM_DSI": "y",
+    "CONFIG_DRM_MSM_DSI_7NM_PHY": "y",
+    "CONFIG_DRM_MSM_MDSS": "y",
+    "CONFIG_DRM_PANEL_NOVATEK_NT36523": "m",
+    "CONFIG_I2C_QCOM_GENI": "y",
+    "CONFIG_OF": "y",
+    "CONFIG_PINCTRL_SM8250": "y",
+    "CONFIG_QCOM_GPI_DMA": "y",
+    "CONFIG_SPI_QCOM_GENI": "y",
+    "CONFIG_TOUCHSCREEN_NT36523_SPI": "m"
+  },
+  "schema_validation_run": false,
+  "schema_version": 1,
+  "scope": "isolated diagnostic DT and affected-object compile; static OF match audit only",
+  "source": "/work/linux-6.12.114-research1",
+  "source_after": {
+    "Documentation/devicetree/bindings/input/hid-over-i2c.yaml": "88ea205dc89f3a872a21d1b0f7266d3416f07b89789670ce8862ae888cbea882",
+    "arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc.dts": "288e8278b90770b16461073d32706c741abed79d6a45e4c33a3c1191c9b1e178",
+    "arch/arm64/mm/mmu.c": "b03413247434f6c2abd500036e2aca226f49156ebb726949c25f3a925ab1ca44",
+    "drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_6_0_sm8250.h": "ff9a227de8173991388662c1fd154ce07621160ebcc87306d32ec14ed24d724e",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c": "6d51dfb9b7cf73c67ddcd48336b3437029f0291039b7656406f432029aeb1c48",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_encoder_phys_vid.c": "2febd00e30a765e1fb7c7335dda47f7ae54665f307103172787e90814d264f10",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c": "1c79d3d3fa621d73af167b91e7726402c3b4808b9b2869a5dd526325a44ec49b",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.h": "9d0b1ba834c7c7d844862a34e091f3cb08c71769c1d1f2d8e3b8458c8d15bae6",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c": "6f86b0306f15e8726c6eb9a88e70cdc79c219bbf7c7e86fc8ca973fced20550c",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_plane.c": "1aa45deda8c0f4b57bced928e2c114cef9e1c0daa5073541a335f3d8ef03b8a5",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c": "3f90bdd225d6853f6b15a2c2f53f0ade0d08ed456521ae4c5b873c140aea92ee",
+    "drivers/gpu/drm/msm/dsi/dsi.c": "15f47cdcd5c80adc0c79de1c46f1218063babfd727f30e6dbb2d130ff44c186d",
+    "drivers/gpu/drm/msm/dsi/dsi_host.c": "f0c9e8c2aff20215228543c6051a36310ac12a9164ebce4888db1e2ee45d1f19",
+    "drivers/gpu/drm/msm/dsi/phy/dsi_phy.c": "c98aca774158d4a03c32a6d58660a6d128638df7b11ecfe31cc60a8cf7dd395e",
+    "drivers/gpu/drm/msm/dsi/phy/dsi_phy.h": "93fc1a677369174a07d78389b720993513f2e42c4edb3c9b8869e1a1465f48ed",
+    "drivers/gpu/drm/msm/dsi/phy/dsi_phy_7nm.c": "861bb11f1b034a93b9b07834025a3b7231499311c5883230359624f6d833ff14",
+    "drivers/gpu/drm/msm/msm_drv.c": "00bd1f06be741360f250a0961f0b0f2452f4f4879494ae15f1e26271a02412d5",
+    "drivers/gpu/drm/msm/msm_mdss.c": "7633343141c618efeeb46abd186d70ee0d487f956f6f7b84186de6a86d9d72e9",
+    "drivers/gpu/drm/panel/panel-novatek-nt36523.c": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33",
+    "drivers/hid/i2c-hid/i2c-hid-of.c": "af114006449c419e6efaa1df21b20cecc58d494a22cd2fab3d2db0b5e863e28d",
+    "drivers/i2c/busses/i2c-qcom-geni.c": "5725e0024085b484c2a7201c451be4dc63f9514de5cb9f9aa107a4007e624df1",
+    "drivers/input/touchscreen/nt36523/nt36xxx.c": "bcc8e60eb6c10d97b84680224d1118462e5d121daa62d6b8732ec8938a09e0a2",
+    "drivers/spi/spi-geni-qcom.c": "c28d523bbcd230a8b2f36908fd26b64ebc4b7dfd0967b55a289165fdc2a516c6",
+    "drivers/video/backlight/tb371fc-ktz8866.c": "5e52309b0c1d6b836273efd1161bf862683dbf6b8b58b3095d04a360f9faab59"
+  },
+  "source_before": {
+    "Documentation/devicetree/bindings/input/hid-over-i2c.yaml": "88ea205dc89f3a872a21d1b0f7266d3416f07b89789670ce8862ae888cbea882",
+    "arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc.dts": "288e8278b90770b16461073d32706c741abed79d6a45e4c33a3c1191c9b1e178",
+    "arch/arm64/mm/mmu.c": "b03413247434f6c2abd500036e2aca226f49156ebb726949c25f3a925ab1ca44",
+    "drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_6_0_sm8250.h": "ff9a227de8173991388662c1fd154ce07621160ebcc87306d32ec14ed24d724e",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c": "6d51dfb9b7cf73c67ddcd48336b3437029f0291039b7656406f432029aeb1c48",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_encoder_phys_vid.c": "2febd00e30a765e1fb7c7335dda47f7ae54665f307103172787e90814d264f10",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c": "1c79d3d3fa621d73af167b91e7726402c3b4808b9b2869a5dd526325a44ec49b",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.h": "9d0b1ba834c7c7d844862a34e091f3cb08c71769c1d1f2d8e3b8458c8d15bae6",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c": "6f86b0306f15e8726c6eb9a88e70cdc79c219bbf7c7e86fc8ca973fced20550c",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_plane.c": "1aa45deda8c0f4b57bced928e2c114cef9e1c0daa5073541a335f3d8ef03b8a5",
+    "drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c": "3f90bdd225d6853f6b15a2c2f53f0ade0d08ed456521ae4c5b873c140aea92ee",
+    "drivers/gpu/drm/msm/dsi/dsi.c": "15f47cdcd5c80adc0c79de1c46f1218063babfd727f30e6dbb2d130ff44c186d",
+    "drivers/gpu/drm/msm/dsi/dsi_host.c": "f0c9e8c2aff20215228543c6051a36310ac12a9164ebce4888db1e2ee45d1f19",
+    "drivers/gpu/drm/msm/dsi/phy/dsi_phy.c": "c98aca774158d4a03c32a6d58660a6d128638df7b11ecfe31cc60a8cf7dd395e",
+    "drivers/gpu/drm/msm/dsi/phy/dsi_phy.h": "93fc1a677369174a07d78389b720993513f2e42c4edb3c9b8869e1a1465f48ed",
+    "drivers/gpu/drm/msm/dsi/phy/dsi_phy_7nm.c": "861bb11f1b034a93b9b07834025a3b7231499311c5883230359624f6d833ff14",
+    "drivers/gpu/drm/msm/msm_drv.c": "00bd1f06be741360f250a0961f0b0f2452f4f4879494ae15f1e26271a02412d5",
+    "drivers/gpu/drm/msm/msm_mdss.c": "7633343141c618efeeb46abd186d70ee0d487f956f6f7b84186de6a86d9d72e9",
+    "drivers/gpu/drm/panel/panel-novatek-nt36523.c": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33",
+    "drivers/hid/i2c-hid/i2c-hid-of.c": "af114006449c419e6efaa1df21b20cecc58d494a22cd2fab3d2db0b5e863e28d",
+    "drivers/i2c/busses/i2c-qcom-geni.c": "5725e0024085b484c2a7201c451be4dc63f9514de5cb9f9aa107a4007e624df1",
+    "drivers/input/touchscreen/nt36523/nt36xxx.c": "bcc8e60eb6c10d97b84680224d1118462e5d121daa62d6b8732ec8938a09e0a2",
+    "drivers/spi/spi-geni-qcom.c": "c28d523bbcd230a8b2f36908fd26b64ebc4b7dfd0967b55a289165fdc2a516c6",
+    "drivers/video/backlight/tb371fc-ktz8866.c": "5e52309b0c1d6b836273efd1161bf862683dbf6b8b58b3095d04a360f9faab59"
+  },
+  "source_manifest": {
+    "assembled_files": {
+      "Documentation/devicetree/bindings/input/hid-over-i2c.yaml": "88ea205dc89f3a872a21d1b0f7266d3416f07b89789670ce8862ae888cbea882",
+      "arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc.dts": "288e8278b90770b16461073d32706c741abed79d6a45e4c33a3c1191c9b1e178",
+      "arch/arm64/mm/mmu.c": "b03413247434f6c2abd500036e2aca226f49156ebb726949c25f3a925ab1ca44",
+      "drivers/gpu/drm/msm/msm_drv.c": "00bd1f06be741360f250a0961f0b0f2452f4f4879494ae15f1e26271a02412d5",
+      "drivers/gpu/drm/panel/panel-novatek-nt36523.c": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33",
+      "drivers/hid/i2c-hid/i2c-hid-of.c": "af114006449c419e6efaa1df21b20cecc58d494a22cd2fab3d2db0b5e863e28d",
+      "drivers/input/touchscreen/nt36523/nt36xxx.c": "bcc8e60eb6c10d97b84680224d1118462e5d121daa62d6b8732ec8938a09e0a2",
+      "drivers/video/backlight/tb371fc-ktz8866.c": "5e52309b0c1d6b836273efd1161bf862683dbf6b8b58b3095d04a360f9faab59"
+    },
+    "base_sha256": "7a8589912bd7a8adb07fed074283652cf482a35facef8954554654f0154b4af3",
+    "base_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.114.tar.xz",
+    "inputs": {
+      "experimental/community-handoff/reference/kernel-6.12.114/config": "29beceb93692369a875296f663b574c463b5b02a59f53c3910dfeb03c085eda9",
+      "experimental/community-handoff/reference/kernel-6.12.114/working-tree.patch": "896bed8375817890c13cfd58b0c55b16228bcf85ff42e29d9d0adab561c22618",
+      "mainline-port/arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc.dts": "80b9dbbe56e2ea892d553c756308ec516b9eb45a9dec2d19dc7edf91db1abe97",
+      "mainline-port/backports/linux-6.12/0013-input-nt36523-preserve-gpio-irq-errors.patch": "7915efcbed2eb6e230524529b33a90588380788769ed8d15f9422c7cc35a11a6",
+      "mainline-port/backports/linux-6.12/0014-backlight-tb371fc-unwind-failed-probe.patch": "2e3e6fabe529d0d971639f3551a27cdafdd10735db726be3b9f8eb30ea46aa6a",
+      "mainline-port/backports/linux-6.12/0015-drm-msm-balance-headless-node-reference.patch": "6734a5b8d1667a9e87f2c224b9217c86a731dfbeb7f49825d4dcdb67f5eaea07",
+      "mainline-port/backports/linux-6.12/0016-dts-tb371fc-linux-6.12-compat.patch": "1dfc5caa09ae5f7bb6b93198331abde812e878e5b9f82c13467bdade1e74a105",
+      "mainline-port/backports/linux-6.12/0017-arm64-scope-tb371fc-early-page-table-pool.patch": "d47f00e8cb4c9d90f5d56a07a3e362cadddfbcfc8d2f802985b5abbba04ea8c5",
+      "mainline-port/backports/linux-6.12/panel-novatek-nt36523.c": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33",
+      "mainline-port/backports/linux-6.12/tb371fc-ktz8866.c": "411274490ba052ce942a08db0fa900d2fc342c69be7364423b934fd7d162f127",
+      "mainline-port/patches/0002-input-touchscreen-add-nt36523-spi-pen.patch": "7ce384059a725714cfc82ebf77bcac17f4d327c060947a202abd142a7dbede14",
+      "mainline-port/patches/0006-backlight-add-tb371fc-dual-ktz8866.patch": "cf1c2d9f4ab9790efc5817d885c4fa325f766a03747f9e8fea1535bc2b46302b",
+      "mainline-port/patches/0017-hid-i2c-add-optional-wake-gpio.patch": "013a11e7a647095f98a5b7b9e94c1c30b37374d5b955cfdef3b78ae455a3cc67",
+      "scripts/research/build/research.config": "42410e9f4ab348497bd552f5b3e16bcf160a673a190deaa746d3a1fb592db06a"
+    },
+    "profile": "6.12.114-research1; compile qualification, hardware untested",
+    "schema_version": 1
+  },
+  "started_utc": "2026-11-22T22:24:32.951787+00:00"
+}

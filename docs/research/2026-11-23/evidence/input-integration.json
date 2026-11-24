@@ -1,0 +1,572 @@
+{
+  "artifact_directory": "/work/input-integration-v3/artifacts",
+  "builder_packages": {
+    "clang-19": "1:19.1.7-3+b1",
+    "device-tree-compiler": "1.7.2-2+b1",
+    "gcc-aarch64-linux-gnu": "4:14.2.0-1",
+    "kmod": "34.2-2",
+    "libc6-dev-arm64-cross": "2.41-11cross1",
+    "lld-19": "1:19.1.7-3+b1",
+    "llvm-19": "1:19.1.7-3+b1",
+    "make": "4.4.1-2",
+    "python3": "3.13.5-1"
+  },
+  "downstream_keyboard_source": {
+    "commit": "9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1",
+    "sha256": "92068e47463629d02c5e6c85fabd92d4937966c8937f41cd5d94ce39043e35b3",
+    "size": 47758,
+    "url": "https://github.com/tem423/android_kernel_lenovo_tb371fc/blob/9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1/drivers/hid/i2c-hid/i2c-hid-core.c"
+  },
+  "first_config_drift": [
+    "--- frozen research2 config\n",
+    "+++ input-v1 detected config\n",
+    "@@ -13,6 +13,8 @@\n",
+    " CONFIG_LLD_VERSION=190107",
+    " CONFIG_RUSTC_VERSION=0",
+    " CONFIG_RUSTC_LLVM_VERSION=0",
+    "+CONFIG_CC_CAN_LINK=y",
+    "+CONFIG_CC_CAN_LINK_STATIC=y",
+    " CONFIG_CC_HAS_ASM_GOTO_OUTPUT=y",
+    " CONFIG_CC_HAS_ASM_GOTO_TIED_OUTPUT=y",
+    " CONFIG_TOOLS_SUPPORT_RELR=y"
+  ],
+  "host_build": {
+    "build_jobs": 1,
+    "capture_utc": "2026-11-23T02:02:18.150742+00:00",
+    "compiler": "Debian clang version 19.1.7 (3+b1)",
+    "config_unchanged": true,
+    "device_linux_tested": false,
+    "evidence_class": "host_build",
+    "files": {
+      "Module.symvers": {
+        "sha256": "8e71a956b3c79112228f92cd234a13a39aa7a3193a5d1222d1dab5123043d9d0",
+        "size": 807568
+      },
+      "board.dtb": {
+        "sha256": "af80b06f38b73ea42cb669a2897721ba7ecc5a99a8aa3d6d9c1e9ba132597730",
+        "size": 126877
+      },
+      "hid-multitouch.o": {
+        "sha256": "82e949e1e9f4bab4a2c794606e3923bd519d7b54b3e1b57ef4b158d8d5b9e27d",
+        "size": 31480
+      },
+      "i2c-hid-core.o": {
+        "sha256": "1ecd580724c0ebedbc7785ba311b56fea78e571e4a4bd6037ca14e2efd444c3c",
+        "size": 31432
+      },
+      "i2c-hid-of.o": {
+        "sha256": "fcbb84804d5296edb2878926bba0a8c299b78b5218ea2e113f7ddae142f77431",
+        "size": 7488
+      },
+      "kernel.config": {
+        "sha256": "e024e6d2094180d31d2b3f64a643801d95c544c0bb9593a64b6d117c2ffb86a8",
+        "size": 216625
+      },
+      "nt36523_ts.ko": {
+        "sha256": "cecbd4709f2e6cbb488586ca24f06de6ffe4f7a27fd15bba5ab4649aa29d3972",
+        "size": 90984
+      },
+      "regression.json": {
+        "sha256": "31a5fda9c7fafaad6f7bf1e4c51556e3e0ff6edaebf334c87bcb2688d74b749d",
+        "size": 1506
+      },
+      "source-manifest.json": {
+        "sha256": "5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0",
+        "size": 7108
+      }
+    },
+    "hardware_probe_tested": false,
+    "joint_dtb": {
+      "changes": [
+        {
+          "after": [
+            "Lenovo TB371FC (Linux 6.12 display and input integration)"
+          ],
+          "before": [
+            "Lenovo TB371FC (Linux 6.12 native display diagnostic)"
+          ],
+          "path": "/",
+          "property": "model"
+        },
+        {
+          "after": [
+            "okay"
+          ],
+          "before": [
+            "disabled"
+          ],
+          "path": "/soc@0/geniqup@8c0000/spi@880000",
+          "property": "status"
+        },
+        {
+          "after": [
+            "okay"
+          ],
+          "before": [
+            "disabled"
+          ],
+          "path": "/soc@0/geniqup@8c0000/spi@880000/touchscreen@0",
+          "property": "status"
+        },
+        {
+          "after": [
+            "okay"
+          ],
+          "before": null,
+          "path": "/soc@0/geniqup@ac0000/i2c@a94000/keyboard-cover@60",
+          "property": "status"
+        }
+      ],
+      "keyboard": {
+        "descriptor_address": [
+          1
+        ],
+        "interrupts": [
+          110,
+          8
+        ],
+        "path": "/soc@0/geniqup@ac0000/i2c@a94000/keyboard-cover@60",
+        "reset_gpio": [
+          60,
+          114,
+          1
+        ],
+        "wake_gpio": [
+          60,
+          108,
+          0
+        ]
+      },
+      "model": "Lenovo TB371FC (Linux 6.12 display and input integration)",
+      "root_compatible": [
+        "lenovo,tb371fc",
+        "qcom,sm8250"
+      ],
+      "touch": {
+        "boe_firmware": [
+          "lenovo/tb371fc/novatek_ts_fw_boe_6.bin"
+        ],
+        "irq_gpio": [
+          60,
+          68,
+          0
+        ],
+        "panel_id_gpio": [
+          60,
+          82,
+          0
+        ],
+        "path": "/soc@0/geniqup@8c0000/spi@880000/touchscreen@0",
+        "physical_dimensions_mm": null,
+        "reset_gpio": [
+          60,
+          56,
+          1
+        ],
+        "super_resolution": [
+          10
+        ],
+        "tianma_firmware": [
+          "lenovo/tb371fc/novatek_ts_tm_fw_6.bin"
+        ]
+      }
+    },
+    "kernel_release": "6.12.114-tb371fc-research2-display",
+    "limits": [
+      "Module/object/DT build only; no new complete Image or modules-install tree.",
+      "No physical probe, touch/pen samples, charging, wake, resume, or display timing test.",
+      "CTN730 and display-before-touch lifecycle coordination remain separate work."
+    ],
+    "module": {
+      "aliases": [
+        "spi:NVT-ts-spi",
+        "of:N*T*Cnovatek,NVT-ts-spi",
+        "of:N*T*Cnovatek,NVT-ts-spiC*"
+      ],
+      "all_imported_crcs_match_baseline": true,
+      "imported_symbol_crc_count": 63,
+      "signer": "",
+      "vermagic": "6.12.114-tb371fc-research2-display SMP preempt mod_unload modversions aarch64"
+    },
+    "module_loaded": false,
+    "new_image_built": false,
+    "profile": "input-integration-v3; module/DT-only against frozen research2 ABI",
+    "regression": {
+      "cases": [
+        "geometry_absent_is_unknown",
+        "geometry_incomplete_rejected",
+        "geometry_zero_rejected",
+        "geometry_read_error_preserved",
+        "geometry_declared_axes_counts_per_mm",
+        "irq_wake_ownership_balanced_idempotent",
+        "irq_wake_enable_failure_preserved",
+        "resume_missing_firmware_fails_quiescent",
+        "resume_reset_failure_fails_quiescent",
+        "resume_pen_error_rolls_back_awake",
+        "resume_wake_disarm_failure_not_hidden",
+        "resume_success_disarms_wake_then_reenables_irq",
+        "failed_resume_can_be_retried",
+        "suspend_spi_failure_restores_active_state",
+        "suspend_wake_failure_returns_error",
+        "suspend_deep_sleep_success_quiesces_irq",
+        "suspend_resume_wake_pair_balanced",
+        "firmware_success_and_four_error_paths_release_all_resources"
+      ],
+      "compile_exit": 0,
+      "functions": {
+        "driver": [
+          "nvt_irq_enable",
+          "nvt_irq_set_wake",
+          "nvt_parse_phys_size",
+          "nvt_set_abs_resolution",
+          "nvt_ts_suspend",
+          "nvt_ts_resume"
+        ],
+        "firmware": [
+          "update_firmware_release",
+          "nvt_update_firmware"
+        ]
+      },
+      "generated_c_sha256": "7b676a9d6357804529f2339acfd7d8a5bc02cd94168e02070a867aeb93aa2f9d",
+      "physical_device_tested": false,
+      "run_exit": 0,
+      "scope": "host C API fault injection; no device execution",
+      "source_sha256": {
+        "driver": "c1bc7a07d67ec332a6154ca9403df7ee971e31efa0798c2cc8a611ed9c5035a0",
+        "firmware": "8720c0a2fa1cc4311bb100d2d493e3bf697fb20e6d402589e102bfa1b6f33f77"
+      }
+    },
+    "schema_version": 1,
+    "target_cc_sysroot": {
+      "empty": true,
+      "path": "/work/input-integration-v3/target-sysroot",
+      "purpose": "isolate freestanding Kconfig probes from ambient target userspace libc"
+    }
+  },
+  "host_build_record": {
+    "sha256": "12606399eff9b21ab2860d4dc403596c000e95372fcd5b64721753887252d8a8",
+    "size": 6035
+  },
+  "jobs": {
+    "input-v1-build": {
+      "diagnostic_lines": [
+        "/work/input-integration-v1/baseline-abi/kernel.config /work/input-integration-v1/kernel-out/.config differ: char 395, line 16"
+      ],
+      "log_file": {
+        "path": "/work/input-v1-build.log",
+        "sha256": "0392ba2b07dfc87a1ab84ebe830e02769605babbbe35c26b60cde2e99a99b03c",
+        "size": 7184
+      },
+      "result": {
+        "command": [
+          "bash",
+          "/work/input-integration-v1/input-recipe/scripts/research/input/build_input.sh"
+        ],
+        "elapsed_seconds": 25.639418569975533,
+        "exit_code": 1,
+        "start_utc": "2026-11-23T01:54:57.307792+00:00"
+      },
+      "result_file": {
+        "path": "/work/input-v1-build.json",
+        "sha256": "d646030fdfa73bdff81835cb3b6f49af1736b7a8308f78a5d44f674341200c66",
+        "size": 229
+      }
+    },
+    "input-v1-prepare": {
+      "diagnostic_lines": [],
+      "log_file": {
+        "path": "/work/input-v1-prepare.log",
+        "sha256": "c02f3596e587fdd08250a68ecda22d6b281cb574f05e29127d0757b7c637f2de",
+        "size": 3818
+      },
+      "result": {
+        "command": [
+          "python3",
+          "/work/input-integration-repo-v1/scripts/research/input/prepare_input.py",
+          "--repo",
+          "/work/input-integration-repo-v1",
+          "--work",
+          "/work/input-integration-v1"
+        ],
+        "elapsed_seconds": 36.09152391797397,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T01:54:21.170862+00:00"
+      },
+      "result_file": {
+        "path": "/work/input-v1-prepare.json",
+        "sha256": "b5df00ae1fe50eddf89b17ceb8873105ec9ea3c1259fd0add3645c10254d784d",
+        "size": 326
+      }
+    },
+    "input-v2-build": {
+      "diagnostic_lines": [
+        "/work/input-integration-v2/linux-6.12.114-input-integration/scripts/Makefile.build:41: drivers/input/touchscreen/nt36523/Makefile: No such file or directory",
+        "make[3]: *** No rule to make target 'drivers/input/touchscreen/nt36523/Makefile'.  Stop.",
+        "make[2]: *** [/work/input-integration-v2/linux-6.12.114-input-integration/Makefile:1982: drivers/input/touchscreen/nt36523] Error 2",
+        "make[1]: *** [/work/input-integration-v2/linux-6.12.114-input-integration/Makefile:224: __sub-make] Error 2",
+        "make: *** [Makefile:224: __sub-make] Error 2"
+      ],
+      "log_file": {
+        "path": "/work/input-v2-build.log",
+        "sha256": "918565df366fb0cd8627f32fc6d7167430b33599dc928cc561cbdfc4af804237",
+        "size": 7885
+      },
+      "result": {
+        "command": [
+          "bash",
+          "/work/input-integration-v2/input-recipe/scripts/research/input/build_input.sh"
+        ],
+        "elapsed_seconds": 20.657757088949438,
+        "exit_code": 2,
+        "start_utc": "2026-11-23T01:58:52.447253+00:00"
+      },
+      "result_file": {
+        "path": "/work/input-v2-build.json",
+        "sha256": "9e79bbd130517b0d4278310da8e08f341937b0a83fadb3fff574ecde3664d4eb",
+        "size": 229
+      }
+    },
+    "input-v2-prepare": {
+      "diagnostic_lines": [],
+      "log_file": {
+        "path": "/work/input-v2-prepare.log",
+        "sha256": "6cf3692f9828d898233aa280280d7194867024a8e3fb1229855d0ae46ff8127c",
+        "size": 3818
+      },
+      "result": {
+        "command": [
+          "python3",
+          "/work/input-integration-repo-v2/scripts/research/input/prepare_input.py",
+          "--repo",
+          "/work/input-integration-repo-v2",
+          "--work",
+          "/work/input-integration-v2"
+        ],
+        "elapsed_seconds": 37.02023768099025,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T01:58:15.332592+00:00"
+      },
+      "result_file": {
+        "path": "/work/input-v2-prepare.json",
+        "sha256": "a59d0137573aee3082c0476d03c3a91a071819429c99fb2bccb76224829429d4",
+        "size": 326
+      }
+    },
+    "input-v3-build": {
+      "diagnostic_lines": [],
+      "log_file": {
+        "path": "/work/input-v3-build.log",
+        "sha256": "22f9d396cded22e4b105f95bcfbed6511d228f64768eb254f24ea63e59494fa0",
+        "size": 10017
+      },
+      "result": {
+        "command": [
+          "bash",
+          "/work/input-integration-v3/input-recipe/scripts/research/input/build_input.sh"
+        ],
+        "elapsed_seconds": 44.48345348297153,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T02:01:33.724459+00:00"
+      },
+      "result_file": {
+        "path": "/work/input-v3-build.json",
+        "sha256": "2b08025c2998f212d5eca8c0f98af5f82b9cff7c753d55dc71af1423fe5c3496",
+        "size": 228
+      }
+    },
+    "input-v3-prepare": {
+      "diagnostic_lines": [],
+      "log_file": {
+        "path": "/work/input-v3-prepare.log",
+        "sha256": "5058cfc7abd7cab4416dd2cfcd1df876d0324ed0ea6a4a8eb3dd612f47f6e421",
+        "size": 3818
+      },
+      "result": {
+        "command": [
+          "python3",
+          "/work/input-integration-repo-v3/scripts/research/input/prepare_input.py",
+          "--repo",
+          "/work/input-integration-repo-v3",
+          "--work",
+          "/work/input-integration-v3"
+        ],
+        "elapsed_seconds": 39.43734669795958,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T02:00:54.223409+00:00"
+      },
+      "result_file": {
+        "path": "/work/input-v3-prepare.json",
+        "sha256": "153023bbdf94f8e1ca4466890db3de6bc3f65fe8574f4d484eec87db9aac531d",
+        "size": 326
+      }
+    }
+  },
+  "owner_baseline_summary": {
+    "axis_physical_resolution": "unknown in owner Android snapshot; not replaced with display mechanical dimensions",
+    "evidence_class": "device_android",
+    "keyboard_descriptor_bytes": 604,
+    "keyboard_id": "0018:17ef:6175",
+    "pen_buttons": [
+      "BTN_STYLUS",
+      "BTN_STYLUS2"
+    ],
+    "pen_distance_min_max": [
+      0,
+      1
+    ],
+    "pen_pressure_max": 4095,
+    "pen_tilt_min_max": [
+      -60,
+      60
+    ],
+    "pen_xy_max": [
+      18400,
+      29440
+    ],
+    "scope": "previous passive binding/capability snapshot; no input samples"
+  },
+  "provenance": {
+    "baseline": "frozen research2-display; unchanged Image and original modules",
+    "builder": "doesvm / CT102 / standard Docker tb371fc-build-ssd-20261123",
+    "first_config_drift_resolution": "explicit empty target CC sysroot restores exact frozen config without removing target libc or changing other projects",
+    "local_input_files_match_executed_recipe": true,
+    "second_failure_resolution": "absolute M= path is required for external-module source when using a separate O= output directory",
+    "working_tree": "/work/input-integration-v3"
+  },
+  "reference_files": {
+    "docs/research/2026-11-23/evidence/android-stock.json": {
+      "sha256": "c0262aaf4b16672764335317dcedf172e33fbd596d373ce442fc6d1139e92915",
+      "size": 231292
+    },
+    "docs/research/2026-11-23/evidence/display-summary.json": {
+      "sha256": "0df2c7fa6385d0cf2a4942b17c1b7876c3ba8c85fd1b863a83590b4347504c3e",
+      "size": 15829
+    },
+    "docs/research/2026-11-23/evidence/hid-summary.json": {
+      "sha256": "e2109c83f8362ca263f081a69eccee7622a0a0906797b909754f0950d9580d12",
+      "size": 40959
+    },
+    "docs/research/2026-11-23/evidence/research2-display-build.json": {
+      "sha256": "64324d3d72a6c4dbec3d36fec7a1930628e5c584ff8789eb06d7131935e439c3",
+      "size": 36339
+    },
+    "docs/research/2026-11-23/input-and-pen.md": {
+      "sha256": "11ef95f428b0d42d0d0aa0f613405034ce5a3c20253bf857bd952aa34b2026a9",
+      "size": 24433
+    }
+  },
+  "schema_version": 1,
+  "scope": {
+    "flash_or_device_write": false,
+    "host_build": true,
+    "module_loaded": false,
+    "new_android_capture": false,
+    "physical_input_passes": 0,
+    "physical_linux_boots_this_task": 0,
+    "signed_module": false,
+    "source_clue": true
+  },
+  "source_limits": [
+    "No new 17ef:6175-specific HID quirk or electrical timing is inferred.",
+    "Public tem423 GPIO/IRQ code is a source clue, not a verified match to the owner shipping binary.",
+    "No panel-follower coordination or CTN730 charging implementation is added.",
+    "The inherited firmware metadata parser and WDT/ESD recovery transaction semantics are not validated by the bounded PM/resource regression."
+  ],
+  "source_manifest": {
+    "assembled_files": {
+      "Documentation/devicetree/bindings/input/hid-over-i2c.yaml": "88ea205dc89f3a872a21d1b0f7266d3416f07b89789670ce8862ae888cbea882",
+      "arch/arm64/Kconfig.debug": "4dc5c41b8ee71924798d7136a4ea143e6d169e8e4ebc5a678a04b534ed259e55",
+      "arch/arm64/boot/dts/qcom/Makefile": "e796147ad6c2135dc27d32d92f6d82f0645cd320d23ac396873c88eecb36ad98",
+      "arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc-display-input-test-6.12.dts": "9c90d87b527dd52b7195190328effaea321dd5ec717f983dcf2dd9c58876f758",
+      "arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc-display-test-6.12.dts": "8cac3ffe34d6eaf3ee43ea1c63b4395fd6a38325ccb5f289283da3e234bfe1f7",
+      "arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc-display-test.dts": "cbb4a34fb144d01f2df5804049b6de1fc58cd3fdb0417cec04ee44b01a5b0cef",
+      "arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc.dts": "288e8278b90770b16461073d32706c741abed79d6a45e4c33a3c1191c9b1e178",
+      "arch/arm64/kernel/head.S": "e2ba2ec353f0e03b0861563e07fc6a2858c903ca5ba6533b41e034d108d05508",
+      "arch/arm64/kernel/pi/map_range.c": "2eedfaa79b543a061a9a54908b2e7d28cbae5c422e8cefd688123ccddfa48efc",
+      "arch/arm64/kernel/setup.c": "834cf165ee9caab12a6f0321e1eef91fb008aabc7eeaa329f620b21ee9d77297",
+      "arch/arm64/mm/mmu.c": "b03413247434f6c2abd500036e2aca226f49156ebb726949c25f3a925ab1ca44",
+      "drivers/clk/qcom/gcc-sm8250.c": "4685b5d11e5cd89718dc80f9b723ab86e5951bfc06fbace1447a855c6a035a20",
+      "drivers/gpu/drm/msm/adreno/adreno_device.c": "7ddde6ff94c9270a6ed94e6a001e127ee9be2c2fe1904e2c929e41d0e1502091",
+      "drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_6_0_sm8250.h": "9e0aa98c6460fedc5b7b039f286ffe1fc49a0fcaf33b7a53b73a46bbd95d69a6",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c": "6d51dfb9b7cf73c67ddcd48336b3437029f0291039b7656406f432029aeb1c48",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_encoder_phys_vid.c": "2febd00e30a765e1fb7c7335dda47f7ae54665f307103172787e90814d264f10",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.h": "98daac09b803bab1cb4bb5aad1b3b7c1ec27cf2174884b9897e1293ef3ea13cb",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.c": "6db93d382191a8e9989a2a1b5196bf9b81b55ff18909030b0d4c0e4fb3275a8d",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_hw_ctl.h": "200ed6d145287043087dfc6e8bd44e891293fa21997f5bd5c222425d82ffb07d",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c": "d28352bcdad53cd1bae0301138b17c5736ab3ead8bf98b0eefca368a58b8d2df",
+      "drivers/gpu/drm/msm/disp/dpu1/dpu_rm.c": "3f90bdd225d6853f6b15a2c2f53f0ade0d08ed456521ae4c5b873c140aea92ee",
+      "drivers/gpu/drm/msm/dsi/dsi_host.c": "f0c9e8c2aff20215228543c6051a36310ac12a9164ebce4888db1e2ee45d1f19",
+      "drivers/gpu/drm/msm/dsi/phy/dsi_phy.c": "dd0feba0e7f75f04c9e537354eee377c1c8a33943ee9a346178bf0a2b58a7539",
+      "drivers/gpu/drm/msm/dsi/phy/dsi_phy.h": "4837d449c078ab3417a6c001ed85f0598de0c24ef3b3baba390d802da8d04728",
+      "drivers/gpu/drm/msm/dsi/phy/dsi_phy_7nm.c": "188eb7e650a6045f685d669edefa957412e624220bfe21fa0a3097f9d19fe3be",
+      "drivers/gpu/drm/msm/msm_drv.c": "00bd1f06be741360f250a0961f0b0f2452f4f4879494ae15f1e26271a02412d5",
+      "drivers/gpu/drm/panel/panel-novatek-nt36523.c": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33",
+      "drivers/hid/i2c-hid/i2c-hid-of.c": "af114006449c419e6efaa1df21b20cecc58d494a22cd2fab3d2db0b5e863e28d",
+      "drivers/input/touchscreen/Kconfig": "e041e2345cc0cbb585faed4783ef674baf8d8beb315bb5ba4e6d2e642a9868ee",
+      "drivers/input/touchscreen/Makefile": "01ef0d88222f1afdde09116acbeea70cf136fe1ecfafdb6195e30fb07b6e05e1",
+      "drivers/input/touchscreen/nt36523/Kconfig": "b7efd88e85bbb4c540c51be27ecc1e30a36ee14f4e57ffcddf651300b3090057",
+      "drivers/input/touchscreen/nt36523/Makefile": "963bf5a9051f750023ff201b39edec65a9b29ee19c4e869d1f70d5f615b5adc1",
+      "drivers/input/touchscreen/nt36523/nt36xxx.c": "c1bc7a07d67ec332a6154ca9403df7ee971e31efa0798c2cc8a611ed9c5035a0",
+      "drivers/input/touchscreen/nt36523/nt36xxx.h": "e10d0e48c714c18dbb54b3b94f12fdedb015aa4595229329eec708971ebe54a8",
+      "drivers/input/touchscreen/nt36523/nt36xxx_fw_update.c": "8720c0a2fa1cc4311bb100d2d493e3bf697fb20e6d402589e102bfa1b6f33f77",
+      "drivers/input/touchscreen/nt36523/nt36xxx_mem_map.h": "f44d26d96d60c7890ddc956378fbcd82f8fb7077dd3a2b7746bbf818c713eb0b",
+      "drivers/mmc/host/sdhci-msm.c": "c85f1d69041033a8bee4b7f15c000fe453fba79f71547dc39007078cb605bd30",
+      "drivers/phy/qualcomm/phy-qcom-qmp-combo.c": "3c470a2391950732182cfd83196d228fa4f1f8cb907fdd64000c113f2f2f7173",
+      "drivers/video/backlight/Kconfig": "3923e7bb7be44bef64c1eb5241101cf4d7b1dd95710e5c5ee6ea7e59a72df5d6",
+      "drivers/video/backlight/Makefile": "2fb1d8bdc0ac5d753000a3a8a00f3b3eb915c18fd621595cf051f4b91324ae36",
+      "drivers/video/backlight/tb371fc-ktz8866.c": "5e52309b0c1d6b836273efd1161bf862683dbf6b8b58b3095d04a360f9faab59",
+      "init/main.c": "5956b8729c4ba0ad8f71550cc37372375c6226e92a4697b1d9f9c090d7b667a6",
+      "net/socket.c": "b8f0c0796ab942edee0e8a895d0bf2a9d021aa586207140686b71d1de6442b15"
+    },
+    "base_manifest_sha256": "845914d9cc1c876f10704f3334ee942b2c26deaa8045ce9c2ef82ef2920cde21",
+    "baseline_abi_inputs": {
+      "baseline-abi/Module.symvers": "8e71a956b3c79112228f92cd234a13a39aa7a3193a5d1222d1dab5123043d9d0",
+      "baseline-abi/display.dtb": "50ad113c0f50b5586190c30fa9a6b4bedc7cbb64174c5ef4450ce558c593b63e",
+      "baseline-abi/kernel.config": "e024e6d2094180d31d2b3f64a643801d95c544c0bb9593a64b6d117c2ffb86a8"
+    },
+    "device_linux_tested": false,
+    "dtb_target": "qcom/sm8250-lenovo-tb371fc-display-input-test-6.12.dtb",
+    "image_built": false,
+    "input_copies": {
+      "mainline-port/backports/linux-6.12/0018-input-nt36523-use-declared-physical-dimensions.patch": "790d13667f3ced31152f55a7e74db3517f8e0410a7a699d231ba6f7a9a621d7f",
+      "mainline-port/backports/linux-6.12/0019-input-nt36523-fail-closed-and-release-resources.patch": "42739b19a7fd2a9797056b3fb93ba90fc49ea141162da5bc42e83f2078b42da6",
+      "mainline-port/backports/linux-6.12/sm8250-lenovo-tb371fc-display-input-test-6.12.dts": "9c90d87b527dd52b7195190328effaea321dd5ec717f983dcf2dd9c58876f758",
+      "scripts/research/input/build_input.sh": "5a32e1462e628df04788418a6dcdf9592b7ab4dade5758386818b8248d8a3532",
+      "scripts/research/input/inspect_input.py": "9297325b83d480784d236e2fe44a413e22a2dd1d258a3b82410c4b6701470d67",
+      "scripts/research/input/prepare_input.py": "0f3334412a7711d3a38d4bfdb0b0b5a35f5a5cb97c1d65868155d34e0c966059",
+      "scripts/research/input/regress_input.py": "d07b662886af09ff4f8838d1aaa9729960aef599e809466b942ca5fb6e1e98ac",
+      "scripts/research/input/regression_harness.c": "dc307b3a9eaff1878420edb64272ffc6ec420fe484dbb8e016d90931d4a82ac2"
+    },
+    "kernel_release": "6.12.114-tb371fc-research2-display",
+    "module_loaded": false,
+    "patch_order": [
+      "mainline-port/backports/linux-6.12/0018-input-nt36523-use-declared-physical-dimensions.patch",
+      "mainline-port/backports/linux-6.12/0019-input-nt36523-fail-closed-and-release-resources.patch"
+    ],
+    "profile": "input-integration-v3; module/DT-only against frozen research2 ABI",
+    "schema_version": 1,
+    "source_dir": "linux-6.12.114-input-integration"
+  },
+  "source_review": {
+    "Documentation/devicetree/bindings/input/touchscreen/touchscreen.yaml": {
+      "sha256": "050be050095c90970a70d51f3dc84dd6e5e6ec28364315516b0ded10371e54bb",
+      "size": 3154
+    },
+    "drivers/hid/hid-multitouch.c": {
+      "sha256": "2ccec1e546eaba077a9d5ae8e12e1ccd04081c41b47320b23a14751d7ff90397",
+      "size": 75023
+    },
+    "drivers/hid/i2c-hid/i2c-hid-core.c": {
+      "sha256": "469b40050585158dc486ba542a62680a33c7d4a81af13c7a74898403bf7085c8",
+      "size": 36223
+    },
+    "drivers/hid/i2c-hid/i2c-hid-of.c": {
+      "sha256": "af114006449c419e6efaa1df21b20cecc58d494a22cd2fab3d2db0b5e863e28d",
+      "size": 5146
+    },
+    "drivers/pinctrl/qcom/pinctrl-msm.c": {
+      "sha256": "ccb54099126b9c9213b8a67d237bc3d9c5c3a06fda7d846ca8cdebd80bd14c21",
+      "size": 43866
+    }
+  }
+}

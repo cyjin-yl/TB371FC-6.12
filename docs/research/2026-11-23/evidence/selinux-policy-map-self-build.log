@@ -1,0 +1,6 @@
+Error obtaining file context handle: No such file or directory
+Ok: return value of 0.
+Attempting to install module '/work/selinux-reload-map-self-20261123/build-01/tb371fc_init_reload_contract.cil':
+Ok: return value of 0.
+Committing changes:
+Ok: transaction number 4.

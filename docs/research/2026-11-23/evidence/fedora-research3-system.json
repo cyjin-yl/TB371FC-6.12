@@ -1,0 +1,341 @@
+{
+  "all_hardware_accepted": false,
+  "capture_utc": "2026-11-23T03:40:54.842636+00:00",
+  "failed_image_after_owned_qemu_exit": {
+    "clean_poweroff_claimed": false,
+    "filesystem_repaired": false,
+    "path": "/work/fedora-input-system-v2/fedora45-research3-system.ext4",
+    "sha256": "8dc33b793be5c1ccd535fe77974d23d3882569e997c9e0bc977b92d83eb29469",
+    "size": 4294967296
+  },
+  "kernel_release": "6.12.114-tb371fc-research3-system",
+  "latest_verification_run": "vm-verify-02",
+  "limits": [
+    "Partial progress reports only the named checks reached before failure.",
+    "The completed failed VM is retained; no gate, image or log is overwritten.",
+    "Every gate must execute again for any later kernel candidate.",
+    "QEMU uses generic virt DT. The packaged Lenovo DT and firmware are not hardware tests.",
+    "The compiled MODULE_SIG_FORCE setting and the explicit VM module.sig_enforce argument are distinct."
+  ],
+  "overall_passed": false,
+  "partial_progress_is_complete_acceptance": false,
+  "phase_jobs": {
+    "configure-02.json": {
+      "cancelled_signal": null,
+      "command": [
+        "/usr/bin/python3",
+        "/work/fedora-input-system-recipe-r3-v2/assemble_system.py",
+        "configure"
+      ],
+      "elapsed_seconds": 4.001853213994764,
+      "exit_code": 0,
+      "finished_utc": "2026-11-23T03:08:16.465453+00:00",
+      "name": "configure-02",
+      "recipe_sha256": "e37b22e8d8d3b7337f85c0616e5e8ed0f63888a4dfe0d9701b00cad15c5b1598",
+      "started_utc": "2026-11-23T03:08:12.463593+00:00"
+    },
+    "image-02.json": {
+      "cancelled_signal": null,
+      "command": [
+        "/usr/bin/python3",
+        "/work/fedora-input-system-recipe-r3-v2/assemble_system.py",
+        "image"
+      ],
+      "elapsed_seconds": 33.54101204400649,
+      "exit_code": 0,
+      "finished_utc": "2026-11-23T03:13:06.749990+00:00",
+      "name": "image-02",
+      "recipe_sha256": "e37b22e8d8d3b7337f85c0616e5e8ed0f63888a4dfe0d9701b00cad15c5b1598",
+      "started_utc": "2026-11-23T03:12:33.208969+00:00"
+    },
+    "initramfs-02.json": {
+      "cancelled_signal": null,
+      "command": [
+        "/usr/bin/python3",
+        "/work/fedora-input-system-recipe-r3-v2/assemble_system.py",
+        "initrd"
+      ],
+      "elapsed_seconds": 256.74226213496877,
+      "exit_code": 0,
+      "finished_utc": "2026-11-23T03:12:33.208445+00:00",
+      "name": "initramfs-02",
+      "recipe_sha256": "e37b22e8d8d3b7337f85c0616e5e8ed0f63888a4dfe0d9701b00cad15c5b1598",
+      "started_utc": "2026-11-23T03:08:16.466176+00:00"
+    },
+    "stage-01.json": {
+      "cancelled_signal": null,
+      "command": [
+        "/usr/bin/python3",
+        "/work/fedora-input-system-recipe-r3-final/stage_system.py",
+        "--report-sha256",
+        "c785afdeb088dc59d2bb9403a5296509399bf3393a29efaeeb28e0f44efa82dc",
+        "--bundle-sha256",
+        "e6d8e176a9297b5ac56f9408277b61ad81339ed0c9df218add856e1831a7c107"
+      ],
+      "elapsed_seconds": 0.5010221819975413,
+      "exit_code": 1,
+      "finished_utc": "2026-11-23T03:03:31.001067+00:00",
+      "name": "stage-01",
+      "recipe_sha256": "c8529fc1805ddc05806c5cdca80746b46f892e076043823a4df7b48826e1c14f",
+      "started_utc": "2026-11-23T03:03:30.500045+00:00"
+    },
+    "stage-02.json": {
+      "cancelled_signal": null,
+      "command": [
+        "/usr/bin/python3",
+        "/work/fedora-input-system-recipe-r3-v2/stage_system.py",
+        "--report-sha256",
+        "c785afdeb088dc59d2bb9403a5296509399bf3393a29efaeeb28e0f44efa82dc",
+        "--bundle-sha256",
+        "e6d8e176a9297b5ac56f9408277b61ad81339ed0c9df218add856e1831a7c107"
+      ],
+      "elapsed_seconds": 2.0014961730339564,
+      "exit_code": 0,
+      "finished_utc": "2026-11-23T03:08:12.462934+00:00",
+      "name": "stage-02",
+      "recipe_sha256": "2a822ce860b728e54e0b7ce1d72995ddbcb845c5fd77d1569171acce69f1a18b",
+      "started_utc": "2026-11-23T03:08:10.461438+00:00"
+    },
+    "vm-label-02.json": {
+      "cancelled_signal": null,
+      "command": [
+        "/usr/bin/python3",
+        "/work/fedora-input-system-recipe-r3-v2/boot_system_vm.py",
+        "label",
+        "--run",
+        "vm-label-02"
+      ],
+      "elapsed_seconds": 181.57412226800807,
+      "exit_code": 0,
+      "finished_utc": "2026-11-23T03:16:08.324676+00:00",
+      "name": "vm-label-02",
+      "recipe_sha256": "a2c7414833c83575ebffcac98e69ca7754fe15a87337c675000a9bd039603fbf",
+      "started_utc": "2026-11-23T03:13:06.750546+00:00"
+    },
+    "vm-verify-02.json": {
+      "cancelled_signal": null,
+      "command": [
+        "/usr/bin/python3",
+        "/work/fedora-input-system-recipe-r3-v2/boot_system_vm.py",
+        "verify",
+        "--run",
+        "vm-verify-02"
+      ],
+      "elapsed_seconds": 103.04999795102049,
+      "exit_code": 1,
+      "finished_utc": "2026-11-23T03:17:51.375748+00:00",
+      "name": "vm-verify-02",
+      "recipe_sha256": "a2c7414833c83575ebffcac98e69ca7754fe15a87337c675000a9bd039603fbf",
+      "started_utc": "2026-11-23T03:16:08.325743+00:00"
+    }
+  },
+  "physical_tablet_booted": false,
+  "physical_tablet_modified": false,
+  "profile": {
+    "autofs_module_signature": {
+      "sig_hashalgo": "sha512",
+      "sig_key": "6D:52:9C:2E:3A:1A:E2:C0:12:A4:59:53:95:61:B8:55:5D:09:05:15",
+      "signer": "Build time autogenerated kernel key"
+    },
+    "board_dtb_sha256": "af80b06f38b73ea42cb669a2897721ba7ecc5a99a8aa3d6d9c1e9ba132597730",
+    "configured_module_sig_force": false,
+    "firmware_file_count": 69,
+    "journal_acl_check": {
+      "system.posix_acl_access": {
+        "byte_identical": true,
+        "sha256": "fc742256255ddf9fd3878c1a93c0a2f49b1f9cf2793a30b23ea9d64ea5740aff",
+        "size": 52
+      },
+      "system.posix_acl_default": {
+        "byte_identical": true,
+        "sha256": "fc742256255ddf9fd3878c1a93c0a2f49b1f9cf2793a30b23ea9d64ea5740aff",
+        "size": 52
+      }
+    },
+    "kernel_btf_sha256": "d2e2b5596ea570ffe51a4e4981f01e36463428e701aa8deb31969ca62ad3b8e8",
+    "kernel_btf_size": 6385387,
+    "kernel_image_sha256": "0038f8d60bdb109e30f992ac65a37de4c4eff06baa2e4b38744d183342297444",
+    "kernel_release": "6.12.114-tb371fc-research3-system",
+    "module_count": 84,
+    "module_enforcement_scope": "module.sig_enforce=1 in this owned VM; compiled FORCE setting is unchanged",
+    "profile": "research3-display-input-fedora45-v2",
+    "public_signing_certificate_sha256": "652e92353cb6ce1dff099d9f7753314447f38a9cfa8397ede3feeaf152ea16e6",
+    "root_label": "tb371fc-r3-f45",
+    "runtime_manifest_sha256": "7c6ea00650ad55af0f68bf607544fa5178b7497c65771111b3f0c73c828439f1",
+    "schema_version": 1,
+    "scope": "generic ARM64 VM; packaged Lenovo DT is not used by QEMU",
+    "validation_tasks_max": 128,
+    "vm_module_signature_enforcement_required": true
+  },
+  "retained_metadata": {
+    "baseline-copy.json": {
+      "sha256": "f437b5c4034d84effbc6910c6cbb516ca8c14389200d207f94d37541436316b0",
+      "size": 1881
+    },
+    "configured.json": {
+      "sha256": "14b6adf011a586d276b1fbd7eb6e241efc99e77880b968d53ec18f608eb7bdf0",
+      "size": 354
+    },
+    "image.before-boot.json": {
+      "sha256": "b0f874082289eea266289baaee9daebc2f891203ce313decf51605c856af52f6",
+      "size": 276
+    },
+    "initramfs-archive-verification.json": {
+      "sha256": "dcb2f14df1c26acd2e65402308b1de20680ff637e3215f1c6c88262e1aeef9ca",
+      "size": 85313
+    },
+    "initramfs.json": {
+      "sha256": "51ea3f05b06252e21cfb08b4502f4c551efae050551925963a9355a774e6bf70",
+      "size": 896
+    },
+    "kernel-transfer.json": {
+      "sha256": "4c510deb46f88630ba942c7a3adfed366afff039154d635e62cbbfccccd3a577",
+      "size": 1090
+    },
+    "runtime.json": {
+      "sha256": "7c6ea00650ad55af0f68bf607544fa5178b7497c65771111b3f0c73c828439f1",
+      "size": 25715
+    },
+    "stage01-prewrite-check.json": {
+      "sha256": "6b3736868f472634d4f42af002f27bda4c181ee98224789e616814353f9696d8",
+      "size": 497
+    },
+    "system-profile.json": {
+      "sha256": "a7dc2542cf352f9a29ffb97552319ea20b43fdc261a4950c39ae6d1af83638c2",
+      "size": 1598
+    }
+  },
+  "schema_version": 1,
+  "scope": "host_build and isolated generic ARM64 virtual machine",
+  "source_recipe": {
+    "sha256": "5e2209190c0fc6658ef9f9961ec34608e19966afa2eb91e213b4c1b4198d34ed",
+    "size": 4486
+  },
+  "status": "generic_vm_verification_failed",
+  "tablet_hardware_tested": false,
+  "vm_runs": {
+    "vm-label-02": {
+      "metadata": {
+        "sha256": "c42f49f8490977f0a5d15099092e99f3a9db7a49ce4874be9201bfaceb30591c",
+        "size": 1428
+      },
+      "result": {
+        "board_dtb_used": false,
+        "compiled_module_sig_force": false,
+        "elapsed_seconds": 180.66199645103188,
+        "expected_marker_seen": true,
+        "guest_partial_progress": [],
+        "host_filesystem_shared": false,
+        "initramfs_sha256": "7dac235af94039161f918ba703dcc4aec87d69c2e581f412286fcf383239d52f",
+        "invalid_initramfs_seen": false,
+        "kernel_image_sha256": "0038f8d60bdb109e30f992ac65a37de4c4eff06baa2e4b38744d183342297444",
+        "kernel_panic_seen": false,
+        "log_limit_bytes": 8388608,
+        "marker_exact_line_count": 1,
+        "network": false,
+        "observed_warning_counts": {
+          "autofs4_module_warning_count": 0,
+          "bpf_lsm_not_supported_count": 0,
+          "pids_max_read_warning_count": 0,
+          "selinux_avc_denial_count": 44,
+          "virtual_gpio_failure_count": 0
+        },
+        "passed": true,
+        "phase": "label",
+        "physical_device_passthrough": false,
+        "physical_hardware_tested": false,
+        "profile_sha256": "a7dc2542cf352f9a29ffb97552319ea20b43fdc261a4950c39ae6d1af83638c2",
+        "qemu_exit_code": 0,
+        "schema_version": 1,
+        "serial_log_bytes": 1092014,
+        "serial_log_sha256": "b2135308ff34abaf0ae23bf075fa536e559bc96c9defaa31049eecd9cacc6c1f",
+        "start_utc": "2026-11-23T03:13:07.212734+00:00",
+        "systemd_debug_logging_for_this_vm_only": true,
+        "systemd_lsm_bpf_attached_messages": [],
+        "termination_reason": null,
+        "timeout_seconds": 900,
+        "validation_failure_seen": false,
+        "vm_module_sig_enforce_argument": "module.sig_enforce=1"
+      },
+      "serial": {
+        "sha256": "b2135308ff34abaf0ae23bf075fa536e559bc96c9defaa31049eecd9cacc6c1f",
+        "size": 1092014
+      }
+    },
+    "vm-verify-02": {
+      "metadata": {
+        "sha256": "6e357ba417d9bdd172ad8449835ad265bd8c45e14e311e0cb7fee7d412e2c6d3",
+        "size": 2166
+      },
+      "result": {
+        "board_dtb_used": false,
+        "compiled_module_sig_force": false,
+        "elapsed_seconds": 102.20088726596441,
+        "expected_marker_seen": false,
+        "guest_gates_match": false,
+        "guest_partial_progress": [
+          {
+            "complete_system_pass": false,
+            "details": {
+              "firmware_count": 69,
+              "kernel_release": "6.12.114-tb371fc-research3-system",
+              "loaded_policy_version": 33,
+              "module_count": 84,
+              "selinux_enforce": "1"
+            },
+            "physical_hardware_tested": false,
+            "stage": "runtime_hashes_verified"
+          },
+          {
+            "complete_system_pass": false,
+            "details": {
+              "exit_code": 1,
+              "stderr": "Failed to start transient service unit: Connection reset by peer\n",
+              "stdout": ""
+            },
+            "physical_hardware_tested": false,
+            "stage": "pids_probe_attempt"
+          }
+        ],
+        "guest_result": {},
+        "guest_result_count": 0,
+        "host_filesystem_shared": false,
+        "initramfs_sha256": "7dac235af94039161f918ba703dcc4aec87d69c2e581f412286fcf383239d52f",
+        "invalid_initramfs_seen": false,
+        "kernel_image_sha256": "0038f8d60bdb109e30f992ac65a37de4c4eff06baa2e4b38744d183342297444",
+        "kernel_panic_seen": false,
+        "log_limit_bytes": 8388608,
+        "marker_exact_line_count": 0,
+        "network": false,
+        "observed_warning_counts": {
+          "autofs4_module_warning_count": 0,
+          "bpf_lsm_not_supported_count": 0,
+          "pids_max_read_warning_count": 0,
+          "selinux_avc_denial_count": 0,
+          "virtual_gpio_failure_count": 0
+        },
+        "passed": false,
+        "phase": "verify",
+        "physical_device_passthrough": false,
+        "physical_hardware_tested": false,
+        "profile_sha256": "a7dc2542cf352f9a29ffb97552319ea20b43fdc261a4950c39ae6d1af83638c2",
+        "qemu_exit_code": 0,
+        "schema_version": 1,
+        "serial_log_bytes": 815621,
+        "serial_log_sha256": "81657fb6bb6a9d9cdd18da0a606673f767a1708354bff228ecdc3cad68d60c03",
+        "start_utc": "2026-11-23T03:16:08.817913+00:00",
+        "systemd_debug_logging_for_this_vm_only": true,
+        "systemd_lsm_bpf_attached_messages": [],
+        "termination_reason": "guest reported failure",
+        "timeout_seconds": 900,
+        "validation_failure_seen": true,
+        "vm_module_sig_enforce_argument": "module.sig_enforce=1"
+      },
+      "serial": {
+        "sha256": "81657fb6bb6a9d9cdd18da0a606673f767a1708354bff228ecdc3cad68d60c03",
+        "size": 815621
+      }
+    }
+  },
+  "work": "/work/fedora-input-system-v2"
+}

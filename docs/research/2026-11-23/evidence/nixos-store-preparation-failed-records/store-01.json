@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "/work/nixos-system-boot-recipe-v1/prepare_store.py",
+    "--work",
+    "/work/nixos-system-boot-v1",
+    "--expected-inventory",
+    "/src/docs/research/2026-11-23/evidence/nixos-system-store-paths.tsv"
+  ],
+  "start_utc": "2026-11-23T08:49:26.612765+00:00",
+  "exit_code": 1,
+  "elapsed_seconds": 5530.405676769966
+}

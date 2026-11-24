@@ -1,0 +1,62 @@
+{
+  "candidate_policy": {
+    "bytes": 3835468,
+    "sha256": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798"
+  },
+  "changes": [
+    {
+      "new": "derived V4 helper",
+      "old": "derived V3 helper"
+    },
+    {
+      "new": "This recipe derives from the frozen V3 recipe 21e912fa... and the same\noriginal V1 recipe/source. The unchanged audit guard is independently pinned.\nThe new policy retains the six standard-service permissions and adds only\njournalctl_t self unix_dgram_socket create for the reviewed socket-xattr probe.",
+      "old": "This recipe is derived from the fixed root draft 48ab7278... and original V1\nrecipe/source. The accompanying guard fragment is an independently pinned input."
+    },
+    {
+      "new": "PARENT_RECIPE_SHA = '21e912fa4a2b79b771b70e7b6a46187bde2f746425e549e7e4151d0ce3caf268'",
+      "old": "PARENT_DRAFT_SHA = '48ab7278723e33a63e00e9daa7eb465642cb872d36be772d31a9f1979eaf0231'"
+    },
+    {
+      "new": "CANDIDATE_POLICY_SHA = 'ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798'",
+      "old": "CANDIDATE_POLICY_SHA = '727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502'"
+    },
+    {
+      "new": "CANDIDATE_POLICY_SIZE = 3835468",
+      "old": "CANDIDATE_POLICY_SIZE = 3835456"
+    },
+    {
+      "new": "fixed V4 source/guard/policy-size inputs differ",
+      "old": "fixed V3 source/guard/policy-size inputs differ"
+    },
+    {
+      "new": "TB371FC_EARLY_SELINUX_V4",
+      "old": "TB371FC_EARLY_SELINUX_V3"
+    },
+    {
+      "new": "the fixed seven-permission V4 candidate identity is required",
+      "old": "the fixed six-permission V3 candidate identity is required"
+    },
+    {
+      "new": "'parent_recipe_sha256': PARENT_RECIPE_SHA",
+      "old": "'parent_draft_sha256': PARENT_DRAFT_SHA"
+    }
+  ],
+  "compiled": false,
+  "derived_recipe": {
+    "bytes": 13152,
+    "sha256": "5a9ae51cc0f5f3526f27564058a6cbd3603efda87166849cb8bd42b1f4462b75"
+  },
+  "guard": {
+    "bytes": 7393,
+    "sha256": "f715d823ac20181b916afac5c4db9ae9af8226454508e2dff9bb9b8f35e035cc",
+    "unchanged": true
+  },
+  "hardware_tested": false,
+  "kernel_policy_loaded": false,
+  "schema_version": 1,
+  "source": {
+    "bytes": 13002,
+    "path": "/workspace/scratch/45c316069ac9/tb371fc-linux/scripts/research/selinux/standard-services/build_early_init_v3.py",
+    "sha256": "21e912fa4a2b79b771b70e7b6a46187bde2f746425e549e7e4151d0ce3caf268"
+  }
+}

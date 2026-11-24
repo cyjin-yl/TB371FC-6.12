@@ -1,0 +1,55 @@
+{
+  "capture_utc": "2026-11-22T21:59:30.212638+00:00",
+  "disagreements": [
+    {
+      "kernel_argument": "androidboot.vbmeta.device_state",
+      "kernel_value": "unlocked",
+      "property": "ro.boot.vbmeta.device_state",
+      "property_value": "locked"
+    },
+    {
+      "kernel_argument": "androidboot.verifiedbootstate",
+      "kernel_value": "orange",
+      "property": "ro.boot.verifiedbootstate",
+      "property_value": "green"
+    }
+  ],
+  "kernel_boot_arguments": {
+    "/proc/bootconfig": {
+      "unavailable": "FileNotFoundError"
+    },
+    "/proc/cmdline": {
+      "androidboot.slot_suffix": "_a",
+      "androidboot.vbmeta.device_state": "unlocked",
+      "androidboot.verifiedbootstate": "orange",
+      "androidboot.veritymode": "enforcing"
+    }
+  },
+  "named_partition_presence": {
+    "boot_a": true,
+    "boot_b": true,
+    "dtbo_a": true,
+    "dtbo_b": true,
+    "recovery_a": true,
+    "recovery_b": true,
+    "vbmeta_a": true,
+    "vbmeta_b": true
+  },
+  "physical_mainline_boot_tested": false,
+  "properties": {
+    "ro.boot.flash.locked": "1",
+    "ro.boot.slot_suffix": "_a",
+    "ro.boot.vbmeta.device_state": "locked",
+    "ro.boot.verifiedbootstate": "green",
+    "ro.boot.veritymode": "enforcing",
+    "ro.build.type": "user",
+    "ro.debuggable": "0",
+    "ro.oem_unlock_supported": "1",
+    "ro.product.model": "TB371FC",
+    "sys.oem_unlock_allowed": "0"
+  },
+  "schema_version": 1,
+  "scope": "passive Android boot metadata; no flash, unlock or physical boot test",
+  "unlock_action_authorized_by_this_capture": false,
+  "collector_sha256": "cd7041d6020cf19bba658d109cbf2fd35923b70a5dca928618a974e7a0f8017f"
+}

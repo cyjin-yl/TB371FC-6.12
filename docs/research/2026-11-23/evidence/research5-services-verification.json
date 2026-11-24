@@ -1,0 +1,827 @@
+{
+  "all_84_module_paths_unchanged_from_r4": true,
+  "all_other_r4_semantic_config_values_preserved": true,
+  "build_completed_utc": "2026-11-23T10:04:06.721265+00:00",
+  "build_driver_seconds": 1738.5690571980085,
+  "build_phases": [
+    {
+      "elapsed_seconds": 1.5094170290394686,
+      "ended_utc": "2026-11-23T09:35:09.660698+00:00",
+      "exit_code": 0,
+      "name": "install",
+      "start_utc": "2026-11-23T09:35:08.151271+00:00",
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 900,
+        "sha256": "e418c93bb830e2a8d845877b464263a4420dcf631a6ab6f4c46544a607484946"
+      }
+    },
+    {
+      "elapsed_seconds": 40.08349398500286,
+      "ended_utc": "2026-11-23T09:35:49.744762+00:00",
+      "exit_code": 0,
+      "name": "configure",
+      "start_utc": "2026-11-23T09:35:09.661254+00:00",
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 2923,
+        "sha256": "8c31cc274b4eb748fc0e9cea11a7323ce24d2f1d899c51ecaa7b8ae0694f6ac7"
+      }
+    },
+    {
+      "elapsed_seconds": 1681.091977706994,
+      "ended_utc": "2026-11-23T10:03:50.842914+00:00",
+      "exit_code": 0,
+      "name": "build",
+      "start_utc": "2026-11-23T09:35:49.745371+00:00",
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 222140,
+        "sha256": "dd8abab350d558fa5fa0bcf788adf5b6ce25b53640d87e7994db392003de715a"
+      }
+    },
+    {
+      "elapsed_seconds": 15.76526727702003,
+      "ended_utc": "2026-11-23T10:04:06.696267+00:00",
+      "exit_code": 0,
+      "name": "inspect",
+      "start_utc": "2026-11-23T10:03:50.930970+00:00",
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 381,
+        "sha256": "928384e1181c243e265a61f97195b4f8982c815fe6080f8b52c793caf096eb09"
+      }
+    }
+  ],
+  "configuration_changes": {
+    "CONFIG_LOCALVERSION": {
+      "after": "\"-tb371fc-research5-services\"",
+      "before": "\"-tb371fc-research4-system\""
+    },
+    "CONFIG_NFT_COMPAT": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NFT_CT": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NFT_REJECT": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NFT_REJECT_INET": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NFT_REJECT_IPV4": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NFT_REJECT_IPV6": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NF_TABLES": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NF_TABLES_INET": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NF_TABLES_IPV4": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_NF_TABLES_IPV6": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_RTC_DRV_PL031": {
+      "after": "y",
+      "before": "n"
+    },
+    "CONFIG_ZRAM_BACKEND_FORCE_LZO": {
+      "after": "n",
+      "before": "y"
+    },
+    "CONFIG_ZRAM_BACKEND_ZSTD": {
+      "after": "y",
+      "before": "n"
+    }
+  },
+  "configuration_source_inputs": [
+    {
+      "bytes": 156608,
+      "mode": 420,
+      "original_source": "nixos-system-boot-draft-20261123/captures/iptables-1.8.13-official-source.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-source-inputs/iptables-official-source.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "486f6012ba54784e8999d7f0b8bf82315f300996815580ac18affb1af2e5c41e"
+    },
+    {
+      "bytes": 4081,
+      "mode": 420,
+      "original_source": "nixos-system-boot-draft-20261123/sources/final/nix/store/mrgg2ppl9jh13ajns8k0l32z7207rxid-firewall-start/bin/firewall-start",
+      "path": "docs/research/2026-11-23/evidence/research5-services-source-inputs/nixos-firewall-start.sh",
+      "raw_source_bytes_preserved": true,
+      "sha256": "c7b5feab7e80f0c18bdd79e6ab1a28602545b6de3ee9871d6ddb6ed9c3e3b1bb"
+    },
+    {
+      "bytes": 95849,
+      "mode": 420,
+      "original_source": "nixos-system-boot-draft-20261123/sources/iptables-1.8.13/iptables/nft.c",
+      "path": "docs/research/2026-11-23/evidence/research5-services-source-inputs/iptables-nft.c.txt",
+      "raw_source_bytes_preserved": true,
+      "sha256": "32c5e387913ab52045c959c4de335a1554354940a39262c9fc92197fb89f4d8a"
+    },
+    {
+      "bytes": 3938,
+      "mode": 420,
+      "original_source": "nura-system-boot-draft-20261123/kernel-source/drivers/block/zram/Kconfig",
+      "path": "docs/research/2026-11-23/evidence/research5-services-source-inputs/linux-zram-Kconfig.txt",
+      "raw_source_bytes_preserved": true,
+      "sha256": "11e7d8e1f048c03d12d2cf0f0bdfe9c3f3e83cb1ed563791688ef1fcc8fa8447"
+    },
+    {
+      "bytes": 54709,
+      "mode": 420,
+      "original_source": "nura-system-boot-draft-20261123/kernel-source/net/netfilter/Kconfig",
+      "path": "docs/research/2026-11-23/evidence/research5-services-source-inputs/linux-netfilter-Kconfig.txt",
+      "raw_source_bytes_preserved": true,
+      "sha256": "62348eefc878ea7b3700429da71648a5f5f2b617417e6f410f76e626fa5d7b28"
+    },
+    {
+      "bytes": 10110,
+      "mode": 420,
+      "original_source": "nura-system-boot-draft-20261123/kernel-source/net/netfilter/Makefile",
+      "path": "docs/research/2026-11-23/evidence/research5-services-source-inputs/linux-netfilter-Makefile.txt",
+      "raw_source_bytes_preserved": true,
+      "sha256": "d59d7a2dba1b13ab4418fadeb33487c987c148301807ab1e15a2d91ee05d08fa"
+    },
+    {
+      "bytes": 78522,
+      "mode": 420,
+      "original_source": "nura-system-boot-draft-20261123/native-inputs.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-source-inputs/nura-native-inputs.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "787f402eabf2af7116917998601e1ce9ea2141ea4db0edcfc51fd3d74182ee56"
+    },
+    {
+      "bytes": 3325,
+      "mode": 420,
+      "original_source": "nura-system-boot-draft-20261123/source/etc/init.d/hwclock",
+      "path": "docs/research/2026-11-23/evidence/research5-services-source-inputs/nura-hwclock.sh",
+      "raw_source_bytes_preserved": true,
+      "sha256": "33ae94ebfbf4e26ca1dbb7395b6f9d5548694b85698294ab4836100fd6e61d52"
+    },
+    {
+      "bytes": 2348,
+      "mode": 420,
+      "original_source": "nura-system-boot-draft-20261123/source/etc/nftables.nft",
+      "path": "docs/research/2026-11-23/evidence/research5-services-source-inputs/nura-nftables.nft.txt",
+      "raw_source_bytes_preserved": true,
+      "sha256": "1a1fac08dfba46f2754fb7de4258fd9f3d68b1e131419bc79d25746bf9aec62c"
+    },
+    {
+      "bytes": 2558,
+      "mode": 420,
+      "original_source": "nura-system-boot-draft-20261123/source/usr/bin/zramstart",
+      "path": "docs/research/2026-11-23/evidence/research5-services-source-inputs/nura-zramstart.sh",
+      "raw_source_bytes_preserved": true,
+      "sha256": "a0b738115df0f2ffbbba5febbbd3e728bacdaafb66292b0a6513915451aaebed"
+    },
+    {
+      "already_public": true,
+      "bytes": 132632,
+      "original_source": "tb371fc-linux/docs/research/2026-11-23/evidence/nura-build.json",
+      "path": "docs/research/2026-11-23/evidence/nura-build.json",
+      "sha256": "f0c67737ff870b9444d3609bf3c47cb06b2ba4ada63092f76da9874d3cc66c86"
+    }
+  ],
+  "evidence_class": "host_build",
+  "exact_execution_sources": [
+    {
+      "bytes": 5469,
+      "mode": 493,
+      "path": "scripts/research/system-kernel/research5-services/prepare_source.py",
+      "sha256": "655295501fc8d5d590d0b6a9c3a1f09d888490e7088aa4ac011ee772285b4b79"
+    },
+    {
+      "bytes": 8416,
+      "mode": 493,
+      "path": "scripts/research/system-kernel/research5-services/derive_recipe.py",
+      "sha256": "c1513312c38c22eadcb04747a58acf43510ba3785be05d3dc55c73f5602bf528"
+    },
+    {
+      "bytes": 6327,
+      "mode": 493,
+      "path": "scripts/research/system-kernel/research5-services/run_build.py",
+      "sha256": "0d0e9fe0c62f962ed123d3bafed407a901f2b4af9e52accfa301e544db7d6630"
+    },
+    {
+      "bytes": 5146,
+      "mode": 493,
+      "path": "scripts/research/system-kernel/research5-services/run_transfer.py",
+      "sha256": "05f2e083503d17e955630ea0a9ea7746216c6b68ee121f4d79802aa8c9284159"
+    },
+    {
+      "bytes": 4111,
+      "mode": 493,
+      "path": "scripts/research/system-kernel/research5-services/collect_public_records.py",
+      "sha256": "6b4f81a9e2c535d9be4c69bedb450efab0fcc517a0c4ed6b522f7fc94df03655"
+    },
+    {
+      "bytes": 6583,
+      "mode": 493,
+      "path": "scripts/research/system-kernel/research5-services/collect_control_records.py",
+      "sha256": "9de12bbd48c03994c08205a5c354ddfcc998bda937048d1d8551c608d026d0ec"
+    },
+    {
+      "bytes": 9980,
+      "mode": 493,
+      "path": "scripts/research/system-kernel/research5-services/publish_results.py",
+      "sha256": "35b6350f189f8d7c22cac993c8517415d90d8d32bbe4e6cc5fbd7364bb501e1a"
+    },
+    {
+      "bytes": 6039,
+      "mode": 420,
+      "path": "scripts/research/system-kernel/research5-services/services-contract.json",
+      "sha256": "3b9730335d5573d98f2f9382f83ba79810c9dd563a9e9eed83668a9b3f24ce21"
+    },
+    {
+      "bytes": 1360,
+      "mode": 420,
+      "path": "scripts/research/system-kernel/research5-services/recipe-derivation.json",
+      "sha256": "b991839dd483b91366d41e44a3efffad192ecd9bcdcfbd757429c5f862e30b18"
+    },
+    {
+      "bytes": 13997,
+      "mode": 420,
+      "path": "scripts/research/system-kernel/research5-services/recipe-derivation.patch",
+      "sha256": "e32a06293da0d39e4459c0dec48724f1a8c13ebfa92694a0e373f88e2e28f0f4"
+    },
+    {
+      "bytes": 14314,
+      "mode": 493,
+      "path": "scripts/research/system-kernel/research5-services/recipe-v1/build_system.py",
+      "sha256": "053178a79838a69440a5e18f01f4fc9a9dc8a81c11347f1689c8e062d530439a"
+    },
+    {
+      "bytes": 21098,
+      "mode": 493,
+      "path": "scripts/research/system-kernel/research5-services/recipe-v1/inspect_system.py",
+      "sha256": "dbcd4389a5f88549f9bee645c0faa047a13005206933790a589a52b23e5e4ba1"
+    },
+    {
+      "bytes": 356,
+      "mode": 420,
+      "path": "scripts/research/system-kernel/research5-services/recipe-v1/system.config",
+      "sha256": "5f2ed320c037194509cba247eaebdf36b63cf1663081d0b7a347ca28233b13b1"
+    },
+    {
+      "bytes": 6039,
+      "mode": 420,
+      "path": "scripts/research/system-kernel/research5-services/recipe-v1/services-contract.json",
+      "sha256": "3b9730335d5573d98f2f9382f83ba79810c9dd563a9e9eed83668a9b3f24ce21"
+    },
+    {
+      "bytes": 8973,
+      "mode": 493,
+      "path": "scripts/research/system-kernel/research5-services/transfer-v1/copy_baseline.py",
+      "sha256": "21e2d3b9887a52ed9fce96366eb71930fd9f5bcdfed901145cfc3a84ebd54ea0"
+    },
+    {
+      "bytes": 12223,
+      "mode": 493,
+      "path": "scripts/research/system-kernel/research5-services/transfer-v1/transfer_kernel.py",
+      "sha256": "d9be30132e9a444836d7289b6712699583aa95444653f38b34e3f6eeff55cdd5"
+    }
+  ],
+  "firmware_payload_published": false,
+  "full_module_cms_crc_vermagic_btf_and_stripping_gates_passed": true,
+  "generic_system_vm_run_performed_by_this_workflow": false,
+  "gpu_iommu": {
+    "compatible": [
+      "qcom,sm8250-smmu-500",
+      "qcom,adreno-smmu",
+      "qcom,smmu-500",
+      "arm,mmu-500"
+    ],
+    "dma_coherent": true,
+    "gpu_available": true,
+    "gpu_iommus_raw_cells": [
+      122,
+      0,
+      1025
+    ],
+    "gpu_iommus_resolved": [
+      {
+        "arguments": [
+          0,
+          1025
+        ],
+        "path": "/soc@0/iommu@3da0000",
+        "phandle": 122
+      }
+    ],
+    "gpu_path": "/soc@0/gpu@3d00000",
+    "historical_adreno_smmu_removal_applied": false,
+    "iommu_available": true,
+    "iommu_path": "/soc@0/iommu@3da0000",
+    "reference_unchanged_from_research2": true,
+    "runtime_per_process_address_spaces_verified": false
+  },
+  "gpu_runtime_acceleration_tested": false,
+  "independent_bit_identical_rebuild_proven": false,
+  "joint_dtb_sha256": "af80b06f38b73ea42cb669a2897721ba7ecc5a99a8aa3d6d9c1e9ba132597730",
+  "kernel_release": "6.12.114-tb371fc-research5-services",
+  "kernel_report": {
+    "bytes": 136930,
+    "mode": 420,
+    "path": "docs/research/2026-11-23/evidence/research5-services-build.json",
+    "sha256": "69d0b558c99bdfb339df8b3b9baca8bb1ee4d0cb2e46dd9b3b7fef3ab69aaad2"
+  },
+  "limits": [
+    "The independent automatic signing key intentionally changes linked Image and module bytes.",
+    "Builder package versions are captured; all tool packages are not frozen to a distribution snapshot.",
+    "PL031 is the generic QEMU RTC; this does not test the physical tablet RTC.",
+    "NixOS and Nura original-userland VM runs and actual services remain separate acceptance steps.",
+    "The owner tablet has not booted this kernel; GPU, display, input, radios, audio, power and accessory quality remain open."
+  ],
+  "module_count": 84,
+  "module_imported_symbol_crc_checks": 4308,
+  "module_loaded_by_this_workflow": false,
+  "no_raw_record_rewritten": true,
+  "old_module_indexes_transferred": false,
+  "owner_native_linux_passes": 0,
+  "owner_native_linux_runs": 0,
+  "physical_hardware_tested": false,
+  "private_key_read_or_exported": false,
+  "profile": "research5-services",
+  "raw_record_count": 55,
+  "raw_records": [
+    {
+      "bytes": 9491,
+      "mode": 420,
+      "original_relative_path": "container/artifacts/builder-packages.tsv",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/artifacts/builder-packages.tsv",
+      "raw_source_bytes_preserved": true,
+      "sha256": "488f96f01ff4f808ed9cebdce1c705815ad43a5ae57fd87d727d259d758f7dcf"
+    },
+    {
+      "bytes": 223395,
+      "mode": 420,
+      "original_relative_path": "container/artifacts/kernel.config",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/artifacts/kernel.config.txt",
+      "raw_source_bytes_preserved": true,
+      "sha256": "a4980121abcc3e2bac47f7020e63c8c00949c53c289019c22b67808d84cd3afa"
+    },
+    {
+      "bytes": 13257,
+      "mode": 420,
+      "original_relative_path": "container/artifacts/modules.SHA256SUMS",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/artifacts/modules.SHA256SUMS.txt",
+      "raw_source_bytes_preserved": true,
+      "sha256": "278c225ae2eed47341a9d185b4d2919a9208757fe86ff0268c9bfce3c3dfd7e1"
+    },
+    {
+      "bytes": 1489,
+      "mode": 420,
+      "original_relative_path": "container/artifacts/qualified-artifacts.SHA256SUMS",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/artifacts/qualified-artifacts.SHA256SUMS.txt",
+      "raw_source_bytes_preserved": true,
+      "sha256": "ccdd316712a5607fa8fa27488bde771c8a50eb6363b6ce44c72fdbd640dae36c"
+    },
+    {
+      "bytes": 136930,
+      "mode": 420,
+      "original_relative_path": "container/artifacts/research5-services-build.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/artifacts/research5-services-build.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "69d0b558c99bdfb339df8b3b9baca8bb1ee4d0cb2e46dd9b3b7fef3ab69aaad2"
+    },
+    {
+      "bytes": 4020,
+      "mode": 420,
+      "original_relative_path": "container/build-attempt-01.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/build-attempt-01.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "814719dba82396d32e10c4ca75f98e826c5bbb1633e963afd4eba4567ce1931e"
+    },
+    {
+      "bytes": 7765,
+      "mode": 420,
+      "original_relative_path": "container/configuration.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/configuration.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "a87ce0d5e431234b0889366c2434cd01daf6e266377568473b71425ee03feb85"
+    },
+    {
+      "bytes": 7874,
+      "mode": 420,
+      "original_relative_path": "container/configure-attempt-01.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/configure-attempt-01.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "f88b1ddde9d280a2984fe1c368d55b601436b61b5ee41c8d9579ae8d4c13ac5f"
+    },
+    {
+      "bytes": 136930,
+      "mode": 420,
+      "original_relative_path": "container/inspection-attempt-01.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/inspection-attempt-01.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "69d0b558c99bdfb339df8b3b9baca8bb1ee4d0cb2e46dd9b3b7fef3ab69aaad2"
+    },
+    {
+      "bytes": 313,
+      "mode": 420,
+      "original_relative_path": "container/jobs/build-01.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/jobs/build-01.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "cccc1af3287f32766ad2b46197c19e1ba91fdb022aaae1a8a310912058462d09"
+    },
+    {
+      "bytes": 222140,
+      "mode": 420,
+      "original_relative_path": "container/jobs/build-01.log",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/jobs/build-01.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "dd8abab350d558fa5fa0bcf788adf5b6ce25b53640d87e7994db392003de715a"
+    },
+    {
+      "bytes": 316,
+      "mode": 420,
+      "original_relative_path": "container/jobs/configure-01.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/jobs/configure-01.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "742e715677c1fd15729542be3a2cde838f7814c63201a71be90ae6f78ddb953d"
+    },
+    {
+      "bytes": 2923,
+      "mode": 420,
+      "original_relative_path": "container/jobs/configure-01.log",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/jobs/configure-01.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "8c31cc274b4eb748fc0e9cea11a7323ce24d2f1d899c51ecaa7b8ae0694f6ac7"
+    },
+    {
+      "bytes": 356,
+      "mode": 420,
+      "original_relative_path": "container/jobs/inspect-01.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/jobs/inspect-01.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "41723a964f0666a427a8e119d0e253bff6acb232226bd9ad7dc8df7f84ac3f0b"
+    },
+    {
+      "bytes": 381,
+      "mode": 420,
+      "original_relative_path": "container/jobs/inspect-01.log",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/jobs/inspect-01.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "928384e1181c243e265a61f97195b4f8982c815fe6080f8b52c793caf096eb09"
+    },
+    {
+      "bytes": 1985,
+      "mode": 420,
+      "original_relative_path": "container/jobs/prepare-source-01.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/jobs/prepare-source-01.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "9b72161aa79720cfbc90071ac2f74857843dbc5b6585d00e98d3d3ac4fdddc0f"
+    },
+    {
+      "bytes": 3941,
+      "mode": 420,
+      "original_relative_path": "container/jobs/prepare-source-01.log",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/jobs/prepare-source-01.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "dc332b17967b897f16ac1df7a01c12fa5b1b2b390d3bf855c9beb9313b1746f5"
+    },
+    {
+      "bytes": 1092,
+      "mode": 420,
+      "original_relative_path": "container/recipe-install.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/recipe-install.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "5823c850e883225bfbc9dad8bbf4b68cbd699a4c6472f914f2b031c62459926c"
+    },
+    {
+      "bytes": 7108,
+      "mode": 420,
+      "original_relative_path": "container/source-input/source-manifest.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/source-input/source-manifest.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0"
+    },
+    {
+      "bytes": 9517,
+      "mode": 420,
+      "original_relative_path": "container/source-manifest.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/container/source-manifest.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "515b380aaf7d50d54a0c830021308e94b1a2b242ef7e7709be17493c9a51ddeb"
+    },
+    {
+      "bytes": 6506,
+      "mode": 420,
+      "original_relative_path": "control/host-build/build-driver-result.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/build-driver-result.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "4e1598c4351541c01c02770a54c401eb1ddba5f74fd0fac2f48997bb6bfeabf7"
+    },
+    {
+      "bytes": 918,
+      "mode": 420,
+      "original_relative_path": "control/host-build/build-invocation.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/build-invocation.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "961636a5c0c9d15d8c45602834443c6d03d5c5aba58438425c13ca5c46c87d1e"
+    },
+    {
+      "bytes": 0,
+      "mode": 420,
+      "original_relative_path": "control/host-build/build-invocation.stderr",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/build-invocation.stderr.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 222140,
+      "mode": 420,
+      "original_relative_path": "control/host-build/build-invocation.stdout",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/build-invocation.stdout.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "dd8abab350d558fa5fa0bcf788adf5b6ce25b53640d87e7994db392003de715a"
+    },
+    {
+      "bytes": 804,
+      "mode": 420,
+      "original_relative_path": "control/host-build/build-launch.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/build-launch.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "9b683881dcafb1903d812d9e9c989d2968acd1cf0740decb7803c8a8752ba2f9"
+    },
+    {
+      "bytes": 3482,
+      "mode": 420,
+      "original_relative_path": "control/host-build/collect-public-01.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/collect-public-01.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "1567e02e9503793aebd74bcc1b46fd59a18b02b2235b456657f90f42a6fab594"
+    },
+    {
+      "bytes": 0,
+      "mode": 420,
+      "original_relative_path": "control/host-build/collect-public-01.stderr",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/collect-public-01.stderr.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 339,
+      "mode": 420,
+      "original_relative_path": "control/host-build/collect-public-01.stdout",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/collect-public-01.stdout.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "139d4d4eed9606156e3b209f51cf371a4f04797a872e0d5dd99662c52eb62a1a"
+    },
+    {
+      "bytes": 251,
+      "mode": 420,
+      "original_relative_path": "control/host-build/collect-public-launch.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/collect-public-launch.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "bb1c3d7613e4b6566222a57518d9f8d763119a41eba3bdba356db40c018890b0"
+    },
+    {
+      "bytes": 924,
+      "mode": 420,
+      "original_relative_path": "control/host-build/configure-invocation.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/configure-invocation.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "fa136f40b782ec876e05216cc66239bef76b40ad95dfe2054a06a590a857494d"
+    },
+    {
+      "bytes": 0,
+      "mode": 420,
+      "original_relative_path": "control/host-build/configure-invocation.stderr",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/configure-invocation.stderr.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 2923,
+      "mode": 420,
+      "original_relative_path": "control/host-build/configure-invocation.stdout",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/configure-invocation.stdout.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "8c31cc274b4eb748fc0e9cea11a7323ce24d2f1d899c51ecaa7b8ae0694f6ac7"
+    },
+    {
+      "bytes": 960,
+      "mode": 420,
+      "original_relative_path": "control/host-build/inspect-invocation.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/inspect-invocation.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "1c74260c04fa36241b82e9de5211c7ef7e80a295373b71b2ffd9397599ee2672"
+    },
+    {
+      "bytes": 0,
+      "mode": 420,
+      "original_relative_path": "control/host-build/inspect-invocation.stderr",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/inspect-invocation.stderr.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 381,
+      "mode": 420,
+      "original_relative_path": "control/host-build/inspect-invocation.stdout",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/inspect-invocation.stdout.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "928384e1181c243e265a61f97195b4f8982c815fe6080f8b52c793caf096eb09"
+    },
+    {
+      "bytes": 2434,
+      "mode": 420,
+      "original_relative_path": "control/host-build/install-recipe.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/install-recipe.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "52e96ec1c35a9b9efb7e54ab49f7c91b18f238fabc2b94c13485738263492303"
+    },
+    {
+      "bytes": 0,
+      "mode": 420,
+      "original_relative_path": "control/host-build/install-recipe.stderr",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/install-recipe.stderr.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 900,
+      "mode": 420,
+      "original_relative_path": "control/host-build/install-recipe.stdout",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/install-recipe.stdout.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "e418c93bb830e2a8d845877b464263a4420dcf631a6ab6f4c46544a607484946"
+    },
+    {
+      "bytes": 4137,
+      "mode": 420,
+      "original_relative_path": "control/host-build/prepare-driver-result.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/prepare-driver-result.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "f532e0b34869bb991fbcdadd74ee2b0992eb1c042dac5712c08c1687022e2b82"
+    },
+    {
+      "bytes": 0,
+      "mode": 420,
+      "original_relative_path": "control/host-build/prepare-driver.stderr",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/prepare-driver.stderr.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 6066,
+      "mode": 420,
+      "original_relative_path": "control/host-build/prepare-driver.stdout",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/prepare-driver.stdout.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "44f66926539c98bbb823978ca95e73576564f25393d09f75c3a6137f1b4adbb6"
+    },
+    {
+      "bytes": 601,
+      "mode": 420,
+      "original_relative_path": "control/host-build/prepare-launch.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-build/prepare-launch.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "630c16496d9a71a7dca7a4ca9f0c0439aa97829da20c530e9a630e99fad13bb1"
+    },
+    {
+      "bytes": 3238,
+      "mode": 420,
+      "original_relative_path": "control/host-transfer/driver-result.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-transfer/driver-result.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "75f5dd14b6c7434897676d8eacc3dbe175800a4caae48c31cfd01c557c5fb65c"
+    },
+    {
+      "bytes": 1621,
+      "mode": 420,
+      "original_relative_path": "control/host-transfer/install.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-transfer/install.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "5dafe5b86d823fdc61455738e2d9ffa838c5828bbf451ca32f310c85ea94e38f"
+    },
+    {
+      "bytes": 0,
+      "mode": 420,
+      "original_relative_path": "control/host-transfer/install.stderr",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-transfer/install.stderr.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 356,
+      "mode": 420,
+      "original_relative_path": "control/host-transfer/install.stdout",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-transfer/install.stdout.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "4fa7e5e07fdf6a71b84a3e544d73d2eb10e461e00c73cd121b6578bdf70c623c"
+    },
+    {
+      "bytes": 544,
+      "mode": 420,
+      "original_relative_path": "control/host-transfer/launch.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-transfer/launch.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "b703f0d1d8671ccded2f4fc78666dd6357faa0ae298b68dfa3402a910a33adaf"
+    },
+    {
+      "bytes": 705,
+      "mode": 420,
+      "original_relative_path": "control/host-transfer/transfer.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-transfer/transfer.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "9fa2ffc4ed5bbb40fc70559c6d6d46a44ca479061d4bd8b0d1a1613b9f8624fb"
+    },
+    {
+      "bytes": 0,
+      "mode": 420,
+      "original_relative_path": "control/host-transfer/transfer.stderr",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-transfer/transfer.stderr.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 229,
+      "mode": 420,
+      "original_relative_path": "control/host-transfer/transfer.stdout",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/host-transfer/transfer.stdout.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "2fbf8fbc3eb0ea1f773c43d8bb9c779883d77cdbbc36fe75f11b8c38c5eb2aa4"
+    },
+    {
+      "bytes": 22269,
+      "mode": 420,
+      "original_relative_path": "control/shared-transfer/bundle.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/shared-transfer/bundle.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "b540b71d3d5719265bed35b05016c9e0cbfc988ab17ccb351d14c42610d46c04"
+    },
+    {
+      "bytes": 83440,
+      "mode": 420,
+      "original_relative_path": "control/shared-transfer/transfer.json",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/shared-transfer/transfer.json",
+      "raw_source_bytes_preserved": true,
+      "sha256": "6892cdb643e8ab58e55f10e86f7ce45f2ef6bdd22ddaaf400b935900cfc9cb5e"
+    },
+    {
+      "bytes": 0,
+      "mode": 420,
+      "original_relative_path": "control/ct-transfer/r5-services-kernel-copy-v1.source.log",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/ct-transfer/r5-services-kernel-copy-v1.source.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "mode": 420,
+      "original_relative_path": "control/ct-transfer/r5-services-kernel-copy-v1.destination.log",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/ct-transfer/r5-services-kernel-copy-v1.destination.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "mode": 420,
+      "original_relative_path": "control/ct-transfer/r5-services-kernel-verify-v1.source.log",
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/ct-transfer/r5-services-kernel-verify-v1.source.log",
+      "raw_source_bytes_preserved": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Independent full kernel build, offline signatures/ABI/DT and shared public-runtime transfer only.",
+  "shared_destination": "/work/research5-services-kernel-inputs-v1",
+  "shared_regular_files_verified": 106,
+  "shared_source_before_after_and_destination_content_mode_owner_equal": true,
+  "shared_stream_bytes": 66263040,
+  "shared_stream_sha256": "ae57626102a400b8a6ef85369d40ed72e68b5639f0b8c7f241c067212e6c8bf9",
+  "shared_transfer_completed_utc": "2026-11-23T10:07:21.636167+00:00",
+  "shared_transfer_seconds": 6.227381276024971
+}

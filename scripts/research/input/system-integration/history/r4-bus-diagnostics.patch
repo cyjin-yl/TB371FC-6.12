@@ -1,0 +1,224 @@
+--- a/guest_verify_system.py
++++ b/guest_verify_system.py
+@@ -15,6 +15,7 @@
+ 
+ PROFILE = Path('/usr/share/tb371fc/system-profile.json')
+ UNIT = 'tb371fc-r4-validation.service'
++DIAGNOSTICS_READY = False
+ 
+ 
+ def run(*args, check=True, timeout=60):
+@@ -57,9 +58,95 @@
+     }, sort_keys=True))
+ 
+ 
++def diagnostic_command(command, timeout=8, limit=32768):
++    """Diagnostic only: limits/truncation never turn a failed gate into a pass."""
++    try:
++        value = subprocess.run(command, capture_output=True, timeout=timeout)
++        result = {'command': command, 'exit_code': value.returncode}
++        for name in ('stdout', 'stderr'):
++            raw = getattr(value, name)
++            result[name] = raw[:limit].decode(errors='replace')
++            result[name + '_bytes'] = len(raw)
++            result[name + '_truncated'] = len(raw) > limit
++        return result
++    except Exception as error:
++        return {'command': command, 'error_type': type(error).__name__, 'error': str(error)[:1024]}
++
++
++def process_context(pid):
++    """Read only the identity/resource fields relevant to this isolated VM."""
++    value = {'pid': pid}
++    try:
++        root = Path('/proc') / str(pid)
++        value['selinux_context'] = (root / 'attr/current').read_text().strip('\0\n')
++        value['status'] = [line for line in (root / 'status').read_text().splitlines()
++                           if line.startswith(('Name:', 'State:', 'Threads:', 'FDSize:'))]
++        value['open_file_limit'] = [line for line in (root / 'limits').read_text().splitlines()
++                                   if line.startswith('Max open files')]
++        value['open_fd_count'] = len(list((root / 'fd').iterdir()))
++    except (OSError, ValueError) as error:
++        value['unavailable'] = {'type': type(error).__name__, 'message': str(error)[:1024]}
++    return value
++
++
++def descriptor_context(fd):
++    value = {'fd': fd}
++    try:
++        info = os.fstat(fd)
++        value.update({'target': os.readlink('/proc/self/fd/' + str(fd)),
++                      'mode': info.st_mode, 'device': info.st_dev, 'inode': info.st_ino})
++        try:
++            value['inode_selinux_context'] = os.getxattr(fd, 'security.selinux').decode().strip('\0\n')
++        except OSError as error:
++            value['inode_context_unavailable_errno'] = error.errno
++    except OSError as error:
++        value['unavailable_errno'] = error.errno
++    # The inode label is separate from the security SID captured when a file
++    # description was opened. The creating process context is recorded below.
++    return value
++
++
++def broker_context():
++    value = {'validation_process': process_context(os.getpid()),
++             'pid1': process_context(1)}
++    result = diagnostic_command(['/usr/bin/systemctl', 'show', '--property=MainPID', '--value',
++                                 'dbus-broker.service'])
++    value['broker_mainpid_lookup'] = result
++    raw = result.get('stdout', '').strip()
++    if result.get('exit_code') == 0 and raw.isdigit() and int(raw) > 0:
++        pid = int(raw)
++        value['broker_launcher'] = process_context(pid)
++        try:
++            children = (Path('/proc') / str(pid) / 'task' / str(pid) / 'children').read_text().split()
++            value['broker_children'] = [process_context(int(child)) for child in children[:8] if child.isdigit()]
++            value['broker_children_truncated'] = len(children) > 8
++        except OSError as error:
++            value['broker_children_unavailable'] = {'type': type(error).__name__, 'errno': error.errno}
++    return value
++
++
++def failure_diagnostics(error_trace):
++    # This runs only after the exact virt/root/profile and Enforcing guards.
++    # Emit and sync the useful tail BEFORE the host's terminal failure marker.
++    progress('failure_context', {'traceback': error_trace[-8192:], **broker_context()})
++    for name, command in (
++        ('journal_sync', ['/usr/bin/journalctl', '--sync']),
++        ('broker_journal', ['/usr/bin/journalctl', '--boot=0', '--unit=dbus-broker.service',
++                            '--lines=80', '--output=short-monotonic', '--no-pager']),
++        ('kernel_security_journal', ['/usr/bin/journalctl', '--boot=0', '--dmesg',
++                                    '--grep=avc:|audit:|denied|BPF|bpf|Out of memory',
++                                    '--lines=100', '--output=short-monotonic', '--no-pager']),
++        ('transport_journal', ['/usr/bin/journalctl', '--boot=0',
++                               '--grep=Peer |disconnected|protocol|file descriptor|Connection reset|pids-proof|fs-proof|bus-proof',
++                               '--lines=100', '--output=short-monotonic', '--no-pager']),
++    ):
++        progress(name, diagnostic_command(command))
++    progress('failure_evidence_sync', diagnostic_command(['/usr/bin/sync'], timeout=15))
++
++
+ def transient(name, properties, command):
+     """Only a fresh, explicitly named unit can be cleaned up by this helper."""
+-    require(name in ('tb371fc-r4-pids-proof.service', 'tb371fc-r4-fs-proof.service'), 'unowned transient name')
++    require(name in ('tb371fc-r4-pids-proof.service', 'tb371fc-r4-fs-proof.service', 'tb371fc-r4-bus-proof.service'), 'unowned transient name')
+     state = run('/usr/bin/systemctl', 'show', '--property=LoadState', '--value', name, check=False)
+     require(state == 'not-found', 'transient proof name already exists')
+     args = ['/usr/bin/systemd-run', '--quiet', '--wait', '--pipe', '--collect', '--unit=' + name,
+@@ -67,7 +154,28 @@
+     args += ['--property=' + value for value in properties]
+     result = None
+     try:
+-        result = subprocess.run([*args, *command], capture_output=True, text=True, timeout=12)
++        # Same --wait/--pipe system-bus route as R3. Keep the actual pipe FDs
++        # observable; never substitute PID1's private socket for this gate.
++        environment = os.environ.copy()
++        environment['SYSTEMD_LOG_LEVEL'] = 'debug'
++        child = subprocess.Popen([*args, *command], stdout=subprocess.PIPE, stderr=subprocess.PIPE,
++                                 text=True, env=environment)
++        try:
++            progress('transient_client_started', {'unit': name, 'command': command,
++                     'properties': properties, 'creator': process_context(os.getpid()),
++                     'client': process_context(child.pid),
++                     'stdin': descriptor_context(0),
++                     'stdout_pipe': descriptor_context(child.stdout.fileno()),
++                     'stderr_pipe': descriptor_context(child.stderr.fileno()),
++                     'systemd_client_debug_logging': True})
++            stdout, stderr = child.communicate(timeout=12)
++            result = subprocess.CompletedProcess([*args, *command], child.returncode, stdout, stderr)
++        finally:
++            if child.poll() is None:
++                child.kill()
++            child.wait(timeout=3)
++            child.stdout.close()
++            child.stderr.close()
+     finally:
+         # The name was absent before this attempt and cannot refer to another
+         # job created by this workflow. RuntimeMaxSec also bounds its lifetime.
+@@ -84,6 +192,7 @@
+ 
+ 
+ def main():
++    global DIAGNOSTICS_READY
+     words = Path('/proc/cmdline').read_text().split()
+     phases = [x.split('=', 1)[1] for x in words if x.startswith('tb371fc.r4-phase=')]
+     identities = [x.split('=', 1)[1] for x in words if x.startswith('tb371fc.r4-profile=')]
+@@ -126,6 +235,7 @@
+         emit('TB371FC_R4_VM_LABEL_COMPLETE')
+     else:
+         require(enforce.read_text().strip() == '1', 'verification boot must enforce SELinux')
++        DIAGNOSTICS_READY = True
+         manifest = Path('/usr/share/tb371fc/runtime.json')
+         require(digest(manifest, 1024**2)[0] == profile['runtime_manifest_sha256'], 'runtime manifest identity changed')
+         runtime = json.loads(manifest.read_text())
+@@ -147,6 +257,31 @@
+         group_path = Path('/sys/fs/cgroup') / group.lstrip('/')
+         pids_max = (group_path / 'pids.max').read_text().strip()
+         require(pids_max == str(profile['validation_tasks_max']) == '128', 'unit pids.max is not the configured finite limit')
++        progress('system_bus_context', broker_context())
++        bus_id = diagnostic_command(['/usr/bin/busctl', '--system', '--no-pager', 'call',
++                                     'org.freedesktop.DBus', '/org/freedesktop/DBus',
++                                     'org.freedesktop.DBus', 'GetId'])
++        progress('system_bus_get_id', bus_id)
++        require(bus_id.get('exit_code') == 0 and
++                re.fullmatch(r's "[0-9a-f]{32}"\n?', bus_id.get('stdout', '')),
++                'real system-bus broker GetId round-trip failed')
++        manager = diagnostic_command(['/usr/bin/busctl', '--system', '--no-pager', 'get-property',
++                                      'org.freedesktop.systemd1', '/org/freedesktop/systemd1',
++                                      'org.freedesktop.systemd1.Manager', 'Version'])
++        progress('system_bus_manager_version', manager)
++        require(manager.get('exit_code') == 0 and
++                re.fullmatch(r's "[^"\n]+"\n?', manager.get('stdout', '')),
++                'real system-bus manager round-trip failed')
++        bus_run = transient('tb371fc-r4-bus-proof.service', [], ['/usr/bin/true'])
++        progress('system_bus_pipe_baseline', {'exit_code': bus_run.returncode,
++                 'stdout': bus_run.stdout, 'stderr': bus_run.stderr})
++        require(bus_run.returncode == 0 and not bus_run.stdout,
++                'system-bus --wait/--pipe baseline failed before resource probes')
++        system_bus_proof = {'broker_get_id_roundtrip': True, 'manager_version_roundtrip': True,
++                            'manager_version_reply': manager['stdout'].strip(),
++                            'wait_pipe_true_exit_code': bus_run.returncode,
++                            'wait_pipe_true_stdout_empty': True, 'owned_unit_collected': True,
++                            'private_socket_used_for_transient_probe': False}
+         pids_run = transient('tb371fc-r4-pids-proof.service', ['TasksMax=3'],
+                              ['/usr/bin/python3', '/usr/libexec/tb371fc-r4-pids-probe.py'])
+         pids_lines = [line for line in pids_run.stdout.splitlines() if line.startswith('TB371FC_R4_PIDS_PROOF ')]
+@@ -235,6 +370,7 @@
+             'cgroup_controllers': controllers, 'validation_control_group': group, 'validation_pids_max': pids_max,
+             'pids_events': (group_path / 'pids.events').read_text().strip(), 'active_lsm': lsm,
+             'pids_enforcement_probe': pids_proof, 'bpf_lsm_deny_probe': bpf_deny_proof,
++            'system_bus_proof': system_bus_proof,
+             'autofs_loaded': True, 'autofs_misc_interface': True, 'autofs_module_signature': autofs_signature,
+             'autofs_module_taint': (Path('/sys/module/autofs4/taint').read_text().strip()
+                                     if Path('/sys/module/autofs4/taint').is_file() else None),
+@@ -255,6 +391,12 @@
+     try:
+         main()
+     except Exception:
++        error_trace = traceback.format_exc()
++        if DIAGNOSTICS_READY:
++            try:
++                failure_diagnostics(error_trace)
++            except Exception as error:
++                print('TB371FC_R4_DIAGNOSTICS_ERROR ' + type(error).__name__ + ': ' + str(error), flush=True)
++        print(error_trace, file=sys.stderr, flush=True)
+         print('TB371FC_R4_VM_VALIDATION_FAILED', flush=True)
+-        traceback.print_exc()
+         sys.exit(1)
+--- a/boot_system_vm.py
++++ b/boot_system_vm.py
+@@ -79,7 +79,13 @@
+                  guest.get('pids_enforcement_probe', {}).get('passed') is True and
+                  guest.get('pids_enforcement_probe', {}).get('all_owned_children_reaped') is True and
+                  guest.get('bpf_lsm_deny_probe', {}).get('restricted_exit_code') == 1 and
+-                 guest.get('bpf_lsm_deny_probe', {}).get('owned_unit_collected') is True)
++                 guest.get('bpf_lsm_deny_probe', {}).get('owned_unit_collected') is True and
++                 guest.get('system_bus_proof', {}).get('broker_get_id_roundtrip') is True and
++                 guest.get('system_bus_proof', {}).get('manager_version_roundtrip') is True and
++                 guest.get('system_bus_proof', {}).get('wait_pipe_true_exit_code') == 0 and
++                 guest.get('system_bus_proof', {}).get('wait_pipe_true_stdout_empty') is True and
++                 guest.get('system_bus_proof', {}).get('owned_unit_collected') is True and
++                 guest.get('system_bus_proof', {}).get('private_socket_used_for_transient_probe') is False)
+         result.update({'guest_result': guest, 'guest_result_count': len(records), 'guest_gates_match': bool(gates)})
+     return result
+ 

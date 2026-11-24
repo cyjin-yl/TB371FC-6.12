@@ -1,0 +1,2642 @@
+{
+  "archive_rehashed_by_this_preflight": false,
+  "boot_order_contract": {
+    "bootmisc_removes_underlying_run_members": true,
+    "fixture": "/usr/share/tb371fc-nura-vm",
+    "init": "/usr/bin/busybox",
+    "inittab_steps": [
+      "openrc sysinit",
+      "openrc boot",
+      "openrc default"
+    ],
+    "openrc_init_sh_mounts_run_if_absent": true,
+    "original_local_returns_zero_even_when_hook_fails": true,
+    "proposed_verifier_service": "background service before local, ordered after original default services; observer waits for original local/default completion",
+    "result_directory": "/var/lib/tb371fc-nura-vm"
+  },
+  "capture_records": [
+    {
+      "path": "/workspace/scratch/45c316069ac9/nura-entry-inventory-20261123/inventory.json",
+      "sha256": "8e9f289acc6b7be0d40e6e89dec21125a8e9a3a2f16189adbab7e774e7ec991d",
+      "size": 58260
+    },
+    {
+      "path": "/workspace/scratch/45c316069ac9/nura-system-boot-draft-20261123/source-record.json",
+      "sha256": "98c0303dee5c3df996b846eaab1d5eecf0a68d56b54679fc80c4eeb33248b01f",
+      "size": 104837
+    },
+    {
+      "path": "/workspace/scratch/45c316069ac9/nura-system-boot-draft-20261123/followup-source-record.json",
+      "sha256": "46327e88b43f153e1ba63e22180577781ebd6969a56ad3a27b2ba16c643a23ec",
+      "size": 52110
+    },
+    {
+      "path": "/workspace/scratch/45c316069ac9/nura-system-boot-draft-20261123/kernel-source-record.json",
+      "sha256": "448a3f03cc6d64b205ef073c95dadb423db501236549e1c94896691d3345564b",
+      "size": 108559
+    }
+  ],
+  "commands": {
+    "apk": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/sbin/apk",
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/apk",
+      "resolved_path": "usr/bin/apk",
+      "sha256": "d8f2b43ccfbb8eb2552d34f0f335a9c7812dcf48c95a8515fa05d644e0345c51",
+      "size": 135248,
+      "uid": 0
+    },
+    "busctl": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/usr/bin/busctl",
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/busctl",
+      "resolved_path": "usr/bin/busctl",
+      "sha256": "62fd1a444ee428d9c4ec7218b97ab1cd27588a11cd577c315d27b976fd4f1941",
+      "size": 133232,
+      "uid": 0
+    },
+    "busybox": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/bin/busybox",
+      "kind": "file",
+      "links": [
+        {
+          "path": "bin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "bin/busybox",
+      "resolved_path": "usr/bin/busybox",
+      "sha256": "79d9f5301a6781f5b4c885a190e32c1bef4d441b180fac1d2af5672e2cda0b77",
+      "size": 919296,
+      "uid": 0
+    },
+    "dbus_daemon": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/usr/bin/dbus-daemon",
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/dbus-daemon",
+      "resolved_path": "usr/bin/dbus-daemon",
+      "sha256": "a4033f47304c423b30ee4fa4f9edab35ac867c92ea3a9e15c86c4f3a4259e1c9",
+      "size": 199016,
+      "uid": 0
+    },
+    "depmod": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/sbin/depmod",
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        },
+        {
+          "path": "usr/bin/depmod",
+          "target": "../bin/kmod"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/depmod",
+      "resolved_path": "usr/bin/kmod",
+      "sha256": "e2de3c1a1eefb1afe1f2458a03541bf388bfdcf4aa83d762d0f5fa2cdec41319",
+      "size": 133208,
+      "uid": 0
+    },
+    "init": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/sbin/init",
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        },
+        {
+          "path": "usr/bin/init",
+          "target": "/bin/busybox"
+        },
+        {
+          "path": "bin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/init",
+      "resolved_path": "usr/bin/busybox",
+      "sha256": "79d9f5301a6781f5b4c885a190e32c1bef4d441b180fac1d2af5672e2cda0b77",
+      "size": 919296,
+      "uid": 0
+    },
+    "modinfo": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/sbin/modinfo",
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        },
+        {
+          "path": "usr/bin/modinfo",
+          "target": "../bin/kmod"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/modinfo",
+      "resolved_path": "usr/bin/kmod",
+      "sha256": "e2de3c1a1eefb1afe1f2458a03541bf388bfdcf4aa83d762d0f5fa2cdec41319",
+      "size": 133208,
+      "uid": 0
+    },
+    "modprobe": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/sbin/modprobe",
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        },
+        {
+          "path": "usr/bin/modprobe",
+          "target": "../bin/kmod"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/modprobe",
+      "resolved_path": "usr/bin/kmod",
+      "sha256": "e2de3c1a1eefb1afe1f2458a03541bf388bfdcf4aa83d762d0f5fa2cdec41319",
+      "size": 133208,
+      "uid": 0
+    },
+    "networkmanager": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/usr/bin/NetworkManager",
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/NetworkManager",
+      "resolved_path": "usr/bin/NetworkManager",
+      "sha256": "ca461c16a8d355c84ec941eb36f384301d03b332474672cc77e2e4641291068d",
+      "size": 2891672,
+      "uid": 0
+    },
+    "nft": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/usr/bin/nft",
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/nft",
+      "resolved_path": "usr/bin/nft",
+      "sha256": "f146e671cc003693b59d406f2b1a8d314a29f91dea0b90384fc4ca054e5250db",
+      "size": 67544,
+      "uid": 0
+    },
+    "openrc": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/sbin/openrc",
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/openrc",
+      "resolved_path": "usr/bin/openrc",
+      "sha256": "2a52e80af8e15cd83f67ffb01deee58323cfd72e813d8f78673ac4c2c2828bed",
+      "size": 67440,
+      "uid": 0
+    },
+    "openrc_run": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/sbin/openrc-run",
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/openrc-run",
+      "resolved_path": "usr/bin/openrc-run",
+      "sha256": "3e4dfb68fe1441476db0c2dad9334f6440abef3bb353c59a15eb876d8b876ced",
+      "size": 67440,
+      "uid": 0
+    },
+    "poweroff": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/sbin/poweroff",
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        },
+        {
+          "path": "usr/bin/poweroff",
+          "target": "/bin/busybox"
+        },
+        {
+          "path": "bin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/poweroff",
+      "resolved_path": "usr/bin/busybox",
+      "sha256": "79d9f5301a6781f5b4c885a190e32c1bef4d441b180fac1d2af5672e2cda0b77",
+      "size": 919296,
+      "uid": 0
+    },
+    "python": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/usr/bin/python3",
+      "kind": "file",
+      "links": [
+        {
+          "path": "usr/bin/python3",
+          "target": "python3.14"
+        }
+      ],
+      "mode": "0o755",
+      "path": "usr/bin/python3",
+      "resolved_path": "usr/bin/python3.14",
+      "sha256": "b776d2d6601ffe3bebbae359a8560a7efd0fe1d80b33b6235035225090a567db",
+      "size": 67328,
+      "uid": 0
+    },
+    "rc_service": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/sbin/rc-service",
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/rc-service",
+      "resolved_path": "usr/bin/rc-service",
+      "sha256": "4b6cd5eeb2886eca16b1c704795009df720074d9100c7f628fef3a011f41901b",
+      "size": 67416,
+      "uid": 0
+    },
+    "rc_status": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/sbin/rc-status",
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/rc-status",
+      "resolved_path": "usr/bin/rc-status",
+      "sha256": "e27231b2cf9e79e1e0fa061ce92c89419d4762aafcf042422684d58dd71c3292",
+      "size": 67416,
+      "uid": 0
+    },
+    "rc_update": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/sbin/rc-update",
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/rc-update",
+      "resolved_path": "usr/bin/rc-update",
+      "sha256": "bc1c13f1e834de2e8c18fa11e398fddfe34477f97a8c58165d6d1ae4bfbc1fc3",
+      "size": 67416,
+      "uid": 0
+    },
+    "sync": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/usr/bin/sync",
+      "kind": "file",
+      "links": [
+        {
+          "path": "usr/bin/sync",
+          "target": "/bin/busybox"
+        },
+        {
+          "path": "bin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "usr/bin/sync",
+      "resolved_path": "usr/bin/busybox",
+      "sha256": "79d9f5301a6781f5b4c885a190e32c1bef4d441b180fac1d2af5672e2cda0b77",
+      "size": 919296,
+      "uid": 0
+    },
+    "udevadm": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/usr/bin/udevadm",
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/udevadm",
+      "resolved_path": "usr/bin/udevadm",
+      "sha256": "9e5786ac47dca4b43e70e9b1615d2f55b02923a915ef0f84c2667680bd9f876a",
+      "size": 264312,
+      "uid": 0
+    },
+    "udevd": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "guest_path": "/sbin/udevd",
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/udevd",
+      "resolved_path": "usr/bin/udevd",
+      "sha256": "e97271e5560f5b61fd2ee8dd1145a673c92378fd9b204be689ae1c79f7cdfcb7",
+      "size": 264448,
+      "uid": 0
+    }
+  },
+  "confirmed_r4_service_gaps": [
+    {
+      "already_enabled": [
+        "CONFIG_IPV6",
+        "CONFIG_NF_CONNTRACK",
+        "CONFIG_NF_REJECT_IPV4",
+        "CONFIG_NF_REJECT_IPV6"
+      ],
+      "named_counter_is_in_core": true,
+      "original_rules": "etc/nftables.nft",
+      "required_resolved_selections": {
+        "CONFIG_NFT_REJECT_INET": "y",
+        "CONFIG_NFT_REJECT_IPV4": "y",
+        "CONFIG_NFT_REJECT_IPV6": "y",
+        "CONFIG_NF_TABLES_IPV4": "y",
+        "CONFIG_NF_TABLES_IPV6": "y"
+      },
+      "required_user_selections": {
+        "CONFIG_NFT_CT": "y",
+        "CONFIG_NFT_REJECT": "y",
+        "CONFIG_NF_TABLES": "y",
+        "CONFIG_NF_TABLES_INET": "y"
+      },
+      "service": "nftables",
+      "unrequested_features": [
+        "NFT_NAT",
+        "NFT_MASQ",
+        "NFT_LOG",
+        "NFT_COMPAT"
+      ],
+      "var_lib_nftables_empty_at_capture": true
+    },
+    {
+      "already_enabled": [
+        "CONFIG_ZRAM",
+        "CONFIG_SWAP",
+        "CONFIG_ZSTD_COMPRESS",
+        "CONFIG_ZSTD_DECOMPRESS"
+      ],
+      "deviceinfo_overrides_zram_algorithm": false,
+      "preserve_existing_backend_and_default": {
+        "CONFIG_ZRAM_BACKEND_LZO": "y",
+        "CONFIG_ZRAM_DEF_COMP_LZORLE": "y"
+      },
+      "requested_algorithm": "zstd",
+      "required_user_selections": {
+        "CONFIG_ZRAM_BACKEND_ZSTD": "y"
+      },
+      "service": "postmarketos-zram-swap"
+    }
+  ],
+  "donor_root_executed": false,
+  "installed_database": {
+    "ctime_ns": 1795387739870357591,
+    "gid": 0,
+    "kind": "file",
+    "mode": "0o644",
+    "mtime_ns": 1795387739867357426,
+    "path": "lib/apk/db/installed",
+    "resolved_path": "usr/lib/apk/db/installed",
+    "sha256": "7cd9007413d014ff8560484f268bf2906dbb5f89bb2dbc2c6833259ca78d41fc",
+    "size": 778929,
+    "uid": 0
+  },
+  "kernel_build_identity_pending": true,
+  "kernel_r4": {
+    "path": "/work/research4-system/artifacts/kernel.config",
+    "selected_lines": [
+      "# CONFIG_POSIX_MQUEUE is not set",
+      "CONFIG_BPF=y",
+      "CONFIG_BPF_SYSCALL=y",
+      "CONFIG_BPF_JIT=y",
+      "CONFIG_BPF_JIT_ALWAYS_ON=y",
+      "CONFIG_BPF_JIT_DEFAULT_ON=y",
+      "CONFIG_BPF_UNPRIV_DEFAULT_OFF=y",
+      "# CONFIG_BPF_PRELOAD is not set",
+      "CONFIG_BPF_LSM=y",
+      "CONFIG_CGROUPS=y",
+      "# CONFIG_CGROUP_FAVOR_DYNMODS is not set",
+      "CONFIG_MEMCG=y",
+      "# CONFIG_MEMCG_V1 is not set",
+      "CONFIG_BLK_CGROUP=y",
+      "CONFIG_CGROUP_WRITEBACK=y",
+      "CONFIG_CGROUP_SCHED=y",
+      "CONFIG_CGROUP_PIDS=y",
+      "# CONFIG_CGROUP_RDMA is not set",
+      "CONFIG_CGROUP_FREEZER=y",
+      "CONFIG_CPUSETS=y",
+      "# CONFIG_CPUSETS_V1 is not set",
+      "# CONFIG_CGROUP_DEVICE is not set",
+      "CONFIG_CGROUP_CPUACCT=y",
+      "# CONFIG_CGROUP_PERF is not set",
+      "CONFIG_CGROUP_BPF=y",
+      "# CONFIG_CGROUP_MISC is not set",
+      "# CONFIG_CGROUP_DEBUG is not set",
+      "CONFIG_MODULES_USE_ELF_RELA=y",
+      "CONFIG_MODULE_SIG_FORMAT=y",
+      "CONFIG_MODULES=y",
+      "# CONFIG_MODULE_DEBUG is not set",
+      "# CONFIG_MODULE_FORCE_LOAD is not set",
+      "CONFIG_MODULE_UNLOAD=y",
+      "# CONFIG_MODULE_FORCE_UNLOAD is not set",
+      "# CONFIG_MODULE_UNLOAD_TAINT_TRACKING is not set",
+      "# CONFIG_MODULE_SRCVERSION_ALL is not set",
+      "CONFIG_MODULE_SIG=y",
+      "# CONFIG_MODULE_SIG_FORCE is not set",
+      "CONFIG_MODULE_SIG_ALL=y",
+      "# CONFIG_MODULE_SIG_SHA1 is not set",
+      "# CONFIG_MODULE_SIG_SHA256 is not set",
+      "# CONFIG_MODULE_SIG_SHA384 is not set",
+      "CONFIG_MODULE_SIG_SHA512=y",
+      "# CONFIG_MODULE_SIG_SHA3_256 is not set",
+      "# CONFIG_MODULE_SIG_SHA3_384 is not set",
+      "# CONFIG_MODULE_SIG_SHA3_512 is not set",
+      "CONFIG_MODULE_SIG_HASH=\"sha512\"",
+      "# CONFIG_MODULE_COMPRESS is not set",
+      "# CONFIG_MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS is not set",
+      "CONFIG_MODULES_TREE_LOOKUP=y",
+      "CONFIG_BLK_CGROUP_RWSTAT=y",
+      "CONFIG_BLK_CGROUP_PUNT_BIO=y",
+      "# CONFIG_BLK_CGROUP_IOLATENCY is not set",
+      "# CONFIG_BLK_CGROUP_IOCOST is not set",
+      "# CONFIG_BLK_CGROUP_IOPRIO is not set",
+      "# CONFIG_UNIXWARE_DISKLABEL is not set",
+      "CONFIG_SWAP=y",
+      "CONFIG_ZSMALLOC=y",
+      "# CONFIG_ZSMALLOC_STAT is not set",
+      "CONFIG_ZSMALLOC_CHAIN_SIZE=8",
+      "CONFIG_UNIX=y",
+      "# CONFIG_UNIX_DIAG is not set",
+      "CONFIG_IPV6=y",
+      "CONFIG_IPV6_ROUTER_PREF=y",
+      "CONFIG_IPV6_ROUTE_INFO=y",
+      "CONFIG_IPV6_OPTIMISTIC_DAD=y",
+      "CONFIG_IPV6_MIP6=y",
+      "# CONFIG_IPV6_ILA is not set",
+      "CONFIG_IPV6_VTI=y",
+      "CONFIG_IPV6_SIT=y",
+      "# CONFIG_IPV6_SIT_6RD is not set",
+      "CONFIG_IPV6_NDISC_NODETYPE=y",
+      "CONFIG_IPV6_TUNNEL=y",
+      "# CONFIG_IPV6_GRE is not set",
+      "CONFIG_IPV6_MULTIPLE_TABLES=y",
+      "CONFIG_IPV6_SUBTREES=y",
+      "# CONFIG_IPV6_MROUTE is not set",
+      "# CONFIG_IPV6_SEG6_LWTUNNEL is not set",
+      "# CONFIG_IPV6_SEG6_HMAC is not set",
+      "# CONFIG_IPV6_RPL_LWTUNNEL is not set",
+      "# CONFIG_IPV6_IOAM6_LWTUNNEL is not set",
+      "CONFIG_NETFILTER=y",
+      "CONFIG_NETFILTER_ADVANCED=y",
+      "CONFIG_NETFILTER_INGRESS=y",
+      "CONFIG_NETFILTER_EGRESS=y",
+      "CONFIG_NETFILTER_SKIP_EGRESS=y",
+      "CONFIG_NETFILTER_NETLINK=y",
+      "CONFIG_NETFILTER_FAMILY_BRIDGE=y",
+      "CONFIG_NETFILTER_FAMILY_ARP=y",
+      "CONFIG_NETFILTER_BPF_LINK=y",
+      "# CONFIG_NETFILTER_NETLINK_ACCT is not set",
+      "CONFIG_NETFILTER_NETLINK_QUEUE=y",
+      "CONFIG_NETFILTER_NETLINK_LOG=y",
+      "# CONFIG_NETFILTER_NETLINK_OSF is not set",
+      "CONFIG_NF_CONNTRACK=y",
+      "CONFIG_NF_LOG_SYSLOG=y",
+      "CONFIG_NETFILTER_CONNCOUNT=y",
+      "CONFIG_NF_CONNTRACK_MARK=y",
+      "CONFIG_NF_CONNTRACK_SECMARK=y",
+      "# CONFIG_NF_CONNTRACK_ZONES is not set",
+      "# CONFIG_NF_CONNTRACK_PROCFS is not set",
+      "CONFIG_NF_CONNTRACK_EVENTS=y",
+      "# CONFIG_NF_CONNTRACK_TIMEOUT is not set",
+      "# CONFIG_NF_CONNTRACK_TIMESTAMP is not set",
+      "# CONFIG_NF_CONNTRACK_LABELS is not set",
+      "CONFIG_NF_CT_PROTO_DCCP=y",
+      "CONFIG_NF_CT_PROTO_GRE=y",
+      "CONFIG_NF_CT_PROTO_SCTP=y",
+      "CONFIG_NF_CT_PROTO_UDPLITE=y",
+      "CONFIG_NF_CONNTRACK_AMANDA=y",
+      "CONFIG_NF_CONNTRACK_FTP=y",
+      "CONFIG_NF_CONNTRACK_H323=y",
+      "CONFIG_NF_CONNTRACK_IRC=y",
+      "CONFIG_NF_CONNTRACK_BROADCAST=y",
+      "CONFIG_NF_CONNTRACK_NETBIOS_NS=y",
+      "# CONFIG_NF_CONNTRACK_SNMP is not set",
+      "CONFIG_NF_CONNTRACK_PPTP=y",
+      "CONFIG_NF_CONNTRACK_SANE=y",
+      "# CONFIG_NF_CONNTRACK_SIP is not set",
+      "CONFIG_NF_CONNTRACK_TFTP=y",
+      "CONFIG_NF_CT_NETLINK=y",
+      "# CONFIG_NETFILTER_NETLINK_GLUE_CT is not set",
+      "CONFIG_NF_NAT=y",
+      "CONFIG_NF_NAT_AMANDA=y",
+      "CONFIG_NF_NAT_FTP=y",
+      "CONFIG_NF_NAT_IRC=y",
+      "CONFIG_NF_NAT_TFTP=y",
+      "CONFIG_NF_NAT_REDIRECT=y",
+      "CONFIG_NF_NAT_MASQUERADE=y",
+      "# CONFIG_NF_TABLES is not set",
+      "CONFIG_NETFILTER_XTABLES=y",
+      "# CONFIG_NETFILTER_XTABLES_COMPAT is not set",
+      "CONFIG_NETFILTER_XT_MARK=y",
+      "CONFIG_NETFILTER_XT_CONNMARK=y",
+      "# CONFIG_NETFILTER_XT_TARGET_AUDIT is not set",
+      "# CONFIG_NETFILTER_XT_TARGET_CHECKSUM is not set",
+      "CONFIG_NETFILTER_XT_TARGET_CLASSIFY=y",
+      "CONFIG_NETFILTER_XT_TARGET_CONNMARK=y",
+      "CONFIG_NETFILTER_XT_TARGET_CONNSECMARK=y",
+      "CONFIG_NETFILTER_XT_TARGET_CT=y",
+      "CONFIG_NETFILTER_XT_TARGET_DSCP=y",
+      "# CONFIG_NETFILTER_XT_TARGET_HL is not set",
+      "# CONFIG_NETFILTER_XT_TARGET_HMARK is not set",
+      "CONFIG_NETFILTER_XT_TARGET_IDLETIMER=y",
+      "CONFIG_NETFILTER_XT_TARGET_LOG=y",
+      "CONFIG_NETFILTER_XT_TARGET_MARK=y",
+      "CONFIG_NETFILTER_XT_NAT=y",
+      "CONFIG_NETFILTER_XT_TARGET_NETMAP=y",
+      "CONFIG_NETFILTER_XT_TARGET_NFLOG=y",
+      "CONFIG_NETFILTER_XT_TARGET_NFQUEUE=y",
+      "CONFIG_NETFILTER_XT_TARGET_NOTRACK=y",
+      "# CONFIG_NETFILTER_XT_TARGET_RATEEST is not set",
+      "CONFIG_NETFILTER_XT_TARGET_REDIRECT=y",
+      "CONFIG_NETFILTER_XT_TARGET_MASQUERADE=y",
+      "CONFIG_NETFILTER_XT_TARGET_TEE=y",
+      "CONFIG_NETFILTER_XT_TARGET_TPROXY=y",
+      "CONFIG_NETFILTER_XT_TARGET_TRACE=y",
+      "CONFIG_NETFILTER_XT_TARGET_SECMARK=y",
+      "CONFIG_NETFILTER_XT_TARGET_TCPMSS=y",
+      "# CONFIG_NETFILTER_XT_TARGET_TCPOPTSTRIP is not set",
+      "# CONFIG_NETFILTER_XT_MATCH_ADDRTYPE is not set",
+      "CONFIG_NETFILTER_XT_MATCH_BPF=y",
+      "# CONFIG_NETFILTER_XT_MATCH_CGROUP is not set",
+      "# CONFIG_NETFILTER_XT_MATCH_CLUSTER is not set",
+      "CONFIG_NETFILTER_XT_MATCH_COMMENT=y",
+      "# CONFIG_NETFILTER_XT_MATCH_CONNBYTES is not set",
+      "# CONFIG_NETFILTER_XT_MATCH_CONNLABEL is not set",
+      "CONFIG_NETFILTER_XT_MATCH_CONNLIMIT=y",
+      "CONFIG_NETFILTER_XT_MATCH_CONNMARK=y",
+      "CONFIG_NETFILTER_XT_MATCH_CONNTRACK=y",
+      "# CONFIG_NETFILTER_XT_MATCH_CPU is not set",
+      "# CONFIG_NETFILTER_XT_MATCH_DCCP is not set",
+      "# CONFIG_NETFILTER_XT_MATCH_DEVGROUP is not set",
+      "CONFIG_NETFILTER_XT_MATCH_DSCP=y",
+      "CONFIG_NETFILTER_XT_MATCH_ECN=y",
+      "CONFIG_NETFILTER_XT_MATCH_ESP=y",
+      "CONFIG_NETFILTER_XT_MATCH_HASHLIMIT=y",
+      "CONFIG_NETFILTER_XT_MATCH_HELPER=y",
+      "CONFIG_NETFILTER_XT_MATCH_HL=y",
+      "# CONFIG_NETFILTER_XT_MATCH_IPCOMP is not set",
+      "CONFIG_NETFILTER_XT_MATCH_IPRANGE=y",
+      "# CONFIG_NETFILTER_XT_MATCH_L2TP is not set",
+      "CONFIG_NETFILTER_XT_MATCH_LENGTH=y",
+      "CONFIG_NETFILTER_XT_MATCH_LIMIT=y",
+      "CONFIG_NETFILTER_XT_MATCH_MAC=y",
+      "CONFIG_NETFILTER_XT_MATCH_MARK=y",
+      "CONFIG_NETFILTER_XT_MATCH_MULTIPORT=y",
+      "# CONFIG_NETFILTER_XT_MATCH_NFACCT is not set",
+      "# CONFIG_NETFILTER_XT_MATCH_OSF is not set",
+      "CONFIG_NETFILTER_XT_MATCH_OWNER=y",
+      "CONFIG_NETFILTER_XT_MATCH_POLICY=y",
+      "CONFIG_NETFILTER_XT_MATCH_PKTTYPE=y",
+      "CONFIG_NETFILTER_XT_MATCH_QUOTA=y",
+      "# CONFIG_NETFILTER_XT_MATCH_RATEEST is not set",
+      "# CONFIG_NETFILTER_XT_MATCH_REALM is not set",
+      "# CONFIG_NETFILTER_XT_MATCH_RECENT is not set",
+      "# CONFIG_NETFILTER_XT_MATCH_SCTP is not set",
+      "CONFIG_NETFILTER_XT_MATCH_SOCKET=y",
+      "CONFIG_NETFILTER_XT_MATCH_STATE=y",
+      "CONFIG_NETFILTER_XT_MATCH_STATISTIC=y",
+      "CONFIG_NETFILTER_XT_MATCH_STRING=y",
+      "# CONFIG_NETFILTER_XT_MATCH_TCPMSS is not set",
+      "CONFIG_NETFILTER_XT_MATCH_TIME=y",
+      "CONFIG_NETFILTER_XT_MATCH_U32=y",
+      "CONFIG_NF_DEFRAG_IPV4=y",
+      "CONFIG_IP_NF_IPTABLES_LEGACY=y",
+      "CONFIG_NF_SOCKET_IPV4=y",
+      "CONFIG_NF_TPROXY_IPV4=y",
+      "CONFIG_NF_DUP_IPV4=y",
+      "# CONFIG_NF_LOG_ARP is not set",
+      "# CONFIG_NF_LOG_IPV4 is not set",
+      "CONFIG_NF_REJECT_IPV4=y",
+      "CONFIG_NF_NAT_PPTP=y",
+      "CONFIG_NF_NAT_H323=y",
+      "CONFIG_IP_NF_IPTABLES=y",
+      "CONFIG_IP_NF_MATCH_AH=y",
+      "CONFIG_IP_NF_MATCH_ECN=y",
+      "CONFIG_IP_NF_MATCH_RPFILTER=y",
+      "CONFIG_IP_NF_MATCH_TTL=y",
+      "CONFIG_IP_NF_FILTER=y",
+      "CONFIG_IP_NF_TARGET_REJECT=y",
+      "# CONFIG_IP_NF_TARGET_SYNPROXY is not set",
+      "CONFIG_IP_NF_NAT=y",
+      "CONFIG_IP_NF_TARGET_MASQUERADE=y",
+      "CONFIG_IP_NF_TARGET_NETMAP=y",
+      "CONFIG_IP_NF_TARGET_REDIRECT=y",
+      "CONFIG_IP_NF_MANGLE=y",
+      "# CONFIG_IP_NF_TARGET_ECN is not set",
+      "# CONFIG_IP_NF_TARGET_TTL is not set",
+      "CONFIG_IP_NF_RAW=y",
+      "CONFIG_IP_NF_SECURITY=y",
+      "CONFIG_IP_NF_ARPTABLES=y",
+      "CONFIG_IP_NF_ARPFILTER=y",
+      "CONFIG_IP_NF_ARP_MANGLE=y",
+      "CONFIG_IP6_NF_IPTABLES_LEGACY=y",
+      "CONFIG_NF_SOCKET_IPV6=y",
+      "CONFIG_NF_TPROXY_IPV6=y",
+      "CONFIG_NF_DUP_IPV6=y",
+      "CONFIG_NF_REJECT_IPV6=y",
+      "CONFIG_NF_LOG_IPV6=y",
+      "CONFIG_IP6_NF_IPTABLES=y",
+      "# CONFIG_IP6_NF_MATCH_AH is not set",
+      "# CONFIG_IP6_NF_MATCH_EUI64 is not set",
+      "# CONFIG_IP6_NF_MATCH_FRAG is not set",
+      "# CONFIG_IP6_NF_MATCH_OPTS is not set",
+      "# CONFIG_IP6_NF_MATCH_HL is not set",
+      "# CONFIG_IP6_NF_MATCH_IPV6HEADER is not set",
+      "# CONFIG_IP6_NF_MATCH_MH is not set",
+      "CONFIG_IP6_NF_MATCH_RPFILTER=y",
+      "# CONFIG_IP6_NF_MATCH_RT is not set",
+      "# CONFIG_IP6_NF_MATCH_SRH is not set",
+      "# CONFIG_IP6_NF_TARGET_HL is not set",
+      "CONFIG_IP6_NF_FILTER=y",
+      "CONFIG_IP6_NF_TARGET_REJECT=y",
+      "# CONFIG_IP6_NF_TARGET_SYNPROXY is not set",
+      "CONFIG_IP6_NF_MANGLE=y",
+      "CONFIG_IP6_NF_RAW=y",
+      "# CONFIG_IP6_NF_SECURITY is not set",
+      "# CONFIG_IP6_NF_NAT is not set",
+      "CONFIG_NF_DEFRAG_IPV6=y",
+      "# CONFIG_NF_CONNTRACK_BRIDGE is not set",
+      "# CONFIG_CGROUP_NET_PRIO is not set",
+      "# CONFIG_CGROUP_NET_CLASSID is not set",
+      "# CONFIG_BPF_STREAM_PARSER is not set",
+      "CONFIG_RFKILL=y",
+      "CONFIG_RFKILL_INPUT=y",
+      "# CONFIG_RFKILL_GPIO is not set",
+      "CONFIG_DEVTMPFS=y",
+      "CONFIG_DEVTMPFS_MOUNT=y",
+      "# CONFIG_DEVTMPFS_SAFE is not set",
+      "CONFIG_ZRAM=y",
+      "# CONFIG_ZRAM_BACKEND_LZ4 is not set",
+      "# CONFIG_ZRAM_BACKEND_LZ4HC is not set",
+      "# CONFIG_ZRAM_BACKEND_ZSTD is not set",
+      "# CONFIG_ZRAM_BACKEND_DEFLATE is not set",
+      "# CONFIG_ZRAM_BACKEND_842 is not set",
+      "CONFIG_ZRAM_BACKEND_FORCE_LZO=y",
+      "CONFIG_ZRAM_BACKEND_LZO=y",
+      "CONFIG_ZRAM_DEF_COMP_LZORLE=y",
+      "# CONFIG_ZRAM_DEF_COMP_LZO is not set",
+      "CONFIG_ZRAM_DEF_COMP=\"lzo-rle\"",
+      "# CONFIG_ZRAM_WRITEBACK is not set",
+      "# CONFIG_ZRAM_TRACK_ENTRY_ACTIME is not set",
+      "# CONFIG_ZRAM_MEMORY_TRACKING is not set",
+      "# CONFIG_ZRAM_MULTI_COMP is not set",
+      "CONFIG_VIRTIO_BLK=y",
+      "CONFIG_VIRTIO_NET=y",
+      "CONFIG_TTY=y",
+      "CONFIG_UNIX98_PTYS=y",
+      "CONFIG_SERIAL_AMBA_PL011=y",
+      "CONFIG_SERIAL_AMBA_PL011_CONSOLE=y",
+      "# CONFIG_VIRTIO_CONSOLE is not set",
+      "CONFIG_VIRTIO_ANCHOR=y",
+      "CONFIG_VIRTIO=y",
+      "CONFIG_VIRTIO_PCI_LIB=y",
+      "CONFIG_VIRTIO_PCI_LIB_LEGACY=y",
+      "CONFIG_VIRTIO_MENU=y",
+      "CONFIG_VIRTIO_PCI=y",
+      "CONFIG_VIRTIO_PCI_LEGACY=y",
+      "# CONFIG_VIRTIO_BALLOON is not set",
+      "# CONFIG_VIRTIO_MEM is not set",
+      "# CONFIG_VIRTIO_INPUT is not set",
+      "CONFIG_VIRTIO_MMIO=y",
+      "# CONFIG_VIRTIO_MMIO_CMDLINE_DEVICES is not set",
+      "CONFIG_VIRTIO_DMA_SHARED_BUFFER=m",
+      "# CONFIG_VIRTIO_DEBUG is not set",
+      "# CONFIG_VIRTIO_IOMMU is not set",
+      "CONFIG_EXT4_FS=y",
+      "CONFIG_EXT4_USE_FOR_EXT2=y",
+      "CONFIG_EXT4_FS_POSIX_ACL=y",
+      "CONFIG_EXT4_FS_SECURITY=y",
+      "# CONFIG_EXT4_DEBUG is not set",
+      "# CONFIG_VIRTIO_FS is not set",
+      "CONFIG_TMPFS=y",
+      "CONFIG_TMPFS_POSIX_ACL=y",
+      "CONFIG_TMPFS_XATTR=y",
+      "# CONFIG_TMPFS_INODE64 is not set",
+      "# CONFIG_TMPFS_QUOTA is not set",
+      "CONFIG_SECURITYFS=y",
+      "CONFIG_SECURITY_SELINUX=y",
+      "# CONFIG_SECURITY_SELINUX_BOOTPARAM is not set",
+      "CONFIG_SECURITY_SELINUX_DEVELOP=y",
+      "CONFIG_SECURITY_SELINUX_AVC_STATS=y",
+      "CONFIG_SECURITY_SELINUX_SIDTAB_HASH_BITS=9",
+      "CONFIG_SECURITY_SELINUX_SID2STR_CACHE_SIZE=256",
+      "# CONFIG_SECURITY_SELINUX_DEBUG is not set",
+      "CONFIG_LSM=\"landlock,lockdown,yama,loadpin,safesetid,selinux,smack,tomoyo,apparmor,ipe,bpf\"",
+      "CONFIG_MODULE_SIG_KEY=\"certs/signing_key.pem\"",
+      "CONFIG_MODULE_SIG_KEY_TYPE_RSA=y",
+      "# CONFIG_MODULE_SIG_KEY_TYPE_ECDSA is not set",
+      "# CONFIG_MODULE_ALLOW_BTF_MISMATCH is not set",
+      "CONFIG_BPF_EVENTS=y"
+    ],
+    "sha256": "0236496603f168aacc5586eac7e199ca8f840b5d0c9b5ed111da64e9d28ec275",
+    "size": 222379
+  },
+  "original_archive": {
+    "path": "/work/pmwork/artifacts/nura-qemu-aarch64-userspace-20261123.tar.gz",
+    "sha256": "eb8786e4fb51b25f077d5ade55e89123eb702d8c99076bbce5c11083f112ed46",
+    "size_bytes": 307393454
+  },
+  "original_archive_extracted": false,
+  "original_files": {
+    "bin/busybox": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "bin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "bin/busybox",
+      "resolved_path": "usr/bin/busybox",
+      "sha256": "79d9f5301a6781f5b4c885a190e32c1bef4d441b180fac1d2af5672e2cda0b77",
+      "size": 919296,
+      "uid": 0
+    },
+    "bin/mount": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "bin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o4755",
+      "path": "bin/mount",
+      "resolved_path": "usr/bin/mount",
+      "sha256": "1d1a4761ad44dd49935c37bb114e5cdd44e73998a89bb37af183252141bf5101",
+      "size": 67544,
+      "uid": 0
+    },
+    "bin/sh": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "bin",
+          "target": "usr/bin"
+        },
+        {
+          "path": "usr/bin/sh",
+          "target": "/bin/busybox"
+        },
+        {
+          "path": "bin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "bin/sh",
+      "resolved_path": "usr/bin/busybox",
+      "sha256": "79d9f5301a6781f5b4c885a190e32c1bef4d441b180fac1d2af5672e2cda0b77",
+      "size": 919296,
+      "uid": 0
+    },
+    "bin/umount": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "bin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o4755",
+      "path": "bin/umount",
+      "resolved_path": "usr/bin/umount",
+      "sha256": "e949a6517050067cda2e0bfbc9f75200ef36c61d639de109da48c29b8975aea8",
+      "size": 67544,
+      "uid": 0
+    },
+    "boot/loader/entries/pmos.conf": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "boot/loader/entries/pmos.conf",
+      "resolved_path": "boot/loader/entries/pmos.conf",
+      "sha256": "24d1d3a70e856fae81d87c2dce4bae57841b7e936cf6e59248fc2750699fb973",
+      "size": 219,
+      "uid": 0
+    },
+    "etc/alpine-release": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/alpine-release",
+      "resolved_path": "etc/alpine-release",
+      "sha256": "3824b7ce8b79194a20bb6d054e890acda736e3a790bf401e399bbaac4ef29122",
+      "size": 21,
+      "uid": 0
+    },
+    "etc/conf.d/bootmisc": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/conf.d/bootmisc",
+      "resolved_path": "etc/conf.d/bootmisc",
+      "sha256": "0c3a39aad7ebaf3671e2cc47f7964ed54cbe2f749e57b947697bf450d4d919f5",
+      "size": 474,
+      "uid": 0
+    },
+    "etc/conf.d/chronyd": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/conf.d/chronyd",
+      "resolved_path": "etc/conf.d/chronyd",
+      "sha256": "d225a3fff76b111309d685568920b947bcfa4a1720dea3a45ecad46e7aeb7b7b",
+      "size": 629,
+      "uid": 0
+    },
+    "etc/conf.d/hwclock": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/conf.d/hwclock",
+      "resolved_path": "etc/conf.d/hwclock",
+      "sha256": "90f1a970526a386ce7d1686d702acc13e8b91dde60cdbf04f7e046d9b1707b31",
+      "size": 857,
+      "uid": 0
+    },
+    "etc/conf.d/logbookd": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/conf.d/logbookd",
+      "resolved_path": "etc/conf.d/logbookd",
+      "sha256": "ce78f9e2fc9de808e568f6ecf928c6e4167d5b83417cc8ca78a5e9695f895ca5",
+      "size": 504,
+      "uid": 0
+    },
+    "etc/conf.d/modules": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/conf.d/modules",
+      "resolved_path": "etc/conf.d/modules",
+      "sha256": "1293aa3b79397bfa7055a8cdfa3f79a50198634fbe4d9d4540fb59466ca7608f",
+      "size": 891,
+      "uid": 0
+    },
+    "etc/conf.d/nftables": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/conf.d/nftables",
+      "resolved_path": "etc/conf.d/nftables",
+      "sha256": "dbc81dde9268f9d79ae01d217db4f88a0e3e8ce6344dcb74be338220f331d7f2",
+      "size": 1517,
+      "uid": 0
+    },
+    "etc/conf.d/rfkill": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/conf.d/rfkill",
+      "resolved_path": "etc/conf.d/rfkill",
+      "sha256": "d34e754f2ea29b6377a06ca1d4c31a85767f08995b9bbe777b85c023c88d3343",
+      "size": 321,
+      "uid": 0
+    },
+    "etc/conf.d/swapfile": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/conf.d/swapfile",
+      "resolved_path": "etc/conf.d/swapfile",
+      "sha256": "f1b9994ab8295aad953001fac0076e227b4154f97cd93fb45dee56a39d12c109",
+      "size": 53,
+      "uid": 0
+    },
+    "etc/conf.d/tmpfs": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/conf.d/tmpfs",
+      "resolved_path": "etc/conf.d/tmpfs",
+      "sha256": "d2c8645c5c59bf60507f671e0b372c77e9afa9056b6b2e416595d9c3c6e9f8b6",
+      "size": 332,
+      "uid": 0
+    },
+    "etc/conf.d/wpa_supplicant": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/conf.d/wpa_supplicant",
+      "resolved_path": "etc/conf.d/wpa_supplicant",
+      "sha256": "8ef2f6aafc60625170dc27cd4fefe10e5b56dc151b523e5fb6f05774e4923064",
+      "size": 37,
+      "uid": 0
+    },
+    "etc/fstab": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/fstab",
+      "resolved_path": "etc/fstab",
+      "sha256": "001260aa450333d1757fddae7bcf01cf006ce323050dc2fa51d749802bde5ea2",
+      "size": 98,
+      "uid": 0
+    },
+    "etc/init.d/bootmisc": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/bootmisc",
+      "resolved_path": "etc/init.d/bootmisc",
+      "sha256": "7e8f4041d60bebcd03e3e0a37dd0e9c54ffe7e1058619ae4831e2ea90cb9b609",
+      "size": 6032,
+      "uid": 0
+    },
+    "etc/init.d/cgroups": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/cgroups",
+      "resolved_path": "etc/init.d/cgroups",
+      "sha256": "8b56a0712bff950b23696699e5ba76f895b448ef8f7a77412edb8e8f28571e7a",
+      "size": 3721,
+      "uid": 0
+    },
+    "etc/init.d/chronyd": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/chronyd",
+      "resolved_path": "etc/init.d/chronyd",
+      "sha256": "58803e4fbf44b2e8fc01fd1765bbeb363bf999b60a2a5b5da0d448e66b64b5ce",
+      "size": 1172,
+      "uid": 0
+    },
+    "etc/init.d/dbus": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/dbus",
+      "resolved_path": "etc/init.d/dbus",
+      "sha256": "cfccab806705af98760a92e27531242e97a73757ad08f4c044916faa245a48a9",
+      "size": 795,
+      "uid": 0
+    },
+    "etc/init.d/devfs": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/devfs",
+      "resolved_path": "etc/init.d/devfs",
+      "sha256": "4f211b45f8d19dd8e5d6badc54ead03a38c79fc14cd885eaaa220792f18c68c9",
+      "size": 3758,
+      "uid": 0
+    },
+    "etc/init.d/fsck": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/fsck",
+      "resolved_path": "etc/init.d/fsck",
+      "sha256": "eba4408b9c98b9fa18a9617f82907bb12d5cf1e8d26b051f4fb44e14227def10",
+      "size": 3171,
+      "uid": 0
+    },
+    "etc/init.d/haveged": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/haveged",
+      "resolved_path": "etc/init.d/haveged",
+      "sha256": "2d6fa9c6a9aeab46cd641dc6082d8417337bb03d82cba7ddabf03fbc9e58065a",
+      "size": 340,
+      "uid": 0
+    },
+    "etc/init.d/hostname": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/hostname",
+      "resolved_path": "etc/init.d/hostname",
+      "sha256": "b52fa145995729852fa931aef5e7426c4bf1413a105a3e55674fb35342b4705a",
+      "size": 1034,
+      "uid": 0
+    },
+    "etc/init.d/hwclock": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/hwclock",
+      "resolved_path": "etc/init.d/hwclock",
+      "sha256": "33ae94ebfbf4e26ca1dbb7395b6f9d5548694b85698294ab4836100fd6e61d52",
+      "size": 3325,
+      "uid": 0
+    },
+    "etc/init.d/local": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/local",
+      "resolved_path": "etc/init.d/local",
+      "sha256": "a0e3871ac8d8a4457d174ace4d00b7662397ba380804ef412db39225434a1bd8",
+      "size": 2748,
+      "uid": 0
+    },
+    "etc/init.d/localmount": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/localmount",
+      "resolved_path": "etc/init.d/localmount",
+      "sha256": "1e1358cb6fcdf5ea05fd66b3709f211ec55341cc76986b9a98fff3a9bb0fc3fa",
+      "size": 3723,
+      "uid": 0
+    },
+    "etc/init.d/logbookd": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/logbookd",
+      "resolved_path": "etc/init.d/logbookd",
+      "sha256": "4ec14378d7ce9ca3b631d518da2089382126b786aac9398822905eeca5a19b63",
+      "size": 444,
+      "uid": 0
+    },
+    "etc/init.d/modules": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/modules",
+      "resolved_path": "etc/init.d/modules",
+      "sha256": "f31ac5d3d41865d4fbe39d59f5ac0f8eee44122260a8eefce561afc6fea0f1b4",
+      "size": 1664,
+      "uid": 0
+    },
+    "etc/init.d/networkmanager": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/networkmanager",
+      "resolved_path": "etc/init.d/networkmanager",
+      "sha256": "4b93cf7905ed5102d86426d166a0fac6bdc22dd2fb69030ae814ada4beef7469",
+      "size": 378,
+      "uid": 0
+    },
+    "etc/init.d/nftables": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/nftables",
+      "resolved_path": "etc/init.d/nftables",
+      "sha256": "ffc3bba3fc17d93c251711529331321d53e2e67c52485afbf00911468aad86c2",
+      "size": 3638,
+      "uid": 0
+    },
+    "etc/init.d/postmarketos-zram-swap": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/postmarketos-zram-swap",
+      "resolved_path": "etc/init.d/postmarketos-zram-swap",
+      "sha256": "0c609877cc7ccbfd961d68ea457524b392d51a85fc0b594dd1a90a1516978b93",
+      "size": 351,
+      "uid": 0
+    },
+    "etc/init.d/procfs": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/procfs",
+      "resolved_path": "etc/init.d/procfs",
+      "sha256": "1b41187795320d135c5260438b8e4e1d71f1d40f0d23d48c69f0d2b798d47dd7",
+      "size": 1271,
+      "uid": 0
+    },
+    "etc/init.d/rfkill": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/rfkill",
+      "resolved_path": "etc/init.d/rfkill",
+      "sha256": "59637f63f66df13539d651166c33a9122c6de93ef0f102da471e97bdaff4fb04",
+      "size": 898,
+      "uid": 0
+    },
+    "etc/init.d/root": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/root",
+      "resolved_path": "etc/init.d/root",
+      "sha256": "028beb04f4154c349b53fa04ce5028522462a3d9b095d42e2966db15dd7bb426",
+      "size": 1777,
+      "uid": 0
+    },
+    "etc/init.d/routewrangler": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/routewrangler",
+      "resolved_path": "etc/init.d/routewrangler",
+      "sha256": "c6b563a5e661f74e43b8cfa772627711dcc8b75ede5cc5c7e508c841a961500f",
+      "size": 155,
+      "uid": 0
+    },
+    "etc/init.d/sleep-inhibitor": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/sleep-inhibitor",
+      "resolved_path": "etc/init.d/sleep-inhibitor",
+      "sha256": "f4e9596cfe038ff7dd2f535d4912ee847de5cfda22612ace8ca82599b147d8ce",
+      "size": 160,
+      "uid": 0
+    },
+    "etc/init.d/swapfile": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/swapfile",
+      "resolved_path": "etc/init.d/swapfile",
+      "sha256": "2f0f347ba27e605cdb51d582994ae1259fa22ebd336f5265de6601160823af43",
+      "size": 253,
+      "uid": 0
+    },
+    "etc/init.d/sysctl": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/sysctl",
+      "resolved_path": "etc/init.d/sysctl",
+      "sha256": "3d042c8978efc79f5383ef01f6a2ccc84e9d236e464fda8e2aaa3ee2bd4cdfb7",
+      "size": 1827,
+      "uid": 0
+    },
+    "etc/init.d/sysfs": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/sysfs",
+      "resolved_path": "etc/init.d/sysfs",
+      "sha256": "087654045e05d5c81727df30bef3266e03c255aa0028f0f09cf3d87d94740922",
+      "size": 3851,
+      "uid": 0
+    },
+    "etc/init.d/systemd-sysusers": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/systemd-sysusers",
+      "resolved_path": "etc/init.d/systemd-sysusers",
+      "sha256": "8f1d78f4948ebb175c89eae216aabf28f61f99e22a709d22bf9a5f02cdb62182",
+      "size": 243,
+      "uid": 0
+    },
+    "etc/init.d/systemd-tmpfiles-setup": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/systemd-tmpfiles-setup",
+      "resolved_path": "etc/init.d/systemd-tmpfiles-setup",
+      "sha256": "6ba5bf13e2904aa604ab045bebb6230704b2be6105f664abc03be4de53621475",
+      "size": 312,
+      "uid": 0
+    },
+    "etc/init.d/systemd-tmpfiles-setup-dev": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/systemd-tmpfiles-setup-dev",
+      "resolved_path": "etc/init.d/systemd-tmpfiles-setup-dev",
+      "sha256": "7a9a3e942cdeadd7fa7307d90c4e33032911c79afbe7708fa4fddc126b53e01a",
+      "size": 304,
+      "uid": 0
+    },
+    "etc/init.d/systemd-tmpfiles-setup-dev-early": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/systemd-tmpfiles-setup-dev-early",
+      "resolved_path": "etc/init.d/systemd-tmpfiles-setup-dev-early",
+      "sha256": "79e2673298eacb0f58f0a9dfc53ddb1df008e186e0ba5553c49ec97632413294",
+      "size": 317,
+      "uid": 0
+    },
+    "etc/init.d/tmpfs": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/tmpfs",
+      "resolved_path": "etc/init.d/tmpfs",
+      "sha256": "db5765c178ee52ddc705c3894d5a19624ceb02be854251dcc63732ea14707785",
+      "size": 671,
+      "uid": 0
+    },
+    "etc/init.d/udev": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/udev",
+      "resolved_path": "etc/init.d/udev",
+      "sha256": "4182cb5ed5dd1c9514fbba4425b31f3659e9f31e53ee18521b67b0d734e73d80",
+      "size": 2154,
+      "uid": 0
+    },
+    "etc/init.d/udev-postmount": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/udev-postmount",
+      "resolved_path": "etc/init.d/udev-postmount",
+      "sha256": "b0327069dbb57b39600079b87df80915dabb77c2fa298d6ae109ca04f8ba08b5",
+      "size": 1208,
+      "uid": 0
+    },
+    "etc/init.d/udev-settle": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/udev-settle",
+      "resolved_path": "etc/init.d/udev-settle",
+      "sha256": "4ce2fadbb2ba448838f8599a3a361a4a1a1100f74e63e72fe9aa0d493fc81611",
+      "size": 354,
+      "uid": 0
+    },
+    "etc/init.d/udev-trigger": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/udev-trigger",
+      "resolved_path": "etc/init.d/udev-trigger",
+      "sha256": "b20d6c3937a6ccf0b2fff51b436cba1c722702ce99cfc67f4816fd16c567ed46",
+      "size": 2584,
+      "uid": 0
+    },
+    "etc/init.d/unudhcpd.usb0": {
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "etc/init.d/unudhcpd.usb0",
+          "target": "/etc/init.d/unudhcpd"
+        }
+      ],
+      "mode": "0o755",
+      "path": "etc/init.d/unudhcpd.usb0",
+      "resolved_path": "etc/init.d/unudhcpd",
+      "sha256": "753d81f7017bb84fecdf2614f693e3263f9cc361e706fc834aa488c1cc26da42",
+      "size": 451,
+      "uid": 0
+    },
+    "etc/init.d/wpa_supplicant": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "etc/init.d/wpa_supplicant",
+      "resolved_path": "etc/init.d/wpa_supplicant",
+      "sha256": "17f0550d859d901f9f365076b00d978908a62e3327e500d8819396e8e987a7aa",
+      "size": 2097,
+      "uid": 0
+    },
+    "etc/inittab": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/inittab",
+      "resolved_path": "etc/inittab",
+      "sha256": "069974fcce1908d8bbd64daee7ab1cc7b32e0a0e102044509f6d81debfce4c5d",
+      "size": 573,
+      "uid": 0
+    },
+    "etc/modprobe.d/aliases.conf": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/modprobe.d/aliases.conf",
+      "resolved_path": "etc/modprobe.d/aliases.conf",
+      "sha256": "3ebaba946f213670170c7d69949f690a3854553bd0b1560f1d980cba4c83a942",
+      "size": 1545,
+      "uid": 0
+    },
+    "etc/modprobe.d/blacklist.conf": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/modprobe.d/blacklist.conf",
+      "resolved_path": "etc/modprobe.d/blacklist.conf",
+      "sha256": "0e9ab848289bfb20b9b066d05c8b1383a7c92b97ff8072a50806054b5d3fd739",
+      "size": 2247,
+      "uid": 0
+    },
+    "etc/modprobe.d/i386.conf": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/modprobe.d/i386.conf",
+      "resolved_path": "etc/modprobe.d/i386.conf",
+      "sha256": "6c46c4cbfb8b7594f19eb94801a350fa2221ae9ac5239a8819d15555caa76ae8",
+      "size": 122,
+      "uid": 0
+    },
+    "etc/modules": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/modules",
+      "resolved_path": "etc/modules",
+      "sha256": "2c881de75a5409c35d2433a24f180b8b02ba478ef2c1c60ea3434a35bcbc335d",
+      "size": 15,
+      "uid": 0
+    },
+    "etc/nftables.d/01_wwan.nft": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/nftables.d/01_wwan.nft",
+      "resolved_path": "etc/nftables.d/01_wwan.nft",
+      "sha256": "79a60ed59eb642938e9dbe66c6a73c222bd888c4df4e2db15792f772a4af4520",
+      "size": 234,
+      "uid": 0
+    },
+    "etc/nftables.d/10_dhcp.nft": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/nftables.d/10_dhcp.nft",
+      "resolved_path": "etc/nftables.d/10_dhcp.nft",
+      "sha256": "734e0c5ca0e75d08234f364fe77a6b07199fd84b7cfa933af10832bb3c928df7",
+      "size": 440,
+      "uid": 0
+    },
+    "etc/nftables.d/50_ausweisapp2.nft": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/nftables.d/50_ausweisapp2.nft",
+      "resolved_path": "etc/nftables.d/50_ausweisapp2.nft",
+      "sha256": "a0a13201c55d0f63b478f54685177b68d94c2d2aeade6ec8bf7370d8f9ea59e6",
+      "size": 137,
+      "uid": 0
+    },
+    "etc/nftables.d/50_localsend.nft": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/nftables.d/50_localsend.nft",
+      "resolved_path": "etc/nftables.d/50_localsend.nft",
+      "sha256": "11b960425e8264d0a2099b8851a02c51415b96a4d56877785e1bd95e5b24d5ff",
+      "size": 181,
+      "uid": 0
+    },
+    "etc/nftables.d/50_sshd.nft": {
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "etc/nftables.d/50_sshd.nft",
+          "target": "../../usr/share/nftables.avail/50_sshd.nft"
+        }
+      ],
+      "mode": "0o644",
+      "path": "etc/nftables.d/50_sshd.nft",
+      "resolved_path": "usr/share/nftables.avail/50_sshd.nft",
+      "sha256": "87ef8c9970a5dbafd1074b1612d5dfae5f80c77fdfc16ef016bff0e48113106a",
+      "size": 83,
+      "uid": 0
+    },
+    "etc/nftables.d/51_hotspot.nft": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/nftables.d/51_hotspot.nft",
+      "resolved_path": "etc/nftables.d/51_hotspot.nft",
+      "sha256": "de4c6efdfe9c665ef0215c9ee47e908d19314fc9aa4987649ba5c1bfd56734fc",
+      "size": 326,
+      "uid": 0
+    },
+    "etc/nftables.d/51_usb_inet.nft": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/nftables.d/51_usb_inet.nft",
+      "resolved_path": "etc/nftables.d/51_usb_inet.nft",
+      "sha256": "0be13ba8561b76105e2ecee49157c16e0bac2348944f87a2aaf75eb42a6fe273",
+      "size": 318,
+      "uid": 0
+    },
+    "etc/nftables.nft": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/nftables.nft",
+      "resolved_path": "etc/nftables.nft",
+      "sha256": "1a1fac08dfba46f2754fb7de4258fd9f3d68b1e131419bc79d25746bf9aec62c",
+      "size": 2348,
+      "uid": 0
+    },
+    "etc/os-release": {
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "etc/os-release",
+          "target": "../usr/lib/os-release"
+        }
+      ],
+      "mode": "0o644",
+      "path": "etc/os-release",
+      "resolved_path": "usr/lib/os-release",
+      "sha256": "4fff1905e56583d53e102a80c42721c662e3310ddca1fab2bc4c51881bdae3d1",
+      "size": 305,
+      "uid": 0
+    },
+    "etc/rc.conf": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/rc.conf",
+      "resolved_path": "etc/rc.conf",
+      "sha256": "c7ce810693680cca288134adc0c109c192aedd37cbbdef7b4f4dc82c8c38696b",
+      "size": 13521,
+      "uid": 0
+    },
+    "etc/sysctl.conf": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "etc/sysctl.conf",
+      "resolved_path": "etc/sysctl.conf",
+      "sha256": "8bba47da45bc8715c69ac904a60410eabffaa7bbbef640f9c1368ab9c48493d0",
+      "size": 53,
+      "uid": 0
+    },
+    "sbin/apk": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/apk",
+      "resolved_path": "usr/bin/apk",
+      "sha256": "d8f2b43ccfbb8eb2552d34f0f335a9c7812dcf48c95a8515fa05d644e0345c51",
+      "size": 135248,
+      "uid": 0
+    },
+    "sbin/depmod": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        },
+        {
+          "path": "usr/bin/depmod",
+          "target": "../bin/kmod"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/depmod",
+      "resolved_path": "usr/bin/kmod",
+      "sha256": "e2de3c1a1eefb1afe1f2458a03541bf388bfdcf4aa83d762d0f5fa2cdec41319",
+      "size": 133208,
+      "uid": 0
+    },
+    "sbin/init": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        },
+        {
+          "path": "usr/bin/init",
+          "target": "/bin/busybox"
+        },
+        {
+          "path": "bin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/init",
+      "resolved_path": "usr/bin/busybox",
+      "sha256": "79d9f5301a6781f5b4c885a190e32c1bef4d441b180fac1d2af5672e2cda0b77",
+      "size": 919296,
+      "uid": 0
+    },
+    "sbin/modinfo": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        },
+        {
+          "path": "usr/bin/modinfo",
+          "target": "../bin/kmod"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/modinfo",
+      "resolved_path": "usr/bin/kmod",
+      "sha256": "e2de3c1a1eefb1afe1f2458a03541bf388bfdcf4aa83d762d0f5fa2cdec41319",
+      "size": 133208,
+      "uid": 0
+    },
+    "sbin/modprobe": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        },
+        {
+          "path": "usr/bin/modprobe",
+          "target": "../bin/kmod"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/modprobe",
+      "resolved_path": "usr/bin/kmod",
+      "sha256": "e2de3c1a1eefb1afe1f2458a03541bf388bfdcf4aa83d762d0f5fa2cdec41319",
+      "size": 133208,
+      "uid": 0
+    },
+    "sbin/openrc": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/openrc",
+      "resolved_path": "usr/bin/openrc",
+      "sha256": "2a52e80af8e15cd83f67ffb01deee58323cfd72e813d8f78673ac4c2c2828bed",
+      "size": 67440,
+      "uid": 0
+    },
+    "sbin/openrc-run": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/openrc-run",
+      "resolved_path": "usr/bin/openrc-run",
+      "sha256": "3e4dfb68fe1441476db0c2dad9334f6440abef3bb353c59a15eb876d8b876ced",
+      "size": 67440,
+      "uid": 0
+    },
+    "sbin/poweroff": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        },
+        {
+          "path": "usr/bin/poweroff",
+          "target": "/bin/busybox"
+        },
+        {
+          "path": "bin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/poweroff",
+      "resolved_path": "usr/bin/busybox",
+      "sha256": "79d9f5301a6781f5b4c885a190e32c1bef4d441b180fac1d2af5672e2cda0b77",
+      "size": 919296,
+      "uid": 0
+    },
+    "sbin/rc-service": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/rc-service",
+      "resolved_path": "usr/bin/rc-service",
+      "sha256": "4b6cd5eeb2886eca16b1c704795009df720074d9100c7f628fef3a011f41901b",
+      "size": 67416,
+      "uid": 0
+    },
+    "sbin/rc-status": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/rc-status",
+      "resolved_path": "usr/bin/rc-status",
+      "sha256": "e27231b2cf9e79e1e0fa061ce92c89419d4762aafcf042422684d58dd71c3292",
+      "size": 67416,
+      "uid": 0
+    },
+    "sbin/rc-update": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/rc-update",
+      "resolved_path": "usr/bin/rc-update",
+      "sha256": "bc1c13f1e834de2e8c18fa11e398fddfe34477f97a8c58165d6d1ae4bfbc1fc3",
+      "size": 67416,
+      "uid": 0
+    },
+    "sbin/start-stop-daemon": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/start-stop-daemon",
+      "resolved_path": "usr/bin/start-stop-daemon",
+      "sha256": "eec66e15789c991033bd6b97a92307aeb4dd142129a2d3bdd2c38712dd56f4f4",
+      "size": 67424,
+      "uid": 0
+    },
+    "sbin/udevd": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "sbin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "sbin/udevd",
+      "resolved_path": "usr/bin/udevd",
+      "sha256": "e97271e5560f5b61fd2ee8dd1145a673c92378fd9b204be689ae1c79f7cdfcb7",
+      "size": 264448,
+      "uid": 0
+    },
+    "usr/bin/NetworkManager": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/NetworkManager",
+      "resolved_path": "usr/bin/NetworkManager",
+      "sha256": "ca461c16a8d355c84ec941eb36f384301d03b332474672cc77e2e4641291068d",
+      "size": 2891672,
+      "uid": 0
+    },
+    "usr/bin/blkid": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/blkid",
+      "resolved_path": "usr/bin/blkid",
+      "sha256": "ae3f3e85e4b44f7efd8ed5973882f251c746c6eec191fb9cfbed4f59311aec42",
+      "size": 67584,
+      "uid": 0
+    },
+    "usr/bin/busctl": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/busctl",
+      "resolved_path": "usr/bin/busctl",
+      "sha256": "62fd1a444ee428d9c4ec7218b97ab1cd27588a11cd577c315d27b976fd4f1941",
+      "size": 133232,
+      "uid": 0
+    },
+    "usr/bin/chronyd": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/chronyd",
+      "resolved_path": "usr/bin/chronyd",
+      "sha256": "96ad913bead87dc52279280bd15e78f1e5a527622f1ce8ad298aa9894b98454b",
+      "size": 264408,
+      "uid": 0
+    },
+    "usr/bin/dbus-daemon": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/dbus-daemon",
+      "resolved_path": "usr/bin/dbus-daemon",
+      "sha256": "a4033f47304c423b30ee4fa4f9edab35ac867c92ea3a9e15c86c4f3a4259e1c9",
+      "size": 199016,
+      "uid": 0
+    },
+    "usr/bin/dbus-send": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/dbus-send",
+      "resolved_path": "usr/bin/dbus-send",
+      "sha256": "7a733bc8c822dd4ae847ec2518d76096f4ad1cc12901f2bb1aa360e095162628",
+      "size": 67472,
+      "uid": 0
+    },
+    "usr/bin/findmnt": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/findmnt",
+      "resolved_path": "usr/bin/findmnt",
+      "sha256": "7499c64c63818404ea402a0d43b2db91e885b2354cacfe99b170772727091509",
+      "size": 69080,
+      "uid": 0
+    },
+    "usr/bin/haveged": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/haveged",
+      "resolved_path": "usr/bin/haveged",
+      "sha256": "74866902cbe525d38b850b64aacf9ca58b0bfd15d5dc619540e5c2356e971ddf",
+      "size": 68144,
+      "uid": 0
+    },
+    "usr/bin/logbookd": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/logbookd",
+      "resolved_path": "usr/bin/logbookd",
+      "sha256": "ffceefc754fffebecc2ae1b0ecea8a3e3145d66ae90a794e7e66e5f74a6588ac",
+      "size": 67760,
+      "uid": 0
+    },
+    "usr/bin/mkswap": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/mkswap",
+      "resolved_path": "usr/bin/mkswap",
+      "sha256": "32fe5cd273d7bc57a8dcfde10ad52ca3c7a30ca189b6ac1d3822de70466ca1d7",
+      "size": 67552,
+      "uid": 0
+    },
+    "usr/bin/nft": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/nft",
+      "resolved_path": "usr/bin/nft",
+      "sha256": "f146e671cc003693b59d406f2b1a8d314a29f91dea0b90384fc4ca054e5250db",
+      "size": 67544,
+      "uid": 0
+    },
+    "usr/bin/python3": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "usr/bin/python3",
+          "target": "python3.14"
+        }
+      ],
+      "mode": "0o755",
+      "path": "usr/bin/python3",
+      "resolved_path": "usr/bin/python3.14",
+      "sha256": "b776d2d6601ffe3bebbae359a8560a7efd0fe1d80b33b6235035225090a567db",
+      "size": 67328,
+      "uid": 0
+    },
+    "usr/bin/python3.14": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/python3.14",
+      "resolved_path": "usr/bin/python3.14",
+      "sha256": "b776d2d6601ffe3bebbae359a8560a7efd0fe1d80b33b6235035225090a567db",
+      "size": 67328,
+      "uid": 0
+    },
+    "usr/bin/rfkill": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/rfkill",
+      "resolved_path": "usr/bin/rfkill",
+      "sha256": "3355414bca0bb42367219472cfe453803ea30ae41a95673b28e47f6a2c48e568",
+      "size": 67544,
+      "uid": 0
+    },
+    "usr/bin/sha256sum": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "usr/bin/sha256sum",
+          "target": "/bin/busybox"
+        },
+        {
+          "path": "bin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "usr/bin/sha256sum",
+      "resolved_path": "usr/bin/busybox",
+      "sha256": "79d9f5301a6781f5b4c885a190e32c1bef4d441b180fac1d2af5672e2cda0b77",
+      "size": 919296,
+      "uid": 0
+    },
+    "usr/bin/stat": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "usr/bin/stat",
+          "target": "/bin/busybox"
+        },
+        {
+          "path": "bin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "usr/bin/stat",
+      "resolved_path": "usr/bin/busybox",
+      "sha256": "79d9f5301a6781f5b4c885a190e32c1bef4d441b180fac1d2af5672e2cda0b77",
+      "size": 919296,
+      "uid": 0
+    },
+    "usr/bin/swapfile": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/swapfile",
+      "resolved_path": "usr/bin/swapfile",
+      "sha256": "5552ab870e358bc584c6534171e56f4dc821676a4b46b699c6b85b062f6be0f6",
+      "size": 2574,
+      "uid": 0
+    },
+    "usr/bin/swapon": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/swapon",
+      "resolved_path": "usr/bin/swapon",
+      "sha256": "add34ebb855eead360de4cef264c7d4a3ebf1db71fad6ba63793e23af6dc4650",
+      "size": 67544,
+      "uid": 0
+    },
+    "usr/bin/sync": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "usr/bin/sync",
+          "target": "/bin/busybox"
+        },
+        {
+          "path": "bin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "usr/bin/sync",
+      "resolved_path": "usr/bin/busybox",
+      "sha256": "79d9f5301a6781f5b4c885a190e32c1bef4d441b180fac1d2af5672e2cda0b77",
+      "size": 919296,
+      "uid": 0
+    },
+    "usr/bin/systemd-sysusers": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/systemd-sysusers",
+      "resolved_path": "usr/bin/systemd-sysusers",
+      "sha256": "b0aa999903c64114f5aded2f7baae0cdb1c4bcdc293a5c0c955fe7bdc0f7883e",
+      "size": 134384,
+      "uid": 0
+    },
+    "usr/bin/systemd-tmpfiles": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/systemd-tmpfiles",
+      "resolved_path": "usr/bin/systemd-tmpfiles",
+      "sha256": "252d5b6f554d6ab33fb47f4b0024a8282ea20230460a2b165dd33dc4f281fa3f",
+      "size": 200560,
+      "uid": 0
+    },
+    "usr/bin/timeout": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "usr/bin/timeout",
+          "target": "/bin/busybox"
+        },
+        {
+          "path": "bin",
+          "target": "usr/bin"
+        }
+      ],
+      "mode": "0o755",
+      "path": "usr/bin/timeout",
+      "resolved_path": "usr/bin/busybox",
+      "sha256": "79d9f5301a6781f5b4c885a190e32c1bef4d441b180fac1d2af5672e2cda0b77",
+      "size": 919296,
+      "uid": 0
+    },
+    "usr/bin/udevadm": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/udevadm",
+      "resolved_path": "usr/bin/udevadm",
+      "sha256": "9e5786ac47dca4b43e70e9b1615d2f55b02923a915ef0f84c2667680bd9f876a",
+      "size": 264312,
+      "uid": 0
+    },
+    "usr/bin/unudhcpd": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/unudhcpd",
+      "resolved_path": "usr/bin/unudhcpd",
+      "sha256": "fca453590c3d2a102b6e5db5de41815a7a713b8cec42da8660d9ee8c3542e60a",
+      "size": 67312,
+      "uid": 0
+    },
+    "usr/bin/zramctl": {
+      "elf_class": 64,
+      "elf_machine": 183,
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/zramctl",
+      "resolved_path": "usr/bin/zramctl",
+      "sha256": "208cf5b73b33661e6729ac380c003c8afe0b0d2b893d0f9cccfb4399f5b01867",
+      "size": 67656,
+      "uid": 0
+    },
+    "usr/bin/zramstart": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/zramstart",
+      "resolved_path": "usr/bin/zramstart",
+      "sha256": "a0b738115df0f2ffbbba5febbbd3e728bacdaafb66292b0a6513915451aaebed",
+      "size": 2558,
+      "uid": 0
+    },
+    "usr/bin/zramstop": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/bin/zramstop",
+      "resolved_path": "usr/bin/zramstop",
+      "sha256": "256c3252f8743693a1176d5fa8f0fe6b8c955b4c5a15c95d7bb46555c14a4566",
+      "size": 171,
+      "uid": 0
+    },
+    "usr/lib/modules-load.d/bluez.conf": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "usr/lib/modules-load.d/bluez.conf",
+      "resolved_path": "usr/lib/modules-load.d/bluez.conf",
+      "sha256": "cd595ebf65d1a45b0007dde6343a60b6d34e123ee27f291ce3111c7606d249f7",
+      "size": 12,
+      "uid": 0
+    },
+    "usr/lib/sysctl.d/00-alpine.conf": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "usr/lib/sysctl.d/00-alpine.conf",
+      "resolved_path": "usr/lib/sysctl.d/00-alpine.conf",
+      "sha256": "ee169bea2cb6859420b55ca7a9c23fb68b50adc1d26c951f904dec9e8f767380",
+      "size": 1278,
+      "uid": 0
+    },
+    "usr/lib/sysctl.d/90-disable-rp-filter.conf": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "usr/lib/sysctl.d/90-disable-rp-filter.conf",
+      "resolved_path": "usr/lib/sysctl.d/90-disable-rp-filter.conf",
+      "sha256": "16a2ce69edc11c7259ca9618d286c13724cee05b539ee196ab15edc3535b38f0",
+      "size": 178,
+      "uid": 0
+    },
+    "usr/lib/sysctl.d/90-steam.conf": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "usr/lib/sysctl.d/90-steam.conf",
+      "resolved_path": "usr/lib/sysctl.d/90-steam.conf",
+      "sha256": "aa00b331806f81592aa3b6967a2b2281c0e32ff545949d5ec580d1b15c845623",
+      "size": 150,
+      "uid": 0
+    },
+    "usr/libexec/rc/sh/functions.sh": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "usr/libexec/rc/sh/functions.sh",
+      "resolved_path": "usr/libexec/rc/sh/functions.sh",
+      "sha256": "42c03e4b0fc6e5e1c8ab5734a4856b3248410a022e28280126e46d938fb9e959",
+      "size": 2969,
+      "uid": 0
+    },
+    "usr/libexec/rc/sh/init-early.sh": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/libexec/rc/sh/init-early.sh",
+      "resolved_path": "usr/libexec/rc/sh/init-early.sh",
+      "sha256": "0f6b774df0d300fe38f2e7c40702623f5e274c1442f711a4b49fd10a50bdcbf8",
+      "size": 2027,
+      "uid": 0
+    },
+    "usr/libexec/rc/sh/init.sh": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/libexec/rc/sh/init.sh",
+      "resolved_path": "usr/libexec/rc/sh/init.sh",
+      "sha256": "d1440e3777f163393534e52d49286eac997cdf76d5b8c3bab597305d6b4ee41e",
+      "size": 2995,
+      "uid": 0
+    },
+    "usr/libexec/rc/sh/openrc-run.sh": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o755",
+      "path": "usr/libexec/rc/sh/openrc-run.sh",
+      "resolved_path": "usr/libexec/rc/sh/openrc-run.sh",
+      "sha256": "6eeba8ef81e707b8da81d6277d7f9a2057b3ca935eacaad32712f7d443fb98dc",
+      "size": 9556,
+      "uid": 0
+    },
+    "usr/libexec/rc/sh/rc-functions.sh": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "usr/libexec/rc/sh/rc-functions.sh",
+      "resolved_path": "usr/libexec/rc/sh/rc-functions.sh",
+      "sha256": "92fa74c60bbbb3e6ab15ef0a9f46b321097edce487218e2204f4f80c2d07d611",
+      "size": 2742,
+      "uid": 0
+    },
+    "usr/libexec/rc/sh/start-stop-daemon.sh": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "usr/libexec/rc/sh/start-stop-daemon.sh",
+      "resolved_path": "usr/libexec/rc/sh/start-stop-daemon.sh",
+      "sha256": "2a35e632b84b463c86f428def1abb5342d53574f4f4e22d36b9330b55c66c922",
+      "size": 3586,
+      "uid": 0
+    },
+    "usr/libexec/rc/sh/supervise-daemon.sh": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "usr/libexec/rc/sh/supervise-daemon.sh",
+      "resolved_path": "usr/libexec/rc/sh/supervise-daemon.sh",
+      "sha256": "f4a14ec76e68b465a221f1040facc4a9fb3c90cb6ec5eee6314c55a777c41935",
+      "size": 3452,
+      "uid": 0
+    },
+    "usr/share/deviceinfo/deviceinfo": {
+      "gid": 0,
+      "kind": "file",
+      "links": [
+        {
+          "path": "usr/share/deviceinfo/deviceinfo",
+          "target": "device-qemu-aarch64-kernel-stable"
+        }
+      ],
+      "mode": "0o644",
+      "path": "usr/share/deviceinfo/deviceinfo",
+      "resolved_path": "usr/share/deviceinfo/device-qemu-aarch64-kernel-stable",
+      "sha256": "48255f6c0c7d5ab1b863f4fc1ac0dda9bbbb53e2da6c7b05e82afe734ae2f764",
+      "size": 625,
+      "uid": 0
+    },
+    "usr/share/misc/source_deviceinfo": {
+      "gid": 0,
+      "kind": "file",
+      "links": [],
+      "mode": "0o644",
+      "path": "usr/share/misc/source_deviceinfo",
+      "resolved_path": "usr/share/misc/source_deviceinfo",
+      "sha256": "debf1c4c75632966ec8839fd478e66ca80be57288b7f2099b8015ae95437db8f",
+      "size": 465,
+      "uid": 0
+    }
+  },
+  "original_packages": {
+    "count": 382,
+    "path": "target-packages.txt",
+    "sha256": "76764f419b983efde5e49bb1fc1ba6e4ef393989368ebc4c60d4ce37014cdb9f",
+    "size": 8700
+  },
+  "original_root": "/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64",
+  "original_runlevels": {
+    "etc/runlevels/boot": {
+      "entries": [
+        {
+          "kind": "symlink",
+          "name": "bootmisc",
+          "target": "/etc/init.d/bootmisc"
+        },
+        {
+          "kind": "symlink",
+          "name": "hostname",
+          "target": "/etc/init.d/hostname"
+        },
+        {
+          "kind": "symlink",
+          "name": "hwclock",
+          "target": "/etc/init.d/hwclock"
+        },
+        {
+          "kind": "symlink",
+          "name": "logbookd",
+          "target": "/etc/init.d/logbookd"
+        },
+        {
+          "kind": "symlink",
+          "name": "modules",
+          "target": "/etc/init.d/modules"
+        },
+        {
+          "kind": "symlink",
+          "name": "sysctl",
+          "target": "/etc/init.d/sysctl"
+        },
+        {
+          "kind": "symlink",
+          "name": "systemd-tmpfiles-setup",
+          "target": "/etc/init.d/systemd-tmpfiles-setup"
+        },
+        {
+          "kind": "symlink",
+          "name": "tmpfs",
+          "target": "/etc/init.d/tmpfs"
+        },
+        {
+          "kind": "symlink",
+          "name": "unudhcpd.usb0",
+          "target": "/etc/init.d/unudhcpd.usb0"
+        }
+      ],
+      "links": [],
+      "resolved_path": "etc/runlevels/boot"
+    },
+    "etc/runlevels/default": {
+      "entries": [
+        {
+          "kind": "symlink",
+          "name": "cgroups",
+          "target": "/etc/init.d/cgroups"
+        },
+        {
+          "kind": "symlink",
+          "name": "chronyd",
+          "target": "/etc/init.d/chronyd"
+        },
+        {
+          "kind": "symlink",
+          "name": "dbus",
+          "target": "/etc/init.d/dbus"
+        },
+        {
+          "kind": "symlink",
+          "name": "haveged",
+          "target": "/etc/init.d/haveged"
+        },
+        {
+          "kind": "symlink",
+          "name": "local",
+          "target": "/etc/init.d/local"
+        },
+        {
+          "kind": "symlink",
+          "name": "networkmanager",
+          "target": "/etc/init.d/networkmanager"
+        },
+        {
+          "kind": "symlink",
+          "name": "nftables",
+          "target": "/etc/init.d/nftables"
+        },
+        {
+          "kind": "symlink",
+          "name": "postmarketos-zram-swap",
+          "target": "/etc/init.d/postmarketos-zram-swap"
+        },
+        {
+          "kind": "symlink",
+          "name": "rfkill",
+          "target": "/etc/init.d/rfkill"
+        },
+        {
+          "kind": "symlink",
+          "name": "routewrangler",
+          "target": "/etc/init.d/routewrangler"
+        },
+        {
+          "kind": "symlink",
+          "name": "sleep-inhibitor",
+          "target": "/etc/init.d/sleep-inhibitor"
+        },
+        {
+          "kind": "symlink",
+          "name": "swapfile",
+          "target": "/etc/init.d/swapfile"
+        },
+        {
+          "kind": "symlink",
+          "name": "udev-postmount",
+          "target": "/etc/init.d/udev-postmount"
+        },
+        {
+          "kind": "symlink",
+          "name": "wpa_supplicant",
+          "target": "/etc/init.d/wpa_supplicant"
+        }
+      ],
+      "links": [],
+      "resolved_path": "etc/runlevels/default"
+    },
+    "etc/runlevels/sysinit": {
+      "entries": [
+        {
+          "kind": "symlink",
+          "name": "devfs",
+          "target": "/etc/init.d/devfs"
+        },
+        {
+          "kind": "symlink",
+          "name": "dmesg",
+          "target": "/etc/init.d/dmesg"
+        },
+        {
+          "kind": "symlink",
+          "name": "systemd-sysusers",
+          "target": "/etc/init.d/systemd-sysusers"
+        },
+        {
+          "kind": "symlink",
+          "name": "systemd-tmpfiles-setup-dev",
+          "target": "/etc/init.d/systemd-tmpfiles-setup-dev"
+        },
+        {
+          "kind": "symlink",
+          "name": "systemd-tmpfiles-setup-dev-early",
+          "target": "/etc/init.d/systemd-tmpfiles-setup-dev-early"
+        },
+        {
+          "kind": "symlink",
+          "name": "udev",
+          "target": "/etc/init.d/udev"
+        },
+        {
+          "kind": "symlink",
+          "name": "udev-settle",
+          "target": "/etc/init.d/udev-settle"
+        },
+        {
+          "kind": "symlink",
+          "name": "udev-trigger",
+          "target": "/etc/init.d/udev-trigger"
+        }
+      ],
+      "links": [],
+      "resolved_path": "etc/runlevels/sysinit"
+    }
+  },
+  "pending_runtime_not_passed": [
+    "Every original enabled service and failed/crashed/starting state",
+    "unmodified unudhcpd.usb0 with no USB network interface",
+    "wpa_supplicant with no wireless device",
+    "actual clock operation; service exit alone is insufficient",
+    "ordinary signed module actual loading under new kernel",
+    "same-boot PID1, API mounts, cgroups, bus and NetworkManager round trips"
+  ],
+  "physical_hardware_tested": false,
+  "schema_version": 1,
+  "scope": "static original Nura donor entry and source qualification; no donor execution or VM",
+  "source_root_mutated": false,
+  "unavailable_candidates": {
+    "etc/conf.d/postmarketos-zram-swap": "[Errno 2] No such file or directory: '/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/etc/conf.d/postmarketos-zram-swap'",
+    "etc/conf.d/sysctl": "[Errno 2] No such file or directory: '/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/etc/conf.d/sysctl'",
+    "etc/conf.d/unudhcpd.usb0": "[Errno 2] No such file or directory: '/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/etc/conf.d/unudhcpd.usb0'",
+    "etc/deviceinfo": "[Errno 2] No such file or directory: '/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/etc/deviceinfo'",
+    "lib/rc/sh/functions.sh": "[Errno 2] No such file or directory: '/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/usr/lib/rc/sh'",
+    "lib/rc/sh/init.sh": "[Errno 2] No such file or directory: '/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/usr/lib/rc/sh'",
+    "lib/rc/sh/openrc-run.sh": "[Errno 2] No such file or directory: '/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/usr/lib/rc/sh'",
+    "lib/rc/sh/rc-functions.sh": "[Errno 2] No such file or directory: '/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/usr/lib/rc/sh'",
+    "lib/systemd/systemd-udevd": "[Errno 2] No such file or directory: '/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/usr/lib/systemd/systemd-udevd'",
+    "sbin/openrc-init": "[Errno 2] No such file or directory: '/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/usr/bin/openrc-init'",
+    "usr/lib/systemd/systemd-udevd": "[Errno 2] No such file or directory: '/work/pmwork/guest-share/pmwork/chroot_rootfs_qemu-aarch64/usr/lib/systemd/systemd-udevd'"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "candidate_sha256": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+  "candidate_source": "/work/selinux-socket-probe-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35",
+  "old_profiles_written": false,
+  "only_replaced_path": "etc/selinux/targeted/policy/policy.35",
+  "original_preserved_in_candidate": "/work/fedora-input-system-v9/rootfs/usr/share/tb371fc/research1-policy-archive/policy.35",
+  "original_sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+  "source_original_written": false
+}

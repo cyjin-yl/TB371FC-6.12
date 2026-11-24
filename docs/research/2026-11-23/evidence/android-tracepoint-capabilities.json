@@ -1,0 +1,45 @@
+{
+  "acquisition_source": "import os,stat,json,signal\nfrom datetime import datetime,timezone\nout={'captured_utc':datetime.now(timezone.utc).isoformat(),'kernel':os.uname().release,'scope':'fixed tracepoint id file metadata only; no id value read or event enabled','tracepoint':{'path':'/sys/kernel/tracing/events/sched/sched_process_fork/id','value_read':False}}\ndef timeout(*args):raise TimeoutError('metadata deadline')\nsignal.signal(signal.SIGALRM,timeout);signal.setitimer(signal.ITIMER_REAL,1)\ntry:\n s=os.stat(out['tracepoint']['path'])\n out['tracepoint'].update(exists=True,regular=stat.S_ISREG(s.st_mode),mode=oct(stat.S_IMODE(s.st_mode)),status='observed')\nexcept FileNotFoundError:out['tracepoint'].update(exists=False,status='absent')\nexcept Exception as e:out['tracepoint'].update(exists=None,status='unavailable',error_type=type(e).__name__,errno=getattr(e,'errno',None))\nfinally:signal.setitimer(signal.ITIMER_REAL,0)\nout['actions']={'bpf_program_loaded':False,'bpf_map_created':False,'perf_event_open_called':False,'probe_attached':False,'trace_instance_created':False,'tracepoint_enabled':False,'fork_child_created':False,'kernel_memory_read':False,'module_loaded':False,'settings_changed':False,'radio_restart_or_qmi_call':False}\nprint(json.dumps(out))\n",
+  "acquisition_source_sha256": "732eb65651f6fa0404ace09258275ef18545c8e2ed4b9855af9afbae8b470ffb",
+  "capture": {
+    "actions": {
+      "bpf_map_created": false,
+      "bpf_program_loaded": false,
+      "fork_child_created": false,
+      "kernel_memory_read": false,
+      "module_loaded": false,
+      "perf_event_open_called": false,
+      "probe_attached": false,
+      "radio_restart_or_qmi_call": false,
+      "settings_changed": false,
+      "trace_instance_created": false,
+      "tracepoint_enabled": false
+    },
+    "captured_utc": "2026-11-23T03:36:41.643157+00:00",
+    "kernel": "4.19.157-perf+",
+    "scope": "fixed tracepoint id file metadata only; no id value read or event enabled",
+    "tracepoint": {
+      "exists": true,
+      "mode": "0o444",
+      "path": "/sys/kernel/tracing/events/sched/sched_process_fork/id",
+      "regular": true,
+      "status": "observed",
+      "value_read": false
+    }
+  },
+  "evidence_class": "device_android",
+  "interpretation": {
+    "bpf_program_load_or_attachment_tested": false,
+    "cnss_cached_metadata_observed": false,
+    "event_id_value_observed": false,
+    "fixed_fork_tracepoint_interface_present": true,
+    "kprobe_required_for_normal_tracepoint": false,
+    "selected_bdf_filename": null,
+    "shipping_helper_dispatch_verified_by_this_capture": false
+  },
+  "limits": [
+    "This records only metadata of one existing tracepoint ID file. It does not read the numeric ID, enable the event, create a trace instance, load BPF, open a perf event, fork a child or read kernel memory.",
+    "The earlier disabled kprobe result does not rule out normal tracepoint attachment. Actual program availability and a verified shipping CNSS data contract remain separate gates."
+  ],
+  "schema": "tb371fc-owner-static-tracepoint-readiness-v1"
+}

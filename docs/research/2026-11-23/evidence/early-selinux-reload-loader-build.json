@@ -1,0 +1,130 @@
+{
+  "artifact": {
+    "glibc_versions": [
+      "GLIBC_2.17",
+      "GLIBC_2.33",
+      "GLIBC_2.34"
+    ],
+    "interpreter": "/lib/ld-linux-aarch64.so.1",
+    "machine": 183,
+    "mode": "0755",
+    "needed": [
+      "libc.so.6",
+      "ld-linux-aarch64.so.1"
+    ],
+    "path": "/work/early-selinux-reload-map-20261123/build-01/early-init",
+    "sha256": "cc042c9fc4e92c75803215649c99bd87badd301bb05aa16820b43aaeb8fb50bc",
+    "size": 72048,
+    "type": "ET_DYN"
+  },
+  "candidate_policy": {
+    "hash_must_also_be_checked_by_archive_and_runtime_recipe": true,
+    "input_path": "/work/early-selinux-reload-map-20261123/input-policy.35",
+    "sha256": "0dd46af3240a02d1c7399c46facf30cce2a71a471fb70c0d0f5e58e571e53c74",
+    "size": 3835432,
+    "version": 35
+  },
+  "command": [
+    "/usr/bin/aarch64-linux-gnu-gcc",
+    "-std=gnu11",
+    "-O2",
+    "-g0",
+    "-D_FORTIFY_SOURCE=3",
+    "-fPIE",
+    "-fstack-protector-strong",
+    "-fno-ident",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-I",
+    "/work/early-selinux-reload-map-20261123/build-01/headers",
+    "/work/early-selinux-reload-map-20261123/build-01/early_init.c",
+    "-pie",
+    "-Wl,--build-id=sha1,-z,relro,-z,now,--no-undefined",
+    "-ldl",
+    "-o",
+    "/work/early-selinux-reload-map-20261123/build-01/early-init"
+  ],
+  "compile_exit_code": 0,
+  "compile_seconds": 1.6168801170424558,
+  "compiler": {
+    "invoked_path": "/usr/bin/aarch64-linux-gnu-gcc",
+    "resolved_path": "/usr/bin/aarch64-linux-gnu-gcc-14",
+    "sha256": "fb743ca27a77466c91da66047eec879a615993feaabd860aaf3750e7b222b131",
+    "version": "aarch64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+  },
+  "completed": true,
+  "derived_source_sha256": "ab6cf79bcad7d1306bc0e943ef3a4770d8db1c1db82ad577e117c298cce0fda9",
+  "explicit_environment": {
+    "LC_ALL": "C",
+    "SOURCE_DATE_EPOCH": "1795392000"
+  },
+  "frozen_sources_modified": false,
+  "hardware_tested": false,
+  "header_rpm": {
+    "sha256": "60383ef415eee73f0f2cad12e81010f6a6c2bf810dfed7b3c61f585ea772e6da",
+    "size": 128120,
+    "url": "https://kojipkgs.fedoraproject.org/packages/libselinux/3.11/5.fc45/aarch64/libselinux-devel-3.11-5.fc45.aarch64.rpm"
+  },
+  "headers": [
+    {
+      "path": "selinux/avc.h",
+      "sha256": "b8cbacb883bcfd10b5827d24da47d21f1974f4de160b787210d35471a5ebd524",
+      "size": 16786
+    },
+    {
+      "path": "selinux/context.h",
+      "sha256": "bba43da28c95e6018673550318a679e501c9e659851ed3ef106337e99bf44827",
+      "size": 1456
+    },
+    {
+      "path": "selinux/get_context_list.h",
+      "sha256": "e8d9129bf8fc5bb1cb7df250e684b8116f424a743f76e98a63db880243e73c28",
+      "size": 2902
+    },
+    {
+      "path": "selinux/get_default_type.h",
+      "sha256": "b41c8ffe702794f3e481e2b9b199ee407fe12102eb1ecab9256dc08865a7982b",
+      "size": 638
+    },
+    {
+      "path": "selinux/label.h",
+      "sha256": "cc6c7ef62dee069d0206f045551e31e884eee1f707de7ca5af8741973313c2c1",
+      "size": 6421
+    },
+    {
+      "path": "selinux/restorecon.h",
+      "sha256": "452ba2e89e89397a5388acdf4b83954e9b1b7161a11ed69a14a50304a9512bd8",
+      "size": 8351
+    },
+    {
+      "path": "selinux/selinux.h",
+      "sha256": "7e306b900740bacb51f25228cde66cbed277e196ef561cc1feefbd4ddda86ae5",
+      "size": 29296
+    }
+  ],
+  "inputs_unchanged_after_build": true,
+  "kernel_policy_load_attempted": false,
+  "original_recipe_sha256": "5ed18306782a44b20c6bf022976c6dc029b0829ec5a72352575ae35440fb493d",
+  "original_source_sha256": "6006a0fade3e9e8cc9201b5549cab3339961931feadb842c0f3d5863dc383726",
+  "recipe_sha256": "a9679fcbe613297e9ab8e6080e776b1703e798d2225442d280d5eeb89e40e125",
+  "rootfs_modified": false,
+  "schema_version": 1,
+  "scope": "build and inspect a new early SELinux loader; no kernel policy load or VM execution",
+  "source_changes": [
+    {
+      "new": "#define MARKER \"TB371FC_EARLY_SELINUX_V2\"",
+      "old": "#define MARKER \"TB371FC_EARLY_SELINUX_V1\""
+    },
+    {
+      "new": "st.st_size != 3835432",
+      "old": "st.st_size != 3835432"
+    }
+  ],
+  "started_at_utc": "2026-11-23T05:53:45.330563+00:00",
+  "toolchain_packages": {
+    "binutils-aarch64-linux-gnu": "2.44-3",
+    "gcc-14-aarch64-linux-gnu": "14.2.0-19cross1",
+    "libc6-dev-arm64-cross": "2.41-11cross1"
+  }
+}

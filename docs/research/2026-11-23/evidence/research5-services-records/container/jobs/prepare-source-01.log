@@ -1,0 +1,29 @@
++ /usr/bin/python3 /work/research2-repo/scripts/research/build/prepare_research2_display.py --repo /work/research2-repo --work /work/research5-services/source-input --cache /work/downloads/linux-6.12.114.tar.xz
++ /usr/bin/python3 /work/research2-repo/scripts/research/build/prepare_kernel.py --repo /work/research2-repo --work /work/research5-services/source-input
++ git apply --recount --check /work/research2-repo/experimental/community-handoff/reference/kernel-6.12.114/working-tree.patch
++ git apply --recount /work/research2-repo/experimental/community-handoff/reference/kernel-6.12.114/working-tree.patch
++ git apply --recount --check /work/research2-repo/mainline-port/patches/0002-input-touchscreen-add-nt36523-spi-pen.patch
++ git apply --recount /work/research2-repo/mainline-port/patches/0002-input-touchscreen-add-nt36523-spi-pen.patch
++ git apply --recount --check /work/research2-repo/mainline-port/patches/0006-backlight-add-tb371fc-dual-ktz8866.patch
++ git apply --recount /work/research2-repo/mainline-port/patches/0006-backlight-add-tb371fc-dual-ktz8866.patch
++ git apply --recount --check /work/research2-repo/mainline-port/backports/linux-6.12/0013-input-nt36523-preserve-gpio-irq-errors.patch
++ git apply --recount /work/research2-repo/mainline-port/backports/linux-6.12/0013-input-nt36523-preserve-gpio-irq-errors.patch
++ git apply --recount --check /work/research2-repo/mainline-port/backports/linux-6.12/0014-backlight-tb371fc-unwind-failed-probe.patch
++ git apply --recount /work/research2-repo/mainline-port/backports/linux-6.12/0014-backlight-tb371fc-unwind-failed-probe.patch
++ git apply --recount --check /work/research2-repo/mainline-port/backports/linux-6.12/0015-drm-msm-balance-headless-node-reference.patch
++ git apply --recount /work/research2-repo/mainline-port/backports/linux-6.12/0015-drm-msm-balance-headless-node-reference.patch
++ git apply --recount --check /work/research2-repo/mainline-port/backports/linux-6.12/0016-dts-tb371fc-linux-6.12-compat.patch
++ git apply --recount /work/research2-repo/mainline-port/backports/linux-6.12/0016-dts-tb371fc-linux-6.12-compat.patch
++ git apply --recount --check /work/research2-repo/mainline-port/patches/0017-hid-i2c-add-optional-wake-gpio.patch
++ git apply --recount /work/research2-repo/mainline-port/patches/0017-hid-i2c-add-optional-wake-gpio.patch
++ git apply --recount --check /work/research2-repo/mainline-port/backports/linux-6.12/0017-arm64-scope-tb371fc-early-page-table-pool.patch
++ git apply --recount /work/research2-repo/mainline-port/backports/linux-6.12/0017-arm64-scope-tb371fc-early-page-table-pool.patch
+/work/research5-services/source-input/linux-6.12.114-research1
++ git apply --recount --check /work/research2-repo/mainline-port/backports/linux-6.12/0002-tb371fc-phy-wideplane.patch
++ git apply --recount /work/research2-repo/mainline-port/backports/linux-6.12/0002-tb371fc-phy-wideplane.patch
+{"source": "/work/research5-services/source-input/linux-6.12.114-research2-display", "kernel_release": "6.12.114-tb371fc-research2-display", "manifest_sha256": "845914d9cc1c876f10704f3334ee942b2c26deaa8045ce9c2ef82ef2920cde21"}
++ git apply --check /work/research4-system/source-input/input-recipe/mainline-port/backports/linux-6.12/0018-input-nt36523-use-declared-physical-dimensions.patch
++ git apply /work/research4-system/source-input/input-recipe/mainline-port/backports/linux-6.12/0018-input-nt36523-use-declared-physical-dimensions.patch
++ git apply --check /work/research4-system/source-input/input-recipe/mainline-port/backports/linux-6.12/0019-input-nt36523-fail-closed-and-release-resources.patch
++ git apply /work/research4-system/source-input/input-recipe/mainline-port/backports/linux-6.12/0019-input-nt36523-fail-closed-and-release-resources.patch
+{"source": "/work/research5-services/source-input/linux-6.12.114-input-integration", "source_manifest_sha256": "5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0"}

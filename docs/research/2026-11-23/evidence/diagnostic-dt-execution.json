@@ -1,0 +1,107 @@
+{
+  "diagnostic_scan_note": "Text scan of retained logs; verbose Kbuild shell commands containing unexecuted echo warning/error strings are identified separately, not classified as emitted compiler diagnostics.",
+  "diagnostics": {
+    "new_dts": {
+      "emitted_matches": [],
+      "excluded_verbose_kbuild_commands": []
+    },
+    "objects": {
+      "emitted_matches": [],
+      "excluded_verbose_kbuild_commands": [
+        "  if ! command -v sha1sum >/dev/null; then echo \"warning: cannot check the header due to sha1sum missing\"; exit 0; fi; if [ \"$(sed -n '$s:// ::p' /work/dtb-profile-qualification-v2/source/include/linux/atomic/atomic-arch-fallback.h)\" != \"$(sed '$d' /work/dtb-profile-qualification-v2/source/include/linux/atomic/atomic-arch-fallback.h | sha1sum | sed 's/ .*//')\" ]; then echo \"error: /work/dtb-profile-qualification-v2/source/include/linux/atomic/atomic-arch-fallback.h has been modified.\" >&2; exit 1; fi; touch .checked-atomic-arch-fallback.h",
+        "  if ! command -v sha1sum >/dev/null; then echo \"warning: cannot check the header due to sha1sum missing\"; exit 0; fi; if [ \"$(sed -n '$s:// ::p' /work/dtb-profile-qualification-v2/source/include/linux/atomic/atomic-instrumented.h)\" != \"$(sed '$d' /work/dtb-profile-qualification-v2/source/include/linux/atomic/atomic-instrumented.h | sha1sum | sed 's/ .*//')\" ]; then echo \"error: /work/dtb-profile-qualification-v2/source/include/linux/atomic/atomic-instrumented.h has been modified.\" >&2; exit 1; fi; touch .checked-atomic-instrumented.h",
+        "  if ! command -v sha1sum >/dev/null; then echo \"warning: cannot check the header due to sha1sum missing\"; exit 0; fi; if [ \"$(sed -n '$s:// ::p' /work/dtb-profile-qualification-v2/source/include/linux/atomic/atomic-long.h)\" != \"$(sed '$d' /work/dtb-profile-qualification-v2/source/include/linux/atomic/atomic-long.h | sha1sum | sed 's/ .*//')\" ]; then echo \"error: /work/dtb-profile-qualification-v2/source/include/linux/atomic/atomic-long.h has been modified.\" >&2; exit 1; fi; touch .checked-atomic-long.h"
+      ]
+    },
+    "old_dts": {
+      "emitted_matches": [],
+      "excluded_verbose_kbuild_commands": []
+    }
+  },
+  "jobs": {
+    "dt-native-612-qualification": {
+      "log_path": "/work/dt-native-612-qualification.log",
+      "log_sha256": "ee672176fe2c5c32a402cece73100237394893d3e6583f62ad8147cfdd3bdc68",
+      "record": {
+        "command": [
+          "python3",
+          "/work/dtb-profile-qualification-tools/qualify_native_dt_612.py",
+          "--wrapper",
+          "/work/dtb-profile-qualification-tools/sm8250-lenovo-tb371fc-display-test-6.12.dts",
+          "--wait-seconds",
+          "1800"
+        ],
+        "elapsed_seconds": 1.8706296559539624,
+        "exit_code": 1,
+        "start_utc": "2026-11-22T22:31:09.597153+00:00"
+      },
+      "record_sha256": "cab0dc22da71c84300c2623f2a821a4b5d7e861905dee2f20ffe9f8d71a620a8"
+    },
+    "dt-native-612-qualification-v2": {
+      "log_path": "/work/dt-native-612-qualification-v2.log",
+      "log_sha256": "0040d26601b284cadb9636a2c2bf0a8262850bc11be8f200b79f872d4e568bec",
+      "record": {
+        "command": [
+          "python3",
+          "/work/dtb-profile-qualification-tools-v2/qualify_native_dt_612.py",
+          "--wrapper",
+          "/work/dtb-profile-qualification-tools-v2/sm8250-lenovo-tb371fc-display-test-6.12.dts",
+          "--output",
+          "/work/dtb-native-612-qualification-v2"
+        ],
+        "elapsed_seconds": 3.8796790270134807,
+        "exit_code": 0,
+        "start_utc": "2026-11-22T22:34:08.411658+00:00"
+      },
+      "record_sha256": "3a173e4b974bbc4eeaf23bb54ada5b5f1b742ef8c295d43bf874da58cd21db55"
+    },
+    "dt-profile-qualification": {
+      "log_path": "/work/dt-profile-qualification.log",
+      "log_sha256": "74bad8463ca76e0b838fc47060f2626ff90664ebcdb9b6b64c9935eafbe86c52",
+      "record": {
+        "command": [
+          "python3",
+          "/work/dtb-profile-qualify.py"
+        ],
+        "elapsed_seconds": 2.382215353020001,
+        "exit_code": 1,
+        "start_utc": "2026-11-22T22:23:20.387281+00:00"
+      },
+      "record_sha256": "8fe19fe6de4f4e44f2ecb79b2cdcacaf1b8fa181a750d12f2a1748029134d9d7"
+    },
+    "dt-profile-qualification-v2": {
+      "log_path": "/work/dt-profile-qualification-v2.log",
+      "log_sha256": "c9500878a0094cd1e02ada1e410fd26c1c6d4e6ec7f470e334a4a2e2a1f19b82",
+      "record": {
+        "command": [
+          "python3",
+          "/work/dtb-profile-qualify-v2.py",
+          "--output",
+          "/work/dtb-profile-qualification-v2"
+        ],
+        "elapsed_seconds": 383.26464897597907,
+        "exit_code": 0,
+        "start_utc": "2026-11-22T22:24:32.769121+00:00"
+      },
+      "record_sha256": "cb38cc407f7ef3fa6556195e6ec5b064ddaa9e89b45ea8e5a1183690bba6d061"
+    }
+  },
+  "retained_failures": {
+    "table_parser": {
+      "artifacts_unchanged": true,
+      "error": "RuntimeError: no OF table found in drivers/input/touchscreen/nt36523/nt36xxx.c",
+      "manifest_path": "/work/dtb-profile-qualification/diagnostic-dt-profiles.json",
+      "sha256": "8090416840be6c95a974c634c30fcb08a04709cca6d8898c0adc8ef7bc3255bd",
+      "source_unchanged": true
+    },
+    "wrapper_property_order": {
+      "artifacts_unchanged": true,
+      "error": "RuntimeError: wrapper-dtb failed: 2",
+      "manifest_path": "/work/dtb-native-612-qualification/native-dt-612.json",
+      "sha256": "86bcf4d4f15745f75ab5ac595d8dde6dd3699d82f345c5e70168bfee4484592e",
+      "source_unchanged": true
+    }
+  },
+  "schema_version": 1,
+  "scope": "independent DT/static-binding and object qualification; no tablet execution"
+}

@@ -1,0 +1,521 @@
+{
+  "all_imported_crcs_match": true,
+  "compiled_configuration_sha256": "0236496603f168aacc5586eac7e199ca8f840b5d0c9b5ed111da64e9d28ec275",
+  "complete_mtp_write_prevention_proven": false,
+  "device_tree_changed": false,
+  "evidence_class": "host_build",
+  "firmware_given_to_driver": false,
+  "imported_crcs": [
+    {
+      "crc": "0xe29e9013",
+      "symbol": "regmap_write"
+    },
+    {
+      "crc": "0x92997ed8",
+      "symbol": "_printk"
+    },
+    {
+      "crc": "0xf9a482f9",
+      "symbol": "msleep"
+    },
+    {
+      "crc": "0xc851cec8",
+      "symbol": "__dynamic_dev_dbg"
+    },
+    {
+      "crc": "0x7f398a76",
+      "symbol": "regmap_read"
+    },
+    {
+      "crc": "0xf0fdf6cb",
+      "symbol": "__stack_chk_fail"
+    },
+    {
+      "crc": "0x7a846c21",
+      "symbol": "kmalloc_caches"
+    },
+    {
+      "crc": "0x9ef8111e",
+      "symbol": "__kmalloc_cache_noprof"
+    },
+    {
+      "crc": "0x746abe92",
+      "symbol": "i2c_transfer"
+    },
+    {
+      "crc": "0xcc5005fe",
+      "symbol": "msleep_interruptible"
+    },
+    {
+      "crc": "0xa3680f50",
+      "symbol": "_dev_err"
+    },
+    {
+      "crc": "0x037a0cba",
+      "symbol": "kfree"
+    },
+    {
+      "crc": "0x42ab8c78",
+      "symbol": "i2c_transfer_buffer_flags"
+    },
+    {
+      "crc": "0xa2603b14",
+      "symbol": "__kmem_cache_create_args"
+    },
+    {
+      "crc": "0x48edca32",
+      "symbol": "i2c_register_driver"
+    },
+    {
+      "crc": "0x8f40fcf7",
+      "symbol": "i2c_del_driver"
+    },
+    {
+      "crc": "0x64c55fe7",
+      "symbol": "kmem_cache_destroy"
+    },
+    {
+      "crc": "0xdf84f6e1",
+      "symbol": "devm_kmalloc"
+    },
+    {
+      "crc": "0x27f91ff1",
+      "symbol": "__devm_regmap_init_i2c"
+    },
+    {
+      "crc": "0xcefb0c9f",
+      "symbol": "__mutex_init"
+    },
+    {
+      "crc": "0xd9a5ea54",
+      "symbol": "__init_waitqueue_head"
+    },
+    {
+      "crc": "0x97a7201d",
+      "symbol": "fwnode_gpiod_get_index"
+    },
+    {
+      "crc": "0xf71760b0",
+      "symbol": "desc_to_gpio"
+    },
+    {
+      "crc": "0x1dce839d",
+      "symbol": "gpiod_put"
+    },
+    {
+      "crc": "0xc76cc427",
+      "symbol": "of_property_read_variable_u32_array"
+    },
+    {
+      "crc": "0xddc42420",
+      "symbol": "devm_gpio_request_one"
+    },
+    {
+      "crc": "0xc5909b12",
+      "symbol": "gpio_to_desc"
+    },
+    {
+      "crc": "0xbe88c73d",
+      "symbol": "gpiod_set_raw_value_cansleep"
+    },
+    {
+      "crc": "0xeae3dfd6",
+      "symbol": "__const_udelay"
+    },
+    {
+      "crc": "0x4829a47e",
+      "symbol": "memcpy"
+    },
+    {
+      "crc": "0x0b873118",
+      "symbol": "devm_snd_soc_register_component"
+    },
+    {
+      "crc": "0x8fe39525",
+      "symbol": "gpiod_to_irq"
+    },
+    {
+      "crc": "0x213f597b",
+      "symbol": "devm_request_threaded_irq"
+    },
+    {
+      "crc": "0x4dfa8d4b",
+      "symbol": "mutex_lock"
+    },
+    {
+      "crc": "0x3213f038",
+      "symbol": "mutex_unlock"
+    },
+    {
+      "crc": "0x9fa7184a",
+      "symbol": "cancel_delayed_work_sync"
+    },
+    {
+      "crc": "0xbaeaba04",
+      "symbol": "snd_soc_unregister_component"
+    },
+    {
+      "crc": "0x661c9ff5",
+      "symbol": "devm_gpiod_put"
+    },
+    {
+      "crc": "0x656e4a6e",
+      "symbol": "snprintf"
+    },
+    {
+      "crc": "0xb2fcb56d",
+      "symbol": "queue_delayed_work_on"
+    },
+    {
+      "crc": "0xe4818586",
+      "symbol": "snd_pcm_hw_constraint_mask64"
+    },
+    {
+      "crc": "0xa916b694",
+      "symbol": "strnlen"
+    },
+    {
+      "crc": "0x5a921311",
+      "symbol": "strncmp"
+    },
+    {
+      "crc": "0x6db54ab5",
+      "symbol": "snd_pcm_hw_constraint_list"
+    },
+    {
+      "crc": "0x75ca79b5",
+      "symbol": "__fortify_panic"
+    },
+    {
+      "crc": "0xe56a9336",
+      "symbol": "snd_pcm_format_width"
+    },
+    {
+      "crc": "0x349cba85",
+      "symbol": "strchr"
+    },
+    {
+      "crc": "0x98cf60b3",
+      "symbol": "strlen"
+    },
+    {
+      "crc": "0xc279eda3",
+      "symbol": "snd_soc_component_init_regmap"
+    },
+    {
+      "crc": "0x49cd25ed",
+      "symbol": "alloc_workqueue"
+    },
+    {
+      "crc": "0xffeedf6a",
+      "symbol": "delayed_work_timer_fn"
+    },
+    {
+      "crc": "0xc6f46339",
+      "symbol": "init_timer_key"
+    },
+    {
+      "crc": "0xe8fa81e8",
+      "symbol": "request_firmware_nowait"
+    },
+    {
+      "crc": "0x54a947f4",
+      "symbol": "snd_soc_dapm_new_controls"
+    },
+    {
+      "crc": "0xb7cb2e8c",
+      "symbol": "snd_soc_dapm_add_routes"
+    },
+    {
+      "crc": "0x8c03d20c",
+      "symbol": "destroy_workqueue"
+    },
+    {
+      "crc": "0x3dad9978",
+      "symbol": "cancel_delayed_work"
+    },
+    {
+      "crc": "0xc4f0da12",
+      "symbol": "ktime_get_with_offset"
+    },
+    {
+      "crc": "0xc6d09aa9",
+      "symbol": "release_firmware"
+    },
+    {
+      "crc": "0x52c5c991",
+      "symbol": "__kmalloc_noprof"
+    },
+    {
+      "crc": "0x96848186",
+      "symbol": "scnprintf"
+    },
+    {
+      "crc": "0x43d65d6d",
+      "symbol": "snd_soc_add_component_controls"
+    },
+    {
+      "crc": "0x1e6d26a8",
+      "symbol": "strstr"
+    },
+    {
+      "crc": "0x7aeba39b",
+      "symbol": "param_ops_charp"
+    },
+    {
+      "crc": "0x69dd3b5b",
+      "symbol": "crc32_le"
+    },
+    {
+      "crc": "0x7ae16b92",
+      "symbol": "__dynamic_pr_debug"
+    },
+    {
+      "crc": "0x7e77cbe3",
+      "symbol": "kmem_cache_alloc_noprof"
+    },
+    {
+      "crc": "0x2a8da446",
+      "symbol": "kmem_cache_free"
+    },
+    {
+      "crc": "0xbcab6ee6",
+      "symbol": "sscanf"
+    },
+    {
+      "crc": "0xdcb764ad",
+      "symbol": "memset"
+    },
+    {
+      "crc": "0xa20d01ba",
+      "symbol": "__trace_bprintk"
+    },
+    {
+      "crc": "0x11089ac7",
+      "symbol": "_ctype"
+    },
+    {
+      "crc": "0x441d0de9",
+      "symbol": "__kmalloc_large_noprof"
+    },
+    {
+      "crc": "0x263c3152",
+      "symbol": "bcmp"
+    },
+    {
+      "crc": "0xfa5fa175",
+      "symbol": "module_layout"
+    }
+  ],
+  "jobs": {
+    "build": {
+      "command": [
+        "python3",
+        "-B",
+        "/work/tfa-module-prototype-recipe-v2/tfa_module_prototype.py",
+        "build"
+      ],
+      "elapsed_seconds": 6.006416083022486,
+      "exit_code": 0,
+      "log_sha256": "6e789acaa413d31c4ca92126ddee6c5b8475ef0de461a6d9524158f5c8561f82",
+      "log_size": 15436,
+      "metadata_sha256": "45b7c9c7f855a0f46775c3fa10a8bc02cacd7b7e6569fc4e7a5d5a2ce347af44",
+      "start_utc": "2026-11-23T04:31:08.660382+00:00"
+    },
+    "prepare": {
+      "command": [
+        "python3",
+        "-B",
+        "/work/tfa-module-prototype-recipe-v2/tfa_module_prototype.py",
+        "prepare"
+      ],
+      "elapsed_seconds": 19.44133298099041,
+      "exit_code": 0,
+      "log_sha256": "a7b94358bbc2ade3779b47c593712b66ec27946c4dc79de68a12aa13f3bebe67",
+      "log_size": 23,
+      "metadata_sha256": "8a1e4b2c92f49aa19121454f26df25a210751d6f05c7d9b352841c0082541475",
+      "start_utc": "2026-11-23T04:30:49.173655+00:00"
+    }
+  },
+  "kernel_release": "6.12.114-tb371fc-research4-system",
+  "limits": [
+    "The historical three MTP guards are retained; their completeness and every raw-register/container path are not established.",
+    "An unsigned out-of-tree prototype is not part of the 84 signed modules or the Fedora runtime.",
+    "No QS/YC per-amplifier assignment, firmware acceptance, calibration, DAI/TDM routing or playback has been tested."
+  ],
+  "module": {
+    "btf_section_present": true,
+    "elf_machine": 183,
+    "metadata": {
+      "alias": "i2c:tfa98xx\nof:N*T*Cnxp,tfa9894\nof:N*T*Cnxp,tfa9894C*\nof:N*T*Ctfa,tfa98xx\nof:N*T*Ctfa,tfa98xxC*\nof:N*T*Ctfa,tfa9872\nof:N*T*Ctfa,tfa9872C*\nof:N*T*Ctfa,tfa9873\nof:N*T*Ctfa,tfa9873C*\nof:N*T*Ctfa,tfa9875\nof:N*T*Ctfa,tfa9875C*\nof:N*T*Ctfa,tfa9874\nof:N*T*Ctfa,tfa9874C*\nof:N*T*Ctfa,tfa9878\nof:N*T*Ctfa,tfa9878C*\nof:N*T*Ctfa,tfa9888\nof:N*T*Ctfa,tfa9888C*\nof:N*T*Ctfa,tfa9890\nof:N*T*Ctfa,tfa9890C*\nof:N*T*Ctfa,tfa9891\nof:N*T*Ctfa,tfa9891C*\nof:N*T*Ctfa,tfa9894\nof:N*T*Ctfa,tfa9894C*\nof:N*T*Ctfa,tfa9895\nof:N*T*Ctfa,tfa9895C*\nof:N*T*Ctfa,tfa9896\nof:N*T*Ctfa,tfa9896C*\nof:N*T*Ctfa,tfa9897\nof:N*T*Ctfa,tfa9897C*\nof:N*T*Ctfa,tfa9912\nof:N*T*Ctfa,tfa9912C*",
+      "depends": "",
+      "firmware": "",
+      "parm": "fw_name:TFA98xx DSP firmware (container file) name. (charp)",
+      "signer": "",
+      "vermagic": "6.12.114-tb371fc-research4-system SMP preempt mod_unload modversions aarch64"
+    },
+    "path": "/work/tfa-module-prototype-v2/module/snd-soc-tfa98xx.ko",
+    "sha256": "1b42be5150332798a12925aa5c3bdfdec5bb07bb764d07c11fa317c8a7c99dba",
+    "size": 1759864
+  },
+  "module_installed": false,
+  "module_loaded": false,
+  "module_signed": false,
+  "observed_at_utc": "2026-11-23T04:31:15.066667+00:00",
+  "physical_audio_tested": false,
+  "prepared": {
+    "api_substitution": [
+      {
+        "file": "tfa98xx.c",
+        "occurrences": 1
+      }
+    ],
+    "guard_stdout": "MTP guard applied\n",
+    "kernel_runtime_installed_or_modified": false,
+    "output_members_copied": [
+      ".config",
+      "Makefile",
+      "Module.symvers",
+      "System.map",
+      "vmlinux",
+      "include",
+      "scripts",
+      "tools",
+      "arch/arm64/include"
+    ],
+    "patch_stderr": "/src/mainline-port/patches/0003-wip-ASoC-codecs-add-support-for-TFA98xx-based-on-dow.patch:192: new blank line at EOF.\n+\n/src/mainline-port/patches/0003-wip-ASoC-codecs-add-support-for-TFA98xx-based-on-dow.patch:8984: new blank line at EOF.\n+\n/src/mainline-port/patches/0003-wip-ASoC-codecs-add-support-for-TFA98xx-based-on-dow.patch:9077: new blank line at EOF.\n+\n/src/mainline-port/patches/0003-wip-ASoC-codecs-add-support-for-TFA98xx-based-on-dow.patch:16250: new blank line at EOF.\n+\n/src/mainline-port/patches/0003-wip-ASoC-codecs-add-support-for-TFA98xx-based-on-dow.patch:33108: new blank line at EOF.\n+\nwarning: 5 lines add whitespace errors.\n",
+    "patch_stdout": "",
+    "physical_hardware_accessed": false,
+    "private_signing_key_copied": false,
+    "source_after": {
+      "Kbuild": "f3cadc8b919be59548d036bb658c75da06646cb95b6e38c8316ee3858b7b3657",
+      "config.h": "eb3ef084e737c746e1ae52a2c8cca7fa44744d3cdcebb6fa31448b44d157ee92",
+      "dbgprint.h": "fd80dde6ebe0cf491bb4220f18ada6613432b98a1a962663f4f147f59312c0ff",
+      "tfa.h": "07070d197d5b713a35952f789d4afccca050c0f626f880383a881c5976937744",
+      "tfa2_tfafieldnames_N1C.h": "343240c6773d97d4661768642e366ae4ccb9f3cbe6ad12285a050a11f5019918",
+      "tfa9872_device_genregs_POR.h": "09c6604cf382eee4a8b0c2f305165e3a6efca0889ddb8b4dd91ecf3f925863ee",
+      "tfa9872_tfafieldnames.h": "ba592375da80824c1ba6e44b1c3f4dc6e4748d013619ac8e9cae8dfeddca29c3",
+      "tfa9873_tfafieldnames.h": "362aa3e3197329520904ba4e7be100d8545f39c52a128e0cc83784cda161d1ef",
+      "tfa9873_tfafieldnames_B0.h": "bf64c8e1950cc8b1a5c85673dd2d21fffd8a639ffa3470fd8eb9ae6a0102cefd",
+      "tfa9874_tfafieldnames.h": "9d935c871c5af7f72c37349a1bccc50717521394a600c16e2bd08e81b974c1fa",
+      "tfa9875_tfafieldnames.h": "c2faefa312525595f1239f17beafb010cf795ce010f92c5e08f7a26c236c004f",
+      "tfa9875_tfafieldnames_A1.h": "56570e513f41b65cf07284e062d877bf2540cc2d65c7905e712352f260caff8c",
+      "tfa9878_tfafieldnames.h": "c9793938c52cc732e63179dfdcf85bae0d4efb00a7df70509e946299004140c8",
+      "tfa9887_tfafieldnames.h": "1860a844876e3569c008337d911c1a0232c3cb2c16d799d46e148196131a6f02",
+      "tfa9890_tfafieldnames.h": "a28b74a4a5d0f9560e146410f4aac8fcfa1f297fb909ec21e7764b4fade3e7e8",
+      "tfa9891_genregs.h": "52386fa8bb8091897ada2a8e8f26000351a0f76dde8a6e30c4e5418d3ba73316",
+      "tfa9891_tfafieldnames.h": "338d020f3665b1bac341885a96fc3297dc9a35b24d7b62e5a28d859c06164dfe",
+      "tfa9894_tfafieldnames.h": "0598300c6134ad40f1f2b73fd9b6015c769ec26b52841446ff247bff4369a7e4",
+      "tfa9894_tfafieldnames_N2.h": "09ee263bdc071a92064f85abdfd28204ed832c6458a4d0811a593d5aa9fc74ec",
+      "tfa9896_tfafieldnames.h": "4d7293541b6adb8a5858e166e67578906716731a94657c7e31dae0f6d36e3c62",
+      "tfa98xx.c": "83cd18d5b7fa9d8cbe47a81321c24443d15c74d8f433115ae1593157c955be68",
+      "tfa98xx.h": "2b2bc2fd94c8534c7e1a1d25d8edda064de7b6107c7d91e44edbb96b0cbcd9c0",
+      "tfa98xx_genregs_N1C.h": "4a09c425a502004136c2a158a3461f9c79f7b50040f6f4d4f33f095023db8f8c",
+      "tfa98xx_parameters.h": "9f841238f45ce27298348114060cfd49773285d61b08250c460b5b09e7b91096",
+      "tfa98xx_tfafieldnames.h": "9554617fb5afdcff8f049d76339a26e4f70b0d8e05a8c51c66b961521e249080",
+      "tfa9912_device_genregs.h": "845b4b4e92694c8e0dc1f161f9c5735f17d8b2aa6e1618f90439152ef2482cc5",
+      "tfa9912_tfafieldnames.h": "3639c0f23db7bf3c697bd4c611586bd7e8c1b5c1b1d7146bfc60c969c3fd0acb",
+      "tfa_container.c": "750cfd78fcdc71d068e9f571bc428feca43daaf7d5f4d33f9c6c4fb688f96fe9",
+      "tfa_container.h": "84295bc0b87e9631024cbd64152c93dabe38e804a147118951d0214b8aa9301e",
+      "tfa_device.h": "5bb61984283451e298af4fabf8ae7fd5f17c5d5395e3908bf4e95e9b0a2c2ff5",
+      "tfa_dsp.c": "d5a27b146115280bdfb1ef3bb0d1bf3133377438c4c4587b8c8cdbcf535c2775",
+      "tfa_dsp_fw.h": "706d0a710e347e5a4a38ba4d3fded6ab1d359d911ad431786bc134ae2f4bbc7b",
+      "tfa_ext.h": "eb2506201ca0e2e6d9dae5ec4accd42389564c1532b4da60f22845c311cc883f",
+      "tfa_init.c": "254ed67927d035b7480c1ef753925842aa7ed46826101d4fbcb09dbc6f24ca43",
+      "tfa_internal.h": "7fd51c4ea94d69eb02ea498a22e09c153240484b89c0636299e012422cee9d8b",
+      "tfa_service.h": "dd98af00958c746c4dbf045da8a935fa23fc1391cc173fd3c0edda50733d7fcb"
+    },
+    "source_before": {
+      "config.h": "eb3ef084e737c746e1ae52a2c8cca7fa44744d3cdcebb6fa31448b44d157ee92",
+      "dbgprint.h": "fd80dde6ebe0cf491bb4220f18ada6613432b98a1a962663f4f147f59312c0ff",
+      "tfa.h": "07070d197d5b713a35952f789d4afccca050c0f626f880383a881c5976937744",
+      "tfa2_tfafieldnames_N1C.h": "343240c6773d97d4661768642e366ae4ccb9f3cbe6ad12285a050a11f5019918",
+      "tfa9872_device_genregs_POR.h": "09c6604cf382eee4a8b0c2f305165e3a6efca0889ddb8b4dd91ecf3f925863ee",
+      "tfa9872_tfafieldnames.h": "ba592375da80824c1ba6e44b1c3f4dc6e4748d013619ac8e9cae8dfeddca29c3",
+      "tfa9873_tfafieldnames.h": "362aa3e3197329520904ba4e7be100d8545f39c52a128e0cc83784cda161d1ef",
+      "tfa9873_tfafieldnames_B0.h": "bf64c8e1950cc8b1a5c85673dd2d21fffd8a639ffa3470fd8eb9ae6a0102cefd",
+      "tfa9874_tfafieldnames.h": "9d935c871c5af7f72c37349a1bccc50717521394a600c16e2bd08e81b974c1fa",
+      "tfa9875_tfafieldnames.h": "c2faefa312525595f1239f17beafb010cf795ce010f92c5e08f7a26c236c004f",
+      "tfa9875_tfafieldnames_A1.h": "56570e513f41b65cf07284e062d877bf2540cc2d65c7905e712352f260caff8c",
+      "tfa9878_tfafieldnames.h": "c9793938c52cc732e63179dfdcf85bae0d4efb00a7df70509e946299004140c8",
+      "tfa9887_tfafieldnames.h": "1860a844876e3569c008337d911c1a0232c3cb2c16d799d46e148196131a6f02",
+      "tfa9890_tfafieldnames.h": "a28b74a4a5d0f9560e146410f4aac8fcfa1f297fb909ec21e7764b4fade3e7e8",
+      "tfa9891_genregs.h": "52386fa8bb8091897ada2a8e8f26000351a0f76dde8a6e30c4e5418d3ba73316",
+      "tfa9891_tfafieldnames.h": "338d020f3665b1bac341885a96fc3297dc9a35b24d7b62e5a28d859c06164dfe",
+      "tfa9894_tfafieldnames.h": "0598300c6134ad40f1f2b73fd9b6015c769ec26b52841446ff247bff4369a7e4",
+      "tfa9894_tfafieldnames_N2.h": "09ee263bdc071a92064f85abdfd28204ed832c6458a4d0811a593d5aa9fc74ec",
+      "tfa9896_tfafieldnames.h": "4d7293541b6adb8a5858e166e67578906716731a94657c7e31dae0f6d36e3c62",
+      "tfa98xx.c": "5b6a83e9c01d2e94246aa012e2658919307cda67d2379c47bbbbc6024d5db6f8",
+      "tfa98xx.h": "2b2bc2fd94c8534c7e1a1d25d8edda064de7b6107c7d91e44edbb96b0cbcd9c0",
+      "tfa98xx_genregs_N1C.h": "4a09c425a502004136c2a158a3461f9c79f7b50040f6f4d4f33f095023db8f8c",
+      "tfa98xx_parameters.h": "9f841238f45ce27298348114060cfd49773285d61b08250c460b5b09e7b91096",
+      "tfa98xx_tfafieldnames.h": "9554617fb5afdcff8f049d76339a26e4f70b0d8e05a8c51c66b961521e249080",
+      "tfa9912_device_genregs.h": "845b4b4e92694c8e0dc1f161f9c5735f17d8b2aa6e1618f90439152ef2482cc5",
+      "tfa9912_tfafieldnames.h": "3639c0f23db7bf3c697bd4c611586bd7e8c1b5c1b1d7146bfc60c969c3fd0acb",
+      "tfa_container.c": "750cfd78fcdc71d068e9f571bc428feca43daaf7d5f4d33f9c6c4fb688f96fe9",
+      "tfa_container.h": "84295bc0b87e9631024cbd64152c93dabe38e804a147118951d0214b8aa9301e",
+      "tfa_device.h": "5bb61984283451e298af4fabf8ae7fd5f17c5d5395e3908bf4e95e9b0a2c2ff5",
+      "tfa_dsp.c": "94c75130a02cd454c4a6478959327807bc53c4765c983d5ef3efc66e42006280",
+      "tfa_dsp_fw.h": "706d0a710e347e5a4a38ba4d3fded6ab1d359d911ad431786bc134ae2f4bbc7b",
+      "tfa_ext.h": "eb2506201ca0e2e6d9dae5ec4accd42389564c1532b4da60f22845c311cc883f",
+      "tfa_init.c": "254ed67927d035b7480c1ef753925842aa7ed46826101d4fbcb09dbc6f24ca43",
+      "tfa_internal.h": "7fd51c4ea94d69eb02ea498a22e09c153240484b89c0636299e012422cee9d8b",
+      "tfa_service.h": "dd98af00958c746c4dbf045da8a935fa23fc1391cc173fd3c0edda50733d7fcb"
+    },
+    "source_inputs": {
+      "/src/mainline-port/patches/0003-wip-ASoC-codecs-add-support-for-TFA98xx-based-on-dow.patch": {
+        "sha256": "9d5ca9bf17c37601f17f0ea5271fe81b3f68fb2187a438a4244a76aba74745b7",
+        "size": 1725238
+      },
+      "/src/scripts/r160-sound/tfa98xx-mtp-guard.py": {
+        "sha256": "57b07505a43b1f28d74b76737faa9846bb4f2463b8b97a398f003992f105484c",
+        "size": 1382
+      },
+      "/work/research4-system/artifacts/Image": {
+        "sha256": "8ab38b022f7504869443f2469878cd55656b08fb6c56946122710144fc1cc8fb",
+        "size": 40822792
+      },
+      "/work/research4-system/artifacts/modules.SHA256SUMS": {
+        "sha256": "9ef1c87254c5422b61c0c365d088b8374a4c323c99da9bda1578170eaa443f03",
+        "size": 13089
+      },
+      "/work/research4-system/kernel-out/.config": {
+        "sha256": "0236496603f168aacc5586eac7e199ca8f840b5d0c9b5ed111da64e9d28ec275",
+        "size": 222379
+      },
+      "/work/research4-system/kernel-out/Module.symvers": {
+        "sha256": "68c10e8b5e63761282cbc6005affd059d8037fce5ac434f80285a6f9aac2f9e0",
+        "size": 835996
+      }
+    },
+    "warning_suppression_added": false
+  },
+  "qualified_r4_inputs_after": {
+    "/src/mainline-port/patches/0003-wip-ASoC-codecs-add-support-for-TFA98xx-based-on-dow.patch": {
+      "sha256": "9d5ca9bf17c37601f17f0ea5271fe81b3f68fb2187a438a4244a76aba74745b7",
+      "size": 1725238
+    },
+    "/src/scripts/r160-sound/tfa98xx-mtp-guard.py": {
+      "sha256": "57b07505a43b1f28d74b76737faa9846bb4f2463b8b97a398f003992f105484c",
+      "size": 1382
+    },
+    "/work/research4-system/artifacts/Image": {
+      "sha256": "8ab38b022f7504869443f2469878cd55656b08fb6c56946122710144fc1cc8fb",
+      "size": 40822792
+    },
+    "/work/research4-system/artifacts/modules.SHA256SUMS": {
+      "sha256": "9ef1c87254c5422b61c0c365d088b8374a4c323c99da9bda1578170eaa443f03",
+      "size": 13089
+    },
+    "/work/research4-system/kernel-out/.config": {
+      "sha256": "0236496603f168aacc5586eac7e199ca8f840b5d0c9b5ed111da64e9d28ec275",
+      "size": 222379
+    },
+    "/work/research4-system/kernel-out/Module.symvers": {
+      "sha256": "68c10e8b5e63761282cbc6005affd059d8037fce5ac434f80285a6f9aac2f9e0",
+      "size": 835996
+    }
+  },
+  "recipe_sha256": "ce5f8a1619086492336d612262a857354e101ca9ad6cf460e4a5ed0b15a9c9b5",
+  "schema_version": 1
+}

@@ -1,0 +1,27 @@
+{
+  "child_pid": 661363,
+  "command": [
+    "sudo",
+    "-n",
+    "/usr/sbin/pct",
+    "exec",
+    "102",
+    "--",
+    "python3",
+    "-B",
+    "-c",
+    "from pathlib import Path\nimport base64,hashlib,json,os,stat,sys\nroot=Path('/var/tmp/tb371fc-r5-services-transfer-v1')\nassert not root.exists() and not root.is_symlink()\npacket=json.loads(sys.stdin.buffer.read())\nassert packet['schema_version']==1 and len(packet['files'])==2\nassert {x['name'] for x in packet['files']}=={'copy_baseline.py','transfer_kernel.py'}\nmembers=[]\nfor row in packet['files']:\n raw=base64.b64decode(row['base64'],validate=True)\n assert len(raw)==row['bytes'] and hashlib.sha256(raw).hexdigest()==row['sha256']\n assert row['mode']==0o755\n members.append((row,raw))\nos.umask(0o077);root.mkdir(mode=0o700)\nfor row,raw in members:\n p=root/row['name']\n with p.open('xb') as f:f.write(raw)\n p.chmod(row['mode']);s=p.lstat()\n assert stat.S_ISREG(s.st_mode) and s.st_uid==s.st_gid==0 and stat.S_IMODE(s.st_mode)==row['mode'] and p.read_bytes()==raw\nprint(json.dumps({'files':[{k:v for k,v in x.items() if k!='base64'} for x,_ in members],\n 'all_source_bytes_modes_read_back':True,'transfer_started':False},sort_keys=True))\n"
+  ],
+  "elapsed_seconds": 0.9906324010225944,
+  "ended_utc": "2026-11-23T10:07:16.399796+00:00",
+  "exit_code": 0,
+  "started_utc": "2026-11-23T10:07:15.409159+00:00",
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 356,
+    "sha256": "4fa7e5e07fdf6a71b84a3e544d73d2eb10e461e00c73cd121b6578bdf70c623c"
+  }
+}

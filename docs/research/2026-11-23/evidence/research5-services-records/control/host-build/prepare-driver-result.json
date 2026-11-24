@@ -1,0 +1,32 @@
+{
+  "child_pid": 472782,
+  "command": [
+    "sudo",
+    "-n",
+    "/usr/sbin/pct",
+    "exec",
+    "102",
+    "--",
+    "docker",
+    "exec",
+    "tb371fc-build-ssd-20261123",
+    "python3",
+    "-c",
+    "from pathlib import Path\nimport datetime, hashlib, json, os, shutil, subprocess, time\nos.umask(0o077)\nw=Path('/work/research5-services')\nr4=Path('/work/research4-system')\nh=r4/'source-input/input-recipe/scripts/research/input/prepare_input.py'\ndef sha(p):\n with Path(p).open('rb') as f: return hashlib.file_digest(f,'sha256').hexdigest()\ndef ident(p):\n p=Path(p);return {'bytes':p.stat().st_size,'sha256':sha(p)}\ndef save(p,d):\n with Path(p).open('x') as f: json.dump(d,f,indent=2,sort_keys=True);f.write('\\n')\nassert not w.exists() and not w.is_symlink()\npins={h:'0f3334412a7711d3a38d4bfdb0b0b5a35f5a5cb97c1d65868155d34e0c966059',\n r4/'artifacts/kernel.config':'0236496603f168aacc5586eac7e199ca8f840b5d0c9b5ed111da64e9d28ec275',\n r4/'artifacts/signing-cert.der':'da222772fe59edc2d0efc6826ff4c31504ee9420b057121cd0a2e2503d81788d',\n r4/'source-input/source-manifest.json':'5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0'}\nassert all(sha(p)==s for p,s in pins.items())\nassert shutil.disk_usage('/work').free > 30*1024**3\nw.mkdir(mode=0o700);(w/'jobs').mkdir(mode=0o700);(w/'baseline-r4').mkdir(mode=0o700)\nrecord={'schema_version':1,'start_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),\n 'old_objects_copied':False,'old_private_key_copied':False,'physical_hardware_tested':False,\n 'virtual_machine_started':False,'original_source_helper':ident(h),'passed':False}\nstarted=time.monotonic();code=1\ntry:\n originals={}\n for name in ('kernel.config','signing-cert.der','modules.SHA256SUMS','research4-system-build.json'):\n  p=r4/'artifacts'/name;raw=p.read_bytes();dst=w/'baseline-r4'/name\n  with dst.open('xb') as f:f.write(raw)\n  dst.chmod(0o600);assert dst.read_bytes()==raw\n  originals[name]={'source_path':str(p),**ident(dst)}\n record['baseline_r4']=originals\n command=['python3',str(h),'--repo',str(r4/'source-input/input-recipe'),\n  '--baseline-repo','/work/research2-repo','--baseline-work','/work/research2-display',\n  '--work',str(w/'source-input'),'--cache','/work/downloads/linux-6.12.114.tar.xz']\n record['command']=command\n print('COMMAND '+json.dumps(command),flush=True)\n with (w/'jobs/prepare-source-01.log').open('x') as log:\n  child=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,encoding='utf-8',errors='replace')\n  record['child_pid']=child.pid\n  for line in child.stdout:\n   log.write(line);log.flush();print(line,end='',flush=True)\n  code=child.wait()\n record['exit_code']=code\n if code:raise RuntimeError('frozen input preparation failed')\n manifest=w/'source-input/source-manifest.json'\n assert sha(manifest)=='5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0'\n assert not (w/'kernel-out').exists()\n assert all(ident(r4/'artifacts'/name)=={k:v for k,v in meta.items() if k!='source_path'} for name,meta in originals.items())\n record['reproduced_manifest']=ident(manifest)\n record['source_inputs_unchanged']=True;record['passed']=True;code=0\nexcept Exception as exc:\n record['error']={'type':type(exc).__name__,'message':str(exc)};code=1\nfinally:\n record.update({'exit_code':code,'elapsed_seconds':time.monotonic()-started,\n  'ended_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()})\n save(w/'jobs/prepare-source-01.json',record)\n print(json.dumps(record,sort_keys=True),flush=True)\nraise SystemExit(code)\n"
+  ],
+  "driver_sha256": "655295501fc8d5d590d0b6a9c3a1f09d888490e7088aa4ac011ee772285b4b79",
+  "elapsed_seconds": 55.87104418198578,
+  "ended_utc": "2026-11-23T09:27:38.902962+00:00",
+  "exit_code": 0,
+  "physical_hardware_tested": false,
+  "schema_version": 1,
+  "start_utc": "2026-11-23T09:26:43.031833+00:00",
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 6066,
+    "sha256": "44f66926539c98bbb823978ca95e73576564f25393d09f75c3a6137f1b4adbb6"
+  }
+}

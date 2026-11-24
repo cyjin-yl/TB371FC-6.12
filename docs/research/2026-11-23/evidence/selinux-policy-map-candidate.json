@@ -1,0 +1,1535 @@
+{
+  "change": {
+    "candidate_policy": {
+      "mode": "0o644",
+      "path": "/work/selinux-reload-map-20261123/build-02/candidate/etc/selinux/targeted/policy/policy.35",
+      "sha256": "0dd46af3240a02d1c7399c46facf30cce2a71a471fb70c0d0f5e58e571e53c74",
+      "size": 3835432,
+      "version": 35
+    },
+    "module": {
+      "path": "scripts/research/selinux/reload-map/tb371fc_init_policy_map.cil",
+      "sha256": "d049999cbaccb16d5bebaca85b6dfcc2bbd17afbfd9d0b75d44556dbb5719eba",
+      "size": 291
+    },
+    "new_types_labels_booleans_or_permissive_domains": false,
+    "original_policy": {
+      "sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+      "size": 3835432,
+      "version": 35
+    },
+    "priority": 400,
+    "read_policy_permission_added": false,
+    "rule": "(allow init_t semanage_store_t (file (map)))",
+    "single_changed_byte": {
+      "after": 4,
+      "before": 0,
+      "offset": 1026692,
+      "xor": 4
+    }
+  },
+  "complete_binary_comparison": {
+    "exported_policy_texts_committed_to_git": false,
+    "exported_policy_texts_retained_at_remote_paths": true,
+    "job": {
+      "command": [
+        "/usr/bin/qemu-aarch64",
+        "-L",
+        "/work/fedora-input-system-v3/rootfs",
+        "-E",
+        "PYTHONHOME=/work/fedora-input-system-v3/rootfs/usr",
+        "/work/fedora-input-system-v3/rootfs/usr/bin/python3",
+        "-B",
+        "/work/selinux-reload-map-20261123/recipe-v3/compare_policy.py",
+        "--original",
+        "/work/fedora-input-system-v3/rootfs/etc/selinux/targeted/policy/policy.35",
+        "--candidate",
+        "/work/selinux-reload-map-20261123/build-02/candidate/etc/selinux/targeted/policy/policy.35",
+        "--candidate-size",
+        "3835432",
+        "--candidate-sha256",
+        "0dd46af3240a02d1c7399c46facf30cce2a71a471fb70c0d0f5e58e571e53c74",
+        "--library",
+        "/work/fedora-input-system-v3/rootfs/usr/lib64/libsepol.so.2",
+        "--output",
+        "/work/selinux-reload-map-20261123/compare-02"
+      ],
+      "elapsed_seconds": 68.42261499800952,
+      "exit_code": 0,
+      "start_utc": "2026-11-23T05:56:16.432958+00:00"
+    },
+    "kernel_export_identity_not_inferred_from_userspace_conversion": true,
+    "old_v6_actual_export_9c79_was_not_persisted_and_is_not_an_input": true,
+    "recipe": {
+      "path": "scripts/research/selinux/reload-map/compare_policy.py",
+      "sha256": "bccfcc408a75d58b29f01fa364d8981ae8b765dcb82e7384872831c8e74077d1",
+      "size": 9908
+    },
+    "result": {
+      "binary_difference": {
+        "changed_byte_count_in_overlap": 1,
+        "first_changed_offsets": [
+          1026692
+        ],
+        "same_length": true,
+        "trailing_length_delta": 0
+      },
+      "comparisons": {
+        "33": {
+          "added_permissions": [
+            "map"
+          ],
+          "after_rule": "(allow init_t semanage_store_t (file (ioctl read lock map open)))",
+          "before_rule": "(allow init_t semanage_store_t (file (ioctl read lock open)))",
+          "complete_cil_identical_after_exact_rule_substitution": true,
+          "includes_other_av_booleans_types_permissive_mls_and_policycaps": true,
+          "only_map_added_in_rule": true,
+          "removed_permissions": []
+        },
+        "35": {
+          "added_permissions": [
+            "map"
+          ],
+          "after_rule": "(allow init_t semanage_store_t (file (ioctl read lock map open)))",
+          "before_rule": "(allow init_t semanage_store_t (file (ioctl read lock open)))",
+          "complete_cil_identical_after_exact_rule_substitution": true,
+          "includes_other_av_booleans_types_permissive_mls_and_policycaps": true,
+          "only_map_added_in_rule": true,
+          "removed_permissions": []
+        }
+      },
+      "completed": true,
+      "conversions": {
+        "candidate": {
+          "fresh_parse_without_prior_cil_export": true,
+          "kernel_export_identity_asserted": false,
+          "path": "/work/selinux-reload-map-20261123/compare-02/candidate-converted-v33.policy",
+          "sha256": "bfe189488e5b99bd9bdb6571ec5023100be68771a80ebaf2e42e6c51527d83ba",
+          "size": 3835420,
+          "version": 33
+        },
+        "original": {
+          "fresh_parse_without_prior_cil_export": true,
+          "kernel_export_identity_asserted": false,
+          "path": "/work/selinux-reload-map-20261123/compare-02/original-converted-v33.policy",
+          "sha256": "aab7b7128bb8f0db2d349ac0817d806e5157b9a0b93dfe4f85ccf630354ebebe",
+          "size": 3835420,
+          "version": 33
+        }
+      },
+      "exports": {
+        "candidate-v33": {
+          "line_count": 356733,
+          "path": "/work/selinux-reload-map-20261123/compare-02/candidate-v33.cil",
+          "sha256": "cca96c654a9b87d70b1aeba0210d0cee8e3b1e7569ce19980640e02b6f97eaca",
+          "size": 26816060
+        },
+        "candidate-v35": {
+          "line_count": 356733,
+          "path": "/work/selinux-reload-map-20261123/compare-02/candidate-v35.cil",
+          "sha256": "cca96c654a9b87d70b1aeba0210d0cee8e3b1e7569ce19980640e02b6f97eaca",
+          "size": 26816060
+        },
+        "original-v33": {
+          "line_count": 356733,
+          "path": "/work/selinux-reload-map-20261123/compare-02/original-v33.cil",
+          "sha256": "92eac75fb11b66a737394832355483b462827647000717bac539f5b92bc3979a",
+          "size": 26816056
+        },
+        "original-v35": {
+          "line_count": 356733,
+          "path": "/work/selinux-reload-map-20261123/compare-02/original-v35.cil",
+          "sha256": "92eac75fb11b66a737394832355483b462827647000717bac539f5b92bc3979a",
+          "size": 26816056
+        }
+      },
+      "input_policy": {
+        "candidate": {
+          "sha256": "0dd46af3240a02d1c7399c46facf30cce2a71a471fb70c0d0f5e58e571e53c74",
+          "size": 3835432
+        },
+        "original": {
+          "sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+          "size": 3835432
+        }
+      },
+      "kernel_policy_loaded_or_queried": false,
+      "library": {
+        "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+        "size": 802880
+      },
+      "physical_hardware_tested": false,
+      "runtime_relabel_proven": false,
+      "schema": 1,
+      "scope": "complete offline binary-to-CIL comparison",
+      "script_sha256": "bccfcc408a75d58b29f01fa364d8981ae8b765dcb82e7384872831c8e74077d1"
+    }
+  },
+  "device_rebooted_or_flashed": false,
+  "evidence_classes": [
+    "source_clue",
+    "host_build"
+  ],
+  "interpretation_limits": [
+    "One static policy permission change is proven against the fixed on-disk Fedora policy, not against an unretained live policy export.",
+    "No evidence here proves standard policy reload, API-filesystem relabel, PID1 re-entry, or complete Fedora boot.",
+    "No policy label is substituted to bypass the original rule, no permissive domain or enforcement relaxation is introduced.",
+    "Future runtime evidence must save actual exported policy bytes and verify labels, process domains, zero AVC, and the existing system-resource gates.",
+    "No owner hardware acceptance case is promoted by compilation or offline policy inspection."
+  ],
+  "kernel_policy_loaded_or_changed": false,
+  "live_selinux_enforcement_changed": false,
+  "manifest_checks": {
+    "all_32_context_files_identical_after_build": true,
+    "atime_not_claimed_unchanged": true,
+    "candidate_items_including_directories": 1771,
+    "config_file_identical_after_build": true,
+    "context_file_count": 32,
+    "context_paths": [
+      "etc/selinux/targeted/contexts/customizable_types",
+      "etc/selinux/targeted/contexts/dbus_contexts",
+      "etc/selinux/targeted/contexts/default_contexts",
+      "etc/selinux/targeted/contexts/default_type",
+      "etc/selinux/targeted/contexts/failsafe_context",
+      "etc/selinux/targeted/contexts/files/file_contexts",
+      "etc/selinux/targeted/contexts/files/file_contexts.bin",
+      "etc/selinux/targeted/contexts/files/file_contexts.homedirs",
+      "etc/selinux/targeted/contexts/files/file_contexts.homedirs.bin",
+      "etc/selinux/targeted/contexts/files/file_contexts.local",
+      "etc/selinux/targeted/contexts/files/file_contexts.subs",
+      "etc/selinux/targeted/contexts/files/file_contexts.subs_dist",
+      "etc/selinux/targeted/contexts/files/media",
+      "etc/selinux/targeted/contexts/initrc_context",
+      "etc/selinux/targeted/contexts/lxc_contexts",
+      "etc/selinux/targeted/contexts/openssh_contexts",
+      "etc/selinux/targeted/contexts/removable_context",
+      "etc/selinux/targeted/contexts/securetty_types",
+      "etc/selinux/targeted/contexts/sepgsql_contexts",
+      "etc/selinux/targeted/contexts/snapperd_contexts",
+      "etc/selinux/targeted/contexts/systemd_contexts",
+      "etc/selinux/targeted/contexts/userhelper_context",
+      "etc/selinux/targeted/contexts/users/guest_u",
+      "etc/selinux/targeted/contexts/users/root",
+      "etc/selinux/targeted/contexts/users/staff_u",
+      "etc/selinux/targeted/contexts/users/sysadm_u",
+      "etc/selinux/targeted/contexts/users/unconfined_u",
+      "etc/selinux/targeted/contexts/users/user_u",
+      "etc/selinux/targeted/contexts/users/xguest_u",
+      "etc/selinux/targeted/contexts/virtual_domain_context",
+      "etc/selinux/targeted/contexts/virtual_image_context",
+      "etc/selinux/targeted/contexts/x_contexts"
+    ],
+    "copied_content_mode_uid_gid_equal_before_build": true,
+    "only_changed_regular_file_under_etc_selinux": "targeted/policy/policy.35",
+    "runtime_integration_should_copy_only_new_policy_not_whole_generated_store": true,
+    "source_after_manifest": {
+      "remote_path": "/work/selinux-reload-map-20261123/build-02/source-after.json",
+      "sha256": "3ab1550b558272ac17ff8a89520238bac8d2b5c108958e4458210da52fb10534",
+      "size": 504226
+    },
+    "source_before_after_exact_bytes_equal": true,
+    "source_items_including_directories": 1766,
+    "source_module_store_regular_files": 1290,
+    "source_regular_files": 1329
+  },
+  "manifests": {
+    "build_02_log": {
+      "path": "docs/research/2026-11-23/evidence/selinux-policy-map-build.log",
+      "sha256": "2ace7dc917f5f36ccfca99e61b88909fd875fbc81609f4d7a5ed7ac8dda5b608",
+      "size": 258
+    },
+    "candidate_before_manifest": {
+      "path": "docs/research/2026-11-23/evidence/selinux-policy-map-candidate-before-manifest.json",
+      "sha256": "8f0cda78d7bdf73e3ff690d5c11bb2006a6489b23bc28cf666deaac4dbade3ce",
+      "size": 504226
+    },
+    "candidate_manifest": {
+      "path": "docs/research/2026-11-23/evidence/selinux-policy-map-candidate-manifest.json",
+      "sha256": "db8374fc64b1037d9bdf33910ee8f7c0fa2f1ed2f643235ee2afcff926e77f5a",
+      "size": 505517
+    },
+    "source_manifest": {
+      "path": "docs/research/2026-11-23/evidence/selinux-policy-map-source-manifest.json",
+      "sha256": "3ab1550b558272ac17ff8a89520238bac8d2b5c108958e4458210da52fb10534",
+      "size": 504226
+    }
+  },
+  "owner_linux_passes": 0,
+  "owner_linux_runs": 0,
+  "related_evidence": [
+    {
+      "path": "docs/research/2026-11-23/fedora-r4c-tmpfs-failed.md",
+      "sha256": "4b777c1073c9d104c08d53239f59bcd2176d56bf38a7a1fdb72f0ba991aca482",
+      "size": 13940
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/fedora-r4c-tmpfs-failed-verify.log",
+      "sha256": "e7e5f620a6a7cfe2bb989ddd4ae881b2a988a598d8296a8b2b2af26c3f5ca0b2",
+      "size": 1313223
+    },
+    {
+      "path": "docs/research/2026-11-23/selinux-runtime-contract-query.md",
+      "sha256": "1fc8014d7e51a0f9e1f8bea275f32e745834cb9f9956ef19feeeec60d94c3385",
+      "size": 14583
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/selinux-runtime-contract-query.json",
+      "sha256": "b21393eec34638e0e3d7a0f0c047209362ebc2bcb4420bd0d95bdbac4b1baed6",
+      "size": 268211
+    },
+    {
+      "path": "docs/research/2026-11-23/early-selinux-reload-loader.md",
+      "sha256": "af3d34702f11ecc8ab419fe071c7dc34aa0c8f09e6069e52ca7cd0802424b861",
+      "size": 7485
+    }
+  ],
+  "retained_failed_first_attempt": {
+    "cause": "Absolute guest /etc/nsswitch.conf symlink was first resolved against the build host. Failure preceded semodule execution.",
+    "fix": "Resolve guest absolute and relative symlinks within the supplied source root, preserving payload bytes. New build-02; original build-01 retained.",
+    "job": {
+      "command": [
+        "python3",
+        "/work/selinux-reload-map-20261123/recipe/build_policy.py",
+        "--source-root",
+        "/work/fedora-input-system-v3/rootfs",
+        "--work",
+        "/work/selinux-reload-map-20261123/build-01",
+        "--module",
+        "/work/selinux-reload-map-20261123/recipe/tb371fc_init_policy_map.cil"
+      ],
+      "elapsed_seconds": 3.387601305032149,
+      "exit_code": 1,
+      "start_utc": "2026-11-23T05:46:23.327221+00:00"
+    },
+    "log": {
+      "remote_path": "/work/selinux-reload-map-20261123/jobs/build-01.log",
+      "sha256": "8221fedb1235915142cc36a8f2e1ad2601a445a1ded2f5de5b5cfba2b6a93e3f",
+      "size": 920,
+      "text": "Traceback (most recent call last):\n  File \"/work/selinux-reload-map-20261123/recipe/build_policy.py\", line 261, in <module>\n    main()\n    ~~~~^^\n  File \"/work/selinux-reload-map-20261123/recipe/build_policy.py\", line 194, in main\n    record[\"tool_closure\"] = tool_closure(source, toolroot)\n                             ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/work/selinux-reload-map-20261123/recipe/build_policy.py\", line 123, in tool_closure\n    shutil.copy2(source / rel, dst)\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/shutil.py\", line 468, in copy2\n    copyfile(src, dst, follow_symlinks=follow_symlinks)\n    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/shutil.py\", line 260, in copyfile\n    with open(src, 'rb') as fsrc:\n         ~~~~^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/work/fedora-input-system-v3/rootfs/etc/nsswitch.conf'\n"
+    },
+    "recipe": {
+      "path": "scripts/research/selinux/reload-map/history/build_policy-v1.py",
+      "sha256": "d5a7dd4486f47a5a291505fae09847c743924c536ee3e3240cf0f8184978a576",
+      "size": 12568
+    },
+    "result": {
+      "elapsed_seconds": 1.1138900769874454,
+      "error": "FileNotFoundError: [Errno 2] No such file or directory: '/work/fedora-input-system-v3/rootfs/etc/nsswitch.conf'",
+      "finished_utc": "2026-11-23T05:46:26.642029+00:00",
+      "kernel_policy_loaded": false,
+      "physical_device_actions": false,
+      "rootfs_booted": false,
+      "schema": 1,
+      "script_sha256": "d5a7dd4486f47a5a291505fae09847c743924c536ee3e3240cf0f8184978a576",
+      "source_inventory_unchanged_including_mtime_ctime": true,
+      "source_pins": {
+        "etc/selinux/config": "80134a263d874d1687a43513a09b6cc8fdc2998e623c1c1670cb5769a85ce942",
+        "etc/selinux/semanage.conf": "8ba0df9a109dd136f1e8827343806ced9a0652c670c2572b4dd8642c67c27734",
+        "etc/selinux/targeted/policy/policy.35": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+        "usr/lib64/libselinux.so.1": "c9edfec980b8a05666d24dc3a4e15b502431334e2c7e3adcae189402b5031f6d",
+        "usr/lib64/libsemanage.so.2": "246206662c92e1df56f5f4f0d173bfb1bd6f97827fa189538e0857b6dc6058e8",
+        "usr/lib64/libsepol.so.2": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+        "usr/sbin/sefcontext_compile": "4a4f15badf7f975f4a10f14d5706e6f53a3765ead74531110c64da4797767936",
+        "usr/sbin/semodule": "1fee7d2141b111197eb4bbcc72f626646af702c45e5f5212347e0e6c5e028029",
+        "usr/sbin/setfiles": "75a118afe1060f2a402ac9c25498699b8b8493501bc7bd56099ee47fb0aa435b"
+      },
+      "source_root": "/work/fedora-input-system-v3/rootfs",
+      "started_utc": "2026-11-23T05:46:23.495635+00:00",
+      "status": "failed"
+    }
+  },
+  "retained_first_comparison": {
+    "correction": "compare-02 converts a fresh policydb parsed from each original ordinary input; old conversion again equals the established aab7 hash.",
+    "job": {
+      "command": [
+        "/usr/bin/qemu-aarch64",
+        "-L",
+        "/work/fedora-input-system-v3/rootfs",
+        "-E",
+        "PYTHONHOME=/work/fedora-input-system-v3/rootfs/usr",
+        "/work/fedora-input-system-v3/rootfs/usr/bin/python3",
+        "-B",
+        "/work/selinux-reload-map-20261123/recipe-v2/compare_policy.py",
+        "--original",
+        "/work/fedora-input-system-v3/rootfs/etc/selinux/targeted/policy/policy.35",
+        "--candidate",
+        "/work/selinux-reload-map-20261123/build-02/candidate/etc/selinux/targeted/policy/policy.35",
+        "--candidate-size",
+        "3835432",
+        "--candidate-sha256",
+        "0dd46af3240a02d1c7399c46facf30cce2a71a471fb70c0d0f5e58e571e53c74",
+        "--library",
+        "/work/fedora-input-system-v3/rootfs/usr/lib64/libsepol.so.2",
+        "--output",
+        "/work/selinux-reload-map-20261123/compare-01"
+      ],
+      "elapsed_seconds": 65.16271901200525,
+      "exit_code": 0,
+      "start_utc": "2026-11-23T05:53:09.976290+00:00"
+    },
+    "limitation": "CIL export ran before version conversion on the same private policydb and changed subsequent serialization order. Do not use these conversion hashes to model the normal loader.",
+    "recipe": {
+      "path": "scripts/research/selinux/reload-map/history/compare_policy-v1.py",
+      "sha256": "d4478b2225ed930799f5705fd7c287a72958e32f1d214740b9c54618b9847b25",
+      "size": 9363
+    },
+    "result": {
+      "binary_difference": {
+        "changed_byte_count_in_overlap": 1,
+        "first_changed_offsets": [
+          1026692
+        ],
+        "same_length": true,
+        "trailing_length_delta": 0
+      },
+      "comparisons": {
+        "33": {
+          "added_permissions": [
+            "map"
+          ],
+          "after_rule": "(allow init_t semanage_store_t (file (ioctl read lock map open)))",
+          "before_rule": "(allow init_t semanage_store_t (file (ioctl read lock open)))",
+          "complete_cil_identical_after_exact_rule_substitution": true,
+          "includes_other_av_booleans_types_permissive_mls_and_policycaps": true,
+          "only_map_added_in_rule": true,
+          "removed_permissions": []
+        },
+        "35": {
+          "added_permissions": [
+            "map"
+          ],
+          "after_rule": "(allow init_t semanage_store_t (file (ioctl read lock map open)))",
+          "before_rule": "(allow init_t semanage_store_t (file (ioctl read lock open)))",
+          "complete_cil_identical_after_exact_rule_substitution": true,
+          "includes_other_av_booleans_types_permissive_mls_and_policycaps": true,
+          "only_map_added_in_rule": true,
+          "removed_permissions": []
+        }
+      },
+      "completed": true,
+      "conversions": {
+        "candidate": {
+          "kernel_export_identity_asserted": false,
+          "path": "/work/selinux-reload-map-20261123/compare-01/candidate-converted-v33.policy",
+          "sha256": "320cb75eadb15f222811b937b0e5fc7dfc5480827f354bc8a482b0dc80afa66e",
+          "size": 3835420,
+          "version": 33
+        },
+        "original": {
+          "kernel_export_identity_asserted": false,
+          "path": "/work/selinux-reload-map-20261123/compare-01/original-converted-v33.policy",
+          "sha256": "a1018f25a6239b4bc66e503a687409b6d141d99a97550fa4b3dd406c01fc5213",
+          "size": 3835420,
+          "version": 33
+        }
+      },
+      "exports": {
+        "candidate-v33": {
+          "line_count": 356733,
+          "path": "/work/selinux-reload-map-20261123/compare-01/candidate-v33.cil",
+          "sha256": "cca96c654a9b87d70b1aeba0210d0cee8e3b1e7569ce19980640e02b6f97eaca",
+          "size": 26816060
+        },
+        "candidate-v35": {
+          "line_count": 356733,
+          "path": "/work/selinux-reload-map-20261123/compare-01/candidate-v35.cil",
+          "sha256": "cca96c654a9b87d70b1aeba0210d0cee8e3b1e7569ce19980640e02b6f97eaca",
+          "size": 26816060
+        },
+        "original-v33": {
+          "line_count": 356733,
+          "path": "/work/selinux-reload-map-20261123/compare-01/original-v33.cil",
+          "sha256": "92eac75fb11b66a737394832355483b462827647000717bac539f5b92bc3979a",
+          "size": 26816056
+        },
+        "original-v35": {
+          "line_count": 356733,
+          "path": "/work/selinux-reload-map-20261123/compare-01/original-v35.cil",
+          "sha256": "92eac75fb11b66a737394832355483b462827647000717bac539f5b92bc3979a",
+          "size": 26816056
+        }
+      },
+      "input_policy": {
+        "candidate": {
+          "sha256": "0dd46af3240a02d1c7399c46facf30cce2a71a471fb70c0d0f5e58e571e53c74",
+          "size": 3835432
+        },
+        "original": {
+          "sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+          "size": 3835432
+        }
+      },
+      "kernel_policy_loaded_or_queried": false,
+      "library": {
+        "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+        "size": 802880
+      },
+      "physical_hardware_tested": false,
+      "runtime_relabel_proven": false,
+      "schema": 1,
+      "scope": "complete offline binary-to-CIL comparison",
+      "script_sha256": "d4478b2225ed930799f5705fd7c287a72958e32f1d214740b9c54618b9847b25"
+    },
+    "v35_complete_cil_and_single_byte_difference_remain_valid": true
+  },
+  "runtime_standard_reload_relabel_proven": false,
+  "schema_version": 1,
+  "scope": "Independent offline Fedora policy module build and complete binary-to-CIL comparison; no VM or owner Linux execution.",
+  "source_audit": {
+    "additional_srpms": [
+      {
+        "name": "libsemanage-3.11-4.fc45.src.rpm",
+        "sha256": "9730615282b161afbfd956180f27cad79ca75c3ed5e4232495bd5f6305acf685",
+        "size": 315648,
+        "url": "https://kojipkgs.fedoraproject.org/packages/libsemanage/3.11/4.fc45/src/libsemanage-3.11-4.fc45.src.rpm"
+      },
+      {
+        "name": "policycoreutils-3.11-2.fc45.src.rpm",
+        "sha256": "3c14350d0f664618be03e4e8e6f4b34229de85c3903860b57237c5496604f7c7",
+        "size": 8278997,
+        "url": "https://kojipkgs.fedoraproject.org/packages/policycoreutils/3.11/2.fc45/src/policycoreutils-3.11-2.fc45.src.rpm"
+      }
+    ],
+    "fixed_files": {
+      "source-libsemanage/libsemanage-3.11/src/conf-parse.y": {
+        "sha256": "070a897e8388a0c799c633906e6f9ed24e0a4a5b508e3ab1c7ac509911c5e665",
+        "size": 19792
+      },
+      "source-libsemanage/libsemanage-3.11/src/direct_api.c": {
+        "sha256": "8edb15aad3651f0d610975bc5bff515ef3a2b9e48675a2cab8a62f522a49a533",
+        "size": 75843
+      },
+      "source-libsemanage/libsemanage-3.11/src/handle.c": {
+        "sha256": "6439caec025b21d745d82f44f63308a6f2de6fac45fb1968089ddc60f1a0578e",
+        "size": 9461
+      },
+      "source-libsemanage/libsemanage-3.11/src/semanage_store.c": {
+        "sha256": "c328653a8d885e83db9f4d2fe4ff14b780c5219ed7d111ff0f92f35861d6379a",
+        "size": 80871
+      },
+      "source-policycoreutils/selinux-3.11/libselinux/src/selinux_restorecon.c": {
+        "sha256": "5bc2c77fcd5b4df44388161c02408cb9e74162ec47d6b402a52605eed9b66b9e",
+        "size": 47116
+      },
+      "source-policycoreutils/selinux-3.11/policycoreutils/semodule/semodule.c": {
+        "sha256": "a1e8ad909b4c803a7b1fb1e6542a76da6d6fc598ca0fe6528ab08806a77e3b7f",
+        "size": 22622
+      },
+      "source-systemd/systemd-262.1/src/core/dbus-execute.c": {
+        "sha256": "90dee9f2a527d7c682db7ba381a7ac677e71f223afbd529f7181765fcb675c5d",
+        "size": 193499
+      },
+      "source-systemd/systemd-262.1/src/core/main.c": {
+        "sha256": "f86ce10354f1bd280d540e5682a8cfe637e77ecfc36b0b972a0f9606ca3780c6",
+        "size": 180643
+      },
+      "source-systemd/systemd-262.1/src/core/selinux-setup.c": {
+        "sha256": "868c39f4a81584803e38e82e5db02f510d0148594cf1c21923b522c19a3547e1",
+        "size": 3721
+      },
+      "source-systemd/systemd-262.1/src/shared/label-util.c": {
+        "sha256": "ed2ee4276c7a056e85e4216ccf0457934407d5a10192251e27e10fa58e4d259f",
+        "size": 3682
+      },
+      "source-systemd/systemd-262.1/src/shared/mount-setup.c": {
+        "sha256": "50a8f9f56ee08becc11b7ce1659486b37d54634367dd33449735ad796f8f0f85",
+        "size": 20672
+      },
+      "source-systemd/systemd-262.1/src/shared/selinux-util.c": {
+        "sha256": "c9c91162d89cdb35db5723558f38f6b586a66484780a2aa193bf8dfd651ad860",
+        "size": 37261
+      },
+      "source-systemd/systemd-262.1/src/systemctl/systemctl-show.c": {
+        "sha256": "f5a8fb0db71d3201661968db747a020b451b34183760bd1de032990c584b83fb",
+        "size": 121554
+      },
+      "source-systemd/systemd-262.1/src/systemctl/systemctl.c": {
+        "sha256": "f03fe3d7450456f2f731ca5e7d8e0073cf297ec311f09e3f7658616b35405962",
+        "size": 52177
+      }
+    },
+    "libselinux_read_contract": {
+      "file": "src/load_policy.c",
+      "flags": [
+        "PROT_READ",
+        "MAP_PRIVATE"
+      ],
+      "mmap_failure_falls_back_to_read": false,
+      "mmap_line": 161
+    },
+    "libselinux_srpm_and_patches": {
+      "archive": {
+        "name": "libselinux-3.11.tar.gz",
+        "sha256": "73d419c6e20e874adaa4019372cbd097eecf4d276e13f27ec5e67d35c0bd203c",
+        "size": 208732
+      },
+      "declaration_package": {
+        "headers": [
+          {
+            "path": "usr/include/selinux/avc.h",
+            "sha256": "b8cbacb883bcfd10b5827d24da47d21f1974f4de160b787210d35471a5ebd524",
+            "size": 16786
+          },
+          {
+            "path": "usr/include/selinux/context.h",
+            "sha256": "bba43da28c95e6018673550318a679e501c9e659851ed3ef106337e99bf44827",
+            "size": 1456
+          },
+          {
+            "path": "usr/include/selinux/get_context_list.h",
+            "sha256": "e8d9129bf8fc5bb1cb7df250e684b8116f424a743f76e98a63db880243e73c28",
+            "size": 2902
+          },
+          {
+            "path": "usr/include/selinux/get_default_type.h",
+            "sha256": "b41c8ffe702794f3e481e2b9b199ee407fe12102eb1ecab9256dc08865a7982b",
+            "size": 638
+          },
+          {
+            "path": "usr/include/selinux/label.h",
+            "sha256": "cc6c7ef62dee069d0206f045551e31e884eee1f707de7ca5af8741973313c2c1",
+            "size": 6421
+          },
+          {
+            "path": "usr/include/selinux/restorecon.h",
+            "sha256": "452ba2e89e89397a5388acdf4b83954e9b1b7161a11ed69a14a50304a9512bd8",
+            "size": 8351
+          },
+          {
+            "path": "usr/include/selinux/selinux.h",
+            "sha256": "7e306b900740bacb51f25228cde66cbed277e196ef561cc1feefbd4ddda86ae5",
+            "size": 29296
+          }
+        ],
+        "sha256": "60383ef415eee73f0f2cad12e81010f6a6c2bf810dfed7b3c61f585ea772e6da",
+        "size": 128120,
+        "url": "https://kojipkgs.fedoraproject.org/packages/libselinux/3.11/5.fc45/aarch64/libselinux-devel-3.11-5.fc45.aarch64.rpm"
+      },
+      "default_handle_enables_only_digest": true,
+      "default_handle_enables_validate": false,
+      "load_policy_auto_mounts": [
+        "proc (temporary if newly mounted)",
+        "sysfs",
+        "selinuxfs"
+      ],
+      "load_policy_nodev_deliberately_absent": true,
+      "load_policy_preserves_enforcing_when_config_cmdline_and_initial_state_are_one": true,
+      "load_policy_selinuxfs_flags": [
+        "MS_NOEXEC",
+        "MS_NOSUID"
+      ],
+      "missing_context_handle_fails": true,
+      "patch_strip_level": 2,
+      "patched_source": {
+        "include/selinux/label.h": {
+          "equals_installed_devel_header": true,
+          "sha256": "cc6c7ef62dee069d0206f045551e31e884eee1f707de7ca5af8741973313c2c1",
+          "size": 6421
+        },
+        "include/selinux/restorecon.h": {
+          "equals_installed_devel_header": true,
+          "sha256": "452ba2e89e89397a5388acdf4b83954e9b1b7161a11ed69a14a50304a9512bd8",
+          "size": 8351
+        },
+        "src/label.c": {
+          "sha256": "1b1394617ba13252c5cfad0850c1dffe0fd5ddaab412f5ed0057d70f9506ea43",
+          "size": 8406
+        },
+        "src/load_policy.c": {
+          "sha256": "8c8402d292d74e6bfc887415953802af589183de580b4022186e450cb441bbf1",
+          "size": 10305
+        },
+        "src/selinux_restorecon.c": {
+          "sha256": "f90098e435b4c270bc1e11a9a5aabfef67beafdc4cf680b09ad706b5caaed6a0",
+          "size": 48013
+        }
+      },
+      "patches": [
+        {
+          "exit_code": 0,
+          "name": "0001-Use-SHA-2-instead-of-SHA-1.patch",
+          "sha256": "02fbcc58ac6ba941c818b6befc8f298544a3272db5a6467382f3ed9714181c75"
+        },
+        {
+          "exit_code": 0,
+          "name": "0002-libselinux-Replace-PyString_FromString-with-PyUnicod.patch",
+          "sha256": "687f5bf215f674ada8937e37f9bed8d0d1278a0f7eb34cb565312a9c8f83ce6c"
+        },
+        {
+          "exit_code": 0,
+          "name": "0003-libselinux-restorecon_xattr-reset-dir_xattr_list-on-.patch",
+          "sha256": "99c9e897b4aca7709bb139be7bf61c2b2c5ff94574e3dc76524cf90451638e90"
+        },
+        {
+          "exit_code": 0,
+          "name": "0004-Add-support-for-UTF-8-in-file-context-specifications.patch",
+          "sha256": "0bac104121db8724f28058fc175acedc14de18580ca1ca9b1616cb747fa28e5b"
+        }
+      ],
+      "raw_lookup_requests_translation": false,
+      "sha256": "7a1e9a263681aa698203601e1738bc5312c6f4b0812ec012a0b87b3f0088f4fd",
+      "size": 408679,
+      "spec_sha256": "d14f55f8d55ae66befcdee4070ae6e37ff235de23a1733b32e6e32d0e17898d0",
+      "url": "https://kojipkgs.fedoraproject.org/packages/libselinux/3.11/5.fc45/src/libselinux-3.11-5.fc45.src.rpm"
+    },
+    "libsepol_srpm_and_headers": {
+      "files": [
+        {
+          "path": "include/sepol/kernel_to_cil.h",
+          "sha256": "ff60a060c76289c157ab909560c4204b4f035e600ec68ade45caaab24373068e",
+          "size": 199
+        },
+        {
+          "path": "include/sepol/policydb/policydb.h",
+          "sha256": "26087130328843e4d185f77de2f7c1bf37f0f5e959d487ee665e6cb0847d195a",
+          "size": 27806
+        },
+        {
+          "path": "src/kernel_to_cil.c",
+          "sha256": "02adcdf4a2461d1112e18ee32602ca22496b2759cf15276290bb00f7fbdcf2d9",
+          "size": 73915
+        },
+        {
+          "path": "src/policydb_public.c",
+          "sha256": "f7a60c08196b69909693236fbd20ce927fb4fc00cd05e24df23e7b8a60407efb",
+          "size": 4012
+        }
+      ],
+      "patches": [],
+      "rpm": {
+        "sha256": "d73db18582210563148c797198183ca9dec00a98f02956297f75cda253f2ad77",
+        "size": 641730,
+        "url": "https://kojipkgs.fedoraproject.org/packages/libsepol/3.11/2.fc45/src/libsepol-3.11-2.fc45.src.rpm"
+      }
+    },
+    "policy_context_and_cil_contract": {
+      "etc/selinux/targeted/contexts/files/file_contexts": {
+        "selected_lines": [
+          {
+            "line": 197,
+            "text": "/run/log(/.*)?\tsystem_u:object_r:syslogd_var_run_t:s0"
+          },
+          {
+            "line": 1179,
+            "text": "/etc/selinux/([^/]*/)?policy(/.*)?\tsystem_u:object_r:semanage_store_t:s0"
+          },
+          {
+            "line": 3344,
+            "text": "/run\t-d\tsystem_u:object_r:var_run_t:s0"
+          },
+          {
+            "line": 3407,
+            "text": "/dev/kmsg\t-c\tsystem_u:object_r:kmsg_device_t:s0"
+          },
+          {
+            "line": 3409,
+            "text": "/dev/null\t-c\tsystem_u:object_r:null_device_t:s0"
+          }
+        ],
+        "sha256": "df39f62b57af725bec5c4fbe2ec8bf82f12be5e2f432ad8dc63e2cdcced98f44",
+        "size": 408747
+      },
+      "etc/selinux/targeted/contexts/files/file_contexts.local": {
+        "selected_lines": [],
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "etc/selinux/targeted/contexts/files/file_contexts.subs": {
+        "selected_lines": [],
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "var/lib/selinux/targeted/active/modules/100/init/cil": {
+        "decompressed_sha256": "6baf9f06ff85388b3176da4d8bd70357570db8d4e51500ec35ed97f5589feea6",
+        "selected_lines": [
+          {
+            "line": 1538,
+            "text": "(allow init_t security_t (security (load_policy)))"
+          },
+          {
+            "line": 1545,
+            "text": "(allow init_t security_t (security (compute_av)))"
+          },
+          {
+            "line": 1552,
+            "text": "(allow init_t security_t (security (compute_create)))"
+          },
+          {
+            "line": 1559,
+            "text": "(allow init_t security_t (security (compute_user)))"
+          },
+          {
+            "line": 1566,
+            "text": "(allow init_t security_t (security (check_context)))"
+          },
+          {
+            "line": 1573,
+            "text": "(allow init_t security_t (security (compute_relabel)))"
+          },
+          {
+            "line": 1701,
+            "text": "(allow init_t semanage_store_t (dir (ioctl read getattr lock open search)))"
+          },
+          {
+            "line": 1702,
+            "text": "(allow init_t semanage_store_t (dir (getattr open search)))"
+          },
+          {
+            "line": 1703,
+            "text": "(allow init_t semanage_store_t (file (ioctl read getattr lock open)))"
+          },
+          {
+            "line": 1704,
+            "text": "(allow init_t semanage_store_t (dir (getattr open search)))"
+          },
+          {
+            "line": 1705,
+            "text": "(allow init_t semanage_store_t (lnk_file (read getattr)))"
+          }
+        ],
+        "sha256": "55484740ada88a8b4cf7a29e0484b55696af73c60ddb906e5a8b8bcb5369b0d1",
+        "size": 21453
+      },
+      "var/lib/selinux/targeted/active/modules/100/selinuxutil/cil": {
+        "decompressed_sha256": "dc9524a239eb6cd3992c1ce1ac4491a1be18057afe324f6f10bad6c9ec272aeb",
+        "selected_lines": [
+          {
+            "line": 2701,
+            "text": "(filecon \"/etc/selinux/([^/]*/)?policy(/.*)?\" any (system_u object_r semanage_store_t ((s0) (s0))))"
+          }
+        ],
+        "sha256": "6940114c57048c86ab2d79f90c9b76ec26c172c243b159012cf18a6f0da8cf78",
+        "size": 9901
+      }
+    },
+    "policycoreutils_and_libsemanage_fedora_patches": [
+      {
+        "argv": [
+          "patch",
+          "--batch",
+          "--forward",
+          "-p2",
+          "-i",
+          "/work/selinux-reload-map-20261123/srpm-libsemanage/0001-libsemanage-optionally-sort-file_contexts.local-by-s.patch"
+        ],
+        "exit_code": 0,
+        "file": "0001-libsemanage-optionally-sort-file_contexts.local-by-s.patch",
+        "sha256": "372f354e0ebce99396485a55b2c1ea4466968cac473ab06ce66380fcd9fd2412",
+        "stderr": "",
+        "stdout": "patching file man/man5/semanage.conf.5\npatching file src/conf-parse.y\npatching file src/conf-scan.l\npatching file src/direct_api.c\npatching file src/semanage_conf.h\npatching file src/semanage_store.c\npatching file src/semanage_store.h\n"
+      },
+      {
+        "argv": [
+          "patch",
+          "--batch",
+          "--forward",
+          "-p2",
+          "-i",
+          "/work/selinux-reload-map-20261123/srpm-libsemanage/0002-libsemanage-genhomedircon-reject-users-with-a-relati.patch"
+        ],
+        "exit_code": 0,
+        "file": "0002-libsemanage-genhomedircon-reject-users-with-a-relati.patch",
+        "sha256": "477542bc9873f11ffb0983d416f83357e068930ac1d34d0b9c73382a5fdfccd8",
+        "stderr": "",
+        "stdout": "patching file src/genhomedircon.c\n"
+      },
+      {
+        "argv": [
+          "patch",
+          "--batch",
+          "--forward",
+          "-p1",
+          "-i",
+          "/work/selinux-reload-map-20261123/srpm-policycoreutils/0001-Don-t-be-verbose-if-you-are-not-on-a-tty.patch"
+        ],
+        "exit_code": 0,
+        "file": "0001-Don-t-be-verbose-if-you-are-not-on-a-tty.patch",
+        "sha256": "ebb516ebaba1cb4388a5b850f138484d250973f2b5b1f5f1bf0d5cfc57f1ad85",
+        "stderr": "",
+        "stdout": "patching file policycoreutils/scripts/fixfiles\n"
+      },
+      {
+        "argv": [
+          "patch",
+          "--batch",
+          "--forward",
+          "-p1",
+          "-i",
+          "/work/selinux-reload-map-20261123/srpm-policycoreutils/0002-sepolicy-generate-Handle-more-reserved-port-types.patch"
+        ],
+        "exit_code": 0,
+        "file": "0002-sepolicy-generate-Handle-more-reserved-port-types.patch",
+        "sha256": "026bd645eb25ae1921a863cdd1bdc26a022a1d6a500726b42de4282a67c1f468",
+        "stderr": "",
+        "stdout": "patching file python/sepolicy/sepolicy/generate.py\n"
+      },
+      {
+        "argv": [
+          "patch",
+          "--batch",
+          "--forward",
+          "-p1",
+          "-i",
+          "/work/selinux-reload-map-20261123/srpm-policycoreutils/0003-sandbox-Use-matchbox-window-manager-instead-of-openb.patch"
+        ],
+        "exit_code": 0,
+        "file": "0003-sandbox-Use-matchbox-window-manager-instead-of-openb.patch",
+        "sha256": "859eda804dae35e6f7848171b08d0e94fff27cc661e08be274574967a0efc018",
+        "stderr": "",
+        "stdout": "patching file sandbox/sandbox\npatching file sandbox/sandbox.8\npatching file sandbox/sandboxX.sh\n"
+      },
+      {
+        "argv": [
+          "patch",
+          "--batch",
+          "--forward",
+          "-p1",
+          "-i",
+          "/work/selinux-reload-map-20261123/srpm-policycoreutils/0004-Use-SHA-2-instead-of-SHA-1.patch"
+        ],
+        "exit_code": 0,
+        "file": "0004-Use-SHA-2-instead-of-SHA-1.patch",
+        "sha256": "25fc69690d4af0d5bd9389acbad58f8c0e797e3346711c460a1f007d28d9fbe3",
+        "stderr": "",
+        "stdout": "patching file policycoreutils/setfiles/restorecon.8\npatching file policycoreutils/setfiles/restorecon_xattr.8\npatching file policycoreutils/setfiles/restorecon_xattr.c\npatching file policycoreutils/setfiles/setfiles.8\n"
+      },
+      {
+        "argv": [
+          "patch",
+          "--batch",
+          "--forward",
+          "-p1",
+          "-i",
+          "/work/selinux-reload-map-20261123/srpm-policycoreutils/0005-python-sepolicy-Fix-spec-file-dependencies.patch"
+        ],
+        "exit_code": 0,
+        "file": "0005-python-sepolicy-Fix-spec-file-dependencies.patch",
+        "sha256": "853cc5aa7653571a7df3545154ca6ce2bb35ffd8ea3b5b4087e2098e3dae1f0e",
+        "stderr": "",
+        "stdout": "patching file python/sepolicy/sepolicy/templates/spec.py\n"
+      },
+      {
+        "argv": [
+          "patch",
+          "--batch",
+          "--forward",
+          "-p1",
+          "-i",
+          "/work/selinux-reload-map-20261123/srpm-policycoreutils/0006-sepolicy-Fix-detection-of-writeable-locations.patch"
+        ],
+        "exit_code": 0,
+        "file": "0006-sepolicy-Fix-detection-of-writeable-locations.patch",
+        "sha256": "be30d344cf7c47717875b2b40e78012b5b378bb056d51634d4c2927da966aaa0",
+        "stderr": "",
+        "stdout": "patching file python/sepolicy/sepolicy/generate.py\n"
+      }
+    ],
+    "same_sid_setcon_contract": {
+      "dyntransition_lines": [
+        6762,
+        6764
+      ],
+      "entry": "selinux_setprocattr -> selinux_lsm_setattr",
+      "permission_results_belong_to_separate_relabel_query": true,
+      "same_sid_skips_these_checks": false,
+      "setcurrent_lines": [
+        6676,
+        6678
+      ],
+      "sha256": "6079b88f15ca1966b640753e35edc291139fe925fca37e5c54d0a2d6e36d8370",
+      "size": 204597,
+      "source_file": "/work/research4-system/source-input/linux-6.12.114-input-integration/security/selinux/hooks.c"
+    },
+    "standard_relabel_contract": {
+      "actual_labels_and_zero_avc_still_required": true,
+      "file": "src/shared/mount-setup.c",
+      "label_failures_are_not_all_propagated_as_fatal": true,
+      "mount_setup_lines": [
+        477,
+        505
+      ],
+      "requires_loaded_policy": true,
+      "same_mount_recursion": true,
+      "targets": {
+        "/dev/kmsg": "kmsg_device_t",
+        "/dev/null": "null_device_t",
+        "/dev/shm": "tmpfs_t",
+        "/run": "var_run_t",
+        "/run/log/journal/<machine-id>/system.journal": "syslogd_var_run_t"
+      },
+      "trees": [
+        "/dev",
+        "/dev/shm",
+        "/run"
+      ]
+    },
+    "systemd_fedora_patches": [
+      {
+        "exit_code": 0,
+        "name": "30846.patch",
+        "sha256": "70143c0f62e0a76d18eb1abbbab3ca33640d904490eaaac2fec674c5cfe33938",
+        "stdout": "patching file src/basic/uid-classification.c\nHunk #1 succeeded at 136 (offset 7 lines).\n"
+      },
+      {
+        "exit_code": 0,
+        "name": "0001-core-create-userdb-root-directory-with-correct-label.patch",
+        "sha256": "1a469977168a0a43d87e49b0c89fff9ab4bbaf6f0c456439c54746f71f1f5ced",
+        "stdout": "patching file src/core/varlink.c\n"
+      },
+      {
+        "exit_code": 0,
+        "name": "0002-machined-continue-without-resolve.hook-socket.patch",
+        "sha256": "2010af26e0d9cd5c34fd3fac80105868a9242a60bfcf8dbbe5c35b52426d181d",
+        "stdout": "patching file src/machine/machined-varlink.c\n"
+      }
+    ],
+    "systemd_reload_contract": {
+      "already_initialized_does_not_skip_load": true,
+      "file": "src/core/selinux-setup.c",
+      "initialized_enforcing_load_failure_returns_with_old_policy_and_loaded_policy_false": true,
+      "loaded_policy_true_only_after_successful_init_load_policy": true,
+      "setcon_raw_precedes_mount_setup": true,
+      "source_lines": {
+        "initialized": [
+          35,
+          48
+        ],
+        "load": 56,
+        "loaded_policy_true": 78,
+        "old_policy_fallback": [
+          82,
+          90
+        ],
+        "setcon": 66
+      }
+    },
+    "systemd_srpm": {
+      "sha256": "de8e6ebb2fb7b7aa0e1297c0c27c3339d15c37b24b57ca16a762483580ea7168",
+      "size": 19165235,
+      "url": "https://kojipkgs.fedoraproject.org/packages/systemd/262.1/1.fc45/src/systemd-262.1-1.fc45.src.rpm"
+    }
+  },
+  "status": "candidate_built_and_offline_single_permission_difference_verified",
+  "successful_build": {
+    "job": {
+      "command": [
+        "python3",
+        "/work/selinux-reload-map-20261123/recipe-v2/build_policy.py",
+        "--source-root",
+        "/work/fedora-input-system-v3/rootfs",
+        "--work",
+        "/work/selinux-reload-map-20261123/build-02",
+        "--module",
+        "/work/selinux-reload-map-20261123/recipe/tb371fc_init_policy_map.cil"
+      ],
+      "elapsed_seconds": 57.422567408997566,
+      "exit_code": 0,
+      "start_utc": "2026-11-23T05:48:14.783229+00:00"
+    },
+    "log": {
+      "path": "docs/research/2026-11-23/evidence/selinux-policy-map-build.log",
+      "sha256": "2ace7dc917f5f36ccfca99e61b88909fd875fbc81609f4d7a5ed7ac8dda5b608",
+      "size": 258
+    },
+    "recipe": {
+      "path": "scripts/research/selinux/reload-map/build_policy.py",
+      "sha256": "c2e0974bc58ed96d1e560ca7fe32f7f4f79f27bbac2960102adfec42eb59767d",
+      "size": 13640
+    },
+    "result": {
+      "build_config": {
+        "changes": "Only fixed emulated executable paths; load_policy rejects every invocation.",
+        "sha256": "fb5c15d6e9cd55f73122b313fd932431deab6275a0a5a100370ff7f05f976516",
+        "size": 2979
+      },
+      "candidate_content_differences": [
+        {
+          "after": {
+            "ctime_ns": 1795412951329665268,
+            "gid": 0,
+            "mode": "0o644",
+            "mtime_ns": 1795412951189657406,
+            "sha256": "0dd46af3240a02d1c7399c46facf30cce2a71a471fb70c0d0f5e58e571e53c74",
+            "size": 3835432,
+            "type": "file",
+            "uid": 0
+          },
+          "before": {
+            "ctime_ns": 1795412895187512864,
+            "gid": 0,
+            "mode": "0o644",
+            "mtime_ns": 1795398511879883392,
+            "sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+            "size": 3835432,
+            "type": "file",
+            "uid": 0
+          },
+          "path": "etc/selinux/targeted/policy/policy.35"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795412950613625062,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795412950613625062,
+            "sha256": "8d17b2536d3905e4b709f53152aaa15327030c1cc96e6828c41c63f558aba405",
+            "size": 32,
+            "type": "file",
+            "uid": 0
+          },
+          "before": {
+            "ctime_ns": 1795412895529532068,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795398511627869585,
+            "sha256": "449c9d6620e597577fd95aec779aa45739148fa2ae055711fec50827dcfe8ced",
+            "size": 32,
+            "type": "file",
+            "uid": 0
+          },
+          "path": "var/lib/selinux/targeted/active/commit_num"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795412896444583448,
+            "gid": 0,
+            "mode": "0o700",
+            "mtime_ns": 1795412896444583448,
+            "type": "directory",
+            "uid": 0
+          },
+          "before": null,
+          "path": "var/lib/selinux/targeted/active/modules/400"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795412896505586874,
+            "gid": 0,
+            "mode": "0o700",
+            "mtime_ns": 1795412896505586874,
+            "type": "directory",
+            "uid": 0
+          },
+          "before": null,
+          "path": "var/lib/selinux/targeted/active/modules/400/tb371fc_init_policy_map"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795412896513587323,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795412896513587323,
+            "sha256": "ecd1fe460ff7c8b12e9ffcf1791e386e4f0a44ea8932b42f63d6e93462b52335",
+            "size": 244,
+            "type": "file",
+            "uid": 0
+          },
+          "before": null,
+          "path": "var/lib/selinux/targeted/active/modules/400/tb371fc_init_policy_map/cil"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795412896444583448,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795412896444583448,
+            "sha256": "9a2e646ef933bedfa63503f7c2484674daf9d41f7e6822983b919e5e952f83cf",
+            "size": 3,
+            "type": "file",
+            "uid": 0
+          },
+          "before": null,
+          "path": "var/lib/selinux/targeted/active/modules/400/tb371fc_init_policy_map/lang_ext"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795412896445583505,
+            "gid": 0,
+            "mode": "0o700",
+            "mtime_ns": 1795412896445583505,
+            "type": "directory",
+            "uid": 0
+          },
+          "before": null,
+          "path": "var/lib/selinux/targeted/active/modules/disabled"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795412901297855962,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795412901297855962,
+            "sha256": "a7828b9cbb4b437beccbdd2078b6b62e8d70af2aa032f1eb6b1a7301db2a5573",
+            "size": 72,
+            "type": "file",
+            "uid": 0
+          },
+          "before": {
+            "ctime_ns": 1795412895500530440,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795398461180105589,
+            "sha256": "7954896f00a3f756bf56c1d32d5d2015a09760bd288bd50469a1714357c84081",
+            "size": 72,
+            "type": "file",
+            "uid": 0
+          },
+          "path": "var/lib/selinux/targeted/active/modules_checksum"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795412948721518819,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795412948721518819,
+            "sha256": "0dd46af3240a02d1c7399c46facf30cce2a71a471fb70c0d0f5e58e571e53c74",
+            "size": 3835432,
+            "type": "file",
+            "uid": 0
+          },
+          "before": {
+            "ctime_ns": 1795412895528532012,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795398509748766630,
+            "sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+            "size": 3835432,
+            "type": "file",
+            "uid": 0
+          },
+          "path": "var/lib/selinux/targeted/active/policy.kern"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795412948408501243,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795412948408501243,
+            "sha256": "0dd46af3240a02d1c7399c46facf30cce2a71a471fb70c0d0f5e58e571e53c74",
+            "size": 3835432,
+            "type": "file",
+            "uid": 0
+          },
+          "before": {
+            "ctime_ns": 1795412895515531282,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795398509396747343,
+            "sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+            "size": 3835432,
+            "type": "file",
+            "uid": 0
+          },
+          "path": "var/lib/selinux/targeted/active/policy.linked"
+        }
+      ],
+      "candidate_policy": {
+        "mode": "0o644",
+        "path": "/work/selinux-reload-map-20261123/build-02/candidate/etc/selinux/targeted/policy/policy.35",
+        "sha256": "0dd46af3240a02d1c7399c46facf30cce2a71a471fb70c0d0f5e58e571e53c74",
+        "size": 3835432
+      },
+      "command": [
+        "/work/selinux-reload-map-20261123/build-02/qemu-aarch64",
+        "-L",
+        "/work/selinux-reload-map-20261123/build-02/tool-root",
+        "/work/selinux-reload-map-20261123/build-02/tool-root/usr/sbin/semodule",
+        "-p",
+        "/work/selinux-reload-map-20261123/build-02/candidate",
+        "-S",
+        "/var/lib/selinux",
+        "-s",
+        "targeted",
+        "-g",
+        "/work/selinux-reload-map-20261123/build-02/semanage-build.conf",
+        "-n",
+        "-v",
+        "-X",
+        "400",
+        "-i",
+        "/work/selinux-reload-map-20261123/build-02/tb371fc_init_policy_map.cil"
+      ],
+      "elapsed_seconds": 57.03162954701111,
+      "external_tools": [
+        {
+          "accepted": true,
+          "argv": [
+            "-q",
+            "-c",
+            "/work/selinux-reload-map-20261123/build-02/candidate/var/lib/selinux/final/targeted/policy/policy.35",
+            "/work/selinux-reload-map-20261123/build-02/candidate/var/lib/selinux/final/targeted/contexts/files/file_contexts"
+          ],
+          "tool": "setfiles"
+        },
+        {
+          "accepted": true,
+          "argv": [
+            "-r",
+            "/work/selinux-reload-map-20261123/build-02/candidate/var/lib/selinux/final/targeted/contexts/files/file_contexts"
+          ],
+          "tool": "sefcontext_compile"
+        },
+        {
+          "accepted": true,
+          "argv": [
+            "-r",
+            "/work/selinux-reload-map-20261123/build-02/candidate/var/lib/selinux/final/targeted/contexts/files/file_contexts.homedirs"
+          ],
+          "tool": "sefcontext_compile"
+        }
+      ],
+      "finished_utc": "2026-11-23T05:49:12.196500+00:00",
+      "kernel_policy_loaded": false,
+      "module": {
+        "priority": 400,
+        "rule": "(allow init_t semanage_store_t (file (map)))",
+        "sha256": "d049999cbaccb16d5bebaca85b6dfcc2bbd17afbfd9d0b75d44556dbb5719eba",
+        "size": 291
+      },
+      "physical_device_actions": false,
+      "qemu": {
+        "sha256": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943",
+        "size": 16661520
+      },
+      "rootfs_booted": false,
+      "schema": 1,
+      "script_sha256": "c2e0974bc58ed96d1e560ca7fe32f7f4f79f27bbac2960102adfec42eb59767d",
+      "semodule_exit_code": 0,
+      "semodule_log": {
+        "sha256": "2ace7dc917f5f36ccfca99e61b88909fd875fbc81609f4d7a5ed7ac8dda5b608",
+        "size": 258
+      },
+      "source_inventory_unchanged_including_mtime_ctime": true,
+      "source_pins": {
+        "etc/selinux/config": "80134a263d874d1687a43513a09b6cc8fdc2998e623c1c1670cb5769a85ce942",
+        "etc/selinux/semanage.conf": "8ba0df9a109dd136f1e8827343806ced9a0652c670c2572b4dd8642c67c27734",
+        "etc/selinux/targeted/policy/policy.35": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+        "usr/lib64/libselinux.so.1": "c9edfec980b8a05666d24dc3a4e15b502431334e2c7e3adcae189402b5031f6d",
+        "usr/lib64/libsemanage.so.2": "246206662c92e1df56f5f4f0d173bfb1bd6f97827fa189538e0857b6dc6058e8",
+        "usr/lib64/libsepol.so.2": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+        "usr/sbin/sefcontext_compile": "4a4f15badf7f975f4a10f14d5706e6f53a3765ead74531110c64da4797767936",
+        "usr/sbin/semodule": "1fee7d2141b111197eb4bbcc72f626646af702c45e5f5212347e0e6c5e028029",
+        "usr/sbin/setfiles": "75a118afe1060f2a402ac9c25498699b8b8493501bc7bd56099ee47fb0aa435b"
+      },
+      "source_root": "/work/fedora-input-system-v3/rootfs",
+      "started_utc": "2026-11-23T05:48:14.905797+00:00",
+      "status": "built_pending_delta_and_runtime_qualification",
+      "tool_closure": {
+        "etc/group": {
+          "sha256": "4f26d10b6be334dcc52bd88a90ca36b10901d0f5bbd8426c23836c95fa02522c",
+          "size": 506,
+          "source_payload": "etc/group"
+        },
+        "etc/ld.so.cache": {
+          "sha256": "82a27d912c1958ab916d72b4d9be8ca3dc4261f9c674a1aa24459993f381bdde",
+          "size": 26311,
+          "source_payload": "etc/ld.so.cache"
+        },
+        "etc/nsswitch.conf": {
+          "sha256": "36d4629defe53f0fe01b1578296b3cd411272f888643785716a439370e67166b",
+          "size": 639,
+          "source_payload": "etc/authselect/nsswitch.conf"
+        },
+        "etc/passwd": {
+          "sha256": "2e849193aba3276b14bd939879481c6c1c312d57d4fd8b29d74b3236d59f1417",
+          "size": 1074,
+          "source_payload": "etc/passwd"
+        },
+        "usr/lib/ld-linux-aarch64.so.1": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [],
+          "sha256": "8821728d15728a7046deef6d4183fb343716901e0e8119fff53d6b51e2605547",
+          "size": 928784,
+          "source_payload": "usr/lib/ld-linux-aarch64.so.1"
+        },
+        "usr/lib64/libaudit.so.1": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libcap-ng.so.0",
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "88efd5f05e1e0fea194f8195d0c5d3b03bf7b72b58000262ebc368451e73fa1d",
+          "size": 200496,
+          "source_payload": "usr/lib64/libaudit.so.1.0.0"
+        },
+        "usr/lib64/libbz2.so.1": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "38e73d4bc01b1b318c4a0be8b3a89ed59e3d1644fa4354dd84549669ba33680f",
+          "size": 72320,
+          "source_payload": "usr/lib64/libbz2.so.1.0.8"
+        },
+        "usr/lib64/libc.so.6": {
+          "interp": [
+            "/lib/ld-linux-aarch64.so.1"
+          ],
+          "mode": "0o755",
+          "needed": [
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "620f6221d0cb0a7bc7d0674bcb0682a0b42f7fb593f596f3bf646f02b10cb798",
+          "size": 2303728,
+          "source_payload": "usr/lib64/libc.so.6"
+        },
+        "usr/lib64/libcap-ng.so.0": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "611bce349ac27b2f0e83c69549d2a32f2494652e4761b26a1f5773e35d878b8e",
+          "size": 69152,
+          "source_payload": "usr/lib64/libcap-ng.so.0.0.0"
+        },
+        "usr/lib64/libgcc_s.so.1": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libc.so.6"
+          ],
+          "sha256": "ac02fe32df9084d75ea400befd249bb5de2c26a0bcd4c341a959ef805ca0890e",
+          "size": 137000,
+          "source_payload": "usr/lib64/libgcc_s-16-20260819.so.1"
+        },
+        "usr/lib64/libpcre2-8.so.0": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "7f08df34d1ea74a79d32def854357b6466187acc8e4659beeb427e553bf1c4a3",
+          "size": 662552,
+          "source_payload": "usr/lib64/libpcre2-8.so.0.15.0"
+        },
+        "usr/lib64/libselinux.so.1": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libpcre2-8.so.0",
+            "libgcc_s.so.1",
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "c9edfec980b8a05666d24dc3a4e15b502431334e2c7e3adcae189402b5031f6d",
+          "size": 270480,
+          "source_payload": "usr/lib64/libselinux.so.1"
+        },
+        "usr/lib64/libsemanage.so.2": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libsepol.so.2",
+            "libaudit.so.1",
+            "libselinux.so.1",
+            "libbz2.so.1",
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "246206662c92e1df56f5f4f0d173bfb1bd6f97827fa189538e0857b6dc6058e8",
+          "size": 336968,
+          "source_payload": "usr/lib64/libsemanage.so.2"
+        },
+        "usr/lib64/libsepol.so.2": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+          "size": 802880,
+          "source_payload": "usr/lib64/libsepol.so.2"
+        },
+        "usr/libexec/selinux/hll/pp": {
+          "interp": [
+            "/lib/ld-linux-aarch64.so.1"
+          ],
+          "mode": "0o755",
+          "needed": [
+            "libsepol.so.2",
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "26dc86a640e5224c7f46297e752ec27dd30ca65418acb47025f158b860c6bde6",
+          "size": 69064,
+          "source_payload": "usr/libexec/selinux/hll/pp"
+        },
+        "usr/sbin/sefcontext_compile": {
+          "interp": [
+            "/lib/ld-linux-aarch64.so.1"
+          ],
+          "mode": "0o755",
+          "needed": [
+            "libselinux.so.1",
+            "libsepol.so.2",
+            "libpcre2-8.so.0",
+            "libgcc_s.so.1",
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "4a4f15badf7f975f4a10f14d5706e6f53a3765ead74531110c64da4797767936",
+          "size": 69504,
+          "source_payload": "usr/bin/sefcontext_compile"
+        },
+        "usr/sbin/semodule": {
+          "interp": [
+            "/lib/ld-linux-aarch64.so.1"
+          ],
+          "mode": "0o755",
+          "needed": [
+            "libsemanage.so.2",
+            "libsepol.so.2",
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "1fee7d2141b111197eb4bbcc72f626646af702c45e5f5212347e0e6c5e028029",
+          "size": 69952,
+          "source_payload": "usr/bin/semodule"
+        },
+        "usr/sbin/setfiles": {
+          "interp": [
+            "/lib/ld-linux-aarch64.so.1"
+          ],
+          "mode": "0o755",
+          "needed": [
+            "libselinux.so.1",
+            "libsepol.so.2",
+            "libaudit.so.1",
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "75a118afe1060f2a402ac9c25498699b8b8493501bc7bd56099ee47fb0aa435b",
+          "size": 69056,
+          "source_payload": "usr/bin/setfiles"
+        }
+      }
+    },
+    "warning": {
+      "cause": "The isolated tool-root has no default /etc/selinux label database for the optional semanage store-label handle.",
+      "fixed_source_call": "libsemanage/src/semanage_store.c:1964-1966 calls selinux_restorecon_default_handle; its failure is logged and does not change the commit result.",
+      "sefcontext_compile_calls_succeeded": 2,
+      "setfiles_binary_policy_context_validation_exit_zero": true,
+      "store_labeling_not_runtime_validation": true,
+      "text": "Error obtaining file context handle: No such file or directory",
+      "warning_not_suppressed_or_removed": true
+    }
+  },
+  "virtual_machine_run_by_this_experiment": false,
+  "workspace": {
+    "binfmt_changed": false,
+    "container": "tb371fc-build-20261123",
+    "ct": 102,
+    "prefix": "/work/selinux-reload-map-20261123",
+    "proot_used": false,
+    "readonly_source_root": "/work/fedora-input-system-v3/rootfs"
+  }
+}

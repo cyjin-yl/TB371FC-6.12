@@ -1,0 +1,119 @@
+{
+  "candidate_policy": {
+    "sha256": "727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502",
+    "size": 3835456,
+    "version": 35
+  },
+  "complete_c_diff": "--- frozen/early_init.c\n+++ draft/early_init_v3.c\n@@ -14,6 +14,7 @@\n #include <errno.h>\n #include <fcntl.h>\n #include <linux/magic.h>\n+#include <limits.h>\n #include <selinux/label.h>\n #include <selinux/restorecon.h>\n #include <selinux/selinux.h>\n@@ -26,7 +27,7 @@\n #include <sys/vfs.h>\n #include <unistd.h>\n \n-#define MARKER \"TB371FC_EARLY_SELINUX_V1\"\n+#define MARKER \"TB371FC_EARLY_SELINUX_V3\"\n #define SYSTEMD \"/usr/lib/systemd/systemd\"\n #define UDEVADM \"/usr/bin/udevadm\"\n #define POLICY_CONFIG \"/etc/selinux/config\"\n@@ -59,6 +60,175 @@\n          * its serial log; there is no continuation or success fallback. */\n         _exit(EXIT_FAILURE);\n }\n+\n+/*\n+ * This explicit generic-VM observation path changes only the shared printk\n+ * interval. It does not change audit admission, queues, backlog, or enforcing.\n+ * No policy API has been called at this point. All input paths are fixed.\n+ */\n+#define AUDIT_PRINTK_INTERVAL \"/proc/sys/kernel/printk_ratelimit\"\n+#define AUDIT_PRINTK_BURST \"/proc/sys/kernel/printk_ratelimit_burst\"\n+#define AUDIT_PRINTK_OPT_IN \"rd.tb371fc.audit-printk-unlimited=1\"\n+#define AUDIT_PRINTK_OPT_KEY \"rd.tb371fc.audit-printk-unlimited\"\n+\n+static void audit_guard_require(bool condition, const char *reason)\n+{\n+        if (!condition) {\n+                errno = EINVAL;\n+                fail(reason);\n+        }\n+}\n+\n+static void audit_guard_check_fd(int fd, unsigned long magic)\n+{\n+        struct stat st;\n+        struct statfs fs;\n+        if (fstat(fd, &st) < 0 || fstatfs(fd, &fs) < 0)\n+                fail(\"audit-observation-file-stat\");\n+        audit_guard_require(S_ISREG(st.st_mode) && st.st_uid == 0 &&\n+                            (unsigned long)fs.f_type == magic,\n+                            \"audit-observation-file-type\");\n+}\n+\n+static size_t audit_guard_read(const char *path, unsigned long magic,\n+                              char *buffer, size_t capacity)\n+{\n+        size_t used = 0;\n+        unsigned calls = 0;\n+        int fd = open(path, O_RDONLY | O_CLOEXEC | O_NOFOLLOW);\n+        if (fd < 0)\n+                fail(\"audit-observation-file-open\");\n+        audit_guard_check_fd(fd, magic);\n+        for (;;) {\n+                ssize_t n;\n+                audit_guard_require(used < capacity && ++calls <= 16,\n+                                    \"audit-observation-read-bound\");\n+                n = read(fd, buffer + used, capacity - used);\n+                if (n < 0 && errno == EINTR)\n+                        continue;\n+                if (n < 0)\n+                        fail(\"audit-observation-file-read\");\n+                if (n == 0)\n+                        break;\n+                used += (size_t)n;\n+        }\n+        if (close(fd) < 0)\n+                fail(\"audit-observation-file-close\");\n+        return used;\n+}\n+\n+static unsigned audit_guard_read_uint(const char *path)\n+{\n+        char text[64];\n+        unsigned value = 0;\n+        size_t n = audit_guard_read(path, PROC_SUPER_MAGIC, text, sizeof(text));\n+        audit_guard_require(n >= 2 && text[n - 1] == '\\n',\n+                            \"audit-observation-integer-format\");\n+        for (size_t i = 0; i + 1 < n; i++) {\n+                unsigned digit;\n+                audit_guard_require(text[i] >= '0' && text[i] <= '9',\n+                                    \"audit-observation-integer-digit\");\n+                digit = (unsigned)(text[i] - '0');\n+                audit_guard_require(value <= ((unsigned)INT_MAX - digit) / 10,\n+                                    \"audit-observation-integer-range\");\n+                value = value * 10 + digit;\n+        }\n+        return value;\n+}\n+\n+static void audit_guard_check_opt_in(void)\n+{\n+        char text[16384], *save = NULL, *word;\n+        unsigned count = 0;\n+        size_t n = audit_guard_read(\"/proc/cmdline\", PROC_SUPER_MAGIC,\n+                                   text, sizeof(text) - 1);\n+        audit_guard_require(!memchr(text, '\\0', n),\n+                            \"audit-observation-command-line-nul\");\n+        text[n] = '\\0';\n+        for (word = strtok_r(text, \" \\t\\r\\n\", &save); word;\n+             word = strtok_r(NULL, \" \\t\\r\\n\", &save)) {\n+                size_t key_size = sizeof(AUDIT_PRINTK_OPT_KEY) - 1;\n+                if (strncmp(word, AUDIT_PRINTK_OPT_KEY, key_size) == 0 &&\n+                    (word[key_size] == '=' || word[key_size] == '\\0')) {\n+                        audit_guard_require(strcmp(word, AUDIT_PRINTK_OPT_IN) == 0,\n+                                            \"audit-observation-invalid-opt-in\");\n+                        count++;\n+                }\n+        }\n+        audit_guard_require(count == 1, \"audit-observation-unique-opt-in-required\");\n+}\n+\n+static void audit_guard_check_virtual_hardware(void)\n+{\n+        char compatible[4096];\n+        unsigned matches = 0;\n+        size_t n = audit_guard_read(\"/sys/firmware/devicetree/base/compatible\",\n+                                   SYSFS_MAGIC, compatible, sizeof(compatible));\n+        audit_guard_require(n > 0 && compatible[n - 1] == '\\0',\n+                            \"audit-observation-compatible-format\");\n+        for (size_t offset = 0; offset < n;) {\n+                const char *end = memchr(compatible + offset, '\\0', n - offset);\n+                size_t size;\n+                audit_guard_require(end != NULL && end != compatible + offset,\n+                                    \"audit-observation-compatible-entry\");\n+                size = (size_t)(end - (compatible + offset));\n+                if (size == sizeof(\"linux,dummy-virt\") - 1 &&\n+                    memcmp(compatible + offset, \"linux,dummy-virt\", size) == 0)\n+                        matches++;\n+                offset += size + 1;\n+        }\n+        audit_guard_require(matches == 1, \"audit-observation-generic-vm-required\");\n+}\n+\n+static void audit_guard_set_zero_interval(void)\n+{\n+        static const char value[] = \"0\\n\";\n+        unsigned attempts = 0;\n+        ssize_t n;\n+        int fd = open(AUDIT_PRINTK_INTERVAL, O_WRONLY | O_CLOEXEC | O_NOFOLLOW);\n+        if (fd < 0)\n+                fail(\"audit-observation-interval-open\");\n+        audit_guard_check_fd(fd, PROC_SUPER_MAGIC);\n+        do {\n+                audit_guard_require(++attempts <= 4, \"audit-observation-write-bound\");\n+                n = write(fd, value, sizeof(value) - 1);\n+        } while (n < 0 && errno == EINTR);\n+        if (n < 0)\n+                fail(\"audit-observation-interval-write\");\n+        /* A short write is a failure; never continue a proc-sysctl write at a\n+         * nonzero offset or turn an incomplete operation into success. */\n+        audit_guard_require(n == (ssize_t)(sizeof(value) - 1),\n+                            \"audit-observation-short-write\");\n+        if (close(fd) < 0)\n+                fail(\"audit-observation-interval-close\");\n+}\n+\n+static void configure_vm_audit_printk_observation(void)\n+{\n+        unsigned before, after, burst_before, burst_after;\n+        phase = \"audit-printk-opt-in\";\n+        audit_guard_require(getpid() == 1 && geteuid() == 0,\n+                            \"audit-observation-root-pid1-required\");\n+        audit_guard_check_opt_in();\n+        phase = \"audit-printk-virtual-hardware\";\n+        audit_guard_check_virtual_hardware();\n+        phase = \"audit-printk-observability\";\n+        before = audit_guard_read_uint(AUDIT_PRINTK_INTERVAL);\n+        burst_before = audit_guard_read_uint(AUDIT_PRINTK_BURST);\n+        audit_guard_set_zero_interval();\n+        /* Each reader opens its fixed node afresh, at offset zero. */\n+        after = audit_guard_read_uint(AUDIT_PRINTK_INTERVAL);\n+        burst_after = audit_guard_read_uint(AUDIT_PRINTK_BURST);\n+        audit_guard_require(after == 0 && burst_after == burst_before,\n+                            \"audit-observation-readback-mismatch\");\n+        if (fprintf(stderr, MARKER \" AUDIT_PRINTK_UNLIMITED scope=generic-vm \"\n+                    \"opt_in=1 compatible=linux,dummy-virt before=%u after=%u \"\n+                    \"burst_before=%u burst_after=%u policy_load_attempted=0\\n\",\n+                    before, after, burst_before, burst_after) < 0 ||\n+            fflush(stderr) != 0)\n+                fail(\"audit-observation-marker-output\");\n+}\n+\n \n static void load_api(struct selinux_api *api)\n {\n@@ -201,7 +371,7 @@\n         if (enforcing != 1 || targeted != 1)\n                 fail(\"ambiguous-policy-config\");\n         if (lstat(POLICY_FILE, &st) < 0 || !S_ISREG(st.st_mode) ||\n-            st.st_size != 3835432)\n+            st.st_size != 3835456)\n                 fail(\"expected-policy-file-missing\");\n }\n \n@@ -268,6 +438,7 @@\n         /* Match libselinux: no MS_NODEV, because selinuxfs has a null device. */\n         mount_api(\"selinuxfs\", SELINUX_MOUNT, MS_NOSUID | MS_NOEXEC,\n                   NULL, SELINUX_MAGIC);\n+        configure_vm_audit_printk_observation();\n         load_api(&api);\n         phase = \"initial-security-state\";\n         if (api.getenforce() != 1 || api.getcon(&context) < 0 ||\n",
+  "complete_recipe_diff_from_preliminary_root_draft": "--- root/early-loader-v3-draft.py\n+++ draft/build_early_init_v3.py\n@@ -2,11 +2,16 @@\n # SPDX-License-Identifier: GPL-2.0-only\n \"\"\"Derive and build an independent early loader for a pinned policy candidate.\n \n-This construction never loads a policy, runs PID 1, changes a rootfs, or edits\n-the frozen V1 helper. The caller supplies the separately qualified candidate\n-policy's exact bytes/identity. Its sole functional source change is the fixed\n-on-disk policy length; a distinct V3 serial marker identifies this candidate.\n-The archive/runtime recipe must separately require the full policy hash.\n+This build recipe never loads a policy, runs PID 1, changes a rootfs, or edits\n+frozen inputs. The derived V3 helper requires an explicit generic-VM audit\n+observation opt-in and the actual linux,dummy-virt compatible before changing\n+only the shared printk interval to zero. It verifies a fresh readback and an\n+unchanged burst before its first libselinux load. This does not prevent audit\n+queue loss. The separate archive/runtime recipe must require the exact policy,\n+helper, command line, observation marker, and full serial-log loss gates.\n+\n+This recipe is derived from the fixed root draft 48ab7278... and original V1\n+recipe/source. The accompanying guard fragment is an independently pinned input.\n \"\"\"\n from __future__ import annotations\n \n@@ -30,6 +35,10 @@\n ORIGINAL_RECIPE_SHA = '5ed18306782a44b20c6bf022976c6dc029b0829ec5a72352575ae35440fb493d'\n ORIGINAL_POLICY_SHA = '928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430'\n COMPILER_SHA = 'fb743ca27a77466c91da66047eec879a615993feaabd860aaf3750e7b222b131'\n+PARENT_DRAFT_SHA = '48ab7278723e33a63e00e9daa7eb465642cb872d36be772d31a9f1979eaf0231'\n+GUARD_SOURCE_SHA = 'f715d823ac20181b916afac5c4db9ae9af8226454508e2dff9bb9b8f35e035cc'\n+CANDIDATE_POLICY_SHA = '727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502'\n+CANDIDATE_POLICY_SIZE = 3835456\n PACKAGES = {\n     'binutils-aarch64-linux-gnu': '2.44-3',\n     'gcc-14-aarch64-linux-gnu': '14.2.0-19cross1',\n@@ -84,9 +93,34 @@\n     return result.stdout\n \n \n+\n+def derive_source(original, guard, policy_size):\n+    if (digest(original) != ORIGINAL_SOURCE_SHA or digest(guard) != GUARD_SOURCE_SHA or\n+            policy_size != CANDIDATE_POLICY_SIZE):\n+        raise ValueError('fixed V3 source/guard/policy-size inputs differ')\n+    replacements = [\n+        (b'#define MARKER \"TB371FC_EARLY_SELINUX_V1\"',\n+         b'#define MARKER \"TB371FC_EARLY_SELINUX_V3\"'),\n+        (b'st.st_size != 3835432', ('st.st_size != ' + str(policy_size)).encode()),\n+        (b'#include <linux/magic.h>\\n', b'#include <linux/magic.h>\\n#include <limits.h>\\n'),\n+        (b'static void load_api(struct selinux_api *api)\\n',\n+         guard + b'\\nstatic void load_api(struct selinux_api *api)\\n'),\n+        (b'                  NULL, SELINUX_MAGIC);\\n        load_api(&api);\\n',\n+         b'                  NULL, SELINUX_MAGIC);\\n'\n+         b'        configure_vm_audit_printk_observation();\\n        load_api(&api);\\n'),\n+    ]\n+    source = original\n+    for old, new in replacements:\n+        if source.count(old) != 1:\n+            raise ValueError('source derivation anchor is not unique')\n+        source = source.replace(old, new, 1)\n+    return source, replacements\n+\n+\n def build(args):\n-    if not re.fullmatch('[0-9a-f]{64}', args.policy_sha256):\n-        raise ValueError('explicit candidate policy SHA256 required')\n+    if (not re.fullmatch('[0-9a-f]{64}', args.policy_sha256) or\n+            args.policy_sha256 != CANDIDATE_POLICY_SHA or args.policy_size != CANDIDATE_POLICY_SIZE):\n+        raise ValueError('the fixed six-permission V3 candidate identity is required')\n     policy = ordinary(args.policy, expected=args.policy_sha256)\n     if (len(policy) != args.policy_size or not 1024 < len(policy) < 32 * 1024**2 or\n             struct.unpack_from('<II', policy) != (0xf97cff8c, 8) or\n@@ -103,16 +137,9 @@\n     spec.loader.exec_module(base)\n     # Import only the pinned RPM/header extraction implementation, never modify\n     # the frozen recipe's SOURCE_SHA256 or call its source-specific build().\n-    replacements = [\n-        (b'#define MARKER \"TB371FC_EARLY_SELINUX_V1\"',\n-         b'#define MARKER \"TB371FC_EARLY_SELINUX_V3\"'),\n-        (b'st.st_size != 3835432', ('st.st_size != ' + str(args.policy_size)).encode()),\n-    ]\n-    source = original\n-    for old, new in replacements:\n-        if source.count(old) != 1:\n-            raise ValueError('source derivation anchor is not unique')\n-        source = source.replace(old, new, 1)\n+    guard_path = Path(__file__).with_name('audit_printk_guard.inc')\n+    guard = ordinary(guard_path, expected=GUARD_SOURCE_SHA, bound=32 * 1024)\n+    source, replacements = derive_source(original, guard, args.policy_size)\n     compiler = Path('/usr/bin/aarch64-linux-gnu-gcc')\n     ordinary(compiler.resolve(strict=True), expected=COMPILER_SHA, bound=16 * 1024**2)\n     package_text = command(['/usr/bin/dpkg-query', '-W', '-f=${Package}\\t${Version}\\n', *PACKAGES])\n@@ -128,6 +155,18 @@\n         'completed': False, 'hardware_tested': False, 'kernel_policy_load_attempted': False,\n         'rootfs_modified': False, 'frozen_sources_modified': False,\n         'recipe_sha256': digest(Path(__file__).read_bytes()),\n+        'parent_draft_sha256': PARENT_DRAFT_SHA,\n+        'guard_source': {'path': str(guard_path), 'size': len(guard), 'sha256': digest(guard)},\n+        'runtime_observation_contract': {\n+            'scope': 'generic QEMU VM only; no owner-tablet setting or boot authorization',\n+            'required_unique_opt_in': 'rd.tb371fc.audit-printk-unlimited=1',\n+            'required_actual_compatible': 'linux,dummy-virt',\n+            'fixed_write': {'path': '/proc/sys/kernel/printk_ratelimit', 'ascii': '0\\n'},\n+            'fresh_readback_interval': 0, 'burst_must_remain_unchanged': True,\n+            'audit_rate_backlog_enforcing_modified': False,\n+            'separate_full_serial_audit_loss_gates_required': True,\n+            'runtime_execution_performed_by_this_build': False,\n+        },\n         'original_source_sha256': ORIGINAL_SOURCE_SHA,\n         'original_recipe_sha256': digest(original_recipe),\n         'derived_source_sha256': digest(source),\n@@ -182,6 +221,7 @@\n         }\n         ordinary(source_path, expected=ORIGINAL_SOURCE_SHA)\n         ordinary(recipe_path, expected=ORIGINAL_RECIPE_SHA)\n+        ordinary(guard_path, expected=GUARD_SOURCE_SHA)\n         ordinary(args.policy, expected=args.policy_sha256)\n         outcome['inputs_unchanged_after_build'] = True\n         outcome['completed'] = True\n",
+  "derivation_anchors": [
+    {
+      "new_sha256": "47613073120ed1cecd688c5cd55f772b95261b208f3d1fae773665b6378f281d",
+      "new_size": 41,
+      "old": "#define MARKER \"TB371FC_EARLY_SELINUX_V1\"",
+      "unique": true
+    },
+    {
+      "new_sha256": "e3d3578f69ff49a66f2230714a0e0dd72b7d1bd1d243fe38fc383d3306a54bf0",
+      "new_size": 21,
+      "old": "st.st_size != 3835432",
+      "unique": true
+    },
+    {
+      "new_sha256": "4de3f924562b9b300a64268b7a058de8bc76809f31674d674fffd2a4bc1727a9",
+      "new_size": 45,
+      "old": "#include <linux/magic.h>\n",
+      "unique": true
+    },
+    {
+      "new_sha256": "dbd66cf09c6a6b32c4bbe2834f1d26f97053a2bc1074fd9b7334f475b3a4e048",
+      "new_size": 7440,
+      "old": "static void load_api(struct selinux_api *api)\n",
+      "unique": true
+    },
+    {
+      "new_sha256": "5ea6842044fd752fa6f0dc08e90d351ad648712cfdbdfc6df359e0eea03d87f3",
+      "new_size": 113,
+      "old": "                  NULL, SELINUX_MAGIC);\n        load_api(&api);\n",
+      "unique": true
+    }
+  ],
+  "derived_c_source": {
+    "mode": "0o644",
+    "sha256": "58fe1187109bc0feaedec249274815490ac69aa2e892cb3534c32a2f793cf4b8",
+    "size": 20011
+  },
+  "evidence_class": "frozen source derivation; no new build or runtime execution",
+  "files": {
+    "scripts/research/selinux/build_early_init.py": {
+      "mode": "0644",
+      "sha256": "5ed18306782a44b20c6bf022976c6dc029b0829ec5a72352575ae35440fb493d",
+      "size": 10877
+    },
+    "scripts/research/selinux/early_init.c": {
+      "mode": "0644",
+      "sha256": "6006a0fade3e9e8cc9201b5549cab3339961931feadb842c0f3d5863dc383726",
+      "size": 12548
+    },
+    "scripts/research/selinux/standard-services/audit_printk_guard.inc": {
+      "mode": "0644",
+      "sha256": "f715d823ac20181b916afac5c4db9ae9af8226454508e2dff9bb9b8f35e035cc",
+      "size": 7393
+    },
+    "scripts/research/selinux/standard-services/build_early_init_v3.py": {
+      "mode": "0755",
+      "sha256": "21e912fa4a2b79b771b70e7b6a46187bde2f746425e549e7e4151d0ce3caf268",
+      "size": 13002
+    }
+  },
+  "limits": [
+    "Exact C policy size is only an additional guard; archive/runtime must bind full policy and helper hashes.",
+    "Global shared printk limiter affects other callers inside the explicitly qualified generic VM.",
+    "Does not change audit admission/queue limits or guarantee transport completeness.",
+    "Does not authorize owner-tablet execution or settings."
+  ],
+  "preliminary_recipe_input": {
+    "path_at_review": "/workspace/scratch/45c316069ac9/early-loader-v3-draft.py",
+    "required_at_build_runtime": false,
+    "sha256": "48ab7278723e33a63e00e9daa7eb465642cb872d36be772d31a9f1979eaf0231",
+    "size": 10461
+  },
+  "review_activity": {
+    "compiler_invoked": false,
+    "helper_executed": false,
+    "old_frozen_files_changed": false,
+    "policy_loaded": false,
+    "python_syntax_parsed_only": true,
+    "rootfs_changed": false,
+    "source_derived": true,
+    "sysctl_read": false,
+    "sysctl_written": false,
+    "vm_started": false
+  },
+  "runtime_contract": {
+    "bounds_are": "bytes and syscall attempts, not a universal kernel wall-clock guarantee",
+    "burst_must_be_unchanged": true,
+    "call_order": "PID1/noargs check; existing API mounts and policy config check; audit guard; main-path first libselinux load; existing initial-state check and policy load",
+    "failure_after_write": "fail the isolated VM boot, no second write or success fallback",
+    "fixed_write": {
+      "ascii": "0\n",
+      "byte_count": 2,
+      "path": "/proc/sys/kernel/printk_ratelimit"
+    },
+    "independent_audit_loss_and_runtime_gates_required": true,
+    "interval_must_be_zero": true,
+    "marker_expected_before": "TB371FC_EARLY_SELINUX_V3 POLICY_LOADED",
+    "marker_prefix": "TB371FC_EARLY_SELINUX_V3",
+    "non_pid1_api_only_mode_enters_guard": false,
+    "profile": "V3 generic QEMU VM only",
+    "read_calls_limit": 16,
+    "readback_must_use_fresh_open": true,
+    "required_actual_compatible_entry": "linux,dummy-virt",
+    "required_unique_command_line_token": "rd.tb371fc.audit-printk-unlimited=1",
+    "success_marker_template": "TB371FC_EARLY_SELINUX_V3 AUDIT_PRINTK_UNLIMITED scope=generic-vm opt_in=1 compatible=linux,dummy-virt before=<unsigned> after=0 burst_before=<unsigned> burst_after=<same unsigned> policy_load_attempted=0",
+    "sysctl_or_policy_write_by_this_source_review": false,
+    "write_calls_limit": 4
+  },
+  "schema_version": 1,
+  "status": "source_frozen"
+}

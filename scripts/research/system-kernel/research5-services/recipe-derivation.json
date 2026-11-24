@@ -1,0 +1,47 @@
+{
+  "executed": false,
+  "files": {
+    "build_system.py": {
+      "bytes": 14314,
+      "mode": "0755",
+      "sha256": "053178a79838a69440a5e18f01f4fc9a9dc8a81c11347f1689c8e062d530439a"
+    },
+    "inspect_system.py": {
+      "bytes": 21098,
+      "mode": "0755",
+      "sha256": "dbcd4389a5f88549f9bee645c0faa047a13005206933790a589a52b23e5e4ba1"
+    },
+    "services-contract.json": {
+      "bytes": 6039,
+      "mode": "0644",
+      "sha256": "3b9730335d5573d98f2f9382f83ba79810c9dd563a9e9eed83668a9b3f24ce21"
+    },
+    "system.config": {
+      "bytes": 356,
+      "mode": "0644",
+      "sha256": "5f2ed320c037194509cba247eaebdf36b63cf1663081d0b7a347ca28233b13b1"
+    }
+  },
+  "old_objects_copied": false,
+  "old_private_key_copied": false,
+  "patch": {
+    "bytes": 13997,
+    "sha256": "e32a06293da0d39e4459c0dec48724f1a8c13ebfa92694a0e373f88e2e28f0f4"
+  },
+  "physical_hardware_tested": false,
+  "prior_recipe": {
+    "build_system.py": {
+      "bytes": 12931,
+      "sha256": "83f8419ee77739f04575e335db2cace96ddb7f9b719cbddaa861e2273b19adac"
+    },
+    "inspect_system.py": {
+      "bytes": 20898,
+      "sha256": "262ddf575150edcc9ef8d2687561f545c2532459c9e33f09852c48194159b88d"
+    },
+    "system.config": {
+      "bytes": 1221,
+      "sha256": "93ed9fd48139fac451bc585e7bae75824af6089b46cd8322c20cf9c7e967896b"
+    }
+  },
+  "schema_version": 1
+}

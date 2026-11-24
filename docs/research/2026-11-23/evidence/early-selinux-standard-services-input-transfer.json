@@ -1,0 +1,25 @@
+{
+  "sources": [
+    {
+      "path": "/work/early-selinux-standard-services-20261123/recipe-v1/build_early_init_v3.py",
+      "bytes": 13002,
+      "sha256": "21e912fa4a2b79b771b70e7b6a46187bde2f746425e549e7e4151d0ce3caf268",
+      "mode": 493
+    },
+    {
+      "path": "/work/early-selinux-standard-services-20261123/recipe-v1/audit_printk_guard.inc",
+      "bytes": 7393,
+      "sha256": "f715d823ac20181b916afac5c4db9ae9af8226454508e2dff9bb9b8f35e035cc",
+      "mode": 420
+    }
+  ],
+  "policy": {
+    "path": "/work/early-selinux-standard-services-20261123/input-policy.35",
+    "bytes": 3835456,
+    "sha256": "727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502",
+    "mode": 420,
+    "source": "HDD standard-services build-01 policy.35, checked by native container bridge"
+  },
+  "no_policy_load": true,
+  "no_vm": true
+}

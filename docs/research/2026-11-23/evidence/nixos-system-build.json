@@ -1,0 +1,466 @@
+{
+  "build_plan_summary": [
+    "these 241 derivations will be built:",
+    "these 304 paths will be fetched (1047.02 MiB download, 1572.11 MiB unpacked):"
+  ],
+  "closure": {
+    "all_paths_exist": true,
+    "all_references_in_closure": true,
+    "inventory_path": "/work/nixos-system-v1/store-paths.tsv",
+    "inventory_sha256": "466e2d7d84b26a5d359148da5b3f44f2d8562d0216b546b780833bcedfb4135a",
+    "locally_trusted_paths": 227,
+    "retained_gc_root": "/work/nixos-system-v1/system-result",
+    "signature_bearing_paths": 656,
+    "store_path_count": 894,
+    "total_nar_size_bytes": 3751712072
+  },
+  "entry_scripts": {
+    "activate": {
+      "aarch64_shell_syntax_check": {
+        "command": [
+          "/usr/bin/qemu-aarch64-static",
+          "/nix/store/xkz38nlafxlb2jry727hg5l64iln9c05-bash-5.3p9/bin/bash",
+          "-n",
+          "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/activate"
+        ],
+        "elapsed_seconds": 0.11449099896708503,
+        "emulation_enabled": false,
+        "exit_code": 0,
+        "stderr": "",
+        "stderr_path": "/work/nixos-system-v1/command-10.stderr.log",
+        "stdout": "",
+        "stdout_path": "/work/nixos-system-v1/command-10.stdout.log",
+        "timed_out": false
+      },
+      "executed": false,
+      "resolved_path": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/activate",
+      "sha256": "8e8c85675ceca709cd0445f5211a556cb3d0edf52d94e63cd1ea1bdf989f2ea9",
+      "size_bytes": 4452
+    },
+    "init": {
+      "aarch64_shell_syntax_check": {
+        "command": [
+          "/usr/bin/qemu-aarch64-static",
+          "/nix/store/xkz38nlafxlb2jry727hg5l64iln9c05-bash-5.3p9/bin/bash",
+          "-n",
+          "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/init"
+        ],
+        "elapsed_seconds": 0.11468707001768053,
+        "emulation_enabled": false,
+        "exit_code": 0,
+        "stderr": "",
+        "stderr_path": "/work/nixos-system-v1/command-09.stderr.log",
+        "stdout": "",
+        "stdout_path": "/work/nixos-system-v1/command-09.stdout.log",
+        "timed_out": false
+      },
+      "executed": false,
+      "resolved_path": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/init",
+      "sha256": "d7440ba41d2fb1abdbe1a9a2a1267cde841deb9dd4bd088a59586b12a719becd",
+      "size_bytes": 5347
+    }
+  },
+  "environment": {
+    "binfmt_registration_changed": false,
+    "builder_architecture": "x86_64",
+    "container": "tb371fc-build-20261123",
+    "ct_id": 102,
+    "device": "doesvm",
+    "execution": "PRoot 5.5 mixed native/explicit QEMU user execution in existing isolated container",
+    "host_or_ct_configuration_changed": false,
+    "nix_defaults_unchanged": {
+      "build-users-group": "nixbld",
+      "extra-platforms": [
+        "i686-linux",
+        "x86_64-v1-linux",
+        "x86_64-v2-linux",
+        "x86_64-v3-linux"
+      ],
+      "require-sigs": true,
+      "sandbox": true,
+      "sandbox-fallback": true,
+      "substituters": [
+        "https://cache.nixos.org/"
+      ],
+      "system": "x86_64-linux",
+      "trusted-public-keys": [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      ]
+    },
+    "per_invocation_overrides": {
+      "build-users-group": "",
+      "cores": 2,
+      "extra-platforms": "aarch64-linux",
+      "max-jobs": 1,
+      "sandbox": false,
+      "store": "local"
+    },
+    "target_system": "aarch64-linux",
+    "tools": {
+      "/nix/store/67xf635fy5p8pryn15rwfc5iz63gk0kx-hello-2.12.3/bin/hello": {
+        "elf_machine": 183,
+        "sha256": "697177ae103f7de874d0f193c2f3b6cee9e26450afce008cb86aef3c7398e6c0",
+        "size_bytes": 79288
+      },
+      "/nix/store/xkz38nlafxlb2jry727hg5l64iln9c05-bash-5.3p9/bin/bash": {
+        "elf_machine": 183,
+        "sha256": "e617b085520a19788ce6067c7d9ba172f8e32293bbb63cd0b14fbf58c3f6c4dd",
+        "size_bytes": 1178472
+      },
+      "/usr/bin/qemu-aarch64-static": {
+        "elf_machine": 62,
+        "sha256": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943",
+        "size_bytes": 16661520
+      },
+      "/work/fedora-proot-src/src/proot": {
+        "elf_machine": 62,
+        "sha256": "313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f",
+        "size_bytes": 832232
+      }
+    }
+  },
+  "foreign_builder_probe": {
+    "derivation_build": {
+      "command": [
+        "/work/fedora-proot-src/src/proot",
+        "-r",
+        "/",
+        "-q",
+        "/usr/bin/qemu-aarch64-static",
+        "-w",
+        "/work/nixos-system-v1",
+        "nix",
+        "--extra-experimental-features",
+        "nix-command flakes",
+        "--store",
+        "local",
+        "--option",
+        "sandbox",
+        "false",
+        "--option",
+        "build-users-group",
+        "",
+        "--option",
+        "extra-platforms",
+        "aarch64-linux",
+        "--option",
+        "require-sigs",
+        "true",
+        "--option",
+        "cores",
+        "2",
+        "--option",
+        "max-jobs",
+        "1",
+        "--option",
+        "max-silent-time",
+        "180",
+        "--option",
+        "timeout",
+        "600",
+        "build",
+        "--impure",
+        "--no-link",
+        "--print-out-paths",
+        "--keep-failed",
+        "--file",
+        "/work/nixos-system-v1/probe.nix"
+      ],
+      "elapsed_seconds": 2.270670116005931,
+      "emulation_enabled": true,
+      "exit_code": 0,
+      "stderr": "this derivation will be built:\n  /nix/store/hjjqysam8rd3sa008x2sg4j9avgq7xrp-tb371fc-explicit-arm-builder-v1.drv\nbuilding '/nix/store/hjjqysam8rd3sa008x2sg4j9avgq7xrp-tb371fc-explicit-arm-builder-v1.drv'...\n",
+      "stderr_path": "/work/nixos-system-v1/command-03.stderr.log",
+      "stdout": "/nix/store/c2cbfj8az6az71xj272ayvpyrhq1sjvq-tb371fc-explicit-arm-builder-v1\n",
+      "stdout_path": "/work/nixos-system-v1/command-03.stdout.log",
+      "timed_out": false
+    },
+    "mixed_execution": {
+      "command": [
+        "/work/fedora-proot-src/src/proot",
+        "-r",
+        "/",
+        "-q",
+        "/usr/bin/qemu-aarch64-static",
+        "-w",
+        "/work/nixos-system-v1",
+        "/usr/bin/python3",
+        "-c",
+        "import subprocess; print(\"NATIVE_PYTHON_STARTED\", flush=True); subprocess.run([\"/nix/store/xkz38nlafxlb2jry727hg5l64iln9c05-bash-5.3p9/bin/bash\", \"-eu\", \"-c\", \"/nix/store/67xf635fy5p8pryn15rwfc5iz63gk0kx-hello-2.12.3/bin/hello; printf ARM_BASH_EXECUTED\"], check=True)"
+      ],
+      "elapsed_seconds": 0.4151490840013139,
+      "emulation_enabled": true,
+      "exit_code": 0,
+      "stderr": "",
+      "stderr_path": "/work/nixos-system-v1/command-02.stderr.log",
+      "stdout": "NATIVE_PYTHON_STARTED\nHello, world!\nARM_BASH_EXECUTED",
+      "stdout_path": "/work/nixos-system-v1/command-02.stdout.log",
+      "timed_out": false
+    },
+    "output": {
+      "contents": "Hello, world!\n\nARM_DERIVATION_EXECUTED\n",
+      "path": "/nix/store/c2cbfj8az6az71xj272ayvpyrhq1sjvq-tb371fc-explicit-arm-builder-v1",
+      "sha256": "c28c075a0a0d1b9ea6d1cb9dd77f12703d2cfed5918089463787de8fdf3f6cc1"
+    },
+    "passed": true
+  },
+  "full_system_build": {
+    "command": [
+      "/work/fedora-proot-src/src/proot",
+      "-r",
+      "/",
+      "-q",
+      "/usr/bin/qemu-aarch64-static",
+      "-w",
+      "/work/nixos-system-v1",
+      "nix",
+      "--extra-experimental-features",
+      "nix-command flakes",
+      "--store",
+      "local",
+      "--option",
+      "sandbox",
+      "false",
+      "--option",
+      "build-users-group",
+      "",
+      "--option",
+      "extra-platforms",
+      "aarch64-linux",
+      "--option",
+      "require-sigs",
+      "true",
+      "--option",
+      "cores",
+      "2",
+      "--option",
+      "max-jobs",
+      "1",
+      "--option",
+      "max-silent-time",
+      "180",
+      "--option",
+      "timeout",
+      "600",
+      "build",
+      "--no-link",
+      "--print-out-paths",
+      "--keep-failed",
+      "/nix/store/9qpn9nzy4xmcrfv6jc5liymr8mnzwdpg-nixos-system-tb371fc-research-26.05.20261121.94c3211.drv^*"
+    ],
+    "completed": true,
+    "derivation_path": "/nix/store/9qpn9nzy4xmcrfv6jc5liymr8mnzwdpg-nixos-system-tb371fc-research-26.05.20261121.94c3211.drv",
+    "elapsed_seconds": 879.3473105399753,
+    "emulation_enabled": true,
+    "exit_code": 0,
+    "output_nar": {
+      "ca": null,
+      "deriver": "/nix/store/9qpn9nzy4xmcrfv6jc5liymr8mnzwdpg-nixos-system-tb371fc-research-26.05.20261121.94c3211.drv",
+      "narHash": "sha256-AkVctNvTyfC7P4IE43KUYLOej/pE0skdk6e/PtYr3Ds=",
+      "narSize": 17152,
+      "references": [
+        "/nix/store/2qwpq9q9d6nsvygdzkwdi3ni4k58ki9w-local-cmds",
+        "/nix/store/4nqk769pmfbj5f0fva0989apnfzncp0n-gnugrep-3.12",
+        "/nix/store/6x2nf4zp9gxdlv2rd89c7bc3s40xv6h1-systemd-260.5",
+        "/nix/store/94sxh0kgv0kz9qq1fhgv2cair4c3m4fd-tb371fc-no-boot-install",
+        "/nix/store/b7vv6xrq6kfjvdidqc9ghfgf63f2m32j-firmware",
+        "/nix/store/d82cbv5vl29wgs9m51y6vd2r094w8648-etc",
+        "/nix/store/dyx8qsmgnsz2csfzwn723gbd2jvp0j7g-update-users-groups.pl",
+        "/nix/store/g3xymcskh6a3wqf4xfdfcx2vmplzgws7-getent-glibc-2.42-103",
+        "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211",
+        "/nix/store/jj1nwagf7xmkcsy0g87rcpbjs29df4p6-findutils-4.10.0",
+        "/nix/store/jx4zmr09zmdf1qvd8ii0nivi7mx0i7vv-glibc-2.42-103-bin",
+        "/nix/store/kk3bqmmr93hlmly2invq01ylv8i5dfj5-system-path",
+        "/nix/store/kp5yqa3fmhimp4ya5vww5lg9zkf5x2z2-switch-to-configuration-0.1.0",
+        "/nix/store/lc9p5l2h436np6smf4l9kszbfs3nz42l-util-linux-2.42.4-bin",
+        "/nix/store/mhxn5kwnri3z9hdzi3x0980id65p0icn-lib.sh",
+        "/nix/store/mksf3y4fb6b5mws76bxzk4p8f2ld2z6h-mounts.sh",
+        "/nix/store/qjp6qap17wbksp78kr5wfparggak94nc-switch-inhibitors",
+        "/nix/store/qmmcy8j6hh9nz3giw1p7kg5j5dfk7i3w-perl-5.42.3-env",
+        "/nix/store/qsdkwv4kwa6xa28xp542qfxfw915b4n6-perl-5.42.3-env",
+        "/nix/store/r05gvq81a3q2nbdpvyq42mr10ms1ca25-shadow-4.19.4",
+        "/nix/store/rg5rf512szdxmnj9qal3wfdnpfsx38qi-setup-etc.pl",
+        "/nix/store/rry33ccw1nkhhgf49p1jzifji6ypayi4-kmod-31",
+        "/nix/store/rz4f9yygpc0f366mqdmv1vysrnv15nnj-bash-interactive-5.3p9",
+        "/nix/store/s8pq2rg8av7nfym9lix3yh2lryz6vvwk-glibc-locales-2.42-103",
+        "/nix/store/vr4wcc0kb1m41ll6p4q523a84jv60ycd-pre-switch-checks",
+        "/nix/store/w4mj4sbn30r0niw5lprmgnld64l6m885-coreutils-9.11",
+        "/nix/store/xcp9zd9ih0y04g054hnznha6bm55z2ld-users-groups.json",
+        "/nix/store/xkz38nlafxlb2jry727hg5l64iln9c05-bash-5.3p9"
+      ],
+      "registrationTime": 1795403055,
+      "signatures": [],
+      "ultimate": true
+    },
+    "output_path": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211",
+    "root_entries": {
+      "activate": {
+        "directory": false,
+        "resolved_path": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/activate",
+        "symlink": false
+      },
+      "bin": {
+        "directory": true,
+        "resolved_path": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/bin",
+        "symlink": false
+      },
+      "boot.json": {
+        "directory": false,
+        "resolved_path": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/boot.json",
+        "symlink": false
+      },
+      "dry-activate": {
+        "directory": false,
+        "resolved_path": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/dry-activate",
+        "symlink": false
+      },
+      "etc": {
+        "directory": true,
+        "resolved_path": "/nix/store/d82cbv5vl29wgs9m51y6vd2r094w8648-etc/etc",
+        "symlink": true
+      },
+      "extra-dependencies": {
+        "directory": false,
+        "resolved_path": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/extra-dependencies",
+        "symlink": false
+      },
+      "init": {
+        "directory": false,
+        "resolved_path": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/init",
+        "symlink": false
+      },
+      "init-interface-version": {
+        "directory": false,
+        "resolved_path": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/init-interface-version",
+        "symlink": false
+      },
+      "nixos-version": {
+        "directory": false,
+        "resolved_path": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/nixos-version",
+        "symlink": false
+      },
+      "specialisation": {
+        "directory": true,
+        "resolved_path": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/specialisation",
+        "symlink": false
+      },
+      "sw": {
+        "directory": true,
+        "resolved_path": "/nix/store/kk3bqmmr93hlmly2invq01ylv8i5dfj5-system-path",
+        "symlink": true
+      },
+      "switch-inhibitors": {
+        "directory": false,
+        "resolved_path": "/nix/store/qjp6qap17wbksp78kr5wfparggak94nc-switch-inhibitors",
+        "symlink": true
+      },
+      "system": {
+        "directory": false,
+        "resolved_path": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/system",
+        "symlink": false
+      },
+      "systemd": {
+        "directory": true,
+        "resolved_path": "/nix/store/6x2nf4zp9gxdlv2rd89c7bc3s40xv6h1-systemd-260.5",
+        "symlink": true
+      }
+    },
+    "stderr_path": "/work/nixos-system-v1/command-05.stderr.log",
+    "stderr_sha256": "eab533d53c7ea12c0fc49f91aaa0fbe6b6fefb30ae15490ff31d2e04c37b2794",
+    "stdout_path": "/work/nixos-system-v1/command-05.stdout.log",
+    "stdout_sha256": "a20696dab85b85f8ba7e21d11e0c5cc6fff0650eccff590c44e38ba9ab0c0130",
+    "timed_out": false
+  },
+  "hardware_support_demonstrated": false,
+  "jobs": {
+    "nix-foreign-probe-01": {
+      "command": [
+        "python3",
+        "-B",
+        "/src/scripts/research/nixos-system/foreign_builder.py",
+        "probe"
+      ],
+      "elapsed_seconds": 3.0299444920383394,
+      "exit_code": 0,
+      "log_sha256": "71f1fcca2b5d88bd7d1a3c435e908a9c3c5a06c4316e3339d2fb74a50d3a2c5c",
+      "log_size_bytes": 451,
+      "metadata_sha256": "798848b0db78fbca00e1033761f64fcd259dce4ad811567912402a55dfc84b8f",
+      "start_utc": "2026-11-23T02:48:09.841451+00:00"
+    },
+    "nix-system-build-01": {
+      "command": [
+        "python3",
+        "-B",
+        "/src/scripts/research/nixos-system/foreign_builder.py",
+        "build"
+      ],
+      "elapsed_seconds": 879.5741710510338,
+      "exit_code": 0,
+      "log_sha256": "c168b0f217371e7b8e54cb635df02023aa63163c39befd94629ee0455b72ab52",
+      "log_size_bytes": 92581,
+      "metadata_sha256": "208ec7fb537a4eaae9fd1227c36005aa9c80216a10de34057cf9e27653b7a345",
+      "start_utc": "2026-11-23T02:49:36.511347+00:00"
+    },
+    "nix-system-plan-01": {
+      "command": [
+        "python3",
+        "-B",
+        "/src/scripts/research/nixos-system/foreign_builder.py",
+        "plan"
+      ],
+      "elapsed_seconds": 18.230100062966812,
+      "exit_code": 0,
+      "log_sha256": "c9d8d3879cae20b980ed1c0bd8b55a6530116466f420da27bac472d00878288d",
+      "log_size_bytes": 37646,
+      "metadata_sha256": "fab582d6ca0b8a925faaabe62f64713d7a9220d1c50d8b8f7d784a689d0d17f5",
+      "start_utc": "2026-11-23T02:48:41.296432+00:00"
+    }
+  },
+  "kernel_modules_firmware_integrated": false,
+  "nixos_system_boot_tested": false,
+  "observed_at_utc": "2026-11-23T03:04:53.753954+00:00",
+  "rootfs_image_assembled": false,
+  "schema_version": 1,
+  "scope": "complete custom NixOS userspace closure, not a rootfs/boot image or target hardware test",
+  "source": {
+    "files_sha256": {
+      "flake.lock": "663995d8f6b6a0d197a4b582e85b998fccb0d48108abcafbcf33f091ec0855e8",
+      "flake.nix": "e99faf0dae7f02939ea51cfae7f8a0540697ee98a33df46f4935e3bf97c9608f",
+      "hardware-configuration.nix": "b4bf8962790d8e12793fee0151f1cf58007432ccd338e4bb14c2660423353ce4"
+    },
+    "flake_root": "/work/nixos-flake",
+    "nixpkgs_revision": "94c3211b0ee8ba969a3f12eb4aff8ba0f72971dd",
+    "recipes_sha256": {
+      "foreign_builder.py": "d382e78fa4ff480a2dc2ababf31604efdbf63925345df52fe3ac889ed83a1ef4",
+      "inspect_system.py": "a3c126c785d78ecd9bdfa09de94653411b7434803f0fd45cd0c95fa321b70a71"
+    }
+  },
+  "system_activation_performed": false,
+  "systemd": {
+    "aarch64_version_execution": {
+      "command": [
+        "/usr/bin/qemu-aarch64-static",
+        "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/systemd/lib/systemd/systemd",
+        "--version"
+      ],
+      "elapsed_seconds": 0.2649867339641787,
+      "emulation_enabled": false,
+      "exit_code": 0,
+      "stderr": "",
+      "stderr_path": "/work/nixos-system-v1/command-08.stderr.log",
+      "stdout": "systemd 260 (260.5)\n+PAM +AUDIT -SELINUX +APPARMOR +IMA +IPE +SMACK +SECCOMP +GCRYPT -GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 +KMOD +LIBCRYPTSETUP +LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 +PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD +BPF_FRAMEWORK -BTF -XKBCOMMON +UTMP +LIBARCHIVE\n",
+      "stdout_path": "/work/nixos-system-v1/command-08.stdout.log",
+      "timed_out": false
+    },
+    "executed_as_pid1": false,
+    "identity": {
+      "elf_machine": 183,
+      "path": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211/systemd/lib/systemd/systemd",
+      "resolved_path": "/nix/store/6x2nf4zp9gxdlv2rd89c7bc3s40xv6h1-systemd-260.5/lib/systemd/systemd",
+      "sha256": "894b6544ca1428f71990e083f80acb5150914c5fe1c47777d32821b6e3a25595",
+      "size_bytes": 266648
+    }
+  },
+  "tablet_accessed": false,
+  "tablet_boot_tested": false
+}

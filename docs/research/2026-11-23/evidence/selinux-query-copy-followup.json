@@ -1,0 +1,410 @@
+{
+  "amends_interpretation_not_bytes": [
+    {
+      "bytes": 13704,
+      "path": "docs/research/2026-11-23/selinux-access-query.md",
+      "sha256": "37421389aea68a84f11ec6426b4bae89eef709fc8dc6644b7e22b7b479572f9a"
+    },
+    {
+      "bytes": 90736,
+      "path": "docs/research/2026-11-23/evidence/selinux-access-query.json",
+      "sha256": "3b0235adc8cca8ddda596d0089cc1dd9d864d916626934f3b96757e833047ae8"
+    }
+  ],
+  "capture_utc": "2026-11-23T04:35:43.503805+00:00",
+  "complete_source_tree_unchanged_during_proot_proven": false,
+  "copy_comparison_summary": {
+    "comparison_record_sha256": "4fbba68f55e17ad2e170cc7c769829a516f3642f018776644c8bd7f5f8d530b5",
+    "comparison_scope": "The retained failed v4 copy and subsequent quiescent v5 copy, not every intermediate source-tree state.",
+    "hardlink_groups_equal": true,
+    "historical_tar_hash_reconstructed": false,
+    "only_differences": [
+      {
+        "fields": [
+          "mtime_ns"
+        ],
+        "path": "."
+      },
+      {
+        "fields": [
+          "mtime_ns"
+        ],
+        "path": "dev"
+      },
+      {
+        "fields": [
+          "mtime_ns"
+        ],
+        "path": "etc"
+      }
+    ],
+    "original_failed_copy_reclassified_as_pass": false,
+    "payload_mode_uid_gid_xattr_rdev_symlink_differences": false,
+    "source_timestamps_reset": false
+  },
+  "failed_tar_cause_proven_by_syscall_trace": false,
+  "hardware_tested": false,
+  "native_followup": {
+    "causal_syscall_capture_available": false,
+    "copy_failure_handoff": {
+      "complete": false,
+      "end_utc": "2026-11-23T04:01:32Z",
+      "source": "input integration agent report",
+      "start_utc": "2026-11-23T04:00:35Z",
+      "stderr": "tar: .: file changed as we read it"
+    },
+    "current_environment": {
+      "PROOT_DONT_POLLUTE_ROOTFS": null,
+      "observed_utc": "2026-11-23T04:13:58.567490+00:00"
+    },
+    "native_metadata_observation": {
+      "metadata": [
+        {
+          "ctime_ns": 1795406548350890200,
+          "exists": true,
+          "inode": 16467160,
+          "mode": "0o40555",
+          "mtime_ns": 1795406548350890200,
+          "path": "/work/fedora-system-integration-v1/rootfs",
+          "relative_path": ".",
+          "symlink": false
+        },
+        {
+          "exists": false,
+          "path": "/work/fedora-system-integration-v1/rootfs/analysis",
+          "relative_path": "analysis"
+        },
+        {
+          "ctime_ns": 1795398132155078700,
+          "exists": true,
+          "inode": 16470671,
+          "mode": "0o40755",
+          "mtime_ns": 1793218927000000000,
+          "path": "/work/fedora-system-integration-v1/rootfs/proc",
+          "relative_path": "proc",
+          "symlink": false
+        },
+        {
+          "ctime_ns": 1795398133001124900,
+          "exists": true,
+          "inode": 16470091,
+          "mode": "0o40755",
+          "mtime_ns": 1793218927000000000,
+          "path": "/work/fedora-system-integration-v1/rootfs/sys",
+          "relative_path": "sys",
+          "symlink": false
+        },
+        {
+          "ctime_ns": 1795406548350890200,
+          "exists": true,
+          "inode": 16467165,
+          "mode": "0o40755",
+          "mtime_ns": 1795406548350890200,
+          "path": "/work/fedora-system-integration-v1/rootfs/dev",
+          "relative_path": "dev",
+          "symlink": false
+        },
+        {
+          "ctime_ns": 1795399282831123200,
+          "exists": true,
+          "inode": 16470092,
+          "mode": "0o41777",
+          "mtime_ns": 1795399282831123200,
+          "path": "/work/fedora-system-integration-v1/rootfs/tmp",
+          "relative_path": "tmp",
+          "symlink": false
+        },
+        {
+          "ctime_ns": 1795399359429320000,
+          "exists": true,
+          "inode": 16470660,
+          "mode": "0o41777",
+          "mtime_ns": 1795399359429320000,
+          "path": "/work/fedora-system-integration-v1/rootfs/var/tmp",
+          "relative_path": "var/tmp",
+          "symlink": false
+        }
+      ],
+      "observed_utc": "2026-11-23T04:12:46.192993+00:00"
+    },
+    "new_proot_run_performed_for_followup": false,
+    "record_times": [
+      {
+        "mtime_ns": 1795406193065428700,
+        "mtime_utc": "2026-11-23T03:56:33.065429+00:00",
+        "path": "/work/selinux-access-query-v1/query-01.stdout.json"
+      },
+      {
+        "mtime_ns": 1795406432090521900,
+        "mtime_utc": "2026-11-23T04:00:32.090522+00:00",
+        "path": "/work/selinux-access-query-v1/service-entry-01.stdout.json"
+      },
+      {
+        "mtime_ns": 1795406548351890200,
+        "mtime_utc": "2026-11-23T04:02:28.351890+00:00",
+        "path": "/work/selinux-access-query-v1/service-entry-02.stdout.json"
+      },
+      {
+        "mtime_ns": 1795406479982145300,
+        "mtime_utc": "2026-11-23T04:01:19.982145+00:00",
+        "path": "/work/selinux-access-query-v1/entry-contexts-01.json"
+      }
+    ],
+    "schema_version": 1,
+    "source_files": [
+      {
+        "bytes": 21569,
+        "path": "/work/fedora-proot-src/src/path/binding.c",
+        "sha256": "12747c22372e97867d90d40e58241422de294eaee500121293754004d35360d0"
+      },
+      {
+        "bytes": 11133,
+        "path": "/work/fedora-proot-src/src/path/canon.c",
+        "sha256": "935aef55e5b4f3141980cbc1a67741bb6f40988c84949770e97e2622e9734d00"
+      },
+      {
+        "bytes": 5956,
+        "path": "/work/fedora-proot-src/src/path/glue.c",
+        "sha256": "750aacd7eb224f3f18c3f4cb93e773cf2f8b054572591dbd69a527715a481598"
+      }
+    ],
+    "source_locations": [
+      {
+        "end_line": 84,
+        "path": "/work/fedora-proot-src/src/path/glue.c",
+        "sha256": "750aacd7eb224f3f18c3f4cb93e773cf2f8b054572591dbd69a527715a481598",
+        "start_line": 40
+      },
+      {
+        "end_line": 193,
+        "path": "/work/fedora-proot-src/src/path/glue.c",
+        "sha256": "750aacd7eb224f3f18c3f4cb93e773cf2f8b054572591dbd69a527715a481598",
+        "start_line": 105
+      },
+      {
+        "end_line": 603,
+        "path": "/work/fedora-proot-src/src/path/binding.c",
+        "sha256": "12747c22372e97867d90d40e58241422de294eaee500121293754004d35360d0",
+        "start_line": 545
+      },
+      {
+        "end_line": 171,
+        "path": "/work/fedora-proot-src/src/path/canon.c",
+        "sha256": "935aef55e5b4f3141980cbc1a67741bb6f40988c84949770e97e2622e9734d00",
+        "start_line": 141
+      }
+    ]
+  },
+  "original_probe_flags_scope": "The query Python code opened the pinned policy/library for reading and changed only libsepol memory. Those false flags do not certify that the PRoot launcher left every source-tree directory entry or timestamp unchanged.",
+  "physical_tablet_accessed": false,
+  "physical_tablet_modified": false,
+  "proot_binary_sha256": "313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f",
+  "proot_placeholder_side_effect_mechanism_found": true,
+  "proot_source_commit": "25dc6a3134891f98a79f57ce1c2c1b23ff15cad1",
+  "proot_version": "5.5.0",
+  "query_access_decisions_retracted": false,
+  "query_policy_and_library_hash_checks_remain_valid": true,
+  "schema_version": 1,
+  "scope": "Additive clarification of PRoot wrapper side effects and source-copy qualification; no historical evidence rewritten.",
+  "source_copy_records": {
+    "/work/fedora-input-system-v4/baseline-copy.json": {
+      "bytes": 1293,
+      "json": {
+        "canonical_streams": {},
+        "complete": false,
+        "container": "tb371fc-build-20261123",
+        "copy_exit_code": 0,
+        "destination_tree": "/work/fedora-input-system-v4/rootfs",
+        "error": {
+          "message": "canonical tar failed: source-tree: 1",
+          "type": "RuntimeError"
+        },
+        "finished_utc": "2026-11-23T04:01:32.960453+00:00",
+        "host_storage_or_daemon_modified": false,
+        "input_hashes": {
+          "/usr/bin/qemu-aarch64": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943",
+          "/work/fedora-proot-src/src/proot": "313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f",
+          "/work/fedora-system-integration-v1/fedora-system-integration.json": "66ac854b2bc938aed147afe0355b57fcbba856c874e9d82cec4cad663b1c87d9",
+          "/work/fedora-system-integration-v1/runtime.json": "10a373bfc3291aabe564c8f7af90265900763eadfe3167a7384cc4dcd596544b",
+          "/work/fedora-system-integration-v1/vm-verify-01/result.json": "223f73b253a48995dd238575e64aad055e11f311c658aa03534b49c570095675"
+        },
+        "previous_ssd_container": "tb371fc-build-ssd-20261123",
+        "previous_ssd_partial_retained": "/work/fedora-input-system-v1",
+        "schema_version": 1,
+        "source_modified": false,
+        "source_tree": "/work/fedora-system-integration-v1/rootfs",
+        "started_utc": "2026-11-23T04:00:35.524376+00:00"
+      },
+      "path": "/work/fedora-input-system-v4/baseline-copy.json",
+      "sha256": "d66345fa5eb8fab0526f3823c99e4af8030acd390d8cf919bec3888924b7f4c0"
+    },
+    "/work/fedora-input-system-v5/baseline-copy.json": {
+      "bytes": 1881,
+      "json": {
+        "canonical_streams": {
+          "destination": {
+            "bytes": 1323141120,
+            "exit_code": 0,
+            "sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96"
+          },
+          "source": {
+            "bytes": 1323141120,
+            "exit_code": 0,
+            "sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96"
+          }
+        },
+        "complete": true,
+        "container": "tb371fc-build-20261123",
+        "copy_exit_code": 0,
+        "destination_tree": "/work/fedora-input-system-v5/rootfs",
+        "finished_utc": "2026-11-23T04:18:44.427405+00:00",
+        "host_storage_or_daemon_modified": false,
+        "input_hashes": {
+          "/usr/bin/qemu-aarch64": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943",
+          "/work/fedora-proot-src/src/proot": "313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f",
+          "/work/fedora-system-integration-v1/fedora-system-integration.json": "66ac854b2bc938aed147afe0355b57fcbba856c874e9d82cec4cad663b1c87d9",
+          "/work/fedora-system-integration-v1/runtime.json": "10a373bfc3291aabe564c8f7af90265900763eadfe3167a7384cc4dcd596544b",
+          "/work/fedora-system-integration-v1/vm-verify-01/result.json": "223f73b253a48995dd238575e64aad055e11f311c658aa03534b49c570095675"
+        },
+        "journal_acl_check": {
+          "system.posix_acl_access": {
+            "byte_identical": true,
+            "sha256": "fc742256255ddf9fd3878c1a93c0a2f49b1f9cf2793a30b23ea9d64ea5740aff",
+            "size": 52
+          },
+          "system.posix_acl_default": {
+            "byte_identical": true,
+            "sha256": "fc742256255ddf9fd3878c1a93c0a2f49b1f9cf2793a30b23ea9d64ea5740aff",
+            "size": 52
+          }
+        },
+        "previous_ssd_container": "tb371fc-build-ssd-20261123",
+        "previous_ssd_partial_retained": "/work/fedora-input-system-v1",
+        "schema_version": 1,
+        "source_modified": false,
+        "source_tree": "/work/fedora-system-integration-v1/rootfs",
+        "started_utc": "2026-11-23T04:17:34.589246+00:00"
+      },
+      "path": "/work/fedora-input-system-v5/baseline-copy.json",
+      "sha256": "c385dc8b5cab3a068ba18d4cb385f31beb401f8e51e83d8adfd9e2008955d75f"
+    },
+    "/work/fedora-r4-baseline-comparison-v1/comparison.json": {
+      "bytes": 2080,
+      "json": {
+        "capture_utc": "2026-11-23T04:21:03.653876+00:00",
+        "differences": [
+          {
+            "different_fields": [
+              "mtime_ns"
+            ],
+            "path": ".",
+            "quiescent": {
+              "gid": 0,
+              "mode": 16749,
+              "mtime_ns": 1795406548350890246,
+              "rdev": 0,
+              "uid": 0,
+              "xattrs": {}
+            },
+            "retained": {
+              "gid": 0,
+              "mode": 16749,
+              "mtime_ns": 1795406432089521771,
+              "rdev": 0,
+              "uid": 0,
+              "xattrs": {}
+            }
+          },
+          {
+            "different_fields": [
+              "mtime_ns"
+            ],
+            "path": "dev",
+            "quiescent": {
+              "gid": 0,
+              "mode": 16877,
+              "mtime_ns": 1795406548350890246,
+              "rdev": 0,
+              "uid": 0,
+              "xattrs": {}
+            },
+            "retained": {
+              "gid": 0,
+              "mode": 16877,
+              "mtime_ns": 1795406432089521771,
+              "rdev": 0,
+              "uid": 0,
+              "xattrs": {}
+            }
+          },
+          {
+            "different_fields": [
+              "mtime_ns"
+            ],
+            "path": "etc",
+            "quiescent": {
+              "gid": 0,
+              "mode": 16877,
+              "mtime_ns": 1795406548350890246,
+              "rdev": 0,
+              "uid": 0,
+              "xattrs": {}
+            },
+            "retained": {
+              "gid": 0,
+              "mode": 16877,
+              "mtime_ns": 1795406432089521771,
+              "rdev": 0,
+              "uid": 0,
+              "xattrs": {}
+            }
+          }
+        ],
+        "first": "/work/fedora-input-system-v4/rootfs",
+        "hardlink_groups_equal": true,
+        "historical_tar_hash_reconstructed": false,
+        "manifests": {
+          "quiescent-copy.json": {
+            "sha256": "2d110bdb628b4890154689791480824af33abf43af27c6ff997a240c4a03400c",
+            "size": 7708567
+          },
+          "retained-copy.json": {
+            "sha256": "90e7c7f9a7b9aa493c1110d05b2713706f6e6b32b896f4d4682a21ba57749677",
+            "size": 7708567
+          }
+        },
+        "original_failed_copy_reclassified_as_pass": false,
+        "recipe_sha256": "e25e2a42d082acbdcb01a8eedbea17c342ec456b04e49812b4108b4415f27e48",
+        "schema_version": 1,
+        "second": "/work/fedora-input-system-v5/rootfs",
+        "source_timestamps_reset": false,
+        "special_devices_opened": false
+      },
+      "path": "/work/fedora-r4-baseline-comparison-v1/comparison.json",
+      "sha256": "4fbba68f55e17ad2e170cc7c769829a516f3642f018776644c8bd7f5f8d530b5"
+    }
+  },
+  "source_mechanism": {
+    "binding_initialization": "initialize_binding sets the source type and canonicalizes the guest path with glue creation enabled.",
+    "cleanup": "A talloc destructor removes successful guest placeholders with unlink/rmdir at PRoot termination.",
+    "creation": "build_glue can mkdir/mknod inside the guest tree when a placeholder is possible.",
+    "environment_switch": "PROOT_DONT_POLLUTE_ROOTFS skips the guest-placeholder creation branch for non-glue paths. This is not a general read-only-filesystem guarantee.",
+    "historical_environment": "The recorded query wrapper copied its parent environment and explicitly set only LD_LIBRARY_PATH and SYSTEMD_OFFLINE. The native follow-up observes the current variable unset; a complete historical environment capture is unavailable.",
+    "missing_path": "canonicalize calls build_glue when an initialization path component is absent.",
+    "source_urls": [
+      "https://github.com/proot-me/proot/blob/25dc6a3134891f98a79f57ce1c2c1b23ff15cad1/src/path/binding.c",
+      "https://github.com/proot-me/proot/blob/25dc6a3134891f98a79f57ce1c2c1b23ff15cad1/src/path/canon.c",
+      "https://github.com/proot-me/proot/blob/25dc6a3134891f98a79f57ce1c2c1b23ff15cad1/src/path/glue.c"
+    ]
+  },
+  "subsequent_controls": {
+    "future_active_rootfs_note": "Any future PRoot use must use an explicitly active copy and account for bind placeholders; this follow-up does not authorize rerunning against frozen R1.",
+    "native_metadata_and_source_reads_only": true,
+    "new_initramfs_checker_uses_native_archive_reads": true,
+    "new_proot_run_for_this_followup": false,
+    "new_proot_runs_against_frozen_R1_stopped": true,
+    "source_metadata_mutation_attempted_by_followup_code": false,
+    "whole_source_metadata_unchanged_including_atime_proven": false
+  },
+  "whole_execution_rootfs_untouched_claim_supported": false
+}

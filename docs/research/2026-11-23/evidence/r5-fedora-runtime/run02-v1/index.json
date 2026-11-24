@@ -1,0 +1,60 @@
+{
+  "configure_exit_code": 1,
+  "configure_failure": "staging source bytes match but mode 0664 vs derived 0644; identity gate correctly rejected",
+  "container": "tb371fc-build-20261123",
+  "evidence": {
+    "configure.stderr": {
+      "bytes": 744,
+      "sha256": "9353694c769676a5e6392e0880fa911bc03a4fda2ddfefb2e57342c4913d1ab7"
+    },
+    "derivation.json": {
+      "bytes": 5118,
+      "sha256": "d1aee152ef50ad6bccc7a8fbf0ad195baa4d2b27f5f632958704790fe47f638c"
+    },
+    "r5-recipe-materialized.json": {
+      "bytes": 504,
+      "sha256": "09d3c07d7c7c8731957b246f2d638994eb3bc6a05a1ae97051f675c9f2f3cfbf"
+    },
+    "r5-runtime-stage.json": {
+      "bytes": 34966,
+      "sha256": "ee93c83b6f20fc9a3bdab09cd7b5ea6f4389b538e633c2cbba7e262240599846"
+    },
+    "root-module-report.json": {
+      "bytes": 27211,
+      "sha256": "4aa1a73e38558f03e688bb23f58269a92a99f1ae980b486e98459a1fc15beeed"
+    },
+    "system-profile.json": {
+      "bytes": 2865,
+      "sha256": "f961cd69c1a13bea7c4a3c15cbb4ab720b110f295707511551fa63c8df1b6350"
+    },
+    "target-depmod-version.json": {
+      "bytes": 505,
+      "sha256": "a90fee936307fd73fba954c097fd7640dd55355ef93abfb6945e9251095e977d"
+    },
+    "target-depmod-version.stdout": {
+      "bytes": 45,
+      "sha256": "9260633fb503b27b01585a3423b89286e90dd602a425828d898b80fffe8122eb"
+    },
+    "target-depmod.json": {
+      "bytes": 541,
+      "sha256": "3a2cbe6a6d30c86189041a9497369083cbdfd5840476f8be4dd00db2ae272317"
+    }
+  },
+  "executed_source_commit": "98abae1d26139971a60eae90d43f4e98ae457fc9",
+  "firmware_file_count": 69,
+  "job": "/work/r5-fedora-job-98abae1-run02",
+  "materialize_complete": true,
+  "module_count": 84,
+  "next": "rerun in a new work directory with corrected exact-mode copy; preserve v1",
+  "owner_native_linux_passes_added": 0,
+  "root_loader_built": false,
+  "root_module_gate_passed": true,
+  "schema_version": 1,
+  "source": "/work/r5-fedora-source-98abae1-run02",
+  "source_root_preserved": true,
+  "stage_complete": true,
+  "target_depmod_exit_code": 0,
+  "target_kmod_version": "34.2",
+  "vm_booted": false,
+  "work": "/work/fedora-r5-system-v1"
+}

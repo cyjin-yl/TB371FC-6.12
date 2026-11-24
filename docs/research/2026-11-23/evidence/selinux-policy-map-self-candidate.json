@@ -1,0 +1,941 @@
+{
+  "build": {
+    "job": {
+      "command": [
+        "python3",
+        "/work/selinux-reload-map-self-20261123/recipe/build_policy.py",
+        "--source-root",
+        "/work/fedora-input-system-v3/rootfs",
+        "--work",
+        "/work/selinux-reload-map-self-20261123/build-01",
+        "--module",
+        "/work/selinux-reload-map-self-20261123/recipe/tb371fc_init_reload_contract.cil"
+      ],
+      "elapsed_seconds": 57.08134350099135,
+      "exit_code": 0,
+      "start_utc": "2026-11-23T06:18:46.950657+00:00"
+    },
+    "job_log": {
+      "sha256": "150c31dab88d5d77dfb593e8257ed3443cf0060ec7c77c1e48f262c1e922fc75",
+      "size": 1407
+    },
+    "launch": {
+      "command": [
+        "python3",
+        "/src/scripts/research/build/run_job.py",
+        "--work",
+        "/work/selinux-reload-map-self-20261123/jobs",
+        "--name",
+        "build-01",
+        "--",
+        "python3",
+        "/work/selinux-reload-map-self-20261123/recipe/build_policy.py",
+        "--source-root",
+        "/work/fedora-input-system-v3/rootfs",
+        "--work",
+        "/work/selinux-reload-map-self-20261123/build-01",
+        "--module",
+        "/work/selinux-reload-map-self-20261123/recipe/tb371fc_init_reload_contract.cil"
+      ],
+      "launched_utc": "2026-11-23T06:18:46.748884+00:00",
+      "old_profiles_written": false,
+      "runner_sha256": "94b3d3692adbbbbbcec8cf2d84718bf5eb6c0ef0278145add177c4c1e92d63fe",
+      "tmux_session": "tb371fc-policy-self"
+    },
+    "result": {
+      "build_config": {
+        "changes": "Only fixed emulated executable paths; load_policy rejects every invocation.",
+        "sha256": "529956e9c87aaddd8d5c779fa4bfc6cafb53e1f4ca179d80c3aee7ea2b3daf90",
+        "size": 2999
+      },
+      "candidate_content_differences": [
+        {
+          "after": {
+            "ctime_ns": 1795414783304137696,
+            "gid": 0,
+            "mode": "0o644",
+            "mtime_ns": 1795414783242134106,
+            "sha256": "e1a63e7e6a97122f207b2df5a28d863fb29852530aa59c0c8d3dd8eefba36269",
+            "size": 3835432,
+            "type": "file",
+            "uid": 0
+          },
+          "before": {
+            "ctime_ns": 1795414727388900366,
+            "gid": 0,
+            "mode": "0o644",
+            "mtime_ns": 1795398511879883392,
+            "sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+            "size": 3835432,
+            "type": "file",
+            "uid": 0
+          },
+          "path": "etc/selinux/targeted/policy/policy.35"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795414783027121658,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795414783027121658,
+            "sha256": "8d17b2536d3905e4b709f53152aaa15327030c1cc96e6828c41c63f558aba405",
+            "size": 32,
+            "type": "file",
+            "uid": 0
+          },
+          "before": {
+            "ctime_ns": 1795414727705918721,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795398511627869585,
+            "sha256": "449c9d6620e597577fd95aec779aa45739148fa2ae055711fec50827dcfe8ced",
+            "size": 32,
+            "type": "file",
+            "uid": 0
+          },
+          "path": "var/lib/selinux/targeted/active/commit_num"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795414728546967415,
+            "gid": 0,
+            "mode": "0o700",
+            "mtime_ns": 1795414728546967415,
+            "type": "directory",
+            "uid": 0
+          },
+          "before": null,
+          "path": "var/lib/selinux/targeted/active/modules/400"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795414728610971121,
+            "gid": 0,
+            "mode": "0o700",
+            "mtime_ns": 1795414728610971121,
+            "type": "directory",
+            "uid": 0
+          },
+          "before": null,
+          "path": "var/lib/selinux/targeted/active/modules/400/tb371fc_init_reload_contract"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795414728618971584,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795414728618971584,
+            "sha256": "6b9fe515b5f13e102e4c006433488627631b0a188f89150619a6b423afda6ece",
+            "size": 112,
+            "type": "file",
+            "uid": 0
+          },
+          "before": null,
+          "path": "var/lib/selinux/targeted/active/modules/400/tb371fc_init_reload_contract/cil"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795414728547967473,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795414728547967473,
+            "sha256": "9a2e646ef933bedfa63503f7c2484674daf9d41f7e6822983b919e5e952f83cf",
+            "size": 3,
+            "type": "file",
+            "uid": 0
+          },
+          "before": null,
+          "path": "var/lib/selinux/targeted/active/modules/400/tb371fc_init_reload_contract/lang_ext"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795414728547967473,
+            "gid": 0,
+            "mode": "0o700",
+            "mtime_ns": 1795414728547967473,
+            "type": "directory",
+            "uid": 0
+          },
+          "before": null,
+          "path": "var/lib/selinux/targeted/active/modules/disabled"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795414733144233583,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795414733144233583,
+            "sha256": "66b29e05b97c8377f7cb30bf4597f7f8fb459659f23b3e99af5b4ab5f466fd2a",
+            "size": 72,
+            "type": "file",
+            "uid": 0
+          },
+          "before": {
+            "ctime_ns": 1795414727697918257,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795398461180105589,
+            "sha256": "7954896f00a3f756bf56c1d32d5d2015a09760bd288bd50469a1714357c84081",
+            "size": 72,
+            "type": "file",
+            "uid": 0
+          },
+          "path": "var/lib/selinux/targeted/active/modules_checksum"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795414781195015584,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795414781195015584,
+            "sha256": "e1a63e7e6a97122f207b2df5a28d863fb29852530aa59c0c8d3dd8eefba36269",
+            "size": 3835432,
+            "type": "file",
+            "uid": 0
+          },
+          "before": {
+            "ctime_ns": 1795414727704918663,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795398509748766630,
+            "sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+            "size": 3835432,
+            "type": "file",
+            "uid": 0
+          },
+          "path": "var/lib/selinux/targeted/active/policy.kern"
+        },
+        {
+          "after": {
+            "ctime_ns": 1795414780894998214,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795414780894998214,
+            "sha256": "e1a63e7e6a97122f207b2df5a28d863fb29852530aa59c0c8d3dd8eefba36269",
+            "size": 3835432,
+            "type": "file",
+            "uid": 0
+          },
+          "before": {
+            "ctime_ns": 1795414727701918489,
+            "gid": 0,
+            "mode": "0o600",
+            "mtime_ns": 1795398509396747343,
+            "sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+            "size": 3835432,
+            "type": "file",
+            "uid": 0
+          },
+          "path": "var/lib/selinux/targeted/active/policy.linked"
+        }
+      ],
+      "candidate_policy": {
+        "mode": "0o644",
+        "path": "/work/selinux-reload-map-self-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35",
+        "sha256": "e1a63e7e6a97122f207b2df5a28d863fb29852530aa59c0c8d3dd8eefba36269",
+        "size": 3835432
+      },
+      "command": [
+        "/work/selinux-reload-map-self-20261123/build-01/qemu-aarch64",
+        "-L",
+        "/work/selinux-reload-map-self-20261123/build-01/tool-root",
+        "/work/selinux-reload-map-self-20261123/build-01/tool-root/usr/sbin/semodule",
+        "-p",
+        "/work/selinux-reload-map-self-20261123/build-01/candidate",
+        "-S",
+        "/var/lib/selinux",
+        "-s",
+        "targeted",
+        "-g",
+        "/work/selinux-reload-map-self-20261123/build-01/semanage-build.conf",
+        "-n",
+        "-v",
+        "-X",
+        "400",
+        "-i",
+        "/work/selinux-reload-map-self-20261123/build-01/tb371fc_init_reload_contract.cil"
+      ],
+      "elapsed_seconds": 56.64560846803943,
+      "external_tools": [
+        {
+          "accepted": true,
+          "argv": [
+            "-q",
+            "-c",
+            "/work/selinux-reload-map-self-20261123/build-01/candidate/var/lib/selinux/final/targeted/policy/policy.35",
+            "/work/selinux-reload-map-self-20261123/build-01/candidate/var/lib/selinux/final/targeted/contexts/files/file_contexts"
+          ],
+          "tool": "setfiles"
+        },
+        {
+          "accepted": true,
+          "argv": [
+            "-r",
+            "/work/selinux-reload-map-self-20261123/build-01/candidate/var/lib/selinux/final/targeted/contexts/files/file_contexts"
+          ],
+          "tool": "sefcontext_compile"
+        },
+        {
+          "accepted": true,
+          "argv": [
+            "-r",
+            "/work/selinux-reload-map-self-20261123/build-01/candidate/var/lib/selinux/final/targeted/contexts/files/file_contexts.homedirs"
+          ],
+          "tool": "sefcontext_compile"
+        }
+      ],
+      "finished_utc": "2026-11-23T06:19:44.021920+00:00",
+      "kernel_policy_loaded": false,
+      "module": {
+        "priority": 400,
+        "rules": [
+          "(allow init_t semanage_store_t (file (map)))",
+          "(allow init_t init_t (process (setcurrent dyntransition)))"
+        ],
+        "sha256": "f0bf27105894ec4ce8b027d4c68ccc395467ff947721b1f82574b0dbd9895a38",
+        "size": 104
+      },
+      "original_source_inventory_reference_sha256": "3ab1550b558272ac17ff8a89520238bac8d2b5c108958e4458210da52fb10534",
+      "physical_device_actions": false,
+      "qemu": {
+        "sha256": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943",
+        "size": 16661520
+      },
+      "rootfs_booted": false,
+      "schema": 1,
+      "script_sha256": "79d8caa49030b517dd9f14cce11f93adf3c4b9a59a44051aaedadaf64c99d5f6",
+      "semodule_exit_code": 0,
+      "semodule_log": {
+        "sha256": "316572b45bbb0bb7eff6dce3d77916e21da4236fc7ec3999d1146806c2147da8",
+        "size": 268
+      },
+      "source_complete_content_inventory_sha256": "c0070c6fb7f209ed7e391d4707a1058caedbaf1ad96c076a17624661e5558b50",
+      "source_inventory_unchanged_including_mtime_ctime": true,
+      "source_pins": {
+        "etc/selinux/config": "80134a263d874d1687a43513a09b6cc8fdc2998e623c1c1670cb5769a85ce942",
+        "etc/selinux/semanage.conf": "8ba0df9a109dd136f1e8827343806ced9a0652c670c2572b4dd8642c67c27734",
+        "etc/selinux/targeted/policy/policy.35": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+        "usr/lib64/libselinux.so.1": "c9edfec980b8a05666d24dc3a4e15b502431334e2c7e3adcae189402b5031f6d",
+        "usr/lib64/libsemanage.so.2": "246206662c92e1df56f5f4f0d173bfb1bd6f97827fa189538e0857b6dc6058e8",
+        "usr/lib64/libsepol.so.2": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+        "usr/sbin/sefcontext_compile": "4a4f15badf7f975f4a10f14d5706e6f53a3765ead74531110c64da4797767936",
+        "usr/sbin/semodule": "1fee7d2141b111197eb4bbcc72f626646af702c45e5f5212347e0e6c5e028029",
+        "usr/sbin/setfiles": "75a118afe1060f2a402ac9c25498699b8b8493501bc7bd56099ee47fb0aa435b"
+      },
+      "source_root": "/work/fedora-input-system-v3/rootfs",
+      "started_utc": "2026-11-23T06:18:47.070856+00:00",
+      "status": "built_pending_delta_and_runtime_qualification",
+      "tool_closure": {
+        "etc/group": {
+          "sha256": "4f26d10b6be334dcc52bd88a90ca36b10901d0f5bbd8426c23836c95fa02522c",
+          "size": 506,
+          "source_payload": "etc/group"
+        },
+        "etc/ld.so.cache": {
+          "sha256": "82a27d912c1958ab916d72b4d9be8ca3dc4261f9c674a1aa24459993f381bdde",
+          "size": 26311,
+          "source_payload": "etc/ld.so.cache"
+        },
+        "etc/nsswitch.conf": {
+          "sha256": "36d4629defe53f0fe01b1578296b3cd411272f888643785716a439370e67166b",
+          "size": 639,
+          "source_payload": "etc/authselect/nsswitch.conf"
+        },
+        "etc/passwd": {
+          "sha256": "2e849193aba3276b14bd939879481c6c1c312d57d4fd8b29d74b3236d59f1417",
+          "size": 1074,
+          "source_payload": "etc/passwd"
+        },
+        "usr/lib/ld-linux-aarch64.so.1": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [],
+          "sha256": "8821728d15728a7046deef6d4183fb343716901e0e8119fff53d6b51e2605547",
+          "size": 928784,
+          "source_payload": "usr/lib/ld-linux-aarch64.so.1"
+        },
+        "usr/lib64/libaudit.so.1": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libcap-ng.so.0",
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "88efd5f05e1e0fea194f8195d0c5d3b03bf7b72b58000262ebc368451e73fa1d",
+          "size": 200496,
+          "source_payload": "usr/lib64/libaudit.so.1.0.0"
+        },
+        "usr/lib64/libbz2.so.1": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "38e73d4bc01b1b318c4a0be8b3a89ed59e3d1644fa4354dd84549669ba33680f",
+          "size": 72320,
+          "source_payload": "usr/lib64/libbz2.so.1.0.8"
+        },
+        "usr/lib64/libc.so.6": {
+          "interp": [
+            "/lib/ld-linux-aarch64.so.1"
+          ],
+          "mode": "0o755",
+          "needed": [
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "620f6221d0cb0a7bc7d0674bcb0682a0b42f7fb593f596f3bf646f02b10cb798",
+          "size": 2303728,
+          "source_payload": "usr/lib64/libc.so.6"
+        },
+        "usr/lib64/libcap-ng.so.0": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "611bce349ac27b2f0e83c69549d2a32f2494652e4761b26a1f5773e35d878b8e",
+          "size": 69152,
+          "source_payload": "usr/lib64/libcap-ng.so.0.0.0"
+        },
+        "usr/lib64/libgcc_s.so.1": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libc.so.6"
+          ],
+          "sha256": "ac02fe32df9084d75ea400befd249bb5de2c26a0bcd4c341a959ef805ca0890e",
+          "size": 137000,
+          "source_payload": "usr/lib64/libgcc_s-16-20260819.so.1"
+        },
+        "usr/lib64/libpcre2-8.so.0": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "7f08df34d1ea74a79d32def854357b6466187acc8e4659beeb427e553bf1c4a3",
+          "size": 662552,
+          "source_payload": "usr/lib64/libpcre2-8.so.0.15.0"
+        },
+        "usr/lib64/libselinux.so.1": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libpcre2-8.so.0",
+            "libgcc_s.so.1",
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "c9edfec980b8a05666d24dc3a4e15b502431334e2c7e3adcae189402b5031f6d",
+          "size": 270480,
+          "source_payload": "usr/lib64/libselinux.so.1"
+        },
+        "usr/lib64/libsemanage.so.2": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libsepol.so.2",
+            "libaudit.so.1",
+            "libselinux.so.1",
+            "libbz2.so.1",
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "246206662c92e1df56f5f4f0d173bfb1bd6f97827fa189538e0857b6dc6058e8",
+          "size": 336968,
+          "source_payload": "usr/lib64/libsemanage.so.2"
+        },
+        "usr/lib64/libsepol.so.2": {
+          "interp": [],
+          "mode": "0o755",
+          "needed": [
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+          "size": 802880,
+          "source_payload": "usr/lib64/libsepol.so.2"
+        },
+        "usr/libexec/selinux/hll/pp": {
+          "interp": [
+            "/lib/ld-linux-aarch64.so.1"
+          ],
+          "mode": "0o755",
+          "needed": [
+            "libsepol.so.2",
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "26dc86a640e5224c7f46297e752ec27dd30ca65418acb47025f158b860c6bde6",
+          "size": 69064,
+          "source_payload": "usr/libexec/selinux/hll/pp"
+        },
+        "usr/sbin/sefcontext_compile": {
+          "interp": [
+            "/lib/ld-linux-aarch64.so.1"
+          ],
+          "mode": "0o755",
+          "needed": [
+            "libselinux.so.1",
+            "libsepol.so.2",
+            "libpcre2-8.so.0",
+            "libgcc_s.so.1",
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "4a4f15badf7f975f4a10f14d5706e6f53a3765ead74531110c64da4797767936",
+          "size": 69504,
+          "source_payload": "usr/bin/sefcontext_compile"
+        },
+        "usr/sbin/semodule": {
+          "interp": [
+            "/lib/ld-linux-aarch64.so.1"
+          ],
+          "mode": "0o755",
+          "needed": [
+            "libsemanage.so.2",
+            "libsepol.so.2",
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "1fee7d2141b111197eb4bbcc72f626646af702c45e5f5212347e0e6c5e028029",
+          "size": 69952,
+          "source_payload": "usr/bin/semodule"
+        },
+        "usr/sbin/setfiles": {
+          "interp": [
+            "/lib/ld-linux-aarch64.so.1"
+          ],
+          "mode": "0o755",
+          "needed": [
+            "libselinux.so.1",
+            "libsepol.so.2",
+            "libaudit.so.1",
+            "libc.so.6",
+            "ld-linux-aarch64.so.1"
+          ],
+          "sha256": "75a118afe1060f2a402ac9c25498699b8b8493501bc7bd56099ee47fb0aa435b",
+          "size": 69056,
+          "source_payload": "usr/bin/setfiles"
+        }
+      }
+    }
+  },
+  "change": {
+    "booleans_changed": false,
+    "labels_changed": false,
+    "module": {
+      "path": "scripts/research/selinux/reload-map-self/tb371fc_init_reload_contract.cil",
+      "sha256": "f0bf27105894ec4ce8b027d4c68ccc395467ff947721b1f82574b0dbd9895a38",
+      "size": 104
+    },
+    "new_cross_type_dyntransition": false,
+    "only_added_permissions": [
+      "map",
+      "setcurrent",
+      "dyntransition"
+    ],
+    "permissive_domains_added": false,
+    "process_target_type": "init_t",
+    "rules": [
+      "(allow init_t semanage_store_t (file (map)))",
+      "(allow init_t init_t (process (setcurrent dyntransition)))"
+    ]
+  },
+  "comparison": {
+    "job": {
+      "command": [
+        "/usr/bin/qemu-aarch64",
+        "-L",
+        "/work/fedora-input-system-v3/rootfs",
+        "-E",
+        "PYTHONHOME=/work/fedora-input-system-v3/rootfs/usr",
+        "/work/fedora-input-system-v3/rootfs/usr/bin/python3",
+        "-B",
+        "/work/selinux-reload-map-self-20261123/recipe/compare_policy.py",
+        "--original",
+        "/work/fedora-input-system-v3/rootfs/etc/selinux/targeted/policy/policy.35",
+        "--candidate",
+        "/work/selinux-reload-map-self-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35",
+        "--candidate-size",
+        "3835432",
+        "--candidate-sha256",
+        "e1a63e7e6a97122f207b2df5a28d863fb29852530aa59c0c8d3dd8eefba36269",
+        "--library",
+        "/work/fedora-input-system-v3/rootfs/usr/lib64/libsepol.so.2",
+        "--output",
+        "/work/selinux-reload-map-self-20261123/compare-01"
+      ],
+      "elapsed_seconds": 99.9153637230047,
+      "exit_code": 0,
+      "start_utc": "2026-11-23T06:20:12.290823+00:00"
+    },
+    "job_log": {
+      "sha256": "f1a0c389f2f6398d1cb394876a8540babb5294bd9eb82848b933889a0ad00f53",
+      "size": 5139
+    },
+    "launch": {
+      "command": [
+        "python3",
+        "/src/scripts/research/build/run_job.py",
+        "--work",
+        "/work/selinux-reload-map-self-20261123/jobs",
+        "--name",
+        "compare-01",
+        "--",
+        "/usr/bin/qemu-aarch64",
+        "-L",
+        "/work/fedora-input-system-v3/rootfs",
+        "-E",
+        "PYTHONHOME=/work/fedora-input-system-v3/rootfs/usr",
+        "/work/fedora-input-system-v3/rootfs/usr/bin/python3",
+        "-B",
+        "/work/selinux-reload-map-self-20261123/recipe/compare_policy.py",
+        "--original",
+        "/work/fedora-input-system-v3/rootfs/etc/selinux/targeted/policy/policy.35",
+        "--candidate",
+        "/work/selinux-reload-map-self-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35",
+        "--candidate-size",
+        "3835432",
+        "--candidate-sha256",
+        "e1a63e7e6a97122f207b2df5a28d863fb29852530aa59c0c8d3dd8eefba36269",
+        "--library",
+        "/work/fedora-input-system-v3/rootfs/usr/lib64/libsepol.so.2",
+        "--output",
+        "/work/selinux-reload-map-self-20261123/compare-01"
+      ],
+      "launched_utc": "2026-11-23T06:20:12.165048+00:00",
+      "python_sha256": "a12cb0a1160abfbc59d3336fb3713562977fd862b9a3eafc2553c89b887a8d15",
+      "qemu_sha256": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943",
+      "source_execution": "direct QEMU -B; no PRoot or binfmt",
+      "tmux_session": "tb371fc-policy-self"
+    },
+    "result": {
+      "binary_difference": {
+        "changed_byte_count_in_overlap": 3,
+        "first_changed_offsets": [
+          667305,
+          667306,
+          1026692
+        ],
+        "same_length": true,
+        "trailing_length_delta": 0
+      },
+      "comparisons": {
+        "33": {
+          "complete_cil_identical_after_exact_two_rule_substitution": true,
+          "includes_other_av_booleans_types_permissive_mls_and_policycaps": true,
+          "no_cross_type_dyntransition_added": true,
+          "only_three_reviewed_permissions_added": true,
+          "rules": [
+            {
+              "added_permissions": [
+                "map"
+              ],
+              "after_rule": "(allow init_t semanage_store_t (file (ioctl read lock map open)))",
+              "before_rule": "(allow init_t semanage_store_t (file (ioctl read lock open)))",
+              "contract": "policy_map",
+              "exact_reviewed_permissions_added": true,
+              "removed_permissions": []
+            },
+            {
+              "added_permissions": [
+                "dyntransition",
+                "setcurrent"
+              ],
+              "after_rule": "(allow init_t self (process (fork getsched getcap setcap setexec setfscreate dyntransition setcurrent setkeycreate setsockcreate)))",
+              "before_rule": "(allow init_t self (process (fork getsched getcap setcap setexec setfscreate setkeycreate setsockcreate)))",
+              "contract": "same_type_process",
+              "exact_reviewed_permissions_added": true,
+              "removed_permissions": []
+            }
+          ]
+        },
+        "35": {
+          "complete_cil_identical_after_exact_two_rule_substitution": true,
+          "includes_other_av_booleans_types_permissive_mls_and_policycaps": true,
+          "no_cross_type_dyntransition_added": true,
+          "only_three_reviewed_permissions_added": true,
+          "rules": [
+            {
+              "added_permissions": [
+                "map"
+              ],
+              "after_rule": "(allow init_t semanage_store_t (file (ioctl read lock map open)))",
+              "before_rule": "(allow init_t semanage_store_t (file (ioctl read lock open)))",
+              "contract": "policy_map",
+              "exact_reviewed_permissions_added": true,
+              "removed_permissions": []
+            },
+            {
+              "added_permissions": [
+                "dyntransition",
+                "setcurrent"
+              ],
+              "after_rule": "(allow init_t self (process (fork getsched getcap setcap setexec setfscreate dyntransition setcurrent setkeycreate setsockcreate)))",
+              "before_rule": "(allow init_t self (process (fork getsched getcap setcap setexec setfscreate setkeycreate setsockcreate)))",
+              "contract": "same_type_process",
+              "exact_reviewed_permissions_added": true,
+              "removed_permissions": []
+            }
+          ]
+        }
+      },
+      "completed": true,
+      "conversions": {
+        "candidate": {
+          "fresh_parse_without_prior_cil_export": true,
+          "kernel_export_identity_asserted": false,
+          "path": "/work/selinux-reload-map-self-20261123/compare-01/candidate-converted-v33.policy",
+          "sha256": "ce6ccbfda2105de32c6f865e883493a98ee4df848d298b703d55904cae3f9875",
+          "size": 3835420,
+          "version": 33
+        },
+        "original": {
+          "fresh_parse_without_prior_cil_export": true,
+          "kernel_export_identity_asserted": false,
+          "path": "/work/selinux-reload-map-self-20261123/compare-01/original-converted-v33.policy",
+          "sha256": "aab7b7128bb8f0db2d349ac0817d806e5157b9a0b93dfe4f85ccf630354ebebe",
+          "size": 3835420,
+          "version": 33
+        }
+      },
+      "exports": {
+        "candidate-v33": {
+          "line_count": 356733,
+          "path": "/work/selinux-reload-map-self-20261123/compare-01/candidate-v33.cil",
+          "sha256": "3b03fe615a38c9c06845340aa14b31065061a8415ac9de449c58f357d4c6f7c3",
+          "size": 26816085
+        },
+        "candidate-v35": {
+          "line_count": 356733,
+          "path": "/work/selinux-reload-map-self-20261123/compare-01/candidate-v35.cil",
+          "sha256": "3b03fe615a38c9c06845340aa14b31065061a8415ac9de449c58f357d4c6f7c3",
+          "size": 26816085
+        },
+        "original-v33": {
+          "line_count": 356733,
+          "path": "/work/selinux-reload-map-self-20261123/compare-01/original-v33.cil",
+          "sha256": "92eac75fb11b66a737394832355483b462827647000717bac539f5b92bc3979a",
+          "size": 26816056
+        },
+        "original-v35": {
+          "line_count": 356733,
+          "path": "/work/selinux-reload-map-self-20261123/compare-01/original-v35.cil",
+          "sha256": "92eac75fb11b66a737394832355483b462827647000717bac539f5b92bc3979a",
+          "size": 26816056
+        }
+      },
+      "input_policy": {
+        "candidate": {
+          "sha256": "e1a63e7e6a97122f207b2df5a28d863fb29852530aa59c0c8d3dd8eefba36269",
+          "size": 3835432
+        },
+        "original": {
+          "sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+          "size": 3835432
+        }
+      },
+      "kernel_policy_loaded_or_queried": false,
+      "library": {
+        "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+        "size": 802880
+      },
+      "physical_hardware_tested": false,
+      "runtime_relabel_proven": false,
+      "schema": 1,
+      "scope": "complete offline binary-to-CIL comparison",
+      "script_sha256": "344d29b039ec0bb1f53d086a0251f0be04963b8cd2234962885818f8cd8e4a18"
+    }
+  },
+  "device_rebooted_or_flashed": false,
+  "evidence_classes": [
+    "source_clue",
+    "host_build"
+  ],
+  "interpretation_limits": [
+    "The earlier map-only candidate and its 53-query failure remain immutable.",
+    "The successful offline comparison is not a successful standard reload, actual path labeling, descriptor transfer, BPF/pids enforcement or clean VM shutdown.",
+    "Fresh policy33 conversion hashes are not predetermined exported-kernel-policy identities.",
+    "The same-type process allow does not add a dyntransition rule to another type; all other exported rules and constraints remain byte-identical.",
+    "The semodule raw result retained its built_pending_delta_and_runtime_qualification status; this separate complete comparison closes only its offline delta condition.",
+    "Original source mtime/ctime/content/owner/mode were checked; no atime invariant is asserted."
+  ],
+  "kernel_policy_loaded_or_changed": false,
+  "live_selinux_enforcement_changed": false,
+  "loader_binding": {
+    "existing_loader_sha256": "cc042c9fc4e92c75803215649c99bd87badd301bb05aa16820b43aaeb8fb50bc",
+    "existing_loader_size": 72048,
+    "full_policy_hash_must_be_pinned_by_new_archive_and_runtime_profile": true,
+    "loader_rebuilt_by_this_experiment": false,
+    "new_archive_or_runtime_binding_proven_here": false,
+    "new_candidate_policy_sha256": "e1a63e7e6a97122f207b2df5a28d863fb29852530aa59c0c8d3dd8eefba36269",
+    "original_loader_build_policy_sha256": "0dd46af3240a02d1c7399c46facf30cce2a71a471fb70c0d0f5e58e571e53c74",
+    "policy_size_matches_existing_native_check": true
+  },
+  "local_transfer": {
+    "all_15_entry_hashes_verified": true,
+    "compressed_sha256": "2d284950822f2db8c871ab5d6a84587a7e1a8f4578de0ae4f2a61bc23919f284",
+    "compressed_size": 81056,
+    "expanded_sha256": "34051f464a3bc69afa68ffeb89a0c2785d62910f360313282f3a2d4a9fa94bf3",
+    "expanded_size": 2286141,
+    "path": "/work/selinux-reload-map-self-20261123/public-transfer.json.xz"
+  },
+  "manifest_checks": {
+    "atime_unchanged_asserted": false,
+    "candidate_final_entries": 1771,
+    "complete_original_content_inventory_hard_pin": "c0070c6fb7f209ed7e391d4707a1058caedbaf1ad96c076a17624661e5558b50",
+    "initial_candidate_content_owner_mode_equals_original": true,
+    "only_etc_selinux_payload_change": [
+      "etc/selinux/targeted/policy/policy.35"
+    ],
+    "original_config_unchanged": true,
+    "original_context_files_unchanged": 32,
+    "original_source_entries": 1766,
+    "original_source_files": 1329,
+    "source_after_sha256": "3ab1550b558272ac17ff8a89520238bac8d2b5c108958e4458210da52fb10534",
+    "source_before_and_after_exact_including_mtime_ctime": true,
+    "source_before_sha256": "3ab1550b558272ac17ff8a89520238bac8d2b5c108958e4458210da52fb10534"
+  },
+  "manifests": [
+    {
+      "path": "docs/research/2026-11-23/evidence/selinux-policy-map-self-source-manifest.json",
+      "role": "build-01/source-before.json",
+      "sha256": "3ab1550b558272ac17ff8a89520238bac8d2b5c108958e4458210da52fb10534",
+      "size": 504226
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/selinux-policy-map-self-before-manifest.json",
+      "role": "build-01/candidate-before.json",
+      "sha256": "169603559d388fe1af51789fef4be2000f385b149ec43b3fdf3243f74a7279ac",
+      "size": 504226
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/selinux-policy-map-self-candidate-manifest.json",
+      "role": "build-01/candidate-after.json",
+      "sha256": "4be3108af468604a4ac1dcb3d6757ef9719296e3d255cceb6c0335219384ac8c",
+      "size": 505532
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/selinux-policy-map-self-build.log",
+      "role": "build-01/semodule.log",
+      "sha256": "316572b45bbb0bb7eff6dce3d77916e21da4236fc7ec3999d1146806c2147da8",
+      "size": 268
+    }
+  ],
+  "owner_linux_passes": 0,
+  "owner_linux_runs": 0,
+  "recipes": [
+    {
+      "path": "scripts/research/selinux/reload-map-self/build_policy.py",
+      "sha256": "79d8caa49030b517dd9f14cce11f93adf3c4b9a59a44051aaedadaf64c99d5f6",
+      "size": 14599
+    },
+    {
+      "path": "scripts/research/selinux/reload-map-self/compare_policy.py",
+      "sha256": "344d29b039ec0bb1f53d086a0251f0be04963b8cd2234962885818f8cd8e4a18",
+      "size": 11129
+    },
+    {
+      "path": "scripts/research/selinux/reload-map-self/tb371fc_init_reload_contract.cil",
+      "sha256": "f0bf27105894ec4ce8b027d4c68ccc395467ff947721b1f82574b0dbd9895a38",
+      "size": 104
+    }
+  ],
+  "related_evidence": [
+    {
+      "path": "docs/research/2026-11-23/selinux-policy-map-candidate.md",
+      "sha256": "48b0ce300a71618c6ebff0e763242aad259d203366e6f4927578eca920890478",
+      "size": 17390
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/selinux-policy-map-candidate.json",
+      "sha256": "49f1a4149b9f2019d51bc5ee512a06580fc9c36e55aa53f8682a4b4da9839ef2",
+      "size": 60722
+    },
+    {
+      "path": "docs/research/2026-11-23/selinux-postreload-contract-query.md",
+      "sha256": "ad37a6f6f9db1094a774d420211315f2be881dc386fe3ba830cb083fe327dc20",
+      "size": 7213
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/selinux-postreload-contract-query.json",
+      "sha256": "349dd822998ba391dd478fad4f0501b8df88e2cbca1c619c65fcdb618fb53377",
+      "size": 54646
+    },
+    {
+      "path": "docs/research/2026-11-23/early-selinux-reload-loader.md",
+      "sha256": "af3d34702f11ecc8ab419fe071c7dc34aa0c8f09e6069e52ca7cd0802424b861",
+      "size": 7485
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/early-selinux-reload-loader-build.json",
+      "sha256": "25b3f844bb59245b49c2be134f8f7341aee566e0c50ec72e8fabd6c439964b68",
+      "size": 4453
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/early-selinux-reload-loader-negative.json",
+      "sha256": "813f6b82924320d2c7fedf2232ea3a36b469e8a8ca402eadebd256718918f71e",
+      "size": 1784
+    },
+    {
+      "path": "docs/research/2026-11-23/selinux-runtime-contract-query.md",
+      "sha256": "1fc8014d7e51a0f9e1f8bea275f32e745834cb9f9956ef19feeeec60d94c3385",
+      "size": 14583
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/selinux-runtime-contract-query.json",
+      "sha256": "b21393eec34638e0e3d7a0f0c047209362ebc2bcb4420bd0d95bdbac4b1baed6",
+      "size": 268211
+    }
+  ],
+  "schema_version": 1,
+  "scope": "independent offline Fedora combined PID1 mmap and same-type context policy construction/comparison",
+  "source_chain": {
+    "kernel": {
+      "contract": "selinux_lsm_setattr checks PROCESS__SETCURRENT then PROCESS__DYNTRANSITION; no same-SID skip.",
+      "path": "security/selinux/hooks.c",
+      "release": "6.12.114 research4",
+      "sha256": "6079b88f15ca1966b640753e35edc291139fe925fca37e5c54d0a2d6e36d8370",
+      "size": 204597
+    },
+    "libselinux": {
+      "contract": "prev_current starts UNSET; the getter does not fill the setter cache. First non-null setcon_raw opens/writes current; only successful setter write fills cache.",
+      "path": "src/procattr.c",
+      "release": "qualified Fedora-patched 3.11",
+      "sha256": "cbbc16d3879fbad25e5fbaf3a635272262d8aab8086c2fd0d572741b1b84464f",
+      "size": 7558
+    },
+    "map_only_offline_blocker_record": {
+      "path": "docs/research/2026-11-23/evidence/selinux-postreload-contract-query.json",
+      "sha256": "349dd822998ba391dd478fad4f0501b8df88e2cbca1c619c65fcdb618fb53377",
+      "size": 54646
+    },
+    "original_toolchain_source_audit": {
+      "path": "docs/research/2026-11-23/selinux-policy-map-candidate.md",
+      "sha256": "48b0ce300a71618c6ebff0e763242aad259d203366e6f4927578eca920890478",
+      "size": 17390
+    },
+    "systemd": {
+      "contract": "Successful standard reload is followed by calculated-label setcon_raw; a failed transition is warned and the loaded-policy flag still becomes true.",
+      "path": "src/core/selinux-setup.c",
+      "release": "262.1-1.fc45",
+      "sha256": "868c39f4a81584803e38e82e5db02f510d0148594cf1c21923b522c19a3547e1",
+      "size": 3721
+    }
+  },
+  "status": "offline_combined_candidate_qualified_runtime_not_run",
+  "systemd_or_libselinux_modified": false,
+  "virtual_machine_started_by_this_experiment": false,
+  "workspace": {
+    "container": "tb371fc-build-20261123",
+    "directory": "/work/selinux-reload-map-self-20261123",
+    "separate_from_map_only_directory": true,
+    "source_root": "/work/fedora-input-system-v3/rootfs",
+    "tmux_session": "tb371fc-policy-self"
+  }
+}

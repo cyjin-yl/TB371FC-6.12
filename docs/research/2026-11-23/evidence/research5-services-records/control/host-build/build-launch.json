@@ -1,0 +1,19 @@
+{
+  "actual_driver_in_tmux": true,
+  "command": "exec python3 /tank/shared/projects/tb371fc-linux/private/research5-services-20261123/run_build.py --packet-sha256 8581b38b65cfd4e929da791fdf191caa76b49e043324f2e8afe8652f3cf4666e > /tank/shared/projects/tb371fc-linux/private/research5-services-20261123/build-pane.log 2>&1",
+  "files_sha256": {
+    "recipe-packet.json": "8581b38b65cfd4e929da791fdf191caa76b49e043324f2e8afe8652f3cf4666e",
+    "run_build.py": "0d0e9fe0c62f962ed123d3bafed407a901f2b4af9e52accfa301e544db7d6630"
+  },
+  "ordered_stages": [
+    "install-recipe",
+    "configure",
+    "build",
+    "inspect"
+  ],
+  "pane": "%298 502216",
+  "physical_hardware_tested": false,
+  "session": "tb371fc-research5-services",
+  "start_utc": "2026-11-23T09:35:08.118364+00:00",
+  "window": "build-01"
+}

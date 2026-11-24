@@ -1,0 +1,239 @@
+{
+  "archive_sha256": "6fb0d1964bef82d0b1bcb91282da48a6223910f5987ab1c8466d5746e7ead8e2",
+  "avb_signature_verified": false,
+  "bootability_tested": false,
+  "images": {
+    "boot_a": {
+      "components": [
+        {
+          "arm64_image_header": {
+            "flags": 10,
+            "image_size": 44785664,
+            "text_offset": 524288
+          },
+          "bytes": 37445648,
+          "name": "kernel",
+          "offset": 4096,
+          "release_strings": [
+            "4.19.157-perf+"
+          ],
+          "sha256": "ef9e7b5cdb9ef3c66977a04d6b6e21cf83e83f2f45476390c861827d1bb1cf0f",
+          "signature": "arm64_image"
+        },
+        {
+          "bytes": 1298323,
+          "name": "ramdisk",
+          "offset": 37453824,
+          "sha256": "563f4b334f8470155c6a451395342f7044b70e79b480a886c7641960f534f596",
+          "signature": "gzip"
+        },
+        {
+          "bytes": 1608875,
+          "name": "dtb",
+          "offset": 38752256,
+          "sha256": "7827766497a13ce96161ab3e38b2db4f7238dba3a056793299e911334a1732a4",
+          "signature": "fdt"
+        }
+      ],
+      "header": {
+        "dtb_addr": 32505856,
+        "dtb_size": 1608875,
+        "header_size": 1660,
+        "header_version": 2,
+        "kernel_addr": 32768,
+        "kernel_size": 37445648,
+        "os_version": 369099138,
+        "page_size": 4096,
+        "ramdisk_addr": 16777216,
+        "ramdisk_size": 1298323,
+        "recovery_dtbo_offset": 0,
+        "recovery_dtbo_size": 0,
+        "second_addr": 0,
+        "second_size": 0,
+        "tags_addr": 256
+      },
+      "page_aligned_payload_end": 40361984,
+      "partition_padding_or_trailer_bytes": 60301312,
+      "partition_sha256": "78ba0f4f75bec85a80155a9e9ea8fa19546bbd88598a7923a16b069404899a9a"
+    },
+    "boot_b": {
+      "components": [
+        {
+          "arm64_image_header": {
+            "flags": 10,
+            "image_size": 44785664,
+            "text_offset": 524288
+          },
+          "bytes": 37445648,
+          "name": "kernel",
+          "offset": 4096,
+          "release_strings": [
+            "4.19.157-perf+"
+          ],
+          "sha256": "0bcb84a841e3b31770e62f2cb1ad13052c786118887a766bd9b951fa0514273d",
+          "signature": "arm64_image"
+        },
+        {
+          "bytes": 1149483,
+          "name": "ramdisk",
+          "offset": 37453824,
+          "sha256": "dbc51b9ced5265b2202a1cb534c9d1018e84bc61c48795e2af08eed866aec0b8",
+          "signature": "gzip"
+        },
+        {
+          "bytes": 1609107,
+          "name": "dtb",
+          "offset": 38604800,
+          "sha256": "cb0f50f13fd70b5dcd0b12d330ae09d070ae4d6f20f4873b1a9815883726ee0e",
+          "signature": "fdt"
+        }
+      ],
+      "header": {
+        "dtb_addr": 32505856,
+        "dtb_size": 1609107,
+        "header_size": 1660,
+        "header_version": 2,
+        "kernel_addr": 32768,
+        "kernel_size": 37445648,
+        "os_version": 369099138,
+        "page_size": 4096,
+        "ramdisk_addr": 16777216,
+        "ramdisk_size": 1149483,
+        "recovery_dtbo_offset": 0,
+        "recovery_dtbo_size": 0,
+        "second_addr": 0,
+        "second_size": 0,
+        "tags_addr": 256
+      },
+      "page_aligned_payload_end": 40214528,
+      "partition_padding_or_trailer_bytes": 60448768,
+      "partition_sha256": "dedaae8f49d8c052302cc5329652383b8e35cb571fd3510e15b3444ab9b45573"
+    },
+    "recovery_a": {
+      "components": [
+        {
+          "arm64_image_header": {
+            "flags": 10,
+            "image_size": 44785664,
+            "text_offset": 524288
+          },
+          "bytes": 37445648,
+          "name": "kernel",
+          "offset": 4096,
+          "release_strings": [
+            "4.19.157-perf+"
+          ],
+          "sha256": "ef9e7b5cdb9ef3c66977a04d6b6e21cf83e83f2f45476390c861827d1bb1cf0f",
+          "signature": "arm64_image"
+        },
+        {
+          "bytes": 8576757,
+          "name": "ramdisk",
+          "offset": 37453824,
+          "sha256": "4ffc451ef6bcbbfbea07bbd6de4315cfbafb5b9a9eb6d6f6d0196b2f06bf0610",
+          "signature": "gzip"
+        },
+        {
+          "bytes": 4299963,
+          "name": "recovery_dtbo",
+          "offset": 46030848,
+          "sha256": "279910628e61cad149ccdb16ae0aa0a3a2f46441e21132ac3a1323e565219679",
+          "signature": "unclassified"
+        },
+        {
+          "bytes": 1609107,
+          "name": "dtb",
+          "offset": 50331648,
+          "sha256": "cb0f50f13fd70b5dcd0b12d330ae09d070ae4d6f20f4873b1a9815883726ee0e",
+          "signature": "fdt"
+        }
+      ],
+      "header": {
+        "dtb_addr": 32505856,
+        "dtb_size": 1609107,
+        "header_size": 1660,
+        "header_version": 2,
+        "kernel_addr": 32768,
+        "kernel_size": 37445648,
+        "os_version": 369099138,
+        "page_size": 4096,
+        "ramdisk_addr": 16777216,
+        "ramdisk_size": 8576757,
+        "recovery_dtbo_offset": 46030848,
+        "recovery_dtbo_size": 4299963,
+        "second_addr": 0,
+        "second_size": 0,
+        "tags_addr": 256
+      },
+      "page_aligned_payload_end": 51941376,
+      "partition_padding_or_trailer_bytes": 52916224,
+      "partition_sha256": "94649360140db672e861729927011984e9714459b4e19c9aab02b7ab79466668"
+    },
+    "recovery_b": {
+      "components": [
+        {
+          "arm64_image_header": {
+            "flags": 10,
+            "image_size": 44785664,
+            "text_offset": 524288
+          },
+          "bytes": 37445648,
+          "name": "kernel",
+          "offset": 4096,
+          "release_strings": [
+            "4.19.157-perf+"
+          ],
+          "sha256": "0bcb84a841e3b31770e62f2cb1ad13052c786118887a766bd9b951fa0514273d",
+          "signature": "arm64_image"
+        },
+        {
+          "bytes": 8576742,
+          "name": "ramdisk",
+          "offset": 37453824,
+          "sha256": "4521d9d63cd78d63c302b0a0a9c55536dfe5abcb5d4d937d7c5d69db8364ee23",
+          "signature": "gzip"
+        },
+        {
+          "bytes": 4299963,
+          "name": "recovery_dtbo",
+          "offset": 46030848,
+          "sha256": "279910628e61cad149ccdb16ae0aa0a3a2f46441e21132ac3a1323e565219679",
+          "signature": "unclassified"
+        },
+        {
+          "bytes": 1609107,
+          "name": "dtb",
+          "offset": 50331648,
+          "sha256": "cb0f50f13fd70b5dcd0b12d330ae09d070ae4d6f20f4873b1a9815883726ee0e",
+          "signature": "fdt"
+        }
+      ],
+      "header": {
+        "dtb_addr": 32505856,
+        "dtb_size": 1609107,
+        "header_size": 1660,
+        "header_version": 2,
+        "kernel_addr": 32768,
+        "kernel_size": 37445648,
+        "os_version": 369099138,
+        "page_size": 4096,
+        "ramdisk_addr": 16777216,
+        "ramdisk_size": 8576742,
+        "recovery_dtbo_offset": 46030848,
+        "recovery_dtbo_size": 4299963,
+        "second_addr": 0,
+        "second_size": 0,
+        "tags_addr": 256
+      },
+      "page_aligned_payload_end": 51941376,
+      "partition_padding_or_trailer_bytes": 52916224,
+      "partition_sha256": "2c62c4c7c85ed751f3ca2273191fdddb6a20c62504f0ccb5a45456c08c6f5a72"
+    }
+  },
+  "inspection_utc": "2026-11-22T22:52:35.857975+00:00",
+  "receipt_sha256": "c95a47c36a491f4924f90285953550f060bcb986d05f1ecaafedbfa26f067bf4",
+  "rollback_compatibility_verified": false,
+  "schema_version": 1,
+  "scope": "numeric Android v2 boot layout, no private ramdisk data",
+  "script_sha256": "b24f1c36248cd1203347549be500ef7e3274d1586a4e00bbb9db1a3fc9da87b4"
+}

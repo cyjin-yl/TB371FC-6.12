@@ -1,0 +1,523 @@
+From: TB371FC research contributors <tb371fc-research@localhost>
+Subject: [PATCH] input: nt36523: propagate restart errors and release resources
+
+Probe and resume used to report success after failed firmware download;
+resume also discarded the reset-state and pen-command results. Keep the
+IRQ disabled until initialization completes, propagate failures, and
+leave a failed resume quiescent and retryable. Check deep-sleep and IRQ
+wake operations, track wake ownership and disarm it on resume/removal.
+An aborted suspend restores the active software state and reports error.
+
+Do not run an IRQ thread on partially initialized probe state. Reject IRQ
+zero as well as preserving negative mapping errors. Handle MT allocation
+failure. Balance the probe wake hold, drain event work before ESD/IRQ
+teardown, and free SPI and per-download firmware buffers. No new gesture,
+panel sequencing, CTN730, or electrical timing protocol is introduced.
+
+Applies after 0018-input-nt36523-use-declared-physical-dimensions.patch.
+
+diff --git a/drivers/input/touchscreen/nt36523/nt36xxx.c b/drivers/input/touchscreen/nt36523/nt36xxx.c
+--- a/drivers/input/touchscreen/nt36523/nt36xxx.c
++++ b/drivers/input/touchscreen/nt36523/nt36xxx.c
+@@ -80,6 +80,20 @@
+ 			ts->irq_enabled = false;
+ 		}
+ 	}
++}
++
++static int nvt_irq_set_wake(bool enable)
++{
++	int ret;
++
++	if (ts->irq_wake_enabled == enable)
++		return 0;
++	ret = enable ? enable_irq_wake(ts->client->irq) :
++		       disable_irq_wake(ts->client->irq);
++	if (ret)
++		return ret;
++	ts->irq_wake_enabled = enable;
++	return 0;
+ }
+ 
+ static inline int32_t spi_read_write(struct spi_device *client, uint8_t *buf, size_t len , NVT_SPI_RW rw)
+@@ -1353,13 +1367,19 @@
+ static void nvt_suspend_work(struct work_struct *work)
+ {
+ 	struct nvt_ts_data *ts_core = container_of(work, struct nvt_ts_data, suspend_work);
+-	nvt_ts_suspend(&ts_core->client->dev);
++	int ret = nvt_ts_suspend(&ts_core->client->dev);
++
++	if (ret)
++		NVT_ERR("asynchronous suspend failed: %d\n", ret);
+ }
+ 
+ static void nvt_resume_work(struct work_struct *work)
+ {
+ 	struct nvt_ts_data *ts_core = container_of(work, struct nvt_ts_data, resume_work);
+-	nvt_ts_resume(&ts_core->client->dev);
++	int ret = nvt_ts_resume(&ts_core->client->dev);
++
++	if (ret)
++		NVT_ERR("asynchronous resume failed: %d\n", ret);
+ }
+ 
+ /*******************************************************
+@@ -1502,7 +1522,9 @@
+ 					ts->abs_x_max, ts->abs_y_max, ts->max_button_num);
+ 
+ #if MT_PROTOCOL_B
+-	input_mt_init_slots(ts->input_dev, ts->max_touch_num, 0);
++	ret = input_mt_init_slots(ts->input_dev, ts->max_touch_num, 0);
++	if (ret)
++		goto err_input_register_device_failed;
+ #endif
+ 
+ 	input_set_abs_params(ts->input_dev, ABS_MT_PRESSURE, 0, TOUCH_FORCE_NUM, 0, 0);    //pressure = TOUCH_FORCE_NUM
+@@ -1599,23 +1621,18 @@
+ 
+ 	//---set int-pin & request irq---
+ 	client->irq = gpiod_to_irq(ts->irq_gpio);
+-	if (client->irq < 0) {
+-		ret = dev_err_probe(&client->dev, client->irq,
++	if (client->irq <= 0) {
++		ret = dev_err_probe(&client->dev, client->irq ?: -EINVAL,
+ 				    "failed to map interrupt GPIO\n");
+ 		goto err_int_request_failed;
+ 	}
+-	if (client->irq) {
+-		NVT_LOG("int_trigger_type=%d\n", ts->int_trigger_type);
+-		ts->irq_enabled = true;
+-		ret = request_threaded_irq(client->irq, NULL, nvt_ts_work_func,
+-				ts->int_trigger_type | IRQF_ONESHOT, NVT_SPI_NAME, ts);
+-		if (ret != 0) {
+-			NVT_ERR("request irq failed. ret=%d\n", ret);
+-			goto err_int_request_failed;
+-		} else {
+-			nvt_irq_enable(false);
+-			NVT_LOG("request irq %d succeed\n", client->irq);
+-		}
++	/* The IRQ must not run before firmware, completions and work are ready. */
++	ret = request_threaded_irq(client->irq, NULL, nvt_ts_work_func,
++			ts->int_trigger_type | IRQF_ONESHOT | IRQF_NO_AUTOEN,
++			NVT_SPI_NAME, ts);
++	if (ret) {
++		NVT_ERR("request irq failed. ret=%d\n", ret);
++		goto err_int_request_failed;
+ 	}
+ 
+ 	ts->pen_is_charge = false;
+@@ -1637,9 +1654,21 @@
+ 
+ #if BOOT_UPDATE_FIRMWARE
+ 	ret = nvt_update_firmware(ts->fw_name);
++	if (ret) {
++		NVT_ERR("download firmware failed\n");
++		goto err_firmware_init_failed;
++	}
++#endif
++	ret = nvt_check_fw_reset_state(RESET_STATE_REK);
+ 	if (ret)
+-		NVT_ERR("download firmware failed\n");
+-#endif
++		goto err_firmware_init_failed;
++
++	bTouchIsAwake = 1;
++	if (ts->pen_support) {
++		ret = disable_pen_input_device(false);
++		if (ret)
++			goto err_firmware_init_failed;
++	}
+ 
+ 	NVT_LOG("NVT_TOUCH_ESD_PROTECT is %d\n", NVT_TOUCH_ESD_PROTECT);
+ #if NVT_TOUCH_ESD_PROTECT
+@@ -1664,11 +1693,10 @@
+ 	INIT_WORK(&ts->resume_work, nvt_resume_work);
+ 	INIT_WORK(&ts->suspend_work, nvt_suspend_work);
+ 
+-	bTouchIsAwake = 1;
+-	disable_pen_input_device(false);
+ 	NVT_LOG("end\n");
+ 
+ 	nvt_irq_enable(true);
++	pm_relax(&client->dev);
+ 
+ 	return 0;
+ err_alloc_work_thread_failed:
+@@ -1681,6 +1709,9 @@
+ 	}
+ err_create_nvt_esd_check_wq_failed:
+ #endif
++err_firmware_init_failed:
++	bTouchIsAwake = 0;
++	pm_relax(&client->dev);
+ 	free_irq(client->irq, ts);
+ err_int_request_failed:
+ 	if (ts->pen_support) {
+@@ -1739,6 +1770,15 @@
+ {
+ 	NVT_LOG("Removing driver...\n");
+ 
++	/* Drain event work before it can re-enable IRQs or requeue ESD work. */
++	if (ts->event_wq) {
++		destroy_workqueue(ts->event_wq);
++		ts->event_wq = NULL;
++	}
++	nvt_irq_enable(false);
++	if (nvt_irq_set_wake(false))
++		dev_warn(&client->dev, "failed to disarm IRQ wake on removal\n");
++
+ #if NVT_TOUCH_ESD_PROTECT
+ 	if (nvt_esd_check_wq) {
+ 		cancel_delayed_work_sync(&nvt_esd_check_work);
+@@ -1748,8 +1788,8 @@
+ 	}
+ #endif
+ 
+-	nvt_irq_enable(false);
+ 	free_irq(client->irq, ts);
++	bTouchIsAwake = 0;
+ 
+ 	mutex_destroy(&ts->xbuf_lock);
+ 	mutex_destroy(&ts->lock);
+@@ -1771,6 +1811,8 @@
+ 	spi_set_drvdata(client, NULL);
+ 
+ 	if (ts) {
++		kfree(ts->rbuf);
++		kfree(ts->xbuf);
+ 		kfree(ts);
+ 		ts = NULL;
+ 	}
+@@ -1780,9 +1822,13 @@
+ {
+ 	NVT_LOG("Shutdown driver...\n");
+ 
++	if (ts->event_wq) {
++		destroy_workqueue(ts->event_wq);
++		ts->event_wq = NULL;
++	}
+ 	nvt_irq_enable(false);
+-
+-	destroy_workqueue(ts->event_wq);
++	if (nvt_irq_set_wake(false))
++		dev_warn(&client->dev, "failed to disarm IRQ wake\n");
+ 
+ #if NVT_TOUCH_ESD_PROTECT
+ 	if (nvt_esd_check_wq) {
+@@ -1804,60 +1850,48 @@
+ static int32_t nvt_ts_suspend(struct device *dev)
+ {
+ 	uint8_t buf[4] = {0};
++	int ret;
++	bool pen_disabled = false;
+ #if MT_PROTOCOL_B
+ 	uint32_t i = 0;
+ #endif
+ 
+-	if (!bTouchIsAwake) {
+-		NVT_LOG("Touch is already suspend\n");
++	if (!bTouchIsAwake)
+ 		return 0;
+-	}
+ 
+ 	pm_stay_awake(dev);
+-	ts->ic_state = NVT_IC_SUSPEND_IN;
+-
+-	if (!ts->db_wakeup) {
+-		if (!ts->irq_enabled)
+-			NVT_LOG("IRQ already disabled\n");
+-		else
+-			nvt_irq_enable(false);
+-	}
+-
++	/* disable_irq() may wait for the IRQ thread, which takes ts->lock. */
++	nvt_irq_enable(false);
+ #if NVT_TOUCH_ESD_PROTECT
+-	NVT_LOG("cancel delayed work sync\n");
+ 	cancel_delayed_work_sync(&nvt_esd_check_work);
+ 	nvt_esd_check_enable(false);
+-#endif /* #if NVT_TOUCH_ESD_PROTECT */
+-
++#endif
+ 	mutex_lock(&ts->lock);
+-
+-	NVT_LOG("suspend start\n");
+-
+-	if (ts->pen_input_dev_enable) {
+-		NVT_LOG("if enable pen,will close it");
+-		disable_pen_input_device(true);
+-	}
+-
+-	bTouchIsAwake = 0;
++	ts->ic_state = NVT_IC_SUSPEND_IN;
++
++	if (ts->pen_support && ts->pen_input_dev_enable) {
++		pen_disabled = true;
++		ret = disable_pen_input_device(true);
++		if (ret)
++			goto rollback;
++	}
+ 
+ 	if (ts->db_wakeup) {
+-		/*---write command to enter "wakeup gesture mode"---*/
+-		/*DoubleClick wakeup CMD was sent by display to meet timing*/
+-		/*
+-		buf[0] = EVENT_MAP_HOST_CMD;
+-		buf[1] = 0x13;
+-		CTP_SPI_WRITE(ts->client, buf, 2);
+-		*/
+-		enable_irq_wake(ts->client->irq);
+-
+-		NVT_LOG("Enabled touch wakeup gesture\n");
++		/* Gesture entry is still a display-side protocol prerequisite. */
++		ret = nvt_irq_set_wake(true);
+ 	} else {
+-		/*---write command to enter "deep sleep mode"---*/
++		ret = nvt_set_page(ts->mmap->EVENT_BUF_ADDR | EVENT_MAP_HOST_CMD);
++		if (ret)
++			goto rollback;
+ 		buf[0] = EVENT_MAP_HOST_CMD;
+ 		buf[1] = 0x11;
+-		CTP_SPI_WRITE(ts->client, buf, 2);
+-	}
+-
++		ret = CTP_SPI_WRITE(ts->client, buf, 2);
++	}
++	if (ret)
++		goto rollback;
++
++	bTouchIsAwake = 0;
++	ts->ic_state = NVT_IC_SUSPEND_OUT;
+ 	mutex_unlock(&ts->lock);
+ 
+ 	/* release all touches */
+@@ -1874,18 +1908,26 @@
+ 	input_mt_sync(ts->input_dev);
+ #endif
+ 	input_sync(ts->input_dev);
+-
+ 	msleep(50);
+-	/* release pen event */
+ 	release_pen_event();
+-	if (likely(ts->ic_state == NVT_IC_SUSPEND_IN))
+-		ts->ic_state = NVT_IC_SUSPEND_OUT;
+-	else
+-		NVT_ERR("IC state may error,caused by suspend/resume flow, please CHECK!!");
++	if (ts->irq_wake_enabled)
++		nvt_irq_enable(true);
+ 	pm_relax(dev);
+-	NVT_LOG("end\n");
+-
+ 	return 0;
++
++rollback:
++	/* Abort suspend without leaving a software-only "asleep" state. */
++	if (pen_disabled && disable_pen_input_device(false))
++		dev_warn(dev, "failed to restore pen after aborted suspend\n");
++	ts->ic_state = NVT_IC_RESUME_OUT;
++	mutex_unlock(&ts->lock);
++#if NVT_TOUCH_ESD_PROTECT
++	queue_delayed_work(nvt_esd_check_wq, &nvt_esd_check_work,
++			msecs_to_jiffies(NVT_TOUCH_ESD_CHECK_PERIOD));
++#endif
++	nvt_irq_enable(true);
++	pm_relax(dev);
++	return ret;
+ }
+ 
+ /*******************************************************
+@@ -1893,65 +1935,66 @@
+ 	Novatek touchscreen driver resume function.
+ 
+ return:
+-	Executive outcomes. 0---succeed.
++	Zero only after firmware, reset handshake and pen setup succeed.
+ *******************************************************/
+ static int32_t nvt_ts_resume(struct device *dev)
+ {
+-	int ret = 0;
+-	if (bTouchIsAwake) {
+-		NVT_LOG("Touch is already resume\n");
++	int ret;
++
++	if (bTouchIsAwake)
+ 		return 0;
+-	}
+-
+-	if (ts->dev_pm_suspend)
+-		pm_stay_awake(dev);
++
++	pm_stay_awake(dev);
++	nvt_irq_enable(false);
++	ret = nvt_irq_set_wake(false);
++	if (ret)
++		goto out_relax;
+ 
+ 	mutex_lock(&ts->lock);
+-
+-	NVT_LOG("resume start\n");
+ 	ts->ic_state = NVT_IC_RESUME_IN;
+ 
+-	// please make sure display reset(RESX) sequence and mipi dsi cmds sent before this
++	/* Display reset and DSI commands must precede touchscreen restart. */
+ #if NVT_TOUCH_SUPPORT_HW_RST
+ 	gpiod_set_value_cansleep(ts->reset_gpio, 0);
+ #endif
+ 	ret = nvt_update_firmware(ts->fw_name);
+ 	if (ret)
+-		NVT_ERR("download firmware failed\n");
+-
+-	nvt_check_fw_reset_state(RESET_STATE_REK);
+-
+-	if (!ts->db_wakeup && !ts->irq_enabled) {
+-		nvt_irq_enable(true);
+-	}
++		goto failed;
++	ret = nvt_check_fw_reset_state(RESET_STATE_REK);
++	if (ret)
++		goto failed;
++
++	/* The pen helper requires an awake controller; roll back on failure. */
++	bTouchIsAwake = 1;
++	if (ts->pen_support) {
++		ret = disable_pen_input_device(false);
++		if (ret)
++			goto failed;
++	}
++	ts->ic_state = NVT_IC_RESUME_OUT;
++	if (ts->gesture_command_delayed >= 0) {
++		ts->db_wakeup = ts->gesture_command_delayed;
++		ts->gesture_command_delayed = -1;
++	}
++	mutex_unlock(&ts->lock);
+ 
+ #if NVT_TOUCH_ESD_PROTECT
+ 	nvt_esd_check_enable(false);
+ 	queue_delayed_work(nvt_esd_check_wq, &nvt_esd_check_work,
+ 			msecs_to_jiffies(NVT_TOUCH_ESD_CHECK_PERIOD));
+-#endif /* #if NVT_TOUCH_ESD_PROTECT */
+-
+-	bTouchIsAwake = 1;
+-
++#endif
++	nvt_irq_enable(true);
++	pm_relax(dev);
++	return 0;
++
++failed:
++	/* Keep a failed restart quiescent, and allow a later explicit retry. */
++	bTouchIsAwake = 0;
++	ts->ic_state = NVT_IC_SUSPEND_OUT;
+ 	mutex_unlock(&ts->lock);
+-
+-	disable_pen_input_device(false);
+-	if (likely(ts->ic_state == NVT_IC_RESUME_IN)) {
+-		ts->ic_state = NVT_IC_RESUME_OUT;
+-	} else {
+-		NVT_ERR("IC state may error,caused by suspend/resume flow, please CHECK!!");
+-	}
+-	if (ts->gesture_command_delayed >= 0){
+-		ts->db_wakeup = ts->gesture_command_delayed;
+-		ts->gesture_command_delayed = -1;
+-		NVT_LOG("execute delayed command, set double click wakeup %d\n", ts->db_wakeup);
+-	}
+-
+-	if (ts->dev_pm_suspend)
+-		pm_relax(dev);
+-	NVT_LOG("end\n");
+-
+-	return 0;
++out_relax:
++	pm_relax(dev);
++	return ret;
+ }
+ 
+ 
+@@ -1971,6 +2014,11 @@
+ 
+ static int nvt_pm_resume(struct device *dev)
+ {
++	/*
++	 * This completion releases the transport-PM wait in the IRQ thread.
++	 * Signal it before nvt_ts_resume() synchronously disables the IRQ;
++	 * controller readiness is tracked separately by bTouchIsAwake.
++	 */
+ 	ts->dev_pm_suspend = false;
+ 	complete(&ts->dev_pm_suspend_completion);
+ 
+diff --git a/drivers/input/touchscreen/nt36523/nt36xxx.h b/drivers/input/touchscreen/nt36523/nt36xxx.h
+--- a/drivers/input/touchscreen/nt36523/nt36xxx.h
++++ b/drivers/input/touchscreen/nt36523/nt36xxx.h
+@@ -149,6 +149,7 @@
+ 	uint8_t *xbuf;
+ 	struct mutex xbuf_lock;
+ 	bool irq_enabled;
++	bool irq_wake_enabled;
+ 	uint8_t cascade;
+ 	bool pen_support;
+ 	bool wgp_stylus;
+diff --git a/drivers/input/touchscreen/nt36523/nt36xxx_fw_update.c b/drivers/input/touchscreen/nt36523/nt36xxx_fw_update.c
+--- a/drivers/input/touchscreen/nt36523/nt36xxx_fw_update.c
++++ b/drivers/input/touchscreen/nt36523/nt36xxx_fw_update.c
+@@ -32,7 +32,7 @@
+ #define NVT_FLASH_END_FLAG_ADDR (fw_need_write_size - NVT_FLASH_END_FLAG_LEN)
+ 
+ static ktime_t start, end;
+-const struct firmware *fw_entry = NULL;
++static const struct firmware *fw_entry;
+ static size_t fw_need_write_size = 0;
+ static uint8_t *fwbuf = NULL;
+ 
+@@ -303,11 +303,13 @@
+ *******************************************************/
+ static void update_firmware_release(void)
+ {
+-	if (fw_entry) {
+-		release_firmware(fw_entry);
+-	}
+-
++	release_firmware(fw_entry);
+ 	fw_entry = NULL;
++	kfree(bin_map);
++	bin_map = NULL;
++	kfree(fwbuf);
++	fwbuf = NULL;
++	fw_need_write_size = 0;
+ }
+ 
+ /*******************************************************
+@@ -358,10 +360,6 @@
+ 
+ invalid:
+ 		update_firmware_release();
+-		if (!IS_ERR_OR_NULL(bin_map)) {
+-			kfree(bin_map);
+-			bin_map = NULL;
+-		}
+ 
+ request_fail:
+ 		retry++;
+@@ -825,7 +823,7 @@
+ 	ret = update_firmware_request(firmware_name);
+ 	if (ret) {
+ 		NVT_ERR("update_firmware_request failed. (%d)\n", ret);
+-		goto request_firmware_fail;
++		goto download_fail;
+ 	}
+ 
+ 	/* initial buffer and variable */
+@@ -855,14 +853,7 @@
+ 	}
+ 
+ download_fail:
+-	if (!IS_ERR_OR_NULL(bin_map)) {
+-		kfree(bin_map);
+-		bin_map = NULL;
+-	}
+-
+ 	update_firmware_release();
+-request_firmware_fail:
+-
+ 	return ret;
+ }
+ #endif /* BOOT_UPDATE_FIRMWARE */

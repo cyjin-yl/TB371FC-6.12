@@ -1,0 +1,1226 @@
+{
+  "schema_version": 1,
+  "title": "Pre-policy ordinary tmpfs initramfs relocation: fixed stage0 and cleanup waiter",
+  "evidence_class": "host_build",
+  "checkpoint_date": "2026-11-23",
+  "scope": "Construction, source/ELF inspection, offline fixed-policy queries, and non-PID1 rejection only; production migration and boot are delegated to a separate v6 system candidate.",
+  "result": {
+    "stage1_compilation_passed": true,
+    "target_bash_syntax_passed": true,
+    "stage0_non_pid1_rejected": true,
+    "stage1_non_pid1_rejected": true,
+    "production_archive_checked_by_this_work": false,
+    "runtime_pid1_executed_by_this_work": false,
+    "root_relocation_executed_by_this_work": false,
+    "switch_root_executed_by_this_work": false,
+    "policy_loaded_by_this_work": false,
+    "full_system_boot_validated_by_this_work": false,
+    "repeated_identical_rebuild_demonstrated_for_this_stage1": false,
+    "physical_hardware_tested": false,
+    "owner_linux_runs": 0,
+    "owner_linux_passes": 0
+  },
+  "preserved_failure": {
+    "report": "docs/research/2026-11-23/fedora-r4b-early-failed.md",
+    "evidence": "docs/research/2026-11-23/evidence/fedora-r4b-early-failed.json",
+    "observed": "v5 loaded the fixed policy in Enforcing mode, then denied var_t to root_t filesystem associate while restorecon processed /var; PID1 failed before executing systemd.",
+    "original_native_init_sha256": "e53cf4073a7df64f4234ace503329a6fadd5f1688ef7e3be5f33c01e4d510e0d",
+    "original_native_init_changed": false
+  },
+  "frozen_local_inputs": {
+    "scripts/research/selinux/tmpfs-root/stage0.sh": {
+      "size": 6039,
+      "sha256": "15905f3993604e6f600a17b556354c2bece12bd5a00256c24cf7838482bb7d7d",
+      "mode": "0o755"
+    },
+    "scripts/research/selinux/tmpfs-root/wait_and_exec.c": {
+      "size": 7529,
+      "sha256": "32fbddd979e02c310ed28e3571d32a32f9733c8a07bed772aa9c64baf4483b33",
+      "mode": "0o644"
+    },
+    "scripts/research/selinux/tmpfs-root/build_stage1.py": {
+      "size": 8093,
+      "sha256": "5c6985c93942a7987acb5fa3e0822567c3c76348c5a34d280f370dcf3f62e294",
+      "mode": "0o644"
+    },
+    "scripts/research/input/system-integration/verify_tmpfs_policy_initramfs.py": {
+      "size": 27513,
+      "sha256": "92f02fd33fcc5f7aaea6d1d0e06c04589af024b09e8f678f772798909c2ebb07",
+      "mode": "0o755"
+    },
+    "docs/research/2026-11-23/early-initramfs-selinux.md": {
+      "size": 17753,
+      "sha256": "9f792016ac2c54df9fa717cfad42457c2ab8aad8b5415155ff3e5c98cb97d393",
+      "mode": "0o644"
+    },
+    "docs/research/2026-11-23/evidence/early-initramfs-selinux.json": {
+      "size": 33769,
+      "sha256": "637949f39fad6dfc9f195c05fa63555a697379ce950ec9577d253ab9f05e8091",
+      "mode": "0o644"
+    },
+    "docs/research/2026-11-23/fedora-r4b-early-failed.md": {
+      "size": 8650,
+      "sha256": "8016a8c5ca7ba87d764e88a7fe4c9ccf634dfb60080f3243b5aa551a2ff077a0",
+      "mode": "0o644"
+    },
+    "docs/research/2026-11-23/evidence/fedora-r4b-early-failed.json": {
+      "size": 16698,
+      "sha256": "679c225df602523acf3f0c4775b3b94ba98da539dfc01826f2fe5f6340dd88fd",
+      "mode": "0o644"
+    },
+    "docs/research/2026-11-23/selinux-rootfs-association.md": {
+      "size": 13807,
+      "sha256": "b5bad3387b18645d0ab5c000074a64cce8a11863a73c03c6c6e414224fec7498",
+      "mode": "0o644"
+    },
+    "docs/research/2026-11-23/evidence/selinux-rootfs-association.json": {
+      "size": 61562,
+      "sha256": "9be5f037d6b4621c42b26f1dec26707cd26dc7313efa3baa379bcfbc910e8570",
+      "mode": "0o644"
+    }
+  },
+  "isolated_locations": {
+    "ssd_container": "tb371fc-build-ssd-20261123",
+    "hdd_container": "tb371fc-build-20261123",
+    "build_prefix": "/work/early-selinux-rootfs-20261123/build-01",
+    "source_overlay": "/work/early-selinux-rootfs-20261123/recipe-01",
+    "build_record_sha256": "1383a22b3c8acfd3b6c3dd4de8256ca043a97b32347c60632654e9e3bc78de20",
+    "qualification_record_sha256": "7bfcf82b3fa0d37b0073ca8c4e2414ebf859774fb89805d9baaa7d524932ad2c",
+    "transfer": "The five files in the qualification record were streamed within CT102 memory from the SSD container to a fresh HDD project prefix; the receiver independently checked size, mode and SHA-256.",
+    "physical_device_used": false
+  },
+  "build": {
+    "command": [
+      "/usr/bin/aarch64-linux-gnu-gcc",
+      "-std=gnu11",
+      "-O2",
+      "-g0",
+      "-D_FORTIFY_SOURCE=3",
+      "-fPIE",
+      "-fstack-protector-strong",
+      "-fno-ident",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "/work/early-selinux-rootfs-20261123/build-01/source/wait_and_exec.c",
+      "-pie",
+      "-Wl,--build-id=sha1,-z,relro,-z,now,--no-undefined",
+      "-o",
+      "/work/early-selinux-rootfs-20261123/build-01/init.tmpfs-wait"
+    ],
+    "compile_elapsed_seconds": 2.3189627139945515,
+    "compile_exit_code": 0,
+    "compiler": {
+      "invoked_path": "/usr/bin/aarch64-linux-gnu-gcc",
+      "resolved_path": "/usr/bin/aarch64-linux-gnu-gcc-14",
+      "sha256": "fb743ca27a77466c91da66047eec879a615993feaabd860aaf3750e7b222b131",
+      "version": "aarch64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0"
+    },
+    "compiler_stderr": "",
+    "compiler_stdout": "",
+    "elapsed_seconds": 2.366848003002815,
+    "elf": {
+      "dynamic_section": "\nDynamic section at offset 0xfca8 contains 28 entries:\n  Tag        Type                         Name/Value\n 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]\n 0x0000000000000001 (NEEDED)             Shared library: [ld-linux-aarch64.so.1]\n 0x000000000000000c (INIT)               0xcd8\n 0x000000000000000d (FINI)               0x187c\n 0x0000000000000019 (INIT_ARRAY)         0x1fc98\n 0x000000000000001b (INIT_ARRAYSZ)       8 (bytes)\n 0x000000000000001a (FINI_ARRAY)         0x1fca0\n 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)\n 0x000000006ffffef5 (GNU_HASH)           0x2b0\n 0x0000000000000005 (STRTAB)             0x678\n 0x0000000000000006 (SYMTAB)             0x2d0\n 0x000000000000000a (STRSZ)              424 (bytes)\n 0x000000000000000b (SYMENT)             24 (bytes)\n 0x0000000000000015 (DEBUG)              0x0\n 0x0000000000000003 (PLTGOT)             0x1fea8\n 0x0000000000000002 (PLTRELSZ)           768 (bytes)\n 0x0000000000000014 (PLTREL)             RELA\n 0x0000000000000017 (JMPREL)             0x9d8\n 0x0000000000000007 (RELA)               0x8d0\n 0x0000000000000008 (RELASZ)             264 (bytes)\n 0x0000000000000009 (RELAENT)            24 (bytes)\n 0x000000000000001e (FLAGS)              BIND_NOW\n 0x000000006ffffffb (FLAGS_1)            Flags: NOW PIE\n 0x000000006ffffffe (VERNEED)            0x870\n 0x000000006fffffff (VERNEEDNUM)         2\n 0x000000006ffffff0 (VERSYM)             0x820\n 0x000000006ffffff9 (RELACOUNT)          5\n 0x0000000000000000 (NULL)               0x0\n",
+      "elf_class": 64,
+      "elf_data": "little",
+      "glibc_versions": [
+        "GLIBC_2.17",
+        "GLIBC_2.33",
+        "GLIBC_2.34"
+      ],
+      "interpreter": "/lib/ld-linux-aarch64.so.1",
+      "machine": 183,
+      "mode": "0o755",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "path": "/work/early-selinux-rootfs-20261123/build-01/init.tmpfs-wait",
+      "program_headers": "\nElf file type is DYN (Position-Independent Executable file)\nEntry point 0x1500\nThere are 10 program headers, starting at offset 64\n\nProgram Headers:\n  Type           Offset   VirtAddr           PhysAddr           FileSiz  MemSiz   Flg Align\n  PHDR           0x000040 0x0000000000000040 0x0000000000000040 0x000230 0x000230 R   0x8\n  INTERP         0x000294 0x0000000000000294 0x0000000000000294 0x00001b 0x00001b R   0x1\n      [Requesting program interpreter: /lib/ld-linux-aarch64.so.1]\n  LOAD           0x000000 0x0000000000000000 0x0000000000000000 0x001f88 0x001f88 R E 0x10000\n  LOAD           0x00fc98 0x000000000001fc98 0x000000000001fc98 0x000380 0x000388 RW  0x10000\n  DYNAMIC        0x00fca8 0x000000000001fca8 0x000000000001fca8 0x000200 0x000200 RW  0x8\n  NOTE           0x000270 0x0000000000000270 0x0000000000000270 0x000024 0x000024 R   0x4\n  NOTE           0x001ef4 0x0000000000001ef4 0x0000000000001ef4 0x000094 0x000094 R   0x4\n  GNU_EH_FRAME   0x001d00 0x0000000000001d00 0x0000000000001d00 0x000054 0x000054 R   0x4\n  GNU_STACK      0x000000 0x0000000000000000 0x0000000000000000 0x000000 0x000000 RW  0x10\n  GNU_RELRO      0x00fc98 0x000000000001fc98 0x000000000001fc98 0x000368 0x000368 R   0x1\n\n Section to Segment mapping:\n  Segment Sections...\n   00     \n   01     .interp \n   02     .note.gnu.build-id .interp .gnu.hash .dynsym .dynstr .gnu.version .gnu.version_r .rela.dyn .rela.plt .init .plt .text .fini .rodata .eh_frame_hdr .eh_frame .note.ABI-tag .note.package \n   03     .init_array .fini_array .dynamic .got .data .bss \n   04     .dynamic \n   05     .note.gnu.build-id \n   06     .note.ABI-tag .note.package \n   07     .eh_frame_hdr \n   08     \n   09     .init_array .fini_array .dynamic .got \n",
+      "rpath": null,
+      "runpath": null,
+      "sha256": "cc30c123b32259b1097eeb2f34cc13528d510cfc2521aac170bae23c4880a63a",
+      "size": 71872,
+      "type": "ET_DYN",
+      "version_requirements": "\nVersion symbols section '.gnu.version' contains 39 entries:\n Addr: 0x0000000000000820  Offset: 0x00000820  Link: 4 (.dynsym)\n  000:   0 (*local*)       0 (*local*)       0 (*local*)       2 (GLIBC_2.17) \n  004:   3 (GLIBC_2.34)    1 (*global*)      2 (GLIBC_2.17)    2 (GLIBC_2.17) \n  008:   2 (GLIBC_2.17)    2 (GLIBC_2.17)    2 (GLIBC_2.17)    2 (GLIBC_2.17) \n  00c:   2 (GLIBC_2.17)    2 (GLIBC_2.17)    2 (GLIBC_2.17)    4 (GLIBC_2.33) \n  010:   2 (GLIBC_2.17)    2 (GLIBC_2.17)    2 (GLIBC_2.17)    2 (GLIBC_2.17) \n  014:   2 (GLIBC_2.17)    2 (GLIBC_2.17)    1 (*global*)      4 (GLIBC_2.33) \n  018:   5 (GLIBC_2.17)    2 (GLIBC_2.17)    2 (GLIBC_2.17)    2 (GLIBC_2.17) \n  01c:   2 (GLIBC_2.17)    2 (GLIBC_2.17)    2 (GLIBC_2.17)    2 (GLIBC_2.17) \n  020:   2 (GLIBC_2.17)    2 (GLIBC_2.17)    2 (GLIBC_2.17)    1 (*global*)   \n  024:   2 (GLIBC_2.17)    4 (GLIBC_2.33)    2 (GLIBC_2.17) \n\nVersion needs section '.gnu.version_r' contains 2 entries:\n Addr: 0x0000000000000870  Offset: 0x00000870  Link: 5 (.dynstr)\n  000000: Version: 1  File: ld-linux-aarch64.so.1  Cnt: 1\n  0x0010:   Name: GLIBC_2.17  Flags: none  Version: 5\n  0x0020: Version: 1  File: libc.so.6  Cnt: 3\n  0x0030:   Name: GLIBC_2.33  Flags: none  Version: 4\n  0x0040:   Name: GLIBC_2.34  Flags: none  Version: 3\n  0x0050:   Name: GLIBC_2.17  Flags: none  Version: 2\n"
+    },
+    "explicit_environment": {
+      "LC_ALL": "C",
+      "SOURCE_DATE_EPOCH": "1795392000"
+    },
+    "mount_operation_performed": false,
+    "passed": true,
+    "physical_hardware_tested": false,
+    "policy_load_attempted": false,
+    "recipe_sha256": "5c6985c93942a7987acb5fa3e0822567c3c76348c5a34d280f370dcf3f62e294",
+    "runtime_pid1_tested": false,
+    "schema_version": 1,
+    "scope": "isolated AArch64 pre-policy cleanup-waiter construction and ELF inspection only",
+    "source_sha256": "32fbddd979e02c310ed28e3571d32a32f9733c8a07bed772aa9c64baf4483b33",
+    "stage0": {
+      "mode": "0o755",
+      "sha256": "15905f3993604e6f600a17b556354c2bece12bd5a00256c24cf7838482bb7d7d",
+      "size": 6039,
+      "source_path": "/work/early-selinux-rootfs-20261123/build-01/source/stage0.sh"
+    },
+    "stage0_sha256": "15905f3993604e6f600a17b556354c2bece12bd5a00256c24cf7838482bb7d7d",
+    "started_utc": "2026-11-23T05:12:39.776999+00:00",
+    "toolchain_packages": {
+      "binutils-aarch64-linux-gnu": "2.44-3",
+      "gcc-14-aarch64-linux-gnu": "14.2.0-19cross1",
+      "libc6-dev-arm64-cross": "2.41-11cross1"
+    },
+    "unchanged_next_init_sha256": "e53cf4073a7df64f4234ace503329a6fadd5f1688ef7e3be5f33c01e4d510e0d"
+  },
+  "userspace_qualification": {
+    "schema_version": 1,
+    "started_utc": "2026-11-23T05:13:24.513509+00:00",
+    "proot_used": false,
+    "mount_operation_performed": false,
+    "policy_load_attempted": false,
+    "pid1_executed": false,
+    "physical_hardware_tested": false,
+    "transferred_files": {
+      "build-01/init.tmpfs-wait": {
+        "size": 71872,
+        "sha256": "cc30c123b32259b1097eeb2f34cc13528d510cfc2521aac170bae23c4880a63a",
+        "mode": 493
+      },
+      "build-01/build-result.json": {
+        "size": 7392,
+        "sha256": "1383a22b3c8acfd3b6c3dd4de8256ca043a97b32347c60632654e9e3bc78de20",
+        "mode": 420
+      },
+      "build-01/source/stage0.sh": {
+        "size": 6039,
+        "sha256": "15905f3993604e6f600a17b556354c2bece12bd5a00256c24cf7838482bb7d7d",
+        "mode": 493
+      },
+      "build-01/source/wait_and_exec.c": {
+        "size": 7529,
+        "sha256": "32fbddd979e02c310ed28e3571d32a32f9733c8a07bed772aa9c64baf4483b33",
+        "mode": 420
+      },
+      "recipe-01/scripts/research/selinux/tmpfs-root/build_stage1.py": {
+        "size": 8093,
+        "sha256": "5c6985c93942a7987acb5fa3e0822567c3c76348c5a34d280f370dcf3f62e294",
+        "mode": 493
+      }
+    },
+    "checks": [
+      {
+        "name": "target_bash_syntax",
+        "command": [
+          "/usr/bin/qemu-aarch64",
+          "-L",
+          "/work/fedora-input-system-v3/rootfs",
+          "/work/fedora-input-system-v3/rootfs/usr/bin/bash",
+          "--noprofile",
+          "--norc",
+          "-n",
+          "/work/early-selinux-rootfs-20261123/build-01/source/stage0.sh"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 0.44517139496747404,
+        "stdout": "",
+        "stderr": "",
+        "passed": true
+      },
+      {
+        "name": "stage0_non_pid1",
+        "command": [
+          "/usr/bin/qemu-aarch64",
+          "-L",
+          "/work/fedora-input-system-v3/rootfs",
+          "/work/fedora-input-system-v3/rootfs/usr/bin/bash",
+          "--noprofile",
+          "--norc",
+          "/work/early-selinux-rootfs-20261123/build-01/source/stage0.sh"
+        ],
+        "exit_code": 1,
+        "elapsed_seconds": 0.13175716699333861,
+        "stdout": "",
+        "stderr": "TB371FC_TMPFS_STAGE0_V1 FAILED phase=entry reason=pid1-root-with-no-arguments-required\n",
+        "passed": true
+      },
+      {
+        "name": "stage1_non_pid1",
+        "command": [
+          "/usr/bin/qemu-aarch64",
+          "-L",
+          "/work/fedora-input-system-v3/rootfs",
+          "/work/early-selinux-rootfs-20261123/build-01/init.tmpfs-wait"
+        ],
+        "exit_code": 1,
+        "elapsed_seconds": 0.026613990019541234,
+        "stdout": "",
+        "stderr": "TB371FC_TMPFS_STAGE1_V1 FAILED phase=entry reason=pid1-root-with-no-arguments-required errno=0\n",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "existing_v5_payload_inventory": {
+    "root": "/work/fedora-input-system-v5/production-initramfs-tree",
+    "top_level": [
+      "bin",
+      "dev",
+      "etc",
+      "init",
+      "init.systemd",
+      "lib",
+      "lib64",
+      "proc",
+      "root",
+      "run",
+      "sbin",
+      "sys",
+      "sysroot",
+      "tmp",
+      "usr",
+      "var"
+    ],
+    "tools": [
+      {
+        "path": "usr/bin/cp",
+        "exists": true,
+        "is_symlink": false,
+        "size": 136512,
+        "sha256": "fdd72d1271952af8150aed60ff3f514355de04f7f3512fd497a74f6b668ee1d4",
+        "mode": "0o755",
+        "dynamic": [
+          "0x0000000000000001 (NEEDED)             Shared library: [libselinux.so.1]",
+          "0x0000000000000001 (NEEDED)             Shared library: [libacl.so.1]",
+          "0x0000000000000001 (NEEDED)             Shared library: [libattr.so.1]",
+          "0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]",
+          "0x0000000000000001 (NEEDED)             Shared library: [ld-linux-aarch64.so.1]"
+        ]
+      },
+      {
+        "path": "usr/bin/mount",
+        "exists": true,
+        "is_symlink": false,
+        "size": 69264,
+        "sha256": "6c6afac3f30bf5ccf7cd31e422df84f983963d295e76f15843bee5381490d402",
+        "mode": "0o4755",
+        "dynamic": [
+          "0x0000000000000001 (NEEDED)             Shared library: [libmount.so.1]",
+          "0x0000000000000001 (NEEDED)             Shared library: [libselinux.so.1]",
+          "0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]",
+          "0x0000000000000001 (NEEDED)             Shared library: [ld-linux-aarch64.so.1]"
+        ]
+      },
+      {
+        "path": "usr/bin/mkdir",
+        "exists": true,
+        "is_symlink": false,
+        "size": 69824,
+        "sha256": "17325a68df22c9ed57ade0d0f4d1aa93c7665d223d7e11aed6023a725be29d10",
+        "mode": "0o755",
+        "dynamic": [
+          "0x0000000000000001 (NEEDED)             Shared library: [libselinux.so.1]",
+          "0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]",
+          "0x0000000000000001 (NEEDED)             Shared library: [ld-linux-aarch64.so.1]"
+        ]
+      },
+      {
+        "path": "usr/bin/sh",
+        "exists": true,
+        "is_symlink": true,
+        "target": "bash"
+      },
+      {
+        "path": "usr/bin/bash",
+        "exists": true,
+        "is_symlink": false,
+        "size": 1500440,
+        "sha256": "046b0c93ea9e58fde26e4d311392ca850fabd78df5e824dde56a2b2f17c4af2e",
+        "mode": "0o755",
+        "dynamic": [
+          "0x0000000000000001 (NEEDED)             Shared library: [libtinfo.so.6]",
+          "0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]",
+          "0x0000000000000001 (NEEDED)             Shared library: [ld-linux-aarch64.so.1]"
+        ]
+      },
+      {
+        "path": "usr/bin/switch_root",
+        "exists": false,
+        "is_symlink": false
+      },
+      {
+        "path": "usr/sbin/switch_root",
+        "exists": false,
+        "is_symlink": false
+      },
+      {
+        "path": "etc/initrd-release",
+        "exists": true,
+        "is_symlink": false,
+        "size": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mode": "0o644"
+      },
+      {
+        "path": "init",
+        "exists": true,
+        "is_symlink": false,
+        "size": 72048,
+        "sha256": "e53cf4073a7df64f4234ace503329a6fadd5f1688ef7e3be5f33c01e4d510e0d",
+        "mode": "0o755",
+        "dynamic": [
+          "0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]",
+          "0x0000000000000001 (NEEDED)             Shared library: [ld-linux-aarch64.so.1]"
+        ]
+      },
+      {
+        "path": "init.systemd",
+        "exists": true,
+        "is_symlink": true,
+        "target": "usr/lib/systemd/systemd"
+      }
+    ],
+    "dirs": {
+      "dev": {
+        "exists": true,
+        "is_symlink": false,
+        "direct_children": []
+      },
+      "proc": {
+        "exists": true,
+        "is_symlink": false,
+        "direct_children": []
+      },
+      "sys": {
+        "exists": true,
+        "is_symlink": false,
+        "direct_children": []
+      },
+      "run": {
+        "exists": true,
+        "is_symlink": false,
+        "direct_children": []
+      },
+      "sysroot": {
+        "exists": true,
+        "is_symlink": false,
+        "direct_children": []
+      },
+      "tmp": {
+        "exists": true,
+        "is_symlink": false,
+        "direct_children": []
+      },
+      "root": {
+        "exists": true,
+        "is_symlink": false,
+        "direct_children": []
+      }
+    },
+    "file_bytes": 82856600
+  },
+  "policy_queries": {
+    "interpretation": "Offline libsepol queries of the fixed Fedora policy converted to version 33 in process memory; no live policy load/change. The converted bytes are not asserted identical to the exported policy of a running kernel.",
+    "filesystem_association": {
+      "started_utc": "2026-11-23T04:53:43.609497+00:00",
+      "command": [
+        "/usr/bin/qemu-aarch64",
+        "-L",
+        "/work/fedora-input-system-v3/rootfs",
+        "/work/fedora-input-system-v3/rootfs/usr/bin/python3",
+        "-B",
+        "/work/early-selinux-rootfs-20261123/query-01/query-rootfs-policy.py"
+      ],
+      "source_script_sha256": "ea30f67c5f72c8e43092d9b977369c1fdbc9c2410e741acfb9665cd198c27a0d",
+      "query_script_sha256": "d84dc6497b71fa1e18842858f63bac939b23236b1c7bf8ffc1016c2d195a3aa6",
+      "proot_used": false,
+      "live_policy_changed": false,
+      "exit_code": 0,
+      "elapsed_seconds": 5.007886195962783,
+      "stdout_bytes": 10987,
+      "stderr": "",
+      "record_path": "/work/early-selinux-rootfs-20261123/query-01/result.json",
+      "record_sha256": "4b97090641defd1f24860f79096bec77c1561ed5f865380df09c701543956cb7",
+      "policy_sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+      "converted_policy_sha256": "aab7b7128bb8f0db2d349ac0817d806e5157b9a0b93dfe4f85ccf630354ebebe",
+      "queries": [
+        {
+          "source": "var_t",
+          "target": "root_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "var_t",
+          "target": "tmpfs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "var_t",
+          "target": "fs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "root_t",
+          "target": "root_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "root_t",
+          "target": "tmpfs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "root_t",
+          "target": "fs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "init_exec_t",
+          "target": "root_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "init_exec_t",
+          "target": "tmpfs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "init_exec_t",
+          "target": "fs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "udev_exec_t",
+          "target": "root_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "udev_exec_t",
+          "target": "tmpfs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "udev_exec_t",
+          "target": "fs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "bin_t",
+          "target": "root_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "bin_t",
+          "target": "tmpfs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "bin_t",
+          "target": "fs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "lib_t",
+          "target": "root_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "lib_t",
+          "target": "tmpfs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "lib_t",
+          "target": "fs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "etc_t",
+          "target": "root_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "etc_t",
+          "target": "tmpfs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "etc_t",
+          "target": "fs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "usr_t",
+          "target": "root_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "usr_t",
+          "target": "tmpfs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "usr_t",
+          "target": "fs_t",
+          "class": "filesystem",
+          "permission": "associate",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "kernel_t",
+          "target": "root_t",
+          "class": "filesystem",
+          "permission": "mount",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "kernel_t",
+          "target": "root_t",
+          "class": "filesystem",
+          "permission": "remount",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "kernel_t",
+          "target": "root_t",
+          "class": "filesystem",
+          "permission": "unmount",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "kernel_t",
+          "target": "root_t",
+          "class": "filesystem",
+          "permission": "getattr",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "kernel_t",
+          "target": "root_t",
+          "class": "filesystem",
+          "permission": "relabelfrom",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "kernel_t",
+          "target": "root_t",
+          "class": "filesystem",
+          "permission": "relabelto",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "kernel_t",
+          "target": "tmpfs_t",
+          "class": "filesystem",
+          "permission": "mount",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "kernel_t",
+          "target": "tmpfs_t",
+          "class": "filesystem",
+          "permission": "remount",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "kernel_t",
+          "target": "tmpfs_t",
+          "class": "filesystem",
+          "permission": "unmount",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "kernel_t",
+          "target": "tmpfs_t",
+          "class": "filesystem",
+          "permission": "getattr",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "kernel_t",
+          "target": "tmpfs_t",
+          "class": "filesystem",
+          "permission": "relabelfrom",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "kernel_t",
+          "target": "tmpfs_t",
+          "class": "filesystem",
+          "permission": "relabelto",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "kernel_t",
+          "target": "fs_t",
+          "class": "filesystem",
+          "permission": "mount",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "kernel_t",
+          "target": "fs_t",
+          "class": "filesystem",
+          "permission": "remount",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "kernel_t",
+          "target": "fs_t",
+          "class": "filesystem",
+          "permission": "unmount",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "kernel_t",
+          "target": "fs_t",
+          "class": "filesystem",
+          "permission": "getattr",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "kernel_t",
+          "target": "fs_t",
+          "class": "filesystem",
+          "permission": "relabelfrom",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "kernel_t",
+          "target": "fs_t",
+          "class": "filesystem",
+          "permission": "relabelto",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        },
+        {
+          "source": "kernel_t",
+          "target": "root_t",
+          "class": "dir",
+          "permission": "mounton",
+          "allowed": true,
+          "auditdeny": true,
+          "reason_mask": 0
+        },
+        {
+          "source": "kernel_t",
+          "target": "tmpfs_t",
+          "class": "dir",
+          "permission": "mounton",
+          "allowed": false,
+          "auditdeny": true,
+          "reason_mask": 1
+        }
+      ]
+    },
+    "old_root_cleanup": {
+      "started_utc": "2026-11-23T05:01:10.671269+00:00",
+      "command": [
+        "/usr/bin/qemu-aarch64",
+        "-L",
+        "/work/fedora-input-system-v3/rootfs",
+        "/work/fedora-input-system-v3/rootfs/usr/bin/python3",
+        "-B",
+        "/work/early-selinux-rootfs-20261123/query-02/query-rootfs-cleanup.py"
+      ],
+      "source_script_sha256": "ea30f67c5f72c8e43092d9b977369c1fdbc9c2410e741acfb9665cd198c27a0d",
+      "query_script_sha256": "838a4b01884e3038bfe78e5f742a0c6ade971a9458b46b1ea09fb9bbb8b2fb95",
+      "proot_used": false,
+      "live_policy_changed": false,
+      "exit_code": 0,
+      "elapsed_seconds": 3.620562804979272,
+      "stdout_bytes": 4647,
+      "stderr": "",
+      "record_sha256": "30cee76bfb029e117590a28caa2b62524048a56800b11339722f8c507ab8f734",
+      "queries": [
+        {
+          "class": "dir",
+          "permission": "open",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "dir",
+          "permission": "read",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "dir",
+          "permission": "search",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "dir",
+          "permission": "getattr",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "dir",
+          "permission": "remove_name",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "dir",
+          "permission": "rmdir",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "file",
+          "permission": "getattr",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "file",
+          "permission": "unlink",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "lnk_file",
+          "permission": "getattr",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "lnk_file",
+          "permission": "unlink",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "fifo_file",
+          "permission": "getattr",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "fifo_file",
+          "permission": "unlink",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "chr_file",
+          "permission": "getattr",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "chr_file",
+          "permission": "unlink",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "blk_file",
+          "permission": "getattr",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "blk_file",
+          "permission": "unlink",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "sock_file",
+          "permission": "getattr",
+          "allowed": true,
+          "reason_mask": 0
+        },
+        {
+          "class": "sock_file",
+          "permission": "unlink",
+          "allowed": true,
+          "reason_mask": 0
+        }
+      ]
+    },
+    "primary_kernel_and_package_audit": "docs/research/2026-11-23/selinux-rootfs-association.md",
+    "old_root_cleanup_note": "The 18 cleanup permissions were queried for kernel_t to root_t. The implementation nevertheless completes and verifies cleanup before policy load; these allows are not used to authorize an unobserved cleanup race."
+  },
+  "stage0_contract": {
+    "archive_path": "init.tmpfs",
+    "source_path": "scripts/research/selinux/tmpfs-root/stage0.sh",
+    "mode": "0o755",
+    "interpreter": "/usr/bin/bash",
+    "requires": {
+      "pid": 1,
+      "euid": 0,
+      "argument_count": 0,
+      "initial_context": "kernel",
+      "initial_root_mount_type": "rootfs",
+      "ordinary_initrd_release_marker": true
+    },
+    "command_line_unique_tokens": [
+      "enforcing=1",
+      "selinux=1",
+      "rd.tb371fc.early-selinux=1",
+      "rd.tb371fc.tmpfs-root=1",
+      "rdinit=/init.tmpfs"
+    ],
+    "command_line_max_bytes": 16384,
+    "allowed_top_level": [
+      "bin",
+      "dev",
+      "etc",
+      "init",
+      "init.systemd",
+      "init.tmpfs",
+      "init.tmpfs-wait",
+      "lib",
+      "lib64",
+      "proc",
+      "root",
+      "run",
+      "sbin",
+      "sys",
+      "sysroot",
+      "tmp",
+      "usr",
+      "var"
+    ],
+    "source_top_level_must_be_exact": true,
+    "api_mounts_before_policy": [
+      {
+        "path": "/proc",
+        "type": "proc",
+        "options": [
+          "nosuid",
+          "nodev",
+          "noexec"
+        ]
+      },
+      {
+        "path": "/dev",
+        "type": "devtmpfs",
+        "options": [
+          "mode=0755",
+          "nosuid",
+          "strictatime"
+        ]
+      }
+    ],
+    "deliberately_unmounted_before_policy": [
+      "/sys",
+      "/run",
+      "/sys/fs/selinux"
+    ],
+    "saved_old_root_fd": 3,
+    "new_root": {
+      "path": "/tb371fc-initroot",
+      "type": "tmpfs",
+      "source": "tb371fc-initroot",
+      "options": [
+        "mode=0755",
+        "size=192M"
+      ],
+      "selinux_context_overrides": false,
+      "nosuid": false,
+      "noexec": false,
+      "nodev": false,
+      "requires_distinct_device": true
+    },
+    "single_copy_command": [
+      "/usr/bin/cp",
+      "-a",
+      "-x",
+      "--",
+      "/bin",
+      "/etc",
+      "/init",
+      "/init.systemd",
+      "/init.tmpfs",
+      "/init.tmpfs-wait",
+      "/lib",
+      "/lib64",
+      "/root",
+      "/sbin",
+      "/sysroot",
+      "/tmp",
+      "/usr",
+      "/var",
+      "/tb371fc-initroot/"
+    ],
+    "api_root_sources_excluded": true,
+    "copy_note": "One cp invocation preserves shared hardlinks across top-level inputs. Supplying API mountpoints as separate cp -x sources would traverse those source mounts, so they are excluded and only empty destination mountpoints are created.",
+    "standard_switch_root": [
+      "/usr/bin/switch_root",
+      "/tb371fc-initroot",
+      "/init.tmpfs-wait"
+    ],
+    "marker": "TB371FC_TMPFS_STAGE0_V1 COPY_COMPLETE old_dev=M:m new_dev=M:m policy_load_attempted=0",
+    "failure_behavior": "Diagnostic with phase/reason followed by exit 1; no fallback."
+  },
+  "stage1_contract": {
+    "archive_path": "init.tmpfs-wait",
+    "source_path": "scripts/research/selinux/tmpfs-root/wait_and_exec.c",
+    "sha256": "cc30c123b32259b1097eeb2f34cc13528d510cfc2521aac170bae23c4880a63a",
+    "size": 71872,
+    "mode": "0o755",
+    "requires": {
+      "pid": 1,
+      "euid": 0,
+      "argument_count": 0,
+      "initial_context": "kernel"
+    },
+    "old_root": {
+      "fd": 3,
+      "cloexec": false,
+      "type": "directory",
+      "filesystem_magic_allowlist": [
+        "RAMFS_MAGIC",
+        "TMPFS_MAGIC"
+      ]
+    },
+    "new_root": {
+      "type": "directory",
+      "filesystem_magic": "TMPFS_MAGIC",
+      "distinct_st_dev": true,
+      "forbidden_flags": [
+        "ST_RDONLY",
+        "ST_NOSUID",
+        "ST_NOEXEC",
+        "ST_NODEV"
+      ]
+    },
+    "console": {
+      "path": "/dev/console",
+      "nofollow": true,
+      "type": "character",
+      "major": 5,
+      "minor": 1,
+      "stdio_reconnected": [
+        0,
+        1,
+        2
+      ]
+    },
+    "cleanup": {
+      "sigchld_handler": "SIG_DFL",
+      "sa_nocldwait_forbidden": true,
+      "timeout_seconds": 30,
+      "expected_children": 1,
+      "required_exit_code": 0,
+      "requires_final_echild": true,
+      "echild_without_one_reaped_child_rejected": true,
+      "rewind_saved_directory_before_scan": true,
+      "requires_no_non_dot_entries": true,
+      "close_saved_old_root_fd_before_exec": true
+    },
+    "next_init": {
+      "path": "/init",
+      "size": 72048,
+      "mode": "0o755",
+      "uid": 0,
+      "gid": 0,
+      "sha256": "e53cf4073a7df64f4234ace503329a6fadd5f1688ef7e3be5f33c01e4d510e0d",
+      "hash_checked_by_independent_archive_checker": true,
+      "shape_checked_by_runtime_stage1": true
+    },
+    "marker": "TB371FC_TMPFS_STAGE1_V1 CLEANUP_COMPLETE old_dev=M:m new_dev=M:m cleanup_children=1 old_root_empty=1 policy_load_attempted=0",
+    "no_policy_or_mount_operation_implemented": true,
+    "memory_reclamation_limit": "An empty old directory, completed cleanup child and closed saved FD do not measure physical pages freed or establish that no unrelated unlinked references exist."
+  },
+  "standard_switch_root": {
+    "canonical_source_path": "/work/fedora-system-integration-v1/rootfs/usr/bin/switch_root",
+    "archive_path": "usr/bin/switch_root",
+    "size": 69104,
+    "mode": "0o755",
+    "sha256": "6b6c1803111f117b76b553a664cec1a074827d025618446319d7871f9c127f75",
+    "package": "util-linux-core-2.42.4-1.fc45.aarch64",
+    "source_package": "util-linux-2.42.4-1.fc45.src.rpm",
+    "source_rpm_url": "https://kojipkgs.fedoraproject.org/packages/util-linux/2.42.4/1.fc45/src/util-linux-2.42.4-1.fc45.src.rpm",
+    "source_rpm_sha256": "a42fac96ae0930c3074fb3cfb1cb4a58d50f9abbeeb398c10fbd8b99110d5587",
+    "binary_rpm_url": "https://kojipkgs.fedoraproject.org/packages/util-linux/2.42.4/1.fc45/aarch64/util-linux-core-2.42.4-1.fc45.aarch64.rpm",
+    "binary_rpm_sha256": "c19e86d0ae0e035646a28a3a8a9ae14b094505ca56e33f470bbc4e5a0c9c24d9",
+    "matched_source_path": "sys-utils/switch_root.c",
+    "matched_source_size": 6244,
+    "matched_source_sha256": "e87b0456e4b72bcaf853c29e27e257d84523284cc82639fd5db58b0dfa08dcfe",
+    "needed": [
+      "libc.so.6",
+      "ld-linux-aarch64.so.1"
+    ],
+    "interpreter": "/lib/ld-linux-aarch64.so.1",
+    "new_rpm_signature_verification_claimed": false,
+    "behavior": "Moves API mounts, moves/chroots to the new root, forks asynchronous old-root cleanup and immediately execs the requested init. Cleanup warnings do not guarantee nonzero child exit. It does not reconnect console descriptors or wait for cleanup; the new stage1 does both with separate guards.",
+    "existing_dependency_payloads": [
+      {
+        "path": "usr/lib64/libc.so.6",
+        "size": 2303728,
+        "sha256": "620f6221d0cb0a7bc7d0674bcb0682a0b42f7fb593f596f3bf646f02b10cb798"
+      },
+      {
+        "path": "usr/lib/ld-linux-aarch64.so.1",
+        "size": 928784,
+        "sha256": "8821728d15728a7046deef6d4183fb343716901e0e8119fff53d6b51e2605547"
+      }
+    ]
+  },
+  "downstream_runtime_gates": {
+    "independent_archive_checker": "scripts/research/input/system-integration/verify_tmpfs_policy_initramfs.py",
+    "checker_sha256": "92f02fd33fcc5f7aaea6d1d0e06c04589af024b09e8f678f772798909c2ebb07",
+    "status_at_checkpoint": "Source frozen; this report does not claim a passed new production archive or VM.",
+    "required_order": [
+      "COPY_COMPLETE",
+      "CLEANUP_COMPLETE",
+      "TB371FC_EARLY_SELINUX_V1 POLICY_LOADED enforcing=1",
+      "TB371FC_EARLY_SELINUX_V1 EXEC_SYSTEMD",
+      "same-boot initrd process-domain proof"
+    ],
+    "required_devices": "Stage0/1 old devices equal, new devices equal, old differs from new, and actual initrd /proc/1/mountinfo root device equals the recorded new device.",
+    "required_domains": [
+      "actual initrd PID1 init_t",
+      "actual initrd udevd udev_t",
+      "root-stage PID1 init_t",
+      "validation fixture initrc_t"
+    ],
+    "remaining_gates": [
+      "zero SELinux AVC denial gate",
+      "actual API mounts after the unchanged helper mounts proc/dev again",
+      "standard udev event-storage/handoff checks",
+      "actual broker child and exported-policy access",
+      "same wait/pipe system-bus probe",
+      "pids enforcement",
+      "BPF LSM denial with a control",
+      "signed-module/runtime firmware hashes",
+      "full-system poweroff and retained logs"
+    ],
+    "tablet_boot_not_implied": true
+  }
+}

@@ -1,0 +1,493 @@
+{
+  "candidate_files": {
+    "assemble_system.py": {
+      "sha256": "9d698cf253edf526fa9cd81121f5e6d3e60789020fd2f5f5fab784113e8ab0c5",
+      "size": 6041
+    },
+    "boot_system_vm.py": {
+      "sha256": "4d1f59691bb4faccdcdbd791ae2120a89e56f7712fd63270f0a2204662842736",
+      "size": 40810
+    },
+    "early_initramfs.py": {
+      "sha256": "f3d4871fb4347356a9254634243863a37a62f424fad186e13a4f9ad783299ced",
+      "size": 18212
+    },
+    "finalize_system.py": {
+      "sha256": "177ba641de6504802e775bc3ebef3bf7833e75248aea1ff191dd2e1b6348fa69",
+      "size": 10874
+    },
+    "guest_result_file.py": {
+      "sha256": "8d0ecba854e0d8c6303938c0253d79a72e3a03e2c1190e2ced0e17556f1a23b1",
+      "size": 5302
+    },
+    "guest_transient_worker.py": {
+      "sha256": "2efabfc34473ff37f703f71346fa7f61d4666867bea822bb9a6c17a110693b10",
+      "size": 8776
+    },
+    "guest_verify_system.py": {
+      "sha256": "fc2dea25edc8ac4eb6a76ea77ecff799b8abf69e8cb47548bfefaef59eaaac16",
+      "size": 41210
+    },
+    "initrd-domain-proof.service": {
+      "sha256": "1ac451e16abf1aeefa3191972370bed649060b1d21fba302a9fff047107d2631",
+      "size": 521
+    },
+    "initrd-domain-proof.sh": {
+      "sha256": "3b4b65784b3c8bd13fde728e780bcd101235986c5756ac1f24000d024cd50d95",
+      "size": 5312
+    },
+    "launch_pipeline.py": {
+      "sha256": "2fd4bcb57a4d1440e9711941febeb2e633325e6312804c5bd42becbb8ec136ae",
+      "size": 4148
+    },
+    "materialize_recipe.py": {
+      "sha256": "95e1fcd4674f4d0db5a3a24bd23627bb9d4d73e8bf6e838032aa7a75a32b0e64",
+      "size": 4626
+    },
+    "probe_fd_route_v2.py": {
+      "sha256": "5ccc94fdc0bda5da5bf7cab46f6a195a86e51d6d85cddebcd31602daf3b19f5b",
+      "size": 15438
+    },
+    "qualify_udev_handoff.py": {
+      "sha256": "6555c14486322084e8c5c271ca103419e962407e449b396cbcd20282eec9c2fc",
+      "size": 6132
+    },
+    "read_vm_result.py": {
+      "sha256": "e28f8a031c43e096bb0741a109ab03e8b1d725341ac3a71d1e5730cd10e2393d",
+      "size": 8311
+    },
+    "retain_policy_export.py": {
+      "sha256": "c07a7402b14361468f9fe32ee1bc8453e167d1fb688c7c3aa10312dd4a97d575",
+      "size": 3993
+    },
+    "run_pipeline.py": {
+      "sha256": "5eaedb6808dbc2cbd58390f52a8f2237715ad2d368b57736778750ff54fe444e",
+      "size": 5905
+    },
+    "stage_system.py": {
+      "sha256": "13a146a04367fe109298678f0c221912693174dfd88aa634cfa5b47396f9f321",
+      "size": 13569
+    },
+    "system_common.py": {
+      "sha256": "dbb9d73e10f30fb51940b880bdd65c3da0ac4a5f78836cba449ff8f338547a41",
+      "size": 4209
+    },
+    "transient_protocol.py": {
+      "sha256": "9504ad6c86730caa3e9f2dd571c50b57800e9aaeac2ff5322a6b201032f50cc5",
+      "size": 17436
+    },
+    "verify_runtime_policy_initramfs.py": {
+      "sha256": "9e36bf88b93aa3dda05ddc3ff235ab743ff4c2c80fe8e6b0694175b69e9f497a",
+      "size": 30119
+    }
+  },
+  "candidate_profile_manifest": {
+    "sha256": "5fb332d61e8e5b9b1699021aba8a5b2658a2763c7897d656692e5a49ddc107e0",
+    "size": 2397
+  },
+  "candidate_recipe_manifest": {
+    "sha256": "927fd0755f54f303adac25daa8342bfe4615d0d42ff9a07361d29226f7cdf947",
+    "size": 2674
+  },
+  "dependent_pins_recomputed_from_actual_new_source": true,
+  "exact_derivation_patch": {
+    "sha256": "978503556f56c0c044959bd0b89a41678a74243caa8d4e8c4015a517f44a1b23",
+    "size": 49962
+  },
+  "literal_substitutions": {
+    "assemble_system.py": [
+      {
+        "count": 12,
+        "new": "r4f",
+        "old": "r4e"
+      },
+      {
+        "count": 2,
+        "new": "R4F",
+        "old": "R4E"
+      },
+      {
+        "count": 1,
+        "new": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+        "old": "727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502"
+      },
+      {
+        "count": 1,
+        "new": "/work/selinux-socket-probe-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35",
+        "old": "/work/selinux-standard-services-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35"
+      },
+      {
+        "count": 2,
+        "new": "3835468",
+        "old": "3835456"
+      }
+    ],
+    "boot_system_vm.py": [
+      {
+        "count": 8,
+        "new": "r4f",
+        "old": "r4e"
+      },
+      {
+        "count": 6,
+        "new": "R4F",
+        "old": "R4E"
+      },
+      {
+        "count": 4,
+        "new": "TB371FC_EARLY_SELINUX_V4",
+        "old": "TB371FC_EARLY_SELINUX_V3"
+      }
+    ],
+    "early_initramfs.py": [
+      {
+        "count": 9,
+        "new": "r4f",
+        "old": "r4e"
+      },
+      {
+        "count": 1,
+        "new": "R4F",
+        "old": "R4E"
+      },
+      {
+        "count": 1,
+        "new": "v9",
+        "old": "v8"
+      },
+      {
+        "count": 1,
+        "new": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+        "old": "727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502"
+      },
+      {
+        "count": 1,
+        "new": "0bc3f0fbb814ece1133b16e36c6b3c402fbf5456d366fb99f4fe2783c87c1d14",
+        "old": "84cc4868317fd1799ab1ff8f8ba5ae8bf85445dda5d65c3f11e1637aadb599c3"
+      },
+      {
+        "count": 1,
+        "new": "/work/selinux-socket-probe-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35",
+        "old": "/work/selinux-standard-services-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35"
+      },
+      {
+        "count": 1,
+        "new": "/work/early-selinux-socket-probe-20261123/build-01/early-init",
+        "old": "/work/early-selinux-standard-services-20261123/build-01/early-init"
+      },
+      {
+        "count": 3,
+        "new": "3835468",
+        "old": "3835456"
+      }
+    ],
+    "finalize_system.py": [],
+    "guest_result_file.py": [
+      {
+        "count": 1,
+        "new": "r4f",
+        "old": "r4e"
+      },
+      {
+        "count": 1,
+        "new": "R4F",
+        "old": "R4E"
+      }
+    ],
+    "guest_transient_worker.py": [
+      {
+        "count": 4,
+        "new": "r4f",
+        "old": "r4e"
+      },
+      {
+        "count": 3,
+        "new": "R4F",
+        "old": "R4E"
+      },
+      {
+        "count": 1,
+        "new": "v9",
+        "old": "v8"
+      }
+    ],
+    "guest_verify_system.py": [
+      {
+        "count": 7,
+        "new": "r4f",
+        "old": "r4e"
+      },
+      {
+        "count": 6,
+        "new": "R4F",
+        "old": "R4E"
+      },
+      {
+        "count": 1,
+        "new": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+        "old": "727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502"
+      }
+    ],
+    "initrd-domain-proof.service": [
+      {
+        "count": 1,
+        "new": "r4f",
+        "old": "r4e"
+      }
+    ],
+    "initrd-domain-proof.sh": [
+      {
+        "count": 2,
+        "new": "r4f",
+        "old": "r4e"
+      },
+      {
+        "count": 1,
+        "new": "R4F",
+        "old": "R4E"
+      }
+    ],
+    "launch_pipeline.py": [
+      {
+        "count": 1,
+        "new": "/work/fedora-input-system-recipe-r4-v7",
+        "old": "/work/fedora-input-system-recipe-r4-v6"
+      },
+      {
+        "count": 3,
+        "new": "R4F",
+        "old": "R4E"
+      },
+      {
+        "count": 1,
+        "new": "v9",
+        "old": "v8"
+      }
+    ],
+    "materialize_recipe.py": [
+      {
+        "count": 1,
+        "new": "/work/fedora-input-system-recipe-r4-v7",
+        "old": "/work/fedora-input-system-recipe-r4-v6"
+      },
+      {
+        "count": 4,
+        "new": "v9",
+        "old": "v8"
+      }
+    ],
+    "probe_fd_route_v2.py": [
+      {
+        "count": 1,
+        "new": "v9",
+        "old": "v8"
+      }
+    ],
+    "qualify_udev_handoff.py": [
+      {
+        "count": 3,
+        "new": "v9",
+        "old": "v8"
+      }
+    ],
+    "read_vm_result.py": [
+      {
+        "count": 2,
+        "new": "r4f",
+        "old": "r4e"
+      },
+      {
+        "count": 2,
+        "new": "R4F",
+        "old": "R4E"
+      }
+    ],
+    "retain_policy_export.py": [
+      {
+        "count": 2,
+        "new": "r4f",
+        "old": "r4e"
+      }
+    ],
+    "run_pipeline.py": [
+      {
+        "count": 1,
+        "new": "v9",
+        "old": "v8"
+      }
+    ],
+    "stage_system.py": [
+      {
+        "count": 1,
+        "new": "v9",
+        "old": "v8"
+      },
+      {
+        "count": 2,
+        "new": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+        "old": "727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502"
+      },
+      {
+        "count": 1,
+        "new": "0bc3f0fbb814ece1133b16e36c6b3c402fbf5456d366fb99f4fe2783c87c1d14",
+        "old": "84cc4868317fd1799ab1ff8f8ba5ae8bf85445dda5d65c3f11e1637aadb599c3"
+      },
+      {
+        "count": 1,
+        "new": "3835468",
+        "old": "3835456"
+      }
+    ],
+    "system_common.py": [
+      {
+        "count": 1,
+        "new": "research4f",
+        "old": "research4e"
+      },
+      {
+        "count": 1,
+        "new": "r4f",
+        "old": "r4e"
+      },
+      {
+        "count": 2,
+        "new": "v9",
+        "old": "v8"
+      },
+      {
+        "count": 1,
+        "new": "aea118880abaff3eee5c7aafc311f614d6c4f897308e6216e93e36c9ae964143",
+        "old": "d1136513b108ebc0a18abe859d28d2a913fbf75446b4ebacb02fd926f281a840"
+      }
+    ],
+    "transient_protocol.py": [
+      {
+        "count": 4,
+        "new": "r4f",
+        "old": "r4e"
+      },
+      {
+        "count": 3,
+        "new": "R4F",
+        "old": "R4E"
+      }
+    ],
+    "verify_runtime_policy_initramfs.py": [
+      {
+        "count": 1,
+        "new": "v9",
+        "old": "v8"
+      },
+      {
+        "count": 1,
+        "new": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+        "old": "727cd98e5b9e13deb9999dedd17fcd95f73c01aa1541c97e9bda127df02a6502"
+      },
+      {
+        "count": 1,
+        "new": "0bc3f0fbb814ece1133b16e36c6b3c402fbf5456d366fb99f4fe2783c87c1d14",
+        "old": "84cc4868317fd1799ab1ff8f8ba5ae8bf85445dda5d65c3f11e1637aadb599c3"
+      },
+      {
+        "count": 1,
+        "new": "/work/selinux-socket-probe-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35",
+        "old": "/work/selinux-standard-services-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35"
+      },
+      {
+        "count": 1,
+        "new": "3835468",
+        "old": "3835456"
+      }
+    ]
+  },
+  "new_initramfs_executed": false,
+  "new_vm_executed": false,
+  "old_sources_modified": false,
+  "python_ast_passed": true,
+  "schema_version": 1,
+  "source_execution_manifest_sha256": "c453d67a35b466be76924eceb7f3af96bfd15ed313ee5cba11963a9de91fcb94",
+  "source_files": {
+    "assemble_system.py": {
+      "sha256": "1c0a3088b8e39a6bdf6b7e828eacca70a51ee00e85a931f9e3e778352c140fe2",
+      "size": 6046
+    },
+    "boot_system_vm.py": {
+      "sha256": "0cc213bfa45f3f419adc39c6917ccecbb9dfcb5ea851388a61ef7f1d27523076",
+      "size": 40810
+    },
+    "early_initramfs.py": {
+      "sha256": "ec2ad218094aed7c1d8c99ae180aed8d36f43a83e9cd0b4106299963ed243d5a",
+      "size": 18222
+    },
+    "finalize_system.py": {
+      "sha256": "de72a5a1f60a0b56895bc8b595feb9d5c0c0ef09081fc8de9383fff3a9c6cb4a",
+      "size": 10874
+    },
+    "guest_result_file.py": {
+      "sha256": "89089a01d19113ac42d93f30cf86809e47dadfc7da28027733bf8a19c340c8a0",
+      "size": 5302
+    },
+    "guest_transient_worker.py": {
+      "sha256": "85f23dc3afdcca5a3bdce16349d51f8b84076380482b7c39fb5673555922907f",
+      "size": 8776
+    },
+    "guest_verify_system.py": {
+      "sha256": "9a897ad69789b8f29416ae1ef44d93dbd202563119932ce842f247c944988b7a",
+      "size": 41210
+    },
+    "initrd-domain-proof.service": {
+      "sha256": "f0dedb803142b5633f4431aef31f25c4308523cde460fb56251c9eb80a3286f5",
+      "size": 521
+    },
+    "initrd-domain-proof.sh": {
+      "sha256": "da45ac48debefb1eb282adb5574694a66d16522c3de8e668b191e264181adbfc",
+      "size": 5312
+    },
+    "launch_pipeline.py": {
+      "sha256": "487c1262387eec65c64c1e46ac95ced60b9de9096a1df66ec95b29dd078f0b55",
+      "size": 4148
+    },
+    "materialize_recipe.py": {
+      "sha256": "45771a4eabb712466c0330d8bd1d03882d28be1a707830157fd0569be165ecf3",
+      "size": 4626
+    },
+    "probe_fd_route_v2.py": {
+      "sha256": "a9fbf6c6515e5652e80b328b3fdad2637938cc6133e02364256c616b41a8c755",
+      "size": 15438
+    },
+    "qualify_udev_handoff.py": {
+      "sha256": "7df5da2562ff9c5152c2d45304d0cdaf7f052917f7ef3edc4917f72f03aec110",
+      "size": 6132
+    },
+    "read_vm_result.py": {
+      "sha256": "71df5f32894a0f8b232173378786c39f39aca567af801dc3c5e035b04577dc25",
+      "size": 8311
+    },
+    "retain_policy_export.py": {
+      "sha256": "20fa7f3784cf07a707205c34ef1d5d6fbdab28dae785a5d20b66475a48d62f61",
+      "size": 3993
+    },
+    "run_pipeline.py": {
+      "sha256": "acc4649f6db53b8b23e642e8bf5f71f56f2c93077fdcfe55205e28d88a9471b8",
+      "size": 5905
+    },
+    "stage_system.py": {
+      "sha256": "78bc14c913c7aba1408da094f95c32183d3981a6744668352ad416ab4294d2dd",
+      "size": 13569
+    },
+    "system_common.py": {
+      "sha256": "ec3c0bc8c870f62af4acf6694d2134f86928fd61791b1e989f56a31404eebd12",
+      "size": 4209
+    },
+    "transient_protocol.py": {
+      "sha256": "69c8dcde80734ad3c71b6fdf0eaae0df330c5a760270aba560a971139955032d",
+      "size": 17436
+    },
+    "verify_runtime_policy_initramfs.py": {
+      "sha256": "0ced7a067f49371049502548c3685374f8c4b8b398b6c498afcfb4cebf9eda6d",
+      "size": 30122
+    }
+  },
+  "source_profile_manifest_sha256": "f705c87a1c5efe082ae134febc139e8ce437818951c83a9709bd475d17fc60d2",
+  "state": "source_candidate_pending_policy_qualification"
+}

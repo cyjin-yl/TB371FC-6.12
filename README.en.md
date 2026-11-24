@@ -2,6 +2,12 @@
 
 [Русский](README.md) · **English**
 
+Owner-fork direction, 2026-11-24: [mainline kernel and native-distribution strategy](docs/MAINLINE_STRATEGY.md),
+[driver reuse and remaining board work](docs/DRIVER_ROADMAP.md), and
+[shipping-source provenance / formal source request](docs/SOURCE_PROVENANCE.md).
+These documents extend the owner research branch; they do not add a physical
+Linux boot or hardware pass to the existing acceptance ledger.
+
 Update 2026-11-05: development is paused; contributors are welcome.
 Latest installed, device-tested profile: [R226 SD150 + USB3 peripheral](experimental/r226/README.md).
 See the [R227–R241 source handoff](experimental/community-handoff/README.md) and
@@ -10,6 +16,25 @@ USB hubs, PD negotiation and HDMI/DP are unfinished. R241 is built, NOT hardware
 No personal rootfs, provisioned initrd or SSH keys are distributed. This is a developer
 source project, not a complete one-click installer. Older installation examples below
 describe R191; they do not reproduce R226 unchanged.
+
+Research update 2026-11-23: [Android hardware evidence and source audit](docs/research/2026-11-23/README.md)
+([中文](docs/research/2026-11-23/README.zh-CN.md)) covers the display, keyboard,
+pen, charging and power management. The follow-up adds an actually compiled
+[research kernel and generic ARM64 VM boot](docs/research/2026-11-23/kernel-build.md),
+[a complete Fedora Enforcing system boot in QEMU](docs/research/2026-11-23/fedora-system-integration.md),
+[the realized NixOS ARM system closure](docs/research/2026-11-23/nixos-system-build.md),
+private firmware staging, input-driver fixes and an
+[owner-specific rescue-controller correction](docs/research/2026-11-23/first-stage-owner-udc.md).
+The follow-up [research5 kernel](docs/research/2026-11-23/research5-services-kernel.md)
+has a full build and 84 signed modules for the original Nix/Nura service prerequisites.
+The latest actual Fedora production run remains v8, whose complete guest checks
+still fail the overall zero-AVC gate; the [first v9 image attempt](docs/research/2026-11-23/fedora-r4f-image-failed.md)
+times out before any VM. The first [Nix registered-root preparation](docs/research/2026-11-23/nixos-store-preparation-failed.md)
+also times out during signed-cache copying after source verification; no NixOS
+image or PID1 boot was reached. Nix/Nura target-system boot and physical entry remain open.
+The dated overview keeps these construction, runtime and retained-failure scopes separate.
+These results add no owner physical-tablet pass; see the
+[all-device acceptance contract](docs/research/2026-11-23/acceptance.md).
 
 Arch Linux ARM with KDE Plasma running on the Lenovo **TB371FC** tablet, using a
 **Linux 6.12** kernel that is started from microSD. Android on the internal UFS stays

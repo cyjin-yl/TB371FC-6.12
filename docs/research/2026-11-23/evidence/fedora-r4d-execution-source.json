@@ -1,0 +1,123 @@
+{
+  "actual_recipe_manifest": {
+    "sha256": "0779fa0982a23fe9e30c58d17f721df8222d438b7329370fdaa918d13075879b",
+    "size": 2408
+  },
+  "actual_remote_readback_passed": true,
+  "builder": "tb371fc-build-20261123",
+  "capture_utc": "2026-11-23T06:30:08.807124+00:00",
+  "materializer": {
+    "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/materialize_recipe.py",
+    "sha256": "8f4827c604ad8727d6fffe0d004102ef8bc9399c7f17fe65c903ff99308c9979",
+    "size": 4682
+  },
+  "old_sources_modified": false,
+  "physical_tablet_tested": false,
+  "pipeline_started": true,
+  "prior_v6_profile_source_manifest_sha256": "e2a3a926296f624f562f76186f13dc4dd319fbd6e49dc73050cfb677bb7a1951",
+  "profile_manifest": {
+    "sha256": "8b70be328295fa01789a34b7a8212c9424c926890889b2881002a7163d8c619f",
+    "size": 1988
+  },
+  "public_files": {
+    "assemble_system.py": {
+      "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/assemble_system.py",
+      "sha256": "811894cde05819a5e3dfe34fa24089cc494896b50363c5f3d115cd2c77f08f51",
+      "size": 5955
+    },
+    "boot_system_vm.py": {
+      "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/boot_system_vm.py",
+      "sha256": "07430442db3aa5e2730cae9705c6b729320d051f4d35e523e940fdcd2aa68891",
+      "size": 34444
+    },
+    "early_initramfs.py": {
+      "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/early_initramfs.py",
+      "sha256": "6fc54d2d1ee8c6a5de0f7f40474350cc1034855d4d048de42fa08334ec57946d",
+      "size": 18177
+    },
+    "finalize_system.py": {
+      "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/finalize_system.py",
+      "sha256": "805f80b2d83e2ed050d9d9c19255523f8fbb578ee635f94796d5e4c99ade54e7",
+      "size": 9116
+    },
+    "guest_transient_worker.py": {
+      "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/guest_transient_worker.py",
+      "sha256": "a6d339513d053dae55b0074dbf405eee722cfbef1dffbe7e7d2004cc0bc76c7a",
+      "size": 8777
+    },
+    "guest_verify_system.py": {
+      "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/guest_verify_system.py",
+      "sha256": "2125e51a9e8cf6a5aa3f4e4bf3892bb453e686acc542516e7084d31780a191ec",
+      "size": 36422
+    },
+    "initrd-domain-proof.service": {
+      "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/initrd-domain-proof.service",
+      "sha256": "aa5ab144a6fdb91033ef3c9c56ead6db5472f739f20503c807aba0350751dda2",
+      "size": 521
+    },
+    "initrd-domain-proof.sh": {
+      "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/initrd-domain-proof.sh",
+      "sha256": "890c11a8bdece71545bc208ff7cca8e057c6c792da48476b9894582dd6626cc1",
+      "size": 5312
+    },
+    "probe_fd_route_v2.py": {
+      "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/probe_fd_route_v2.py",
+      "sha256": "fee17f6826ad19a25fc431992affc43687699d85ae38c6fe4ab5bd2c14094a61",
+      "size": 15438
+    },
+    "qualify_udev_handoff.py": {
+      "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/qualify_udev_handoff.py",
+      "sha256": "e2a931f87c54a4ffe6733c7e5a8163fd0a757d59276fd813f07bd0e41c7e5331",
+      "size": 6132
+    },
+    "retain_policy_export.py": {
+      "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/retain_policy_export.py",
+      "sha256": "cc0ae4ca5bd79dcd2355caa1367150654ea1f9809f998097f3e5ebe6442f71a2",
+      "size": 3993
+    },
+    "run_pipeline.py": {
+      "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/run_pipeline.py",
+      "sha256": "1c99cf27d4a2249a7c70a3773130e118756ccadecccec8a386a235e82d07b548",
+      "size": 5848
+    },
+    "stage_system.py": {
+      "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/stage_system.py",
+      "sha256": "8073f2b960b4e38a0fe9c44df3309bfb6569a502daa26b4bf95528d4c53857c5",
+      "size": 13297
+    },
+    "system_common.py": {
+      "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/system_common.py",
+      "sha256": "825cf3a329dbc9125c2da8650c536df3a824d1e92078b7e456d6921b0e3a4ae4",
+      "size": 4210
+    },
+    "transient_protocol.py": {
+      "path": "scripts/research/input/system-integration/profiles/reload-and-fd-contract-v7/transient_protocol.py",
+      "sha256": "7a76a2386f8f28fe3e704d2c841ab777f6d72e70c4c7035650d5d8655ab0da85",
+      "size": 17436
+    },
+    "verify_early_policy_initramfs.py": {
+      "path": "scripts/research/input/system-integration/verify_early_policy_initramfs.py",
+      "sha256": "58a5dba0186174c7442f73c2f8f0a2333599e6cbbcb1cf332169e5df558bfd1e",
+      "size": 27585
+    },
+    "verify_initramfs.py": {
+      "path": "scripts/research/rootfs/verify_initramfs.py",
+      "sha256": "263866a1943cd43116e69cb0a8b1081d6ccd1cc93ef98866a4b3eacc00bac58a",
+      "size": 20506
+    },
+    "verify_reload_map_initramfs.py": {
+      "path": "scripts/research/input/system-integration/verify_reload_map_initramfs.py",
+      "sha256": "8028eb780ff6f9d13485904bde6b8b5b3599bb555037a264d1c88ca02d417e82",
+      "size": 30123
+    }
+  },
+  "remote_recipe": "/work/fedora-input-system-recipe-r4-v5",
+  "remote_source_overlay": "/work/fedora-r4d-profile-inputs-v1",
+  "schema_version": 1,
+  "scope": "actual source identity and immutable recipe materialization; not VM success",
+  "source_packet_bytes": 76089,
+  "source_packet_sha256": "845a6f1241c5e14dc218f9210ee3723aef07be6c3ae8d40fa5b12a4fff98850f",
+  "unique_pipeline_ct_unit": "tb371fc-r4d-full-01",
+  "vm_passed_by_this_record": false,
+  "work": "/work/fedora-input-system-v7"
+}

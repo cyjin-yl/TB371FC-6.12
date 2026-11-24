@@ -1,0 +1,2223 @@
+{
+  "abi": {
+    "access_vector": "uint32_t",
+    "decision_bytes": 20,
+    "decision_fields": {
+      "allowed": "uint32_t",
+      "auditallow": "uint32_t",
+      "auditdeny": "uint32_t",
+      "decided": "uint32_t",
+      "seqno": "uint32_t"
+    },
+    "loader": "libc fmemopen on converted bytes, then exported sepol_set_policydb_from_file(FILE*) into process-private libsepol policydb/sidtab",
+    "loader_header": "libsepol/include/sepol/sepol.h:33-34",
+    "security_class": "uint16_t",
+    "security_id": "uint32_t",
+    "sepol_load_policy_exported": false,
+    "sepol_sid_to_context_exported": true,
+    "sepol_transition_sid_exported": false,
+    "source_definition": "libsepol/src/services.c:136-155"
+  },
+  "all_own_query_jobs_finished": true,
+  "broker_reset_cause_proven": false,
+  "capture_utc": "2026-11-23T04:05:17.785084+00:00",
+  "container": "tb371fc-build-20261123",
+  "executions": [
+    {
+      "executed_probe": {
+        "path": "/work/selinux-access-query-v1/query_policy_access.py",
+        "sha256": "43f81b1334aeac1691529a699a6b8dad923ada9b5f16e38b2c45643ead9736d3"
+      },
+      "invocation": {
+        "command": [
+          "/work/fedora-proot-src/src/proot",
+          "--kill-on-exit",
+          "-0",
+          "-r",
+          "/work/fedora-system-integration-v1/rootfs",
+          "-q",
+          "/usr/bin/qemu-aarch64-static",
+          "-b",
+          "/proc",
+          "-b",
+          "/dev/null",
+          "-b",
+          "/dev/zero",
+          "-b",
+          "/dev/random",
+          "-b",
+          "/dev/urandom",
+          "-b",
+          "/work/selinux-access-query-v1:/analysis",
+          "-w",
+          "/",
+          "/usr/bin/python3",
+          "-B",
+          "-I",
+          "/analysis/query_policy_access.py"
+        ],
+        "environment_overrides": {
+          "LD_LIBRARY_PATH": "/work/fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu",
+          "SYSTEMD_OFFLINE": "1"
+        },
+        "return_code": 0,
+        "runtime": [
+          {
+            "bytes": 832232,
+            "path": "/work/fedora-proot-src/src/proot",
+            "resolved_path": "/work/fedora-proot-src/src/proot",
+            "sha256": "313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f"
+          },
+          {
+            "bytes": 16661520,
+            "path": "/usr/bin/qemu-aarch64-static",
+            "resolved_path": "/usr/bin/qemu-aarch64",
+            "sha256": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943"
+          },
+          {
+            "bytes": 68968,
+            "path": "/work/fedora-system-integration-v1/rootfs/usr/bin/python3",
+            "resolved_path": "/work/fedora-system-integration-v1/rootfs/usr/bin/python3.15",
+            "sha256": "a12cb0a1160abfbc59d3336fb3713562977fd862b9a3eafc2553c89b887a8d15"
+          },
+          {
+            "bytes": 12847,
+            "path": "/work/selinux-access-query-v1/query_policy_access.py",
+            "resolved_path": "/work/selinux-access-query-v1/query_policy_access.py",
+            "sha256": "43f81b1334aeac1691529a699a6b8dad923ada9b5f16e38b2c45643ead9736d3"
+          }
+        ],
+        "timeout_seconds": 45
+      },
+      "invocation_record": {
+        "bytes": 1693,
+        "path": "/work/selinux-access-query-v1/query-01-invocation.json",
+        "sha256": "70eaa02510abd391057ebaa8325b1923a67bcaa3f3aee67e99785aa1fd3342c1"
+      },
+      "job": {
+        "command": [
+          "python3",
+          "-c",
+          "import hashlib,json,os,pathlib,subprocess,sys\nroot=pathlib.Path('/work/selinux-access-query-v1')\nruntime=[]\nfor path,expected in [\n('/work/fedora-proot-src/src/proot','313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f'),\n('/usr/bin/qemu-aarch64-static','73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943'),\n('/work/fedora-system-integration-v1/rootfs/usr/bin/python3','a12cb0a1160abfbc59d3336fb3713562977fd862b9a3eafc2553c89b887a8d15'),\n('/work/selinux-access-query-v1/query_policy_access.py','43f81b1334aeac1691529a699a6b8dad923ada9b5f16e38b2c45643ead9736d3')]:\n p=pathlib.Path(path);d=p.read_bytes();h=hashlib.sha256(d).hexdigest();assert h==expected\n runtime.append({'path':path,'resolved_path':str(p.resolve()),'bytes':len(d),'sha256':h})\nargs=['/work/fedora-proot-src/src/proot','--kill-on-exit','-0','-r','/work/fedora-system-integration-v1/rootfs','-q','/usr/bin/qemu-aarch64-static','-b','/proc','-b','/dev/null','-b','/dev/zero','-b','/dev/random','-b','/dev/urandom','-b',str(root)+':/analysis','-w','/','/usr/bin/python3','-B','-I','/analysis/query_policy_access.py']\nenv=os.environ.copy();env['LD_LIBRARY_PATH']='/work/fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu';env['SYSTEMD_OFFLINE']='1'\ntry:\n r=subprocess.run(args,env=env,capture_output=True,text=True,timeout=45)\nexcept subprocess.TimeoutExpired as e:\n with (root/'query-01-timeout.json').open('x') as f:json.dump({'timeout_seconds':45,'command':args},f,indent=2)\n raise\nwith (root/'query-01.stdout.json').open('x') as f:f.write(r.stdout)\nwith (root/'query-01.stderr.log').open('x') as f:f.write(r.stderr)\nwith (root/'query-01-invocation.json').open('x') as f:json.dump({'command':args,'timeout_seconds':45,'runtime':runtime,'environment_overrides':{'LD_LIBRARY_PATH':env['LD_LIBRARY_PATH'],'SYSTEMD_OFFLINE':'1'},'return_code':r.returncode},f,indent=2)\nprint(json.dumps({'return_code':r.returncode,'stdout_bytes':len(r.stdout.encode()),'stderr_bytes':len(r.stderr.encode()),'stderr':r.stderr[:4096]}))\nif r.stdout:\n data=json.loads(r.stdout)\n print(json.dumps({k:data.get(k) for k in ['query_completed','query_count','permission_denial_count','error','input_policy','converted_policy','library','return_codes']}))\n groups={}\n for item in data.get('queries',[]):\n  key=(item['source_context'],item['target_context'])\n  groups.setdefault(key,[]).append({'permission':item['class']+':'+item['permission'],'allowed':item['permission_allowed'],'auditdeny_bit':item['denial_audit_mask_includes_permission'],'reasons':item['reasons']})\n for (source,target),values in groups.items():print(json.dumps({'source':source,'target':target,'decisions':values}))\nraise SystemExit(r.returncode)\n"
+        ],
+        "elapsed_seconds": 8.946666076022666,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T03:56:24.128106+00:00"
+      },
+      "job_record": {
+        "bytes": 2879,
+        "path": "/work/selinux-access-query-v1/jobs/query-01.json",
+        "sha256": "861d895dd4346ab9f93f50e9d629dd7b9600fdd5c181b4939362a0ad0a4f5e82"
+      },
+      "log": {
+        "bytes": 6381,
+        "path": "/work/selinux-access-query-v1/jobs/query-01.log",
+        "sha256": "e363e7fef73a77117cbd3a009cdd91acb9963554e3a1a7989a8af5b8490344ee"
+      },
+      "name": "query-01",
+      "result": {
+        "cause_of_broker_reset_proven": false,
+        "compatibility_helper_sha256": "6c3c9d4e75c9da1d30c977ae7d99be4dcb57ebb0bb68d247e9ec12a3d870bf6d",
+        "context_to_sid": [
+          {
+            "context": "system_u:system_r:system_dbusd_t:s0",
+            "process_local_sid": 1,
+            "return_code": 0
+          },
+          {
+            "context": "system_u:system_r:unconfined_service_t:s0",
+            "process_local_sid": 2,
+            "return_code": 0
+          },
+          {
+            "context": "system_u:system_r:init_t:s0",
+            "process_local_sid": 3,
+            "return_code": 0
+          },
+          {
+            "context": "system_u:system_r:initrc_t:s0",
+            "process_local_sid": 4,
+            "return_code": 0
+          },
+          {
+            "context": "system_u:system_r:kernel_t:s0",
+            "process_local_sid": 5,
+            "return_code": 0
+          },
+          {
+            "context": "system_u:object_r:null_device_t:s0",
+            "process_local_sid": 6,
+            "return_code": 0
+          },
+          {
+            "context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "process_local_sid": 7,
+            "return_code": 0
+          }
+        ],
+        "converted_policy": {
+          "bytes": 3835420,
+          "sha256": "aab7b7128bb8f0db2d349ac0817d806e5157b9a0b93dfe4f85ccf630354ebebe",
+          "version": 33
+        },
+        "fmemopen": {
+          "errno": 0,
+          "succeeded": true
+        },
+        "hardware_tested": false,
+        "input_policy": {
+          "bytes": 3835432,
+          "path": "/etc/selinux/targeted/policy/policy.35",
+          "sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+          "version": 35
+        },
+        "inputs_unchanged_after_query": true,
+        "interpretation": {
+          "auditdeny": "audit mask is separate from allowed; dontaudit alone is not a denial",
+          "booleans": "serialized input policy defaults; no live state substituted",
+          "enforcement": "permission vector only; no live permissive or Enforcing decision asserted",
+          "fd_target": "candidate opener SID, distinct from inode security label",
+          "fifo_target": "inode context supplied explicitly; no descriptor state inferred",
+          "sids": "local to this libsepol process; not live kernel SIDs"
+        },
+        "kernel_policy_load_attempted": false,
+        "library": {
+          "bytes": 802880,
+          "path": "/usr/lib64/libsepol.so.2",
+          "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b"
+        },
+        "live_booleans_read": false,
+        "live_selinux_configuration_changed": false,
+        "permission_denial_count": 10,
+        "policy_image_written": false,
+        "queries": [
+          {
+            "class": "fd",
+            "class_id": 8,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "use",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000001",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": false,
+            "permission": "read",
+            "permission_allowed": false,
+            "raw_decision": {
+              "allowed": "0x00000000",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xfff7fda8",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 1,
+            "reasons": [
+              "type_enforcement"
+            ],
+            "requested_mask": "0x00000002",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": false,
+            "permission": "write",
+            "permission_allowed": false,
+            "raw_decision": {
+              "allowed": "0x00000000",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xfff7fda8",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 1,
+            "reasons": [
+              "type_enforcement"
+            ],
+            "requested_mask": "0x00000004",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": false,
+            "permission": "append",
+            "permission_allowed": false,
+            "raw_decision": {
+              "allowed": "0x00000000",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xfff7fda8",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 1,
+            "reasons": [
+              "type_enforcement"
+            ],
+            "requested_mask": "0x00000200",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": false,
+            "permission": "getattr",
+            "permission_allowed": false,
+            "raw_decision": {
+              "allowed": "0x00000000",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xfff7fda8",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 1,
+            "reasons": [
+              "type_enforcement"
+            ],
+            "requested_mask": "0x00000010",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": false,
+            "permission": "ioctl",
+            "permission_allowed": false,
+            "raw_decision": {
+              "allowed": "0x00000000",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xfff7fda8",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 1,
+            "reasons": [
+              "type_enforcement"
+            ],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fd",
+            "class_id": 8,
+            "denial_audit_mask_includes_permission": false,
+            "permission": "use",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000001",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xfffffffe",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:init_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "read",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000002",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:init_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "write",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000004",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:init_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "append",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000200",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:init_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "getattr",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000010",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:init_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "ioctl",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:init_t:s0"
+          },
+          {
+            "class": "fd",
+            "class_id": 8,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "use",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000001",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "read",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000002",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "write",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000004",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "append",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000200",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "getattr",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000010",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "ioctl",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fd",
+            "class_id": 8,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "use",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000001",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:system_r:kernel_t:s0"
+          },
+          {
+            "class": "chr_file",
+            "class_id": 10,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "read",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00080257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000002",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:object_r:null_device_t:s0"
+          },
+          {
+            "class": "chr_file",
+            "class_id": 10,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "write",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00080257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000004",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:object_r:null_device_t:s0"
+          },
+          {
+            "class": "chr_file",
+            "class_id": 10,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "ioctl",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00080257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0",
+            "target_context": "system_u:object_r:null_device_t:s0"
+          },
+          {
+            "class": "fd",
+            "class_id": 8,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "use",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000001",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": false,
+            "permission": "read",
+            "permission_allowed": false,
+            "raw_decision": {
+              "allowed": "0x00000000",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xfff7fda8",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 1,
+            "reasons": [
+              "type_enforcement"
+            ],
+            "requested_mask": "0x00000002",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": false,
+            "permission": "write",
+            "permission_allowed": false,
+            "raw_decision": {
+              "allowed": "0x00000000",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xfff7fda8",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 1,
+            "reasons": [
+              "type_enforcement"
+            ],
+            "requested_mask": "0x00000004",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": false,
+            "permission": "append",
+            "permission_allowed": false,
+            "raw_decision": {
+              "allowed": "0x00000000",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xfff7fda8",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 1,
+            "reasons": [
+              "type_enforcement"
+            ],
+            "requested_mask": "0x00000200",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": false,
+            "permission": "getattr",
+            "permission_allowed": false,
+            "raw_decision": {
+              "allowed": "0x00000000",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xfff7fda8",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 1,
+            "reasons": [
+              "type_enforcement"
+            ],
+            "requested_mask": "0x00000010",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": false,
+            "permission": "ioctl",
+            "permission_allowed": false,
+            "raw_decision": {
+              "allowed": "0x00000000",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xfff7fda8",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 1,
+            "reasons": [
+              "type_enforcement"
+            ],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:unconfined_service_t:s0"
+          },
+          {
+            "class": "fd",
+            "class_id": 8,
+            "denial_audit_mask_includes_permission": false,
+            "permission": "use",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000001",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xfffffffe",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:init_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "read",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000002",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:init_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "write",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000004",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:init_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "append",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000200",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:init_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "getattr",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000010",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:init_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "ioctl",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:init_t:s0"
+          },
+          {
+            "class": "fd",
+            "class_id": 8,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "use",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000001",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "read",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000002",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "write",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000004",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "append",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000200",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "getattr",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000010",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fifo_file",
+            "class_id": 13,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "ioctl",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "fd",
+            "class_id": 8,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "use",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00000001",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:system_r:kernel_t:s0"
+          },
+          {
+            "class": "chr_file",
+            "class_id": 10,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "read",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00080257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000002",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:object_r:null_device_t:s0"
+          },
+          {
+            "class": "chr_file",
+            "class_id": 10,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "write",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00080257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000004",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:object_r:null_device_t:s0"
+          },
+          {
+            "class": "chr_file",
+            "class_id": 10,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "ioctl",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00080257",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000001",
+            "return_code": 0,
+            "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+            "target_context": "system_u:object_r:null_device_t:s0"
+          }
+        ],
+        "query_completed": true,
+        "query_count": 44,
+        "return_codes": {
+          "class:chr_file": 0,
+          "class:fd": 0,
+          "class:fifo_file": 0,
+          "create": 0,
+          "fclose_memory_file": 0,
+          "from_image": 0,
+          "permission:chr_file:ioctl": 0,
+          "permission:chr_file:read": 0,
+          "permission:chr_file:write": 0,
+          "permission:fd:use": 0,
+          "permission:fifo_file:append": 0,
+          "permission:fifo_file:getattr": 0,
+          "permission:fifo_file:ioctl": 0,
+          "permission:fifo_file:read": 0,
+          "permission:fifo_file:write": 0,
+          "set_version_33": 0,
+          "to_image": 0,
+          "userspace_policydb_from_memory_file": 0
+        },
+        "rootfs_written_by_probe": false,
+        "schema_version": 1,
+        "scope": "fixed policy AV computation in private libsepol userspace memory",
+        "upstream_abi_commit": "2233a23a4d4f1bf29054037babec13f30d038e65"
+      },
+      "scope": "44 broker/FD/FIFO/device candidate AVs",
+      "stderr": {
+        "bytes": 0,
+        "path": "/work/selinux-access-query-v1/query-01.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 30536,
+        "path": "/work/selinux-access-query-v1/query-01.stdout.json",
+        "sha256": "f556fbb650713298b380e7d05e7677b49c683abc6d6dd42af4d1d61b92f096a3"
+      }
+    },
+    {
+      "executed_probe": {
+        "path": "/work/selinux-access-query-v1/query_service_entry.py",
+        "sha256": "40eece21f1e728983c9109e2a51e3151974c2128bf2022d03053e389f8dafc14"
+      },
+      "invocation": {
+        "command": [
+          "/work/fedora-proot-src/src/proot",
+          "--kill-on-exit",
+          "-0",
+          "-r",
+          "/work/fedora-system-integration-v1/rootfs",
+          "-q",
+          "/usr/bin/qemu-aarch64-static",
+          "-b",
+          "/proc",
+          "-b",
+          "/dev/null",
+          "-b",
+          "/dev/zero",
+          "-b",
+          "/dev/random",
+          "-b",
+          "/dev/urandom",
+          "-b",
+          "/work/selinux-access-query-v1:/analysis",
+          "-w",
+          "/",
+          "/usr/bin/python3",
+          "-B",
+          "-I",
+          "/analysis/query_service_entry.py"
+        ],
+        "environment_overrides": {
+          "LD_LIBRARY_PATH": "/work/fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu",
+          "SYSTEMD_OFFLINE": "1"
+        },
+        "return_code": 0,
+        "runtime": [
+          {
+            "bytes": 832232,
+            "path": "/work/fedora-proot-src/src/proot",
+            "resolved_path": "/work/fedora-proot-src/src/proot",
+            "sha256": "313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f"
+          },
+          {
+            "bytes": 16661520,
+            "path": "/usr/bin/qemu-aarch64-static",
+            "resolved_path": "/usr/bin/qemu-aarch64",
+            "sha256": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943"
+          },
+          {
+            "bytes": 68968,
+            "path": "/work/fedora-system-integration-v1/rootfs/usr/bin/python3",
+            "resolved_path": "/work/fedora-system-integration-v1/rootfs/usr/bin/python3.15",
+            "sha256": "a12cb0a1160abfbc59d3336fb3713562977fd862b9a3eafc2553c89b887a8d15"
+          },
+          {
+            "bytes": 6804,
+            "path": "/work/selinux-access-query-v1/query_service_entry.py",
+            "resolved_path": "/work/selinux-access-query-v1/query_service_entry.py",
+            "sha256": "40eece21f1e728983c9109e2a51e3151974c2128bf2022d03053e389f8dafc14"
+          }
+        ],
+        "timeout_seconds": 45
+      },
+      "invocation_record": {
+        "bytes": 1692,
+        "path": "/work/selinux-access-query-v1/service-entry-01-invocation.json",
+        "sha256": "a6be81267d23c1b785c5165d5adcafa8ce7ec103379b518ddbcdbbfe5abde1f8"
+      },
+      "job": {
+        "command": [
+          "python3",
+          "-c",
+          "import hashlib,json,os,pathlib,subprocess,sys\nroot=pathlib.Path('/work/selinux-access-query-v1')\nruntime=[]\nfor path,expected in [\n('/work/fedora-proot-src/src/proot','313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f'),\n('/usr/bin/qemu-aarch64-static','73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943'),\n('/work/fedora-system-integration-v1/rootfs/usr/bin/python3','a12cb0a1160abfbc59d3336fb3713562977fd862b9a3eafc2553c89b887a8d15'),\n('/work/selinux-access-query-v1/query_service_entry.py','40eece21f1e728983c9109e2a51e3151974c2128bf2022d03053e389f8dafc14')]:\n p=pathlib.Path(path);d=p.read_bytes();h=hashlib.sha256(d).hexdigest();assert h==expected\n runtime.append({'path':path,'resolved_path':str(p.resolve()),'bytes':len(d),'sha256':h})\nargs=['/work/fedora-proot-src/src/proot','--kill-on-exit','-0','-r','/work/fedora-system-integration-v1/rootfs','-q','/usr/bin/qemu-aarch64-static','-b','/proc','-b','/dev/null','-b','/dev/zero','-b','/dev/random','-b','/dev/urandom','-b',str(root)+':/analysis','-w','/','/usr/bin/python3','-B','-I','/analysis/query_service_entry.py']\nenv=os.environ.copy();env['LD_LIBRARY_PATH']='/work/fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu';env['SYSTEMD_OFFLINE']='1'\ntry:\n r=subprocess.run(args,env=env,capture_output=True,text=True,timeout=45)\nexcept subprocess.TimeoutExpired as e:\n with (root/'service-entry-01-timeout.json').open('x') as f:json.dump({'timeout_seconds':45,'command':args},f,indent=2)\n raise\nwith (root/'service-entry-01.stdout.json').open('x') as f:f.write(r.stdout)\nwith (root/'service-entry-01.stderr.log').open('x') as f:f.write(r.stderr)\nwith (root/'service-entry-01-invocation.json').open('x') as f:json.dump({'command':args,'timeout_seconds':45,'runtime':runtime,'environment_overrides':{'LD_LIBRARY_PATH':env['LD_LIBRARY_PATH'],'SYSTEMD_OFFLINE':'1'},'return_code':r.returncode},f,indent=2)\nprint(json.dumps({'return_code':r.returncode,'stdout_bytes':len(r.stdout.encode()),'stderr_bytes':len(r.stderr.encode()),'stderr':r.stderr[:4096]}))\nif r.stdout:\n data=json.loads(r.stdout)\n print(json.dumps({k:data.get(k) for k in ['query_completed','query_count','permission_denial_count','error','input_policy','converted_policy','library','return_codes']}))\n groups={}\n for item in data.get('queries',[]):\n  key=(item['source_context'],item['target_context'])\n  groups.setdefault(key,[]).append({'permission':item['class']+':'+item['permission'],'allowed':item['permission_allowed'],'auditdeny_bit':item['denial_audit_mask_includes_permission'],'reasons':item['reasons']})\n for (source,target),values in groups.items():print(json.dumps({'source':source,'target':target,'decisions':values}))\nraise SystemExit(r.returncode)\n"
+        ],
+        "elapsed_seconds": 4.268146489979699,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T04:00:27.830096+00:00"
+      },
+      "job_record": {
+        "bytes": 2911,
+        "path": "/work/selinux-access-query-v1/jobs/service-entry-01.json",
+        "sha256": "e8b4bff1519e8ebfc79dc6fc8b66f194c201483e8fc7162edb71c84d695323a9"
+      },
+      "log": {
+        "bytes": 1904,
+        "path": "/work/selinux-access-query-v1/jobs/service-entry-01.log",
+        "sha256": "20a457f055568a3473f651a44f6bf12169cebdf2e524888cc187380d6a3e28ce"
+      },
+      "name": "service-entry-01",
+      "result": {
+        "automatic_transition_computed": false,
+        "base_query": {
+          "permission_denial_count": 10,
+          "query_completed": true,
+          "query_count": 44,
+          "serialized_result_sha256": "f556fbb650713298b380e7d05e7677b49c683abc6d6dd42af4d1d61b92f096a3"
+        },
+        "engine_sha256": "43f81b1334aeac1691529a699a6b8dad923ada9b5f16e38b2c45643ead9736d3",
+        "entrypoint_implies_transition": false,
+        "hardware_tested": false,
+        "inputs_unchanged_after_query": true,
+        "kernel_policy_load_attempted": false,
+        "live_selinux_configuration_changed": false,
+        "permission_denial_count": 0,
+        "queries": [
+          {
+            "class": "process",
+            "class_id": 2,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "transition",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00690a7e",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffa7ffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000002",
+            "return_code": 0,
+            "source_context": "system_u:system_r:init_t:s0",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "entrypoint",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x10000000",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:bin_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "execute",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00004000",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:bin_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "read",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000002",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:bin_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "open",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00080000",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:bin_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "getattr",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000010",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:bin_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "entrypoint",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x10000000",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:shell_exec_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "execute",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00004000",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:shell_exec_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "read",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000002",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:shell_exec_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "open",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00080000",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:shell_exec_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "getattr",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000010",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:shell_exec_t:s0"
+          }
+        ],
+        "query_completed": true,
+        "query_count": 11,
+        "return_codes": {
+          "class:file": 0,
+          "class:process": 0,
+          "context:system_u:object_r:bin_t:s0": 0,
+          "context:system_u:object_r:shell_exec_t:s0": 0,
+          "context:system_u:system_r:init_t:s0": 0,
+          "context:system_u:system_r:initrc_t:s0": 0,
+          "permission:file:entrypoint": 0,
+          "permission:file:execute": 0,
+          "permission:file:getattr": 0,
+          "permission:file:open": 0,
+          "permission:file:read": 0,
+          "permission:process:transition": 0
+        },
+        "rootfs_written_by_probe": false,
+        "schema_version": 1,
+        "scope": "offline service-entry access vectors; not an execution test",
+        "sepol_transition_sid_exported": false
+      },
+      "scope": "Retained first 11 service-entry AVs; before the setexec follow-up",
+      "stderr": {
+        "bytes": 0,
+        "path": "/work/selinux-access-query-v1/service-entry-01.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 7828,
+        "path": "/work/selinux-access-query-v1/service-entry-01.stdout.json",
+        "sha256": "6902c2b5abffa486e6671ded42cd563656525bd166c7b58958101a1c179bd32b"
+      }
+    },
+    {
+      "executed_probe": {
+        "path": "/work/selinux-access-query-v1/query_service_entry_v2.py",
+        "sha256": "5397f6a590c64fe8ab1c3b087dec8791c79c3d6362840dac5ea17e18c7fe4021"
+      },
+      "invocation": {
+        "command": [
+          "/work/fedora-proot-src/src/proot",
+          "--kill-on-exit",
+          "-0",
+          "-r",
+          "/work/fedora-system-integration-v1/rootfs",
+          "-q",
+          "/usr/bin/qemu-aarch64-static",
+          "-b",
+          "/proc",
+          "-b",
+          "/dev/null",
+          "-b",
+          "/dev/zero",
+          "-b",
+          "/dev/random",
+          "-b",
+          "/dev/urandom",
+          "-b",
+          "/work/selinux-access-query-v1:/analysis",
+          "-w",
+          "/",
+          "/usr/bin/python3",
+          "-B",
+          "-I",
+          "/analysis/query_service_entry_v2.py"
+        ],
+        "environment_overrides": {
+          "LD_LIBRARY_PATH": "/work/fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu",
+          "SYSTEMD_OFFLINE": "1"
+        },
+        "return_code": 0,
+        "runtime": [
+          {
+            "bytes": 832232,
+            "path": "/work/fedora-proot-src/src/proot",
+            "resolved_path": "/work/fedora-proot-src/src/proot",
+            "sha256": "313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f"
+          },
+          {
+            "bytes": 16661520,
+            "path": "/usr/bin/qemu-aarch64-static",
+            "resolved_path": "/usr/bin/qemu-aarch64",
+            "sha256": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943"
+          },
+          {
+            "bytes": 68968,
+            "path": "/work/fedora-system-integration-v1/rootfs/usr/bin/python3",
+            "resolved_path": "/work/fedora-system-integration-v1/rootfs/usr/bin/python3.15",
+            "sha256": "a12cb0a1160abfbc59d3336fb3713562977fd862b9a3eafc2553c89b887a8d15"
+          },
+          {
+            "bytes": 6928,
+            "path": "/work/selinux-access-query-v1/query_service_entry_v2.py",
+            "resolved_path": "/work/selinux-access-query-v1/query_service_entry_v2.py",
+            "sha256": "5397f6a590c64fe8ab1c3b087dec8791c79c3d6362840dac5ea17e18c7fe4021"
+          }
+        ],
+        "timeout_seconds": 45
+      },
+      "invocation_record": {
+        "bytes": 1701,
+        "path": "/work/selinux-access-query-v1/service-entry-02-invocation.json",
+        "sha256": "4b161baa384d2c002471bc10944444c8b23aeb22733869bd8ccaab52e7485c8e"
+      },
+      "job": {
+        "command": [
+          "python3",
+          "-c",
+          "import hashlib,json,os,pathlib,subprocess,sys\nroot=pathlib.Path('/work/selinux-access-query-v1')\nruntime=[]\nfor path,expected in [\n('/work/fedora-proot-src/src/proot','313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f'),\n('/usr/bin/qemu-aarch64-static','73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943'),\n('/work/fedora-system-integration-v1/rootfs/usr/bin/python3','a12cb0a1160abfbc59d3336fb3713562977fd862b9a3eafc2553c89b887a8d15'),\n('/work/selinux-access-query-v1/query_service_entry_v2.py','5397f6a590c64fe8ab1c3b087dec8791c79c3d6362840dac5ea17e18c7fe4021')]:\n p=pathlib.Path(path);d=p.read_bytes();h=hashlib.sha256(d).hexdigest();assert h==expected\n runtime.append({'path':path,'resolved_path':str(p.resolve()),'bytes':len(d),'sha256':h})\nargs=['/work/fedora-proot-src/src/proot','--kill-on-exit','-0','-r','/work/fedora-system-integration-v1/rootfs','-q','/usr/bin/qemu-aarch64-static','-b','/proc','-b','/dev/null','-b','/dev/zero','-b','/dev/random','-b','/dev/urandom','-b',str(root)+':/analysis','-w','/','/usr/bin/python3','-B','-I','/analysis/query_service_entry_v2.py']\nenv=os.environ.copy();env['LD_LIBRARY_PATH']='/work/fedora-host-tools/unpacked/usr/lib/x86_64-linux-gnu';env['SYSTEMD_OFFLINE']='1'\ntry:\n r=subprocess.run(args,env=env,capture_output=True,text=True,timeout=45)\nexcept subprocess.TimeoutExpired as e:\n with (root/'service-entry-02-timeout.json').open('x') as f:json.dump({'timeout_seconds':45,'command':args},f,indent=2)\n raise\nwith (root/'service-entry-02.stdout.json').open('x') as f:f.write(r.stdout)\nwith (root/'service-entry-02.stderr.log').open('x') as f:f.write(r.stderr)\nwith (root/'service-entry-02-invocation.json').open('x') as f:json.dump({'command':args,'timeout_seconds':45,'runtime':runtime,'environment_overrides':{'LD_LIBRARY_PATH':env['LD_LIBRARY_PATH'],'SYSTEMD_OFFLINE':'1'},'return_code':r.returncode},f,indent=2)\nprint(json.dumps({'return_code':r.returncode,'stdout_bytes':len(r.stdout.encode()),'stderr_bytes':len(r.stderr.encode()),'stderr':r.stderr[:4096]}))\nif r.stdout:\n data=json.loads(r.stdout)\n print(json.dumps({k:data.get(k) for k in ['query_completed','query_count','permission_denial_count','error','input_policy','converted_policy','library','return_codes']}))\n groups={}\n for item in data.get('queries',[]):\n  key=(item['source_context'],item['target_context'])\n  groups.setdefault(key,[]).append({'permission':item['class']+':'+item['permission'],'allowed':item['permission_allowed'],'auditdeny_bit':item['denial_audit_mask_includes_permission'],'reasons':item['reasons']})\n for (source,target),values in groups.items():print(json.dumps({'source':source,'target':target,'decisions':values}))\nraise SystemExit(r.returncode)\n"
+        ],
+        "elapsed_seconds": 4.375907029025257,
+        "exit_code": 0,
+        "start_utc": "2026-11-23T04:02:23.982787+00:00"
+      },
+      "job_record": {
+        "bytes": 2917,
+        "path": "/work/selinux-access-query-v1/jobs/service-entry-02.json",
+        "sha256": "0aa43e045ae30311fe717ffae2a23fe48e7ce8155799ba65ae62549532adf355"
+      },
+      "log": {
+        "bytes": 2125,
+        "path": "/work/selinux-access-query-v1/jobs/service-entry-02.log",
+        "sha256": "162a2eb386f6e94ff70978ec9dba4df29a315a8f9b3af4c8c357ec8ade92a5b9"
+      },
+      "name": "service-entry-02",
+      "result": {
+        "automatic_transition_computed": false,
+        "base_query": {
+          "permission_denial_count": 10,
+          "query_completed": true,
+          "query_count": 44,
+          "serialized_result_sha256": "f556fbb650713298b380e7d05e7677b49c683abc6d6dd42af4d1d61b92f096a3"
+        },
+        "engine_sha256": "43f81b1334aeac1691529a699a6b8dad923ada9b5f16e38b2c45643ead9736d3",
+        "entrypoint_implies_transition": false,
+        "hardware_tested": false,
+        "inputs_unchanged_after_query": true,
+        "kernel_policy_load_attempted": false,
+        "live_selinux_configuration_changed": false,
+        "permission_denial_count": 0,
+        "queries": [
+          {
+            "class": "process",
+            "class_id": 2,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "setexec",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x306f6b7d",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xff83ffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00020000",
+            "return_code": 0,
+            "source_context": "system_u:system_r:init_t:s0",
+            "target_context": "system_u:system_r:init_t:s0"
+          },
+          {
+            "class": "process",
+            "class_id": 2,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "transition",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x00690a7e",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffa7ffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000002",
+            "return_code": 0,
+            "source_context": "system_u:system_r:init_t:s0",
+            "target_context": "system_u:system_r:initrc_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "entrypoint",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x10000000",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:bin_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "execute",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00004000",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:bin_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "read",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000002",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:bin_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "open",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00080000",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:bin_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "getattr",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000010",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:bin_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "entrypoint",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x10000000",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:shell_exec_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "execute",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00004000",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:shell_exec_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "read",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000002",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:shell_exec_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "open",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00080000",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:shell_exec_t:s0"
+          },
+          {
+            "class": "file",
+            "class_id": 6,
+            "denial_audit_mask_includes_permission": true,
+            "permission": "getattr",
+            "permission_allowed": true,
+            "raw_decision": {
+              "allowed": "0x1fffffff",
+              "auditallow": "0x00000000",
+              "auditdeny": "0xffffffff",
+              "decided": "0xffffffff",
+              "seqno": "0x00000000"
+            },
+            "reason_mask": 0,
+            "reasons": [],
+            "requested_mask": "0x00000010",
+            "return_code": 0,
+            "source_context": "system_u:system_r:initrc_t:s0",
+            "target_context": "system_u:object_r:shell_exec_t:s0"
+          }
+        ],
+        "query_completed": true,
+        "query_count": 12,
+        "return_codes": {
+          "class:file": 0,
+          "class:process": 0,
+          "context:system_u:object_r:bin_t:s0": 0,
+          "context:system_u:object_r:shell_exec_t:s0": 0,
+          "context:system_u:system_r:init_t:s0": 0,
+          "context:system_u:system_r:initrc_t:s0": 0,
+          "permission:file:entrypoint": 0,
+          "permission:file:execute": 0,
+          "permission:file:getattr": 0,
+          "permission:file:open": 0,
+          "permission:file:read": 0,
+          "permission:process:setexec": 0,
+          "permission:process:transition": 0
+        },
+        "rootfs_written_by_probe": false,
+        "schema_version": 1,
+        "scope": "offline service-entry access vectors; not an execution test",
+        "sepol_transition_sid_exported": false
+      },
+      "scope": "Final 12 service-entry AVs including init_t self setexec",
+      "stderr": {
+        "bytes": 0,
+        "path": "/work/selinux-access-query-v1/service-entry-02.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 8459,
+        "path": "/work/selinux-access-query-v1/service-entry-02.stdout.json",
+        "sha256": "f68c9a632875ac2f2f96d95f5b8321673e9dda3b8dd5d215ace3b779a53e0d2a"
+      }
+    }
+  ],
+  "file_contexts": {
+    "inputs": [
+      {
+        "bytes": 69008,
+        "path": "/usr/bin/matchpathcon",
+        "sha256": "a3dd655ee10aede42d4fd65a57bf5973e2b1bc322117a1395275fc35962b94f7"
+      },
+      {
+        "bytes": 270480,
+        "path": "/usr/lib64/libselinux.so.1",
+        "sha256": "c9edfec980b8a05666d24dc3a4e15b502431334e2c7e3adcae189402b5031f6d"
+      },
+      {
+        "bytes": 1187,
+        "path": "/etc/selinux/config",
+        "sha256": "80134a263d874d1687a43513a09b6cc8fdc2998e623c1c1670cb5769a85ce942"
+      },
+      {
+        "bytes": 408747,
+        "path": "/etc/selinux/targeted/contexts/files/file_contexts",
+        "sha256": "df39f62b57af725bec5c4fbe2ec8bf82f12be5e2f432ad8dc63e2cdcced98f44"
+      },
+      {
+        "bytes": 432888,
+        "path": "/etc/selinux/targeted/contexts/files/file_contexts.bin",
+        "sha256": "6352017d9f15427776e71c28086456df7ca4e6ac45bb5f07e928a2ee97b27a37"
+      },
+      {
+        "bytes": 0,
+        "path": "/etc/selinux/targeted/contexts/files/file_contexts.local",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "bytes": 15505,
+        "path": "/etc/selinux/targeted/contexts/files/file_contexts.homedirs",
+        "sha256": "c4a705774eecf95efe38354e67ebb6c8a1ff37ec5b858a0658dd31746d91626d"
+      },
+      {
+        "bytes": 0,
+        "path": "/etc/selinux/targeted/contexts/files/file_contexts.subs",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "bytes": 2158,
+        "path": "/etc/selinux/targeted/contexts/files/file_contexts.subs_dist",
+        "sha256": "71b08a07cbc1402ee4cd8ade513a12b848825b72798047ff25d529f06ced1ce3"
+      }
+    ],
+    "lookup": {
+      "command": [
+        "/work/fedora-proot-src/src/proot",
+        "--kill-on-exit",
+        "-0",
+        "-r",
+        "/work/fedora-system-integration-v1/rootfs",
+        "-q",
+        "/usr/bin/qemu-aarch64-static",
+        "-b",
+        "/proc",
+        "-b",
+        "/dev/null",
+        "-b",
+        "/dev/zero",
+        "-b",
+        "/dev/random",
+        "-b",
+        "/dev/urandom",
+        "-w",
+        "/",
+        "/usr/bin/matchpathcon",
+        "-n",
+        "-f",
+        "/etc/selinux/targeted/contexts/files/file_contexts",
+        "/usr/bin/sh",
+        "/usr/bin/bash",
+        "/usr/bin/python3",
+        "/usr/bin/python3.15"
+      ],
+      "meaning": "default file-context lookup only; not live VM inode xattrs",
+      "paths": [
+        "/usr/bin/sh",
+        "/usr/bin/bash",
+        "/usr/bin/python3",
+        "/usr/bin/python3.15"
+      ],
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "system_u:object_r:bin_t:s0\nsystem_u:object_r:shell_exec_t:s0\nsystem_u:object_r:bin_t:s0\nsystem_u:object_r:bin_t:s0\n"
+    },
+    "lookup_record": {
+      "bytes": 24409,
+      "path": "/work/selinux-access-query-v1/entry-contexts-01.json",
+      "sha256": "0844ef4bfa4845243b67d00b6e89930ac5a9d00e3dc5fdcd3c96fd40cea14a29"
+    },
+    "source_tree_xattr_reads": {
+      "meaning": "These are source-tree metadata observations, not labels from the running VM.",
+      "paths": [
+        "/usr/bin/sh",
+        "/usr/bin/bash",
+        "/usr/bin/python3",
+        "/usr/bin/python3.15"
+      ],
+      "python3_symlink_target": "python3.15",
+      "security.selinux": "No data available (errno 61) on all four frozen source-tree paths",
+      "sh_symlink_target": "bash"
+    }
+  },
+  "fixed_library": {
+    "bytes": 802880,
+    "path": "/usr/lib64/libsepol.so.2",
+    "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b"
+  },
+  "fixed_policy": {
+    "bytes": 3835432,
+    "path": "/etc/selinux/targeted/policy/policy.35",
+    "sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+    "version": 35
+  },
+  "gpu_acceleration_tested": false,
+  "hardware_tested": false,
+  "interpretation": {
+    "automatic_service_exec_transition_proven": false,
+    "broker_source_contexts": [
+      "system_u:system_r:system_dbusd_t:s0",
+      "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023"
+    ],
+    "dontaudit_does_not_by_itself_prove_a_denial": true,
+    "entrypoint_permissions_all_allowed": true,
+    "fd_target_is_open_time_sid_not_inode_label": true,
+    "init_and_initrc_fd_and_fifo_allowed": true,
+    "init_self_setexec_allowed": true,
+    "kernel_t_fd_use_allowed": true,
+    "live_domain_permissiveness_not_queried": true,
+    "null_device_chr_read_write_ioctl_allowed": true,
+    "query_return_zero_means_av_computed_not_permission_granted": true,
+    "runtime_followup": "Input integration agent owns actual broker-child/pipe labels, loaded-policy queries and Enforcing command execution. None are replaced by these offline results.",
+    "serialized_policy_booleans_only": true,
+    "unconfined_service_fd_use_allowed": true,
+    "unconfined_service_fifo_denial_audit_bits_all_zero": true,
+    "unconfined_service_fifo_denial_reasons": [
+      "type_enforcement"
+    ],
+    "unconfined_service_fifo_denied_permissions": [
+      "read",
+      "write",
+      "append",
+      "getattr",
+      "ioctl"
+    ],
+    "unconfined_service_target": "system_u:system_r:unconfined_service_t:s0"
+  },
+  "kernel_policy_load_attempted": false,
+  "limited_cil_background": {
+    "binary_transition_api_used": false,
+    "coverage": "Only init, dbus and unconfined CIL files were read. The requested separate domain module does not exist. No all-module or binary automatic-transition proof is claimed.",
+    "reason_stopped": "The integration task selected a direct explicit exec context with Python, and will require its actual runtime context; a speculative shell re-exec path was not pursued.",
+    "records": [
+      {
+        "bytes": 21453,
+        "module": "init",
+        "path": "/work/fedora-system-integration-v1/rootfs/var/lib/selinux/targeted/active/modules/100/init/cil",
+        "selected_process_transitions": [
+          {
+            "line": 1805,
+            "text": "(typetransition init_t shell_exec_t process initrc_t)"
+          },
+          {
+            "line": 5398,
+            "text": "    (typetransition init_t bin_t process unconfined_service_t)"
+          }
+        ],
+        "sha256": "55484740ada88a8b4cf7a29e0484b55696af73c60ddb906e5a8b8bcb5369b0d1",
+        "uncompressed_bytes": 523756,
+        "uncompressed_sha256": "6baf9f06ff85388b3176da4d8bd70357570db8d4e51500ec35ed97f5589feea6"
+      },
+      {
+        "bytes": 5365,
+        "module": "dbus",
+        "path": "/work/fedora-system-integration-v1/rootfs/var/lib/selinux/targeted/active/modules/100/dbus/cil",
+        "selected_process_transitions": [],
+        "sha256": "0c4844856c1691e6f5213d22940b4b3c62d27027fcd0958464f55034ad2431cc",
+        "uncompressed_bytes": 86946,
+        "uncompressed_sha256": "9e597101f3445f4d541704f657cfa4459fbaf9cf8640e9c287635eb53ea7ccd8"
+      },
+      {
+        "bytes": 2646,
+        "module": "unconfined",
+        "path": "/work/fedora-system-integration-v1/rootfs/var/lib/selinux/targeted/active/modules/100/unconfined/cil",
+        "selected_process_transitions": [],
+        "sha256": "d88c73f15a76fd98c7dd34208779d8815e7beea994f0ae0d1870a8ec5fc426e9",
+        "uncompressed_bytes": 28515,
+        "uncompressed_sha256": "5b443182c43b7c549fbbb9a22521d2e04f2771717c266b740cad4b107175eda1"
+      },
+      {
+        "exists": false,
+        "module": "domain",
+        "path": "/work/fedora-system-integration-v1/rootfs/var/lib/selinux/targeted/active/modules/100/domain/cil"
+      }
+    ]
+  },
+  "live_selinux_configuration_changed": false,
+  "memory_conversion": {
+    "bytes": 3835420,
+    "sha256": "aab7b7128bb8f0db2d349ac0817d806e5157b9a0b93dfe4f85ccf630354ebebe",
+    "version": 33
+  },
+  "offline_queries_completed": true,
+  "physical_tablet_accessed": false,
+  "physical_tablet_modified": false,
+  "reproduction": {
+    "container_policy_modified": false,
+    "generic_job_runner": {
+      "bytes": 1546,
+      "path": "/src/scripts/research/build/run_job.py",
+      "sha256": "94b3d3692adbbbbbcec8cf2d84718bf5eb6c0ef0278145add177c4c1e92d63fe"
+    },
+    "host_binfmt_changed": false,
+    "new_packages_installed": false,
+    "old_attempts_retained": true,
+    "output_policy_file_created": false,
+    "per_process_timeout_seconds": 45,
+    "python_flags": [
+      "-B",
+      "-I"
+    ],
+    "source_scripts": [
+      {
+        "bytes": 12847,
+        "path": "scripts/research/selinux/query_policy_access.py",
+        "sha256": "43f81b1334aeac1691529a699a6b8dad923ada9b5f16e38b2c45643ead9736d3"
+      },
+      {
+        "bytes": 6928,
+        "path": "scripts/research/selinux/query_service_entry.py",
+        "sha256": "5397f6a590c64fe8ab1c3b087dec8791c79c3d6362840dac5ea17e18c7fe4021"
+      },
+      {
+        "bytes": 7054,
+        "path": "scripts/research/verify_selinux_compatibility.py",
+        "sha256": "6c3c9d4e75c9da1d30c977ae7d99be4dcb57ebb0bb68d247e9ec12a3d870bf6d"
+      }
+    ]
+  },
+  "retained_failures": [
+    {
+      "effect": "The context.c source download completed; source manifest append did not. Existing manifest shape was read, the files array was updated, and the downloaded source was hash verified. No rootfs or policy write.",
+      "error": "AttributeError: 'dict' object has no attribute 'append'",
+      "stage": "append context.c source manifest",
+      "tool_exit": 1
+    },
+    {
+      "effect": "Read-only attempt stopped before matchpathcon. The retry recorded that candidate module as absent, retained the three existing CIL hashes, and performed the file-context lookup. No policy alteration.",
+      "error": "FileNotFoundError: .../active/modules/100/domain/cil",
+      "stage": "first limited CIL lookup",
+      "tool_exit": 1
+    }
+  ],
+  "rootfs_written_by_probes": false,
+  "runtime_context_handoff": {
+    "actual_broker_child_context_at_reset": "not supplied when offline query was frozen",
+    "actual_stdin_open_time_sid": "unknown",
+    "evidence_strength": "Peer-reported observations used to select these bounded queries; not a standalone live capture by this probe.",
+    "observed_runtime_policy_vs_memory": {
+      "equals_memory_conversion": false,
+      "loaded_bytes": 3835420,
+      "loaded_sha256": "9c79cb12810a781d6cb91f9b7dff160a1d768c534b784743b4256015799f22a8",
+      "loaded_version": 33,
+      "reference_bytes": 26899,
+      "reference_path": "docs/research/2026-11-23/evidence/fedora-system-integration.json",
+      "reference_scope": "previously frozen research1 generic VM loaded-policy export",
+      "reference_sha256": "66ac854b2bc938aed147afe0355b57fcbba856c874e9d82cec4cad663b1c87d9",
+      "semantic_equivalence_established": false
+    },
+    "reported_broker_launcher_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+    "reported_stdin_inode_context": "system_u:object_r:null_device_t:s0",
+    "reported_stdout_stderr_pipe_inode_context": "system_u:system_r:unconfined_service_t:s0",
+    "reported_validator_and_systemd_run_context": "system_u:system_r:unconfined_service_t:s0"
+  },
+  "schema_version": 1,
+  "scope": "frozen Fedora 45 ARM64 policy/libsepol in the dedicated HDD builder; no live policy changes",
+  "status": "completed_offline_access_vector_queries",
+  "upstream": {
+    "commit": "2233a23a4d4f1bf29054037babec13f30d038e65",
+    "files": [
+      {
+        "bytes": 8548,
+        "path": "libsepol/include/sepol/policydb/services.h",
+        "sha256": "92d150b1a12a0d8d30e2e796fd615b86262caeff8ef422b19161bcc00baba8a4",
+        "url": "https://raw.githubusercontent.com/SELinuxProject/selinux/2233a23a4d4f1bf29054037babec13f30d038e65/libsepol/include/sepol/policydb/services.h"
+      },
+      {
+        "bytes": 1584,
+        "path": "libsepol/include/sepol/policydb/flask_types.h",
+        "sha256": "bb91a670dd6730a0c7b69b7c13ec6390e719212cdbdcd5fbd1022af8a4d4e73d",
+        "url": "https://raw.githubusercontent.com/SELinuxProject/selinux/2233a23a4d4f1bf29054037babec13f30d038e65/libsepol/include/sepol/policydb/flask_types.h"
+      },
+      {
+        "bytes": 56928,
+        "path": "libsepol/src/services.c",
+        "sha256": "421e6153b73896dddb893a1fbee2ee4c3084e843acf8dcc293d2970c2264ef43",
+        "url": "https://raw.githubusercontent.com/SELinuxProject/selinux/2233a23a4d4f1bf29054037babec13f30d038e65/libsepol/src/services.c"
+      },
+      {
+        "bytes": 4755,
+        "path": "libsepol/include/sepol/policydb.h",
+        "sha256": "280f674f66326e355447a5b395e0be042c2faee10547229d571d661e97835da0",
+        "url": "https://raw.githubusercontent.com/SELinuxProject/selinux/2233a23a4d4f1bf29054037babec13f30d038e65/libsepol/include/sepol/policydb.h"
+      },
+      {
+        "bytes": 4012,
+        "path": "libsepol/src/policydb_public.c",
+        "sha256": "f7a60c08196b69909693236fbd20ce927fb4fc00cd05e24df23e7b8a60407efb",
+        "url": "https://raw.githubusercontent.com/SELinuxProject/selinux/2233a23a4d4f1bf29054037babec13f30d038e65/libsepol/src/policydb_public.c"
+      },
+      {
+        "bytes": 7199,
+        "path": "libsepol/src/libsepol.map.in",
+        "sha256": "ee64a975750285ea95aeefe11fda34797f48eb7aa78ed7a673266a1ff07d5b95",
+        "url": "https://raw.githubusercontent.com/SELinuxProject/selinux/2233a23a4d4f1bf29054037babec13f30d038e65/libsepol/src/libsepol.map.in"
+      },
+      {
+        "bytes": 861,
+        "path": "libsepol/include/sepol/sepol.h",
+        "sha256": "f6413e21df18a4e347eecddeafea748b1288b571e97a828c06f66d44a5d1150e",
+        "url": "https://raw.githubusercontent.com/SELinuxProject/selinux/2233a23a4d4f1bf29054037babec13f30d038e65/libsepol/include/sepol/sepol.h"
+      },
+      {
+        "bytes": 8124,
+        "path": "libsepol/src/context.c",
+        "sha256": "bd547ec7e6962bdba18fb87f87afa71ced19828b4f6215b8e7d036bbdd138bfd",
+        "url": "https://raw.githubusercontent.com/SELinuxProject/selinux/2233a23a4d4f1bf29054037babec13f30d038e65/libsepol/src/context.c"
+      }
+    ],
+    "source_manifest": {
+      "bytes": 2582,
+      "path": "/work/selinux-access-query-v1/upstream-sources.json",
+      "sha256": "ecc6ed75fb366b1dfe2f2581947279a6d0f7c81ccb2f3488a57ae0e2850a15aa"
+    },
+    "source_vs_fedora_binary": "Official source pins the public API and implementation rationale; the executed Fedora library is independently byte-pinned. Downstream build equivalence is not assumed.",
+    "tag": "3.11",
+    "tag_object": "6fe03fd7524eccc5db74e74320684391805df9a0"
+  },
+  "work_prefix": "/work/selinux-access-query-v1"
+}

@@ -1,0 +1,533 @@
+{
+  "schema_version": 1,
+  "capture_path": "docs/research/2026-11-23/evidence/android-stock.json",
+  "capture_utc": "2026-11-22T20:30:07.299342+00:00",
+  "evidence_scope": "passive Android DT/sysfs capture and offline source comparison; no mode switching or native-Linux test",
+  "source_baseline": "d157b92721fbeeab823f56a677b3593babf3afe6",
+  "decoder_path": "scripts/research/display_decode.py",
+  "decoder_sha256": "554e78983f6e07229d9d7e1aba6d57504ade5a574b5535b73b8f00ce9003198d",
+  "selected_panel_node": "/soc/qcom,mdss_mdp@ae00000/qcom,mdss_dsi_panel_spinel_tianma_nt36532_dsc_3k_video",
+  "selected_timing_node": "/soc/qcom,mdss_mdp@ae00000/qcom,mdss_dsi_panel_spinel_tianma_nt36532_dsc_3k_video/qcom,mdss-dsi-display-timings/timing@0",
+  "timing_nodes": [
+    "/soc/qcom,mdss_mdp@ae00000/qcom,mdss_dsi_panel_spinel_tianma_nt36532_dsc_3k_video/qcom,mdss-dsi-display-timings/timing@0"
+  ],
+  "android_connector": {
+    "/sys/class/drm/card0-DSI-1": {
+      "dpms": "On",
+      "enabled": "enabled",
+      "modes": "2944x1840x120x375888vid\n2944x1840x144x375888vid\n2944x1840x60x375888vid\n2944x1840x30x375888vid",
+      "status": "connected"
+    }
+  },
+  "android_backlight": {
+    "/sys/class/backlight/panel0-backlight": {
+      "actual_brightness": "0",
+      "bl_power": "0",
+      "brightness": "294",
+      "max_brightness": "2047",
+      "type": "raw"
+    }
+  },
+  "panel_properties": {
+    "qcom,dsi-ctrl-num": {
+      "value": [
+        0,
+        1
+      ],
+      "sha256": "cd2662154e6d76b2b2b92e70c0cac3ccf534f9b74eb5b89819ec509083d00a50"
+    },
+    "qcom,dsi-phy-num": {
+      "value": [
+        0,
+        1
+      ],
+      "sha256": "cd2662154e6d76b2b2b92e70c0cac3ccf534f9b74eb5b89819ec509083d00a50"
+    },
+    "qcom,dsi-supported-dfps-list": {
+      "value": [
+        120,
+        144,
+        60,
+        30
+      ],
+      "sha256": "a28279723d51d22482b96105777d68913a0db24b3d02b639599f31200b624c49"
+    },
+    "qcom,mdss-dsi-panel-count": {
+      "value": [
+        2
+      ],
+      "sha256": "433ebf5bc03dffa38536673207a21281612cef5faa9bc7a4d5b9be2fdb12cf1a"
+    },
+    "qcom,mdss-dsi-reset-sequence": {
+      "value": [
+        1,
+        10,
+        0,
+        10,
+        1,
+        10,
+        0,
+        10,
+        1,
+        10
+      ],
+      "sha256": "138355eaf46147c8b5be6d8b970c7ee965a55ddf3b699f51862edb945a16ed3a"
+    },
+    "qcom,platform-reset-gpio": {
+      "value": [
+        101,
+        69,
+        0
+      ],
+      "sha256": "c9fbd60840c708198a95adcc59ef6719eabc0a96926b94e09ac8d081bf05da08"
+    },
+    "qcom,platform-te-gpio": {
+      "value": [
+        101,
+        66,
+        0
+      ],
+      "sha256": "2ec1781da7edb3ea8189a3a631bb3333573ee17a69263a9f456034594a6c507c"
+    }
+  },
+  "dfps_update_strategy": "dfps_immediate_porch_mode_vfp",
+  "timing_properties": {
+    "qcom,mdss-dsi-panel-width": {
+      "value": [
+        1472
+      ],
+      "sha256": "e111474786919c14e160597e8dd9e0dbb8cc7a5d6af614cac47815f72a204d0f"
+    },
+    "qcom,mdss-dsi-panel-height": {
+      "value": [
+        1840
+      ],
+      "sha256": "8376bb945be1698ea34c4dfd064bc37927ee1ea256b627d9f18e9f413fad0d1d"
+    },
+    "qcom,mdss-dsi-panel-framerate": {
+      "value": [
+        120
+      ],
+      "sha256": "3c733359aa795e441a75414a7905e59fb4619ce55f39856dd88f7d8c283f168f"
+    },
+    "qcom,mdss-dsi-panel-clockrate": {
+      "value": [
+        1130000000
+      ],
+      "sha256": "0927e1da5e14523e48ced8bf53fbab4128794d445f00856db1bafe348fb0d343"
+    },
+    "qcom,mdss-dsi-h-front-porch": {
+      "value": [
+        201
+      ],
+      "sha256": "46ff6746da14eb41779b785021bfea15fceaa17ad2988a33b50e71cdbb4b9cf7"
+    },
+    "qcom,mdss-dsi-h-back-porch": {
+      "value": [
+        60
+      ],
+      "sha256": "4082763076bdaee3a85e52eb5893169d45d057397616251e0e699e6403238e66"
+    },
+    "qcom,mdss-dsi-h-pulse-width": {
+      "value": [
+        12
+      ],
+      "sha256": "c22ceee66b8ab104483c83053173b33f992dd4fcb457284c60ef9d699a1c7059"
+    },
+    "qcom,mdss-dsi-v-front-porch": {
+      "value": [
+        26
+      ],
+      "sha256": "c1c3c8fdf22e3a4adef796c8fdaf739d7d3b222f995891eb8f495ca71fb932a8"
+    },
+    "qcom,mdss-dsi-v-back-porch": {
+      "value": [
+        182
+      ],
+      "sha256": "3c6527cac49827251ef9d68bdfc154988f1d747316803beaa47e06cfb73cc9fa"
+    },
+    "qcom,mdss-dsi-v-pulse-width": {
+      "value": [
+        2
+      ],
+      "sha256": "433ebf5bc03dffa38536673207a21281612cef5faa9bc7a4d5b9be2fdb12cf1a"
+    },
+    "qcom,mdss-dsc-version": {
+      "value": [
+        17
+      ],
+      "sha256": "8e00d1c0c8ffe94540e534e256d4589be3e3865dc0559a732697aef38a364e83"
+    },
+    "qcom,mdss-dsc-scr-version": {
+      "value": [
+        0
+      ],
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+    },
+    "qcom,mdss-dsc-bit-per-component": {
+      "value": [
+        8
+      ],
+      "sha256": "17eb70034b5b71092521d184c5e7b069d47de657e51aef2be11a00c115036943"
+    },
+    "qcom,mdss-dsc-bit-per-pixel": {
+      "value": [
+        8
+      ],
+      "sha256": "17eb70034b5b71092521d184c5e7b069d47de657e51aef2be11a00c115036943"
+    },
+    "qcom,mdss-dsc-slice-width": {
+      "value": [
+        736
+      ],
+      "sha256": "ccb6589aafe19eecc7fb28814d6f3aa18da38ccea30b3628c6702e1fa07b908b"
+    },
+    "qcom,mdss-dsc-slice-height": {
+      "value": [
+        20
+      ],
+      "sha256": "a7911cdfdc28e6a1867e359ba426081aacfa692fdeb3e978d2a68dd924fa8c3e"
+    },
+    "qcom,mdss-dsc-slice-per-pkt": {
+      "value": [
+        1
+      ],
+      "sha256": "b40711a88c7039756fb8a73827eabe2c0fe5a0346ca7e0a104adc0fc764f528d"
+    },
+    "qcom,display-topology": {
+      "value": [
+        2,
+        2,
+        2
+      ],
+      "sha256": "3ef24e8c801ac4e2d7c23d9c68083d7ab7c4c6b4db1ab41e94ee173a26ff0701"
+    }
+  },
+  "phy_lane_configuration": {
+    "/soc/qcom,mdss_dsi_phy0@ae94400": {
+      "raw_hex": "00000a0a00000a0a00000a0a00000a0a20008a8a",
+      "sha256": "a82ceff043fd7b4593d69167457c67f73f4b5843577d6faa6e3a9b782e6d70db"
+    },
+    "/soc/qcom,mdss_dsi_phy1@ae96400": {
+      "raw_hex": "00000a0a00000a0a00000a0a00000a0a20008a8a",
+      "sha256": "a82ceff043fd7b4593d69167457c67f73f4b5843577d6faa6e3a9b782e6d70db"
+    }
+  },
+  "panel_phy_timing": {
+    "raw_hex": "00250a0a1b180a0a0a0204001f0f",
+    "sha256": "a191d34a5c33f9da27e83c25596141339b3e135507e47267fdac8be7207c694d"
+  },
+  "on": {
+    "property": "qcom,mdss-dsi-on-command",
+    "state": "dsi_lp_mode",
+    "size_bytes": 800,
+    "sha256": "eb0cca9406be39a7c1934257211d0b194c8fe4f6aeca2119bce5a1b65e41d7dc",
+    "command_count": 88
+  },
+  "tianma_init_comparison": {
+    "source_path": "mainline-port/backports/linux-6.12/panel-novatek-nt36523.c",
+    "source_sha256": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33",
+    "scope": "ordered vendor payload comparison; not runtime/on-wire proof",
+    "source_vendor_count": 86,
+    "captured_vendor_count": 86,
+    "vendor_payloads_match": true,
+    "payload_mismatches": [],
+    "captured_vendor_header_variants": [
+      [
+        "0x39",
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "captured_final_two_records": [
+      {
+        "offset": 782,
+        "packet_type": "0x05",
+        "last_command_raw": 1,
+        "virtual_channel": 0,
+        "message_flags_raw": 0,
+        "wait_ms": 120,
+        "payload_length": 2,
+        "payload_hex": "1100"
+      },
+      {
+        "offset": 791,
+        "packet_type": "0x05",
+        "last_command_raw": 1,
+        "virtual_channel": 0,
+        "message_flags_raw": 0,
+        "wait_ms": 100,
+        "payload_length": 2,
+        "payload_hex": "2900"
+      }
+    ]
+  },
+  "off": {
+    "property": "qcom,mdss-dsi-off-command",
+    "state": "dsi_hs_mode",
+    "size_bytes": 18,
+    "sha256": "2c9fd13b1258217b536c969db415c4becaa18f21c3a1b10e5dd6977b5c856374",
+    "command_count": 2,
+    "commands": [
+      {
+        "offset": 0,
+        "packet_type": "0x05",
+        "last_command_raw": 1,
+        "virtual_channel": 0,
+        "message_flags_raw": 0,
+        "wait_ms": 15,
+        "payload_length": 2,
+        "payload_hex": "2800"
+      },
+      {
+        "offset": 9,
+        "packet_type": "0x05",
+        "last_command_raw": 1,
+        "virtual_channel": 0,
+        "message_flags_raw": 0,
+        "wait_ms": 60,
+        "payload_length": 2,
+        "payload_hex": "1000"
+      }
+    ]
+  },
+  "pen_refresh_commands": {
+    "30": {
+      "property": "qcom,mdss-dsi-dispparam-pen-30hz-command",
+      "state": "dsi_lp_mode",
+      "size_bytes": 27,
+      "sha256": "f090a9a0a6d0d0dde20e84b60b767589fc420474c9528032d93fee1cccc9b28a",
+      "command_count": 3,
+      "commands": [
+        {
+          "offset": 0,
+          "packet_type": "0x39",
+          "last_command_raw": 0,
+          "virtual_channel": 0,
+          "message_flags_raw": 0,
+          "wait_ms": 0,
+          "payload_length": 2,
+          "payload_hex": "ff10"
+        },
+        {
+          "offset": 9,
+          "packet_type": "0x39",
+          "last_command_raw": 0,
+          "virtual_channel": 0,
+          "message_flags_raw": 0,
+          "wait_ms": 0,
+          "payload_length": 2,
+          "payload_hex": "fb01"
+        },
+        {
+          "offset": 18,
+          "packet_type": "0x39",
+          "last_command_raw": 1,
+          "virtual_channel": 0,
+          "message_flags_raw": 0,
+          "wait_ms": 0,
+          "payload_length": 2,
+          "payload_hex": "b340"
+        }
+      ]
+    },
+    "60": {
+      "property": "qcom,mdss-dsi-dispparam-pen-60hz-command",
+      "state": "dsi_lp_mode",
+      "size_bytes": 27,
+      "sha256": "f090a9a0a6d0d0dde20e84b60b767589fc420474c9528032d93fee1cccc9b28a",
+      "command_count": 3,
+      "commands": [
+        {
+          "offset": 0,
+          "packet_type": "0x39",
+          "last_command_raw": 0,
+          "virtual_channel": 0,
+          "message_flags_raw": 0,
+          "wait_ms": 0,
+          "payload_length": 2,
+          "payload_hex": "ff10"
+        },
+        {
+          "offset": 9,
+          "packet_type": "0x39",
+          "last_command_raw": 0,
+          "virtual_channel": 0,
+          "message_flags_raw": 0,
+          "wait_ms": 0,
+          "payload_length": 2,
+          "payload_hex": "fb01"
+        },
+        {
+          "offset": 18,
+          "packet_type": "0x39",
+          "last_command_raw": 1,
+          "virtual_channel": 0,
+          "message_flags_raw": 0,
+          "wait_ms": 0,
+          "payload_length": 2,
+          "payload_hex": "b340"
+        }
+      ]
+    },
+    "120": {
+      "property": "qcom,mdss-dsi-dispparam-pen-120hz-command",
+      "state": "dsi_lp_mode",
+      "size_bytes": 27,
+      "sha256": "f090a9a0a6d0d0dde20e84b60b767589fc420474c9528032d93fee1cccc9b28a",
+      "command_count": 3,
+      "commands": [
+        {
+          "offset": 0,
+          "packet_type": "0x39",
+          "last_command_raw": 0,
+          "virtual_channel": 0,
+          "message_flags_raw": 0,
+          "wait_ms": 0,
+          "payload_length": 2,
+          "payload_hex": "ff10"
+        },
+        {
+          "offset": 9,
+          "packet_type": "0x39",
+          "last_command_raw": 0,
+          "virtual_channel": 0,
+          "message_flags_raw": 0,
+          "wait_ms": 0,
+          "payload_length": 2,
+          "payload_hex": "fb01"
+        },
+        {
+          "offset": 18,
+          "packet_type": "0x39",
+          "last_command_raw": 1,
+          "virtual_channel": 0,
+          "message_flags_raw": 0,
+          "wait_ms": 0,
+          "payload_length": 2,
+          "payload_hex": "b340"
+        }
+      ]
+    },
+    "144": {
+      "property": "qcom,mdss-dsi-dispparam-pen-144hz-command",
+      "state": "dsi_lp_mode",
+      "size_bytes": 27,
+      "sha256": "30f023a6e7b52ab12834cc823184a8863d4deef96bff68ac02a8487be3706c56",
+      "command_count": 3,
+      "commands": [
+        {
+          "offset": 0,
+          "packet_type": "0x39",
+          "last_command_raw": 0,
+          "virtual_channel": 0,
+          "message_flags_raw": 0,
+          "wait_ms": 0,
+          "payload_length": 2,
+          "payload_hex": "ff10"
+        },
+        {
+          "offset": 9,
+          "packet_type": "0x39",
+          "last_command_raw": 0,
+          "virtual_channel": 0,
+          "message_flags_raw": 0,
+          "wait_ms": 0,
+          "payload_length": 2,
+          "payload_hex": "fb01"
+        },
+        {
+          "offset": 18,
+          "packet_type": "0x39",
+          "last_command_raw": 1,
+          "virtual_channel": 0,
+          "message_flags_raw": 0,
+          "wait_ms": 0,
+          "payload_length": 2,
+          "payload_hex": "b300"
+        }
+      ]
+    }
+  },
+  "derived_candidate_120_hz": {
+    "full_htotal": 3490,
+    "vtotal": 2050,
+    "uncompressed_mode_clock_hz": 858540000,
+    "nominal_dsi_lane_bit_rate_hz": 1127664000,
+    "android_dt_panel_clockrate_hz": 1130000000,
+    "difference_ppm_relative_to_android_dt": 2067.257,
+    "per_link_slice_count": 2,
+    "slice_chunk_bytes": 736,
+    "compressed_bytes_per_link_line": 1472,
+    "dsi_rgb888_transport_pixel_clocks_per_link": 491,
+    "interpretation": "source-derived arithmetic; not measured clock or throughput"
+  },
+  "supplies": [
+    {
+      "consumer_node": "/soc/qcom,mdss_mdp@ae00000/qcom,mdss_dsi_panel_spinel_tianma_nt36532_dsc_3k_video",
+      "property": "qcom,panel-supply-entries",
+      "phandle": 1639,
+      "provider_node": "/soc/dsi_panel_pwr_supply_lab_ibb",
+      "provider_properties_in_capture": false
+    },
+    {
+      "consumer_node": "/soc/qcom,mdss_dsi_phy0@ae94400",
+      "property": "vdda-0p9-supply",
+      "phandle": 124,
+      "provider_node": "/soc/rsc@18200000/rpmh-regulator-ldoa5/regulator-pm8150-l5",
+      "provider_properties_in_capture": false
+    },
+    {
+      "consumer_node": "/soc/qcom,mdss_dsi_phy1@ae96400",
+      "property": "vdda-0p9-supply",
+      "phandle": 124,
+      "provider_node": "/soc/rsc@18200000/rpmh-regulator-ldoa5/regulator-pm8150-l5",
+      "provider_properties_in_capture": false
+    },
+    {
+      "consumer_node": "/soc/qcom,mdss_dsi_ctrl0@ae94000",
+      "property": "vdda-1p2-supply",
+      "phandle": 125,
+      "provider_node": "/soc/rsc@18200000/rpmh-regulator-ldoa9/regulator-pm8150-l9",
+      "provider_properties_in_capture": false
+    },
+    {
+      "consumer_node": "/soc/qcom,mdss_dsi_ctrl0@ae94000",
+      "property": "refgen-supply",
+      "phandle": 179,
+      "provider_node": "/soc/refgen-regulator@88e7000",
+      "provider_properties_in_capture": false
+    },
+    {
+      "consumer_node": "/soc/qcom,mdss_dsi_ctrl1@ae96000",
+      "property": "vdda-1p2-supply",
+      "phandle": 125,
+      "provider_node": "/soc/rsc@18200000/rpmh-regulator-ldoa9/regulator-pm8150-l9",
+      "provider_properties_in_capture": false
+    },
+    {
+      "consumer_node": "/soc/qcom,mdss_dsi_ctrl1@ae96000",
+      "property": "refgen-supply",
+      "phandle": 179,
+      "provider_node": "/soc/refgen-regulator@88e7000",
+      "provider_properties_in_capture": false
+    }
+  ],
+  "known_source_gaps": [
+    "6.12.114 exported packetization uses both slices in one packet, unlike captured slice-per-pkt=1",
+    "native disable does not reproduce captured HS mode and staged 15ms/60ms waits",
+    "native TB371FC panel path has no located counterpart to captured per-refresh pen command tables",
+    "120Hz base timing plus VFP-only DFPS property does not establish how 144Hz is attained at runtime"
+  ],
+  "not_captured_or_not_tested": [
+    "active scanout mode/refresh and current clock rates",
+    "complete runtime 128-byte DSC PPS",
+    "runtime DPU resource allocation/CTL ownership/flush state",
+    "runtime pen command dispatch",
+    "cold native initialization or mode switching",
+    "blank/unblank/suspend/resume",
+    "regulator enabled state and panel supply provider subtree"
+  ]
+}

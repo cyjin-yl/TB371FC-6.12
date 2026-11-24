@@ -1,0 +1,3546 @@
+{
+  "activity": {
+    "android_accessed": false,
+    "kernel_source_or_build_changed": false,
+    "new_device_calls_during_report_preparation": 0,
+    "new_vm_started": false,
+    "owner_hardware_tested": false,
+    "policy_loaded": false,
+    "sysctl_written": false
+  },
+  "evidence_class": "fixed kernel source analysis plus a preserved generic-VM log observation",
+  "failure_indicators": [
+    {
+      "condition": "positive count; audit/kauditd, or conservative broader kernel scope",
+      "kind": "positive_callback_suppression",
+      "line": 57,
+      "literal_format": "%s: %d callbacks suppressed",
+      "source": "lib/ratelimit.c"
+    },
+    {
+      "condition": "audit_lost > 0",
+      "kind": "audit_lost",
+      "line": 376,
+      "literal_format": "audit_lost=%u audit_rate_limit=%u audit_backlog_limit=%u",
+      "source": "kernel/audit.c"
+    },
+    {
+      "condition": "diagnostic present",
+      "kind": "audit_backlog",
+      "line": 1908,
+      "literal_format": "audit_backlog=%d > audit_backlog_limit=%d",
+      "source": "kernel/audit.c"
+    },
+    {
+      "kind": "retry_queue",
+      "line": 598,
+      "literal_format": "kauditd retry queue overflow",
+      "source": "kernel/audit.c"
+    },
+    {
+      "kind": "hold_queue",
+      "line": 610,
+      "literal_format": "kauditd hold queue overflow",
+      "source": "kernel/audit.c"
+    },
+    {
+      "condition": "audit context",
+      "kind": "backlog_limit",
+      "line": 1911,
+      "literal_format": "backlog limit exceeded",
+      "source": "kernel/audit.c"
+    },
+    {
+      "condition": "audit context",
+      "kind": "admission_rate",
+      "line": 2461,
+      "literal_format": "rate limit exceeded",
+      "source": "kernel/audit.c"
+    },
+    {
+      "kind": "allocation_start",
+      "line": 1919,
+      "literal_format": "out of memory in audit_log_start",
+      "source": "kernel/audit.c"
+    },
+    {
+      "kind": "allocation_expand",
+      "line": 1949,
+      "literal_format": "out of memory in audit_expand",
+      "source": "kernel/audit.c"
+    }
+  ],
+  "findings": [
+    {
+      "basis": [
+        {
+          "line": 8043,
+          "source": "retained_v7_serial"
+        },
+        {
+          "lines": [
+            53,
+            58
+          ],
+          "source": "lib/ratelimit.c"
+        },
+        {
+          "lines": [
+            178,
+            183
+          ],
+          "source": "include/linux/printk.h"
+        }
+      ],
+      "conclusion": "The retained v7 raw log contains a positive shared-printk suppression warning; missing content is unknown.",
+      "id": "actual_suppression"
+    },
+    {
+      "basis": [
+        {
+          "lines": [
+            541,
+            548
+          ],
+          "source": "kernel/audit.c"
+        },
+        {
+          "lines": [
+            4613,
+            4617
+          ],
+          "source": "kernel/printk/printk.c"
+        },
+        {
+          "lines": [
+            178,
+            183
+          ],
+          "source": "include/linux/printk.h"
+        }
+      ],
+      "conclusion": "kauditd prints non-EOE records through the shared printk_ratelimit state.",
+      "id": "shared_printk_path"
+    },
+    {
+      "basis": [
+        {
+          "lines": [
+            541,
+            548
+          ],
+          "source": "kernel/audit.c"
+        },
+        {
+          "lines": [
+            352,
+            380
+          ],
+          "source": "kernel/audit.c"
+        }
+      ],
+      "conclusion": "The false printk branch does not call audit_log_lost; this is distinct from audit_lost and from deliberate EOE exclusion.",
+      "id": "suppression_not_lost_counter"
+    },
+    {
+      "basis": [
+        {
+          "lines": [
+            33,
+            48
+          ],
+          "source": "lib/ratelimit.c"
+        }
+      ],
+      "conclusion": "Nonzero interval permits an uncounted try-lock rejection; no suppression line alone is not completeness proof.",
+      "id": "lock_contention"
+    },
+    {
+      "basis": [
+        {
+          "lines": [
+            33,
+            39
+          ],
+          "source": "lib/ratelimit.c"
+        },
+        {
+          "lines": [
+            65,
+            70
+          ],
+          "source": "lib/ratelimit.c"
+        }
+      ],
+      "conclusion": "The zero interval path returns true before the state lock and quota. Burst zero is not the same operation.",
+      "id": "zero_interval"
+    },
+    {
+      "basis": [
+        {
+          "lines": [
+            32,
+            43
+          ],
+          "source": "kernel/printk/sysctl.c"
+        },
+        {
+          "lines": [
+            81,
+            83
+          ],
+          "source": "kernel/printk/sysctl.c"
+        },
+        {
+          "lines": [
+            1149,
+            1166
+          ],
+          "source": "kernel/sysctl.c"
+        },
+        {
+          "lines": [
+            1248,
+            1266
+          ],
+          "source": "kernel/sysctl.c"
+        }
+      ],
+      "conclusion": "Registered scalar interval is ASCII seconds using proc_dointvec_jiffies; zero writes the shared interval as zero. Burst uses a different scalar handler.",
+      "id": "sysctl_contract"
+    },
+    {
+      "basis": [
+        {
+          "lines": [
+            113,
+            116
+          ],
+          "source": "kernel/audit.c"
+        },
+        {
+          "lines": [
+            316,
+            342
+          ],
+          "source": "kernel/audit.c"
+        },
+        {
+          "lines": [
+            578,
+            635
+          ],
+          "source": "kernel/audit.c"
+        },
+        {
+          "lines": [
+            1907,
+            1919
+          ],
+          "source": "kernel/audit.c"
+        },
+        {
+          "lines": [
+            2440,
+            2461
+          ],
+          "source": "kernel/audit.c"
+        }
+      ],
+      "conclusion": "Audit rate, backlog, retry/hold queues and allocation failure loss are separate and remain unchanged.",
+      "id": "separate_admission_and_queues"
+    },
+    {
+      "basis": [
+        {
+          "lines": [
+            681,
+            706
+          ],
+          "source": "include/linux/printk.h"
+        },
+        {
+          "lines": [
+            1109,
+            1118
+          ],
+          "source": "Documentation/admin-guide/sysctl/kernel.rst"
+        }
+      ],
+      "conclusion": "Shared printk interval does not disable separate local ratelimit states or the userspace devkmsg limiter.",
+      "id": "independent_local_limiters"
+    }
+  ],
+  "kernel": {
+    "Image": {
+      "sha256": "8ab38b022f7504869443f2469878cd55656b08fb6c56946122710144fc1cc8fb",
+      "size": 40822792
+    },
+    "build_report": {
+      "path": "evidence/research4-system-build.json",
+      "sha256": "0db9a7e6164b44ac845a80974c3a369476ede23ac6f094de9c14c8602fa3faa6",
+      "size": 139692
+    },
+    "kernel.config": {
+      "sha256": "0236496603f168aacc5586eac7e199ca8f840b5d0c9b5ed111da64e9d28ec275",
+      "size": 222379
+    },
+    "release": "6.12.114-tb371fc-research4-system",
+    "source_manifest": {
+      "sha256": "840b2b0ae21424061fc218fc9b0f1dcb02165c3aaef77b5398d264234954ad04",
+      "size": 11748
+    }
+  },
+  "limitations": [
+    "Interval zero affects future use of one shared printk state only; no old records are recovered.",
+    "It does not disable independent per-call-site limiters.",
+    "It does not change audit_rate_limit, audit backlog, retry/hold queues, audit rules, failure mode, or Enforcing.",
+    "The shared suppression caller label does not identify each omitted record.",
+    "No suppression/loss line is not by itself proof that all audit events reached retained serial.",
+    "New helper compilation, actual parameter values, setting readback and complete runtime gates require subsequent separate evidence.",
+    "No TB371FC native-Linux or Android hardware support is established."
+  ],
+  "proposed_runtime_setting": {
+    "actual_dummy_virt_property_required": true,
+    "burst_path": "/proc/sys/kernel/printk_ratelimit_burst",
+    "burst_readback_must_equal_before": true,
+    "burst_write_allowed": false,
+    "expected_fresh_readback": 0,
+    "explicit_opt_in_required": true,
+    "generic_vm_only": true,
+    "path": "/proc/sys/kernel/printk_ratelimit",
+    "this_analysis_executed_setting": false,
+    "this_analysis_read_runtime_values": false,
+    "written_ascii": "0\n"
+  },
+  "retained_v7_serial": {
+    "all_six_callbacks_proven_audit_origin": false,
+    "context_lines": [
+      {
+        "line": 8042,
+        "text": ""
+      },
+      {
+        "line": 8043,
+        "text": "[   60.671667] kauditd_printk_skb: 6 callbacks suppressed"
+      },
+      {
+        "line": 8044,
+        "text": "[   60.671747] audit: type=1130 audit(1792195247.808:22): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-tmpfiles-setup-dev comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'"
+      },
+      {
+        "line": 8045,
+        "text": "\u001b[0;90m\u001b[0;38:5:245mFailed to communicate with plymouth: Connection refused\u001b[0m"
+      }
+    ],
+    "old_run_result_changed": false,
+    "path": "evidence/fedora-r4d-reload-fd-failed-verify.log",
+    "sha256": "cfe215d2a33dc01f8ffdf7ab5bc2d7dd2f7fafec309d06c82eb3db48bb5658aa",
+    "size": 1115806,
+    "suppressed_avc_count_known": false,
+    "suppressed_record_content_known": false,
+    "warning_count": 6,
+    "warning_line": 8043,
+    "warning_timestamp_seconds": "60.671667"
+  },
+  "schema_version": 1,
+  "source_captures": [
+    {
+      "method": "previously completed read-only ordinary-source-file capture; excerpts embedded below",
+      "name": "audit-loss-source.json",
+      "sha256": "6e40a8914729621a48fc4c49871470ec8f82909881ae5c516661ad0b263aeae2",
+      "size": 16859
+    },
+    {
+      "method": "previously completed read-only ordinary-source-file capture; excerpts embedded below",
+      "name": "audit-printk-source-supplement.json",
+      "sha256": "294382573b609fcbb0488f9d18c0a36391d6047ab785b430601ecce1762c57a9",
+      "size": 66067
+    }
+  ],
+  "source_files": {
+    "Documentation/admin-guide/sysctl/kernel.rst": {
+      "lines": [
+        {
+          "line": 1083,
+          "text": "Delay each printk message in ``printk_delay`` milliseconds"
+        },
+        {
+          "line": 1084,
+          "text": ""
+        },
+        {
+          "line": 1085,
+          "text": "Value from 0 - 10000 is allowed."
+        },
+        {
+          "line": 1086,
+          "text": ""
+        },
+        {
+          "line": 1087,
+          "text": ""
+        },
+        {
+          "line": 1088,
+          "text": "printk_ratelimit"
+        },
+        {
+          "line": 1089,
+          "text": "================"
+        },
+        {
+          "line": 1090,
+          "text": ""
+        },
+        {
+          "line": 1091,
+          "text": "Some warning messages are rate limited. ``printk_ratelimit`` specifies"
+        },
+        {
+          "line": 1092,
+          "text": "the minimum length of time between these messages (in seconds)."
+        },
+        {
+          "line": 1093,
+          "text": "The default value is 5 seconds."
+        },
+        {
+          "line": 1094,
+          "text": ""
+        },
+        {
+          "line": 1095,
+          "text": "A value of 0 will disable rate limiting."
+        },
+        {
+          "line": 1096,
+          "text": ""
+        },
+        {
+          "line": 1097,
+          "text": ""
+        },
+        {
+          "line": 1098,
+          "text": "printk_ratelimit_burst"
+        },
+        {
+          "line": 1099,
+          "text": "======================"
+        },
+        {
+          "line": 1100,
+          "text": ""
+        },
+        {
+          "line": 1101,
+          "text": "While long term we enforce one message per `printk_ratelimit`_"
+        },
+        {
+          "line": 1102,
+          "text": "seconds, we do allow a burst of messages to pass through."
+        },
+        {
+          "line": 1103,
+          "text": "``printk_ratelimit_burst`` specifies the number of messages we can"
+        },
+        {
+          "line": 1104,
+          "text": "send before ratelimiting kicks in."
+        },
+        {
+          "line": 1105,
+          "text": ""
+        },
+        {
+          "line": 1106,
+          "text": "The default value is 10 messages."
+        },
+        {
+          "line": 1107,
+          "text": ""
+        },
+        {
+          "line": 1108,
+          "text": ""
+        },
+        {
+          "line": 1109,
+          "text": "printk_devkmsg"
+        },
+        {
+          "line": 1110,
+          "text": "=============="
+        },
+        {
+          "line": 1111,
+          "text": ""
+        },
+        {
+          "line": 1112,
+          "text": "Control the logging to ``/dev/kmsg`` from userspace:"
+        },
+        {
+          "line": 1113,
+          "text": ""
+        },
+        {
+          "line": 1114,
+          "text": "========= ============================================="
+        },
+        {
+          "line": 1115,
+          "text": "ratelimit default, ratelimited"
+        },
+        {
+          "line": 1116,
+          "text": "on        unlimited logging to /dev/kmsg from userspace"
+        },
+        {
+          "line": 1117,
+          "text": "off       logging to /dev/kmsg disabled"
+        },
+        {
+          "line": 1118,
+          "text": "========= ============================================="
+        },
+        {
+          "line": 1119,
+          "text": ""
+        },
+        {
+          "line": 1120,
+          "text": "The kernel command line parameter ``printk.devkmsg=`` overrides this and is"
+        }
+      ],
+      "sha256": "d1f827e2036b3f8146f805757b228112c28d98dd12909f666b7e024f6c6ccce7",
+      "size": 56465
+    },
+    "include/linux/printk.h": {
+      "lines": [
+        {
+          "line": 173,
+          "text": " */"
+        },
+        {
+          "line": 174,
+          "text": "#define printk_deferred_enter() __printk_deferred_enter()"
+        },
+        {
+          "line": 175,
+          "text": "#define printk_deferred_exit() __printk_deferred_exit()"
+        },
+        {
+          "line": 176,
+          "text": ""
+        },
+        {
+          "line": 177,
+          "text": "/*"
+        },
+        {
+          "line": 178,
+          "text": " * Please don't use printk_ratelimit(), because it shares ratelimiting state"
+        },
+        {
+          "line": 179,
+          "text": " * with all other unrelated printk_ratelimit() callsites.  Instead use"
+        },
+        {
+          "line": 180,
+          "text": " * printk_ratelimited() or plain old __ratelimit()."
+        },
+        {
+          "line": 181,
+          "text": " */"
+        },
+        {
+          "line": 182,
+          "text": "extern int __printk_ratelimit(const char *func);"
+        },
+        {
+          "line": 183,
+          "text": "#define printk_ratelimit() __printk_ratelimit(__func__)"
+        },
+        {
+          "line": 184,
+          "text": "extern bool printk_timed_ratelimit(unsigned long *caller_jiffies,"
+        },
+        {
+          "line": 185,
+          "text": "\t\t\t\t   unsigned int interval_msec);"
+        },
+        {
+          "line": 186,
+          "text": ""
+        },
+        {
+          "line": 187,
+          "text": "extern int printk_delay_msec;"
+        },
+        {
+          "line": 188,
+          "text": "extern int dmesg_restrict;"
+        },
+        {
+          "line": 189,
+          "text": ""
+        },
+        {
+          "line": 190,
+          "text": "extern void wake_up_klogd(void);"
+        },
+        {
+          "line": 191,
+          "text": ""
+        },
+        {
+          "line": 192,
+          "text": "char *log_buf_addr_get(void);"
+        },
+        {
+          "line": 193,
+          "text": "u32 log_buf_len_get(void);"
+        },
+        {
+          "line": 194,
+          "text": "void log_buf_vmcoreinfo_setup(void);"
+        },
+        {
+          "line": 195,
+          "text": "void __init setup_log_buf(int early);"
+        },
+        {
+          "line": 196,
+          "text": "__printf(1, 2) void dump_stack_set_arch_desc(const char *fmt, ...);"
+        },
+        {
+          "line": 197,
+          "text": "void dump_stack_print_info(const char *log_lvl);"
+        },
+        {
+          "line": 198,
+          "text": "void show_regs_print_info(const char *log_lvl);"
+        },
+        {
+          "line": 199,
+          "text": "extern asmlinkage void dump_stack_lvl(const char *log_lvl) __cold;"
+        },
+        {
+          "line": 200,
+          "text": "extern asmlinkage void dump_stack(void) __cold;"
+        },
+        {
+          "line": 228,
+          "text": ""
+        },
+        {
+          "line": 229,
+          "text": "static inline void printk_deferred_exit(void)"
+        },
+        {
+          "line": 230,
+          "text": "{"
+        },
+        {
+          "line": 231,
+          "text": "}"
+        },
+        {
+          "line": 232,
+          "text": ""
+        },
+        {
+          "line": 233,
+          "text": "static inline int printk_ratelimit(void)"
+        },
+        {
+          "line": 234,
+          "text": "{"
+        },
+        {
+          "line": 235,
+          "text": "\treturn 0;"
+        },
+        {
+          "line": 236,
+          "text": "}"
+        },
+        {
+          "line": 237,
+          "text": "static inline bool printk_timed_ratelimit(unsigned long *caller_jiffies,"
+        },
+        {
+          "line": 238,
+          "text": "\t\t\t\t\t  unsigned int interval_msec)"
+        },
+        {
+          "line": 239,
+          "text": "{"
+        },
+        {
+          "line": 240,
+          "text": "\treturn false;"
+        },
+        {
+          "line": 241,
+          "text": "}"
+        },
+        {
+          "line": 242,
+          "text": ""
+        },
+        {
+          "line": 243,
+          "text": "static inline void wake_up_klogd(void)"
+        },
+        {
+          "line": 244,
+          "text": "{"
+        },
+        {
+          "line": 245,
+          "text": "}"
+        },
+        {
+          "line": 246,
+          "text": ""
+        },
+        {
+          "line": 247,
+          "text": "static inline char *log_buf_addr_get(void)"
+        },
+        {
+          "line": 248,
+          "text": "{"
+        },
+        {
+          "line": 249,
+          "text": "\treturn NULL;"
+        },
+        {
+          "line": 250,
+          "text": "}"
+        },
+        {
+          "line": 676,
+          "text": "/*"
+        },
+        {
+          "line": 677,
+          "text": " * ratelimited messages with local ratelimit_state,"
+        },
+        {
+          "line": 678,
+          "text": " * no local ratelimit_state used in the !PRINTK case"
+        },
+        {
+          "line": 679,
+          "text": " */"
+        },
+        {
+          "line": 680,
+          "text": "#ifdef CONFIG_PRINTK"
+        },
+        {
+          "line": 681,
+          "text": "#define printk_ratelimited(fmt, ...)\t\t\t\t\t\\"
+        },
+        {
+          "line": 682,
+          "text": "({\t\t\t\t\t\t\t\t\t\\"
+        },
+        {
+          "line": 683,
+          "text": "\tstatic DEFINE_RATELIMIT_STATE(_rs,\t\t\t\t\\"
+        },
+        {
+          "line": 684,
+          "text": "\t\t\t\t      DEFAULT_RATELIMIT_INTERVAL,\t\\"
+        },
+        {
+          "line": 685,
+          "text": "\t\t\t\t      DEFAULT_RATELIMIT_BURST);\t\t\\"
+        },
+        {
+          "line": 686,
+          "text": "\t\t\t\t\t\t\t\t\t\\"
+        },
+        {
+          "line": 687,
+          "text": "\tif (__ratelimit(&_rs))\t\t\t\t\t\t\\"
+        },
+        {
+          "line": 688,
+          "text": "\t\tprintk(fmt, ##__VA_ARGS__);\t\t\t\t\\"
+        },
+        {
+          "line": 689,
+          "text": "})"
+        },
+        {
+          "line": 690,
+          "text": "#else"
+        },
+        {
+          "line": 691,
+          "text": "#define printk_ratelimited(fmt, ...)\t\t\t\t\t\\"
+        },
+        {
+          "line": 692,
+          "text": "\tno_printk(fmt, ##__VA_ARGS__)"
+        },
+        {
+          "line": 693,
+          "text": "#endif"
+        },
+        {
+          "line": 694,
+          "text": ""
+        },
+        {
+          "line": 695,
+          "text": "#define pr_emerg_ratelimited(fmt, ...)\t\t\t\t\t\\"
+        },
+        {
+          "line": 696,
+          "text": "\tprintk_ratelimited(KERN_EMERG pr_fmt(fmt), ##__VA_ARGS__)"
+        },
+        {
+          "line": 697,
+          "text": "#define pr_alert_ratelimited(fmt, ...)\t\t\t\t\t\\"
+        },
+        {
+          "line": 698,
+          "text": "\tprintk_ratelimited(KERN_ALERT pr_fmt(fmt), ##__VA_ARGS__)"
+        },
+        {
+          "line": 699,
+          "text": "#define pr_crit_ratelimited(fmt, ...)\t\t\t\t\t\\"
+        },
+        {
+          "line": 700,
+          "text": "\tprintk_ratelimited(KERN_CRIT pr_fmt(fmt), ##__VA_ARGS__)"
+        },
+        {
+          "line": 701,
+          "text": "#define pr_err_ratelimited(fmt, ...)\t\t\t\t\t\\"
+        },
+        {
+          "line": 702,
+          "text": "\tprintk_ratelimited(KERN_ERR pr_fmt(fmt), ##__VA_ARGS__)"
+        },
+        {
+          "line": 703,
+          "text": "#define pr_warn_ratelimited(fmt, ...)\t\t\t\t\t\\"
+        },
+        {
+          "line": 704,
+          "text": "\tprintk_ratelimited(KERN_WARNING pr_fmt(fmt), ##__VA_ARGS__)"
+        },
+        {
+          "line": 705,
+          "text": "#define pr_notice_ratelimited(fmt, ...)\t\t\t\t\t\\"
+        },
+        {
+          "line": 706,
+          "text": "\tprintk_ratelimited(KERN_NOTICE pr_fmt(fmt), ##__VA_ARGS__)"
+        },
+        {
+          "line": 707,
+          "text": "#define pr_info_ratelimited(fmt, ...)\t\t\t\t\t\\"
+        },
+        {
+          "line": 708,
+          "text": "\tprintk_ratelimited(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)"
+        },
+        {
+          "line": 709,
+          "text": "/* no pr_cont_ratelimited, don't do that... */"
+        },
+        {
+          "line": 710,
+          "text": ""
+        },
+        {
+          "line": 711,
+          "text": "#if defined(DEBUG)"
+        },
+        {
+          "line": 712,
+          "text": "#define pr_devel_ratelimited(fmt, ...)\t\t\t\t\t\\"
+        },
+        {
+          "line": 713,
+          "text": "\tprintk_ratelimited(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)"
+        },
+        {
+          "line": 714,
+          "text": "#else"
+        },
+        {
+          "line": 715,
+          "text": "#define pr_devel_ratelimited(fmt, ...)\t\t\t\t\t\\"
+        },
+        {
+          "line": 716,
+          "text": "\tno_printk(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)"
+        },
+        {
+          "line": 717,
+          "text": "#endif"
+        },
+        {
+          "line": 718,
+          "text": ""
+        },
+        {
+          "line": 719,
+          "text": "/* If you are writing a driver, please use dev_dbg instead */"
+        },
+        {
+          "line": 720,
+          "text": "#if defined(CONFIG_DYNAMIC_DEBUG) || \\"
+        },
+        {
+          "line": 721,
+          "text": "\t(defined(CONFIG_DYNAMIC_DEBUG_CORE) && defined(DYNAMIC_DEBUG_MODULE))"
+        },
+        {
+          "line": 722,
+          "text": "/* descriptor check is first to prevent flooding with \"callbacks suppressed\" */"
+        },
+        {
+          "line": 723,
+          "text": "#define pr_debug_ratelimited(fmt, ...)\t\t\t\t\t\\"
+        },
+        {
+          "line": 724,
+          "text": "do {\t\t\t\t\t\t\t\t\t\\"
+        },
+        {
+          "line": 725,
+          "text": "\tstatic DEFINE_RATELIMIT_STATE(_rs,\t\t\t\t\\"
+        },
+        {
+          "line": 726,
+          "text": "\t\t\t\t      DEFAULT_RATELIMIT_INTERVAL,\t\\"
+        },
+        {
+          "line": 727,
+          "text": "\t\t\t\t      DEFAULT_RATELIMIT_BURST);\t\t\\"
+        },
+        {
+          "line": 728,
+          "text": "\tDEFINE_DYNAMIC_DEBUG_METADATA(descriptor, pr_fmt(fmt));\t\t\\"
+        },
+        {
+          "line": 729,
+          "text": "\tif (DYNAMIC_DEBUG_BRANCH(descriptor) &&\t\t\t\t\\"
+        },
+        {
+          "line": 730,
+          "text": "\t    __ratelimit(&_rs))\t\t\t\t\t\t\\"
+        },
+        {
+          "line": 731,
+          "text": "\t\t__dynamic_pr_debug(&descriptor, pr_fmt(fmt), ##__VA_ARGS__);\t\\"
+        },
+        {
+          "line": 732,
+          "text": "} while (0)"
+        },
+        {
+          "line": 733,
+          "text": "#elif defined(DEBUG)"
+        },
+        {
+          "line": 734,
+          "text": "#define pr_debug_ratelimited(fmt, ...)\t\t\t\t\t\\"
+        },
+        {
+          "line": 735,
+          "text": "\tprintk_ratelimited(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)"
+        },
+        {
+          "line": 736,
+          "text": "#else"
+        },
+        {
+          "line": 737,
+          "text": "#define pr_debug_ratelimited(fmt, ...) \\"
+        },
+        {
+          "line": 738,
+          "text": "\tno_printk(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)"
+        },
+        {
+          "line": 739,
+          "text": "#endif"
+        },
+        {
+          "line": 740,
+          "text": ""
+        },
+        {
+          "line": 741,
+          "text": "extern const struct file_operations kmsg_fops;"
+        },
+        {
+          "line": 742,
+          "text": ""
+        },
+        {
+          "line": 743,
+          "text": "enum {"
+        },
+        {
+          "line": 744,
+          "text": "\tDUMP_PREFIX_NONE,"
+        },
+        {
+          "line": 745,
+          "text": "\tDUMP_PREFIX_ADDRESS,"
+        },
+        {
+          "line": 746,
+          "text": "\tDUMP_PREFIX_OFFSET"
+        },
+        {
+          "line": 747,
+          "text": "};"
+        },
+        {
+          "line": 748,
+          "text": "extern int hex_dump_to_buffer(const void *buf, size_t len, int rowsize,"
+        },
+        {
+          "line": 749,
+          "text": "\t\t\t      int groupsize, char *linebuf, size_t linebuflen,"
+        },
+        {
+          "line": 750,
+          "text": "\t\t\t      bool ascii);"
+        },
+        {
+          "line": 751,
+          "text": "#ifdef CONFIG_PRINTK"
+        },
+        {
+          "line": 752,
+          "text": "extern void print_hex_dump(const char *level, const char *prefix_str,"
+        }
+      ],
+      "sha256": "ecc5ece0d6627c7b45c6b8e0697e7da8d43a21e2f605a7e009252bc2918ca6de",
+      "size": 24570
+    },
+    "include/linux/ratelimit_types.h": {
+      "lines": [
+        {
+          "line": 9,
+          "text": "#define DEFAULT_RATELIMIT_INTERVAL\t(5 * HZ)"
+        },
+        {
+          "line": 10,
+          "text": "#define DEFAULT_RATELIMIT_BURST\t\t10"
+        },
+        {
+          "line": 11,
+          "text": ""
+        },
+        {
+          "line": 12,
+          "text": "/* issue num suppressed message on exit */"
+        },
+        {
+          "line": 13,
+          "text": "#define RATELIMIT_MSG_ON_RELEASE\tBIT(0)"
+        },
+        {
+          "line": 14,
+          "text": ""
+        },
+        {
+          "line": 15,
+          "text": "struct ratelimit_state {"
+        },
+        {
+          "line": 16,
+          "text": "\traw_spinlock_t\tlock;\t\t/* protect the state */"
+        }
+      ],
+      "sha256": "7e146f60954a64cfe30bc83be3944f95969ba35a7871a4c801f966beaf719fe5",
+      "size": 1360
+    },
+    "kernel/audit.c": {
+      "lines": [
+        {
+          "line": 47,
+          "text": "#include <linux/mutex.h>"
+        },
+        {
+          "line": 48,
+          "text": "#include <linux/gfp.h>"
+        },
+        {
+          "line": 49,
+          "text": "#include <linux/pid.h>"
+        },
+        {
+          "line": 50,
+          "text": "#include <linux/overflow.h>"
+        },
+        {
+          "line": 51,
+          "text": ""
+        },
+        {
+          "line": 52,
+          "text": "#include <linux/audit.h>"
+        },
+        {
+          "line": 53,
+          "text": ""
+        },
+        {
+          "line": 54,
+          "text": "#include <net/sock.h>"
+        },
+        {
+          "line": 98,
+          "text": " * @rcu: RCU head"
+        },
+        {
+          "line": 99,
+          "text": " *"
+        },
+        {
+          "line": 100,
+          "text": " * Description:"
+        },
+        {
+          "line": 101,
+          "text": " * This struct is RCU protected; you must either hold the RCU lock for reading"
+        },
+        {
+          "line": 102,
+          "text": " * or the associated spinlock for writing."
+        },
+        {
+          "line": 103,
+          "text": " */"
+        },
+        {
+          "line": 104,
+          "text": "struct auditd_connection {"
+        },
+        {
+          "line": 105,
+          "text": "\tstruct pid *pid;"
+        },
+        {
+          "line": 106,
+          "text": "\tu32 portid;"
+        },
+        {
+          "line": 107,
+          "text": "\tstruct net *net;"
+        },
+        {
+          "line": 108,
+          "text": "\tstruct rcu_head rcu;"
+        },
+        {
+          "line": 109,
+          "text": "};"
+        },
+        {
+          "line": 110,
+          "text": "static struct auditd_connection __rcu *auditd_conn;"
+        },
+        {
+          "line": 111,
+          "text": "static DEFINE_SPINLOCK(auditd_conn_lock);"
+        },
+        {
+          "line": 112,
+          "text": ""
+        },
+        {
+          "line": 113,
+          "text": "/* If audit_rate_limit is non-zero, limit the rate of sending audit records"
+        },
+        {
+          "line": 114,
+          "text": " * to that number per second.  This prevents DoS attacks, but results in"
+        },
+        {
+          "line": 115,
+          "text": " * audit records being dropped. */"
+        },
+        {
+          "line": 116,
+          "text": "static u32\taudit_rate_limit;"
+        },
+        {
+          "line": 127,
+          "text": "static u32\t\taudit_sig_sid;"
+        },
+        {
+          "line": 128,
+          "text": ""
+        },
+        {
+          "line": 129,
+          "text": "/* Records can be lost in several ways:"
+        },
+        {
+          "line": 130,
+          "text": "   0) [suppressed in audit_alloc]"
+        },
+        {
+          "line": 131,
+          "text": "   1) out of memory in audit_log_start [kmalloc of struct audit_buffer]"
+        },
+        {
+          "line": 132,
+          "text": "   2) out of memory in audit_log_move [alloc_skb]"
+        },
+        {
+          "line": 133,
+          "text": "   3) suppressed due to audit_rate_limit"
+        },
+        {
+          "line": 134,
+          "text": "   4) suppressed due to audit_backlog_limit"
+        },
+        {
+          "line": 135,
+          "text": "*/"
+        },
+        {
+          "line": 136,
+          "text": "static atomic_t\taudit_lost = ATOMIC_INIT(0);"
+        },
+        {
+          "line": 137,
+          "text": ""
+        },
+        {
+          "line": 138,
+          "text": "/* Monotonically increasing sum of time the kernel has spent"
+        },
+        {
+          "line": 139,
+          "text": " * waiting while the backlog limit is exceeded."
+        },
+        {
+          "line": 140,
+          "text": " */"
+        },
+        {
+          "line": 141,
+          "text": "static atomic_t audit_backlog_wait_time_actual = ATOMIC_INIT(0);"
+        },
+        {
+          "line": 142,
+          "text": ""
+        },
+        {
+          "line": 143,
+          "text": "/* Hash for inode-based rules */"
+        },
+        {
+          "line": 280,
+          "text": "}"
+        },
+        {
+          "line": 281,
+          "text": ""
+        },
+        {
+          "line": 282,
+          "text": "/**"
+        },
+        {
+          "line": 283,
+          "text": " * audit_get_sk - Return the audit socket for the given network namespace"
+        },
+        {
+          "line": 284,
+          "text": " * @net: the destination network namespace"
+        },
+        {
+          "line": 285,
+          "text": " *"
+        },
+        {
+          "line": 286,
+          "text": " * Description:"
+        },
+        {
+          "line": 287,
+          "text": " * Returns the sock pointer if valid, NULL otherwise.  The caller must ensure"
+        },
+        {
+          "line": 288,
+          "text": " * that a reference is held for the network namespace while the sock is in use."
+        },
+        {
+          "line": 289,
+          "text": " */"
+        },
+        {
+          "line": 290,
+          "text": "static struct sock *audit_get_sk(const struct net *net)"
+        },
+        {
+          "line": 291,
+          "text": "{"
+        },
+        {
+          "line": 292,
+          "text": "\tstruct audit_net *aunet;"
+        },
+        {
+          "line": 293,
+          "text": ""
+        },
+        {
+          "line": 294,
+          "text": "\tif (!net)"
+        },
+        {
+          "line": 295,
+          "text": "\t\treturn NULL;"
+        },
+        {
+          "line": 296,
+          "text": ""
+        },
+        {
+          "line": 297,
+          "text": "\taunet = net_generic(net, audit_net_id);"
+        },
+        {
+          "line": 298,
+          "text": "\treturn aunet->sk;"
+        },
+        {
+          "line": 299,
+          "text": "}"
+        },
+        {
+          "line": 300,
+          "text": ""
+        },
+        {
+          "line": 301,
+          "text": "void audit_panic(const char *message)"
+        },
+        {
+          "line": 302,
+          "text": "{"
+        },
+        {
+          "line": 303,
+          "text": "\tswitch (audit_failure) {"
+        },
+        {
+          "line": 304,
+          "text": "\tcase AUDIT_FAIL_SILENT:"
+        },
+        {
+          "line": 305,
+          "text": "\t\tbreak;"
+        },
+        {
+          "line": 306,
+          "text": "\tcase AUDIT_FAIL_PRINTK:"
+        },
+        {
+          "line": 307,
+          "text": "\t\tif (printk_ratelimit())"
+        },
+        {
+          "line": 308,
+          "text": "\t\t\tpr_err(\"%s\\n\", message);"
+        },
+        {
+          "line": 309,
+          "text": "\t\tbreak;"
+        },
+        {
+          "line": 310,
+          "text": "\tcase AUDIT_FAIL_PANIC:"
+        },
+        {
+          "line": 311,
+          "text": "\t\tpanic(\"audit: %s\\n\", message);"
+        },
+        {
+          "line": 312,
+          "text": "\t\tbreak;"
+        },
+        {
+          "line": 313,
+          "text": "\t}"
+        },
+        {
+          "line": 314,
+          "text": "}"
+        },
+        {
+          "line": 315,
+          "text": ""
+        },
+        {
+          "line": 316,
+          "text": "static inline int audit_rate_check(void)"
+        },
+        {
+          "line": 317,
+          "text": "{"
+        },
+        {
+          "line": 318,
+          "text": "\tstatic unsigned long\tlast_check = 0;"
+        },
+        {
+          "line": 319,
+          "text": "\tstatic int\t\tmessages   = 0;"
+        },
+        {
+          "line": 320,
+          "text": "\tstatic DEFINE_SPINLOCK(lock);"
+        },
+        {
+          "line": 321,
+          "text": "\tunsigned long\t\tflags;"
+        },
+        {
+          "line": 322,
+          "text": "\tunsigned long\t\tnow;"
+        },
+        {
+          "line": 323,
+          "text": "\tint\t\t\tretval\t   = 0;"
+        },
+        {
+          "line": 324,
+          "text": ""
+        },
+        {
+          "line": 325,
+          "text": "\tif (!audit_rate_limit)"
+        },
+        {
+          "line": 326,
+          "text": "\t\treturn 1;"
+        },
+        {
+          "line": 327,
+          "text": ""
+        },
+        {
+          "line": 328,
+          "text": "\tspin_lock_irqsave(&lock, flags);"
+        },
+        {
+          "line": 329,
+          "text": "\tif (++messages < audit_rate_limit) {"
+        },
+        {
+          "line": 330,
+          "text": "\t\tretval = 1;"
+        },
+        {
+          "line": 331,
+          "text": "\t} else {"
+        },
+        {
+          "line": 332,
+          "text": "\t\tnow = jiffies;"
+        },
+        {
+          "line": 333,
+          "text": "\t\tif (time_after(now, last_check + HZ)) {"
+        },
+        {
+          "line": 334,
+          "text": "\t\t\tlast_check = now;"
+        },
+        {
+          "line": 335,
+          "text": "\t\t\tmessages   = 0;"
+        },
+        {
+          "line": 336,
+          "text": "\t\t\tretval     = 1;"
+        },
+        {
+          "line": 337,
+          "text": "\t\t}"
+        },
+        {
+          "line": 338,
+          "text": "\t}"
+        },
+        {
+          "line": 339,
+          "text": "\tspin_unlock_irqrestore(&lock, flags);"
+        },
+        {
+          "line": 340,
+          "text": ""
+        },
+        {
+          "line": 341,
+          "text": "\treturn retval;"
+        },
+        {
+          "line": 342,
+          "text": "}"
+        },
+        {
+          "line": 343,
+          "text": ""
+        },
+        {
+          "line": 344,
+          "text": "/**"
+        },
+        {
+          "line": 345,
+          "text": " * audit_log_lost - conditionally log lost audit message event"
+        },
+        {
+          "line": 346,
+          "text": " * @message: the message stating reason for lost audit message"
+        },
+        {
+          "line": 347,
+          "text": " *"
+        },
+        {
+          "line": 348,
+          "text": " * Emit at least 1 message per second, even if audit_rate_check is"
+        },
+        {
+          "line": 349,
+          "text": " * throttling."
+        },
+        {
+          "line": 350,
+          "text": " * Always increment the lost messages counter."
+        },
+        {
+          "line": 351,
+          "text": "*/"
+        },
+        {
+          "line": 352,
+          "text": "void audit_log_lost(const char *message)"
+        },
+        {
+          "line": 353,
+          "text": "{"
+        },
+        {
+          "line": 354,
+          "text": "\tstatic unsigned long\tlast_msg = 0;"
+        },
+        {
+          "line": 355,
+          "text": "\tstatic DEFINE_SPINLOCK(lock);"
+        },
+        {
+          "line": 356,
+          "text": "\tunsigned long\t\tflags;"
+        },
+        {
+          "line": 357,
+          "text": "\tunsigned long\t\tnow;"
+        },
+        {
+          "line": 358,
+          "text": "\tint\t\t\tprint;"
+        },
+        {
+          "line": 359,
+          "text": ""
+        },
+        {
+          "line": 360,
+          "text": "\tatomic_inc(&audit_lost);"
+        },
+        {
+          "line": 361,
+          "text": ""
+        },
+        {
+          "line": 362,
+          "text": "\tprint = (audit_failure == AUDIT_FAIL_PANIC || !audit_rate_limit);"
+        },
+        {
+          "line": 363,
+          "text": ""
+        },
+        {
+          "line": 364,
+          "text": "\tif (!print) {"
+        },
+        {
+          "line": 365,
+          "text": "\t\tspin_lock_irqsave(&lock, flags);"
+        },
+        {
+          "line": 366,
+          "text": "\t\tnow = jiffies;"
+        },
+        {
+          "line": 367,
+          "text": "\t\tif (time_after(now, last_msg + HZ)) {"
+        },
+        {
+          "line": 368,
+          "text": "\t\t\tprint = 1;"
+        },
+        {
+          "line": 369,
+          "text": "\t\t\tlast_msg = now;"
+        },
+        {
+          "line": 370,
+          "text": "\t\t}"
+        },
+        {
+          "line": 371,
+          "text": "\t\tspin_unlock_irqrestore(&lock, flags);"
+        },
+        {
+          "line": 372,
+          "text": "\t}"
+        },
+        {
+          "line": 373,
+          "text": ""
+        },
+        {
+          "line": 374,
+          "text": "\tif (print) {"
+        },
+        {
+          "line": 375,
+          "text": "\t\tif (printk_ratelimit())"
+        },
+        {
+          "line": 376,
+          "text": "\t\t\tpr_warn(\"audit_lost=%u audit_rate_limit=%u audit_backlog_limit=%u\\n\","
+        },
+        {
+          "line": 377,
+          "text": "\t\t\t\tatomic_read(&audit_lost),"
+        },
+        {
+          "line": 378,
+          "text": "\t\t\t\taudit_rate_limit,"
+        },
+        {
+          "line": 379,
+          "text": "\t\t\t\taudit_backlog_limit);"
+        },
+        {
+          "line": 380,
+          "text": "\t\taudit_panic(message);"
+        },
+        {
+          "line": 381,
+          "text": "\t}"
+        },
+        {
+          "line": 382,
+          "text": "}"
+        },
+        {
+          "line": 532,
+          "text": "}"
+        },
+        {
+          "line": 533,
+          "text": ""
+        },
+        {
+          "line": 534,
+          "text": "/**"
+        },
+        {
+          "line": 535,
+          "text": " * kauditd_printk_skb - Print the audit record to the ring buffer"
+        },
+        {
+          "line": 536,
+          "text": " * @skb: audit record"
+        },
+        {
+          "line": 537,
+          "text": " *"
+        },
+        {
+          "line": 538,
+          "text": " * Whatever the reason, this packet may not make it to the auditd connection"
+        },
+        {
+          "line": 539,
+          "text": " * so write it via printk so the information isn't completely lost."
+        },
+        {
+          "line": 540,
+          "text": " */"
+        },
+        {
+          "line": 541,
+          "text": "static void kauditd_printk_skb(struct sk_buff *skb)"
+        },
+        {
+          "line": 542,
+          "text": "{"
+        },
+        {
+          "line": 543,
+          "text": "\tstruct nlmsghdr *nlh = nlmsg_hdr(skb);"
+        },
+        {
+          "line": 544,
+          "text": "\tchar *data = nlmsg_data(nlh);"
+        },
+        {
+          "line": 545,
+          "text": ""
+        },
+        {
+          "line": 546,
+          "text": "\tif (nlh->nlmsg_type != AUDIT_EOE && printk_ratelimit())"
+        },
+        {
+          "line": 547,
+          "text": "\t\tpr_notice(\"type=%d %s\\n\", nlh->nlmsg_type, data);"
+        },
+        {
+          "line": 548,
+          "text": "}"
+        },
+        {
+          "line": 549,
+          "text": ""
+        },
+        {
+          "line": 550,
+          "text": "/**"
+        },
+        {
+          "line": 551,
+          "text": " * kauditd_rehold_skb - Handle a audit record send failure in the hold queue"
+        },
+        {
+          "line": 552,
+          "text": " * @skb: audit record"
+        },
+        {
+          "line": 553,
+          "text": " * @error: error code (unused)"
+        },
+        {
+          "line": 554,
+          "text": " *"
+        },
+        {
+          "line": 555,
+          "text": " * Description:"
+        },
+        {
+          "line": 556,
+          "text": " * This should only be used by the kauditd_thread when it fails to flush the"
+        },
+        {
+          "line": 557,
+          "text": " * hold queue."
+        },
+        {
+          "line": 558,
+          "text": " */"
+        },
+        {
+          "line": 559,
+          "text": "static void kauditd_rehold_skb(struct sk_buff *skb, __always_unused int error)"
+        },
+        {
+          "line": 560,
+          "text": "{"
+        },
+        {
+          "line": 561,
+          "text": "\t/* put the record back in the queue */"
+        },
+        {
+          "line": 562,
+          "text": "\tskb_queue_tail(&audit_hold_queue, skb);"
+        },
+        {
+          "line": 563,
+          "text": "}"
+        },
+        {
+          "line": 564,
+          "text": ""
+        },
+        {
+          "line": 565,
+          "text": "/**"
+        },
+        {
+          "line": 566,
+          "text": " * kauditd_hold_skb - Queue an audit record, waiting for auditd"
+        },
+        {
+          "line": 567,
+          "text": " * @skb: audit record"
+        },
+        {
+          "line": 568,
+          "text": " * @error: error code"
+        },
+        {
+          "line": 569,
+          "text": " *"
+        },
+        {
+          "line": 570,
+          "text": " * Description:"
+        },
+        {
+          "line": 571,
+          "text": " * Queue the audit record, waiting for an instance of auditd.  When this"
+        },
+        {
+          "line": 572,
+          "text": " * function is called we haven't given up yet on sending the record, but things"
+        },
+        {
+          "line": 573,
+          "text": " * are not looking good.  The first thing we want to do is try to write the"
+        },
+        {
+          "line": 574,
+          "text": " * record via printk and then see if we want to try and hold on to the record"
+        },
+        {
+          "line": 575,
+          "text": " * and queue it, if we have room.  If we want to hold on to the record, but we"
+        },
+        {
+          "line": 576,
+          "text": " * don't have room, record a record lost message."
+        },
+        {
+          "line": 577,
+          "text": " */"
+        },
+        {
+          "line": 578,
+          "text": "static void kauditd_hold_skb(struct sk_buff *skb, int error)"
+        },
+        {
+          "line": 579,
+          "text": "{"
+        },
+        {
+          "line": 580,
+          "text": "\t/* at this point it is uncertain if we will ever send this to auditd so"
+        },
+        {
+          "line": 581,
+          "text": "\t * try to send the message via printk before we go any further */"
+        },
+        {
+          "line": 582,
+          "text": "\tkauditd_printk_skb(skb);"
+        },
+        {
+          "line": 583,
+          "text": ""
+        },
+        {
+          "line": 584,
+          "text": "\t/* can we just silently drop the message? */"
+        },
+        {
+          "line": 585,
+          "text": "\tif (!audit_default)"
+        },
+        {
+          "line": 586,
+          "text": "\t\tgoto drop;"
+        },
+        {
+          "line": 587,
+          "text": ""
+        },
+        {
+          "line": 588,
+          "text": "\t/* the hold queue is only for when the daemon goes away completely,"
+        },
+        {
+          "line": 589,
+          "text": "\t * not -EAGAIN failures; if we are in a -EAGAIN state requeue the"
+        },
+        {
+          "line": 590,
+          "text": "\t * record on the retry queue unless it's full, in which case drop it"
+        },
+        {
+          "line": 591,
+          "text": "\t */"
+        },
+        {
+          "line": 592,
+          "text": "\tif (error == -EAGAIN) {"
+        },
+        {
+          "line": 593,
+          "text": "\t\tif (!audit_backlog_limit ||"
+        },
+        {
+          "line": 594,
+          "text": "\t\t    skb_queue_len(&audit_retry_queue) < audit_backlog_limit) {"
+        },
+        {
+          "line": 595,
+          "text": "\t\t\tskb_queue_tail(&audit_retry_queue, skb);"
+        },
+        {
+          "line": 596,
+          "text": "\t\t\treturn;"
+        },
+        {
+          "line": 597,
+          "text": "\t\t}"
+        },
+        {
+          "line": 598,
+          "text": "\t\taudit_log_lost(\"kauditd retry queue overflow\");"
+        },
+        {
+          "line": 599,
+          "text": "\t\tgoto drop;"
+        },
+        {
+          "line": 600,
+          "text": "\t}"
+        },
+        {
+          "line": 601,
+          "text": ""
+        },
+        {
+          "line": 602,
+          "text": "\t/* if we have room in the hold queue, queue the message */"
+        },
+        {
+          "line": 603,
+          "text": "\tif (!audit_backlog_limit ||"
+        },
+        {
+          "line": 604,
+          "text": "\t    skb_queue_len(&audit_hold_queue) < audit_backlog_limit) {"
+        },
+        {
+          "line": 605,
+          "text": "\t\tskb_queue_tail(&audit_hold_queue, skb);"
+        },
+        {
+          "line": 606,
+          "text": "\t\treturn;"
+        },
+        {
+          "line": 607,
+          "text": "\t}"
+        },
+        {
+          "line": 608,
+          "text": ""
+        },
+        {
+          "line": 609,
+          "text": "\t/* we have no other options - drop the message */"
+        },
+        {
+          "line": 610,
+          "text": "\taudit_log_lost(\"kauditd hold queue overflow\");"
+        },
+        {
+          "line": 611,
+          "text": "drop:"
+        },
+        {
+          "line": 612,
+          "text": "\tkfree_skb(skb);"
+        },
+        {
+          "line": 613,
+          "text": "}"
+        },
+        {
+          "line": 614,
+          "text": ""
+        },
+        {
+          "line": 615,
+          "text": "/**"
+        },
+        {
+          "line": 616,
+          "text": " * kauditd_retry_skb - Queue an audit record, attempt to send again to auditd"
+        },
+        {
+          "line": 617,
+          "text": " * @skb: audit record"
+        },
+        {
+          "line": 618,
+          "text": " * @error: error code (unused)"
+        },
+        {
+          "line": 619,
+          "text": " *"
+        },
+        {
+          "line": 620,
+          "text": " * Description:"
+        },
+        {
+          "line": 621,
+          "text": " * Not as serious as kauditd_hold_skb() as we still have a connected auditd,"
+        },
+        {
+          "line": 622,
+          "text": " * but for some reason we are having problems sending it audit records so"
+        },
+        {
+          "line": 623,
+          "text": " * queue the given record and attempt to resend."
+        },
+        {
+          "line": 624,
+          "text": " */"
+        },
+        {
+          "line": 625,
+          "text": "static void kauditd_retry_skb(struct sk_buff *skb, __always_unused int error)"
+        },
+        {
+          "line": 626,
+          "text": "{"
+        },
+        {
+          "line": 627,
+          "text": "\tif (!audit_backlog_limit ||"
+        },
+        {
+          "line": 628,
+          "text": "\t    skb_queue_len(&audit_retry_queue) < audit_backlog_limit) {"
+        },
+        {
+          "line": 629,
+          "text": "\t\tskb_queue_tail(&audit_retry_queue, skb);"
+        },
+        {
+          "line": 630,
+          "text": "\t\treturn;"
+        },
+        {
+          "line": 631,
+          "text": "\t}"
+        },
+        {
+          "line": 632,
+          "text": ""
+        },
+        {
+          "line": 633,
+          "text": "\t/* we have to drop the record, send it via printk as a last effort */"
+        },
+        {
+          "line": 634,
+          "text": "\tkauditd_printk_skb(skb);"
+        },
+        {
+          "line": 635,
+          "text": "\taudit_log_lost(\"kauditd retry queue overflow\");"
+        },
+        {
+          "line": 636,
+          "text": "\tkfree_skb(skb);"
+        },
+        {
+          "line": 637,
+          "text": "}"
+        },
+        {
+          "line": 638,
+          "text": ""
+        },
+        {
+          "line": 639,
+          "text": "/**"
+        },
+        {
+          "line": 1904,
+          "text": "\t\t\t\tatomic_add(rtime - stime, &audit_backlog_wait_time_actual);"
+        },
+        {
+          "line": 1905,
+          "text": "\t\t\t\tremove_wait_queue(&audit_backlog_wait, &wait);"
+        },
+        {
+          "line": 1906,
+          "text": "\t\t\t} else {"
+        },
+        {
+          "line": 1907,
+          "text": "\t\t\t\tif (audit_rate_check() && printk_ratelimit())"
+        },
+        {
+          "line": 1908,
+          "text": "\t\t\t\t\tpr_warn(\"audit_backlog=%d > audit_backlog_limit=%d\\n\","
+        },
+        {
+          "line": 1909,
+          "text": "\t\t\t\t\t\tskb_queue_len_lockless(&audit_queue),"
+        },
+        {
+          "line": 1910,
+          "text": "\t\t\t\t\t\taudit_backlog_limit);"
+        },
+        {
+          "line": 1911,
+          "text": "\t\t\t\taudit_log_lost(\"backlog limit exceeded\");"
+        },
+        {
+          "line": 1912,
+          "text": "\t\t\t\treturn NULL;"
+        },
+        {
+          "line": 1913,
+          "text": "\t\t\t}"
+        },
+        {
+          "line": 1914,
+          "text": "\t\t}"
+        },
+        {
+          "line": 1915,
+          "text": "\t}"
+        },
+        {
+          "line": 1916,
+          "text": ""
+        },
+        {
+          "line": 1917,
+          "text": "\tab = audit_buffer_alloc(ctx, gfp_mask, type);"
+        },
+        {
+          "line": 1918,
+          "text": "\tif (!ab) {"
+        },
+        {
+          "line": 1919,
+          "text": "\t\taudit_log_lost(\"out of memory in audit_log_start\");"
+        },
+        {
+          "line": 1920,
+          "text": "\t\treturn NULL;"
+        },
+        {
+          "line": 1921,
+          "text": "\t}"
+        },
+        {
+          "line": 1922,
+          "text": ""
+        },
+        {
+          "line": 1923,
+          "text": "\taudit_get_stamp(ab->ctx, &t, &serial);"
+        },
+        {
+          "line": 1946,
+          "text": "\tint newtail = skb_tailroom(skb);"
+        },
+        {
+          "line": 1947,
+          "text": ""
+        },
+        {
+          "line": 1948,
+          "text": "\tif (ret < 0) {"
+        },
+        {
+          "line": 1949,
+          "text": "\t\taudit_log_lost(\"out of memory in audit_expand\");"
+        },
+        {
+          "line": 1950,
+          "text": "\t\treturn 0;"
+        },
+        {
+          "line": 1951,
+          "text": "\t}"
+        },
+        {
+          "line": 1952,
+          "text": ""
+        },
+        {
+          "line": 1953,
+          "text": "\tskb->truesize += newtail - oldtail;"
+        },
+        {
+          "line": 2043,
+          "text": "\tskb = ab->skb;"
+        },
+        {
+          "line": 2044,
+          "text": "\tavail = skb_tailroom(skb);"
+        },
+        {
+          "line": 2045,
+          "text": ""
+        },
+        {
+          "line": 2046,
+          "text": "\tif (check_shl_overflow(len, 1, &new_len)) {"
+        },
+        {
+          "line": 2047,
+          "text": "\t\taudit_log_format(ab, \"?\");"
+        },
+        {
+          "line": 2048,
+          "text": "\t\treturn;"
+        },
+        {
+          "line": 2049,
+          "text": "\t}"
+        },
+        {
+          "line": 2050,
+          "text": ""
+        },
+        {
+          "line": 2083,
+          "text": "\tavail = skb_tailroom(skb);"
+        },
+        {
+          "line": 2084,
+          "text": ""
+        },
+        {
+          "line": 2085,
+          "text": "\t/* enclosing quotes + null terminator */"
+        },
+        {
+          "line": 2086,
+          "text": "\tif (check_add_overflow(slen, 3, &new_len)) {"
+        },
+        {
+          "line": 2087,
+          "text": "\t\taudit_log_format(ab, \"?\");"
+        },
+        {
+          "line": 2088,
+          "text": "\t\treturn;"
+        },
+        {
+          "line": 2089,
+          "text": "\t}"
+        },
+        {
+          "line": 2090,
+          "text": ""
+        },
+        {
+          "line": 2437,
+          "text": " * queue and a kthread is scheduled to remove them from the queue outside the"
+        },
+        {
+          "line": 2438,
+          "text": " * irq context.  May be called in any context."
+        },
+        {
+          "line": 2439,
+          "text": " */"
+        },
+        {
+          "line": 2440,
+          "text": "void audit_log_end(struct audit_buffer *ab)"
+        },
+        {
+          "line": 2441,
+          "text": "{"
+        },
+        {
+          "line": 2442,
+          "text": "\tstruct sk_buff *skb;"
+        },
+        {
+          "line": 2443,
+          "text": "\tstruct nlmsghdr *nlh;"
+        },
+        {
+          "line": 2444,
+          "text": ""
+        },
+        {
+          "line": 2445,
+          "text": "\tif (!ab)"
+        },
+        {
+          "line": 2446,
+          "text": "\t\treturn;"
+        },
+        {
+          "line": 2447,
+          "text": ""
+        },
+        {
+          "line": 2448,
+          "text": "\tif (audit_rate_check()) {"
+        },
+        {
+          "line": 2449,
+          "text": "\t\tskb = ab->skb;"
+        },
+        {
+          "line": 2450,
+          "text": "\t\tab->skb = NULL;"
+        },
+        {
+          "line": 2451,
+          "text": ""
+        },
+        {
+          "line": 2452,
+          "text": "\t\t/* setup the netlink header, see the comments in"
+        },
+        {
+          "line": 2453,
+          "text": "\t\t * kauditd_send_multicast_skb() for length quirks */"
+        },
+        {
+          "line": 2454,
+          "text": "\t\tnlh = nlmsg_hdr(skb);"
+        },
+        {
+          "line": 2455,
+          "text": "\t\tnlh->nlmsg_len = skb->len - NLMSG_HDRLEN;"
+        },
+        {
+          "line": 2456,
+          "text": ""
+        },
+        {
+          "line": 2457,
+          "text": "\t\t/* queue the netlink packet and poke the kauditd thread */"
+        },
+        {
+          "line": 2458,
+          "text": "\t\tskb_queue_tail(&audit_queue, skb);"
+        },
+        {
+          "line": 2459,
+          "text": "\t\twake_up_interruptible(&kauditd_wait);"
+        },
+        {
+          "line": 2460,
+          "text": "\t} else"
+        },
+        {
+          "line": 2461,
+          "text": "\t\taudit_log_lost(\"rate limit exceeded\");"
+        },
+        {
+          "line": 2462,
+          "text": ""
+        },
+        {
+          "line": 2463,
+          "text": "\taudit_buffer_free(ab);"
+        },
+        {
+          "line": 2464,
+          "text": "}"
+        },
+        {
+          "line": 2465,
+          "text": ""
+        }
+      ],
+      "sha256": "7a33029ecca2b8a71a8a12e9a1699a8180e64a82acfbdc599b0ec658fa07d564",
+      "size": 66999
+    },
+    "kernel/printk/printk.c": {
+      "lines": [
+        {
+          "line": 4608,
+          "text": " * printk rate limiting, lifted from the networking subsystem."
+        },
+        {
+          "line": 4609,
+          "text": " *"
+        },
+        {
+          "line": 4610,
+          "text": " * This enforces a rate limit: not more than 10 kernel messages"
+        },
+        {
+          "line": 4611,
+          "text": " * every 5s to make a denial-of-service attack impossible."
+        },
+        {
+          "line": 4612,
+          "text": " */"
+        },
+        {
+          "line": 4613,
+          "text": "DEFINE_RATELIMIT_STATE(printk_ratelimit_state, 5 * HZ, 10);"
+        },
+        {
+          "line": 4614,
+          "text": ""
+        },
+        {
+          "line": 4615,
+          "text": "int __printk_ratelimit(const char *func)"
+        },
+        {
+          "line": 4616,
+          "text": "{"
+        },
+        {
+          "line": 4617,
+          "text": "\treturn ___ratelimit(&printk_ratelimit_state, func);"
+        },
+        {
+          "line": 4618,
+          "text": "}"
+        },
+        {
+          "line": 4619,
+          "text": "EXPORT_SYMBOL(__printk_ratelimit);"
+        },
+        {
+          "line": 4620,
+          "text": ""
+        },
+        {
+          "line": 4621,
+          "text": "/**"
+        },
+        {
+          "line": 4622,
+          "text": " * printk_timed_ratelimit - caller-controlled printk ratelimiting"
+        },
+        {
+          "line": 4623,
+          "text": " * @caller_jiffies: pointer to caller's state"
+        },
+        {
+          "line": 4624,
+          "text": " * @interval_msecs: minimum interval between prints"
+        },
+        {
+          "line": 4625,
+          "text": " *"
+        },
+        {
+          "line": 4626,
+          "text": " * printk_timed_ratelimit() returns true if more than @interval_msecs"
+        },
+        {
+          "line": 4627,
+          "text": " * milliseconds have elapsed since the last time printk_timed_ratelimit()"
+        },
+        {
+          "line": 4628,
+          "text": " * returned true."
+        },
+        {
+          "line": 4629,
+          "text": " */"
+        },
+        {
+          "line": 4630,
+          "text": "bool printk_timed_ratelimit(unsigned long *caller_jiffies,"
+        },
+        {
+          "line": 4631,
+          "text": "\t\t\tunsigned int interval_msecs)"
+        },
+        {
+          "line": 4632,
+          "text": "{"
+        },
+        {
+          "line": 4633,
+          "text": "\tunsigned long elapsed = jiffies - *caller_jiffies;"
+        },
+        {
+          "line": 4634,
+          "text": ""
+        },
+        {
+          "line": 4635,
+          "text": "\tif (*caller_jiffies && elapsed <= msecs_to_jiffies(interval_msecs))"
+        },
+        {
+          "line": 4636,
+          "text": "\t\treturn false;"
+        }
+      ],
+      "sha256": "282ff1280e0e1a38fac54d8784400c460a2c44710a99026c9acb6977327c2467",
+      "size": 134170
+    },
+    "kernel/printk/sysctl.c": {
+      "lines": [
+        {
+          "line": 27,
+          "text": "\t\t.maxlen\t\t= 4*sizeof(int),"
+        },
+        {
+          "line": 28,
+          "text": "\t\t.mode\t\t= 0644,"
+        },
+        {
+          "line": 29,
+          "text": "\t\t.proc_handler\t= proc_dointvec,"
+        },
+        {
+          "line": 30,
+          "text": "\t},"
+        },
+        {
+          "line": 31,
+          "text": "\t{"
+        },
+        {
+          "line": 32,
+          "text": "\t\t.procname\t= \"printk_ratelimit\","
+        },
+        {
+          "line": 33,
+          "text": "\t\t.data\t\t= &printk_ratelimit_state.interval,"
+        },
+        {
+          "line": 34,
+          "text": "\t\t.maxlen\t\t= sizeof(int),"
+        },
+        {
+          "line": 35,
+          "text": "\t\t.mode\t\t= 0644,"
+        },
+        {
+          "line": 36,
+          "text": "\t\t.proc_handler\t= proc_dointvec_jiffies,"
+        },
+        {
+          "line": 37,
+          "text": "\t},"
+        },
+        {
+          "line": 38,
+          "text": "\t{"
+        },
+        {
+          "line": 39,
+          "text": "\t\t.procname\t= \"printk_ratelimit_burst\","
+        },
+        {
+          "line": 40,
+          "text": "\t\t.data\t\t= &printk_ratelimit_state.burst,"
+        },
+        {
+          "line": 41,
+          "text": "\t\t.maxlen\t\t= sizeof(int),"
+        },
+        {
+          "line": 42,
+          "text": "\t\t.mode\t\t= 0644,"
+        },
+        {
+          "line": 43,
+          "text": "\t\t.proc_handler\t= proc_dointvec,"
+        },
+        {
+          "line": 44,
+          "text": "\t},"
+        },
+        {
+          "line": 45,
+          "text": "\t{"
+        },
+        {
+          "line": 46,
+          "text": "\t\t.procname\t= \"printk_delay\","
+        },
+        {
+          "line": 47,
+          "text": "\t\t.data\t\t= &printk_delay_msec,"
+        },
+        {
+          "line": 48,
+          "text": "\t\t.maxlen\t\t= sizeof(int),"
+        },
+        {
+          "line": 49,
+          "text": "\t\t.mode\t\t= 0644,"
+        },
+        {
+          "line": 50,
+          "text": "\t\t.proc_handler\t= proc_dointvec_minmax,"
+        },
+        {
+          "line": 51,
+          "text": "\t\t.extra1\t\t= SYSCTL_ZERO,"
+        },
+        {
+          "line": 52,
+          "text": "\t\t.extra2\t\t= (void *)&ten_thousand,"
+        },
+        {
+          "line": 53,
+          "text": "\t},"
+        },
+        {
+          "line": 54,
+          "text": "\t{"
+        },
+        {
+          "line": 55,
+          "text": "\t\t.procname\t= \"printk_devkmsg\","
+        },
+        {
+          "line": 56,
+          "text": "\t\t.data\t\t= devkmsg_log_str,"
+        },
+        {
+          "line": 57,
+          "text": "\t\t.maxlen\t\t= DEVKMSG_STR_MAX_SIZE,"
+        },
+        {
+          "line": 78,
+          "text": "\t},"
+        },
+        {
+          "line": 79,
+          "text": "};"
+        },
+        {
+          "line": 80,
+          "text": ""
+        },
+        {
+          "line": 81,
+          "text": "void __init printk_sysctl_init(void)"
+        },
+        {
+          "line": 82,
+          "text": "{"
+        },
+        {
+          "line": 83,
+          "text": "\tregister_sysctl_init(\"kernel\", printk_sysctls);"
+        },
+        {
+          "line": 84,
+          "text": "}"
+        }
+      ],
+      "sha256": "69dbab1caacb8af656edbcd87f8d01131a4753d86392c43c243bd99bdf87c700",
+      "size": 1938
+    },
+    "kernel/sysctl.c": {
+      "lines": [
+        {
+          "line": 1144,
+          "text": "    return do_proc_doulongvec_minmax(table, write, buffer,"
+        },
+        {
+          "line": 1145,
+          "text": "\t\t\t\t     lenp, ppos, HZ, 1000l);"
+        },
+        {
+          "line": 1146,
+          "text": "}"
+        },
+        {
+          "line": 1147,
+          "text": ""
+        },
+        {
+          "line": 1148,
+          "text": ""
+        },
+        {
+          "line": 1149,
+          "text": "static int do_proc_dointvec_jiffies_conv(bool *negp, unsigned long *lvalp,"
+        },
+        {
+          "line": 1150,
+          "text": "\t\t\t\t\t int *valp,"
+        },
+        {
+          "line": 1151,
+          "text": "\t\t\t\t\t int write, void *data)"
+        },
+        {
+          "line": 1152,
+          "text": "{"
+        },
+        {
+          "line": 1153,
+          "text": "\tif (write) {"
+        },
+        {
+          "line": 1154,
+          "text": "\t\tif (*lvalp > INT_MAX / HZ)"
+        },
+        {
+          "line": 1155,
+          "text": "\t\t\treturn 1;"
+        },
+        {
+          "line": 1156,
+          "text": "\t\tif (*negp)"
+        },
+        {
+          "line": 1157,
+          "text": "\t\t\tWRITE_ONCE(*valp, -*lvalp * HZ);"
+        },
+        {
+          "line": 1158,
+          "text": "\t\telse"
+        },
+        {
+          "line": 1159,
+          "text": "\t\t\tWRITE_ONCE(*valp, *lvalp * HZ);"
+        },
+        {
+          "line": 1160,
+          "text": "\t} else {"
+        },
+        {
+          "line": 1161,
+          "text": "\t\tint val = READ_ONCE(*valp);"
+        },
+        {
+          "line": 1162,
+          "text": "\t\tunsigned long lval;"
+        },
+        {
+          "line": 1163,
+          "text": "\t\tif (val < 0) {"
+        },
+        {
+          "line": 1164,
+          "text": "\t\t\t*negp = true;"
+        },
+        {
+          "line": 1165,
+          "text": "\t\t\tlval = -(unsigned long)val;"
+        },
+        {
+          "line": 1166,
+          "text": "\t\t} else {"
+        },
+        {
+          "line": 1243,
+          "text": "\t}"
+        },
+        {
+          "line": 1244,
+          "text": "\treturn 0;"
+        },
+        {
+          "line": 1245,
+          "text": "}"
+        },
+        {
+          "line": 1246,
+          "text": ""
+        },
+        {
+          "line": 1247,
+          "text": "/**"
+        },
+        {
+          "line": 1248,
+          "text": " * proc_dointvec_jiffies - read a vector of integers as seconds"
+        },
+        {
+          "line": 1249,
+          "text": " * @table: the sysctl table"
+        },
+        {
+          "line": 1250,
+          "text": " * @write: %TRUE if this is a write to the sysctl file"
+        },
+        {
+          "line": 1251,
+          "text": " * @buffer: the user buffer"
+        },
+        {
+          "line": 1252,
+          "text": " * @lenp: the size of the user buffer"
+        },
+        {
+          "line": 1253,
+          "text": " * @ppos: file position"
+        },
+        {
+          "line": 1254,
+          "text": " *"
+        },
+        {
+          "line": 1255,
+          "text": " * Reads/writes up to table->maxlen/sizeof(unsigned int) integer"
+        },
+        {
+          "line": 1256,
+          "text": " * values from/to the user buffer, treated as an ASCII string."
+        },
+        {
+          "line": 1257,
+          "text": " * The values read are assumed to be in seconds, and are converted into"
+        },
+        {
+          "line": 1258,
+          "text": " * jiffies."
+        },
+        {
+          "line": 1259,
+          "text": " *"
+        },
+        {
+          "line": 1260,
+          "text": " * Returns 0 on success."
+        },
+        {
+          "line": 1261,
+          "text": " */"
+        },
+        {
+          "line": 1262,
+          "text": "int proc_dointvec_jiffies(const struct ctl_table *table, int write,"
+        },
+        {
+          "line": 1263,
+          "text": "\t\t\t  void *buffer, size_t *lenp, loff_t *ppos)"
+        },
+        {
+          "line": 1264,
+          "text": "{"
+        },
+        {
+          "line": 1265,
+          "text": "    return do_proc_dointvec(table,write,buffer,lenp,ppos,"
+        },
+        {
+          "line": 1266,
+          "text": "\t\t    \t    do_proc_dointvec_jiffies_conv,NULL);"
+        },
+        {
+          "line": 1267,
+          "text": "}"
+        },
+        {
+          "line": 1268,
+          "text": ""
+        },
+        {
+          "line": 1269,
+          "text": "int proc_dointvec_ms_jiffies_minmax(const struct ctl_table *table, int write,"
+        },
+        {
+          "line": 1270,
+          "text": "\t\t\t  void *buffer, size_t *lenp, loff_t *ppos)"
+        },
+        {
+          "line": 1271,
+          "text": "{"
+        },
+        {
+          "line": 1272,
+          "text": "\tstruct do_proc_dointvec_minmax_conv_param param = {"
+        },
+        {
+          "line": 1273,
+          "text": "\t\t.min = (int *) table->extra1,"
+        },
+        {
+          "line": 1274,
+          "text": "\t\t.max = (int *) table->extra2,"
+        },
+        {
+          "line": 1275,
+          "text": "\t};"
+        },
+        {
+          "line": 1276,
+          "text": "\treturn do_proc_dointvec(table, write, buffer, lenp, ppos,"
+        },
+        {
+          "line": 1277,
+          "text": "\t\t\tdo_proc_dointvec_ms_jiffies_minmax_conv, &param);"
+        },
+        {
+          "line": 1278,
+          "text": "}"
+        },
+        {
+          "line": 1279,
+          "text": ""
+        },
+        {
+          "line": 1280,
+          "text": "/**"
+        },
+        {
+          "line": 1281,
+          "text": " * proc_dointvec_userhz_jiffies - read a vector of integers as 1/USER_HZ seconds"
+        },
+        {
+          "line": 1282,
+          "text": " * @table: the sysctl table"
+        },
+        {
+          "line": 1283,
+          "text": " * @write: %TRUE if this is a write to the sysctl file"
+        },
+        {
+          "line": 1511,
+          "text": "\t\t\tvoid *buffer, size_t *lenp, loff_t *ppos)"
+        },
+        {
+          "line": 1512,
+          "text": "{"
+        },
+        {
+          "line": 1513,
+          "text": "\treturn -ENOSYS;"
+        },
+        {
+          "line": 1514,
+          "text": "}"
+        },
+        {
+          "line": 1515,
+          "text": ""
+        },
+        {
+          "line": 1516,
+          "text": "int proc_dointvec_jiffies(const struct ctl_table *table, int write,"
+        },
+        {
+          "line": 1517,
+          "text": "\t\t    void *buffer, size_t *lenp, loff_t *ppos)"
+        },
+        {
+          "line": 1518,
+          "text": "{"
+        },
+        {
+          "line": 1519,
+          "text": "\treturn -ENOSYS;"
+        },
+        {
+          "line": 1520,
+          "text": "}"
+        },
+        {
+          "line": 1521,
+          "text": ""
+        },
+        {
+          "line": 1522,
+          "text": "int proc_dointvec_ms_jiffies_minmax(const struct ctl_table *table, int write,"
+        },
+        {
+          "line": 1523,
+          "text": "\t\t\t\t    void *buffer, size_t *lenp, loff_t *ppos)"
+        },
+        {
+          "line": 1524,
+          "text": "{"
+        },
+        {
+          "line": 1525,
+          "text": "\treturn -ENOSYS;"
+        },
+        {
+          "line": 1526,
+          "text": "}"
+        },
+        {
+          "line": 1527,
+          "text": ""
+        },
+        {
+          "line": 1528,
+          "text": "int proc_dointvec_userhz_jiffies(const struct ctl_table *table, int write,"
+        },
+        {
+          "line": 1529,
+          "text": "\t\t    void *buffer, size_t *lenp, loff_t *ppos)"
+        },
+        {
+          "line": 1530,
+          "text": "{"
+        },
+        {
+          "line": 1531,
+          "text": "\treturn -ENOSYS;"
+        },
+        {
+          "line": 1532,
+          "text": "}"
+        },
+        {
+          "line": 1533,
+          "text": ""
+        },
+        {
+          "line": 2130,
+          "text": "\t{"
+        },
+        {
+          "line": 2131,
+          "text": "\t\t.procname\t= \"stat_interval\","
+        },
+        {
+          "line": 2132,
+          "text": "\t\t.data\t\t= &sysctl_stat_interval,"
+        },
+        {
+          "line": 2133,
+          "text": "\t\t.maxlen\t\t= sizeof(sysctl_stat_interval),"
+        },
+        {
+          "line": 2134,
+          "text": "\t\t.mode\t\t= 0644,"
+        },
+        {
+          "line": 2135,
+          "text": "\t\t.proc_handler\t= proc_dointvec_jiffies,"
+        },
+        {
+          "line": 2136,
+          "text": "\t},"
+        },
+        {
+          "line": 2137,
+          "text": "\t{"
+        },
+        {
+          "line": 2138,
+          "text": "\t\t.procname\t= \"stat_refresh\","
+        },
+        {
+          "line": 2139,
+          "text": "\t\t.data\t\t= NULL,"
+        },
+        {
+          "line": 2140,
+          "text": "\t\t.maxlen\t\t= 0,"
+        },
+        {
+          "line": 2141,
+          "text": "\t\t.mode\t\t= 0600,"
+        },
+        {
+          "line": 2142,
+          "text": "\t\t.proc_handler\t= vmstat_refresh,"
+        },
+        {
+          "line": 2143,
+          "text": "\t},"
+        },
+        {
+          "line": 2144,
+          "text": "#endif"
+        },
+        {
+          "line": 2145,
+          "text": "#ifdef CONFIG_MMU"
+        },
+        {
+          "line": 2146,
+          "text": "\t{"
+        },
+        {
+          "line": 2147,
+          "text": "\t\t.procname\t= \"mmap_min_addr\","
+        },
+        {
+          "line": 2148,
+          "text": "\t\t.data\t\t= &dac_mmap_min_addr,"
+        },
+        {
+          "line": 2149,
+          "text": "\t\t.maxlen\t\t= sizeof(unsigned long),"
+        },
+        {
+          "line": 2150,
+          "text": "\t\t.mode\t\t= 0644,"
+        },
+        {
+          "line": 2151,
+          "text": "\t\t.proc_handler\t= mmap_min_addr_handler,"
+        },
+        {
+          "line": 2152,
+          "text": "\t},"
+        },
+        {
+          "line": 2205,
+          "text": "#endif"
+        },
+        {
+          "line": 2206,
+          "text": "};"
+        },
+        {
+          "line": 2207,
+          "text": ""
+        },
+        {
+          "line": 2208,
+          "text": "int __init sysctl_init_bases(void)"
+        },
+        {
+          "line": 2209,
+          "text": "{"
+        },
+        {
+          "line": 2210,
+          "text": "\tregister_sysctl_init(\"kernel\", kern_table);"
+        },
+        {
+          "line": 2211,
+          "text": "\tregister_sysctl_init(\"vm\", vm_table);"
+        },
+        {
+          "line": 2212,
+          "text": ""
+        },
+        {
+          "line": 2213,
+          "text": "\treturn 0;"
+        },
+        {
+          "line": 2214,
+          "text": "}"
+        },
+        {
+          "line": 2215,
+          "text": "#endif /* CONFIG_SYSCTL */"
+        },
+        {
+          "line": 2216,
+          "text": "/*"
+        },
+        {
+          "line": 2217,
+          "text": " * No sense putting this after each symbol definition, twice,"
+        },
+        {
+          "line": 2218,
+          "text": " * exception granted :-)"
+        },
+        {
+          "line": 2219,
+          "text": " */"
+        },
+        {
+          "line": 2220,
+          "text": "EXPORT_SYMBOL(proc_dobool);"
+        },
+        {
+          "line": 2221,
+          "text": "EXPORT_SYMBOL(proc_dointvec);"
+        },
+        {
+          "line": 2222,
+          "text": "EXPORT_SYMBOL(proc_douintvec);"
+        },
+        {
+          "line": 2223,
+          "text": "EXPORT_SYMBOL(proc_dointvec_jiffies);"
+        },
+        {
+          "line": 2224,
+          "text": "EXPORT_SYMBOL(proc_dointvec_minmax);"
+        },
+        {
+          "line": 2225,
+          "text": "EXPORT_SYMBOL_GPL(proc_douintvec_minmax);"
+        },
+        {
+          "line": 2226,
+          "text": "EXPORT_SYMBOL(proc_dointvec_userhz_jiffies);"
+        },
+        {
+          "line": 2227,
+          "text": "EXPORT_SYMBOL(proc_dointvec_ms_jiffies);"
+        },
+        {
+          "line": 2228,
+          "text": "EXPORT_SYMBOL(proc_dostring);"
+        },
+        {
+          "line": 2229,
+          "text": "EXPORT_SYMBOL(proc_doulongvec_minmax);"
+        },
+        {
+          "line": 2230,
+          "text": "EXPORT_SYMBOL(proc_doulongvec_ms_jiffies_minmax);"
+        },
+        {
+          "line": 2231,
+          "text": "EXPORT_SYMBOL(proc_do_large_bitmap);"
+        }
+      ],
+      "sha256": "b9490abaad5d27f5be97a3862c6158a5b2047e16aedeb9668032121ba5c30dab",
+      "size": 54539
+    },
+    "lib/ratelimit.c": {
+      "lines": [
+        {
+          "line": 1,
+          "text": "// SPDX-License-Identifier: GPL-2.0-only"
+        },
+        {
+          "line": 2,
+          "text": "/*"
+        },
+        {
+          "line": 3,
+          "text": " * ratelimit.c - Do something with rate limit."
+        },
+        {
+          "line": 4,
+          "text": " *"
+        },
+        {
+          "line": 5,
+          "text": " * Isolated from kernel/printk.c by Dave Young <hidave.darkstar@gmail.com>"
+        },
+        {
+          "line": 6,
+          "text": " *"
+        },
+        {
+          "line": 7,
+          "text": " * 2008-05-01 rewrite the function and use a ratelimit_state data struct as"
+        },
+        {
+          "line": 8,
+          "text": " * parameter. Now every user can use their own standalone ratelimit_state."
+        },
+        {
+          "line": 9,
+          "text": " */"
+        },
+        {
+          "line": 10,
+          "text": ""
+        },
+        {
+          "line": 11,
+          "text": "#include <linux/ratelimit.h>"
+        },
+        {
+          "line": 12,
+          "text": "#include <linux/jiffies.h>"
+        },
+        {
+          "line": 13,
+          "text": "#include <linux/export.h>"
+        },
+        {
+          "line": 14,
+          "text": ""
+        },
+        {
+          "line": 15,
+          "text": "/*"
+        },
+        {
+          "line": 16,
+          "text": " * __ratelimit - rate limiting"
+        },
+        {
+          "line": 17,
+          "text": " * @rs: ratelimit_state data"
+        },
+        {
+          "line": 18,
+          "text": " * @func: name of calling function"
+        },
+        {
+          "line": 19,
+          "text": " *"
+        },
+        {
+          "line": 20,
+          "text": " * This enforces a rate limit: not more than @rs->burst callbacks"
+        },
+        {
+          "line": 21,
+          "text": " * in every @rs->interval"
+        },
+        {
+          "line": 22,
+          "text": " *"
+        },
+        {
+          "line": 23,
+          "text": " * RETURNS:"
+        },
+        {
+          "line": 24,
+          "text": " * 0 means callbacks will be suppressed."
+        },
+        {
+          "line": 25,
+          "text": " * 1 means go ahead and do it."
+        },
+        {
+          "line": 26,
+          "text": " */"
+        },
+        {
+          "line": 27,
+          "text": "int ___ratelimit(struct ratelimit_state *rs, const char *func)"
+        },
+        {
+          "line": 28,
+          "text": "{"
+        },
+        {
+          "line": 29,
+          "text": "\t/* Paired with WRITE_ONCE() in .proc_handler()."
+        },
+        {
+          "line": 30,
+          "text": "\t * Changing two values seperately could be inconsistent"
+        },
+        {
+          "line": 31,
+          "text": "\t * and some message could be lost.  (See: net_ratelimit_state)."
+        },
+        {
+          "line": 32,
+          "text": "\t */"
+        },
+        {
+          "line": 33,
+          "text": "\tint interval = READ_ONCE(rs->interval);"
+        },
+        {
+          "line": 34,
+          "text": "\tint burst = READ_ONCE(rs->burst);"
+        },
+        {
+          "line": 35,
+          "text": "\tunsigned long flags;"
+        },
+        {
+          "line": 36,
+          "text": "\tint ret;"
+        },
+        {
+          "line": 37,
+          "text": ""
+        },
+        {
+          "line": 38,
+          "text": "\tif (!interval)"
+        },
+        {
+          "line": 39,
+          "text": "\t\treturn 1;"
+        },
+        {
+          "line": 40,
+          "text": ""
+        },
+        {
+          "line": 41,
+          "text": "\t/*"
+        },
+        {
+          "line": 42,
+          "text": "\t * If we contend on this state's lock then almost"
+        },
+        {
+          "line": 43,
+          "text": "\t * by definition we are too busy to print a message,"
+        },
+        {
+          "line": 44,
+          "text": "\t * in addition to the one that will be printed by"
+        },
+        {
+          "line": 45,
+          "text": "\t * the entity that is holding the lock already:"
+        },
+        {
+          "line": 46,
+          "text": "\t */"
+        },
+        {
+          "line": 47,
+          "text": "\tif (!raw_spin_trylock_irqsave(&rs->lock, flags))"
+        },
+        {
+          "line": 48,
+          "text": "\t\treturn 0;"
+        },
+        {
+          "line": 49,
+          "text": ""
+        },
+        {
+          "line": 50,
+          "text": "\tif (!rs->begin)"
+        },
+        {
+          "line": 51,
+          "text": "\t\trs->begin = jiffies;"
+        },
+        {
+          "line": 52,
+          "text": ""
+        },
+        {
+          "line": 53,
+          "text": "\tif (time_is_before_jiffies(rs->begin + interval)) {"
+        },
+        {
+          "line": 54,
+          "text": "\t\tif (rs->missed) {"
+        },
+        {
+          "line": 55,
+          "text": "\t\t\tif (!(rs->flags & RATELIMIT_MSG_ON_RELEASE)) {"
+        },
+        {
+          "line": 56,
+          "text": "\t\t\t\tprintk_deferred(KERN_WARNING"
+        },
+        {
+          "line": 57,
+          "text": "\t\t\t\t\t\t\"%s: %d callbacks suppressed\\n\","
+        },
+        {
+          "line": 58,
+          "text": "\t\t\t\t\t\tfunc, rs->missed);"
+        },
+        {
+          "line": 59,
+          "text": "\t\t\t\trs->missed = 0;"
+        },
+        {
+          "line": 60,
+          "text": "\t\t\t}"
+        },
+        {
+          "line": 61,
+          "text": "\t\t}"
+        },
+        {
+          "line": 62,
+          "text": "\t\trs->begin   = jiffies;"
+        },
+        {
+          "line": 63,
+          "text": "\t\trs->printed = 0;"
+        },
+        {
+          "line": 64,
+          "text": "\t}"
+        },
+        {
+          "line": 65,
+          "text": "\tif (burst && burst > rs->printed) {"
+        },
+        {
+          "line": 66,
+          "text": "\t\trs->printed++;"
+        },
+        {
+          "line": 67,
+          "text": "\t\tret = 1;"
+        },
+        {
+          "line": 68,
+          "text": "\t} else {"
+        },
+        {
+          "line": 69,
+          "text": "\t\trs->missed++;"
+        },
+        {
+          "line": 70,
+          "text": "\t\tret = 0;"
+        },
+        {
+          "line": 71,
+          "text": "\t}"
+        },
+        {
+          "line": 72,
+          "text": "\traw_spin_unlock_irqrestore(&rs->lock, flags);"
+        },
+        {
+          "line": 73,
+          "text": ""
+        },
+        {
+          "line": 74,
+          "text": "\treturn ret;"
+        },
+        {
+          "line": 75,
+          "text": "}"
+        },
+        {
+          "line": 76,
+          "text": "EXPORT_SYMBOL(___ratelimit);"
+        }
+      ],
+      "sha256": "54807885d6de71d13e5024652b279a3613882bd525462b851cd37bdd52613b16",
+      "size": 1885
+    }
+  },
+  "source_manifest": {
+    "path": "evidence/audit-observability-source-manifest.json",
+    "sha256": "57eb7fb9058bd0bf1ae59a63f59d40eb2bd57671c07ece952eec285578b759ab",
+    "size": 20805
+  },
+  "source_root": "/work/research4-system/source-input/linux-6.12.114-input-integration",
+  "status": "source_analysis_complete_no_setting_executed"
+}

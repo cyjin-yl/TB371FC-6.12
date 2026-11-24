@@ -1,0 +1,10 @@
+{
+  "actual_driver_in_tmux": true,
+  "command": "exec python3 /tank/shared/projects/tb371fc-linux/private/research5-services-20261123/prepare_source.py > /tank/shared/projects/tb371fc-linux/private/research5-services-20261123/prepare-pane.log 2>&1",
+  "driver_sha256": "655295501fc8d5d590d0b6a9c3a1f09d888490e7088aa4ac011ee772285b4b79",
+  "pane": "%292 472779",
+  "prior_launch_rpc": "queued timeout; subsequent read confirmed no launch record and no session before this attempt",
+  "session": "tb371fc-research5-services",
+  "start_utc": "2026-11-23T09:26:43.002848+00:00",
+  "window": "source-01"
+}

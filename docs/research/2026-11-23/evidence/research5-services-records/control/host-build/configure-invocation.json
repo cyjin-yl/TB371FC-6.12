@@ -1,0 +1,42 @@
+{
+  "child_pid": 502357,
+  "command": [
+    "sudo",
+    "-n",
+    "/usr/sbin/pct",
+    "exec",
+    "102",
+    "--",
+    "docker",
+    "exec",
+    "tb371fc-build-ssd-20261123",
+    "python3",
+    "/work/research5-services/recipe-v1/run_job.py",
+    "--work",
+    "/work/research5-services/jobs",
+    "--name",
+    "configure-01",
+    "--",
+    "python3",
+    "/work/research5-services/recipe-v1/build_system.py",
+    "configure",
+    "--work",
+    "/work/research5-services",
+    "--jobs",
+    "4",
+    "--attempt",
+    "1"
+  ],
+  "elapsed_seconds": 40.08349398500286,
+  "ended_utc": "2026-11-23T09:35:49.744762+00:00",
+  "exit_code": 0,
+  "start_utc": "2026-11-23T09:35:09.661254+00:00",
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 2923,
+    "sha256": "8c31cc274b4eb748fc0e9cea11a7323ce24d2f1d899c51ecaa7b8ae0694f6ac7"
+  }
+}

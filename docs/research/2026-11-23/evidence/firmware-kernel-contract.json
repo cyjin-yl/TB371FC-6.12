@@ -1,0 +1,960 @@
+{
+  "capture_utc": "2026-11-22T23:36:56.872505+00:00",
+  "components": [
+    {
+      "driver_config": {
+        "CONFIG_DRM_MSM": "y"
+      },
+      "id": "a650",
+      "notes": [
+        "adreno_request_fw initially tries qcom/name, then legacy name, then qcom/name via normal helper; selected fwloc is reused for subsequent catalog requests.",
+        "DT-selected ZAP bypasses this catalog-location fallback. A renamed file must retain validated signed contents and any loader-required same-stem segments."
+      ],
+      "of_paths": [
+        "/soc@0/gpu@3d00000",
+        "/soc@0/gmu@3d6a000",
+        "/soc@0/gpu@3d00000/zap-shader"
+      ],
+      "requests": [
+        {
+          "name": "qcom/a650_sqe.fw",
+          "selection": "A650 catalog; preferred new firmware location"
+        },
+        {
+          "name": "qcom/a650_gmu.bin",
+          "selection": "A650 catalog; preferred new firmware location"
+        },
+        {
+          "name": "qcom/sm8250/lenovo/tb371fc/a650_zap.mbn",
+          "selection": "Exact zap-shader firmware-name DT override; direct request; MDT loader"
+        }
+      ],
+      "state": "DT available; driver built; physical operation untested"
+    },
+    {
+      "auto_boot_after_successful_probe": true,
+      "driver_config": {
+        "CONFIG_QCOM_Q6V5_PAS": "m"
+      },
+      "id": "adsp",
+      "of_paths": [
+        "/soc@0/remoteproc@17300000"
+      ],
+      "requests": [
+        {
+          "name": "qcom/sm8250/lenovo/tb371fc/adsp.mbn",
+          "selection": "DT overrides generic adsp.mdt; remoteproc request and MDT load"
+        }
+      ],
+      "state": "DT available; PAS module built; physical operation untested"
+    },
+    {
+      "auto_boot_after_successful_probe": true,
+      "driver_config": {
+        "CONFIG_QCOM_Q6V5_PAS": "m"
+      },
+      "id": "cdsp",
+      "of_paths": [
+        "/soc@0/remoteproc@8300000"
+      ],
+      "requests": [
+        {
+          "name": "qcom/sm8250/lenovo/tb371fc/cdsp.mbn",
+          "selection": "DT overrides generic cdsp.mdt; remoteproc request and MDT load"
+        }
+      ],
+      "state": "DT available; PAS module built; physical operation untested"
+    },
+    {
+      "auto_boot_after_successful_probe": true,
+      "driver_config": {
+        "CONFIG_QCOM_Q6V5_PAS": "m"
+      },
+      "id": "slpi",
+      "of_paths": [
+        "/soc@0/remoteproc@5c00000"
+      ],
+      "requests": [
+        {
+          "name": "qcom/sm8250/lenovo/tb371fc/slpi.mbn",
+          "selection": "DT overrides generic slpi.mdt; remoteproc request and MDT load"
+        }
+      ],
+      "state": "DT available; PAS module built; physical operation untested"
+    },
+    {
+      "conditional_directory": "ath11k/QCA6390/hw2.0/",
+      "driver_config": {
+        "CONFIG_ATH11K": "m",
+        "CONFIG_ATH11K_PCI": "m",
+        "CONFIG_MHI_BUS": "y",
+        "CONFIG_PCIE_QCOM": "y"
+      },
+      "id": "qca6390_wlan",
+      "notes": [
+        "No raw bdwlan.* filename auto-selection contract. Retain the stock candidate pool without manufacturing a board-2.bin or choosing an arbitrary board.bin.",
+        "QCA6390 hardware table has supports_regdb=false; the conditional separate regdb fetch is not a required QCA6390 path in this source."
+      ],
+      "of_paths": [
+        "/soc@0/pcie@1c00000",
+        "/soc@0/pcie@1c08000",
+        "/soc@0/pcie@1c10000"
+      ],
+      "requests": [
+        {
+          "name": "ath11k/QCA6390/hw2.0/firmware-2.bin",
+          "selection": "Preferred API2 QCOM-ATH11K-FW container; not a raw AMSS rename"
+        },
+        {
+          "name": "ath11k/QCA6390/hw2.0/amss.bin",
+          "selection": "Legacy/API1 or no embedded AMSS; passed to MHI loader"
+        },
+        {
+          "name": "ath11k/QCA6390/hw2.0/m3.bin",
+          "selection": "Legacy/API1 or no embedded M3; QMI loader"
+        },
+        {
+          "name": "ath11k/QCA6390/hw2.0/board-2.bin",
+          "selection": "QCA-ATH11K-BOARD container; selected using runtime board keys"
+        },
+        {
+          "name": "ath11k/QCA6390/hw2.0/board.bin",
+          "selection": "Raw fallback only after API2 board-name attempts fail; board identity still must be established"
+        }
+      ],
+      "state": "All compiled PCIe controllers disabled; firmware files do not make this profile WLAN-capable"
+    },
+    {
+      "driver_config": {
+        "CONFIG_BT_HCIUART": "m",
+        "CONFIG_BT_HCIUART_QCA": "y",
+        "CONFIG_BT_HCIUART_SERDEV": "y",
+        "CONFIG_BT_QCA": "m",
+        "CONFIG_POWER_SEQUENCING_QCOM_WCN": "m",
+        "CONFIG_SERIAL_QCOM_GENI": "y"
+      },
+      "id": "qca6390_bt",
+      "notes": [
+        "Exact hexadecimal suffix is not established by this static audit.",
+        "If a later DT provides firmware-name, it changes NVM selection; it does not replace the QCA6390 rampatch switch. A filename with an extension gets qca/ prepended; a stem uses board-ID naming."
+      ],
+      "of_paths": [
+        "/soc@0/geniqup@9c0000/serial@998000/bluetooth",
+        "/qca6390-pmu"
+      ],
+      "requests": [
+        {
+          "name_pattern": "qca/htbtfw%02x.tlv",
+          "selection": "QCA6390 rampatch; hexadecimal ROM-derived suffix"
+        },
+        {
+          "name_pattern": "qca/htnv%02x.bin",
+          "selection": "QCA6390 default NVM; same runtime suffix; no DT firmware-name override in this DT"
+        }
+      ],
+      "state": "DT available and relevant UART/BT/power-sequencing drivers built; ROM selection and physical operation untested"
+    },
+    {
+      "driver_config": {
+        "CONFIG_TOUCHSCREEN_NT36523_SPI": "m"
+      },
+      "id": "novatek",
+      "notes": [
+        "A fixed firmware-name overrides selection. Fallback novatek/nt36523.bin is used only if no name was selected.",
+        "Android panel selection does not replace a mainline observation of the panel-ID GPIO. No separate pen or manufacturing-test firmware request is established here."
+      ],
+      "of_paths": [
+        "/soc@0/geniqup@8c0000/spi@880000/touchscreen@0"
+      ],
+      "requests": [
+        {
+          "name": "lenovo/tb371fc/novatek_ts_tm_fw_6.bin",
+          "selection": "Logical panel-ID GPIO value 1 selects Tianma when no fixed firmware-name"
+        },
+        {
+          "name": "lenovo/tb371fc/novatek_ts_fw_boe_6.bin",
+          "selection": "Logical panel-ID GPIO value 0 selects BOE when no fixed firmware-name"
+        }
+      ],
+      "state": "Touch node and SPI14 ancestor disabled; built driver is not an active touch/pen device"
+    },
+    {
+      "driver_config": {
+        "CONFIG_SND_SOC_TFA989X": "n"
+      },
+      "id": "tfa9894",
+      "notes": [
+        "The inspected tfa989x.c matches tfa9890/tfa9895/tfa9897, bypasses the DSP, and has no request_firmware call.",
+        "QS/YC acoustic containers have no canonical request destination established by this kernel; preserve original files and variant provenance."
+      ],
+      "of_paths": [
+        "/soc@0/geniqup@8c0000/i2c@884000/amplifier@34",
+        "/soc@0/geniqup@8c0000/i2c@884000/amplifier@35",
+        "/soc@0/geniqup@8c0000/i2c@884000/amplifier@36",
+        "/soc@0/geniqup@8c0000/i2c@884000/amplifier@37"
+      ],
+      "requests": [],
+      "state": "Four amplifier nodes disabled; generic TFA989X not built and does not match nxp,tfa9894"
+    },
+    {
+      "driver_config": {
+        "CONFIG_QCOM_MDT_LOADER": "y",
+        "CONFIG_VIDEO_QCOM_VENUS": "m"
+      },
+      "id": "venus",
+      "notes": [
+        "venus_load_fw requests this name and calls qcom_mdt_load or qcom_mdt_load_no_init according to the secure path.",
+        "For split input, loader-required payload/hash segments keep the venus stem in qcom/vpu-1.0/. Firmware ABI, reserved-memory fit and secure authentication remain untested."
+      ],
+      "of_paths": [
+        "/soc@0/video-codec@aa00000"
+      ],
+      "requests": [
+        {
+          "name": "qcom/vpu-1.0/venus.mbn",
+          "selection": "sm8250_res default because the final Venus node has no firmware-name property"
+        }
+      ],
+      "state": "Parent Venus node disabled; decoder/encoder descendants cannot activate it; module built but no hardware decoding validation"
+    }
+  ],
+  "dt_nodes": {
+    "/qca6390-pmu": {
+      "compatible": [
+        "qcom,qca6390-pmu"
+      ],
+      "effective_available": true,
+      "of_available": true,
+      "status_property": null,
+      "unavailable_ancestors": []
+    },
+    "/soc@0/geniqup@8c0000/i2c@884000/amplifier@34": {
+      "compatible": [
+        "nxp,tfa9894"
+      ],
+      "effective_available": false,
+      "of_available": false,
+      "status_property": "disabled",
+      "unavailable_ancestors": []
+    },
+    "/soc@0/geniqup@8c0000/i2c@884000/amplifier@35": {
+      "compatible": [
+        "nxp,tfa9894"
+      ],
+      "effective_available": false,
+      "of_available": false,
+      "status_property": "disabled",
+      "unavailable_ancestors": []
+    },
+    "/soc@0/geniqup@8c0000/i2c@884000/amplifier@36": {
+      "compatible": [
+        "nxp,tfa9894"
+      ],
+      "effective_available": false,
+      "of_available": false,
+      "status_property": "disabled",
+      "unavailable_ancestors": []
+    },
+    "/soc@0/geniqup@8c0000/i2c@884000/amplifier@37": {
+      "compatible": [
+        "nxp,tfa9894"
+      ],
+      "effective_available": false,
+      "of_available": false,
+      "status_property": "disabled",
+      "unavailable_ancestors": []
+    },
+    "/soc@0/geniqup@8c0000/spi@880000/touchscreen@0": {
+      "compatible": [
+        "novatek,NVT-ts-spi"
+      ],
+      "effective_available": false,
+      "novatek,boe-firmware-name": [
+        "lenovo/tb371fc/novatek_ts_fw_boe_6.bin"
+      ],
+      "novatek,tianma-firmware-name": [
+        "lenovo/tb371fc/novatek_ts_tm_fw_6.bin"
+      ],
+      "of_available": false,
+      "status_property": "disabled",
+      "unavailable_ancestors": [
+        {
+          "path": "/soc@0/geniqup@8c0000/spi@880000",
+          "status": [
+            "disabled"
+          ]
+        }
+      ]
+    },
+    "/soc@0/geniqup@9c0000/serial@998000/bluetooth": {
+      "compatible": [
+        "qcom,qca6390-bt"
+      ],
+      "effective_available": true,
+      "of_available": true,
+      "status_property": null,
+      "unavailable_ancestors": []
+    },
+    "/soc@0/gmu@3d6a000": {
+      "compatible": [
+        "qcom,adreno-gmu-650.2",
+        "qcom,adreno-gmu"
+      ],
+      "effective_available": true,
+      "of_available": true,
+      "status_property": "okay",
+      "unavailable_ancestors": []
+    },
+    "/soc@0/gpu@3d00000": {
+      "compatible": [
+        "qcom,adreno-650.2",
+        "qcom,adreno"
+      ],
+      "effective_available": true,
+      "of_available": true,
+      "status_property": "okay",
+      "unavailable_ancestors": []
+    },
+    "/soc@0/gpu@3d00000/zap-shader": {
+      "compatible": [],
+      "effective_available": true,
+      "firmware-name": [
+        "qcom/sm8250/lenovo/tb371fc/a650_zap.mbn"
+      ],
+      "of_available": true,
+      "status_property": null,
+      "unavailable_ancestors": []
+    },
+    "/soc@0/pcie@1c00000": {
+      "compatible": [
+        "qcom,pcie-sm8250"
+      ],
+      "effective_available": false,
+      "of_available": false,
+      "status_property": "disabled",
+      "unavailable_ancestors": []
+    },
+    "/soc@0/pcie@1c08000": {
+      "compatible": [
+        "qcom,pcie-sm8250"
+      ],
+      "effective_available": false,
+      "of_available": false,
+      "status_property": "disabled",
+      "unavailable_ancestors": []
+    },
+    "/soc@0/pcie@1c10000": {
+      "compatible": [
+        "qcom,pcie-sm8250"
+      ],
+      "effective_available": false,
+      "of_available": false,
+      "status_property": "disabled",
+      "unavailable_ancestors": []
+    },
+    "/soc@0/remoteproc@17300000": {
+      "compatible": [
+        "qcom,sm8250-adsp-pas"
+      ],
+      "effective_available": true,
+      "firmware-name": [
+        "qcom/sm8250/lenovo/tb371fc/adsp.mbn"
+      ],
+      "of_available": true,
+      "status_property": "okay",
+      "unavailable_ancestors": []
+    },
+    "/soc@0/remoteproc@5c00000": {
+      "compatible": [
+        "qcom,sm8250-slpi-pas"
+      ],
+      "effective_available": true,
+      "firmware-name": [
+        "qcom/sm8250/lenovo/tb371fc/slpi.mbn"
+      ],
+      "of_available": true,
+      "status_property": "okay",
+      "unavailable_ancestors": []
+    },
+    "/soc@0/remoteproc@8300000": {
+      "compatible": [
+        "qcom,sm8250-cdsp-pas"
+      ],
+      "effective_available": true,
+      "firmware-name": [
+        "qcom/sm8250/lenovo/tb371fc/cdsp.mbn"
+      ],
+      "of_available": true,
+      "status_property": "okay",
+      "unavailable_ancestors": []
+    },
+    "/soc@0/video-codec@aa00000": {
+      "compatible": [
+        "qcom,sm8250-venus"
+      ],
+      "effective_available": false,
+      "of_available": false,
+      "status_property": "disabled",
+      "unavailable_ancestors": []
+    }
+  },
+  "firmware_blob_contents_audited": false,
+  "firmware_names_are_relative_to_kernel_firmware_search_root": true,
+  "kernel_release": "6.12.114-tb371fc-research2-display",
+  "kernel_source_modified": false,
+  "mdt_contract": {
+    "format_rule": "This loader interprets the ELF32 header/program-header layout. The .mbn/.mdt/.elf suffix does not select parsing; header/program-header data determine its behavior.",
+    "metadata_rule": [
+      "Require a non-PT_LOAD first program header and a later QCOM hash segment.",
+      "If first-header p_filesz plus hash p_filesz equals main file size, read packed hash immediately after first-header bytes.",
+      "Otherwise read hash at its declared offset when fully inside the main file.",
+      "Otherwise request the hash segment indexed bNN."
+    ],
+    "name_rule": "Replace the final three characters of the requested main filename with b%02d, using the original decimal ELF program-header index, in the same directory.",
+    "not_claimed": "No bundle byte content, signatures, authentication, runtime firmware ABI, DSP protocols or hardware operation are validated by this static contract.",
+    "payload_rule": "Load only PT_LOAD, non-QCOM-MDT-hash entries with nonzero p_memsz. In split mode each such nonempty p_filesz needs its indexed bNN, even if that payload would fit inside the main file. BSS is zero-filled.",
+    "size_checks": "Payload p_filesz must not exceed p_memsz; split file size must match p_filesz; destination must fit the reserved region.",
+    "source": "drivers/soc/qcom/mdt_loader.c",
+    "split_rule": "Inspect all program headers with nonzero p_filesz, including hash/non-PT_LOAD entries. Any segment start or end beyond the main file makes the image split. Zero-file-size BSS entries do not trigger split."
+  },
+  "physical_hardware_tested": false,
+  "provenance": {
+    "build_evidence_sha256": "64324d3d72a6c4dbec3d36fec7a1930628e5c584ff8789eb06d7131935e439c3",
+    "dtb_sha256": "50ad113c0f50b5586190c30fa9a6b4bedc7cbb64174c5ef4450ce558c593b63e",
+    "image_sha256": "181f0152868a2dc501191f09cb839ff295f6814f38f0bf027d6f55833382b27d",
+    "kernel_config_sha256": "e024e6d2094180d31d2b3f64a643801d95c544c0bb9593a64b6d117c2ffb86a8",
+    "source_manifest_sha256": "845914d9cc1c876f10704f3334ee942b2c26deaa8045ce9c2ef82ef2920cde21"
+  },
+  "resolved_config": {
+    "CONFIG_ATH11K": "m",
+    "CONFIG_ATH11K_AHB": "n",
+    "CONFIG_ATH11K_DEBUG": "n",
+    "CONFIG_ATH11K_PCI": "m",
+    "CONFIG_BT_HCIUART": "m",
+    "CONFIG_BT_HCIUART_3WIRE": "n",
+    "CONFIG_BT_HCIUART_AG6XX": "n",
+    "CONFIG_BT_HCIUART_AML": "n",
+    "CONFIG_BT_HCIUART_ATH3K": "n",
+    "CONFIG_BT_HCIUART_BCM": "n",
+    "CONFIG_BT_HCIUART_BCSP": "n",
+    "CONFIG_BT_HCIUART_H4": "y",
+    "CONFIG_BT_HCIUART_INTEL": "n",
+    "CONFIG_BT_HCIUART_LL": "n",
+    "CONFIG_BT_HCIUART_MRVL": "n",
+    "CONFIG_BT_HCIUART_NOKIA": "n",
+    "CONFIG_BT_HCIUART_QCA": "y",
+    "CONFIG_BT_HCIUART_RTL": "n",
+    "CONFIG_BT_HCIUART_SERDEV": "y",
+    "CONFIG_BT_QCA": "m",
+    "CONFIG_DRM_MSM": "y",
+    "CONFIG_DRM_MSM_DP": "y",
+    "CONFIG_DRM_MSM_DPU": "y",
+    "CONFIG_DRM_MSM_DSI": "y",
+    "CONFIG_DRM_MSM_DSI_10NM_PHY": "y",
+    "CONFIG_DRM_MSM_DSI_14NM_PHY": "y",
+    "CONFIG_DRM_MSM_DSI_20NM_PHY": "y",
+    "CONFIG_DRM_MSM_DSI_28NM_8960_PHY": "y",
+    "CONFIG_DRM_MSM_DSI_28NM_PHY": "y",
+    "CONFIG_DRM_MSM_DSI_7NM_PHY": "y",
+    "CONFIG_DRM_MSM_GPU_STATE": "y",
+    "CONFIG_DRM_MSM_HDMI": "y",
+    "CONFIG_DRM_MSM_HDMI_HDCP": "y",
+    "CONFIG_DRM_MSM_MDP4": "y",
+    "CONFIG_DRM_MSM_MDP5": "y",
+    "CONFIG_DRM_MSM_MDSS": "y",
+    "CONFIG_EXTRA_FIRMWARE": "\"\"",
+    "CONFIG_FW_LOADER": "y",
+    "CONFIG_FW_LOADER_COMPRESS": "y",
+    "CONFIG_FW_LOADER_COMPRESS_XZ": "y",
+    "CONFIG_FW_LOADER_COMPRESS_ZSTD": "y",
+    "CONFIG_FW_LOADER_DEBUG": "y",
+    "CONFIG_FW_LOADER_PAGED_BUF": "y",
+    "CONFIG_FW_LOADER_SYSFS": "y",
+    "CONFIG_FW_LOADER_USER_HELPER": "y",
+    "CONFIG_FW_LOADER_USER_HELPER_FALLBACK": "y",
+    "CONFIG_MHI_BUS": "y",
+    "CONFIG_MHI_BUS_DEBUG": "n",
+    "CONFIG_MHI_BUS_EP": "n",
+    "CONFIG_MHI_BUS_PCI_GENERIC": "n",
+    "CONFIG_PCIE_QCOM": "y",
+    "CONFIG_PCIE_QCOM_COMMON": "y",
+    "CONFIG_POWER_SEQUENCING": "m",
+    "CONFIG_POWER_SEQUENCING_QCOM_WCN": "m",
+    "CONFIG_PWRSEQ_EMMC": "y",
+    "CONFIG_PWRSEQ_SIMPLE": "y",
+    "CONFIG_QCOM_MDT_LOADER": "y",
+    "CONFIG_QCOM_Q6V5_ADSP": "n",
+    "CONFIG_QCOM_Q6V5_COMMON": "m",
+    "CONFIG_QCOM_Q6V5_MSS": "n",
+    "CONFIG_QCOM_Q6V5_PAS": "m",
+    "CONFIG_QCOM_Q6V5_WCSS": "n",
+    "CONFIG_SERIAL_QCOM_GENI": "y",
+    "CONFIG_SERIAL_QCOM_GENI_CONSOLE": "y",
+    "CONFIG_SND_SOC_SM8250": "m",
+    "CONFIG_SND_SOC_TFA9879": "n",
+    "CONFIG_SND_SOC_TFA989X": "n",
+    "CONFIG_TOUCHSCREEN_NT36523_SPI": "m",
+    "CONFIG_VIDEO_QCOM_VENUS": "m"
+  },
+  "schema_version": 1,
+  "scope": "Read-only firmware request and DT/config contract of the frozen research2-display kernel; no new build, loading, device access or blob transfer",
+  "source_files": {
+    "drivers/base/firmware_loader/main.c": {
+      "reviewed_ranges": [
+        [
+          464,
+          492
+        ],
+        [
+          507,
+          538
+        ]
+      ],
+      "sha256": "3978495072e91a47c362f0af8f122860ce6f4ee3a980f7f3ccf32d6b443b5bea",
+      "size": 43901
+    },
+    "drivers/bluetooth/btqca.c": {
+      "reviewed_ranges": [
+        [
+          68,
+          86
+        ],
+        [
+          203,
+          217
+        ],
+        [
+          566,
+          614
+        ],
+        [
+          744,
+          758
+        ],
+        [
+          762,
+          939
+        ]
+      ],
+      "sha256": "b06f073df6ae85f3ca544d7c98830d0e98739067707bee9c55d3e50f9a520605",
+      "size": 25352
+    },
+    "drivers/bluetooth/hci_qca.c": {
+      "reviewed_ranges": [
+        [
+          223,
+          237
+        ],
+        [
+          248,
+          267
+        ],
+        [
+          1119,
+          1133
+        ],
+        [
+          1801,
+          1815
+        ],
+        [
+          1853,
+          1867
+        ],
+        [
+          1962,
+          1976
+        ],
+        [
+          2088,
+          2102
+        ],
+        [
+          2319,
+          2334
+        ],
+        [
+          2342,
+          2356
+        ],
+        [
+          2422,
+          2436
+        ],
+        [
+          2525,
+          2539
+        ],
+        [
+          2697,
+          2711
+        ]
+      ],
+      "sha256": "800bc5747eeea9391f307456451f5f5313f033f39288f30ad1cc0454dc99a2cb",
+      "size": 70440
+    },
+    "drivers/bus/mhi/host/boot.c": {
+      "reviewed_ranges": [
+        [
+          432,
+          446
+        ]
+      ],
+      "sha256": "ca5805fe73a6123bfec722f2caf9295e934b1f58f08d82117994a34e4c0f7dff",
+      "size": 15307
+    },
+    "drivers/gpu/drm/msm/adreno/a6xx_catalog.c": {
+      "reviewed_ranges": [
+        [
+          853,
+          867
+        ],
+        [
+          919,
+          945
+        ],
+        [
+          1042,
+          1057
+        ]
+      ],
+      "sha256": "3db6ce0d10dad36533ba832f3fcaae9409bb95376c677b5cab29b5b7e9cc5f37",
+      "size": 51590
+    },
+    "drivers/gpu/drm/msm/adreno/adreno_gpu.c": {
+      "reviewed_ranges": [
+        [
+          30,
+          154
+        ],
+        [
+          445,
+          552
+        ]
+      ],
+      "sha256": "9e6d5789545d381a25f708085d0c3f5b36c0a5c841b708c42332738d30400295",
+      "size": 29644
+    },
+    "drivers/input/touchscreen/nt36523/nt36xxx.c": {
+      "reviewed_ranges": [
+        [
+          741,
+          764
+        ],
+        [
+          791,
+          824
+        ],
+        [
+          874,
+          888
+        ],
+        [
+          1031,
+          1045
+        ],
+        [
+          1585,
+          1599
+        ],
+        [
+          1864,
+          1878
+        ]
+      ],
+      "sha256": "bcc8e60eb6c10d97b84680224d1118462e5d121daa62d6b8732ec8938a09e0a2",
+      "size": 51349
+    },
+    "drivers/input/touchscreen/nt36523/nt36xxx.h": {
+      "reviewed_ranges": [
+        [
+          82,
+          97
+        ]
+      ],
+      "sha256": "68f848aea0524d82278fd1651c29e6108d7e326426fca531db6282a16d9758e4",
+      "size": 6920
+    },
+    "drivers/input/touchscreen/nt36523/nt36xxx_fw_update.c": {
+      "reviewed_ranges": [
+        [
+          325,
+          339
+        ],
+        [
+          813,
+          835
+        ],
+        [
+          857,
+          868
+        ]
+      ],
+      "sha256": "cbd363cd60c7850519704e6b7291ea5d6b937184f0f660d4e24fdc140586c1ba",
+      "size": 22772
+    },
+    "drivers/media/platform/qcom/venus/core.c": {
+      "reviewed_ranges": [
+        [
+          844,
+          872
+        ],
+        [
+          936,
+          948
+        ]
+      ],
+      "sha256": "cf0dfba57615501ffd43e51367a6bc203402263b370fbc0ef9411b9701c69699",
+      "size": 25461
+    },
+    "drivers/media/platform/qcom/venus/firmware.c": {
+      "reviewed_ranges": [
+        [
+          82,
+          145
+        ],
+        [
+          210,
+          242
+        ]
+      ],
+      "sha256": "faf2f558e6a3c559f37783956c699a578580e2f8ee30a0bd45514bc4909bb8a6",
+      "size": 8426
+    },
+    "drivers/net/wireless/ath/ath11k/core.c": {
+      "reviewed_ranges": [
+        [
+          36,
+          52
+        ],
+        [
+          91,
+          105
+        ],
+        [
+          174,
+          188
+        ],
+        [
+          205,
+          232
+        ],
+        [
+          260,
+          277
+        ],
+        [
+          346,
+          360
+        ],
+        [
+          377,
+          404
+        ],
+        [
+          432,
+          449
+        ],
+        [
+          479,
+          493
+        ],
+        [
+          519,
+          536
+        ],
+        [
+          604,
+          618
+        ],
+        [
+          682,
+          696
+        ],
+        [
+          730,
+          744
+        ],
+        [
+          772,
+          789
+        ],
+        [
+          1616,
+          1686
+        ],
+        [
+          1290,
+          1340
+        ],
+        [
+          1398,
+          1450
+        ],
+        [
+          1500,
+          1635
+        ]
+      ],
+      "sha256": "90ffda5ab8e80f86480cef39fe0037562f3371323b24dbae9d323e322954c7e2",
+      "size": 60614
+    },
+    "drivers/net/wireless/ath/ath11k/core.h": {
+      "reviewed_ranges": [
+        [
+          1310,
+          1324
+        ]
+      ],
+      "sha256": "50008ace7d402b916621924cd3e39e2c14dd4df4b058e8110d67f5b69da48877",
+      "size": 32985
+    },
+    "drivers/net/wireless/ath/ath11k/fw.c": {
+      "reviewed_ranges": [
+        [
+          1,
+          169
+        ]
+      ],
+      "sha256": "4f6877fe8544543a1b168ae5b1f3687926b3e200d5bfb550030751104dab3c9c",
+      "size": 3502
+    },
+    "drivers/net/wireless/ath/ath11k/fw.h": {
+      "reviewed_ranges": [
+        [
+          1,
+          27
+        ]
+      ],
+      "sha256": "09a79f490cf83be9c2f31414b9e9e306752d797e3200ef451493b45423202c64",
+      "size": 615
+    },
+    "drivers/net/wireless/ath/ath11k/hw.h": {
+      "reviewed_ranges": [
+        [
+          65,
+          100
+        ]
+      ],
+      "sha256": "866beba694ada79e6fc44954bcebb46eeafb4b4222a9c0941bae3a4c853d46dd",
+      "size": 12474
+    },
+    "drivers/net/wireless/ath/ath11k/mhi.c": {
+      "reviewed_ranges": [
+        [
+          2,
+          16
+        ],
+        [
+          268,
+          285
+        ],
+        [
+          344,
+          367
+        ]
+      ],
+      "sha256": "ceecc1012319c9de8dd8c166567de1a1511ca88a13729b263ecf8730b54fe0a5",
+      "size": 11347
+    },
+    "drivers/net/wireless/ath/ath11k/qmi.c": {
+      "reviewed_ranges": [
+        [
+          2410,
+          2447
+        ],
+        [
+          2526,
+          2540
+        ],
+        [
+          2973,
+          2987
+        ]
+      ],
+      "sha256": "831887aceaff71f8ec0201e0ad423645790364de82e3192d3669b296140866c7",
+      "size": 86650
+    },
+    "drivers/remoteproc/qcom_q6v5_pas.c": {
+      "reviewed_ranges": [
+        [
+          300,
+          318
+        ],
+        [
+          678,
+          738
+        ],
+        [
+          927,
+          943
+        ],
+        [
+          1062,
+          1076
+        ],
+        [
+          1243,
+          1258
+        ],
+        [
+          1481,
+          1483
+        ]
+      ],
+      "sha256": "63543c300f7e6710243f9aa27407d6d719ced408730238bbe0499621a3142c4a",
+      "size": 37893
+    },
+    "drivers/remoteproc/remoteproc_core.c": {
+      "reviewed_ranges": [
+        [
+          1689,
+          1707
+        ],
+        [
+          1797,
+          1813
+        ],
+        [
+          1949,
+          1965
+        ]
+      ],
+      "sha256": "c13eb281612fed04927c35964ec57e9c8d22c34d2816066469884ebb0c3d4012",
+      "size": 74355
+    },
+    "drivers/soc/qcom/mdt_loader.c": {
+      "reviewed_ranges": [
+        [
+          20,
+          102
+        ],
+        [
+          160,
+          225
+        ],
+        [
+          307,
+          435
+        ]
+      ],
+      "sha256": "135cca918b03f795d31cd12831aa84cab03a21ee39cda8665d09218d2cca5567",
+      "size": 13187
+    },
+    "sound/soc/codecs/tfa989x.c": {
+      "reviewed_ranges": [
+        [
+          268,
+          288
+        ],
+        [
+          400,
+          416
+        ]
+      ],
+      "sha256": "d840c60789a58fa3943e0277484a598937c6399859e3438985c24acf60268c27",
+      "size": 12552
+    }
+  },
+  "stock_bundle_transfer_validated": false
+}

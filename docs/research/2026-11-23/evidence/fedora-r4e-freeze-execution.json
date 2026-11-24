@@ -1,0 +1,12 @@
+{
+  "command": [
+    "python3",
+    "/work/fedora-r4e-freezer-v1/freeze_persistent_result_failed_attempt.py"
+  ],
+  "elapsed_seconds": 13.602360101009253,
+  "exit_code": 0,
+  "finished_utc": "2026-11-23T08:06:02.588040+00:00",
+  "scope": "read-only closed-image failed-run evidence retention",
+  "source_sha256": "6313499ebac5e13608bac090187517f2e9fad95c5e9ebd198b3ddc544cd2df68",
+  "started_utc": "2026-11-23T08:05:48.985617+00:00"
+}

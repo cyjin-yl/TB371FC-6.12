@@ -1,0 +1,4 @@
+; The fixed Fedora policy already grants init_t read/open/getattr on this type.
+; libselinux 3.11 maps the binary policy read-only before security_load_policy().
+; This module adds no type, label, boolean, permissive domain, or other permission.
+(allow init_t semanage_store_t (file (map)))

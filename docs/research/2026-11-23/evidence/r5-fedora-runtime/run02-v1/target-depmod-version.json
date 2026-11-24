@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "/work/fedora-proot-src/src/proot",
+    "-0",
+    "-r",
+    "/work/fedora-r5-system-v1/rootfs",
+    "-q",
+    "/usr/bin/qemu-aarch64",
+    "-b",
+    "/proc",
+    "-b",
+    "/dev/null",
+    "-b",
+    "/dev/zero",
+    "-b",
+    "/dev/random",
+    "-b",
+    "/dev/urandom",
+    "-w",
+    "/",
+    "/usr/sbin/depmod",
+    "--version"
+  ],
+  "exit_code": 0,
+  "finished_utc": "2026-11-23T22:28:58.032145+00:00",
+  "started_utc": "2026-11-23T22:28:57.681058+00:00",
+  "timeout_seconds": 600
+}

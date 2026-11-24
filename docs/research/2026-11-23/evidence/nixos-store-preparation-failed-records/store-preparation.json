@@ -1,0 +1,160 @@
+{
+  "activation_executed": false,
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/nix",
+        "--version"
+      ],
+      "elapsed_seconds": 2.8380112510058098,
+      "exit_code": 0,
+      "name": "nix-version",
+      "stderr": {
+        "path": "/work/nixos-system-boot-v1/store-jobs/nix-version.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stdout": {
+        "path": "/work/nixos-system-boot-v1/store-jobs/nix-version.stdout",
+        "sha256": "b49431fd6c56ee03b2184d78067924f33b003ebf2a00bbab91476a9485b38ade",
+        "size": 17
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/nix",
+        "--extra-experimental-features",
+        "nix-command",
+        "--store",
+        "local",
+        "path-info",
+        "--recursive",
+        "--json",
+        "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211"
+      ],
+      "elapsed_seconds": 0.4654320700210519,
+      "exit_code": 0,
+      "name": "source-inventory-before",
+      "stderr": {
+        "path": "/work/nixos-system-boot-v1/store-jobs/source-inventory-before.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stdout": {
+        "path": "/work/nixos-system-boot-v1/store-jobs/source-inventory-before.stdout",
+        "sha256": "3f5772abcfb979a5413ab2e76d8db06022fa60a7a7b2a9b34d5a4c8abc0c0eaa",
+        "size": 578541
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/nix",
+        "--extra-experimental-features",
+        "nix-command",
+        "--store",
+        "local",
+        "--option",
+        "require-sigs",
+        "true",
+        "store",
+        "verify",
+        "--recursive",
+        "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211"
+      ],
+      "elapsed_seconds": 1922.6411205229815,
+      "exit_code": 0,
+      "name": "source-verify",
+      "stderr": {
+        "path": "/work/nixos-system-boot-v1/store-jobs/source-verify.stderr",
+        "sha256": "9a04bc44277539077171ce0a384c2064b7d45bb5fb703651d25621ffd82e8b1a",
+        "size": 68837
+      },
+      "stdout": {
+        "path": "/work/nixos-system-boot-v1/store-jobs/source-verify.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/nix",
+        "--extra-experimental-features",
+        "nix-command",
+        "key",
+        "generate-secret",
+        "--key-name",
+        "tb371fc-nixos-boot-20261123-1"
+      ],
+      "elapsed_seconds": 1.4704774130368605,
+      "exit_code": 0,
+      "name": "generate-project-key",
+      "stderr": {
+        "path": "/work/nixos-system-boot-v1/store-jobs/generate-project-key.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stdout": {
+        "private_material_excluded": true
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/nix",
+        "--extra-experimental-features",
+        "nix-command",
+        "key",
+        "convert-secret-to-public"
+      ],
+      "elapsed_seconds": 0.049272598000243306,
+      "exit_code": 0,
+      "name": "project-public-key",
+      "stderr": {
+        "path": "/work/nixos-system-boot-v1/store-jobs/project-public-key.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stdin": {
+        "contents_excluded": true,
+        "private_key_file": true
+      },
+      "stdout": {
+        "path": "/work/nixos-system-boot-v1/private/cache-public-key",
+        "sha256": "72657aba2a60a6ff9fd8e10a9ca626dd5dce90e98bde24b3386651441417faa2",
+        "size": 74
+      }
+    }
+  ],
+  "complete": false,
+  "elapsed_seconds": 5529.351299453003,
+  "failure": {
+    "message": "Command '['/usr/bin/nix', '--extra-experimental-features', 'nix-command', '--store', 'local', '--option', 'require-sigs', 'true', '--option', 'max-jobs', '1', '--option', 'cores', '2', 'copy', '--to', 'file:///work/nixos-system-boot-v1/private/signed-cache?compression=zstd&compression-level=3&parallel-compression=false&secret-key=/work/nixos-system-boot-v1/private/cache-signing-key', '/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211']' timed out after 3600 seconds",
+    "traceback": "Traceback (most recent call last):\n  File \"/work/nixos-system-boot-recipe-v1/prepare_store.py\", line 201, in main\n    command('signed-cache-copy', base + ['--store', 'local', '--option', 'require-sigs', 'true',\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                                         '--option', 'max-jobs', '1', '--option', 'cores', '2',\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                                         'copy', '--to', cache_url, TOP])\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work/nixos-system-boot-recipe-v1/prepare_store.py\", line 148, in command\n    value = subprocess.run(argv, stdin=in_handle, stdout=stdout, stderr=stderr,\n                           timeout=timeout, env=env)\n  File \"/usr/lib/python3.13/subprocess.py\", line 556, in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/subprocess.py\", line 1222, in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/subprocess.py\", line 2154, in _communicate\n    self.wait(timeout=self._remaining_time(endtime))\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/subprocess.py\", line 1280, in wait\n    return self._wait(timeout=timeout)\n           ~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/subprocess.py\", line 2058, in _wait\n    raise TimeoutExpired(self.args, timeout)\nsubprocess.TimeoutExpired: Command '['/usr/bin/nix', '--extra-experimental-features', 'nix-command', '--store', 'local', '--option', 'require-sigs', 'true', '--option', 'max-jobs', '1', '--option', 'cores', '2', 'copy', '--to', 'file:///work/nixos-system-boot-v1/private/signed-cache?compression=zstd&compression-level=3&parallel-compression=false&secret-key=/work/nixos-system-boot-v1/private/cache-signing-key', '/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211']' timed out after 3600 seconds\n",
+    "type": "TimeoutExpired"
+  },
+  "global_configuration_written": false,
+  "native_nix": {
+    "path": "/usr/bin/nix",
+    "sha256": "1795adb32a21c0aeef19e19530e96b933b603465a99dc6cf3ceed5b96948de58",
+    "size": 12037520
+  },
+  "physical_hardware_tested": false,
+  "private_key_published_or_copied_to_guest": false,
+  "recipe": {
+    "path": "/work/nixos-system-boot-recipe-v1/prepare_store.py",
+    "sha256": "bae60cfa9cb64b6ce229a30f36c0bf1c0d2eb8b1d7508d63c4a5361e65a7169a",
+    "size": 13715
+  },
+  "require_sigs": true,
+  "rootfs": "/work/nixos-system-boot-v1/rootfs",
+  "schema_version": 1,
+  "scope": "native registered Nix root preparation only",
+  "source_inventory": {
+    "path": "/src/docs/research/2026-11-23/evidence/nixos-system-store-paths.tsv",
+    "sha256": "466e2d7d84b26a5d359148da5b3f44f2d8562d0216b546b780833bcedfb4135a",
+    "size": 115592
+  },
+  "source_store_signed_or_repaired": false,
+  "toplevel": "/nix/store/j1g4ih1ajpffx2vhp5z0iyns13h59c4a-nixos-system-tb371fc-research-26.05.20261121.94c3211",
+  "vm_started": false,
+  "work": "/work/nixos-system-boot-v1"
+}

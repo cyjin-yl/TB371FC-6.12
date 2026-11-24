@@ -1,0 +1,474 @@
+{
+  "allowed_count": 6,
+  "booleans_changed": false,
+  "completed": true,
+  "contexts": {
+    "system_u:object_r:security_t:s0": {
+      "accepted_by_policy": true,
+      "private_sid": 7,
+      "return_code": 0
+    },
+    "system_u:object_r:semanage_store_t:s0": {
+      "accepted_by_policy": true,
+      "private_sid": 3,
+      "return_code": 0
+    },
+    "system_u:object_r:syslogd_tmpfs_t:s0": {
+      "accepted_by_policy": true,
+      "private_sid": 8,
+      "return_code": 0
+    },
+    "system_u:object_r:syslogd_var_run_t:s0": {
+      "accepted_by_policy": true,
+      "private_sid": 5,
+      "return_code": 0
+    },
+    "system_u:object_r:systemd_varlink_registry_t:s0": {
+      "accepted_by_policy": true,
+      "private_sid": 4,
+      "return_code": 0
+    },
+    "system_u:system_r:init_t:s0": {
+      "accepted_by_policy": true,
+      "private_sid": 2,
+      "return_code": 0
+    },
+    "system_u:system_r:journalctl_t:s0": {
+      "accepted_by_policy": true,
+      "private_sid": 1,
+      "return_code": 0
+    },
+    "system_u:system_r:syslogd_t:s0": {
+      "accepted_by_policy": true,
+      "private_sid": 6,
+      "return_code": 0
+    },
+    "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023": {
+      "accepted_by_policy": true,
+      "private_sid": 9,
+      "return_code": 0
+    },
+    "system_u:system_r:unconfined_service_t:s0": {
+      "accepted_by_policy": true,
+      "private_sid": 10,
+      "return_code": 0
+    }
+  },
+  "controls_denied": true,
+  "denied_count": 13,
+  "input_policy": {
+    "sha256": "9d7aa2b3d3c64e8c24dbff83e8850036b8e15cec63aaa1521bbea555f42b2342",
+    "size": 3835444
+  },
+  "kernel_policy_loaded_or_written": false,
+  "library": {
+    "path": "/work/selinux-journalctl-dgram-20261123/query-01/libsepol.so.2",
+    "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+    "size": 802880
+  },
+  "observed_create_denied": true,
+  "policy_version_converted": false,
+  "prior_required_allowed": true,
+  "proot_used": false,
+  "queries": [
+    {
+      "class": "unix_dgram_socket",
+      "denial_audit_mask_includes_permission": true,
+      "group": "observed_socket_create",
+      "permission": "create",
+      "permission_allowed": false,
+      "raw_decision": {
+        "allowed": 0,
+        "auditallow": 0,
+        "auditdeny": 4294967289,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 1,
+      "requested_mask": 8,
+      "return_code": 0,
+      "source_context": "system_u:system_r:journalctl_t:s0",
+      "target_context": "system_u:system_r:journalctl_t:s0"
+    },
+    {
+      "class": "unix_dgram_socket",
+      "denial_audit_mask_includes_permission": true,
+      "group": "socket_xattr_diagnostic",
+      "permission": "getattr",
+      "permission_allowed": false,
+      "raw_decision": {
+        "allowed": 0,
+        "auditallow": 0,
+        "auditdeny": 4294967289,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 1,
+      "requested_mask": 16,
+      "return_code": 0,
+      "source_context": "system_u:system_r:journalctl_t:s0",
+      "target_context": "system_u:system_r:journalctl_t:s0"
+    },
+    {
+      "class": "unix_dgram_socket",
+      "denial_audit_mask_includes_permission": true,
+      "group": "socket_xattr_diagnostic",
+      "permission": "setattr",
+      "permission_allowed": false,
+      "raw_decision": {
+        "allowed": 0,
+        "auditallow": 0,
+        "auditdeny": 4294967289,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 1,
+      "requested_mask": 32,
+      "return_code": 0,
+      "source_context": "system_u:system_r:journalctl_t:s0",
+      "target_context": "system_u:system_r:journalctl_t:s0"
+    },
+    {
+      "class": "unix_dgram_socket",
+      "denial_audit_mask_includes_permission": true,
+      "group": "unrelated_socket_diagnostic",
+      "permission": "connect",
+      "permission_allowed": false,
+      "raw_decision": {
+        "allowed": 0,
+        "auditallow": 0,
+        "auditdeny": 4294967289,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 1,
+      "requested_mask": 4096,
+      "return_code": 0,
+      "source_context": "system_u:system_r:journalctl_t:s0",
+      "target_context": "system_u:system_r:journalctl_t:s0"
+    },
+    {
+      "class": "unix_dgram_socket",
+      "denial_audit_mask_includes_permission": true,
+      "group": "unrelated_socket_diagnostic",
+      "permission": "bind",
+      "permission_allowed": false,
+      "raw_decision": {
+        "allowed": 0,
+        "auditallow": 0,
+        "auditdeny": 4294967289,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 1,
+      "requested_mask": 2048,
+      "return_code": 0,
+      "source_context": "system_u:system_r:journalctl_t:s0",
+      "target_context": "system_u:system_r:journalctl_t:s0"
+    },
+    {
+      "class": "unix_dgram_socket",
+      "denial_audit_mask_includes_permission": false,
+      "group": "unrelated_socket_diagnostic",
+      "permission": "read",
+      "permission_allowed": false,
+      "raw_decision": {
+        "allowed": 0,
+        "auditallow": 0,
+        "auditdeny": 4294967289,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 1,
+      "requested_mask": 2,
+      "return_code": 0,
+      "source_context": "system_u:system_r:journalctl_t:s0",
+      "target_context": "system_u:system_r:journalctl_t:s0"
+    },
+    {
+      "class": "unix_dgram_socket",
+      "denial_audit_mask_includes_permission": false,
+      "group": "unrelated_socket_diagnostic",
+      "permission": "write",
+      "permission_allowed": false,
+      "raw_decision": {
+        "allowed": 0,
+        "auditallow": 0,
+        "auditdeny": 4294967289,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 1,
+      "requested_mask": 4,
+      "return_code": 0,
+      "source_context": "system_u:system_r:journalctl_t:s0",
+      "target_context": "system_u:system_r:journalctl_t:s0"
+    },
+    {
+      "class": "unix_dgram_socket",
+      "denial_audit_mask_includes_permission": true,
+      "group": "unrelated_socket_diagnostic",
+      "permission": "getopt",
+      "permission_allowed": false,
+      "raw_decision": {
+        "allowed": 0,
+        "auditallow": 0,
+        "auditdeny": 4294967289,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 1,
+      "requested_mask": 32768,
+      "return_code": 0,
+      "source_context": "system_u:system_r:journalctl_t:s0",
+      "target_context": "system_u:system_r:journalctl_t:s0"
+    },
+    {
+      "class": "unix_dgram_socket",
+      "denial_audit_mask_includes_permission": true,
+      "group": "unrelated_socket_diagnostic",
+      "permission": "setopt",
+      "permission_allowed": false,
+      "raw_decision": {
+        "allowed": 0,
+        "auditallow": 0,
+        "auditdeny": 4294967289,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 1,
+      "requested_mask": 65536,
+      "return_code": 0,
+      "source_context": "system_u:system_r:journalctl_t:s0",
+      "target_context": "system_u:system_r:journalctl_t:s0"
+    },
+    {
+      "class": "capability",
+      "denial_audit_mask_includes_permission": false,
+      "group": "unrelated_capability_diagnostic",
+      "permission": "net_admin",
+      "permission_allowed": false,
+      "raw_decision": {
+        "allowed": 16777216,
+        "auditallow": 0,
+        "auditdeny": 4278120447,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 1,
+      "requested_mask": 4096,
+      "return_code": 0,
+      "source_context": "system_u:system_r:journalctl_t:s0",
+      "target_context": "system_u:system_r:journalctl_t:s0"
+    },
+    {
+      "class": "process",
+      "denial_audit_mask_includes_permission": true,
+      "group": "prior_required",
+      "permission": "setcurrent",
+      "permission_allowed": true,
+      "raw_decision": {
+        "allowed": 837774205,
+        "auditallow": 0,
+        "auditdeny": 4286840831,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 0,
+      "requested_mask": 16777216,
+      "return_code": 0,
+      "source_context": "system_u:system_r:init_t:s0",
+      "target_context": "system_u:system_r:init_t:s0"
+    },
+    {
+      "class": "process",
+      "denial_audit_mask_includes_permission": true,
+      "group": "prior_required",
+      "permission": "dyntransition",
+      "permission_allowed": true,
+      "raw_decision": {
+        "allowed": 837774205,
+        "auditallow": 0,
+        "auditdeny": 4286840831,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 0,
+      "requested_mask": 8388608,
+      "return_code": 0,
+      "source_context": "system_u:system_r:init_t:s0",
+      "target_context": "system_u:system_r:init_t:s0"
+    },
+    {
+      "class": "file",
+      "denial_audit_mask_includes_permission": true,
+      "group": "prior_required",
+      "permission": "map",
+      "permission_allowed": true,
+      "raw_decision": {
+        "allowed": 525779,
+        "auditallow": 0,
+        "auditdeny": 4294967295,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 0,
+      "requested_mask": 1024,
+      "return_code": 0,
+      "source_context": "system_u:system_r:init_t:s0",
+      "target_context": "system_u:object_r:semanage_store_t:s0"
+    },
+    {
+      "class": "lnk_file",
+      "denial_audit_mask_includes_permission": true,
+      "group": "prior_required",
+      "permission": "unlink",
+      "permission_allowed": true,
+      "raw_decision": {
+        "allowed": 2099610,
+        "auditallow": 0,
+        "auditdeny": 4294967295,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 0,
+      "requested_mask": 2048,
+      "return_code": 0,
+      "source_context": "system_u:system_r:init_t:s0",
+      "target_context": "system_u:object_r:systemd_varlink_registry_t:s0"
+    },
+    {
+      "class": "sock_file",
+      "denial_audit_mask_includes_permission": true,
+      "group": "prior_required",
+      "permission": "write",
+      "permission_allowed": true,
+      "raw_decision": {
+        "allowed": 4,
+        "auditallow": 0,
+        "auditdeny": 4294950911,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 0,
+      "requested_mask": 4,
+      "return_code": 0,
+      "source_context": "system_u:system_r:journalctl_t:s0",
+      "target_context": "system_u:object_r:syslogd_var_run_t:s0"
+    },
+    {
+      "class": "unix_stream_socket",
+      "denial_audit_mask_includes_permission": true,
+      "group": "prior_required",
+      "permission": "connectto",
+      "permission_allowed": true,
+      "raw_decision": {
+        "allowed": 8388608,
+        "auditallow": 0,
+        "auditdeny": 4294967289,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 0,
+      "requested_mask": 8388608,
+      "return_code": 0,
+      "source_context": "system_u:system_r:journalctl_t:s0",
+      "target_context": "system_u:system_r:syslogd_t:s0"
+    },
+    {
+      "class": "security",
+      "denial_audit_mask_includes_permission": true,
+      "group": "retained_denial_control",
+      "permission": "read_policy",
+      "permission_allowed": false,
+      "raw_decision": {
+        "allowed": 379,
+        "auditallow": 0,
+        "auditdeny": 4294967287,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 1,
+      "requested_mask": 2048,
+      "return_code": 0,
+      "source_context": "system_u:system_r:init_t:s0",
+      "target_context": "system_u:object_r:security_t:s0"
+    },
+    {
+      "class": "file",
+      "denial_audit_mask_includes_permission": true,
+      "group": "retained_denial_control",
+      "permission": "map",
+      "permission_allowed": false,
+      "raw_decision": {
+        "allowed": 36190847,
+        "auditallow": 0,
+        "auditdeny": 4294967295,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 1,
+      "requested_mask": 1024,
+      "return_code": 0,
+      "source_context": "system_u:system_r:syslogd_t:s0",
+      "target_context": "system_u:object_r:syslogd_tmpfs_t:s0"
+    },
+    {
+      "class": "fifo_file",
+      "denial_audit_mask_includes_permission": false,
+      "group": "retained_denial_control",
+      "permission": "write",
+      "permission_allowed": false,
+      "raw_decision": {
+        "allowed": 0,
+        "auditallow": 0,
+        "auditdeny": 4294442408,
+        "decided": 4294967295,
+        "seqno": 0
+      },
+      "reason_mask": 1,
+      "requested_mask": 4,
+      "return_code": 0,
+      "source_context": "system_u:system_r:system_dbusd_t:s0-s0:c0.c1023",
+      "target_context": "system_u:system_r:unconfined_service_t:s0"
+    }
+  ],
+  "query_count": 19,
+  "repair_performed": false,
+  "return_codes": {
+    "class:capability": 0,
+    "class:fifo_file": 0,
+    "class:file": 0,
+    "class:lnk_file": 0,
+    "class:process": 0,
+    "class:security": 0,
+    "class:sock_file": 0,
+    "class:unix_dgram_socket": 0,
+    "class:unix_stream_socket": 0,
+    "fclose": 0,
+    "permission:capability:net_admin": 0,
+    "permission:fifo_file:write": 0,
+    "permission:file:map": 0,
+    "permission:lnk_file:unlink": 0,
+    "permission:process:dyntransition": 0,
+    "permission:process:setcurrent": 0,
+    "permission:security:read_policy": 0,
+    "permission:sock_file:write": 0,
+    "permission:unix_dgram_socket:bind": 0,
+    "permission:unix_dgram_socket:connect": 0,
+    "permission:unix_dgram_socket:create": 0,
+    "permission:unix_dgram_socket:getattr": 0,
+    "permission:unix_dgram_socket:getopt": 0,
+    "permission:unix_dgram_socket:read": 0,
+    "permission:unix_dgram_socket:setattr": 0,
+    "permission:unix_dgram_socket:setopt": 0,
+    "permission:unix_dgram_socket:write": 0,
+    "permission:unix_stream_socket:connectto": 0,
+    "private_policydb_from_file": 0
+  },
+  "runtime_call_stack_proven_by_query": false,
+  "schema_version": 1,
+  "scope": "offline AV decisions on the exact retained V8 kernel-exported version-33 bytes",
+  "sids_are_process_private": true,
+  "vm_started": false
+}

@@ -1,0 +1,44 @@
+Subject: [PATCH] arm64: dts: qcom: adapt TB371FC references to Linux 6.12
+
+Linux 6.12.114 has an unlabelled zap-shader child under the SM8250 GPU.
+Merge the board firmware-name into that existing child and give it the
+board's gpu_zap_shader label, also retaining the label used by the stage0
+variant. The inherited memory-region and firmware filename are unchanged.
+
+The DSI PLL output names are private driver defines in this kernel, not
+exported DT binding macros. Use output indices 0 (byte) and 1 (pixel), as
+provided by dsi_phy_7nm.c and already used by sm8250.dtsi and the upstream
+SM8250 Elish board. This changes no selected clock parent or hardware value.
+
+Apply after installing the repository's TB371FC board DTS into the prepared
+Linux v6.12.114 source tree. No hardware node or GPIO is removed or guessed.
+
+diff --git a/arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc.dts b/arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc.dts
+--- a/arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc.dts
++++ b/arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc.dts
+@@ -497,10 +497,10 @@
+ 
+ &gpu {
+ 	status = "okay";
+-};
+-
+-&gpu_zap_shader {
+-	firmware-name = "qcom/sm8250/lenovo/tb371fc/a650_zap.mbn";
++
++	gpu_zap_shader: zap-shader {
++		firmware-name = "qcom/sm8250/lenovo/tb371fc/a650_zap.mbn";
++	};
+ };
+ 
+ &i2c1 {
+@@ -725,8 +725,8 @@
+ 	vdda-supply = <&vreg_l9a_1p2>;
+ 	qcom,dual-dsi-mode;
+ 	qcom,sync-dual-dsi;
+-	assigned-clock-parents = <&mdss_dsi0_phy DSI_BYTE_PLL_CLK>,
+-				 <&mdss_dsi0_phy DSI_PIXEL_PLL_CLK>;
++	assigned-clock-parents = <&mdss_dsi0_phy 0>,
++				 <&mdss_dsi0_phy 1>;
+ 	status = "disabled";
+ };
+ 

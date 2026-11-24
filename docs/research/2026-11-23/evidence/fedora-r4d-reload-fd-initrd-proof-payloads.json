@@ -1,0 +1,29 @@
+{
+  "files": [
+    {
+      "kind": "regular",
+      "path": "usr/libexec/tb371fc-r4d-initrd-domain-proof.sh",
+      "payload_source": "usr/libexec/tb371fc-r4d-initrd-domain-proof.sh",
+      "sha256": "890c11a8bdece71545bc208ff7cca8e057c6c792da48476b9894582dd6626cc1",
+      "size": 5312
+    },
+    {
+      "kind": "regular",
+      "path": "usr/lib/systemd/system/tb371fc-r4d-initrd-domain-proof.service",
+      "payload_source": "usr/lib/systemd/system/tb371fc-r4d-initrd-domain-proof.service",
+      "sha256": "aa5ab144a6fdb91033ef3c9c56ead6db5472f739f20503c807aba0350751dda2",
+      "size": 521
+    },
+    {
+      "kind": "symlink",
+      "path": "usr/lib/systemd/system/initrd.target.wants/tb371fc-r4d-initrd-domain-proof.service",
+      "payload_source": "usr/lib/systemd/system/initrd.target.wants/tb371fc-r4d-initrd-domain-proof.service",
+      "sha256": "312c9ce6db49ca2c1e4bee3c63fa35d8978619feaf5c81c89375b8395c139bb4",
+      "size": 42,
+      "target": "../tb371fc-r4d-initrd-domain-proof.service"
+    }
+  ],
+  "passed": true,
+  "runtime_domains_tested_by_this_check": false,
+  "scope": "archive bytes and activation only; actual process domains require VM"
+}

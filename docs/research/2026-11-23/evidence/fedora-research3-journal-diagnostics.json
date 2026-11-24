@@ -1,0 +1,76 @@
+{
+  "clone_after_replay": {
+    "sha256": "b40999027dae171d7ac3c960ed0cce9aef84c5252ab7f1f00f37e06f1fe06b4a",
+    "size": 4294967296
+  },
+  "clone_before_replay": {
+    "sha256": "8dc33b793be5c1ccd535fe77974d23d3882569e997c9e0bc977b92d83eb29469",
+    "size": 4294967296
+  },
+  "complete": true,
+  "copy_exit_code": 0,
+  "diagnostic_copy_is_a_qualified_candidate": false,
+  "extracted_journals": {
+    "system.journal": {
+      "sha256": "9b7891307d37b4236cadb27f8d65a7bf2179f655008e81a3aea4112c835e365e",
+      "size": 8388608
+    },
+    "system@d210876410b9451bb621893ec33dc685-0000000000000001-00065dfdf6a0d0b8.journal": {
+      "sha256": "5fb48c37499c5c16ed892cc1e414cfdd6cbb29f404edd20aed784476f103a9bf",
+      "size": 16777216
+    }
+  },
+  "filesystem_mounted": false,
+  "finished_utc": "2026-11-23T03:27:46.043756+00:00",
+  "journal_only_replay_exit_code": 0,
+  "journalctl_outputs": {
+    "boots": {
+      "exit_code": 0,
+      "stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stdout": {
+        "sha256": "47773f05275244491811b995ba138e0511a23476ccf938714c716538dff7e201",
+        "size": 262
+      }
+    },
+    "broker-all-boots": {
+      "exit_code": 0,
+      "stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stdout": {
+        "sha256": "0da4414d945851c602d1a883290c93b9de49db9afbc782d5a52efe2a3fa895d1",
+        "size": 3877
+      }
+    },
+    "diagnostics-all-boots": {
+      "exit_code": 0,
+      "stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stdout": {
+        "sha256": "947ac7d52f991c81deb1aa5ee58420fc88ad695d0f7e122c0fc89c63cdc532ce",
+        "size": 193594
+      }
+    }
+  },
+  "new_vm_started": false,
+  "original_after_diagnostics": {
+    "sha256": "8dc33b793be5c1ccd535fe77974d23d3882569e997c9e0bc977b92d83eb29469",
+    "size": 4294967296
+  },
+  "original_byte_identical": true,
+  "original_image_written": false,
+  "physical_device_accessed": false,
+  "schema_version": 1,
+  "source": {
+    "path": "/work/fedora-input-system-v2/fedora45-research3-system.ext4",
+    "sha256": "8dc33b793be5c1ccd535fe77974d23d3882569e997c9e0bc977b92d83eb29469",
+    "size": 4294967296
+  },
+  "started_utc": "2026-11-23T03:27:19.292967+00:00"
+}

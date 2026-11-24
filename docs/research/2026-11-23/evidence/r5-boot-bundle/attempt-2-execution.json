@@ -1,0 +1,102 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "/work/r5-boot-bundle-qualification-5c420a5/source/scripts/research/qualify_boot_bundle.py",
+    "--repo",
+    "/work/r5-boot-bundle-qualification-5c420a5/source",
+    "--kernel-root",
+    "/work/research5-services-kernel-inputs-v1",
+    "--gate",
+    "kernel",
+    "--output",
+    "/work/r5-boot-bundle-qualification-5c420a5/kernel-payload.json"
+  ],
+  "commit": "5c420a5562391bc214e51479d0f94587009fe96e",
+  "exit_code": 1,
+  "files": [
+    {
+      "bytes": 136930,
+      "path": "docs/research/2026-11-23/evidence/research5-services-build.json",
+      "sha256": "69d0b558c99bdfb339df8b3b9baca8bb1ee4d0cb2e46dd9b3b7fef3ab69aaad2"
+    },
+    {
+      "bytes": 22269,
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/shared-transfer/bundle.json",
+      "sha256": "b540b71d3d5719265bed35b05016c9e0cbfc988ab17ccb351d14c42610d46c04"
+    },
+    {
+      "bytes": 83440,
+      "path": "docs/research/2026-11-23/evidence/research5-services-records/control/shared-transfer/transfer.json",
+      "sha256": "6892cdb643e8ab58e55f10e86f7ce45f2ef6bdd22ddaaf400b935900cfc9cb5e"
+    },
+    {
+      "bytes": 34559,
+      "path": "docs/research/2026-11-23/evidence/research5-services-verification.json",
+      "sha256": "e1bb04fba61b8d64177853580f826e1e45a1c472670512248d31520162f9f654"
+    },
+    {
+      "bytes": 222527,
+      "path": "docs/research/2026-11-23/evidence/stock-firmware-staging.json",
+      "sha256": "844149c7127d24be684da5e8789755badb210fbef142e1bb5ba001894f1bdb14"
+    },
+    {
+      "bytes": 104383,
+      "path": "docs/research/2026-11-23/evidence/initramfs-validation.json",
+      "sha256": "ac4368aaf3d28d545d4c9ff7eb3e5756fc311a8c8b3d586c6936a5850f4ebe0f"
+    },
+    {
+      "bytes": 8816,
+      "path": "docs/research/2026-11-23/boot-readiness.md",
+      "sha256": "d174996e28f26251789749b5104f99963542e427abfe5cd080604d8bb245254b"
+    },
+    {
+      "bytes": 16787,
+      "path": "scripts/research/derive_boot_candidate.py",
+      "sha256": "d1bc8a82d141e6f19149cb1c297470db28e428983c0cd0545c9f0cca7fcaaa06"
+    },
+    {
+      "bytes": 16285,
+      "path": "scripts/research/qualify_boot_bundle.py",
+      "sha256": "6e2f153843e49a9c645376aba97fc6da0a9695ed91aa2c11cc6fc11dfc52decc"
+    },
+    {
+      "bytes": 17028,
+      "path": "scripts/research/boot_formats.py",
+      "sha256": "b0936334329df6bab43fe47a5536c3cb4e279804163ffb880987530166c3d64e"
+    },
+    {
+      "bytes": 15876,
+      "path": "scripts/research/boot_rootfs.py",
+      "sha256": "6bcfb231179f2c2495e45d93cd4b6503c7f6408c5901ce1898533d2e8ad8a806"
+    },
+    {
+      "bytes": 12401,
+      "path": "scripts/research/test_boot_bundle.py",
+      "sha256": "249e7fc0fb270916ecdaca11af26e2c4b7e1fe62d1a0fb1b178f7ad9e34df1f5"
+    },
+    {
+      "bytes": 13161,
+      "path": "scripts/research/test_boot_formats.py",
+      "sha256": "8f3f6292a63eea56c81f1eb11e584852a4e29bdf45a454264b884e912612df46"
+    },
+    {
+      "bytes": 10597,
+      "path": "scripts/research/test_boot_rootfs.py",
+      "sha256": "94045421356c96fdd5c1612ff774dab3f1c646a556599b2363fa6d1e59b94942"
+    },
+    {
+      "bytes": 31781,
+      "path": "docs/research/2026-11-23/boot-candidate-r5.json",
+      "sha256": "4b7d61029737f4f76ccdb479dbb09fb79af02c7d7361d973dad48e05a6989fb5"
+    }
+  ],
+  "finished_utc": "2026-11-23T20:41:31.006309+00:00",
+  "input_root": "/work/research5-services-kernel-inputs-v1",
+  "report_sha256": "b0a7271c22422563cd1d9d3734fbc07f72683355b40ddbf9949f03cc5df396c7",
+  "schema_version": 1,
+  "started_utc": "2026-11-23T20:41:16.226851+00:00",
+  "status": "failed",
+  "test_exit_code": 0,
+  "test_log_sha256": "c053799d6dcd86b9818d65f7401697eda6b27b7fa59bccee9319fd89a6d95517"
+}

@@ -1,0 +1,233 @@
+--- research4/build_system.py
++++ research5/build_system.py
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python3
+ # SPDX-License-Identifier: GPL-2.0-only
+-"""Configure/build an isolated research4 kernel from reproduced input sources.
++"""Configure/build an isolated research5 kernel from reproduced input sources.
+ 
+ The preceding source preparation uses the pinned input helper in a new
+ <work>/source-input. No old output directory or private signing key is copied.
+@@ -20,13 +20,16 @@
+ import subprocess
+ import time
+ 
+-RELEASE = "6.12.114-tb371fc-research4-system"
++RELEASE = "6.12.114-tb371fc-research5-services"
+ SOURCE_MANIFEST_SHA = "5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0"
+ BASE_CONFIG_SHA = "e024e6d2094180d31d2b3f64a643801d95c544c0bb9593a64b6d117c2ffb86a8"
+ INPUT_HELPER_SHA = "0f3334412a7711d3a38d4bfdb0b0b5a35f5a5cb97c1d65868155d34e0c966059"
+ DTB_SHA = "af80b06f38b73ea42cb669a2897721ba7ecc5a99a8aa3d6d9c1e9ba132597730"
+ SOURCE_DIR = "source-input/linux-6.12.114-input-integration"
+ DTB_TARGET = "qcom/sm8250-lenovo-tb371fc-display-input-test-6.12.dtb"
++R4_CONFIG_SHA = "0236496603f168aacc5586eac7e199ca8f840b5d0c9b5ed111da64e9d28ec275"
++R4_CERT_SHA = "da222772fe59edc2d0efc6826ff4c31504ee9420b057121cd0a2e2503d81788d"
++CONTRACT_SHA = "3b9730335d5573d98f2f9382f83ba79810c9dd563a9e9eed83668a9b3f24ce21"
+ 
+ 
+ def digest(path):
+@@ -63,6 +66,10 @@
+         raise RuntimeError("prepared research2 + 0018/0019 input manifest changed")
+     if digest(inputs / "baseline-abi/kernel.config") != BASE_CONFIG_SHA:
+         raise RuntimeError("baseline configuration changed")
++    if digest(work / "baseline-r4/kernel.config") != R4_CONFIG_SHA:
++        raise RuntimeError("resolved R4 baseline config differs")
++    if digest(work / "baseline-r4/signing-cert.der") != R4_CERT_SHA:
++        raise RuntimeError("retained R4 public certificate differs")
+     namespace = runpy.run_path(str(helper))
+     return namespace["verify"](inputs)
+ 
+@@ -73,10 +80,14 @@
+ 
+ 
+ def verify_config(work):
+-    before = config_values(work / "source-input/baseline-abi/kernel.config")
++    before = config_values(work / "baseline-r4/kernel.config")
++    contract_path = Path(__file__).with_name("services-contract.json")
++    if digest(contract_path) != CONTRACT_SHA:
++        raise RuntimeError("service-derived config contract differs")
++    contract = json.loads(contract_path.read_text())
+     after = config_values(work / "kernel-out/.config")
+     fragment = config_values(work / "system.config")
+-    required = {**fragment, "CONFIG_BPF_EVENTS": "y", "CONFIG_DEBUG_INFO": "y",
++    required = {**fragment, **contract["required_resolved"], "CONFIG_BPF_EVENTS": "y", "CONFIG_DEBUG_INFO": "y",
+                 "CONFIG_DEBUG_INFO_BTF": "y", "CONFIG_DEBUG_INFO_BTF_MODULES": "y",
+                 "CONFIG_PERF_EVENTS": "y", "CONFIG_BPF_SYSCALL": "y", "CONFIG_BPF_JIT": "y",
+                 "CONFIG_SECURITY": "y", "CONFIG_SECURITYFS": "y", "CONFIG_MODVERSIONS": "y",
+@@ -99,21 +110,25 @@
+     changes = {key: {"before": before.get(key, "n"), "after": after.get(key, "n")}
+                for key in sorted(set(before) | set(after))
+                if before.get(key, "n") != after.get(key, "n")}
+-    return {"required": required, "preserved_security": protected, "changes": changes}
++    if changes != contract["exact_changes"]:
++        raise RuntimeError("resolved config delta differs from the reviewed exact contract: " +
++                           json.dumps(changes, sort_keys=True))
++    return {"required": required, "preserved_security": protected, "changes": changes,
++            "services_contract_sha256": CONTRACT_SHA, "all_other_r4_config_values_preserved": True}
+ 
+ 
+ def main():
+     p = argparse.ArgumentParser(description=__doc__)
+     p.add_argument("stage", choices=("configure", "build"))
+-    p.add_argument("--work", type=Path, default=Path("/work/research4-system"))
++    p.add_argument("--work", type=Path, default=Path("/work/research5-services"))
+     p.add_argument("--jobs", type=int, default=4)
+     p.add_argument("--attempt", type=int, default=1)
+     args = p.parse_args()
+     if not 1 <= args.jobs <= 4 or args.attempt < 1:
+         p.error("use 1..4 jobs and a positive, unique attempt number")
+     work = args.work.resolve()
+-    if args.work.is_symlink() or not work.is_dir() or not str(work).startswith("/work/research4-system"):
+-        p.error("use an existing independent /work/research4-system prefix")
++    if args.work.is_symlink() or not work.is_dir() or not str(work).startswith("/work/research5-services"):
++        p.error("use an existing independent /work/research5-services prefix")
+     os.umask(0o077)
+     lock = (work / "build.lock").open("a")
+     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+@@ -159,7 +174,8 @@
+             fragment = Path(__file__).with_name("system.config")
+             shutil.copyfile(fragment, work / "system.config")
+             record["recipe"]["system.config"] = identity(fragment)
+-            shutil.copyfile(work / "source-input/baseline-abi/kernel.config", output / "base.config")
++            record["recipe"]["services-contract.json"] = identity(Path(__file__).with_name("services-contract.json"))
++            shutil.copyfile(work / "baseline-r4/kernel.config", output / "base.config")
+             command(["bash", work / SOURCE_DIR / "scripts/kconfig/merge_config.sh", "-m", "-O", output,
+                      output / "base.config", work / "system.config"], cwd=work / SOURCE_DIR)
+             command(make_argv(work) + ["olddefconfig"])
+@@ -169,10 +185,13 @@
+             record["tool_versions"] = {name: command([name, "version" if name == "openssl" else "--version"], capture=True).splitlines()[0]
+                                        for name in ("clang", "ld.lld", "pahole", "openssl")}
+             write_new(work / "configuration.json", record)
+-            manifest = {"schema_version": 1, "profile": "research4-system", "kernel_release": RELEASE,
++            manifest = {"schema_version": 1, "profile": "research5-services", "kernel_release": RELEASE,
+                         "source_dir": SOURCE_DIR, "dtb_target": DTB_TARGET, "expected_dtb_sha256": DTB_SHA,
+                         "parent_input_manifest_sha256": SOURCE_MANIFEST_SHA,
+-                        "baseline_config_sha256": BASE_CONFIG_SHA, "system_config_sha256": digest(work / "system.config"),
++                        "source_reproduction_baseline_config_sha256": BASE_CONFIG_SHA,
++                        "resolved_r4_baseline_config_sha256": R4_CONFIG_SHA,
++                        "services_contract_sha256": CONTRACT_SHA,
++                        "system_config_sha256": digest(work / "system.config"),
+                         "resolved_config_sha256": digest(output / ".config"),
+                         "source_input": source_manifest, "configuration_changes": checked["changes"],
+                         "old_objects_copied": False, "old_private_key_copied": False,
+--- research4/inspect_system.py
++++ research5/inspect_system.py
+@@ -1,8 +1,8 @@
+ #!/usr/bin/env python3
+ # SPDX-License-Identifier: GPL-2.0-only
+-"""Qualify research4 Image, complete signed modules, BTF and joint native DT.
+-
+-Offline only. The separate full Fedora VM run owns runtime acceptance. No
++"""Qualify research5 Image, complete signed modules, BTF and joint native DT.
++
++Offline only. Separate NixOS and Nura system VM runs own runtime acceptance. No
+ module is loaded and no physical device is accessed by this inspector.
+ """
+ from __future__ import annotations
+@@ -139,18 +139,18 @@
+ 
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument("--work", type=Path, default=Path("/work/research4-system"))
++    parser.add_argument("--work", type=Path, default=Path("/work/research5-services"))
+     parser.add_argument("--repo", type=Path, default=Path("/src"))
+     parser.add_argument("--baseline-repo", type=Path, default=Path("/work/research2-repo"))
+     parser.add_argument("--attempt", type=int, default=1)
+     args = parser.parse_args()
+     work, repo = args.work.resolve(), args.repo.resolve()
+     artifacts = work / "artifacts"
+-    destination = artifacts / "research4-system-build.json"
++    destination = artifacts / "research5-services-build.json"
+     attempt = work / f"inspection-attempt-{args.attempt:02d}.json"
+     if destination.exists() or attempt.exists() or args.attempt < 1:
+         raise SystemExit("preserve earlier inspection records")
+-    record = {"schema_version": 1, "profile": "research4-system", "evidence_class": "host_build",
++    record = {"schema_version": 1, "profile": "research5-services", "evidence_class": "host_build",
+               "capture_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+               "kernel_release": profile.RELEASE, "work_directory": str(work),
+               "physical_hardware_tested": False, "generic_vm_test_performed_by_this_inspector": False,
+@@ -181,7 +181,7 @@
+                 raise ValueError("native display compatible absent from linked Image")
+         cert = artifacts / "signing-cert.der"
+         cert_bytes = cert.read_bytes()
+-        if profile.digest(cert) == OLD_CERT_SHA or cert_bytes not in image:
++        if profile.digest(cert) in (OLD_CERT_SHA, profile.R4_CERT_SHA) or cert_bytes not in image:
+             raise ValueError("new Image does not contain its independent public signing certificate")
+         key = work / "kernel-out/certs/signing_key.pem"
+         if key.is_symlink() or not key.is_file() or stat.S_IMODE(key.stat().st_mode) & 0o077:
+@@ -262,9 +262,11 @@
+             raise ValueError("module signer/key/hash/vermagic are not uniform")
+         if not any(item["path"].endswith("/kernel/fs/autofs/autofs4.ko") for item in module_records):
+             raise ValueError("new autofs4 module absent")
+-        baseline_index = Path("/work/research2-display/artifacts/modules.SHA256SUMS")
++        baseline_index = work / "baseline-r4/modules.SHA256SUMS"
+         before = {line.split(None, 1)[1].split("/kernel/", 1)[1] for line in baseline_index.read_text().splitlines()}
+         after = {item["path"].split("/kernel/", 1)[1] for item in module_records}
++        if len(before) != 84 or len(module_records) != 84 or before != after:
++            raise ValueError("builtin service additions must preserve the complete R4 module path set")
+         for item in module_records:
+             if profile.digest(work / "modules" / item["path"]) != item["sha256"]:
+                 raise ValueError("module bytes changed during inspection")
+@@ -298,7 +300,7 @@
+                        "source_manifest": json.loads((artifacts / "source-manifest.json").read_text()),
+                        "module_count": len(modules), "module_inventory": inventory, "modules": module_records,
+                        "module_metadata": module_metadata,
+-                       "module_set_changes_from_research2": {"added": sorted(after - before), "removed": sorted(before - after)},
++                       "module_set_changes_from_research4": {"added": sorted(after - before), "removed": sorted(before - after)},
+                        "all_module_vermagic_matches": True, "all_modules_elf_aarch64": True,
+                        "all_module_imported_crcs_match_new_build": True,
+                        "all_module_cms_signatures_verified": True, "all_module_btf_present": True,
+@@ -315,7 +317,7 @@
+                        "jobs": jobs, "bit_identical_independent_rebuild_proven": False,
+                        "limits": ["New module-signing key changes artifact bytes; package versions are recorded, not snapshot-pinned.",
+                                   "Offline inspection does not establish runtime BPF LSM attachment, automount or PIDs enforcement.",
+-                                  "Generic Fedora system VM validation is recorded separately; physical tablet entry and hardware remain untested."]})
++                                  "NixOS/Nura generic system VM validation is recorded separately; physical tablet entry and hardware remain untested."]})
+         profile.write_new(destination, record)
+         index = {**files, destination.name: profile.identity(destination)}
+         with (artifacts / "qualified-artifacts.SHA256SUMS").open("x") as stream:
+--- research4/system.config
++++ research5/system.config
+@@ -1,32 +1,10 @@
+-# Independent research4 ABI, based on frozen research2 plus input patches 0018/0019.
+-CONFIG_LOCALVERSION="-tb371fc-research4-system"
+-# CONFIG_LOCALVERSION_AUTO is not set
+-CONFIG_CGROUP_PIDS=y
+-CONFIG_AUTOFS_FS=m
+-CONFIG_GPIO_PL061=y
+-# ARM64 LSM attachment additionally uses dynamic ftrace direct-call sites.
+-# This enables patchable function entries, not a running function tracer.
+-# One probe-events implementation satisfies the hidden BPF_EVENTS dependency.
+-CONFIG_FTRACE=y
+-CONFIG_KPROBES=y
+-CONFIG_KPROBE_EVENTS=y
+-# CONFIG_UPROBE_EVENTS is not set
+-CONFIG_FUNCTION_TRACER=y
+-CONFIG_DYNAMIC_FTRACE=y
+-# CONFIG_FUNCTION_GRAPH_TRACER is not set
+-CONFIG_BPF_LSM=y
+-# Kernel BTF is needed for the actual systemd LSM program attachment.
+-CONFIG_DEBUG_KERNEL=y
+-# CONFIG_DEBUG_MISC is not set
+-# CONFIG_SCHED_DEBUG is not set
+-# CONFIG_DEBUG_PREEMPT is not set
+-# CONFIG_DEBUG_INFO_NONE is not set
+-# CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT is not set
+-CONFIG_DEBUG_INFO_DWARF4=y
+-# CONFIG_DEBUG_INFO_DWARF5 is not set
+-# CONFIG_DEBUG_INFO_SPLIT is not set
+-# CONFIG_DEBUG_INFO_REDUCED is not set
+-CONFIG_DEBUG_INFO_BTF=y
+-CONFIG_DEBUG_INFO_BTF_MODULES=y
+-# CONFIG_MODULE_ALLOW_BTF_MISMATCH is not set
+-# CONFIG_PROBE_EVENTS_BTF_ARGS is not set
++# Independent R5 service support, starting with the exact resolved R4 config.
++# Each change is derived from the retained original Nura/NixOS service inputs.
++CONFIG_LOCALVERSION="-tb371fc-research5-services"
++CONFIG_NFT_COMPAT=y
++CONFIG_NFT_CT=y
++CONFIG_NFT_REJECT=y
++CONFIG_NF_TABLES=y
++CONFIG_NF_TABLES_INET=y
++CONFIG_RTC_DRV_PL031=y
++CONFIG_ZRAM_BACKEND_ZSTD=y

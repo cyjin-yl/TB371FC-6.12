@@ -1,0 +1,178 @@
+{
+  "schema": "tb371fc-owner-cnss-ipc-readiness-v1",
+  "evidence_class": "device_android",
+  "scope": "Bounded metadata-only endpoint discovery after source review; no IPC payload capture occurred",
+  "device": {
+    "model": "Lenovo TB371FC",
+    "reference_kernel": "4.19.157-perf+"
+  },
+  "observations": [
+    {
+      "name": "fixed_ipc_names",
+      "source": "import os,json,stat,time,signal\nfrom datetime import datetime,timezone\nout={'captured_utc':datetime.now(timezone.utc).isoformat(),'kernel':os.uname().release,'scope':'names and metadata only; no IPC payload opened','roots':[]}\ndef timeout(*args):raise TimeoutError('metadata deadline')\nsignal.signal(signal.SIGALRM,timeout)\nfor base in ['/sys/kernel/debug/ipc_logging','/d/ipc_logging']:\n item={'path':base,'contexts':[]};out['roots'].append(item)\n try:\n  signal.setitimer(signal.ITIMER_REAL,1)\n  with os.scandir(base) as it:\n   names=[e.name for e in it]\n  if len(names)>1024:raise ValueError('name count bound')\n  item['context_entry_count']=len(names)\n  for name in ['cnss','cnss-long']:\n   if name not in names:continue\n   p=base+'/'+name\n   with os.scandir(p) as it:children=[e.name for e in it]\n   if len(children)>16:raise ValueError('child count bound')\n   c={'name':name,'allowed_entries':[n for n in ['log','log_cont'] if n in children]};item['contexts'].append(c)\n   if 'log' in children:\n    s=os.stat(p+'/log')\n    c['log_metadata']={'mode':oct(stat.S_IMODE(s.st_mode)),'regular':stat.S_ISREG(s.st_mode),'dev':s.st_dev,'inode':s.st_ino}\n  item['status']='observed'\n except Exception as e:item['status']='unavailable';item['error_type']=type(e).__name__;item['errno']=getattr(e,'errno',None)\n finally:signal.setitimer(signal.ITIMER_REAL,0)\nprint(json.dumps(out))\n",
+      "data": {
+        "captured_utc": "2026-11-23T03:29:15.416943+00:00",
+        "kernel": "4.19.157-perf+",
+        "scope": "names and metadata only; no IPC payload opened",
+        "roots": [
+          {
+            "path": "/sys/kernel/debug/ipc_logging",
+            "contexts": [],
+            "status": "unavailable",
+            "error_type": "FileNotFoundError",
+            "errno": 2
+          },
+          {
+            "path": "/d/ipc_logging",
+            "contexts": [],
+            "status": "unavailable",
+            "error_type": "FileNotFoundError",
+            "errno": 2
+          }
+        ]
+      },
+      "source_sha256": "c9f12a8f3256811e957f509c258ddd192773694959e86068dcdb2f15f9fda8b4"
+    },
+    {
+      "name": "current_namespace_mounts",
+      "source": "import os,json,signal\nfrom datetime import datetime,timezone\nout={'captured_utc':datetime.now(timezone.utc).isoformat(),'scope':'filtered existing mount metadata and fixed directory names; no mount or IPC payload read','debugfs_mounts':[],'fixed_directories':[]}\ndef timeout(*args):raise TimeoutError('metadata deadline')\nsignal.signal(signal.SIGALRM,timeout);signal.setitimer(signal.ITIMER_REAL,1)\ntry:\n with open('/proc/self/mountinfo','rb') as f:b=f.read(262145)\n if len(b)>262144:raise ValueError('mount metadata cap')\n for l in b.decode().splitlines():\n  a,sep,z=l.partition(' - ')\n  if sep and z.split()[0]=='debugfs':\n   fields=a.split();out['debugfs_mounts'].append({'root':fields[3],'mountpoint':fields[4]})\n for p in ['/sys/kernel/debug','/d']:\n  d={'path':p};out['fixed_directories'].append(d)\n  try:\n   d['is_directory']=os.path.isdir(p);d['is_symlink']=os.path.islink(p)\n   if d['is_directory']:\n    with os.scandir(p) as it:names=[e.name for e in it]\n    if len(names)>4096:raise ValueError('name count cap')\n    d['entry_count']=len(names);d['ipc_logging_present']='ipc_logging' in names\n  except Exception as e:d['error_type']=type(e).__name__;d['errno']=getattr(e,'errno',None)\n out['status']='complete'\nexcept Exception as e:out['status']='incomplete';out['error_type']=type(e).__name__\nfinally:signal.setitimer(signal.ITIMER_REAL,0)\nprint(json.dumps(out))\n",
+      "data": {
+        "captured_utc": "2026-11-23T03:29:38.168254+00:00",
+        "scope": "filtered existing mount metadata and fixed directory names; no mount or IPC payload read",
+        "debugfs_mounts": [],
+        "fixed_directories": [
+          {
+            "path": "/sys/kernel/debug",
+            "is_directory": false,
+            "is_symlink": false
+          },
+          {
+            "path": "/d",
+            "is_directory": false,
+            "is_symlink": true
+          }
+        ],
+        "status": "complete"
+      },
+      "source_sha256": "490d903ba26bab8a49e265044908296b33c1df9a34dfc97ba91e931e492f7ee2"
+    },
+    {
+      "name": "pid1_mounts_and_config",
+      "source": "import os,json,signal,zlib\nfrom datetime import datetime,timezone\nout={'captured_utc':datetime.now(timezone.utc).isoformat(),'scope':'filtered PID1 mount metadata and exact compiled config flags; no mounts or IPC payload reads','pid1_debugfs_mounts':[],'config':{}}\ndef timeout(*args):raise TimeoutError('metadata deadline')\nsignal.signal(signal.SIGALRM,timeout)\nfor name,path,cap in [('pid1_mountinfo','/proc/1/mountinfo',262144),('kernel_config','/proc/config.gz',1048576)]:\n try:\n  signal.setitimer(signal.ITIMER_REAL,1)\n  with open(path,'rb') as f:b=f.read(cap+1)\n  if len(b)>cap:raise ValueError('metadata byte cap')\n  if name=='pid1_mountinfo':\n   for l in b.decode().splitlines():\n    a,sep,z=l.partition(' - ')\n    if sep and z.split()[0]=='debugfs':\n     fields=a.split();out['pid1_debugfs_mounts'].append({'root':fields[3],'mountpoint':fields[4]})\n  else:\n   d=zlib.decompressobj(16+zlib.MAX_WBITS);t=d.decompress(b,2097153)\n   if len(t)>2097152 or not d.eof or d.unconsumed_tail:raise ValueError('config expansion bound')\n   lines=t.decode().splitlines()\n   for key in ['CONFIG_DEBUG_FS','CONFIG_IPC_LOGGING']:\n    vals=[l for l in lines if l.startswith(key+'=') or l=='# '+key+' is not set']\n    out['config'][key]=vals\n  out[name+'_status']='observed'\n except Exception as e:out[name+'_status']='unavailable';out[name+'_error_type']=type(e).__name__;out[name+'_errno']=getattr(e,'errno',None)\n finally:signal.setitimer(signal.ITIMER_REAL,0)\nprint(json.dumps(out))\n",
+      "data": {
+        "captured_utc": "2026-11-23T03:30:08.723782+00:00",
+        "scope": "filtered PID1 mount metadata and exact compiled config flags; no mounts or IPC payload reads",
+        "pid1_debugfs_mounts": [],
+        "config": {
+          "CONFIG_DEBUG_FS": [
+            "# CONFIG_DEBUG_FS is not set"
+          ],
+          "CONFIG_IPC_LOGGING": [
+            "CONFIG_IPC_LOGGING=y"
+          ]
+        },
+        "pid1_mountinfo_status": "observed",
+        "kernel_config_status": "observed"
+      },
+      "source_sha256": "3c8e7f8616f8876303bbbb7546756ee180037d4ca5769802ad8bd835b805962e"
+    }
+  ],
+  "source_contract": {
+    "repository": "https://github.com/tem423/android_kernel_lenovo_tb371fc",
+    "commit": "9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1",
+    "source_kernel": "4.19.325-cip134-st18",
+    "source_is_owner_shipping_binary_equivalent": false,
+    "files": [
+      {
+        "path": "kernel/trace/ipc_logging_debug.c",
+        "sha256": "ada4f1c6ae02be8f0e54c3e80ad64e66b1ba0ef5ace9e8a5cb352fb404943849",
+        "functions": [
+          "debug_open",
+          "debug_read_helper",
+          "debug_read",
+          "debug_read_cont",
+          "create_ctx_debugfs"
+        ],
+        "contract": "File private_data is the shared context, not a private cursor. log uses cont=0; log_cont uses cont=1 and may wait."
+      },
+      {
+        "path": "kernel/trace/ipc_logging.c",
+        "sha256": "ecb463480282f6af4e8cc72fee5c805b1e36c4bfd9f35844fdd9c35a54e94edf",
+        "functions": [
+          "is_nd_read_empty",
+          "ipc_log_read",
+          "msg_read",
+          "ipc_log_extract",
+          "ipc_log_drop"
+        ],
+        "contract": "Debug extraction preserves underlying ring bytes but advances context-wide nd_read_page and nd_read_offset. An empty extraction can reinitialize shared read_avail. Destructive ipc_log_drop is a distinct writer-space reclamation path."
+      },
+      {
+        "path": "kernel/trace/ipc_logging_private.h",
+        "sha256": "7917588147515bb7d633a8a449597dc8b50b193aa0d958e16215c09d505f01e8",
+        "contract": "nd_read_page and per-page nd_read_offset belong to the shared context/pages. Without CONFIG_DEBUG_FS, create_ctx_debugfs is an empty stub."
+      },
+      {
+        "path": "include/linux/ipc_logging.h",
+        "sha256": "a72745ac186592ef0b0682978f90bbdc027eeafaf08350146843a67319eeb218",
+        "contract": "CONFIG_IPC_LOGGING controls the logging/extract API independently from debugfs."
+      },
+      {
+        "path": "drivers/net/wireless/cnss2/debug.c",
+        "sha256": "61674fbf5bab8ba5e2e16ab1e1fbcb5d68ac10c34ff1bfce38484a1630f65b32",
+        "functions": [
+          "cnss_debug_init"
+        ],
+        "contract": "Creates cnss and cnss-long logging contexts."
+      },
+      {
+        "path": "drivers/net/wireless/cnss2/debug.h",
+        "sha256": "67ddce1868a2c429e79e17cf136c3a988d42df5f2c29f69f931c165eeff7727d",
+        "contract": "32 pages per context; cnss_pr_dbg writes cnss and cnss_pr_vdbg writes cnss-long."
+      },
+      {
+        "path": "drivers/net/wireless/cnss2/qmi.c",
+        "sha256": "3facb40945088a385ef2281d7eed529da5fd975c042278d3ea506a98b70ef64b",
+        "functions": [
+          "cnss_wlfw_tgt_cap_send_sync",
+          "cnss_wlfw_bdf_dnld_send_sync"
+        ],
+        "contract": "Target capability debug message includes board_id; Downloading BDF debug message includes the actual selected filename. Both use cnss_pr_dbg, not a new caller-generated QMI request."
+      }
+    ]
+  },
+  "qualification": {
+    "initial_stateless_read_condition_met": false,
+    "shared_cursor_advance_explicitly_authorized_for_one_controlled_capture": true,
+    "existing_endpoint_found": false,
+    "owner_debug_fs_configured": false,
+    "owner_ipc_logging_configured": true,
+    "current_and_pid1_debugfs_mounts_found": 0,
+    "known_reader_scan_performed": false,
+    "known_reader_scan_reason": "No eligible log endpoint exists in the inspected namespaces; no log open/read was attempted.",
+    "ipc_payload_read_count": 0,
+    "ipc_payload_bytes_read": 0,
+    "shared_cursor_advanced_by_this_investigation": false,
+    "log_clear_or_reset_performed": false,
+    "log_cont_opened": false,
+    "private_raw_log_file_created": false,
+    "debugfs_mounted": false,
+    "debug_configuration_written": false,
+    "radio_restarted": false,
+    "explicit_qmi_call_performed": false,
+    "register_or_mmio_read_performed": false,
+    "kernel_module_loaded": false,
+    "qmi_board_id_observed": false,
+    "selected_bdf_filename": null,
+    "tablet_linux_tested": false
+  },
+  "limits": [
+    "This is metadata and source evidence, not an empty-log result. No IPC log was opened, so no claim is made about the contents, retention, prior consumption or actual existence of a runtime CNSS context.",
+    "The actual owner config disables debugfs while enabling IPC logging; the reviewed public source explains how ring storage can be compiled without a runtime debugfs reader. It is not proof that the owner shipping implementation is byte-identical.",
+    "The source's non-destructive terminology refers to ring bytes, not a stateless or per-open cursor. A byte/time cap would not remove that side effect if a reader were available.",
+    "The su and PID1 mount views were inspected; this is not an exhaustive scan of every process mount namespace.",
+    "No raw mount table, complete kernel configuration, application/process names, network identifiers or log bytes are published.",
+    "QMI board ID and the selected stock BDF remain unresolved. The earlier cached BDF customer/project/revision fields and PCI subsystem ID cannot substitute.",
+    "No filesystem mount, settings change, radio operation or new kernel capability was introduced to fabricate an endpoint."
+  ]
+}

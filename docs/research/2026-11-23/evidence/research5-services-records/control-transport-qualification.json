@@ -1,0 +1,222 @@
+{
+  "all_raw_members_byte_verified": true,
+  "compressed_bytes": 98754,
+  "compressed_sha256": "eb823020aec62becf0653f55dccabaf58de08bb9a30ac5d82efed375a5ff6cc3",
+  "member_count": 35,
+  "members": [
+    {
+      "bytes": 6506,
+      "path": "host-build/build-driver-result.json",
+      "sha256": "4e1598c4351541c01c02770a54c401eb1ddba5f74fd0fac2f48997bb6bfeabf7",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/build-driver-result.json"
+    },
+    {
+      "bytes": 918,
+      "path": "host-build/build-invocation.json",
+      "sha256": "961636a5c0c9d15d8c45602834443c6d03d5c5aba58438425c13ca5c46c87d1e",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/build-invocation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "host-build/build-invocation.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/build-invocation.stderr"
+    },
+    {
+      "bytes": 222140,
+      "path": "host-build/build-invocation.stdout",
+      "sha256": "dd8abab350d558fa5fa0bcf788adf5b6ce25b53640d87e7994db392003de715a",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/build-invocation.stdout"
+    },
+    {
+      "bytes": 804,
+      "path": "host-build/build-launch.json",
+      "sha256": "9b683881dcafb1903d812d9e9c989d2968acd1cf0740decb7803c8a8752ba2f9",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/build-launch.json"
+    },
+    {
+      "bytes": 3482,
+      "path": "host-build/collect-public-01.json",
+      "sha256": "1567e02e9503793aebd74bcc1b46fd59a18b02b2235b456657f90f42a6fab594",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/collect-public-01.json"
+    },
+    {
+      "bytes": 0,
+      "path": "host-build/collect-public-01.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/collect-public-01.stderr"
+    },
+    {
+      "bytes": 339,
+      "path": "host-build/collect-public-01.stdout",
+      "sha256": "139d4d4eed9606156e3b209f51cf371a4f04797a872e0d5dd99662c52eb62a1a",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/collect-public-01.stdout"
+    },
+    {
+      "bytes": 251,
+      "path": "host-build/collect-public-launch.json",
+      "sha256": "bb1c3d7613e4b6566222a57518d9f8d763119a41eba3bdba356db40c018890b0",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/collect-public-launch.json"
+    },
+    {
+      "bytes": 924,
+      "path": "host-build/configure-invocation.json",
+      "sha256": "fa136f40b782ec876e05216cc66239bef76b40ad95dfe2054a06a590a857494d",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/configure-invocation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "host-build/configure-invocation.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/configure-invocation.stderr"
+    },
+    {
+      "bytes": 2923,
+      "path": "host-build/configure-invocation.stdout",
+      "sha256": "8c31cc274b4eb748fc0e9cea11a7323ce24d2f1d899c51ecaa7b8ae0694f6ac7",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/configure-invocation.stdout"
+    },
+    {
+      "bytes": 960,
+      "path": "host-build/inspect-invocation.json",
+      "sha256": "1c74260c04fa36241b82e9de5211c7ef7e80a295373b71b2ffd9397599ee2672",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/inspect-invocation.json"
+    },
+    {
+      "bytes": 0,
+      "path": "host-build/inspect-invocation.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/inspect-invocation.stderr"
+    },
+    {
+      "bytes": 381,
+      "path": "host-build/inspect-invocation.stdout",
+      "sha256": "928384e1181c243e265a61f97195b4f8982c815fe6080f8b52c793caf096eb09",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/inspect-invocation.stdout"
+    },
+    {
+      "bytes": 2434,
+      "path": "host-build/install-recipe.json",
+      "sha256": "52e96ec1c35a9b9efb7e54ab49f7c91b18f238fabc2b94c13485738263492303",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/install-recipe.json"
+    },
+    {
+      "bytes": 0,
+      "path": "host-build/install-recipe.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/install-recipe.stderr"
+    },
+    {
+      "bytes": 900,
+      "path": "host-build/install-recipe.stdout",
+      "sha256": "e418c93bb830e2a8d845877b464263a4420dcf631a6ab6f4c46544a607484946",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/install-recipe.stdout"
+    },
+    {
+      "bytes": 4137,
+      "path": "host-build/prepare-driver-result.json",
+      "sha256": "f532e0b34869bb991fbcdadd74ee2b0992eb1c042dac5712c08c1687022e2b82",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/prepare-driver-result.json"
+    },
+    {
+      "bytes": 0,
+      "path": "host-build/prepare-driver.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/prepare-driver.stderr"
+    },
+    {
+      "bytes": 6066,
+      "path": "host-build/prepare-driver.stdout",
+      "sha256": "44f66926539c98bbb823978ca95e73576564f25393d09f75c3a6137f1b4adbb6",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/prepare-driver.stdout"
+    },
+    {
+      "bytes": 601,
+      "path": "host-build/prepare-launch.json",
+      "sha256": "630c16496d9a71a7dca7a4ca9f0c0439aa97829da20c530e9a630e99fad13bb1",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-20261123/prepare-launch.json"
+    },
+    {
+      "bytes": 3238,
+      "path": "host-transfer/driver-result.json",
+      "sha256": "75f5dd14b6c7434897676d8eacc3dbe175800a4caae48c31cfd01c557c5fb65c",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-transfer-20261123/driver-result.json"
+    },
+    {
+      "bytes": 1621,
+      "path": "host-transfer/install.json",
+      "sha256": "5dafe5b86d823fdc61455738e2d9ffa838c5828bbf451ca32f310c85ea94e38f",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-transfer-20261123/install.json"
+    },
+    {
+      "bytes": 0,
+      "path": "host-transfer/install.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-transfer-20261123/install.stderr"
+    },
+    {
+      "bytes": 356,
+      "path": "host-transfer/install.stdout",
+      "sha256": "4fa7e5e07fdf6a71b84a3e544d73d2eb10e461e00c73cd121b6578bdf70c623c",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-transfer-20261123/install.stdout"
+    },
+    {
+      "bytes": 544,
+      "path": "host-transfer/launch.json",
+      "sha256": "b703f0d1d8671ccded2f4fc78666dd6357faa0ae298b68dfa3402a910a33adaf",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-transfer-20261123/launch.json"
+    },
+    {
+      "bytes": 705,
+      "path": "host-transfer/transfer.json",
+      "sha256": "9fa2ffc4ed5bbb40fc70559c6d6d46a44ca479061d4bd8b0d1a1613b9f8624fb",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-transfer-20261123/transfer.json"
+    },
+    {
+      "bytes": 0,
+      "path": "host-transfer/transfer.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-transfer-20261123/transfer.stderr"
+    },
+    {
+      "bytes": 229,
+      "path": "host-transfer/transfer.stdout",
+      "sha256": "2fbf8fbc3eb0ea1f773c43d8bb9c779883d77cdbbc36fe75f11b8c38c5eb2aa4",
+      "source": "/tank/shared/projects/tb371fc-linux/private/research5-services-transfer-20261123/transfer.stdout"
+    },
+    {
+      "bytes": 22269,
+      "path": "shared-transfer/bundle.json",
+      "sha256": "b540b71d3d5719265bed35b05016c9e0cbfc988ab17ccb351d14c42610d46c04",
+      "source": "/work/research5-services-kernel-inputs-v1/bundle.json"
+    },
+    {
+      "bytes": 83440,
+      "path": "shared-transfer/transfer.json",
+      "sha256": "6892cdb643e8ab58e55f10e86f7ce45f2ef6bdd22ddaaf400b935900cfc9cb5e",
+      "source": "/work/research5-services-kernel-inputs-v1/transfer.json"
+    },
+    {
+      "bytes": 0,
+      "path": "ct-transfer/r5-services-kernel-copy-v1.source.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/var/tmp/tb371fc-input2-copy-logs/r5-services-kernel-copy-v1.source.log"
+    },
+    {
+      "bytes": 0,
+      "path": "ct-transfer/r5-services-kernel-copy-v1.destination.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/var/tmp/tb371fc-input2-copy-logs/r5-services-kernel-copy-v1.destination.log"
+    },
+    {
+      "bytes": 0,
+      "path": "ct-transfer/r5-services-kernel-verify-v1.source.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/var/tmp/tb371fc-input2-copy-logs/r5-services-kernel-verify-v1.source.log"
+    }
+  ],
+  "packet_bytes": 496974,
+  "packet_sha256": "ec95fa93d310c389d7c25ee796acbf7c0dc8a76ede899e9003b9448b357f341b",
+  "physical_hardware_tested": false,
+  "schema_version": 1
+}

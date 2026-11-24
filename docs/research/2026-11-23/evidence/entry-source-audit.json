@@ -1,0 +1,512 @@
+{
+  "schema_version": 1,
+  "evidence_class": "source_clue",
+  "audit_utc": "2026-11-22T23:14:17.934218+00:00",
+  "scope": "Read-only first-stage source/dependency audit of the recorded checkout and enumerated upstream public refs; no boot or restore validation.",
+  "project_head": "d157b92721fbeeab823f56a677b3593babf3afe6",
+  "result": {
+    "r226_first_stage_recipe_complete_from_checkout": false,
+    "alternate_complete_recipe_found_in_enumerated_refs": false,
+    "kernel_build_executed": false,
+    "boot_image_generated": false,
+    "kexec_or_module_load_performed": false,
+    "device_reboot_or_flash_performed": false,
+    "owner_linux_hardware_pass": false,
+    "restore_tested": false
+  },
+  "source_file_snapshots": [
+    {
+      "path": "experimental/r226/README.md",
+      "bytes": 6674,
+      "sha256": "49c13d16be81d2b1331527657bf840e248a135fbee07b96c2157b7c80f9dac82"
+    },
+    {
+      "path": "experimental/r226/scripts/package-r226-autoboot-recovery.py",
+      "bytes": 6519,
+      "sha256": "f8a79d04631fb8f976695a917c2ce4dd51e10b4e92af26aa031095e5d268811e"
+    },
+    {
+      "path": "scripts/package-r191-autoboot-recovery.py",
+      "bytes": 6107,
+      "sha256": "f56cd96a16f26ffe7de1cffc0e98b0a96f8cc80b5424768fa201fc40570df2dc"
+    },
+    {
+      "path": "scripts/r191-recovery/tb371fc-autoboot-612",
+      "bytes": 3807,
+      "sha256": "a2a3280aaa82021118fa5fb9f5007ef973e3252756bc4b375078300cb0f8b37a"
+    },
+    {
+      "path": "scripts/package-linux-6.12-r121-panic-gate.py",
+      "bytes": 4473,
+      "sha256": "40e410aa2b9a67af72bf5dfcd40d10dba5504e8110a0ecc425c92f92e1c4bf68"
+    },
+    {
+      "path": "scripts/package-linux-6.12-r120-handoff.py",
+      "bytes": 5745,
+      "sha256": "e05de48724ebd0f88dae4cb3cefc0fc42cbe1954b7149d9faeb23de6cb850a47"
+    },
+    {
+      "path": "scripts/build-v56-6-watchdog-kexec-kernel.sh",
+      "bytes": 1480,
+      "sha256": "aa40ba92dfbace5a910babd00264d8732469bd5d848485fcdfa5688f95ef41ee"
+    },
+    {
+      "path": "scripts/build-v56-5-kexec-cpu-hotplug-community-kernel.sh",
+      "bytes": 799,
+      "sha256": "bc8ca0587d366e411bb770d78cbc26e9c9adadd59062f5157ca41667fa3cda0c"
+    },
+    {
+      "path": "scripts/build-v56-4-kexec-drm-shutdown-community-kernel.sh",
+      "bytes": 745,
+      "sha256": "4be7e807b272b489115d5339c388fcf7da35f2a68df815382140955f089bec4b"
+    },
+    {
+      "path": "scripts/build-v56-3-kexec-community-kernel.sh",
+      "bytes": 664,
+      "sha256": "0bdf10e56936178a1bc9a40384d108955682e4a32bfe7a551f4336cf6b52f5d5"
+    },
+    {
+      "path": "scripts/build-v56-1-community-kernel.sh",
+      "bytes": 10554,
+      "sha256": "112ded4d3ad4c4213919e5404025c6ad1012bbefa9f88572ac7bf635d689d003"
+    },
+    {
+      "path": "scripts/build-v56-1-community-simplefb-qca6390-kde.sh",
+      "bytes": 8791,
+      "sha256": "e2d22560e5aceea0f806273d6b6fa79b8d8ab39d09befa615e9f1612d0392e55"
+    },
+    {
+      "path": "scripts/build-v55-community-simplefb-arch-loopback-ssh.sh",
+      "bytes": 5506,
+      "sha256": "9b3512241fc94644261c2a5999a6ef808cf3bb3a6749526d4298da58ce4600cc"
+    },
+    {
+      "path": "scripts/build-v49-community-simplefb-console.sh",
+      "bytes": 6191,
+      "sha256": "500f48851deb83310dad24607f06a51125b24f932c13242b5c70dfc35afc6ecd"
+    },
+    {
+      "path": "scripts/build-v29-kexec-bridge.sh",
+      "bytes": 2741,
+      "sha256": "647369dac4bad42a83f77e6154da9ee8354bb99b1c201e953dbd56e2e0444c7d"
+    },
+    {
+      "path": "scripts/build-diagnostic-recovery.sh",
+      "bytes": 3034,
+      "sha256": "f0590998e74d4fb842fae6fa91075b8236186dcd2fc1dbe0e1e7c5062e275dd1"
+    },
+    {
+      "path": "scripts/verify-diagnostic-recovery.sh",
+      "bytes": 2664,
+      "sha256": "df8ad0e32eb663702d8a5cdc591b61e2117aec262883618ab37c8a1f82607249"
+    },
+    {
+      "path": "initramfs/execute-linux-6.12-r38",
+      "bytes": 2910,
+      "sha256": "f80fa3b2ec073c4713ee9fbb13f4690cd182000595d86f405a897a5b6067cb8e"
+    },
+    {
+      "path": "initramfs/setup-usb-acm-v56",
+      "bytes": 1164,
+      "sha256": "50af30426f5dbfec714329a832a770d0914e0ad219aa3c37227d0c40b6eb1ff1"
+    },
+    {
+      "path": "initramfs/boot-arch-development-rootfs",
+      "bytes": 6674,
+      "sha256": "352478d33b38feb2566cca5363aeade060aeadb780fdbb04f82fc4d3ef7271c3"
+    },
+    {
+      "path": "docs/MAINLINE_STATUS.md",
+      "bytes": 32962,
+      "sha256": "fc4f09d69a3644be51a3876c4664c8d00f3f4abc75531ea330e0206c742296c7"
+    },
+    {
+      "path": "docs/PANEL_PORT.md",
+      "bytes": 47087,
+      "sha256": "da55aaee03d2905081680b70e2e62065a8c36f23da5cedea45d2792417d1cc30"
+    }
+  ],
+  "owner_evidence_dependencies": [
+    {
+      "path": "docs/research/2026-11-23/evidence/android-boot-capabilities.json",
+      "bytes": 1856,
+      "sha256": "49eb71afa9cc34574f51efa431779eeaca0deed85edfe7e50f3a1444056acf28"
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/android-boot-backup-local.json",
+      "bytes": 3692,
+      "sha256": "12d63dd3386abdfdf64ea89fbd70326dc63a0247b760b4edaae2185b82621774"
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/boot-backup-off-device.json",
+      "bytes": 2052,
+      "sha256": "c95a47c36a491f4924f90285953550f060bcb986d05f1ecaafedbfa26f067bf4"
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/boot-header-inspection.json",
+      "bytes": 7513,
+      "sha256": "831ee408abed2e9ca0b3f4ac093cab760f7ee4a53dda0638658c463815ba97a7"
+    },
+    {
+      "path": "docs/research/2026-11-23/evidence/android-boot-state.json",
+      "bytes": 1649,
+      "sha256": "eea189ad5fdcec63284c9ff8c2386c4c230cc96aa72106d788415a6dd1db6732"
+    }
+  ],
+  "missing_referenced_paths": [
+    {
+      "path": "vendor-kernel/patches/0001-cnss2-add-no-ssr-diagnostic-mode.patch",
+      "worktree_exists": false,
+      "tracked_at_project_head": false
+    },
+    {
+      "path": "vendor-kernel/patches/0002-cnss2-add-single-qmi-client-diagnostic-mode.patch",
+      "worktree_exists": false,
+      "tracked_at_project_head": false
+    },
+    {
+      "path": "vendor-kernel/patches/0015-arm64-avoid-legacy-cpu-soft-restart-kexec-name-clash.patch",
+      "worktree_exists": false,
+      "tracked_at_project_head": false
+    },
+    {
+      "path": "vendor-kernel/patches/0022-community-import-qcacld-build-glue.patch",
+      "worktree_exists": false,
+      "tracked_at_project_head": false
+    },
+    {
+      "path": "vendor-kernel/patches/0023-community-backport-qcacld-netlink-time-helpers.patch",
+      "worktree_exists": false,
+      "tracked_at_project_head": false
+    },
+    {
+      "path": "vendor-kernel/patches/0024-community-drm-track-userspace-test-only.patch",
+      "worktree_exists": false,
+      "tracked_at_project_head": false
+    },
+    {
+      "path": "vendor-kernel/patches/0025-msm-drm-preserve-kms-state-during-kexec.patch",
+      "worktree_exists": false,
+      "tracked_at_project_head": false
+    },
+    {
+      "path": "vendor-kernel/patches/0026-cpu-hotplug-ignore-suspend-wakeup-during-kexec.patch",
+      "worktree_exists": false,
+      "tracked_at_project_head": false
+    },
+    {
+      "path": "vendor-kernel/patches/0027-msm-watchdog-local-kexec-shutdown.patch",
+      "worktree_exists": false,
+      "tracked_at_project_head": false
+    },
+    {
+      "path": "diagnostics/framebuffer-pattern.c",
+      "worktree_exists": false,
+      "tracked_at_project_head": false
+    },
+    {
+      "path": "diagnostics/reboot-bootloader-userspace.c",
+      "worktree_exists": false,
+      "tracked_at_project_head": false
+    },
+    {
+      "path": "bin/tb371fc-development-init-runtime",
+      "worktree_exists": false,
+      "tracked_at_project_head": false
+    },
+    {
+      "path": "scripts/package-r201-autoboot-recovery.py",
+      "worktree_exists": false,
+      "tracked_at_project_head": false
+    }
+  ],
+  "historical_dependencies": [
+    {
+      "id": "R201-RECOVERY",
+      "location": "author build workspace/linux-6.12.114-tb371fc-r201-autoboot-20261026/tb371fc-r201-recovery.img",
+      "sha256": "800307febff4f2e8387e1a73d9759e03375db1333c6e67537062ea22f0093f68",
+      "role": "Mandatory R226 selector base; no source build recipe for this exact image found in checkout."
+    },
+    {
+      "id": "R121-RECOVERY",
+      "location": "author build workspace/linux-6.12.30-tb371fc-r121-panic-gate-20261023/tb371fc-r121-recovery.img",
+      "sha256": "976b4820c956f011da6b21ef20884c9d344914afcfb1b7836021ca5c69f047e6",
+      "role": "Mandatory earlier R191 selector base; does not prove R201 source identity."
+    },
+    {
+      "id": "V55-RECOVERY",
+      "sha256": "c03331d9f85e33c490c6bfe8892d6b118b5283680c18729e9897d69228a4e9e5",
+      "role": "Required by V56 common packager; private predecessor ramdisk/DT dependencies remain."
+    },
+    {
+      "id": "KEXEC-BINARY",
+      "sha256": "6c3c706315389d30638cc5fbb5482c069d8f411b6bb0ae298a8b25db319ae77d",
+      "source_revision": null,
+      "role": "Historical static AArch64 executable named kexec-tools 2.0.32.git; precise source/configure/toolchain recipe unresolved."
+    }
+  ],
+  "unresolved_pins": [
+    {
+      "id": "V56-COMMUNITY-SOURCE",
+      "locator": "local /root/tb371fc-desktop-working-kernel branch tb371fc-desktop-linux",
+      "revision": null
+    },
+    {
+      "id": "V49-RESOLVED-CONFIG",
+      "locator": "local /root/tb371fc-desktop-working-out-v49/.config",
+      "sha256": null
+    },
+    {
+      "id": "KBUILD-INCLUDE-OVERLAY",
+      "locator": "scripts/Kbuild.include copied from the local base tree",
+      "sha256": null
+    },
+    {
+      "id": "WLAN-DONOR",
+      "locator": "qcacld-3.0, qca-wifi-host-cmn, fw-api from local /root/tb371fc-lenovo-4.19",
+      "revision": null
+    },
+    {
+      "id": "FIRST-STAGE-COMPILERS",
+      "locator": "Snapdragon Clang 10.0.7 plus Android 11 GCC 4.9 tools",
+      "archive_sha256": null
+    },
+    {
+      "id": "BOOT-TOOLS",
+      "locator": "mkbootimg.py, unpack_bootimg.py and Python 3 avbtool.py",
+      "revision": null
+    }
+  ],
+  "slot_identity": {
+    "historical_packer_stock_sha256": "94649360140db672e861729927011984e9714459b4e19c9aab02b7ab79466668",
+    "matching_owner_partition": "recovery_a",
+    "owner_recovery_b_sha256": "2c62c4c7c85ed751f3ca2273191fdddb6a20c62504f0ccb5a45456c08c6f5a72",
+    "selects_future_boot_slot": false
+  },
+  "upstream_public_metadata": {
+    "observed_utc": "2026-11-22T23:12:14.879960+00:00",
+    "queries": {
+      "repo": {
+        "url": "https://api.github.com/repos/oproskyrin/TB371FC-6.12",
+        "result": {
+          "full_name": "oproskyrin/TB371FC-6.12",
+          "default_branch": "main",
+          "pushed_at": "2026-11-05T14:51:43Z",
+          "archived": false,
+          "fork": false
+        },
+        "pagination": null,
+        "rate_remaining": "57"
+      },
+      "branches": {
+        "url": "https://api.github.com/repos/oproskyrin/TB371FC-6.12/branches?per_page=100",
+        "result": [
+          {
+            "name": "codex/community-handoff-r241-20261105",
+            "commit": "d157b92721fbeeab823f56a677b3593babf3afe6"
+          },
+          {
+            "name": "codex/r226-sd150-usb3",
+            "commit": "153824c8e613b1b1677d991bb4e07562a4718b60"
+          },
+          {
+            "name": "main",
+            "commit": "d157b92721fbeeab823f56a677b3593babf3afe6"
+          }
+        ],
+        "pagination": null,
+        "rate_remaining": "58"
+      },
+      "tags": {
+        "url": "https://api.github.com/repos/oproskyrin/TB371FC-6.12/tags?per_page=100",
+        "result": [],
+        "pagination": null,
+        "rate_remaining": "58"
+      },
+      "vendor_history": {
+        "url": "https://api.github.com/repos/oproskyrin/TB371FC-6.12/commits?path=vendor-kernel&per_page=100",
+        "result": [],
+        "pagination": null,
+        "rate_remaining": "59"
+      }
+    }
+  },
+  "upstream_other_branch_history": {
+    "observed_utc": "2026-11-22T23:12:46.339191+00:00",
+    "queries": {
+      "r226_vendor_history": {
+        "url": "https://api.github.com/repos/oproskyrin/TB371FC-6.12/commits?path=vendor-kernel&sha=153824c8e613b1b1677d991bb4e07562a4718b60&per_page=100",
+        "result": [],
+        "pagination": null
+      },
+      "r226_tree": {
+        "url": "https://api.github.com/repos/oproskyrin/TB371FC-6.12/git/trees/153824c8e613b1b1677d991bb4e07562a4718b60?recursive=1",
+        "result": {
+          "sha": "153824c8e613b1b1677d991bb4e07562a4718b60",
+          "truncated": false,
+          "entry_count": 1349,
+          "matching_entries": []
+        },
+        "pagination": null
+      }
+    }
+  },
+  "public_vendor_candidate": {
+    "observed_utc": "2026-11-22T23:13:31.895846+00:00",
+    "queries": {
+      "commit": {
+        "url": "https://api.github.com/repos/tem423/android_kernel_lenovo_tb371fc/git/commits/9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1",
+        "result": {
+          "sha": "9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1",
+          "tree": "0dab36615babaf7b31c211589639a738f8196cf6",
+          "date": "2026-08-09T03:17:56Z",
+          "subject": "关闭CONFIG_BPF_LSM"
+        }
+      },
+      "makefile": {
+        "url": "https://api.github.com/repos/tem423/android_kernel_lenovo_tb371fc/contents/Makefile?ref=9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1",
+        "result": {
+          "path": "Makefile",
+          "blob_sha": "197646a248aecf39092940740fdfb31e5b2febbf",
+          "bytes": 65600,
+          "sha256": "b1d3ff4904f77b191f76f1b2715e89d467af1e30fcdea7cc7188b7d33772b552",
+          "selected_lines": [
+            "# SPDX-License-Identifier: GPL-2.0",
+            "VERSION = 4",
+            "PATCHLEVEL = 19",
+            "SUBLEVEL = 325",
+            "EXTRAVERSION =",
+            "NAME = \"People's Front\"",
+            "",
+            "# *DOCUMENTATION*"
+          ]
+        }
+      },
+      "config": {
+        "url": "https://api.github.com/repos/tem423/android_kernel_lenovo_tb371fc/contents/arch/arm64/configs/vendor/tb371fc_defconfig?ref=9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1",
+        "result": {
+          "path": "arch/arm64/configs/vendor/tb371fc_defconfig",
+          "blob_sha": "e51013ec0aeab99a1cb47ef08290e0c2f5c21f81",
+          "bytes": 171831,
+          "sha256": "87185808d2a9a4cf2e8b7c917b6f60fb1c85d064a7903cf7bfeff35c6f69d2f0",
+          "selected_lines": [
+            "CONFIG_BLK_DEV_INITRD=y",
+            "# CONFIG_KEXEC is not set",
+            "CONFIG_MODVERSIONS=y",
+            "CONFIG_MODULE_SIG=y",
+            "CONFIG_MODULE_SIG_ALL=y",
+            "# CONFIG_MODULE_SIG_SHA1 is not set",
+            "# CONFIG_MODULE_SIG_SHA224 is not set",
+            "# CONFIG_MODULE_SIG_SHA256 is not set",
+            "# CONFIG_MODULE_SIG_SHA384 is not set",
+            "CONFIG_MODULE_SIG_SHA512=y",
+            "CONFIG_MODULE_SIG_HASH=\"sha512\"",
+            "# CONFIG_DEVTMPFS is not set",
+            "CONFIG_USB_GADGET=y",
+            "# CONFIG_USB_GADGET_DEBUG is not set",
+            "# CONFIG_USB_GADGET_DEBUG_FILES is not set",
+            "CONFIG_USB_GADGET_VBUS_DRAW=900",
+            "CONFIG_USB_GADGET_STORAGE_NUM_BUFFERS=2",
+            "# CONFIG_USB_GADGET_XILINX is not set",
+            "CONFIG_USB_CONFIGFS=y",
+            "CONFIG_USB_CONFIGFS_UEVENT=y",
+            "# CONFIG_USB_CONFIGFS_SERIAL is not set",
+            "# CONFIG_USB_CONFIGFS_ACM is not set",
+            "# CONFIG_USB_CONFIGFS_OBEX is not set",
+            "CONFIG_USB_CONFIGFS_NCM=y",
+            "# CONFIG_USB_CONFIGFS_ECM is not set",
+            "# CONFIG_USB_CONFIGFS_ECM_SUBSET is not set",
+            "CONFIG_USB_CONFIGFS_RNDIS=y",
+            "# CONFIG_USB_CONFIGFS_RMNET_BAM is not set",
+            "# CONFIG_USB_CONFIGFS_EEM is not set",
+            "CONFIG_USB_CONFIGFS_MASS_STORAGE=y",
+            "# CONFIG_USB_CONFIGFS_F_LB_SS is not set",
+            "CONFIG_USB_CONFIGFS_F_FS=y",
+            "CONFIG_USB_CONFIGFS_F_ACC=y",
+            "CONFIG_USB_CONFIGFS_F_AUDIO_SRC=y",
+            "CONFIG_USB_CONFIGFS_F_UAC1=y",
+            "# CONFIG_USB_CONFIGFS_F_UAC1_LEGACY is not set",
+            "CONFIG_USB_CONFIGFS_F_UAC2=y",
+            "CONFIG_USB_CONFIGFS_F_MIDI=y",
+            "CONFIG_USB_CONFIGFS_F_HID=y",
+            "CONFIG_USB_CONFIGFS_F_UVC=y",
+            "# CONFIG_USB_CONFIGFS_F_PRINTER is not set",
+            "CONFIG_USB_CONFIGFS_F_DIAG=y",
+            "CONFIG_USB_CONFIGFS_F_CDEV=y",
+            "CONFIG_USB_CONFIGFS_F_CCID=y",
+            "CONFIG_USB_CONFIGFS_F_QDSS=y",
+            "# CONFIG_USB_CONFIGFS_F_GSI is not set",
+            "CONFIG_USB_CONFIGFS_F_MTP=y",
+            "CONFIG_USB_CONFIGFS_F_PTP=y",
+            "CONFIG_CONFIGFS_FS=y",
+            "CONFIG_MODULE_SIG_KEY=\"certs/signing_key.pem\""
+          ]
+        }
+      },
+      "workflows": {
+        "url": "https://api.github.com/repos/tem423/android_kernel_lenovo_tb371fc/contents/.github/workflows?ref=9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1",
+        "error": "HTTPError",
+        "detail": "HTTP Error 404: Not Found"
+      }
+    }
+  },
+  "public_workflow_ref": {
+    "observed_utc": "2026-11-22T23:13:58.550036+00:00",
+    "queries": {
+      "branch": {
+        "url": "https://api.github.com/repos/tem423/android_kernel_lenovo_tb371fc/branches/workflows",
+        "result": {
+          "name": "workflows",
+          "commit": "f6562e36de1601442314a5675fa3ad8619b80149"
+        }
+      },
+      "files": {
+        "url": "https://api.github.com/repos/tem423/android_kernel_lenovo_tb371fc/contents/.github/workflows?ref=workflows",
+        "result": [
+          {
+            "name": "merge.yml",
+            "path": ".github/workflows/merge.yml",
+            "sha": "07735bccba5c78f301d2fe4f16a6de01d1d48fb5"
+          },
+          {
+            "name": "pick.yml",
+            "path": ".github/workflows/pick.yml",
+            "sha": "4d99f3bc2d0eeeef4910237a8e1cff8a064abe75"
+          },
+          {
+            "name": "test.yml",
+            "path": ".github/workflows/test.yml",
+            "sha": "6003d0e1a9a90e0122b1771e8549a66ac94a4f89"
+          },
+          {
+            "name": "获取.yml",
+            "path": ".github/workflows/获取.yml",
+            "sha": "e8347dfc7139defed5958d756ce0eaef04d98b36"
+          }
+        ]
+      }
+    }
+  },
+  "public_workflow_source": {
+    "observed_utc": "2026-11-22T23:14:17.934218+00:00",
+    "url": "https://api.github.com/repos/tem423/android_kernel_lenovo_tb371fc/git/blobs/6003d0e1a9a90e0122b1771e8549a66ac94a4f89",
+    "blob_sha": "6003d0e1a9a90e0122b1771e8549a66ac94a4f89",
+    "sha256": "1ccc4217dac130b8bf3f8105a837c31a3280e9959553fc036934b2ad627b05ef",
+    "bytes": 1059,
+    "source_path": ".github/workflows/test.yml",
+    "kernel_branch": "测试",
+    "kernel_config": "vendor/tb371fc_defconfig",
+    "action": "tem423/kernel_build_action@main",
+    "compiler_url": "https://github.com/sticpaper/Snapdragon-LLVM-ARM-Compiler-10.0.7-for-Android-NDK",
+    "compiler_branch": "main",
+    "immutable_build_recipe": false
+  },
+  "limits": [
+    "No absence assertion is made about all Git history, unreferenced commits, renamed paths, other repositories or private workspaces.",
+    "The exact tem423 9d8abeb commit, Makefile and defconfig were read through the public API; its complete tree was not checked out or built.",
+    "The tem423 4.19.325 candidate is not the unknown V56.6 4.19.157 source/configuration.",
+    "The running owner Android kernel configuration is measured; individual backed-up recovery-kernel configs were not extracted by this audit.",
+    "A verified current backup and an algorithm-NONE AVB hash/footer check do not prove a working restore, OEM signature acceptance or rollback compatibility.",
+    "Research2 Image/DT/modules and a generic QEMU probe initramfs cannot be relabelled as a complete first-stage or tablet root-loading contract."
+  ]
+}

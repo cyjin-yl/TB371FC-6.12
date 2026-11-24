@@ -1,0 +1,27 @@
+From: TB371FC entry reconstruction study
+Subject: [PATCH] bpf: provide a blinding-disabled stub when JIT is absent
+
+Base: tem423/android_kernel_lenovo_tb371fc
+      9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1
+
+The backported verifier unconditionally calls bpf_jit_blinding_enabled(),
+but filter.h defines it only in the CONFIG_BPF_JIT branch. The standalone
+entry config (MODULES=n, BPF_JIT=n) exposed the missing declaration during
+the real Clang 10 build. Blinding cannot be enabled without a JIT, so supply
+the corresponding false-valued stub alongside the other non-JIT stubs.
+This preserves verifier checks and does not suppress compiler diagnostics.
+
+--- a/include/linux/filter.h
++++ b/include/linux/filter.h
+@@ -1184,6 +1184,11 @@
+ 	bpf_prog_unlock_free(fp);
+ }
+ 
++static inline bool bpf_jit_blinding_enabled(struct bpf_prog *prog)
++{
++	return false;
++}
++
+ static inline bool bpf_jit_kallsyms_enabled(void)
+ {
+ 	return false;

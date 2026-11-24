@@ -1,0 +1,10 @@
+{
+  "all_target_hashes_match": true,
+  "historical_recipe_executed": false,
+  "patch_exit_code": 0,
+  "patch_sha256": "909b3f7932ad789ad8c4c2709bf00fa9141072970f682e3c851119026755cc13",
+  "physical_hardware_tested": false,
+  "scope": "host-only reconstruction of exact historical recipe bytes",
+  "target_template_manifest_sha256": "485c66848d4acc7948271770688812f28d4b4554d55528015fbb393bed7e6ea1",
+  "template_files_verified": 12
+}

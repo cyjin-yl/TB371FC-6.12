@@ -1,0 +1,67 @@
+{
+  "device": "Lenovo TB371FC",
+  "files": [
+    {
+      "capture_path": "/vendor/firmware/a650_gmu.bin",
+      "destination": "lib/firmware/qcom/a650_gmu.bin",
+      "role": "GMU",
+      "sha256": "df79fa8482fcc7587bb239b9c9e2b24bce4729893b990fe3f82b30da8175b01c",
+      "size": 41548,
+      "source_filename": "a650_gmu.bin"
+    },
+    {
+      "capture_path": "/vendor/firmware/a650_sqe.fw",
+      "destination": "lib/firmware/qcom/a650_sqe.fw",
+      "role": "SQE",
+      "sha256": "b4c27420fd6a5c6b511b254cc0fad8cdd40eea38ceb3418f895a1084f4460487",
+      "size": 31632,
+      "source_filename": "a650_sqe.fw"
+    },
+    {
+      "capture_path": "/vendor/firmware/a650_zap.elf",
+      "destination": "lib/firmware/qcom/sm8250/lenovo/tb371fc/a650_zap.mbn",
+      "role": "ZAP ELF/MDT",
+      "sha256": "9fa3242134d6070c4facba48bb5c5ef2206d92995035aec7daff01198e853299",
+      "size": 13964,
+      "source_filename": "a650_zap.elf"
+    }
+  ],
+  "kernel_contract": {
+    "board_dts": "mainline-port/arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc.dts",
+    "gmu": "qcom/a650_gmu.bin",
+    "loader": "drivers/soc/qcom/mdt_loader.c",
+    "sqe": "qcom/a650_sqe.fw",
+    "version": "6.12.114",
+    "zap": "qcom/sm8250/lenovo/tb371fc/a650_zap.mbn"
+  },
+  "provenance": {
+    "basis": "byte-for-byte match with this owner's recorded Android capture",
+    "capture_utc": "2026-11-22T21:06:57.696003+00:00",
+    "evidence_reference": "docs/research/2026-11-23/evidence/android-gpu.json",
+    "evidence_sha256": "67492d703071ebe5fa6abbdbc344103ecc427a88b85bc1ce55b7b54e0cdcae61"
+  },
+  "schema_version": 1,
+  "scope": "GPU firmware staging only; no signature authentication or hardware test",
+  "selected_zap_input": "a650_zap.elf",
+  "tool": "stage_gpu_firmware.py",
+  "zap_layout": {
+    "format": "ELF32 little endian",
+    "loadable_segments": [
+      {
+        "file_offset": 12288,
+        "file_size": 1676,
+        "flags": 134217735,
+        "index": 2,
+        "memory_size": 1676,
+        "type": 1
+      }
+    ],
+    "metadata_hash_bytes": 6712,
+    "metadata_hash_source": "embedded at hash program-header offset",
+    "metadata_header_bytes": 148,
+    "program_header_count": 3,
+    "required_split_files": {},
+    "signature_authentication": "not performed",
+    "split_payload_required": false
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "change": "Exclude neighboring colon as well as hexadecimal characters at both sides of a six-octet token; no evidence or field exemption.",
+  "execution": {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "scripts/research/test_research_tools.py",
+      "EvidenceTests.test_public_evidence_has_no_mac_or_credential_marker"
+    ],
+    "elapsed_seconds": 0.60753635999572,
+    "exit_code": 0,
+    "finished_utc": "2026-11-23T10:22:09.147296+00:00",
+    "json_files_present": 184,
+    "repeat_reason": "The earlier targeted run passed, but the tool combined its output streams. This single evidence-capture run retains separate complete stdout and stderr.",
+    "started_utc": "2026-11-23T10:22:08.539342+00:00",
+    "stderr": "test_public_evidence_has_no_mac_or_credential_marker (__main__.EvidenceTests.test_public_evidence_has_no_mac_or_credential_marker) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.470s\n\nOK\n",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_truncated": false,
+    "working_directory": "/workspace/scratch/45c316069ac9/tb371fc-linux"
+  },
+  "frozen_raw_evidence_modified": false,
+  "other_test_suites_executed": false,
+  "output_files": {
+    "stderr.log": {
+      "path": "research-tools-mac-boundary-stderr.log",
+      "sha256": "421426796a0b4aa7d8399953f657ccff0eb71b61e6a9b8b262283464f977256e",
+      "size": 235
+    },
+    "stdout.log": {
+      "path": "research-tools-mac-boundary-stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    }
+  },
+  "real_public_key_evidence": [
+    {
+      "field": "signing.module_identity.sig_key",
+      "new_regex_match": false,
+      "old_regex_false_positive": true,
+      "public_key_id_unchanged": true,
+      "public_key_octets": 20,
+      "report": "R4",
+      "sha256_after": "0db9a7e6164b44ac845a80974c3a369476ede23ac6f094de9c14c8602fa3faa6",
+      "sha256_before": "0db9a7e6164b44ac845a80974c3a369476ede23ac6f094de9c14c8602fa3faa6",
+      "size": 139692
+    },
+    {
+      "field": "signing.module_identity.sig_key",
+      "new_regex_match": false,
+      "old_regex_false_positive": true,
+      "public_key_id_unchanged": true,
+      "public_key_octets": 20,
+      "report": "R5",
+      "sha256_after": "69d0b558c99bdfb339df8b3b9baca8bb1ee4d0cb2e46dd9b3b7fef3ab69aaad2",
+      "sha256_before": "69d0b558c99bdfb339df8b3b9baca8bb1ee4d0cb2e46dd9b3b7fef3ab69aaad2",
+      "size": 136930
+    }
+  ],
+  "schema_version": 1,
+  "scope": "offline privacy-check token-boundary regression only",
+  "source_after_sha256": "70033ac58048802ca00d35c8c72ca35ade98d5362a65f57ceb24ac0f3f72dc00",
+  "source_before_sha256": "afee5b44b3887a69953e5ec28f0c806e2273ae1c31f02c4e9d28577000f63af3",
+  "source_diff": {
+    "path": "research-tools-mac-boundary.patch",
+    "sha256": "a5a1f1d86217a5535343ab56063b9c9aedcdc65134bfae22ca523dc7f6579077",
+    "size": 1462
+  },
+  "source_path": "scripts/research/test_research_tools.py",
+  "status": "passed",
+  "synthetic_cases": {
+    "literal_tokens_location": "test method and separately retained source diff; examples are synthetic, not owner addresses",
+    "negative": [
+      "seven-octet colon token",
+      "leading colon",
+      "trailing colon",
+      "adjacent leading hexadecimal character",
+      "adjacent trailing hexadecimal character"
+    ],
+    "positive": [
+      "standalone six octets",
+      "six uppercase octets quoted as a JSON value",
+      "mixed-case six octets after equals and before comma"
+    ]
+  }
+}

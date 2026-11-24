@@ -1,0 +1,91 @@
+From: TB371FC entry reconstruction study
+Subject: [PATCH 3/3] qcom: stop the local watchdog petter during normal kexec
+
+Base: tem423/android_kernel_lenovo_tb371fc
+      9d8abebf4ac4d45cf4cc11b5b6bc5e4483d10fd1
+
+The published watchdog driver has no shutdown callback. Its task rearms its
+pet timer even when enable becomes zero, and its two waits ignore stop.
+Stop that task while secondary CPUs are still online, then use the existing
+local hardware-disable helper and drain queued accounting work. Add stop
+conditions to both waits so kthread_stop cannot depend on a future timer or
+userspace pet. Existing remove also benefits from the corrected stop waits.
+
+The hook only runs for normal kexec. Suspend, ordinary restart and secure
+watchdog SCM policy are unchanged. It does NOT prove secure watchdog state,
+DMA quiescence, CPU response, or a successful physical kexec. This is new
+reconstructed code, not the missing historic patch 0027.
+
+--- a/drivers/soc/qcom/watchdog_v2.c
++++ b/drivers/soc/qcom/watchdog_v2.c
+@@ -13,6 +13,7 @@
+ #include <linux/slab.h>
+ #include <linux/jiffies.h>
+ #include <linux/kthread.h>
++#include <linux/kexec.h>
+ #include <linux/mutex.h>
+ #include <linux/sched.h>
+ #include <linux/interrupt.h>
+@@ -624,8 +625,11 @@
+ 	while (!kthread_should_stop()) {
+ 		do {
+ 			ret = wait_event_interruptible(wdog_dd->pet_complete,
+-						wdog_dd->timer_expired);
++						wdog_dd->timer_expired ||
++						kthread_should_stop());
+ 		} while (ret != 0);
++		if (kthread_should_stop())
++			break;
+ 
+ 		wdog_dd->thread_start = sched_clock();
+ 		for_each_cpu(cpu, cpu_present_mask)
+@@ -636,8 +640,11 @@
+ 
+ 		do {
+ 			ret = wait_event_interruptible(wdog_dd->pet_complete,
+-						wdog_dd->user_pet_complete);
++						wdog_dd->user_pet_complete ||
++						kthread_should_stop());
+ 		} while (ret != 0);
++		if (kthread_should_stop())
++			break;
+ 
+ 		wdog_dd->timer_expired = false;
+ 		wdog_dd->user_pet_complete = !wdog_dd->user_pet_enabled;
+@@ -713,6 +720,28 @@
+ 	log_buf_remove();
+ 	kfree(wdog_dd);
+ 	return 0;
++}
++
++/* Normal kexec never returns to this driver; leave secure WDT policy alone. */
++static void msm_watchdog_kexec_shutdown(struct platform_device *pdev)
++{
++	struct msm_watchdog_data *wdog_dd = platform_get_drvdata(pdev);
++
++	if (!kexec_in_progress || !wdog_dd)
++		return;
++
++	/*
++	 * Stop the petter before deleting its timer: the thread otherwise
++	 * rearms the timer unconditionally. Its waits must observe stop.
++	 * Secondary CPUs are still online during device_shutdown().
++	 */
++	mutex_lock(&wdog_dd->disable_lock);
++	kthread_stop(wdog_dd->watchdog_task);
++	if (enable)
++		wdog_disable(wdog_dd);
++	mutex_unlock(&wdog_dd->disable_lock);
++	flush_work(&wdog_dd->irq_counts_work);
++	dev_info(&pdev->dev, "Local APSS watchdog stopped for normal kexec\n");
+ }
+ 
+ void msm_trigger_wdog_bite(void)
+@@ -1066,6 +1095,7 @@
+ static struct platform_driver msm_watchdog_driver = {
+ 	.probe = msm_watchdog_probe,
+ 	.remove = msm_watchdog_remove,
++	.shutdown = msm_watchdog_kexec_shutdown,
+ 	.driver = {
+ 		.name = MODULE_NAME,
+ 		.owner = THIS_MODULE,

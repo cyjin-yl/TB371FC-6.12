@@ -1,0 +1,6 @@
+test_public_evidence_has_no_mac_or_credential_marker (__main__.EvidenceTests.test_public_evidence_has_no_mac_or_credential_marker) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.470s
+
+OK

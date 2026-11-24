@@ -1,0 +1,38 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * Independent Linux 6.12 display + input integration candidate.
+ *
+ * Inherit the qualified research2 display wiring and its driver prerequisites,
+ * then enable the existing owner-matched SPI14 touchscreen description and
+ * make the already enabled I2C13 keyboard explicit. Apply input backports 0018
+ * and 0019. No GPIO polarity, bus speed, reset delay or panel command is guessed
+ * here. A successful DT/module build is not a hardware acceptance result.
+ *
+ * Measured touchscreen-x-mm/y-mm are intentionally absent: Android reports
+ * unknown axis resolution, and the panel's mechanical dimensions do not prove
+ * the active digitizer dimensions. The driver preserves this unknown value.
+ * CTN730 pen charging and display-before-touch resume sequencing still need
+ * their own implementation and device validation; this DT does not add them.
+ */
+
+#include "sm8250-lenovo-tb371fc-display-test-6.12.dts"
+
+/ {
+	model = "Lenovo TB371FC (Linux 6.12 display and input integration)";
+};
+
+&spi14 {
+	status = "okay";
+};
+
+&touchscreen {
+	status = "okay";
+};
+
+&i2c13 {
+	status = "okay";
+
+	keyboard-cover@60 {
+		status = "okay";
+	};
+};

@@ -1,0 +1,30 @@
+{
+  "child_pid": 673373,
+  "command": [
+    "sudo",
+    "-n",
+    "/usr/sbin/pct",
+    "exec",
+    "102",
+    "--",
+    "docker",
+    "exec",
+    "tb371fc-build-ssd-20261123",
+    "python3",
+    "-B",
+    "-c",
+    "from pathlib import Path\nimport base64,hashlib,json,os,stat,zlib\nroot=Path('/work/research5-services')\noutput=root/'public-records-v1'\nassert not output.exists() and not output.is_symlink()\nreport=(root/'artifacts/research5-services-build.json').read_bytes()\nassert hashlib.sha256(report).hexdigest()=='69d0b558c99bdfb339df8b3b9baca8bb1ee4d0cb2e46dd9b3b7fef3ab69aaad2'\nparsed=json.loads(report)\nassert parsed['passed'] is True and parsed['module_count']==84\nnames=['artifacts/research5-services-build.json','artifacts/qualified-artifacts.SHA256SUMS',\n 'artifacts/kernel.config','artifacts/builder-packages.tsv','artifacts/modules.SHA256SUMS',\n 'configuration.json','source-manifest.json','source-input/source-manifest.json',\n 'configure-attempt-01.json','build-attempt-01.json','inspection-attempt-01.json','recipe-install.json']\nfor phase in ['prepare-source-01','configure-01','build-01','inspect-01']:\n names.extend(['jobs/'+phase+'.json','jobs/'+phase+'.log'])\nassert len(names)==len(set(names))==20\nmembers=[]\nfor name in sorted(names):\n p=root/name;fd=os.open(p,os.O_RDONLY|os.O_NOFOLLOW|os.O_CLOEXEC)\n try:\n  before=os.fstat(fd)\n  assert stat.S_ISREG(before.st_mode) and before.st_uid==before.st_gid==0 and 0<=before.st_size<=4*1024**2,name\n  with os.fdopen(fd,'rb',closefd=False) as f:raw=f.read()\n  after=os.fstat(fd)\n  stable=lambda s:(s.st_dev,s.st_ino,s.st_mode,s.st_uid,s.st_gid,s.st_size,s.st_mtime_ns,s.st_ctime_ns)\n  assert stable(before)==stable(after) and len(raw)==before.st_size,name\n  raw.decode('utf-8')\n  if name.endswith('.json'):json.loads(raw)\n  members.append({'path':name,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),\n   'mode':stat.S_IMODE(before.st_mode),'base64':base64.b64encode(raw).decode()})\n finally:os.close(fd)\nmanifest={'schema_version':1,'kernel_report_sha256':hashlib.sha256(report).hexdigest(),\n 'member_count':len(members),'members':[{k:v for k,v in row.items() if k!='base64'} for row in members],\n 'raw_bytes_preserved':True,'binary_artifacts_included':False,'private_key_read':False,\n 'firmware_included':False,'physical_hardware_tested':False}\npacket=(json.dumps({'schema_version':1,'manifest':manifest,'members':members},sort_keys=True,separators=(',',':'))+'\\n').encode()\ncompressed=zlib.compress(packet,9)\nos.umask(0o077);output.mkdir(mode=0o700)\nfor name,raw in [('packet.zlib',compressed),('manifest.json',(json.dumps(manifest,sort_keys=True,indent=2)+'\\n').encode())]:\n with (output/name).open('xb') as f:f.write(raw)\n assert (output/name).read_bytes()==raw\nprint(json.dumps({'output':str(output),'packet_bytes':len(packet),'packet_sha256':hashlib.sha256(packet).hexdigest(),\n 'compressed_bytes':len(compressed),'compressed_sha256':hashlib.sha256(compressed).hexdigest(),\n 'member_count':len(members),'physical_hardware_tested':False},sort_keys=True))\n"
+  ],
+  "elapsed_seconds": 1.118378670013044,
+  "ended_utc": "2026-11-23T10:10:30.538866+00:00",
+  "exit_code": 0,
+  "start_utc": "2026-11-23T10:10:29.420462+00:00",
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 339,
+    "sha256": "139d4d4eed9606156e3b209f51cf371a4f04797a872e0d5dd99662c52eb62a1a"
+  }
+}

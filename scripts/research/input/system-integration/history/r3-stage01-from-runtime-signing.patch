@@ -1,0 +1,131 @@
+--- a/boot_system_vm.py
++++ b/boot_system_vm.py
+@@ -60,8 +60,6 @@
+                     'kernel_supported_policy_version': '33', 'multi_user_target': 'active',
+                     'udev': 'active', 'dbus': 'active', 'module_files_verified': data['module_count'],
+                     'firmware_files_verified': data['firmware_file_count'], 'all_runtime_hashes_verified': True,
+-                    'compiled_module_sig_force': data['configured_module_sig_force'],
+-                    'module_signature_enforced': True,
+                     'failed_units': [], 'validation_pids_max': str(data['validation_tasks_max']),
+                     'autofs_loaded': True, 'autofs_misc_interface': True,
+                     'autofs_module_signature': data['autofs_module_signature'], 'kernel_tainted': 0,
+@@ -75,7 +73,7 @@
+                  'pids' in guest.get('cgroup_controllers', []) and
+                  {'selinux', 'bpf'}.issubset(set(guest.get('active_lsm', []))) and
+                  bool(guest.get('pl061_bound_devices')) and
+-                 bool(bpf_attached) and guest.get('module_sig_enforce_sysfs') in ('Y', '1') and
++                 bool(bpf_attached) and
+                  guest.get('pids_enforcement_probe', {}).get('passed') is True and
+                  guest.get('pids_enforcement_probe', {}).get('all_owned_children_reaped') is True and
+                  guest.get('bpf_lsm_deny_probe', {}).get('restricted_exit_code') == 1 and
+@@ -109,7 +107,6 @@
+     profile_sha = sha(PROFILE)
+     command_line = (f'console=ttyAMA0 root=LABEL={LABEL} rootfstype=ext4 rw '
+                     'rd.luks=0 rd.lvm=0 rd.md=0 rd.dm=0 rd.neednet=0 '
+-                    'module.sig_enforce=1 '
+                     'systemd.unit=tb371fc-r3-validation.target systemd.show_status=yes '
+                     'systemd.log_target=console systemd.log_level=debug selinux=1 enforcing=' +
+                     ('0' if args.phase == 'label' else '1') +
+@@ -128,8 +125,6 @@
+               'physical_hardware_tested': False, 'physical_device_passthrough': False,
+               'network': False, 'board_dtb_used': False, 'host_filesystem_shared': False,
+               'systemd_debug_logging_for_this_vm_only': True, 'passed': False}
+-    record['vm_module_sig_enforce_argument'] = 'module.sig_enforce=1'
+-    record['compiled_module_sig_force'] = data['configured_module_sig_force']
+     previous = {sig: signal.signal(sig, on_signal) for sig in (signal.SIGTERM, signal.SIGINT)}
+     start = time.monotonic()
+     reason = None
+--- a/guest_verify_system.py
++++ b/guest_verify_system.py
+@@ -100,11 +100,6 @@
+     root_label = run('/usr/sbin/blkid', '-s', 'LABEL', '-o', 'value', root_source)
+     require(root_label == profile['root_label'] == 'tb371fc-r3-f45', 'root is not the dedicated new image')
+     require(platform.machine() == 'aarch64' and platform.release() == profile['kernel_release'], 'unexpected kernel/architecture')
+-    require(words.count('module.sig_enforce=1') == 1 and
+-            len([s for s in words if s.startswith('module.sig_enforce=')]) == 1,
+-            'explicit VM module signature policy missing or ambiguous')
+-    sig_enforce_raw = Path('/sys/module/module/parameters/sig_enforce').read_text().strip()
+-    require(sig_enforce_raw in ('Y', '1'), 'module signature enforcement is not active')
+     pid1 = os.readlink('/proc/1/exe')
+     require(pid1 == '/usr/lib/systemd/systemd', 'actual PID1 is not systemd')
+     enforce = Path('/sys/fs/selinux/enforce')
+@@ -187,7 +182,6 @@
+                     'booted ext4 did not retain the qualified journal ACL')
+         progress('independent_foundation_checks_verified', {
+             'pids_enforcement_probe': pids_proof, 'active_lsm': lsm,
+-            'module_signature_enforced': True, 'module_sig_enforce_sysfs': sig_enforce_raw,
+             'kernel_btf_sha256': btf_hash, 'kernel_btf_size': btf_size,
+             'autofs_loaded': True, 'autofs_module_signature': autofs_signature,
+             'kernel_tainted_before_bpf_probe': tainted, 'pl061_bound_devices': bound_gpio,
+@@ -229,8 +223,6 @@
+             'udev': run('/usr/bin/systemctl', 'is-active', 'systemd-udevd.service'),
+             'dbus': run('/usr/bin/systemctl', 'is-active', 'dbus.service'),
+             'module_files_verified': runtime['module_count'], 'firmware_files_verified': runtime['firmware_file_count'],
+-            'compiled_module_sig_force': profile['configured_module_sig_force'],
+-            'module_signature_enforced': True, 'module_sig_enforce_sysfs': sig_enforce_raw,
+             'all_runtime_hashes_verified': True, 'failed_units': failed.splitlines() if failed else [],
+             'cgroup_controllers': controllers, 'validation_control_group': group, 'validation_pids_max': pids_max,
+             'pids_events': (group_path / 'pids.events').read_text().strip(), 'active_lsm': lsm,
+--- a/run_pipeline.py
++++ b/run_pipeline.py
+@@ -26,29 +26,22 @@
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('--report-sha256', required=True)
+     parser.add_argument('--bundle-sha256', required=True)
+-    parser.add_argument('--attempt', type=int, default=1)
+-    parser.add_argument('--start', choices=('stage', 'configure', 'initramfs', 'image', 'vm-label', 'vm-verify', 'finalize'), default='stage')
+     args = parser.parse_args()
+-    if not 1 <= args.attempt <= 99:
+-        parser.error('attempt must be in 1..99')
+     for sig in (signal.SIGINT, signal.SIGTERM):
+         signal.signal(sig, on_signal)
+     jobs = WORK / 'jobs'
+-    jobs.mkdir(exist_ok=True)
+-    suffix = f'{args.attempt:02d}'
++    jobs.mkdir()
+     phases = [
+-        ('stage', ['stage_system.py', '--report-sha256', args.report_sha256,
++        ('stage-01', ['stage_system.py', '--report-sha256', args.report_sha256,
+                       '--bundle-sha256', args.bundle_sha256]),
+-        ('configure', ['assemble_system.py', 'configure']),
+-        ('initramfs', ['assemble_system.py', 'initrd']),
+-        ('image', ['assemble_system.py', 'image']),
+-        ('vm-label', ['boot_system_vm.py', 'label', '--run', 'vm-label-' + suffix]),
+-        ('vm-verify', ['boot_system_vm.py', 'verify', '--run', 'vm-verify-' + suffix]),
+-        ('finalize', ['finalize_system.py']),
++        ('configure-01', ['assemble_system.py', 'configure']),
++        ('initramfs-01', ['assemble_system.py', 'initrd']),
++        ('image-01', ['assemble_system.py', 'image']),
++        ('vm-label-01', ['boot_system_vm.py', 'label', '--run', 'vm-label-01']),
++        ('vm-verify-01', ['boot_system_vm.py', 'verify', '--run', 'vm-verify-01']),
++        ('finalize-01', ['finalize_system.py']),
+     ]
+-    start_index = next(i for i, (name, _) in enumerate(phases) if name == args.start)
+-    for phase, arguments in phases[start_index:]:
+-        name = phase + '-' + suffix
++    for name, arguments in phases:
+         command = [sys.executable, str(HERE / arguments[0]), *arguments[1:]]
+         started = time.monotonic()
+         record = {'name': name, 'command': command,
+--- a/stage_system.py
++++ b/stage_system.py
+@@ -95,8 +95,7 @@
+     required_config = {'CONFIG_CGROUP_PIDS=y', 'CONFIG_AUTOFS_FS=m', 'CONFIG_GPIO_PL061=y',
+                        'CONFIG_FTRACE=y', 'CONFIG_KPROBES=y', 'CONFIG_KPROBE_EVENTS=y',
+                        'CONFIG_BPF_EVENTS=y', 'CONFIG_BPF_LSM=y', 'CONFIG_DEBUG_INFO_BTF=y',
+-                       'CONFIG_MODULE_SIG=y', 'CONFIG_MODULE_SIG_ALL=y',
+-                       'CONFIG_MODULE_SIG_SHA512=y', 'CONFIG_SECURITY_SELINUX=y'}
++                       'CONFIG_MODULE_SIG_FORCE=y', 'CONFIG_SECURITY_SELINUX=y'}
+     if not required_config.issubset(set(config)):
+         raise ValueError('required resolved research3 configuration is incomplete')
+     certificate = INPUTS / 'artifacts/signing-cert.der'
+@@ -188,9 +187,6 @@
+                'public_signing_certificate_sha256': sha(certificate),
+                'autofs_module_signature': autofs_identity, 'validation_tasks_max': 128,
+                'journal_acl_check': copied['journal_acl_check'],
+-               'configured_module_sig_force': 'CONFIG_MODULE_SIG_FORCE=y' in config,
+-               'vm_module_signature_enforcement_required': True,
+-               'module_enforcement_scope': 'module.sig_enforce=1 in this owned VM; compiled FORCE setting is unchanged',
+                'scope': 'generic ARM64 VM; packaged Lenovo DT is not used by QEMU'}
+     save('system-profile.json', profile)
+     copy_new(WORK / 'system-profile.json', PROFILE)

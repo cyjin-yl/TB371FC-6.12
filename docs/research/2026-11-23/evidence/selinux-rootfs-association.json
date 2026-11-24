@@ -1,0 +1,1099 @@
+{
+  "schema_version": 1,
+  "evidence_class": "source_and_native_readonly_inspection",
+  "scope": "Diagnose the retained Fedora v5 SELinux rootfs association failure and qualify the source/ELF contract of the existing switch_root tool. This audit executes no target mount, policy load, switch_root, or new VM.",
+  "kernel_release": "6.12.114-tb371fc-research4-system",
+  "failure": {
+    "serial_log": {
+      "path": "/work/fedora-input-system-v5/vm-verify-01/serial.log",
+      "size": 19359,
+      "sha256": "4bcf21659de6f20fe700626897f26deafa3ed125fd394d14d65ca3f206005a75"
+    },
+    "selected_lines": [
+      "TB371FC_EARLY_SELINUX_V1 POLICY_LOADED enforcing=1 context=system_u:system_r:kernel_t:s0",
+      "[    5.349993] audit: type=1400 audit(5.292:3): avc:  denied  { associate } for  pid=1 comm=\"init\" name=\"var\" dev=\"rootfs\" ino=1765 scontext=system_u:object_r:var_t:s0 tcontext=system_u:object_r:root_t:s0 tclass=filesystem permissive=0",
+      "Could not set context for /var:  Permission denied",
+      "TB371FC_EARLY_SELINUX_V1 FAILED phase=restore-initramfs-contexts reason=initramfs-relabel-failed errno=13",
+      "[    5.358189] Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000100"
+    ],
+    "root_argument": "root=LABEL=tb371fc-r4b-f45",
+    "rootfstype_argument": "rootfstype=ext4",
+    "already_executed_archive_verification": {
+      "passed": true,
+      "path": "/work/fedora-input-system-v5/initramfs-archive-verification.json",
+      "sha256": "8500f905f34f5074289f15bc1ad86843cd2c137963008614023c814ba6c121dd",
+      "size": 109842,
+      "top_level_keys": [
+        "baseline",
+        "critical_members",
+        "dependency_closure",
+        "early",
+        "early_policy",
+        "extracted",
+        "firmware",
+        "firmware_loaded",
+        "gzip",
+        "image",
+        "image_executed",
+        "kernel_policy_load_tested",
+        "ld_so_cache",
+        "ldconfig_executed",
+        "limits",
+        "main",
+        "passed",
+        "physical_hardware_tested",
+        "proot_executed",
+        "runtime_elfs",
+        "schema_version",
+        "scope",
+        "stage"
+      ]
+    },
+    "production_archive": {
+      "archive_entry_counts": {
+        "early": 1,
+        "main": 570
+      },
+      "archive_validator_sha256": "58a5dba0186174c7442f73c2f8f0a2333599e6cbbcb1cf332169e5df558bfd1e",
+      "archive_verified": true,
+      "bootstrap": {
+        "mode": 493,
+        "sha256": "e53cf4073a7df64f4234ace503329a6fadd5f1688ef7e3be5f33c01e4d510e0d",
+        "size": 72048,
+        "source_path": "/work/early-selinux-bootstrap-20261123/build-01/early-init"
+      },
+      "cache_created_by": "fixed Fedora static AArch64 ldconfig through QEMU outside PRoot",
+      "cache_semantic_map_matches_fixed_sources": true,
+      "early_selinux_argument": "rd.tb371fc.early-selinux=1",
+      "enforcing_argument": 1,
+      "hostonly": false,
+      "kernel_release": "6.12.114-tb371fc-research4-system",
+      "original_legacy_validator_sha256": "263866a1943cd43116e69cb0a8b1081d6ccd1cc93ef98866a4b3eacc00bac58a",
+      "path": "/work/fedora-input-system-v5/rootfs/boot/initramfs-6.12.114-tb371fc-research4-system.img",
+      "physical_hardware_tested": false,
+      "policy_source_manifest_sha256": "1e1dd096385ff5d6e5df20ee1c72e4ad6a66a85b05a8aa8814ec97d82d9b73c3",
+      "process_domain_proof_payloads_verified": true,
+      "qualified_baseline_image_sha256": "2741ed3f3b5814b40dd303f4666b6f629c55ad11fd057a6e99f9f6be5e01c543",
+      "repacked_by": "GNU cpio newc, flushed early prefix, gzip -n",
+      "role": "production-early-selinux",
+      "sha256": "9f2a664305c968f4fc3efecd4ef5298a1723cae9030d896a2bc35f2f94bb6668",
+      "size_bytes": 32466768,
+      "target_cache_sha256": "0571b75832400c2d74a2da6cef58416d34906e7b292cf5e92449bc849144b3a9"
+    },
+    "actual_v5_production_boot_passed": false
+  },
+  "kernel": {
+    "kernel_config": {
+      "path": "/work/research4-system/artifacts/kernel.config",
+      "selected_lines": [
+        "CONFIG_SHMEM=y",
+        "CONFIG_TMPFS=y",
+        "CONFIG_TMPFS_POSIX_ACL=y",
+        "CONFIG_TMPFS_XATTR=y",
+        "CONFIG_SECURITYFS=y",
+        "CONFIG_SECURITY_SELINUX=y"
+      ],
+      "sha256": "0236496603f168aacc5586eac7e199ca8f840b5d0c9b5ed111da64e9d28ec275",
+      "size": 222379
+    },
+    "source_root": "/work/research4-system/source-input/linux-6.12.114-input-integration",
+    "sources": [
+      {
+        "actual_path": "/work/research4-system/source-input/linux-6.12.114-input-integration/security/selinux/hooks.c",
+        "excerpts": [
+          {
+            "first_line": 451,
+            "last_line": 459,
+            "text": "\tint rc;\n\trc = avc_has_perm(tsec->sid, sbsec->sid, SECCLASS_FILESYSTEM,\n\t\t\t  FILESYSTEM__RELABELFROM, NULL);\n\tif (rc)\n\t\treturn rc;\n\n\trc = avc_has_perm(sid, sbsec->sid, SECCLASS_FILESYSTEM,\n\t\t\t  FILESYSTEM__ASSOCIATE, NULL);\n\treturn rc;"
+          },
+          {
+            "first_line": 462,
+            "last_line": 500,
+            "text": "static int selinux_is_genfs_special_handling(struct super_block *sb)\n{\n\t/* Special handling. Genfs but also in-core setxattr handler */\n\treturn\t!strcmp(sb->s_type->name, \"sysfs\") ||\n\t\t!strcmp(sb->s_type->name, \"pstore\") ||\n\t\t!strcmp(sb->s_type->name, \"debugfs\") ||\n\t\t!strcmp(sb->s_type->name, \"tracefs\") ||\n\t\t!strcmp(sb->s_type->name, \"rootfs\") ||\n\t\t(selinux_policycap_cgroupseclabel() &&\n\t\t (!strcmp(sb->s_type->name, \"cgroup\") ||\n\t\t  !strcmp(sb->s_type->name, \"cgroup2\")));\n}\n\nstatic int selinux_is_sblabel_mnt(struct super_block *sb)\n{\n\tstruct superblock_security_struct *sbsec = selinux_superblock(sb);\n\n\t/*\n\t * IMPORTANT: Double-check logic in this function when adding a new\n\t * SECURITY_FS_USE_* definition!\n\t */\n\tBUILD_BUG_ON(SECURITY_FS_USE_MAX != 7);\n\n\tswitch (sbsec->behavior) {\n\tcase SECURITY_FS_USE_XATTR:\n\tcase SECURITY_FS_USE_TRANS:\n\tcase SECURITY_FS_USE_TASK:\n\tcase SECURITY_FS_USE_NATIVE:\n\t\treturn 1;\n\n\tcase SECURITY_FS_USE_GENFS:\n\t\treturn selinux_is_genfs_special_handling(sb);\n\n\t/* Never allow relabeling on context mounts */\n\tcase SECURITY_FS_USE_MNTPOINT:\n\tcase SECURITY_FS_USE_NONE:\n\tdefault:\n\t\treturn 0;\n\t}"
+          },
+          {
+            "first_line": 604,
+            "last_line": 621,
+            "text": "static int bad_option(struct superblock_security_struct *sbsec, char flag,\n\t\t      u32 old_sid, u32 new_sid)\n{\n\tchar mnt_flags = sbsec->flags & SE_MNTMASK;\n\n\t/* check if the old mount command had the same options */\n\tif (sbsec->flags & SE_SBINITIALIZED)\n\t\tif (!(sbsec->flags & flag) ||\n\t\t    (old_sid != new_sid))\n\t\t\treturn 1;\n\n\t/* check if we were passed the same options twice,\n\t * aka someone passed context=a,context=b\n\t */\n\tif (!(sbsec->flags & SE_SBINITIALIZED))\n\t\tif (mnt_flags & flag)\n\t\t\treturn 1;\n\treturn 0;"
+          },
+          {
+            "first_line": 651,
+            "last_line": 666,
+            "text": "\tif (!selinux_initialized()) {\n\t\tif (!opts) {\n\t\t\t/* Defer initialization until selinux_complete_init,\n\t\t\t   after the initial policy is loaded and the security\n\t\t\t   server is ready to handle calls. */\n\t\t\tif (kern_flags & SECURITY_LSM_NATIVE_LABELS) {\n\t\t\t\tsbsec->flags |= SE_SBNATIVE;\n\t\t\t\t*set_kern_flags |= SECURITY_LSM_NATIVE_LABELS;\n\t\t\t}\n\t\t\tgoto out;\n\t\t}\n\t\trc = -EINVAL;\n\t\tpr_warn(\"SELinux: Unable to set superblock options \"\n\t\t\t\"before the security server is initialized\\n\");\n\t\tgoto out;\n\t}"
+          },
+          {
+            "first_line": 725,
+            "last_line": 734,
+            "text": "\tif (sbsec->flags & SE_SBINITIALIZED) {\n\t\t/* previously mounted with options, but not on this attempt? */\n\t\tif ((sbsec->flags & SE_MNTMASK) && !opts)\n\t\t\tgoto out_double_mount;\n\t\tif ((kern_flags & SECURITY_LSM_NATIVE_LABELS) &&\n\t\t    sbsec->behavior == SECURITY_FS_USE_NATIVE)\n\t\t\t*set_kern_flags |= SECURITY_LSM_NATIVE_LABELS;\n\t\trc = 0;\n\t\tgoto out;\n\t}"
+          },
+          {
+            "first_line": 792,
+            "last_line": 799,
+            "text": "\t/* sets the context of the superblock for the fs being mounted. */\n\tif (fscontext_sid) {\n\t\trc = may_context_mount_sb_relabel(fscontext_sid, sbsec, cred);\n\t\tif (rc)\n\t\t\tgoto out;\n\n\t\tsbsec->sid = fscontext_sid;\n\t}"
+          },
+          {
+            "first_line": 821,
+            "last_line": 849,
+            "text": "\tif (context_sid) {\n\t\tif (!fscontext_sid) {\n\t\t\trc = may_context_mount_sb_relabel(context_sid, sbsec,\n\t\t\t\t\t\t\t  cred);\n\t\t\tif (rc)\n\t\t\t\tgoto out;\n\t\t\tsbsec->sid = context_sid;\n\t\t} else {\n\t\t\trc = may_context_mount_inode_relabel(context_sid, sbsec,\n\t\t\t\t\t\t\t     cred);\n\t\t\tif (rc)\n\t\t\t\tgoto out;\n\t\t}\n\t\tif (!rootcontext_sid)\n\t\t\trootcontext_sid = context_sid;\n\n\t\tsbsec->mntpoint_sid = context_sid;\n\t\tsbsec->behavior = SECURITY_FS_USE_MNTPOINT;\n\t}\n\n\tif (rootcontext_sid) {\n\t\trc = may_context_mount_inode_relabel(rootcontext_sid, sbsec,\n\t\t\t\t\t\t     cred);\n\t\tif (rc)\n\t\t\tgoto out;\n\n\t\troot_isec->sid = rootcontext_sid;\n\t\troot_isec->initialized = LABEL_INITIALIZED;\n\t}"
+          },
+          {
+            "first_line": 1004,
+            "last_line": 1019,
+            "text": "static int selinux_add_opt(int token, const char *s, void **mnt_opts)\n{\n\tstruct selinux_mnt_opts *opts = *mnt_opts;\n\tu32 *dst_sid;\n\tint rc;\n\n\tif (token == Opt_seclabel)\n\t\t/* eaten and completely ignored */\n\t\treturn 0;\n\tif (!s)\n\t\treturn -EINVAL;\n\n\tif (!selinux_initialized()) {\n\t\tpr_warn(\"SELinux: Unable to set superblock options before the security server is initialized\\n\");\n\t\treturn -EINVAL;\n\t}"
+          },
+          {
+            "first_line": 2730,
+            "last_line": 2744,
+            "text": "{\n\tstruct selinux_mnt_opts *opts = mnt_opts;\n\tstruct superblock_security_struct *sbsec = selinux_superblock(sb);\n\n\tif (!(sbsec->flags & SE_SBINITIALIZED))\n\t\treturn 0;\n\n\tif (!opts)\n\t\treturn 0;\n\n\tif (opts->fscontext_sid) {\n\t\tif (bad_option(sbsec, FSCONTEXT_MNT, sbsec->sid,\n\t\t\t       opts->fscontext_sid))\n\t\t\tgoto out_bad_option;\n\t}"
+          },
+          {
+            "first_line": 2762,
+            "last_line": 2768,
+            "text": "\treturn 0;\n\nout_bad_option:\n\tpr_warn(\"SELinux: unable to change security options \"\n\t       \"during remount (dev %s, type=%s)\\n\", sb->s_id,\n\t       sb->s_type->name);\n\treturn -EINVAL;"
+          },
+          {
+            "first_line": 2870,
+            "last_line": 2880,
+            "text": "static int selinux_fs_context_parse_param(struct fs_context *fc,\n\t\t\t\t\t  struct fs_parameter *param)\n{\n\tstruct fs_parse_result result;\n\tint opt;\n\n\topt = fs_parse(fc, selinux_fs_parameters, param, &result);\n\tif (opt < 0)\n\t\treturn opt;\n\n\treturn selinux_add_opt(opt, param->string, &fc->security);"
+          },
+          {
+            "first_line": 3301,
+            "last_line": 3315,
+            "text": "\trc = avc_has_perm(sid, newsid, isec->sclass,\n\t\t\t  FILE__RELABELTO, &ad);\n\tif (rc)\n\t\treturn rc;\n\n\trc = security_validate_transition(isec->sid, newsid,\n\t\t\t\t\t  sid, isec->sclass);\n\tif (rc)\n\t\treturn rc;\n\n\treturn avc_has_perm(newsid,\n\t\t\t    sbsec->sid,\n\t\t\t    SECCLASS_FILESYSTEM,\n\t\t\t    FILESYSTEM__ASSOCIATE,\n\t\t\t    &ad);"
+          },
+          {
+            "first_line": 7684,
+            "last_line": 7696,
+            "text": "static void delayed_superblock_init(struct super_block *sb, void *unused)\n{\n\tselinux_set_mnt_opts(sb, NULL, 0, NULL);\n}\n\nvoid selinux_complete_init(void)\n{\n\tpr_debug(\"SELinux:  Completing initialization.\\n\");\n\n\t/* Set up any superblocks initialized prior to the policy load. */\n\tpr_debug(\"SELinux:  Setting up existing superblocks.\\n\");\n\titerate_supers(delayed_superblock_init, NULL);\n}"
+          }
+        ],
+        "relative_path": "security/selinux/hooks.c",
+        "sha256": "6079b88f15ca1966b640753e35edc291139fe925fca37e5c54d0a2d6e36d8370",
+        "size": 204597
+      },
+      {
+        "actual_path": "/work/research4-system/source-input/linux-6.12.114-input-integration/security/selinux/ss/services.c",
+        "excerpts": [
+          {
+            "first_line": 2926,
+            "last_line": 2934,
+            "text": "int security_fs_use(struct super_block *sb)\n{\n\tstruct selinux_policy *policy;\n\tstruct policydb *policydb;\n\tstruct sidtab *sidtab;\n\tint rc;\n\tstruct ocontext *c;\n\tstruct superblock_security_struct *sbsec = selinux_superblock(sb);\n\tconst char *fstype = sb->s_type->name;"
+          },
+          {
+            "first_line": 2948,
+            "last_line": 2977,
+            "text": "\tc = policydb->ocontexts[OCON_FSUSE];\n\twhile (c) {\n\t\tif (strcmp(fstype, c->u.name) == 0)\n\t\t\tbreak;\n\t\tc = c->next;\n\t}\n\n\tif (c) {\n\t\tsbsec->behavior = c->v.behavior;\n\t\trc = ocontext_to_sid(sidtab, c, 0, &sbsec->sid);\n\t\tif (rc == -ESTALE) {\n\t\t\trcu_read_unlock();\n\t\t\tgoto retry;\n\t\t}\n\t\tif (rc)\n\t\t\tgoto out;\n\t} else {\n\t\trc = __security_genfs_sid(policy, fstype, \"/\",\n\t\t\t\t\tSECCLASS_DIR, &sbsec->sid);\n\t\tif (rc == -ESTALE) {\n\t\t\trcu_read_unlock();\n\t\t\tgoto retry;\n\t\t}\n\t\tif (rc) {\n\t\t\tsbsec->behavior = SECURITY_FS_USE_NONE;\n\t\t\trc = 0;\n\t\t} else {\n\t\t\tsbsec->behavior = SECURITY_FS_USE_GENFS;\n\t\t}\n\t}"
+          }
+        ],
+        "relative_path": "security/selinux/ss/services.c",
+        "sha256": "0b0a29ad428bd17a50784c4b87b47837e5dfb3e695255e98fb55e4a03d5d08a1",
+        "size": 97756
+      },
+      {
+        "actual_path": "/work/research4-system/source-input/linux-6.12.114-input-integration/fs/namespace.c",
+        "excerpts": [
+          {
+            "first_line": 3119,
+            "last_line": 3135,
+            "text": "\tfc = fs_context_for_reconfigure(path->dentry, sb_flags, MS_RMT_MASK);\n\tif (IS_ERR(fc))\n\t\treturn PTR_ERR(fc);\n\n\t/*\n\t * Indicate to the filesystem that the remount request is coming\n\t * from the legacy mount system call.\n\t */\n\tfc->oldapi = true;\n\n\terr = parse_monolithic_mount_data(fc, data);\n\tif (!err) {\n\t\tdown_write(&sb->s_umount);\n\t\terr = -EPERM;\n\t\tif (ns_capable(sb->s_user_ns, CAP_SYS_ADMIN)) {\n\t\t\terr = reconfigure_super(fc);\n\t\t\tif (!err) {"
+          },
+          {
+            "first_line": 3938,
+            "last_line": 3949,
+            "text": "\tif ((flags & (MS_REMOUNT | MS_BIND)) == (MS_REMOUNT | MS_BIND))\n\t\treturn do_reconfigure_mnt(path, mnt_flags);\n\tif (flags & MS_REMOUNT)\n\t\treturn do_remount(path, flags, sb_flags, mnt_flags, data_page);\n\tif (flags & MS_BIND)\n\t\treturn do_loopback(path, dev_name, flags & MS_REC);\n\tif (flags & (MS_SHARED | MS_PRIVATE | MS_SLAVE | MS_UNBINDABLE))\n\t\treturn do_change_type(path, flags);\n\tif (flags & MS_MOVE)\n\t\treturn do_move_mount_old(path, dev_name);\n\n\treturn do_new_mount(path, type_page, sb_flags, mnt_flags, dev_name,"
+          }
+        ],
+        "relative_path": "fs/namespace.c",
+        "sha256": "66b5431f5142ccba2867c98b31f649d82879b0633d4cfac7707b53d600c1e4b4",
+        "size": 151873
+      },
+      {
+        "actual_path": "/work/research4-system/source-input/linux-6.12.114-input-integration/fs/super.c",
+        "excerpts": [
+          {
+            "first_line": 1024,
+            "last_line": 1039,
+            "text": "int reconfigure_super(struct fs_context *fc)\n{\n\tstruct super_block *sb = fc->root->d_sb;\n\tint retval;\n\tbool remount_ro = false;\n\tbool remount_rw = false;\n\tbool force = fc->sb_flags & SB_FORCE;\n\n\tif (fc->sb_flags_mask & ~MS_RMT_MASK)\n\t\treturn -EINVAL;\n\tif (sb->s_writers.frozen != SB_UNFROZEN)\n\t\treturn -EBUSY;\n\n\tretval = security_sb_remount(sb, fc->security);\n\tif (retval)\n\t\treturn retval;"
+          },
+          {
+            "first_line": 1847,
+            "last_line": 1853,
+            "text": "\tsuper_wake(sb, SB_BORN);\n\n\terror = security_sb_set_mnt_opts(sb, fc->security, 0, NULL);\n\tif (unlikely(error)) {\n\t\tfc_drop_locked(fc);\n\t\treturn error;\n\t}"
+          }
+        ],
+        "relative_path": "fs/super.c",
+        "sha256": "a8c285c27c242d131bcaf15dfe8071e8dd496d3bc69ae7c69448b1b6d9c84a72",
+        "size": 61581
+      },
+      {
+        "actual_path": "/work/research4-system/source-input/linux-6.12.114-input-integration/fs/fs_context.c",
+        "excerpts": [
+          {
+            "first_line": 127,
+            "last_line": 143,
+            "text": "int vfs_parse_fs_param(struct fs_context *fc, struct fs_parameter *param)\n{\n\tint ret;\n\n\tif (!param->key)\n\t\treturn invalf(fc, \"Unnamed parameter\\n\");\n\n\tret = vfs_parse_sb_flag(fc, param->key);\n\tif (ret != -ENOPARAM)\n\t\treturn ret;\n\n\tret = security_fs_context_parse_param(fc, param);\n\tif (ret != -ENOPARAM)\n\t\t/* Param belongs to the LSM or is disallowed by the LSM; so\n\t\t * don't pass to the FS.\n\t\t */\n\t\treturn ret;"
+          },
+          {
+            "first_line": 337,
+            "last_line": 344,
+            "text": "struct fs_context *fs_context_for_reconfigure(struct dentry *dentry,\n\t\t\t\t\tunsigned int sb_flags,\n\t\t\t\t\tunsigned int sb_flags_mask)\n{\n\treturn alloc_fs_context(dentry->d_sb->s_type, dentry, sb_flags,\n\t\t\t\tsb_flags_mask, FS_CONTEXT_FOR_RECONFIGURE);\n}\nEXPORT_SYMBOL(fs_context_for_reconfigure);"
+          }
+        ],
+        "relative_path": "fs/fs_context.c",
+        "sha256": "8e4d343563b0a6f7540eccb958d749fd704bed030852081ebde63c843c6c425d",
+        "size": 19653
+      },
+      {
+        "actual_path": "/work/research4-system/source-input/linux-6.12.114-input-integration/init/do_mounts.c",
+        "excerpts": [
+          {
+            "first_line": 498,
+            "last_line": 520,
+            "text": "static bool is_tmpfs;\nstatic int rootfs_init_fs_context(struct fs_context *fc)\n{\n\tif (IS_ENABLED(CONFIG_TMPFS) && is_tmpfs)\n\t\treturn shmem_init_fs_context(fc);\n\n\treturn ramfs_init_fs_context(fc);\n}\n\nstruct file_system_type rootfs_fs_type = {\n\t.name\t\t= \"rootfs\",\n\t.init_fs_context = rootfs_init_fs_context,\n\t.kill_sb\t= kill_litter_super,\n};\n\nvoid __init init_rootfs(void)\n{\n\tif (IS_ENABLED(CONFIG_TMPFS)) {\n\t\tif (!saved_root_name[0] && !root_fs_names)\n\t\t\tis_tmpfs = true;\n\t\telse if (root_fs_names && !!strstr(root_fs_names, \"tmpfs\"))\n\t\t\tis_tmpfs = true;\n\t}"
+          }
+        ],
+        "relative_path": "init/do_mounts.c",
+        "sha256": "2826547dadbd1ca27c694a419a82b149c38f18c693b2e049319790316fc85e15",
+        "size": 11241
+      },
+      {
+        "actual_path": "/work/research4-system/source-input/linux-6.12.114-input-integration/Documentation/filesystems/ramfs-rootfs-initramfs.rst",
+        "excerpts": [
+          {
+            "first_line": 78,
+            "last_line": 85,
+            "text": "Rootfs is a special instance of ramfs (or tmpfs, if that's enabled), which is\nalways present in 2.6 systems.  You can't unmount rootfs for approximately the\nsame reason you can't kill the init process; rather than having special code\nto check for and handle an empty list, it's smaller and simpler for the kernel\nto just make sure certain lists can't become empty.\n\nMost systems just mount another filesystem over rootfs and ignore it.  The\namount of space an empty instance of ramfs takes up is tiny."
+          },
+          {
+            "first_line": 123,
+            "last_line": 133,
+            "text": "  - When switching another root device, initrd would pivot_root and then\n    umount the ramdisk.  But initramfs is rootfs: you can neither pivot_root\n    rootfs, nor unmount it.  Instead delete everything out of rootfs to\n    free up the space (find -xdev / -exec rm '{}' ';'), overmount rootfs\n    with the new root (cd /newmount; mount --move . /; chroot .), attach\n    stdin/stdout/stderr to the new /dev/console, and exec the new init.\n\n    Since this is a remarkably persnickety process (and involves deleting\n    commands before you can run them), the klibc package introduced a helper\n    program (utils/run_init.c) to do all this for you.  Most other packages\n    (such as busybox) have named this command \"switch_root\"."
+          }
+        ],
+        "relative_path": "Documentation/filesystems/ramfs-rootfs-initramfs.rst",
+        "sha256": "6ed1c6762ad644aa5ecaf06376c2cee143308a68ded7265e3ec35e133f5a3525",
+        "size": 16438
+      },
+      {
+        "relative_path": "mm/shmem.c",
+        "actual_path": "/work/research4-system/source-input/linux-6.12.114-input-integration/mm/shmem.c",
+        "size": 147425,
+        "sha256": "1ff75b0c8ecb8daddd8cf3725ce0019449a83e09a1642455d4f3ea7c2c354fb3",
+        "excerpts": [
+          {
+            "first_line": 3971,
+            "last_line": 3972,
+            "text": "#ifdef CONFIG_TMPFS_XATTR\n"
+          },
+          {
+            "first_line": 4002,
+            "last_line": 4018,
+            "text": "/*\n * Superblocks without xattr inode operations may get some security.* xattr\n * support from the LSM \"for free\". As soon as we have any other xattrs\n * like ACLs, we also need to implement the security.* handlers at\n * filesystem level, though.\n */\n\n/*\n * Callback for security_inode_init_security() for acquiring xattrs.\n */\nstatic int shmem_initxattrs(struct inode *inode,\n\t\t\t    const struct xattr *xattr_array, void *fs_info)\n{\n\tstruct shmem_inode_info *info = SHMEM_I(inode);\n\tstruct shmem_sb_info *sbinfo = SHMEM_SB(inode->i_sb);\n\tconst struct xattr *xattr;\n\tstruct simple_xattr *new_xattr;"
+          },
+          {
+            "first_line": 4073,
+            "last_line": 4149,
+            "text": "static int shmem_xattr_handler_get(const struct xattr_handler *handler,\n\t\t\t\t   struct dentry *unused, struct inode *inode,\n\t\t\t\t   const char *name, void *buffer, size_t size)\n{\n\tstruct shmem_inode_info *info = SHMEM_I(inode);\n\n\tname = xattr_full_name(handler, name);\n\treturn simple_xattr_get(&info->xattrs, name, buffer, size);\n}\n\nstatic int shmem_xattr_handler_set(const struct xattr_handler *handler,\n\t\t\t\t   struct mnt_idmap *idmap,\n\t\t\t\t   struct dentry *unused, struct inode *inode,\n\t\t\t\t   const char *name, const void *value,\n\t\t\t\t   size_t size, int flags)\n{\n\tstruct shmem_inode_info *info = SHMEM_I(inode);\n\tstruct shmem_sb_info *sbinfo = SHMEM_SB(inode->i_sb);\n\tstruct simple_xattr *old_xattr;\n\tsize_t ispace = 0;\n\n\tname = xattr_full_name(handler, name);\n\tif (value && sbinfo->max_inodes) {\n\t\tispace = simple_xattr_space(name, size);\n\t\traw_spin_lock(&sbinfo->stat_lock);\n\t\tif (sbinfo->free_ispace < ispace)\n\t\t\tispace = 0;\n\t\telse\n\t\t\tsbinfo->free_ispace -= ispace;\n\t\traw_spin_unlock(&sbinfo->stat_lock);\n\t\tif (!ispace)\n\t\t\treturn -ENOSPC;\n\t}\n\n\told_xattr = simple_xattr_set(&info->xattrs, name, value, size, flags);\n\tif (!IS_ERR(old_xattr)) {\n\t\tispace = 0;\n\t\tif (old_xattr && sbinfo->max_inodes)\n\t\t\tispace = simple_xattr_space(old_xattr->name,\n\t\t\t\t\t\t    old_xattr->size);\n\t\tsimple_xattr_free(old_xattr);\n\t\told_xattr = NULL;\n\t\tinode_set_ctime_current(inode);\n\t\tinode_inc_iversion(inode);\n\t}\n\tif (ispace) {\n\t\traw_spin_lock(&sbinfo->stat_lock);\n\t\tsbinfo->free_ispace += ispace;\n\t\traw_spin_unlock(&sbinfo->stat_lock);\n\t}\n\treturn PTR_ERR(old_xattr);\n}\n\nstatic const struct xattr_handler shmem_security_xattr_handler = {\n\t.prefix = XATTR_SECURITY_PREFIX,\n\t.get = shmem_xattr_handler_get,\n\t.set = shmem_xattr_handler_set,\n};\n\nstatic const struct xattr_handler shmem_trusted_xattr_handler = {\n\t.prefix = XATTR_TRUSTED_PREFIX,\n\t.get = shmem_xattr_handler_get,\n\t.set = shmem_xattr_handler_set,\n};\n\nstatic const struct xattr_handler shmem_user_xattr_handler = {\n\t.prefix = XATTR_USER_PREFIX,\n\t.get = shmem_xattr_handler_get,\n\t.set = shmem_xattr_handler_set,\n};\n\nstatic const struct xattr_handler * const shmem_xattr_handlers[] = {\n\t&shmem_security_xattr_handler,\n\t&shmem_trusted_xattr_handler,\n\t&shmem_user_xattr_handler,\n\tNULL\n};"
+          },
+          {
+            "first_line": 4765,
+            "last_line": 4776,
+            "text": "\tsb->s_maxbytes = MAX_LFS_FILESIZE;\n\tsb->s_blocksize = PAGE_SIZE;\n\tsb->s_blocksize_bits = PAGE_SHIFT;\n\tsb->s_magic = TMPFS_MAGIC;\n\tsb->s_op = &shmem_ops;\n\tsb->s_time_gran = 1;\n#ifdef CONFIG_TMPFS_XATTR\n\tsb->s_xattr = shmem_xattr_handlers;\n#endif\n#ifdef CONFIG_TMPFS_POSIX_ACL\n\tsb->s_flags |= SB_POSIXACL;\n#endif"
+          },
+          {
+            "first_line": 4918,
+            "last_line": 4927,
+            "text": "static const struct inode_operations shmem_inode_operations = {\n\t.getattr\t= shmem_getattr,\n\t.setattr\t= shmem_setattr,\n#ifdef CONFIG_TMPFS_XATTR\n\t.listxattr\t= shmem_listxattr,\n\t.set_acl\t= simple_set_acl,\n\t.fileattr_get\t= shmem_fileattr_get,\n\t.fileattr_set\t= shmem_fileattr_set,\n#endif\n};"
+          },
+          {
+            "first_line": 4944,
+            "last_line": 4953,
+            "text": "#ifdef CONFIG_TMPFS_XATTR\n\t.listxattr\t= shmem_listxattr,\n\t.fileattr_get\t= shmem_fileattr_get,\n\t.fileattr_set\t= shmem_fileattr_set,\n#endif\n#ifdef CONFIG_TMPFS_POSIX_ACL\n\t.setattr\t= shmem_setattr,\n\t.set_acl\t= simple_set_acl,\n#endif\n};"
+          }
+        ]
+      }
+    ]
+  },
+  "policy": {
+    "base_cil": {
+      "compressed_sha256": "1d1e418d8147cfbf61b089003549c95b92c939818b85710f98a45221473f7667",
+      "compressed_size": 62983,
+      "decoded_sha256": "bb28ac9c5b5b4673315386ac869fef7a6dbe8b3ac790608eb2030d50a240c966",
+      "decoded_size": 1572678,
+      "path": "/work/fedora-system-integration-v1/rootfs/var/lib/selinux/targeted/active/modules/100/base/cil",
+      "selected_rules": [
+        {
+          "line": 735,
+          "text": "(fsuse trans ramfs (system_u object_r tmpfs_t ((s0) (s0))))"
+        },
+        {
+          "line": 736,
+          "text": "(fsuse trans tmpfs (system_u object_r tmpfs_t ((s0) (s0))))"
+        },
+        {
+          "line": 863,
+          "text": "(genfscon rootfs \"/\" (system_u object_r root_t ((s0) (s0))))"
+        }
+      ]
+    },
+    "independently_read_peer_query": {
+      "path": "/work/early-selinux-rootfs-20261123/query-01/result.json",
+      "result": {
+        "command": [
+          "/usr/bin/qemu-aarch64",
+          "-L",
+          "/work/fedora-input-system-v3/rootfs",
+          "/work/fedora-input-system-v3/rootfs/usr/bin/python3",
+          "-B",
+          "/work/early-selinux-rootfs-20261123/query-01/query-rootfs-policy.py"
+        ],
+        "elapsed_seconds": 5.007886195962783,
+        "exit_code": 0,
+        "live_policy_changed": false,
+        "proot_used": false,
+        "query_script_sha256": "d84dc6497b71fa1e18842858f63bac939b23236b1c7bf8ffc1016c2d195a3aa6",
+        "result": {
+          "completed": true,
+          "converted_policy_sha256": "aab7b7128bb8f0db2d349ac0817d806e5157b9a0b93dfe4f85ccf630354ebebe",
+          "input_policy_sha256": "928dd639a610e600318f48db67e5724e85b93ae21a473199ac91e960775a5430",
+          "kernel_policy_load_attempted": false,
+          "library_sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+          "offline": true,
+          "queries": [
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 1,
+              "source": "system_u:object_r:var_t:s0",
+              "target": "system_u:object_r:root_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:var_t:s0",
+              "target": "system_u:object_r:tmpfs_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:var_t:s0",
+              "target": "system_u:object_r:fs_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:root_t:s0",
+              "target": "system_u:object_r:root_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:root_t:s0",
+              "target": "system_u:object_r:tmpfs_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:root_t:s0",
+              "target": "system_u:object_r:fs_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 1,
+              "source": "system_u:object_r:init_exec_t:s0",
+              "target": "system_u:object_r:root_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:init_exec_t:s0",
+              "target": "system_u:object_r:tmpfs_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:init_exec_t:s0",
+              "target": "system_u:object_r:fs_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 1,
+              "source": "system_u:object_r:udev_exec_t:s0",
+              "target": "system_u:object_r:root_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:udev_exec_t:s0",
+              "target": "system_u:object_r:tmpfs_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:udev_exec_t:s0",
+              "target": "system_u:object_r:fs_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 1,
+              "source": "system_u:object_r:bin_t:s0",
+              "target": "system_u:object_r:root_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:bin_t:s0",
+              "target": "system_u:object_r:tmpfs_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:bin_t:s0",
+              "target": "system_u:object_r:fs_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 1,
+              "source": "system_u:object_r:lib_t:s0",
+              "target": "system_u:object_r:root_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:lib_t:s0",
+              "target": "system_u:object_r:tmpfs_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:lib_t:s0",
+              "target": "system_u:object_r:fs_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 1,
+              "source": "system_u:object_r:etc_t:s0",
+              "target": "system_u:object_r:root_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:etc_t:s0",
+              "target": "system_u:object_r:tmpfs_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:etc_t:s0",
+              "target": "system_u:object_r:fs_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 1,
+              "source": "system_u:object_r:usr_t:s0",
+              "target": "system_u:object_r:root_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:usr_t:s0",
+              "target": "system_u:object_r:tmpfs_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "associate",
+              "reason_mask": 0,
+              "source": "system_u:object_r:usr_t:s0",
+              "target": "system_u:object_r:fs_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "mount",
+              "reason_mask": 1,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:root_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "remount",
+              "reason_mask": 1,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:root_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "unmount",
+              "reason_mask": 1,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:root_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "getattr",
+              "reason_mask": 0,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:root_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "relabelfrom",
+              "reason_mask": 1,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:root_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "relabelto",
+              "reason_mask": 1,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:root_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "mount",
+              "reason_mask": 0,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:tmpfs_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "remount",
+              "reason_mask": 1,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:tmpfs_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "unmount",
+              "reason_mask": 0,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:tmpfs_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "getattr",
+              "reason_mask": 0,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:tmpfs_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "relabelfrom",
+              "reason_mask": 1,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:tmpfs_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "relabelto",
+              "reason_mask": 1,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:tmpfs_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "mount",
+              "reason_mask": 0,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:fs_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "remount",
+              "reason_mask": 1,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:fs_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "unmount",
+              "reason_mask": 0,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:fs_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "getattr",
+              "reason_mask": 0,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:fs_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "relabelfrom",
+              "reason_mask": 1,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:fs_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "filesystem",
+              "permission": "relabelto",
+              "reason_mask": 1,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:fs_t:s0"
+            },
+            {
+              "allowed": true,
+              "auditdeny": true,
+              "class": "dir",
+              "permission": "mounton",
+              "reason_mask": 0,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:root_t:s0"
+            },
+            {
+              "allowed": false,
+              "auditdeny": true,
+              "class": "dir",
+              "permission": "mounton",
+              "reason_mask": 1,
+              "source": "system_u:system_r:kernel_t:s0",
+              "target": "system_u:object_r:tmpfs_t:s0"
+            }
+          ],
+          "rootfs_written": false
+        },
+        "source_script_sha256": "ea30f67c5f72c8e43092d9b977369c1fdbc9c2410e741acfb9665cd198c27a0d",
+        "started_utc": "2026-11-23T04:53:43.609497+00:00",
+        "stderr": "",
+        "stdout_bytes": 10987
+      },
+      "sha256": "4b97090641defd1f24860f79096bec77c1561ed5f865380df09c701543956cb7",
+      "size": 12454
+    },
+    "offline_converted_policy_is_not_asserted_identical_to_kernel_export": true
+  },
+  "conclusions": {
+    "denied_permission": "The candidate new inode SID var_t is checked against the superblock SID root_t for filesystem associate after the caller's ordinary relabel permissions.",
+    "rootfs_sid_origin": "security_fs_use keys on sb->s_type->name. The rootfs type has no fsuse entry in the fixed policy and uses genfscon rootfs / root_t.",
+    "initial_rootfs_backend": "With the observed nonempty root= and rootfstype=ext4, init_rootfs leaves is_tmpfs false and the rootfs wrapper uses the ramfs initializer. Its s_type name remains rootfs.",
+    "changing_rootfstype_is_not_a_sid_fix": true,
+    "pre_policy_remount_fscontext_rejected": {
+      "errno": "EINVAL",
+      "earliest_rejection": "selinux_add_opt sees !selinux_initialized before allocating or retaining mount options.",
+      "chain": [
+        "do_remount",
+        "parse_monolithic_mount_data",
+        "vfs_parse_fs_param",
+        "selinux_fs_context_parse_param",
+        "selinux_add_opt"
+      ],
+      "pending_fscontext_sid_saved": false
+    },
+    "post_policy_remount_fscontext_rejected": "bad_option rejects a new FSCONTEXT_MNT flag or different SID on the initialized superblock; selinux_sb_remount is a compatibility check, not a SID setter.",
+    "rootcontext_is_not_fscontext": true,
+    "context_mount_is_not_a_per_inode_relabel_solution": true,
+    "tmpfs_security_xattr_compiled": true,
+    "tmpfs_xattr_source_chain": [
+      "CONFIG_TMPFS_XATTR=y",
+      "shmem_security_xattr_handler",
+      "shmem_xattr_handler_set",
+      "simple_xattr_set",
+      "shmem_fill_super: sb->s_xattr = shmem_xattr_handlers"
+    ],
+    "ordinary_tmpfs_relocation_source_supported": true,
+    "relocation_runtime_tested_by_this_audit": false
+  },
+  "switch_root": {
+    "actual_elf": {
+      "path": "/work/fedora-system-integration-v1/rootfs/usr/bin/switch_root",
+      "size": 69104,
+      "sha256": "6b6c1803111f117b76b553a664cec1a074827d025618446319d7871f9c127f75",
+      "mode": "0o755",
+      "elf_class": 2,
+      "elf_data": 1,
+      "elf_machine": 183,
+      "interpreter": "/lib/ld-linux-aarch64.so.1",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "build_id": "7b93d667f58681e03e92d29fdec2aab2d492bd18"
+    },
+    "aliases": [
+      {
+        "mode": "0o120777",
+        "path": "/work/fedora-system-integration-v1/rootfs/usr/sbin",
+        "target": "bin"
+      },
+      {
+        "mode": "0o120777",
+        "path": "/work/fedora-system-integration-v1/rootfs/lib",
+        "target": "usr/lib"
+      },
+      {
+        "mode": "0o120777",
+        "path": "/work/fedora-system-integration-v1/rootfs/lib64",
+        "target": "usr/lib64"
+      }
+    ],
+    "official_source_rpm": {
+      "file": "/work/selinux-switch-root-source-v1/util-linux-2.42.4-1.fc45.src.rpm",
+      "members": [
+        {
+          "name": "0000-login-use-O_CREAT-on-lastlog.patch",
+          "sha256": "856b577840a96211aa02ed494f3c4e1836851ec8745de37c4aa9599f56f661ec",
+          "size": 818
+        },
+        {
+          "name": "0001-login-add-run-motd.d-to-the-hardcoded-MOTD_FILE.patch",
+          "sha256": "74d7f6173b69384da5ef67f7d56946493a98ace3735d91471e9d2673a57c858e",
+          "size": 879
+        },
+        {
+          "name": "adjtime",
+          "sha256": "6aa92cacc25f30a7caacd8cf772d3626f5bd5b3a75ab2dc3e74a5119f56d12df",
+          "size": 12
+        },
+        {
+          "name": "util-linux-2.42.4.tar.xz",
+          "sha256": "fbd62a100ab7bb8746ba0661255c3c48185b1e9021507c624da01fbc696330ec",
+          "size": 10729748
+        },
+        {
+          "name": "util-linux-chsh-chfn.pamd",
+          "sha256": "78735eb88739700bd80f8dfadf177373e0180e838268c42b8cdb87e514cef81d",
+          "size": 192
+        },
+        {
+          "name": "util-linux-login.pamd",
+          "sha256": "9c730de7207b901279091b7ca040a75fd42714a3bb224d97614aabc2750d187d",
+          "size": 676
+        },
+        {
+          "name": "util-linux-remote.pamd",
+          "sha256": "dd90767b2883bfb2bee6c27acc794bcea58bf3436cc2180ccfca0e822b6c0145",
+          "size": 640
+        },
+        {
+          "name": "util-linux-runuser-l.pamd",
+          "sha256": "be9329a8b26e3cfd4af879fe60900f646f8188f3fbe491688f23d4d8b491c5b1",
+          "size": 138
+        },
+        {
+          "name": "util-linux-runuser.pamd",
+          "sha256": "2d430cb6628248953568010427d663f3305856f3cb055955c2239bea226c5280",
+          "size": 143
+        },
+        {
+          "name": "util-linux-su-l.pamd",
+          "sha256": "4d10241676e97e5e8d8935e5c8e8f6cb2f871afb881059715f155909be9ebd77",
+          "size": 137
+        },
+        {
+          "name": "util-linux-su.pamd",
+          "sha256": "6b08d1c3f556df6bf412834710f949e9adb6d6d566e850918e8f6eb18a5da96a",
+          "size": 566
+        },
+        {
+          "name": "util-linux.spec",
+          "sha256": "15bafa5344486d7e2bcf0e26cb0cda3a5cdc7ea027d9f963f7d8af8c29e2c275",
+          "size": 29831
+        }
+      ],
+      "rpm_metadata": "util-linux\n2.42.4\n1.fc45\ni686\n(none)\n",
+      "sha256": "a42fac96ae0930c3074fb3cfb1cb4a58d50f9abbeeb398c10fbd8b99110d5587",
+      "size": 10793227,
+      "source_rpm_installed": false,
+      "source_rpm_signature_verified": false,
+      "url": "https://kojipkgs.fedoraproject.org/packages/util-linux/2.42.4/1.fc45/src/util-linux-2.42.4-1.fc45.src.rpm"
+    },
+    "official_binary_package": {
+      "dependency_files": [
+        {
+          "elf_class": 2,
+          "elf_data": 1,
+          "elf_machine": 183,
+          "needed": [
+            "ld-linux-aarch64.so.1"
+          ],
+          "path": "/work/fedora-system-integration-v1/rootfs/usr/lib64/libc.so.6",
+          "sha256": "620f6221d0cb0a7bc7d0674bcb0682a0b42f7fb593f596f3bf646f02b10cb798",
+          "size": 2303728
+        },
+        {
+          "elf_class": 2,
+          "elf_data": 1,
+          "elf_machine": 183,
+          "needed": [],
+          "path": "/work/fedora-system-integration-v1/rootfs/usr/lib/ld-linux-aarch64.so.1",
+          "sha256": "8821728d15728a7046deef6d4183fb343716901e0e8119fff53d6b51e2605547",
+          "size": 928784
+        }
+      ],
+      "installed": false,
+      "path": "/work/selinux-switch-root-source-v1/util-linux-core-2.42.4-1.fc45.aarch64.rpm",
+      "prior_closure_inspection_failure": {
+        "cause": "Expected loader in usr/lib64; actual ordinary loader is usr/lib/ld-linux-aarch64.so.1. No kernel or target program executed.",
+        "exit_code": 1,
+        "message": "ValueError: regular dependency expected"
+      },
+      "rpm_metadata": "util-linux-core\n2.42.4\n1.fc45\naarch64\nutil-linux-2.42.4-1.fc45.src.rpm\n",
+      "sha256": "c19e86d0ae0e035646a28a3a8a9ae14b094505ca56e33f470bbc4e5a0c9c24d9",
+      "signature_verified": false,
+      "size": 565839,
+      "source_patch_targets": {
+        "0000-login-use-O_CREAT-on-lastlog.patch": [
+          "--- a/login-utils/login.c",
+          "+++ b/login-utils/login.c"
+        ],
+        "0001-login-add-run-motd.d-to-the-hardcoded-MOTD_FILE.patch": [
+          "--- a/include/pathnames.h",
+          "+++ b/include/pathnames.h"
+        ]
+      },
+      "switch_root_payloads": [
+        {
+          "archive_path": "./usr/bin/switch_root",
+          "matches_installed": true,
+          "mode": "0o755",
+          "sha256": "6b6c1803111f117b76b553a664cec1a074827d025618446319d7871f9c127f75",
+          "size": 69104
+        }
+      ],
+      "url": "https://kojipkgs.fedoraproject.org/packages/util-linux/2.42.4/1.fc45/aarch64/util-linux-core-2.42.4-1.fc45.aarch64.rpm"
+    },
+    "audited_sources": [
+      {
+        "excerpts": [
+          {
+            "first_line": 52,
+            "last_line": 124,
+            "text": "/* remove all files/directories below dirName -- don't cross mountpoints */\nstatic int recursiveRemove(int fd)\n{\n\tstruct stat rb;\n\tDIR *dir;\n\tint rc = -1;\n\tint dfd;\n\n\tif (!(dir = fdopendir(fd))) {\n\t\twarn(_(\"failed to open directory\"));\n\t\tgoto done;\n\t}\n\n\t/* fdopendir() precludes us from continuing to use the input fd */\n\tdfd = dirfd(dir);\n\tif (fstat(dfd, &rb)) {\n\t\twarn(_(\"stat failed\"));\n\t\tgoto done;\n\t}\n\n\twhile(1) {\n\t\tstruct dirent *d;\n\t\tint isdir = 0;\n\n\t\terrno = 0;\n\t\tif (!(d = readdir(dir))) {\n\t\t\tif (errno) {\n\t\t\t\twarn(_(\"failed to read directory\"));\n\t\t\t\tgoto done;\n\t\t\t}\n\t\t\tbreak;\t/* end of directory */\n\t\t}\n\n\t\tif (is_dotdir_dirent(d))\n\t\t\tcontinue;\n#ifdef _DIRENT_HAVE_D_TYPE\n\t\tif (d->d_type == DT_DIR || d->d_type == DT_UNKNOWN)\n#endif\n\t\t{\n\t\t\tstruct stat sb;\n\n\t\t\tif (fstatat(dfd, d->d_name, &sb, AT_SYMLINK_NOFOLLOW)) {\n\t\t\t\twarn(_(\"stat of %s failed\"), d->d_name);\n\t\t\t\tcontinue;\n\t\t\t}\n\n\t\t\t/* skip if device is not the same */\n\t\t\tif (sb.st_dev != rb.st_dev)\n\t\t\t\tcontinue;\n\n\t\t\t/* remove subdirectories */\n\t\t\tif (S_ISDIR(sb.st_mode)) {\n\t\t\t\tint cfd;\n\n\t\t\t\tcfd = openat(dfd, d->d_name, O_RDONLY);\n\t\t\t\tif (cfd >= 0)\n\t\t\t\t\trecursiveRemove(cfd);\t/* it closes cfd too */\n\t\t\t\tisdir = 1;\n\t\t\t}\n\t\t}\n\n\t\tif (unlinkat(dfd, d->d_name, isdir ? AT_REMOVEDIR : 0))\n\t\t\twarn(_(\"failed to unlink %s\"), d->d_name);\n\t}\n\n\trc = 0;\t/* success */\ndone:\n\tif (dir)\n\t\tclosedir(dir);\n\telse\n\t\tclose(fd);\n\treturn rc;\n}"
+          },
+          {
+            "first_line": 126,
+            "last_line": 220,
+            "text": "static int switchroot(const char *newroot)\n{\n\t/*  Don't try to unmount the old \"/\", there's no way to do it. */\n\tconst char *umounts[] = { \"/dev\", \"/proc\", \"/sys\", \"/run\", NULL };\n\tint i;\n\tint cfd = -1;\n\tstruct stat newroot_stat, oldroot_stat, sb;\n\n\tif (stat(\"/\", &oldroot_stat) != 0) {\n\t\twarn(_(\"stat of %s failed\"), \"/\");\n\t\treturn -1;\n\t}\n\n\tif (stat(newroot, &newroot_stat) != 0) {\n\t\twarn(_(\"stat of %s failed\"), newroot);\n\t\treturn -1;\n\t}\n\n\tfor (i = 0; umounts[i] != NULL; i++) {\n\t\tchar newmount[PATH_MAX];\n\n\t\tsnprintf(newmount, sizeof(newmount), \"%s%s\", newroot, umounts[i]);\n\n\t\tif ((stat(umounts[i], &sb) == 0) && sb.st_dev == oldroot_stat.st_dev) {\n\t\t\t/* mount point to move seems to be a normal directory or stat failed */\n\t\t\tcontinue;\n\t\t}\n\n\t\tif ((stat(newmount, &sb) != 0) || (sb.st_dev != newroot_stat.st_dev)) {\n\t\t\t/* mount point seems to be mounted already or stat failed */\n\t\t\tumount2(umounts[i], MNT_DETACH);\n\t\t\tcontinue;\n\t\t}\n\n\t\tif (mount(umounts[i], newmount, NULL, MS_MOVE, NULL) < 0) {\n\t\t\twarn(_(\"failed to mount moving %s to %s\"),\n\t\t\t\tumounts[i], newmount);\n\t\t\twarnx(_(\"forcing unmount of %s\"), umounts[i]);\n\t\t\tumount2(umounts[i], MNT_FORCE);\n\t\t}\n\t}\n\n\tif (chdir(newroot)) {\n\t\twarn(_(\"failed to change directory to %s\"), newroot);\n\t\treturn -1;\n\t}\n\n\tcfd = open(\"/\", O_RDONLY);\n\tif (cfd < 0) {\n\t\twarn(_(\"cannot open %s\"), \"/\");\n\t\tgoto fail;\n\t}\n\n\tif (mount(newroot, \"/\", NULL, MS_MOVE, NULL) < 0) {\n\t\twarn(_(\"failed to mount moving %s to /\"), newroot);\n\t\tgoto fail;\n\t}\n\n\tif (chroot(\".\")) {\n\t\twarn(_(\"failed to change root\"));\n\t\tgoto fail;\n\t}\n\n\tif (chdir(\"/\")) {\n\t\twarn(_(\"cannot change directory to %s\"), \"/\");\n\t\tgoto fail;\n\t}\n\n\tswitch (fork()) {\n\tcase 0: /* child */\n\t{\n\t\tstruct statfs stfs;\n\n\t\tif (fstatfs(cfd, &stfs) == 0 &&\n\t\t    (F_TYPE_EQUAL(stfs.f_type, STATFS_RAMFS_MAGIC) ||\n\t\t     F_TYPE_EQUAL(stfs.f_type, STATFS_TMPFS_MAGIC)))\n\t\t\trecursiveRemove(cfd);\n\t\telse {\n\t\t\twarn(_(\"old root filesystem is not an initramfs\"));\n\t\t\tclose(cfd);\n\t\t}\n\t\texit(EXIT_SUCCESS);\n\t}\n\tcase -1: /* error */\n\t\tbreak;\n\n\tdefault: /* parent */\n\t\tclose(cfd);\n\t\treturn 0;\n\t}\n\nfail:\n\tif (cfd >= 0)\n\t\tclose(cfd);\n\treturn -1;"
+          },
+          {
+            "first_line": 240,
+            "last_line": 283,
+            "text": "int main(int argc, char *argv[])\n{\n\tchar *newroot, *init, **initargs;\n\tint c;\n\tstatic const struct option longopts[] = {\n\t\t{\"version\", no_argument, NULL, 'V'},\n\t\t{\"help\", no_argument, NULL, 'h'},\n\t\t{NULL, 0, NULL, 0}\n\t};\n\n\tclose_stdout_atexit();\n\n\twhile ((c = getopt_long(argc, argv, \"+Vh\", longopts, NULL)) != -1)\n\t\tswitch (c) {\n\t\tcase 'V':\n\t\t\tprint_version(EXIT_SUCCESS);\n\t\tcase 'h':\n\t\t\tusage();\n\t\tdefault:\n\t\t\terrtryhelp(EXIT_FAILURE);\n\t\t}\n\tif (argc < 3) {\n\t\twarnx(_(\"not enough arguments\"));\n\t\terrtryhelp(EXIT_FAILURE);\n\t}\n\n\tnewroot = argv[1];\n\tinit = argv[2];\n\tinitargs = &argv[2];\n\n\tif (!*newroot || !*init) {\n\t\twarnx(_(\"bad usage\"));\n\t\terrtryhelp(EXIT_FAILURE);\n\t}\n\n\tif (switchroot(newroot))\n\t\terrx(EXIT_FAILURE, _(\"failed. Sorry.\"));\n\n\tif (access(init, X_OK))\n\t\twarn(_(\"cannot access %s\"), init);\n\n\texecv(init, initargs);\n\terrexec(init);\n}"
+          }
+        ],
+        "path": "/work/selinux-switch-root-source-v1/source/sys-utils/switch_root.c",
+        "sha256": "e87b0456e4b72bcaf853c29e27e257d84523284cc82639fd5db58b0dfa08dcfe",
+        "size": 6244
+      },
+      {
+        "excerpts": [
+          {
+            "first_line": 42,
+            "last_line": 93,
+            "text": "static inline int\nflush_standard_stream(FILE *stream)\n{\n\tint fd;\n\n\terrno = 0;\n\n\tif (ferror(stream) != 0 || fflush(stream) != 0)\n\t\tgoto error;\n\n\t/*\n\t * Calling fflush is not sufficient on some filesystems\n\t * like e.g. NFS, which may defer the actual flush until\n\t * close. Calling fsync would help solve this, but would\n\t * probably result in a performance hit. Thus, we work\n\t * around this issue by calling close on a dup'd file\n\t * descriptor from the stream.\n\t */\n\tif ((fd = fileno(stream)) < 0 || (fd = dup(fd)) < 0 || close(fd) != 0)\n\t\tgoto error;\n\n\treturn 0;\nerror:\n\treturn (errno == EBADF) ? 0 : EOF;\n}\n\n/* Meant to be used atexit(close_stdout); */\nstatic inline void\nclose_stdout(void)\n{\n\tif (flush_standard_stream(stdout) != 0 && !(errno == EPIPE)) {\n\t\tif (errno)\n\t\t\twarn(_(\"write error\"));\n\t\telse\n\t\t\twarnx(_(\"write error\"));\n\t\t_exit(CLOSE_EXIT_CODE);\n\t}\n\n\tif (flush_standard_stream(stderr) != 0)\n\t\t_exit(CLOSE_EXIT_CODE);\n}\n\nstatic inline void\nclose_stdout_atexit(void)\n{\n\t/*\n\t * Note that close stdout at exit disables ASAN to report memory leaks\n\t */\n#if !HAS_FEATURE_ADDRESS_SANITIZER\n\tatexit(close_stdout);\n#endif\n}"
+          }
+        ],
+        "path": "/work/selinux-switch-root-source-v1/source/include/closestream.h",
+        "sha256": "db2ce1256555b753a3bd7fb7e33a43e2ef9485ea86bb5e6ea02bb74e9f13fed3",
+        "size": 2245
+      },
+      {
+        "excerpts": [
+          {
+            "first_line": 60,
+            "last_line": 69,
+            "text": "### Sources\nSource0: https://www.kernel.org/pub/linux/utils/util-linux/v%{upstream_major}/util-linux-%{upstream_version}.tar.xz\nSource1: util-linux-login.pamd\nSource2: util-linux-remote.pamd\nSource3: util-linux-chsh-chfn.pamd\nSource5: adjtime\nSource12: util-linux-su.pamd\nSource13: util-linux-su-l.pamd\nSource14: util-linux-runuser.pamd\nSource15: util-linux-runuser-l.pamd"
+          },
+          {
+            "first_line": 117,
+            "last_line": 118,
+            "text": "Patch0: 0000-login-use-O_CREAT-on-lastlog.patch\nPatch1: 0001-login-add-run-motd.d-to-the-hardcoded-MOTD_FILE.patch"
+          },
+          {
+            "first_line": 339,
+            "last_line": 341,
+            "text": "%prep\n%autosetup -p1 -n %{name}-%{upstream_version}\n"
+          },
+          {
+            "first_line": 918,
+            "last_line": 934,
+            "text": "%{_mandir}/man8/sulogin.8*\n%{_mandir}/man8/swapoff.8*\n%{_mandir}/man8/swapon.8*\n%{_mandir}/man8/switch_root.8*\n%{_mandir}/man8/umount.8*\n%{_sbindir}/agetty\n%{_sbindir}/blkid\n%{_sbindir}/blockdev\n%{_sbindir}/fsck\n%{_sbindir}/losetup\n%{_sbindir}/mkswap\n%{_sbindir}/partx\n%{_sbindir}/sulogin\n%{_sbindir}/swapoff\n%{_sbindir}/swapon\n%{_sbindir}/switch_root\n/etc/mtab"
+          }
+        ],
+        "path": "/work/selinux-switch-root-source-v1/util-linux.spec",
+        "sha256": "15bafa5344486d7e2bcf0e26cb0cda3a5cdc7ea027d9f963f7d8af8c29e2c275",
+        "size": 29831
+      }
+    ],
+    "already_qualified_archive_library_records": [
+      {
+        "cache_path": "/lib64/libc.so.6",
+        "resolved_path": "usr/lib64/libc.so.6",
+        "sha256": "620f6221d0cb0a7bc7d0674bcb0682a0b42f7fb593f596f3bf646f02b10cb798",
+        "size": 2303728,
+        "soname": "libc.so.6"
+      },
+      {
+        "cache_path": "/lib/ld-linux-aarch64.so.1",
+        "resolved_path": "usr/lib/ld-linux-aarch64.so.1",
+        "sha256": "8821728d15728a7046deef6d4183fb343716901e0e8119fff53d6b51e2605547",
+        "size": 928784,
+        "soname": "ld-linux-aarch64.so.1"
+      }
+    ],
+    "source_behavior": {
+      "api_mounts": [
+        "/dev",
+        "/proc",
+        "/sys",
+        "/run"
+      ],
+      "api_mount_move_failure_is_fatal": false,
+      "api_mount_move_failure_handling": "Warn and try forced unmount; missing/already-mounted destination takes a detach branch. Later bootstrap/runtime guards must validate API filesystems.",
+      "root_change_sequence": [
+        "chdir(newroot)",
+        "open old /",
+        "mount(newroot, /, MS_MOVE)",
+        "chroot(.)",
+        "chdir(/)",
+        "fork cleanup child",
+        "parent closes its own old-root fd",
+        "execv requested init"
+      ],
+      "pivots_root": false,
+      "unmounts_original_rootfs": false,
+      "cleanup_is_asynchronous": true,
+      "parent_waits_for_cleanup": false,
+      "cleanup_only_ramfs_or_tmpfs": true,
+      "recursive_cleanup_skips_other_st_dev": true,
+      "recursive_cleanup_does_not_follow_symlinks": true,
+      "recursive_cleanup_result_propagated_to_child_status": false,
+      "child_normal_exit_status": 0,
+      "stdio_flush_error_can_override_child_status": true,
+      "sets_sigchld_or_no_cldwait": false,
+      "calls_close_all_or_closefrom": false,
+      "inherited_non_cloexec_fd3_closed_by_tool": false,
+      "reopens_console_fds": false
+    },
+    "next_stage_required_proofs": [
+      "Run only as the guarded PID 1 in the dedicated initramfs, before the first SELinux policy load.",
+      "Keep /init bytes and the fixed Enforcing policy unchanged; add an independent stage0/stage1 contract.",
+      "Mount a genuinely new ordinary tmpfs superblock without context/fscontext/rootcontext overrides; preserve qualified payloads, symlinks, modes and hardlink topology while excluding API mounts and the new-root destination from copy.",
+      "Preserve a non-CLOEXEC old-root directory FD, require its filesystem magic to be RAMFS or TMPFS, and require its st_dev to differ from the new TMPFS root.",
+      "Ensure SIGCHLD is not ignored and SA_NOCLDWAIT is not set before switch_root forks.",
+      "Wait for and reap the actual cleanup child before policy loading; a zero child status alone is insufficient.",
+      "Enumerate the inherited old-root directory to EOF without error, permitting only . and .., then close it before executing the frozen native bootstrap.",
+      "Treat an empty old-root directory as an empty named tree, not an exact measurement of freed physical pages or proof that no other descriptor holds an unlinked inode.",
+      "Preserve archive, firmware, executable, loaded-policy, actual initrd-domain, no-AVC, descriptor-passing and event-transfer runtime gates in the independent next candidate."
+    ]
+  },
+  "actions": {
+    "mounted_filesystem": false,
+    "ran_switch_root": false,
+    "ran_new_vm": false,
+    "ran_proot": false,
+    "installed_rpm": false,
+    "changed_kernel_policy": false,
+    "changed_enforcing": false,
+    "changed_frozen_kernel_or_helper_or_checker": false,
+    "downloads_and_extracted_source_prefix": "/work/selinux-switch-root-source-v1",
+    "downloaded_rpm_signatures_verified": false
+  }
+}

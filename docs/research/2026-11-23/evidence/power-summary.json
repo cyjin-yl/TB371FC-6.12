@@ -1,0 +1,368 @@
+{
+  "schema_version": 1,
+  "source": {
+    "file": "android-stock.json",
+    "sha256": "c0262aaf4b16672764335317dcedf172e33fbd596d373ce442fc6d1139e92915",
+    "capture_utc": "2026-11-22T20:30:07.299342+00:00",
+    "kernel_release": "4.19.157-perf+",
+    "collector_sha256": "a29617d612fca29635d6e74ce9834bdcd966f371662957cfe7069ae949f04069"
+  },
+  "sample_semantics": "Sequential passive reads, not an atomic sample or a before/after experiment.",
+  "usb": {
+    "current_max": "2000000",
+    "online": "1",
+    "pd_active": "0",
+    "pd_current_max": "-22",
+    "pd_voltage_max": "5000000",
+    "pd_voltage_min": "5000000",
+    "present": "1",
+    "real_type": "USB_HVDCP_3",
+    "scope": "Device",
+    "type": "USB_PD",
+    "typec_cc_orientation": "2",
+    "typec_mode": "Source attached (default current)",
+    "typec_power_role": "dual power role",
+    "voltage_max": "12000000",
+    "voltage_max_design": "12000000",
+    "voltage_now": "7137324"
+  },
+  "typec": {
+    "/sys/class/typec/port0": {
+      "data_role": "host [device]",
+      "port_type": "[dual] source sink",
+      "power_operation_mode": "usb_power_delivery",
+      "power_role": "source [sink]"
+    }
+  },
+  "battery": {
+    "capacity": "28",
+    "charge_counter": "90",
+    "charge_full": "10200000",
+    "charge_full_design": "10200000",
+    "constant_charge_current_max": "4500000",
+    "current_now": "426000",
+    "cycle_count": "570",
+    "health": "Good",
+    "input_current_limited": "0",
+    "present": "1",
+    "status": "Charging",
+    "temp": "341",
+    "type": "Battery",
+    "voltage_max": "4490000",
+    "voltage_now": "3789000"
+  },
+  "bms": {
+    "capacity": "28",
+    "charge_counter": "90",
+    "charge_full": "10200000",
+    "charge_full_design": "10200000",
+    "current_now": "426000",
+    "cycle_count": "570",
+    "temp": "341",
+    "type": "BMS",
+    "voltage_max": "4400000",
+    "voltage_now": "3789000"
+  },
+  "system_power": {
+    "mem_sleep": "s2idle [deep]",
+    "pm_async": "1",
+    "state": "freeze mem"
+  },
+  "suspend_stats_cumulative": {
+    "fail": "1941",
+    "failed_freeze": "1685",
+    "failed_prepare": "0",
+    "failed_resume": "0",
+    "failed_resume_early": "0",
+    "failed_resume_noirq": "0",
+    "failed_suspend": "171",
+    "failed_suspend_late": "4",
+    "failed_suspend_noirq": "55",
+    "success": "4146"
+  },
+  "cpufreq": {
+    "/sys/devices/system/cpu/cpufreq/policy0": {
+      "affected_cpus": "0 1 2 3",
+      "cpuinfo_max_freq": "1804800",
+      "cpuinfo_min_freq": "300000",
+      "related_cpus": "0 1 2 3",
+      "scaling_available_frequencies": "300000 403200 518400 614400 691200 787200 883200 979200 1075200 1171200 1248000 1344000 1420800 1516800 1612800 1708800 1804800",
+      "scaling_cur_freq": "1075200",
+      "scaling_governor": "schedutil",
+      "scaling_max_freq": "1075200",
+      "scaling_min_freq": "691200"
+    },
+    "/sys/devices/system/cpu/cpufreq/policy4": {
+      "affected_cpus": "4 5 6",
+      "cpuinfo_max_freq": "2419200",
+      "cpuinfo_min_freq": "710400",
+      "related_cpus": "4 5 6",
+      "scaling_available_frequencies": "710400 825600 940800 1056000 1171200 1286400 1382400 1478400 1574400 1670400 1766400 1862400 1958400 2054400 2150400 2246400 2342400 2419200",
+      "scaling_cur_freq": "710400",
+      "scaling_governor": "schedutil",
+      "scaling_max_freq": "710400",
+      "scaling_min_freq": "710400"
+    },
+    "/sys/devices/system/cpu/cpufreq/policy7": {
+      "affected_cpus": "7",
+      "cpuinfo_max_freq": "3187200",
+      "cpuinfo_min_freq": "844800",
+      "related_cpus": "7",
+      "scaling_available_frequencies": "844800 960000 1075200 1190400 1305600 1401600 1516800 1632000 1747200 1862400 1977600 2073600 2169600 2265600 2361600 2457600 2553600 2649600 2745600 2841600 3187200",
+      "scaling_cur_freq": "844800",
+      "scaling_governor": "schedutil",
+      "scaling_max_freq": "844800",
+      "scaling_min_freq": "844800"
+    }
+  },
+  "runtime_pm": {
+    "/sys/bus/i2c/devices/0-0028": {
+      "control": "auto",
+      "runtime_active_time": "0",
+      "runtime_status": "unsupported",
+      "runtime_suspended_time": "0"
+    },
+    "/sys/bus/i2c/devices/3-0028": {
+      "control": "auto",
+      "runtime_active_time": "0",
+      "runtime_status": "unsupported",
+      "runtime_suspended_time": "0"
+    },
+    "/sys/bus/i2c/devices/5-0060": {
+      "control": "auto",
+      "runtime_active_time": "41816580",
+      "runtime_status": "active",
+      "runtime_suspended_time": "0",
+      "wakeup": "enabled"
+    },
+    "/sys/bus/pci/devices/0000:01:00.0": {
+      "autosuspend_delay_ms": "10000",
+      "control": "auto",
+      "runtime_active_time": "41816968",
+      "runtime_status": "active",
+      "runtime_suspended_time": "0",
+      "wakeup": "disabled"
+    },
+    "/sys/bus/spi/devices/spi0.0": {
+      "control": "auto",
+      "runtime_active_time": "0",
+      "runtime_status": "unsupported",
+      "runtime_suspended_time": "0"
+    }
+  },
+  "device_tree": {
+    "fuel_gauge": {
+      "path": "/soc/i2c@98c000/mitsumi,mm8013@55",
+      "compatible": [
+        "mitsumi,mm8013c06"
+      ],
+      "reg": [
+        85
+      ]
+    },
+    "charger": {
+      "path": "/soc/qcom,spmi@c440000/qcom,pm8150b@2/qcom,qpnp-smb5",
+      "compatible": [
+        "qcom,qpnp-smb5"
+      ],
+      "charge_control_gpio_cells": [
+        1619,
+        10,
+        0
+      ],
+      "charge_control_gpio_provider": "/soc/qcom,spmi@c440000/qcom,pm8150@0/pinctrl@c000",
+      "watchdog_bark_seconds": [
+        16
+      ],
+      "jeita_enable": [
+        1
+      ],
+      "thermal_mitigation_raw": [
+        4000000,
+        3900000,
+        3800000,
+        3600000,
+        3200000,
+        2800000,
+        2400000,
+        2000000,
+        1800000,
+        1600000,
+        1400000,
+        1200000,
+        1000000,
+        800000,
+        600000,
+        500000
+      ],
+      "pd_thermal_mitigation_raw": [
+        6000000,
+        5450000,
+        5300000,
+        5000000,
+        4600000,
+        4200000,
+        3800000,
+        3400000,
+        3200000,
+        3000000,
+        2800000,
+        2600000,
+        2400000,
+        2400000,
+        2200000,
+        2100000
+      ]
+    }
+  },
+  "interpretation_limits": [
+    "USB_PD type and usb_power_delivery operation-mode labels are not proof of an active PD contract: real_type is USB_HVDCP_3 and pd_active is 0.",
+    "pd_current_max=-22 is an invalid/error-like raw value, not physical negative current; confirm the matched stock getter.",
+    "Charging and positive battery current are one stock-driver observation, not a complete current-sign calibration.",
+    "charge_counter=90 is not assumed to be a validated standard charge value.",
+    "No charger efficiency, battery health, or before/after energy conclusion is derived.",
+    "CPU policy limits are not hardware maximum frequencies; limiting owner is unobserved.",
+    "Suspend counters are lifetime history, not a controlled suspend trial.",
+    "runtime_status=unsupported does not establish that the hardware remains powered.",
+    "wakeup_count is intentionally excluded because a normal read may block.",
+    "The idle-inclusive trace has ring-buffer losses and cannot support a complete event sequence or residency calculation.",
+    "The lower-volume trace excludes cpu_idle; its empty idle map does not imply no idle transitions.",
+    "Later frequency events exceed earlier static policy caps; those caps must not be extrapolated across observation windows.",
+    "KGSL state counts do not measure state residency or energy savings.",
+    "No observed suspend or DRM-vblank records in a short uncontrolled sample do not prove lack of support or zero screen updates."
+  ],
+  "traces": [
+    {
+      "file": "android-trace-idle-partial.json",
+      "sha256": "7f0a38ffbee8e49dc86abf85bbd4dd7beff3167b9cfb2228e77b16b93e1f7eb3",
+      "capture_utc": "2026-11-22T20:35:24.037097+00:00",
+      "observed_seconds": 8.015599215999828,
+      "enabled_events": [
+        "power:cpu_frequency",
+        "power:cpu_idle",
+        "power:gpu_frequency",
+        "power:suspend_resume",
+        "power:device_pm_callback_start",
+        "power:device_pm_callback_end",
+        "kgsl:kgsl_pwr_set_state",
+        "drm:drm_vblank_event"
+      ],
+      "buffer_loss_detected": true,
+      "interpretation": "partial ring-buffer sample; event counts are lower bounds",
+      "event_counts": {
+        "cpu_frequency": 52,
+        "cpu_idle": 47159,
+        "gpu_frequency": 11,
+        "kgsl_pwr_set_state": 17
+      },
+      "cpu_frequency_khz": {
+        "0": [
+          691200,
+          883200,
+          979200,
+          1075200
+        ],
+        "1": [
+          691200,
+          883200,
+          979200,
+          1075200
+        ],
+        "2": [
+          691200,
+          883200,
+          979200,
+          1075200
+        ],
+        "3": [
+          691200,
+          883200,
+          979200,
+          1075200
+        ]
+      },
+      "gpu_state_counts": {
+        "ACTIVE": 5,
+        "AWARE": 6,
+        "SLUMBER": 6
+      },
+      "unparsed_lines": 0,
+      "global_settings_unchanged": true,
+      "instance_removed": true,
+      "cleanup_errors": []
+    },
+    {
+      "file": "android-trace-summary.json",
+      "sha256": "5b29f45ef9e03cb7cbcdbca583da3833d15d07330cd412dde0f23137601d67d1",
+      "capture_utc": "2026-11-22T20:36:39.693096+00:00",
+      "observed_seconds": 8.011965152996709,
+      "enabled_events": [
+        "power:cpu_frequency",
+        "power:gpu_frequency",
+        "power:suspend_resume",
+        "power:device_pm_callback_start",
+        "power:device_pm_callback_end",
+        "kgsl:kgsl_pwr_set_state",
+        "drm:drm_vblank_event"
+      ],
+      "buffer_loss_detected": false,
+      "interpretation": "no ring-buffer loss reported; this is an uncontrolled workload sample",
+      "event_counts": {
+        "cpu_frequency": 196,
+        "gpu_frequency": 12,
+        "kgsl_pwr_set_state": 18
+      },
+      "cpu_frequency_khz": {
+        "0": [
+          1075200,
+          1344000,
+          1804800
+        ],
+        "1": [
+          1075200,
+          1344000,
+          1804800
+        ],
+        "2": [
+          1075200,
+          1344000,
+          1804800
+        ],
+        "3": [
+          1075200,
+          1344000,
+          1804800
+        ],
+        "4": [
+          710400,
+          1958400,
+          2054400
+        ],
+        "5": [
+          710400,
+          1958400,
+          2054400
+        ],
+        "6": [
+          710400,
+          1958400,
+          2054400
+        ],
+        "7": [
+          844800,
+          1632000,
+          2361600
+        ]
+      },
+      "gpu_state_counts": {
+        "ACTIVE": 6,
+        "AWARE": 6,
+        "SLUMBER": 6
+      },
+      "unparsed_lines": 0,
+      "global_settings_unchanged": true,
+      "instance_removed": true,
+      "cleanup_errors": []
+    }
+  ]
+}

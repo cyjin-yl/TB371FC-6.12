@@ -1,0 +1,508 @@
+{
+  "early_policy_manifest": {
+    "files": [
+      {
+        "path": "etc/selinux/config",
+        "sha256": "80134a263d874d1687a43513a09b6cc8fdc2998e623c1c1670cb5769a85ce942",
+        "size": 1187
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/customizable_types",
+        "sha256": "8d2beb838d537959a01dd6026a545b8209182c1708a604489667af9ccd7e9a8a",
+        "size": 262
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/dbus_contexts",
+        "sha256": "33115c8ae83b6d571d45099e1758b571209e2808eed26389ffc50c1d5409cb37",
+        "size": 195
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/default_contexts",
+        "sha256": "a17f9516849471008f456235c07002a669ee02a004ea2212a854b4d5f2740060",
+        "size": 1224
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/default_type",
+        "sha256": "8583ca57f622a7ef83c25b1234a40fe8ac5e89cba4e75b8f20da4f206c830a48",
+        "size": 114
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/failsafe_context",
+        "sha256": "50e3c030d2451b2871ca4084e1cb1da2fc20e1cc0d1ff717d9a86ab8c9224bf8",
+        "size": 29
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/files/file_contexts",
+        "sha256": "df39f62b57af725bec5c4fbe2ec8bf82f12be5e2f432ad8dc63e2cdcced98f44",
+        "size": 408747
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/files/file_contexts.bin",
+        "sha256": "6352017d9f15427776e71c28086456df7ca4e6ac45bb5f07e928a2ee97b27a37",
+        "size": 432888
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/files/file_contexts.homedirs",
+        "sha256": "c4a705774eecf95efe38354e67ebb6c8a1ff37ec5b858a0658dd31746d91626d",
+        "size": 15505
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/files/file_contexts.homedirs.bin",
+        "sha256": "05f409a91757b58a60d75fec0e2b68d901164d864828b1adcb3681fa7c2f0ea7",
+        "size": 14355
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/files/file_contexts.local",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/files/file_contexts.subs",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/files/file_contexts.subs_dist",
+        "sha256": "71b08a07cbc1402ee4cd8ade513a12b848825b72798047ff25d529f06ced1ce3",
+        "size": 2158
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/files/media",
+        "sha256": "08062b1ce71faab6f7a21a62b6cb71a88b275e7f36fad087d29fd7e0f121d13d",
+        "size": 139
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/initrc_context",
+        "sha256": "8564f22331cfac1d241b73064f15e1a5ffae1133f81f6592187d6d9cf673f277",
+        "size": 30
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/lxc_contexts",
+        "sha256": "38987683b036cfcf99f7656992ee4eb62042bd978c8ff6742826f039c5a40909",
+        "size": 372
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/openssh_contexts",
+        "sha256": "3740c377103868efd081e872e3f28216ebf17b4535fd4ef3a074333915cff334",
+        "size": 27
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/removable_context",
+        "sha256": "e1fa3269417ef83475c62ed5fd9477da3a3f0518b699b35ad6edfb8044ef4f46",
+        "size": 33
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/securetty_types",
+        "sha256": "b1e359421c1ff3d894c990689bb19363dc06bf427dd729a0e3fd35b8e5f6ad1b",
+        "size": 35
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/sepgsql_contexts",
+        "sha256": "c4a79bf016230fdb72a4ee61be011c3e63471c1978071f20cff3d78c36bd9854",
+        "size": 1170
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/snapperd_contexts",
+        "sha256": "6669d66bfcc2aaa964253460196d90e17244d1ca474a7e46ffb3ce986afc3efe",
+        "size": 53
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/systemd_contexts",
+        "sha256": "b76cc49f30816e6ec08a4bf3f48cab11f3c0c159624e8c3abe52b52f5e6816f0",
+        "size": 57
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/userhelper_context",
+        "sha256": "6a5dac6f77bd507632b1042e967c3374f32e0619365f9f1625439bf28c935582",
+        "size": 33
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/users/guest_u",
+        "sha256": "218fc5f545c5c8476dd56d6189e867975a9119c2b50ef81a1d3038b0b121ab95",
+        "size": 389
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/users/root",
+        "sha256": "874a44b2467bc6df9ae10cb46593c48911911b4d73fcd42bf83ea09f9c91d821",
+        "size": 839
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/users/staff_u",
+        "sha256": "1aec2d1a318b317e27f9137f4c14fb1bdb417a863d829bb837689c5f28f505b4",
+        "size": 630
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/users/sysadm_u",
+        "sha256": "8b40ca6c18a434a382d7f42771578c6a1576133ebb795748fc276b5a1eabed24",
+        "size": 638
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/users/unconfined_u",
+        "sha256": "4ea9b00a4cc05c7d613538f840cf5eba56a6e4184a7e4fe4d1651a75133058e3",
+        "size": 668
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/users/user_u",
+        "sha256": "59d99a52bb6d6331db7fa811e1a9d9c9e573ac73c862261bf27bafbe05db19d1",
+        "size": 426
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/users/xguest_u",
+        "sha256": "d4dc822e84d3baf8c737a6bc9372cb9f3ba6cca2a35f5965ed6011c9c5ad4cb1",
+        "size": 449
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/virtual_domain_context",
+        "sha256": "8e7fb0018bd239d06926a009de845619163e8f8111596cfae0157d914ec1c10d",
+        "size": 62
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/virtual_image_context",
+        "sha256": "2d74091c97b82bdc91d50b5ccde9ce59eb6565dc9a63d3bb9a2049ed72843d09",
+        "size": 71
+      },
+      {
+        "path": "etc/selinux/targeted/contexts/x_contexts",
+        "sha256": "4762fa117dfad29fd5fbd5e51c562e237f9538204ffd1cc717e77c14e5dd6a28",
+        "size": 2920
+      },
+      {
+        "path": "etc/selinux/targeted/policy/policy.35",
+        "sha256": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+        "size": 3835468
+      }
+    ]
+  },
+  "early_tools_manifest": {
+    "files": [
+      {
+        "mode": 493,
+        "path": "init.tmpfs",
+        "sha256": "15905f3993604e6f600a17b556354c2bece12bd5a00256c24cf7838482bb7d7d",
+        "size": 6039,
+        "source_path": "/work/early-selinux-rootfs-20261123/build-01/source/stage0.sh"
+      },
+      {
+        "mode": 493,
+        "path": "init.tmpfs-wait",
+        "sha256": "7e593ef9b2c40834b97ad35b1bc21fcd54b00e34dce72381832f88329e28b3ec",
+        "size": 71872,
+        "source_path": "/work/tmpfs-waiter-v2-20261123/build-01/init.tmpfs-wait"
+      },
+      {
+        "mode": 493,
+        "path": "usr/bin/stat",
+        "sha256": "f54c956a5e840a22480869e0f5093f51e3a39b42374dd1045d527e8560ad5d5e",
+        "size": 135480,
+        "source_path": "/work/fedora-system-integration-v1/rootfs/usr/bin/stat"
+      },
+      {
+        "mode": 493,
+        "path": "usr/bin/switch_root",
+        "sha256": "6b6c1803111f117b76b553a664cec1a074827d025618446319d7871f9c127f75",
+        "size": 69104,
+        "source_path": "/work/fedora-system-integration-v1/rootfs/usr/bin/switch_root"
+      }
+    ]
+  },
+  "expected_cache": {
+    "sha256": "0571b75832400c2d74a2da6cef58416d34906e7b292cf5e92449bc849144b3a9",
+    "size": 1903
+  },
+  "expected_libraries": [
+    {
+      "cache_path": "/lib64/libzstd.so.1",
+      "resolved_path": "usr/lib64/libzstd.so.1.5.7",
+      "sha256": "2e5d50c10d8e2ff8eb5fdeea6fa4965a37c37405ad3f6fb21d9d473203538247",
+      "size": 861264,
+      "soname": "libzstd.so.1"
+    },
+    {
+      "cache_path": "/lib64/libz.so.1",
+      "resolved_path": "usr/lib64/libz.so.1.3.1.zlib-ng",
+      "sha256": "7daae3cb8adb9679c0b7a7f44974b8374d71a557382eadeca8385b129cbd33bf",
+      "size": 136568,
+      "soname": "libz.so.1"
+    },
+    {
+      "cache_path": "/lib64/libuuid.so.1",
+      "resolved_path": "usr/lib64/libuuid.so.1.3.0",
+      "sha256": "81b2c944dd9c3343a43e16f58bf27a1154bbb8ca839feffb89725f9ebbbab8e5",
+      "size": 69544,
+      "soname": "libuuid.so.1"
+    },
+    {
+      "cache_path": "/lib64/libudev.so.1",
+      "resolved_path": "usr/lib64/libudev.so.1.7.15",
+      "sha256": "1b527ab4eea8c0323002fd83a5f076d96dbf5a0a011745b47b3cae3c13d3477a",
+      "size": 336944,
+      "soname": "libudev.so.1"
+    },
+    {
+      "cache_path": "/lib64/libtinfo.so.6",
+      "resolved_path": "usr/lib64/libtinfo.so.6.6",
+      "sha256": "a9b6aba827571166e227c67afd15354e78e8c324f4e63d4920716c599577814c",
+      "size": 203672,
+      "soname": "libtinfo.so.6"
+    },
+    {
+      "cache_path": "/lib64/libsystemd.so.0",
+      "resolved_path": "usr/lib64/libsystemd.so.0.45.0",
+      "sha256": "6eea71c8a4b1e9e78c39ab2c697f27999e99e5cf3d9d6b10e7c2e6bc551b443c",
+      "size": 1339872,
+      "soname": "libsystemd.so.0"
+    },
+    {
+      "cache_path": "/lib64/libsmartcols.so.1",
+      "resolved_path": "usr/lib64/libsmartcols.so.1.1.0",
+      "sha256": "a9678fbb0636b450899d5483b982d867dd21a24cef2f44d0388d8f158891de6b",
+      "size": 203216,
+      "soname": "libsmartcols.so.1"
+    },
+    {
+      "cache_path": "/lib64/libselinux.so.1",
+      "resolved_path": "usr/lib64/libselinux.so.1",
+      "sha256": "c9edfec980b8a05666d24dc3a4e15b502431334e2c7e3adcae189402b5031f6d",
+      "size": 270480,
+      "soname": "libselinux.so.1"
+    },
+    {
+      "cache_path": "/lib64/libseccomp.so.2",
+      "resolved_path": "usr/lib64/libseccomp.so.2.6.1",
+      "sha256": "2a042d0374219aa688b07b1991418af87abd1ac5fd24d883fe89350a5c788cc1",
+      "size": 201392,
+      "soname": "libseccomp.so.2"
+    },
+    {
+      "cache_path": "/lib64/libresolv.so.2",
+      "resolved_path": "usr/lib64/libresolv.so.2",
+      "sha256": "1ced9630294ccafa48a573ca226572326cc0a6052635bf700c1e5e60e5ee6edf",
+      "size": 70232,
+      "soname": "libresolv.so.2"
+    },
+    {
+      "cache_path": "/lib64/libproc2.so.1",
+      "resolved_path": "usr/lib64/libproc2.so.1.0.1",
+      "sha256": "344861e948b66beb1ac29be9b029396bbec76df612fc929a51090c26e6029e06",
+      "size": 206840,
+      "soname": "libproc2.so.1"
+    },
+    {
+      "cache_path": "/lib64/libpcre2-8.so.0",
+      "resolved_path": "usr/lib64/libpcre2-8.so.0.15.0",
+      "sha256": "7f08df34d1ea74a79d32def854357b6466187acc8e4659beeb427e553bf1c4a3",
+      "size": 662552,
+      "soname": "libpcre2-8.so.0"
+    },
+    {
+      "cache_path": "/lib64/libnss_systemd.so.2",
+      "resolved_path": "usr/lib64/libnss_systemd.so.2",
+      "sha256": "e2a06567cfcbe871c6e36554302670f5bc3e7682438647be7f3f5a55af4ed6cb",
+      "size": 536592,
+      "soname": "libnss_systemd.so.2"
+    },
+    {
+      "cache_path": "/lib64/libnss_resolve.so.2",
+      "resolved_path": "usr/lib64/libnss_resolve.so.2",
+      "sha256": "cb9ee2a037e1a5f8bdfb37f2a7a3beb8dece6ccc6aa7605f871c73cc1332b796",
+      "size": 402624,
+      "soname": "libnss_resolve.so.2"
+    },
+    {
+      "cache_path": "/lib64/libnss_myhostname.so.2",
+      "resolved_path": "usr/lib64/libnss_myhostname.so.2",
+      "sha256": "1ef2c09c054a4b03520bba3947f4658d0d5cbeb6f46c06e57412c0a292f9657d",
+      "size": 269376,
+      "soname": "libnss_myhostname.so.2"
+    },
+    {
+      "cache_path": "/lib64/libnss_files.so.2",
+      "resolved_path": "usr/lib64/libnss_files.so.2",
+      "sha256": "c9de08648ba9996db7ab62c9a86df772b492247bb9b46b529fc3f9df11e22b7f",
+      "size": 68824,
+      "soname": "libnss_files.so.2"
+    },
+    {
+      "cache_path": "/lib64/libnss_dns.so.2",
+      "resolved_path": "usr/lib64/libnss_dns.so.2",
+      "sha256": "61900e408766751851d51ae25159316d4735a088fd95c7644a913f043a20d983",
+      "size": 68816,
+      "soname": "libnss_dns.so.2"
+    },
+    {
+      "cache_path": "/lib64/libnss_compat.so.2",
+      "resolved_path": "usr/lib64/libnss_compat.so.2",
+      "sha256": "0e32a830c8a836c477842592927386844f2d238c9a0a93282ffd9bd8be411d3c",
+      "size": 70016,
+      "soname": "libnss_compat.so.2"
+    },
+    {
+      "cache_path": "/lib64/libmount.so.1",
+      "resolved_path": "usr/lib64/libmount.so.1.1.0",
+      "sha256": "17097d1477618a3eb1c513e76ff5bbe13a1cfa28c4672db5845da20aaabbae3e",
+      "size": 403840,
+      "soname": "libmount.so.1"
+    },
+    {
+      "cache_path": "/lib64/libm.so.6",
+      "resolved_path": "usr/lib64/libm.so.6",
+      "sha256": "e4b837f8287a586ba7ce29dd8f757c4329aa8d6a0f52c6d264badcd907171102",
+      "size": 803728,
+      "soname": "libm.so.6"
+    },
+    {
+      "cache_path": "/lib64/liblz4.so.1",
+      "resolved_path": "usr/lib64/liblz4.so.1.10.0",
+      "sha256": "11dbf02c52111c52e248f84b5bfa2e759d6727f708b1e86fc2ea4234f2984b03",
+      "size": 200696,
+      "soname": "liblz4.so.1"
+    },
+    {
+      "cache_path": "/lib64/liblzma.so.5",
+      "resolved_path": "usr/lib64/liblzma.so.5.8.3",
+      "sha256": "22de33288c790f3d2e229d08f0ce081e354dacbddb44d1777e1820c440fa0cbf",
+      "size": 268648,
+      "soname": "liblzma.so.5"
+    },
+    {
+      "cache_path": "/lib64/libkmod.so.2",
+      "resolved_path": "usr/lib64/libkmod.so.2.5.1",
+      "sha256": "d79ede942d6ea7b2627de0015db84af131adfde0a93277bbddb8687761a93039",
+      "size": 136296,
+      "soname": "libkmod.so.2"
+    },
+    {
+      "cache_path": "/lib64/libgcc_s.so.1",
+      "resolved_path": "usr/lib64/libgcc_s-16-20260819.so.1",
+      "sha256": "ac02fe32df9084d75ea400befd249bb5de2c26a0bcd4c341a959ef805ca0890e",
+      "size": 137000,
+      "soname": "libgcc_s.so.1"
+    },
+    {
+      "cache_path": "/lib64/libe2p.so.2",
+      "resolved_path": "usr/lib64/libe2p.so.2.3",
+      "sha256": "2351a7f6a51dda8b1c514cde46dc70abbbd14b91a22f32240e83a6f2cb8ca9be",
+      "size": 71040,
+      "soname": "libe2p.so.2"
+    },
+    {
+      "cache_path": "/lib64/libext2fs.so.2",
+      "resolved_path": "usr/lib64/libext2fs.so.2.4",
+      "sha256": "9cde99340331c7a2b63498169af6b80bcb7ef364698b643d63e84d4485125e3a",
+      "size": 534416,
+      "soname": "libext2fs.so.2"
+    },
+    {
+      "cache_path": "/lib64/libelf.so.1",
+      "resolved_path": "usr/lib64/libelf-0.196.so",
+      "sha256": "46347accd1e9ba0b402c7a86a2e2910049dce408d7a38178728e3d1224129be7",
+      "size": 136496,
+      "soname": "libelf.so.1"
+    },
+    {
+      "cache_path": "/lib64/libcrypto.so.4",
+      "resolved_path": "usr/lib64/libcrypto.so.4.0.3",
+      "sha256": "4ca68fbf9be8b3c5e63c199604351cd2538daf60d92e9db4f2e3763e4bbb3531",
+      "size": 4843992,
+      "soname": "libcrypto.so.4"
+    },
+    {
+      "cache_path": "/lib64/libcom_err.so.2",
+      "resolved_path": "usr/lib64/libcom_err.so.2.1",
+      "sha256": "ec5c3bc296e8d6c4dcacf5f7092508c876d739ce65d205c34c8bb3b562715853",
+      "size": 69088,
+      "soname": "libcom_err.so.2"
+    },
+    {
+      "cache_path": "/lib64/libcap.so.2",
+      "resolved_path": "usr/lib64/libcap.so.2.78",
+      "sha256": "a251188a6166d6a9f4eec2d0172b9754afdc8a8f60353b7706eff56b15901e59",
+      "size": 69552,
+      "soname": "libcap.so.2"
+    },
+    {
+      "cache_path": "/lib64/libcap-ng.so.0",
+      "resolved_path": "usr/lib64/libcap-ng.so.0.0.0",
+      "sha256": "611bce349ac27b2f0e83c69549d2a32f2494652e4761b26a1f5773e35d878b8e",
+      "size": 69152,
+      "soname": "libcap-ng.so.0"
+    },
+    {
+      "cache_path": "/lib64/libc.so.6",
+      "resolved_path": "usr/lib64/libc.so.6",
+      "sha256": "620f6221d0cb0a7bc7d0674bcb0682a0b42f7fb593f596f3bf646f02b10cb798",
+      "size": 2303728,
+      "soname": "libc.so.6"
+    },
+    {
+      "cache_path": "/lib64/libbpf.so.1",
+      "resolved_path": "usr/lib64/libbpf.so.1.7.0",
+      "sha256": "8b783beaa99985950e6d4b5ff0b9359e6898ebdd6be339ac8e7de2b7833ee420",
+      "size": 469904,
+      "soname": "libbpf.so.1"
+    },
+    {
+      "cache_path": "/lib64/libblkid.so.1",
+      "resolved_path": "usr/lib64/libblkid.so.1.1.0",
+      "sha256": "df82b79e296a30536f34e58ed211ea08a5da9493e2cc904e1bdf845c8b0d5015",
+      "size": 270712,
+      "soname": "libblkid.so.1"
+    },
+    {
+      "cache_path": "/lib64/libaudit.so.1",
+      "resolved_path": "usr/lib64/libaudit.so.1.0.0",
+      "sha256": "88efd5f05e1e0fea194f8195d0c5d3b03bf7b72b58000262ebc368451e73fa1d",
+      "size": 200496,
+      "soname": "libaudit.so.1"
+    },
+    {
+      "cache_path": "/lib64/libattr.so.1",
+      "resolved_path": "usr/lib64/libattr.so.1.1.2600",
+      "sha256": "850f586d627b9c692732ae14114732ae5a00ab8a0087d1d92f04c0383b17ccda",
+      "size": 69120,
+      "soname": "libattr.so.1"
+    },
+    {
+      "cache_path": "/lib64/libacl.so.1",
+      "resolved_path": "usr/lib64/libacl.so.1.2.2400",
+      "sha256": "3714c5b9eef47f87c6195c0fbd82ece0f5f65bb9944bc5aff48d2b5aa5413ad8",
+      "size": 69504,
+      "soname": "libacl.so.1"
+    },
+    {
+      "cache_path": "/lib/ld-linux-aarch64.so.1",
+      "resolved_path": "usr/lib/ld-linux-aarch64.so.1",
+      "sha256": "8821728d15728a7046deef6d4183fb343716901e0e8119fff53d6b51e2605547",
+      "size": 928784,
+      "soname": "ld-linux-aarch64.so.1"
+    },
+    {
+      "cache_path": "/lib64/libsepol.so.2",
+      "resolved_path": "usr/lib64/libsepol.so.2",
+      "sha256": "46dbfe1a088868cb3af78d5050dd0cae5b0dcc3a14f9afc583a5ea968d50693b",
+      "size": 802880,
+      "soname": "libsepol.so.2"
+    }
+  ],
+  "init_bootstrap": {
+    "mode": 493,
+    "sha256": "0bc3f0fbb814ece1133b16e36c6b3c402fbf5456d366fb99f4fe2783c87c1d14",
+    "size": 72528,
+    "source_path": "/work/early-selinux-socket-probe-20261123/build-01/early-init"
+  },
+  "joint_loader_policy_binding": {
+    "actual_kernel_exported_policy_hash_predetermined": false,
+    "bootstrap_build_and_profile_policy_inputs_identical": true,
+    "bootstrap_build_policy_sha256": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+    "bootstrap_embeds_policy_hash": false,
+    "bootstrap_policy_size_constant": 3835468,
+    "bootstrap_sha256": "0bc3f0fbb814ece1133b16e36c6b3c402fbf5456d366fb99f4fe2783c87c1d14",
+    "bootstrap_size": 72528,
+    "full_policy_hash_required_by_actual_guest": true,
+    "full_policy_hash_required_by_archive_checker": true,
+    "old_bootstrap_build_input_records_rewritten": false,
+    "profile_policy_sha256": "ff65a5f262d917891e9c3b85283052e4cb9f6f3cb17e04ab8abf971d2a693798",
+    "profile_policy_source": "/work/selinux-socket-probe-20261123/build-01/candidate/etc/selinux/targeted/policy/policy.35",
+    "size_check_alone_is_not_identity_proof": true
+  }
+}

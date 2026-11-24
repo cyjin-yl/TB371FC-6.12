@@ -1,0 +1,16 @@
+{
+  "board_id_tokens": [],
+  "capture_utc": "2026-11-23T02:32:49.044268+00:00",
+  "captured_bytes": 2269,
+  "exit_code": 0,
+  "filename_tokens": [],
+  "limit": "This is not a full boot trace and does not establish a WLAN board choice, Bluetooth ROM revision, authentication, or Linux radio operation.",
+  "log_cleared": false,
+  "radio_restarted": false,
+  "raw_log_published": false,
+  "read_only": true,
+  "scope": "current Android kernel-buffer radio-selection tokens only",
+  "selection_proven": false,
+  "status": "no_selection_tokens_in_retained_buffer",
+  "token_bound_exceeded": false
+}

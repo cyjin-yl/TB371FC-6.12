@@ -1,0 +1,30 @@
+{
+  "child_pid": 502218,
+  "command": [
+    "sudo",
+    "-n",
+    "/usr/sbin/pct",
+    "exec",
+    "102",
+    "--",
+    "docker",
+    "exec",
+    "-i",
+    "tb371fc-build-ssd-20261123",
+    "python3",
+    "-c",
+    "from pathlib import Path\nimport base64,hashlib,json,os,stat,sys\nos.umask(0o077)\nw=Path('/work/research5-services');dst=w/'recipe-v1'\nassert w.is_dir() and not w.is_symlink() and not dst.exists()\nsource_record=json.loads((w/'jobs/prepare-source-01.json').read_text())\nassert source_record['passed'] is True and source_record['exit_code']==0\nassert source_record['source_inputs_unchanged'] is True\nassert source_record['old_objects_copied'] is False and source_record['old_private_key_copied'] is False\nassert not (w/'kernel-out').exists() and not (w/'configuration.json').exists()\npacket=json.loads(sys.stdin.buffer.read())\nassert packet['schema_version']==1\nassert {x['name'] for x in packet['files']}=={'build_system.py','inspect_system.py','system.config','services-contract.json','run_job.py'}\nassert len(packet['files'])==5\nmembers=[]\nfor item in packet['files']:\n raw=base64.b64decode(item['base64'],validate=True)\n assert len(raw)==item['bytes'] and hashlib.sha256(raw).hexdigest()==item['sha256']\n assert item['mode'] in (0o644,0o755)\n members.append((item,raw))\ndst.mkdir(mode=0o700)\nreadback=[]\nfor item,raw in members:\n p=dst/item['name']\n with p.open('xb') as f:f.write(raw)\n p.chmod(item['mode']);s=p.lstat()\n assert stat.S_ISREG(s.st_mode) and s.st_uid==s.st_gid==0 and stat.S_IMODE(s.st_mode)==item['mode']\n assert p.read_bytes()==raw\n readback.append({k:v for k,v in item.items() if k!='base64'})\nrecord={'schema_version':1,'files':readback,'all_byte_and_mode_verified':True,'source_preparation_passed':True,\n 'old_objects_copied':False,'old_private_key_copied':False,'vm_started':False,'physical_hardware_tested':False}\nwith (w/'recipe-install.json').open('x') as f:json.dump(record,f,indent=2,sort_keys=True);f.write('\\n')\nprint(json.dumps(record,sort_keys=True))\n"
+  ],
+  "elapsed_seconds": 1.5094170290394686,
+  "ended_utc": "2026-11-23T09:35:09.660698+00:00",
+  "exit_code": 0,
+  "start_utc": "2026-11-23T09:35:08.151271+00:00",
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 900,
+    "sha256": "e418c93bb830e2a8d845877b464263a4420dcf631a6ab6f4c46544a607484946"
+  }
+}

@@ -1,0 +1,2 @@
+(allow init_t semanage_store_t (file (map)))
+(allow init_t init_t (process (setcurrent dyntransition)))

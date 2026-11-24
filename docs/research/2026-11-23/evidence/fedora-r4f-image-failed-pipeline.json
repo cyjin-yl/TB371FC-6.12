@@ -1,0 +1,25 @@
+{
+  "cancelled_signal": null,
+  "command": [
+    "/usr/bin/python3",
+    "/work/fedora-input-system-recipe-r4-v7/run_pipeline.py",
+    "--report-sha256",
+    "0db9a7e6164b44ac845a80974c3a369476ede23ac6f094de9c14c8602fa3faa6",
+    "--bundle-sha256",
+    "82ffa9d01bd5cab5fe859e0182cac9998f103391ca5dac469b0044234fa18627",
+    "--recipe-manifest-sha256",
+    "927fd0755f54f303adac25daa8342bfe4615d0d42ff9a07361d29226f7cdf947",
+    "--attempt",
+    "1",
+    "--start",
+    "stage"
+  ],
+  "elapsed_seconds": 1148.6760844429955,
+  "exit_code": 1,
+  "finished_utc": "2026-11-23T09:24:26.788163+00:00",
+  "launcher_sha256": "2fd4bcb57a4d1440e9711941febeb2e633325e6312804c5bd42becbb8ec136ae",
+  "physical_hardware_tested": false,
+  "recipe_manifest_sha256": "927fd0755f54f303adac25daa8342bfe4615d0d42ff9a07361d29226f7cdf947",
+  "schema_version": 1,
+  "started_utc": "2026-11-23T09:05:18.111872+00:00"
+}

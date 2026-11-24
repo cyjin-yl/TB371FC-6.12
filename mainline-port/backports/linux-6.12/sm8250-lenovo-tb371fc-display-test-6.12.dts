@@ -1,0 +1,45 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * TB371FC diagnostic wrapper for the explicitly qualified Linux 6.12 profile.
+ *
+ * Requires the prepared 6.12-compatible base DTS and the separately recorded
+ * 0002-tb371fc-phy-wideplane.patch driver prerequisite. This source does not
+ * establish working native scanout, safe takeover, or a bootable kernel image.
+ *
+ * The historical test adds /chosen/framebuffer0, a different node from the
+ * base's framebuffer0: framebuffer@9c000000. Move its unchanged clock/domain
+ * references onto the real framebuffer, and use its path for stdout-path.
+ * Preserve the historical test and every hardware GPIO/supply assignment.
+ *
+ * On 6.12 the wide linear-plane path uses two rectangles on one SSPP; the
+ * historical test's Linux 7.1 dpu_plane_split() comment is not this contract.
+ */
+
+#include "sm8250-lenovo-tb371fc-display-test.dts"
+
+/ {
+	model = "Lenovo TB371FC (Linux 6.12 native display diagnostic)";
+
+	chosen {
+		stdout-path = &framebuffer0;
+		/delete-node/ framebuffer0;
+	};
+};
+
+&framebuffer0 {
+	status = "okay";
+	clocks = <&dispcc DISP_CC_MDSS_AHB_CLK>,
+		 <&gcc GCC_DISP_HF_AXI_CLK>,
+		 <&gcc GCC_DISP_SF_AXI_CLK>,
+		 <&dispcc DISP_CC_MDSS_VSYNC_CLK>,
+		 <&dispcc DISP_CC_MDSS_MDP_CLK>,
+		 <&dispcc DISP_CC_MDSS_BYTE0_CLK>,
+		 <&dispcc DISP_CC_MDSS_BYTE0_INTF_CLK>,
+		 <&dispcc DISP_CC_MDSS_BYTE1_CLK>,
+		 <&dispcc DISP_CC_MDSS_BYTE1_INTF_CLK>,
+		 <&dispcc DISP_CC_MDSS_PCLK0_CLK>,
+		 <&dispcc DISP_CC_MDSS_PCLK1_CLK>,
+		 <&dispcc DISP_CC_MDSS_ESC0_CLK>,
+		 <&dispcc DISP_CC_MDSS_ESC1_CLK>;
+	power-domains = <&dispcc MDSS_GDSC>;
+};

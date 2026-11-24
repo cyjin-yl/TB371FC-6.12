@@ -1,0 +1,29 @@
+{
+  "capture_utc": "2026-11-23T02:01:38.014867+00:00",
+  "gpu_model": "Adreno650v3",
+  "kernel_release": "4.19.157-perf+",
+  "properties": {
+    "/sys/firmware/devicetree/base/soc/qcom,kgsl-3d0@3d00000/compatible": {
+      "hex": "71636f6d2c6b67736c2d3364300071636f6d2c6b67736c2d336400",
+      "size_bytes": 27,
+      "strings": [
+        "qcom,kgsl-3d0",
+        "qcom,kgsl-3d"
+      ]
+    },
+    "/sys/firmware/devicetree/base/soc/qcom,kgsl-3d0@3d00000/qcom,chipid": {
+      "chip_id_hex": "0x06050002",
+      "hex": "06050002",
+      "size_bytes": 4
+    },
+    "/sys/firmware/devicetree/base/soc/qcom,kgsl-3d0@3d00000/status": {
+      "hex": "6f6b00",
+      "size_bytes": 3,
+      "strings": [
+        "ok"
+      ]
+    }
+  },
+  "scope": "stock Android declared GPU identity only; no MMIO/register read or mainline execution"
+}
+

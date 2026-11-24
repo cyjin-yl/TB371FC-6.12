@@ -1,0 +1,143 @@
+{
+  "capture_utc": "2026-11-23T06:32:59.894596+00:00",
+  "container": "tb371fc-build-20261123",
+  "passed": true,
+  "physical_tablet_tested": false,
+  "proot_or_initramfs_or_vm_executed_by_preparation": false,
+  "records": {
+    "baseline-copy-qualification.json": {
+      "record": {
+        "baseline_copy_sha256": "9dbb81b3b35aaba65929e90b11dece3afe6dfde780794113849d8b4e51e706eb",
+        "canonical_stream": {
+          "bytes": 1323141120,
+          "exit_code": 0,
+          "sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96"
+        },
+        "copy_helper_sha256": "e47bb6f6f59af80bd1fc1014e3d83db1537371f641ec7997dae7bacc7ffbbf6b",
+        "expected_quiescent_stream_sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96",
+        "old_failed_candidate_modified": false,
+        "physical_tablet_tested": false,
+        "prior_v6_failure": {
+          "path": "/work/fedora-input-system-v6/fedora-input-system-attempt.json",
+          "sha256": "8575cb6378d8df7636b6155af38715c773c70e938c168c62416d2cd5eb8b2e2a"
+        },
+        "proot_or_initrd_or_vm_executed": false,
+        "qualified": true,
+        "runtime_helper_sha256": "da19f1c9e2a75b3f384411708048ddf5272a2e0ad2351391adc587e9690ff4d0",
+        "schema_version": 1,
+        "source_timestamps_reset": false,
+        "wrapper_sha256": "75472dbfed6fe95c0ec24e8ac0831c4981d9ab1e39debd518c957a5e90278602"
+      },
+      "sha256": "b87d15dd82a7e411390046f7fed808c253558849c55b1c42bf91d377d176f25b",
+      "size": 1020,
+      "source": "/work/fedora-input-system-v7/baseline-copy-qualification.json"
+    },
+    "baseline-copy.json": {
+      "record": {
+        "canonical_streams": {
+          "destination": {
+            "bytes": 1323141120,
+            "exit_code": 0,
+            "sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96"
+          },
+          "source": {
+            "bytes": 1323141120,
+            "exit_code": 0,
+            "sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96"
+          }
+        },
+        "complete": true,
+        "container": "tb371fc-build-20261123",
+        "copy_exit_code": 0,
+        "destination_tree": "/work/fedora-input-system-v7/rootfs",
+        "finished_utc": "2026-11-23T06:13:52.464760+00:00",
+        "host_storage_or_daemon_modified": false,
+        "input_hashes": {
+          "/usr/bin/qemu-aarch64": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943",
+          "/work/fedora-proot-src/src/proot": "313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f",
+          "/work/fedora-system-integration-v1/fedora-system-integration.json": "66ac854b2bc938aed147afe0355b57fcbba856c874e9d82cec4cad663b1c87d9",
+          "/work/fedora-system-integration-v1/runtime.json": "10a373bfc3291aabe564c8f7af90265900763eadfe3167a7384cc4dcd596544b",
+          "/work/fedora-system-integration-v1/vm-verify-01/result.json": "223f73b253a48995dd238575e64aad055e11f311c658aa03534b49c570095675"
+        },
+        "journal_acl_check": {
+          "system.posix_acl_access": {
+            "byte_identical": true,
+            "sha256": "fc742256255ddf9fd3878c1a93c0a2f49b1f9cf2793a30b23ea9d64ea5740aff",
+            "size": 52
+          },
+          "system.posix_acl_default": {
+            "byte_identical": true,
+            "sha256": "fc742256255ddf9fd3878c1a93c0a2f49b1f9cf2793a30b23ea9d64ea5740aff",
+            "size": 52
+          }
+        },
+        "previous_ssd_container": "tb371fc-build-ssd-20261123",
+        "previous_ssd_partial_retained": "/work/fedora-input-system-v1",
+        "schema_version": 1,
+        "source_modified": false,
+        "source_tree": "/work/fedora-system-integration-v1/rootfs",
+        "started_utc": "2026-11-23T06:13:01.517943+00:00"
+      },
+      "sha256": "9dbb81b3b35aaba65929e90b11dece3afe6dfde780794113849d8b4e51e706eb",
+      "size": 1881,
+      "source": "/work/fedora-input-system-v7/baseline-copy.json"
+    },
+    "kernel-transfer.json": {
+      "record": {
+        "bundle_sha256": "82ffa9d01bd5cab5fe859e0182cac9998f103391ca5dac469b0044234fa18627",
+        "complete": true,
+        "destination_container": "tb371fc-build-20261123",
+        "destination_root": "/work/fedora-input-system-v7/kernel-inputs",
+        "files_verified": 96,
+        "finished_utc": "2026-11-23T06:13:53.566769+00:00",
+        "kernel_report_sha256": "0db9a7e6164b44ac845a80974c3a369476ede23ac6f094de9c14c8602fa3faa6",
+        "old_artifacts_modified": false,
+        "private_keys_or_firmware_transferred": false,
+        "recipe_sha256": "da19f1c9e2a75b3f384411708048ddf5272a2e0ad2351391adc587e9690ff4d0",
+        "schema_version": 1,
+        "source_container": "tb371fc-build-20261123",
+        "source_is_failed_vm_filesystem": false,
+        "source_root": "/work/fedora-input-system-v3/kernel-inputs",
+        "source_transfer_record_sha256": "f42c788cbfd7e4e7ae0ffab48f89f267482a31088597cadc9afe3154e2d23d19",
+        "started_utc": "2026-11-23T06:13:53.180111+00:00"
+      },
+      "sha256": "1f2db1088e14b2c144cc9f27f1ceff01cc3c0c6b6d53466e854659f491072935",
+      "size": 907,
+      "source": "/work/fedora-input-system-v7/kernel-transfer.json"
+    },
+    "preparation-exit.json": {
+      "record": {
+        "elapsed_seconds": 52.37218588398537,
+        "exit_code": 0,
+        "new_vm_started": false,
+        "scope": "native copy and verified R4 runtime transfer only",
+        "started_utc": "2026-11-23T06:13:01.225244+00:00"
+      },
+      "sha256": "dad85a6ad2d7cbbea1188999afb6030ddcb1c696959811454bbb67c03ab5ad44",
+      "size": 205,
+      "source": "/work/fedora-r4d-baseline-recipe-v1/exit.json"
+    },
+    "preparation-source-manifest.json": {
+      "record": {
+        "copy_local_baseline.py": {
+          "sha256": "e47bb6f6f59af80bd1fc1014e3d83db1537371f641ec7997dae7bacc7ffbbf6b",
+          "size": 7265
+        },
+        "prepare_reload_map_baseline.py": {
+          "sha256": "75472dbfed6fe95c0ec24e8ac0831c4981d9ab1e39debd518c957a5e90278602",
+          "size": 3908
+        },
+        "reuse_verified_runtime.py": {
+          "sha256": "da19f1c9e2a75b3f384411708048ddf5272a2e0ad2351391adc587e9690ff4d0",
+          "size": 3948
+        }
+      },
+      "sha256": "e61d934e473f73da814bfc949a9bec7eadaffcf89b000e27c473af4d81e24e12",
+      "size": 416,
+      "source": "/work/fedora-r4d-baseline-recipe-v1/source-manifest.json"
+    }
+  },
+  "schema_version": 1,
+  "scope": "actual native quiescent copy and R4 regular runtime transfer only",
+  "work": "/work/fedora-input-system-v7"
+}
