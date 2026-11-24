@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/work/fedora-r5-system-v1/recipe/assemble_system.py", line 108, in <module>
+    {'configure': configure, 'initrd': initrd, 'image': image}[arguments.phase]()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/work/fedora-r5-system-v1/recipe/assemble_system.py", line 44, in configure
+    data = profile()
+  File "/work/fedora-r5-system-v1/recipe/system_common.py", line 86, in profile
+    qualified_stage()
+    ~~~~~~~~~~~~~~~^^
+  File "/work/fedora-r5-system-v1/recipe/system_common.py", line 77, in qualified_stage
+    raise ValueError("staging recipe differs from the executed staging code")
+ValueError: staging recipe differs from the executed staging code

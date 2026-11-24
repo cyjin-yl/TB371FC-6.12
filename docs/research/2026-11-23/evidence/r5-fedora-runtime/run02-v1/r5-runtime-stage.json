@@ -1,0 +1,990 @@
+{
+  "candidate": {
+    "bytes": 32411,
+    "mode": 436,
+    "sha256": "cbd40dbd9acdf26645c11647fb29079e5c4c8f8d1a6fadafaf154d3a3e72570b"
+  },
+  "complete": true,
+  "depmod_receipts": {
+    "target-depmod-version.json": {
+      "bytes": 505,
+      "mode": 420,
+      "sha256": "a90fee936307fd73fba954c097fd7640dd55355ef93abfb6945e9251095e977d"
+    },
+    "target-depmod-version.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "target-depmod-version.stdout": {
+      "bytes": 45,
+      "mode": 420,
+      "sha256": "9260633fb503b27b01585a3423b89286e90dd602a425828d898b80fffe8122eb"
+    },
+    "target-depmod.json": {
+      "bytes": 541,
+      "mode": 420,
+      "sha256": "3a2cbe6a6d30c86189041a9497369083cbdfd5840476f8be4dd00db2ae272317"
+    },
+    "target-depmod.stderr": {
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "target-depmod.stdout": {
+      "bytes": 0,
+      "mode": 420,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "destination_tree": {
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=10s",
+      "1800s",
+      "tar",
+      "--sort=name",
+      "--format=posix",
+      "--pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime",
+      "--numeric-owner",
+      "--acls",
+      "--selinux",
+      "--xattrs",
+      "--xattrs-include=*",
+      "-cf",
+      "-",
+      "-C",
+      "/work/fedora-r5-system-v1/rootfs",
+      "."
+    ],
+    "bytes": 1323141120,
+    "exit_code": 0,
+    "sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96",
+    "stderr_bytes": 0
+  },
+  "finished_utc": "2026-11-23T22:28:58.897439+00:00",
+  "firmware_inventory": {
+    "lib/firmware/ath11k/QCA6390/hw2.0/amss.bin": {
+      "bytes": 4384928,
+      "mode": 420,
+      "sha256": "23971cf2acadd3eeffa44575ec5573859f95388e7aa38a4a6734ec75d6b90e53"
+    },
+    "lib/firmware/ath11k/QCA6390/hw2.0/m3.bin": {
+      "bytes": 266684,
+      "mode": 420,
+      "sha256": "b1da77a2508789ce7fa1557425d3c6933b4d51f2c44f10298f58071f7a5b2448"
+    },
+    "lib/firmware/lenovo/tb371fc/novatek_ts_fw_boe_6.bin": {
+      "bytes": 245760,
+      "mode": 420,
+      "sha256": "6611efef1126dad4ef588311a7bbbf54503d03afdf7d972d4bf14c44567bf3c4"
+    },
+    "lib/firmware/lenovo/tb371fc/novatek_ts_tm_fw_6.bin": {
+      "bytes": 245760,
+      "mode": 420,
+      "sha256": "9e8642c6c0d2f27a99d64e318b9fefa41c507356008ead7c15bc4aba18c36574"
+    },
+    "lib/firmware/qca/htbtfw10.tlv": {
+      "bytes": 129964,
+      "mode": 420,
+      "sha256": "c6ac59eaa877786f0c883ce087816d8882e06f4850afd36ec1fcc5c2e0b72c5c"
+    },
+    "lib/firmware/qca/htbtfw20.tlv": {
+      "bytes": 205772,
+      "mode": 420,
+      "sha256": "07b0be73dea31551200487f15fdc049edbb923555d38b7e7b0436a773bfbb2ea"
+    },
+    "lib/firmware/qca/htnv10.bin": {
+      "bytes": 3569,
+      "mode": 420,
+      "sha256": "c7dabb873d4f3e60e698c9ec1521a0ede4f48fe58936aec2c9f0ebc0166c8d28"
+    },
+    "lib/firmware/qca/htnv20.bin": {
+      "bytes": 5839,
+      "mode": 420,
+      "sha256": "21492a18750319b594a6287e2393d39deac28bf54edb91c660b5918b397c9451"
+    },
+    "lib/firmware/qcom/a650_gmu.bin": {
+      "bytes": 41548,
+      "mode": 420,
+      "sha256": "df79fa8482fcc7587bb239b9c9e2b24bce4729893b990fe3f82b30da8175b01c"
+    },
+    "lib/firmware/qcom/a650_sqe.fw": {
+      "bytes": 31632,
+      "mode": 420,
+      "sha256": "b4c27420fd6a5c6b511b254cc0fad8cdd40eea38ceb3418f895a1084f4460487"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/a650_zap.mbn": {
+      "bytes": 13964,
+      "mode": 420,
+      "sha256": "9fa3242134d6070c4facba48bb5c5ef2206d92995035aec7daff01198e853299"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b02": {
+      "bytes": 82680,
+      "mode": 420,
+      "sha256": "f85a8ef97191c49f2d0b8f713b6009963b81e225ce0dabb1189cd92f7d0c5600"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b03": {
+      "bytes": 358784,
+      "mode": 420,
+      "sha256": "11d886ebfc13ea7a11410470d6ff884d720379b0d3fe78af793538dfc2def040"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b04": {
+      "bytes": 1966540,
+      "mode": 420,
+      "sha256": "4359682ac1abdcfe413d52cb30eea69fae0e36fbec6f55b4d77489bb667e7292"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b05": {
+      "bytes": 2487860,
+      "mode": 420,
+      "sha256": "f63badc1a2492c064efdec96d8285cbc3f6c744979adb6a5a773361ab80cd133"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b06": {
+      "bytes": 38696,
+      "mode": 420,
+      "sha256": "08cfc45db65000403bac68390c87c3383c05b16dbf622e732ae42721f3ccd79d"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b07": {
+      "bytes": 28972,
+      "mode": 420,
+      "sha256": "4a3c57349f55e357678092e1cf1b5d4f3f08197e508be1882e3e4a707dcaca96"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b08": {
+      "bytes": 126736,
+      "mode": 420,
+      "sha256": "20175c2c1b2b429818dcda95460c53143d5ad299c3f99cbd0d6a1c5fdf50fbfc"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b09": {
+      "bytes": 64424,
+      "mode": 420,
+      "sha256": "565aaaa031b54649bc587b9f05e0d080e3f60803047d6e53c68b9252e0f7ccfe"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b10": {
+      "bytes": 602112,
+      "mode": 420,
+      "sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b11": {
+      "bytes": 6896588,
+      "mode": 420,
+      "sha256": "047b890fde8b8cb9444607ee7ef2d3212e6cf891976fc2743daa30dcee9f1fa4"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b12": {
+      "bytes": 280880,
+      "mode": 420,
+      "sha256": "8816fe73433a146cea5365b74ef0ee2c2833ed9c895e5a39a8a9dba5f55fe48b"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b13": {
+      "bytes": 20,
+      "mode": 420,
+      "sha256": "271c5783def587733c57edd67523fd9890a97b12fd2ee0ad4237226454bb6b85"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b14": {
+      "bytes": 104184,
+      "mode": 420,
+      "sha256": "15f4ec05645cbfc96a203969aa771df863a28f348abe82663f96d09204113eff"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b15": {
+      "bytes": 1346476,
+      "mode": 420,
+      "sha256": "85839996e8abe7eeebc44cc9e0af3d8b6fcdd25db47e53563e00407433ed9be4"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b16": {
+      "bytes": 79592,
+      "mode": 420,
+      "sha256": "7f134e39357e679f6d84289ed0128d5dd538de494da89e159d13cbb9abf31052"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b17": {
+      "bytes": 1021612,
+      "mode": 420,
+      "sha256": "215f026fd6b54d2d882db118b6b7742443edd3d19157b91c1021cb1920b6d2c8"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.b18": {
+      "bytes": 172,
+      "mode": 420,
+      "sha256": "d8c9e88d16aeb6666185a6318ac7e273342e31a54770ff29ca7b5f5a79f2f564"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/adsp.mbn": {
+      "bytes": 8220,
+      "mode": 420,
+      "sha256": "560d2e96806a1fd78ab768f74b48464cc5c783553ac7b7d1e29e4e4f9a0472a8"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b02": {
+      "bytes": 235676,
+      "mode": 420,
+      "sha256": "dd688282e63724ca96a4849b2c495683f4ba951a84899a24fa52ef35791289a9"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b03": {
+      "bytes": 105980,
+      "mode": 420,
+      "sha256": "613dd6c2c9a606d32849231c14cc249d9dd9dac2d588e84206053ce6d1a4756a"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b04": {
+      "bytes": 1076,
+      "mode": 420,
+      "sha256": "ceb11f87af22fd6f54154295b870d089c4f98a76ff1cd69cfbab193d9857a449"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b05": {
+      "bytes": 2795116,
+      "mode": 420,
+      "sha256": "8c3c65ebd31375d9a161a7e9487ee37aa5eff73989e975800721ec754d4f6097"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b06": {
+      "bytes": 83418,
+      "mode": 420,
+      "sha256": "a3d4e8a59934bab0eb2950b791280194979ee4170abe4268733c31ac385089ed"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b08": {
+      "bytes": 2779840,
+      "mode": 420,
+      "sha256": "63e298d9daaa458a8339af3f1d1612cbc5785c1f691ecd0ff73b2b8cba41bc03"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b09": {
+      "bytes": 3576,
+      "mode": 420,
+      "sha256": "28fbbdb4d8b39670ba687abd3f6a18ddfa0c2ff05d9ed4e1362907072aa2dccd"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.b11": {
+      "bytes": 59156,
+      "mode": 420,
+      "sha256": "b90eebdf7fcf3372f3eea85cca724cbe716d2edccbbe21854c8b9306164b9ae8"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/cdsp.mbn": {
+      "bytes": 7660,
+      "mode": 420,
+      "sha256": "db68c13910322d48b6deea45148abf825ba49ad0c91582dd197db9b352d9fd39"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b02": {
+      "bytes": 82872,
+      "mode": 420,
+      "sha256": "fd87e93666a2331477d10437550a11bcdc6e528bbdf29c349a35e362f7e89afd"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b03": {
+      "bytes": 247232,
+      "mode": 420,
+      "sha256": "4b768e122a60ec71dda5d0ef490309062a29fac4a1f409202fc0076778455a6e"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b04": {
+      "bytes": 2078252,
+      "mode": 420,
+      "sha256": "a1ea273715b88cc3ca471546c05731bdd85d292d4428809decf99469e4bdf0fe"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b05": {
+      "bytes": 1733164,
+      "mode": 420,
+      "sha256": "d264bde8290f492f7754a8ea58f637eebb8fdeadb1e8e5ce0affa51cf678222c"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b06": {
+      "bytes": 63634,
+      "mode": 420,
+      "sha256": "2f80599e66d0206c1a8b3b4b968e3d836a3c40d5570ab8aa240344641e469614"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b07": {
+      "bytes": 28972,
+      "mode": 420,
+      "sha256": "4d59b5a16bae0a961d074c4440b1f1eb001908e71b8500f70573a758bcf2f00a"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b08": {
+      "bytes": 167668,
+      "mode": 420,
+      "sha256": "97eb9589d0fb7c9e7993470d2652288054e2d863fc901453a41907002082b2e8"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b09": {
+      "bytes": 111388,
+      "mode": 420,
+      "sha256": "718bbbb7e73d7fb513f0e7ff03550a566c399128d354baf6d8f9d739385d6fd4"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b10": {
+      "bytes": 57580,
+      "mode": 420,
+      "sha256": "c1beb7c5a6f1b7c2647dcf2f9191d50d043311111d6f00f67391d46cfae9ab1a"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b11": {
+      "bytes": 27572,
+      "mode": 420,
+      "sha256": "8adeefc0beeb2d837dcc4592bb2ada15e170d120e0dc0c5bb91f650e43632778"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b12": {
+      "bytes": 82,
+      "mode": 420,
+      "sha256": "521a113f30343622d1b99cf1047a724dce74b0522dc185a8a782c8ce98861e02"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b13": {
+      "bytes": 125836,
+      "mode": 420,
+      "sha256": "fb13f16cfbfbf46bc2ad57b3e6c7ef4d6b1f7036b3f09b49560a4361a7be230b"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b14": {
+      "bytes": 260,
+      "mode": 420,
+      "sha256": "bbfeb50f39a19b2e9a054ac79b2bf129ce05f968420417554a48d8e6e19e99f8"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b15": {
+      "bytes": 1994428,
+      "mode": 420,
+      "sha256": "c09424927c186ccf316e8536b4fdee1bcb6bf1661f68b820f27976ee2fc804f9"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b16": {
+      "bytes": 24580,
+      "mode": 420,
+      "sha256": "1fd042948b7120a85cca9a2030d79dc545bcdd4354051e261b0bedb7727396cb"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b17": {
+      "bytes": 14816,
+      "mode": 420,
+      "sha256": "9f22e08889bd3198735d7fb9b8778bcb585586db93eeb3b0eefacbb5d13b1fa7"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b18": {
+      "bytes": 52064,
+      "mode": 420,
+      "sha256": "5579b534b638bab659518a93f8a6354392f8ba69de2240060778cf7a3d064b4e"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b19": {
+      "bytes": 53164,
+      "mode": 420,
+      "sha256": "d52980ec965cbf97985743a16f6e8d54c70067805a9217fc58862138bc67f9d6"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.b20": {
+      "bytes": 380844,
+      "mode": 420,
+      "sha256": "0d208706a046ae412d33b5caecb5eb40bda87dca5c8f5ecf3f358d08ad0a528a"
+    },
+    "lib/firmware/qcom/sm8250/lenovo/tb371fc/slpi.mbn": {
+      "bytes": 8380,
+      "mode": 420,
+      "sha256": "ec60ea4eee3af0a69c7e81032880ab329374af8e8f4cf3a30786e697d982f0ae"
+    },
+    "lib/firmware/qcom/vpu-1.0/venus.b02": {
+      "bytes": 300,
+      "mode": 420,
+      "sha256": "da84bbff77270766a2f6d61bc6b42902fb59a942b950117a5b5c106ccbacbb49"
+    },
+    "lib/firmware/qcom/vpu-1.0/venus.b03": {
+      "bytes": 20,
+      "mode": 420,
+      "sha256": "5c810efcddb8df1e523c99097d5609a278f722e56b7ce575e5ba1f04726e22f4"
+    },
+    "lib/firmware/qcom/vpu-1.0/venus.b04": {
+      "bytes": 20,
+      "mode": 420,
+      "sha256": "03350ef9fd20590d448d92ea0c53456f2b8a797e0e910426b8c0d75df46ab218"
+    },
+    "lib/firmware/qcom/vpu-1.0/venus.b05": {
+      "bytes": 20,
+      "mode": 420,
+      "sha256": "7a1b9d5dff73c70276f9b18b6440f9a8d674b446ece36dc3f44dead3da04e5a8"
+    },
+    "lib/firmware/qcom/vpu-1.0/venus.b06": {
+      "bytes": 20,
+      "mode": 420,
+      "sha256": "c047e67c4b16a8630345deae029a22c3b245c35df5485e7e172b23a2380a6bd9"
+    },
+    "lib/firmware/qcom/vpu-1.0/venus.b07": {
+      "bytes": 24,
+      "mode": 420,
+      "sha256": "1881c2584c0e18865c5f1575905251e46795a98a1cbacb78a5ad4b8448cdfbbc"
+    },
+    "lib/firmware/qcom/vpu-1.0/venus.b08": {
+      "bytes": 16,
+      "mode": 420,
+      "sha256": "17b5bbea81099abafc9cf970586f97ee4d198e01dd80a7d63ef129f6407cc808"
+    },
+    "lib/firmware/qcom/vpu-1.0/venus.b09": {
+      "bytes": 887728,
+      "mode": 420,
+      "sha256": "d049c579fe219e1bbed41f34be7ef1b4635bac952d4af29e380c2cbb9d2e4f77"
+    },
+    "lib/firmware/qcom/vpu-1.0/venus.b10": {
+      "bytes": 41488,
+      "mode": 420,
+      "sha256": "10a6fec4d1c7c7d61ae71358e5986151d3348d174fe9ab9c36627df0762abe8e"
+    },
+    "lib/firmware/qcom/vpu-1.0/venus.b19": {
+      "bytes": 32,
+      "mode": 420,
+      "sha256": "43b09596e1496809aaa964b34c146580f0566c86bc9d7218a1288fd15fb93424"
+    },
+    "lib/firmware/qcom/vpu-1.0/venus.mbn": {
+      "bytes": 8220,
+      "mode": 420,
+      "sha256": "67f1f37279b7be7c336b9b813cbd936ff00d2ffab210cd8e1aab1531bb748155"
+    }
+  },
+  "firmware_selection_verified": false,
+  "journal_acls": {
+    "system.posix_acl_access": "fc742256255ddf9fd3878c1a93c0a2f49b1f9cf2793a30b23ea9d64ea5740aff",
+    "system.posix_acl_default": "fc742256255ddf9fd3878c1a93c0a2f49b1f9cf2793a30b23ea9d64ea5740aff"
+  },
+  "kernel_release": "6.12.114-tb371fc-research5-services",
+  "module_tree": {
+    "kernel/crypto/michael_mic.ko": {
+      "bytes": 9569,
+      "mode": 384,
+      "sha256": "d326ec07d585b1575885c9503730070172f03da13aad22366d66bf9a123577c1"
+    },
+    "kernel/drivers/base/regmap/regmap-sdw.ko": {
+      "bytes": 14385,
+      "mode": 384,
+      "sha256": "e56c12351db3800b71740fd34ab3eb70ac446121b6edeedab37d8a4abc5a32a1"
+    },
+    "kernel/drivers/bluetooth/btqca.ko": {
+      "bytes": 42601,
+      "mode": 384,
+      "sha256": "f3a9afbcd0e09e8632681d9e57cebc63f4e40c2551f587be290ee646d3e05c70"
+    },
+    "kernel/drivers/bluetooth/hci_uart.ko": {
+      "bytes": 140473,
+      "mode": 384,
+      "sha256": "5ee02894ea6c6b713848cbc261e85d813b61c485ea46f655e4d4969de9b2a3d8"
+    },
+    "kernel/drivers/clk/qcom/camcc-sm8250.ko": {
+      "bytes": 75497,
+      "mode": 384,
+      "sha256": "d5a68ff3dc2bca85425e2638cb645f95930565781d456b5d2ce9e04d1e2a7ea5"
+    },
+    "kernel/drivers/clk/qcom/dispcc-sm8250.ko": {
+      "bytes": 49585,
+      "mode": 384,
+      "sha256": "cadf819c0978addaf1d76992a0e3f3719f4a62330c4c4808f6941e8ecd677975"
+    },
+    "kernel/drivers/clk/qcom/videocc-sm8250.ko": {
+      "bytes": 24441,
+      "mode": 384,
+      "sha256": "b3e0a0a0bbddf19b6b49263284d9c005827414b082ef13319c95e69c3334c1f8"
+    },
+    "kernel/drivers/gpu/drm/panel/panel-novatek-nt36523.ko": {
+      "bytes": 217913,
+      "mode": 384,
+      "sha256": "e743091844bced2b13d6749dfe76042b6531b97b920f04efb8fbb082786aacf4"
+    },
+    "kernel/drivers/gpu/drm/virtio/virtio-gpu.ko": {
+      "bytes": 160137,
+      "mode": 384,
+      "sha256": "a0b1af8c6903b8485c1978ab3743511a1c4e729414f8e255a722b76ded033931"
+    },
+    "kernel/drivers/i2c/busses/i2c-qcom-cci.ko": {
+      "bytes": 27017,
+      "mode": 384,
+      "sha256": "3448f18c30a5a3ebfb2116a2446bc5ba64a58d59ad02d681296ecc5c69fad87b"
+    },
+    "kernel/drivers/input/misc/pm8941-pwrkey.ko": {
+      "bytes": 21537,
+      "mode": 384,
+      "sha256": "43b00052af4c49d42512e2583d866d7bb752f485f3682fc63791e98ee24838a8"
+    },
+    "kernel/drivers/input/touchscreen/novatek-nvt-ts.ko": {
+      "bytes": 16801,
+      "mode": 384,
+      "sha256": "b4eca7723a61a4f0a5f2afa1c2fb027e663b2529d89a79e40df2f41939717603"
+    },
+    "kernel/drivers/input/touchscreen/nt36523/nt36523_ts.ko": {
+      "bytes": 103433,
+      "mode": 384,
+      "sha256": "898aeaad7fdf7425ca514035ad6b2fe3c32c43ecde78b7dc9fff3098149f8f37"
+    },
+    "kernel/drivers/interconnect/qcom/icc-bcm-voter.ko": {
+      "bytes": 17409,
+      "mode": 384,
+      "sha256": "302c369d33bf70841d2ce6caede9d320efcac7e112fa792b3710447c017d41ba"
+    },
+    "kernel/drivers/interconnect/qcom/icc-rpmh.ko": {
+      "bytes": 17393,
+      "mode": 384,
+      "sha256": "dfe312d9a1779656fdbd662ef093251db3353a604ddc19555637f508bcc8e13c"
+    },
+    "kernel/drivers/interconnect/qcom/interconnect_qcom.ko": {
+      "bytes": 7209,
+      "mode": 384,
+      "sha256": "ef0140f850c5c4eaab4243aae709963df395f802f6a9d41b8edb8c0632aace7d"
+    },
+    "kernel/drivers/interconnect/qcom/qnoc-sm8250.ko": {
+      "bytes": 96841,
+      "mode": 384,
+      "sha256": "b70f4ccc6ea12afe398ef1a6d262d7602b5ea8d291c966910d1c3aa706310c09"
+    },
+    "kernel/drivers/media/common/videobuf2/videobuf2-dma-contig.ko": {
+      "bytes": 29369,
+      "mode": 384,
+      "sha256": "904ab7cf912f64299fae5f904ba07d8ee919417f07c9d653b0aa428a8ef3d2f4"
+    },
+    "kernel/drivers/media/i2c/gc08a3.ko": {
+      "bytes": 37121,
+      "mode": 384,
+      "sha256": "9e7a2351cdc0ce434aefa305062ecde7ecd0f1315527ba6490dafdf7a89f12b3"
+    },
+    "kernel/drivers/media/platform/qcom/camss/qcom-camss.ko": {
+      "bytes": 405249,
+      "mode": 384,
+      "sha256": "d78d38d2db7d48fafcd069b1a0279cc566663ecd94789d8ca5ac15975138516d"
+    },
+    "kernel/drivers/media/platform/qcom/venus/venus-core.ko": {
+      "bytes": 252217,
+      "mode": 384,
+      "sha256": "9d9d21d0abb792a2d730e5ebe69b572c54e10c9b32d62df0b44cf1a738cd153b"
+    },
+    "kernel/drivers/media/platform/qcom/venus/venus-dec.ko": {
+      "bytes": 71545,
+      "mode": 384,
+      "sha256": "45964ec491a4b3b84196d72537e24b2ed2851fc32db3e439323a611ab5064858"
+    },
+    "kernel/drivers/media/platform/qcom/venus/venus-enc.ko": {
+      "bytes": 71009,
+      "mode": 384,
+      "sha256": "3d9203b6778fde6339238b75ef4864f2828ce3e9c681dc9fe76d608a5bf27f02"
+    },
+    "kernel/drivers/media/v4l2-core/v4l2-cci.ko": {
+      "bytes": 11553,
+      "mode": 384,
+      "sha256": "28bc10a18c313593f714f74d35f4f6a0db18cf90c067205a8ed2f5323d22bf45"
+    },
+    "kernel/drivers/media/v4l2-core/v4l2-mem2mem.ko": {
+      "bytes": 69409,
+      "mode": 384,
+      "sha256": "0678c1d762c21af5a1f64d951ad10e4b4a8e2d152e4b530468c80fef864725ae"
+    },
+    "kernel/drivers/net/usb/r8152.ko": {
+      "bytes": 219857,
+      "mode": 384,
+      "sha256": "e28741b06c5293b70483553b264fedfa83fa35639e49abbe990899af000bd775"
+    },
+    "kernel/drivers/net/usb/r8153_ecm.ko": {
+      "bytes": 12105,
+      "mode": 384,
+      "sha256": "2a5e95ba083ce3cdbef78b6d36e8a3e6d46afbd898a72dc88d1184888034bfda"
+    },
+    "kernel/drivers/net/wireless/ath/ath.ko": {
+      "bytes": 91961,
+      "mode": 384,
+      "sha256": "fef5d7504c2c18dad87af11899a640b4d405562aa76f84b3fa9c139c77072bef"
+    },
+    "kernel/drivers/net/wireless/ath/ath11k/ath11k.ko": {
+      "bytes": 1051057,
+      "mode": 384,
+      "sha256": "98b3751805fe1401baa92a4749e6a1d815ce88b1294e61c6d90affb9c787e521"
+    },
+    "kernel/drivers/net/wireless/ath/ath11k/ath11k_pci.ko": {
+      "bytes": 108121,
+      "mode": 384,
+      "sha256": "c210005d9a447d1a092caed084f0cc6a4bb45473dcb9695fbb83f15978d9c467"
+    },
+    "kernel/drivers/net/wireless/ath/wil6210/wil6210.ko": {
+      "bytes": 898817,
+      "mode": 384,
+      "sha256": "37a7207fc85f210382f2994e36342d3cb3b346413b3b93d2f33dff1f745408cb"
+    },
+    "kernel/drivers/pci/pwrctl/pci-pwrctl-core.ko": {
+      "bytes": 12361,
+      "mode": 384,
+      "sha256": "fed40e3f70031858913eaf77fd655cfb54950d06c7133911702afecc81bd79b5"
+    },
+    "kernel/drivers/pci/pwrctl/pci-pwrctl-pwrseq.ko": {
+      "bytes": 12593,
+      "mode": 384,
+      "sha256": "81805519d9ee4ece3d910ea0f239d6c4800b0fae54f41462009cc754a9ba15de"
+    },
+    "kernel/drivers/phy/qualcomm/phy-qcom-qmp-pcie.ko": {
+      "bytes": 199553,
+      "mode": 384,
+      "sha256": "169b7da7708d289cc56aaf6c84a967c2d6a4efda554bfc43f0a40d61498baa7f"
+    },
+    "kernel/drivers/phy/qualcomm/phy-qcom-snps-femto-v2.ko": {
+      "bytes": 26257,
+      "mode": 384,
+      "sha256": "2d4e3cb07619b4a3c5e292a11376d13ebf0c8495049475be1f68bdec86c0acd3"
+    },
+    "kernel/drivers/pinctrl/qcom/pinctrl-lpass-lpi.ko": {
+      "bytes": 22265,
+      "mode": 384,
+      "sha256": "39ea05813783707394b783a4d7a11613a0deb9d562e732ec6aef63b605fb7653"
+    },
+    "kernel/drivers/pinctrl/qcom/pinctrl-sm8250-lpass-lpi.ko": {
+      "bytes": 15241,
+      "mode": 384,
+      "sha256": "c3440e43316909847d4eaa1cd62c3c955fffd618cf295f91233a2c100abd2f26"
+    },
+    "kernel/drivers/power/sequencing/pwrseq-core.ko": {
+      "bytes": 35985,
+      "mode": 384,
+      "sha256": "301ebdd88ba85a597f0d177c7ab9e5b4788d2603ffcc14ed58d512f649f815d6"
+    },
+    "kernel/drivers/power/sequencing/pwrseq-qcom-wcn.ko": {
+      "bytes": 20625,
+      "mode": 384,
+      "sha256": "24969e49b28c5b8176c1b78d404a425e2d97c2954c0e003ee61c55b52a32c891"
+    },
+    "kernel/drivers/regulator/qcom-rpmh-regulator.ko": {
+      "bytes": 106065,
+      "mode": 384,
+      "sha256": "6e069aec81595b84d88eef92a95b3bf30fc1d24ae6f2a88f85c63901927ddf6b"
+    },
+    "kernel/drivers/remoteproc/qcom_common.ko": {
+      "bytes": 26257,
+      "mode": 384,
+      "sha256": "8c331f133efa4664a82b8805b74720391d252e7ef4ff095b54222dbff6c44940"
+    },
+    "kernel/drivers/remoteproc/qcom_pil_info.ko": {
+      "bytes": 10769,
+      "mode": 384,
+      "sha256": "822fb797f065f0fcd402e2067d5dc54aa54e738462bf361586979158133e5105"
+    },
+    "kernel/drivers/remoteproc/qcom_q6v5.ko": {
+      "bytes": 19329,
+      "mode": 384,
+      "sha256": "defbb62078c49833672ec93576ca79c5e4bb32b6381c2e02c239321a4ee0ddac"
+    },
+    "kernel/drivers/remoteproc/qcom_q6v5_pas.ko": {
+      "bytes": 71841,
+      "mode": 384,
+      "sha256": "7d8a5e3e3e27f2c8c7f81d586d44a9bca9321bd4870a7ea8719b44a8f3688198"
+    },
+    "kernel/drivers/remoteproc/qcom_sysmon.ko": {
+      "bytes": 32097,
+      "mode": 384,
+      "sha256": "7fc5c7375c793984f832b017dd1654bda53f617eb2a1d5e2ab3b4844ed597cf9"
+    },
+    "kernel/drivers/soc/qcom/apr.ko": {
+      "bytes": 31825,
+      "mode": 384,
+      "sha256": "1041f895bd50c518a75ce28b3b30624fc388411744e54a12832f2b68a3bbb241"
+    },
+    "kernel/drivers/soc/qcom/pdr_interface.ko": {
+      "bytes": 29057,
+      "mode": 384,
+      "sha256": "17649c96306561662fdc226ffc443560ce67f8c92027661b17b62a15a1ac5b3c"
+    },
+    "kernel/drivers/soc/qcom/qcom_pdr_msg.ko": {
+      "bytes": 13097,
+      "mode": 384,
+      "sha256": "9dee26cdfea2c651227972ac8fe9b4137190fc7f1dad004cc07fad329dd316a3"
+    },
+    "kernel/drivers/soc/qcom/qmi_helpers.ko": {
+      "bytes": 35473,
+      "mode": 384,
+      "sha256": "5e444ee6de03b2fb5d23eba4d3bcdb163912644534b2a3720005f1a576f345ed"
+    },
+    "kernel/drivers/soundwire/soundwire-bus.ko": {
+      "bytes": 184801,
+      "mode": 384,
+      "sha256": "74dad126fa4e4ace1f133418e0ac4a278052594d26051ac7e998a31424c2cea7"
+    },
+    "kernel/drivers/soundwire/soundwire-qcom.ko": {
+      "bytes": 57721,
+      "mode": 384,
+      "sha256": "2843fef25f348f4618d4ac81e3cede94b3181b587004ad9c4a8aeeb1d81da55a"
+    },
+    "kernel/drivers/usb/dwc3/dwc3-qcom.ko": {
+      "bytes": 31161,
+      "mode": 384,
+      "sha256": "4df2dd097e12f5c63bfe2710e791435d0e1efece4df103cf9610b1088cfdf1f8"
+    },
+    "kernel/drivers/video/backlight/tb371fc-ktz8866.ko": {
+      "bytes": 14233,
+      "mode": 384,
+      "sha256": "f67aedc99616e6ccfd60ef5c6cd31bb4cc1755fa6f9ffe3eedbe2e43154f719e"
+    },
+    "kernel/drivers/virtio/virtio_dma_buf.ko": {
+      "bytes": 8561,
+      "mode": 384,
+      "sha256": "8c67b5105ded359cca210badecdcfa82a4f1695537bece6c038b203b2069962c"
+    },
+    "kernel/drivers/watchdog/qcom-wdt.ko": {
+      "bytes": 18505,
+      "mode": 384,
+      "sha256": "7244b94688d5142fdb079844dd69c472b07f75c7583da6e819547be5754092f0"
+    },
+    "kernel/drivers/watchdog/watchdog.ko": {
+      "bytes": 61649,
+      "mode": 384,
+      "sha256": "b0d01a38d35df08540bb609718909f2a90dc3b9bf5163f0887a0e99ddb2eef54"
+    },
+    "kernel/fs/autofs/autofs4.ko": {
+      "bytes": 96713,
+      "mode": 384,
+      "sha256": "dee73812c20528c3b9de43cf484e83d55f7a74c0668c1f87966b7fd9d2c37d9c"
+    },
+    "kernel/net/mac80211/mac80211.ko": {
+      "bytes": 1821601,
+      "mode": 384,
+      "sha256": "9a6a8df8c03c8685554ef2e854b2b760b8c11dab0ed489b1d10c71d449531c37"
+    },
+    "kernel/net/wireless/cfg80211.ko": {
+      "bytes": 1842561,
+      "mode": 384,
+      "sha256": "3585e3f2fb8aa0d37df51f8813790e4cba89f385e777f3a3ce31a26c71a92aaf"
+    },
+    "kernel/sound/soc/codecs/snd-soc-lpass-macro-common.ko": {
+      "bytes": 11737,
+      "mode": 384,
+      "sha256": "2ecfccd259d8f6b02acf0720df6649d2be5f029816b9828d50ce60a2dcb4a382"
+    },
+    "kernel/sound/soc/codecs/snd-soc-lpass-rx-macro.ko": {
+      "bytes": 172529,
+      "mode": 384,
+      "sha256": "2e7de4c7582356dc79971fb0b9325239b222a420278b3d023784b9d27fecb6b5"
+    },
+    "kernel/sound/soc/codecs/snd-soc-lpass-tx-macro.ko": {
+      "bytes": 156321,
+      "mode": 384,
+      "sha256": "47686d2d95ca8666ebcd5501fb163ab43848722c759c8fa078f7da2212e157f0"
+    },
+    "kernel/sound/soc/codecs/snd-soc-lpass-va-macro.ko": {
+      "bytes": 82481,
+      "mode": 384,
+      "sha256": "b099856552daed329a4b67561df33d8b443ff9145a58ab0faea3b8a73aea0eea"
+    },
+    "kernel/sound/soc/codecs/snd-soc-wcd-classh.ko": {
+      "bytes": 23193,
+      "mode": 384,
+      "sha256": "4ae6eed0e44f5b6cc449562f841947b46f13bf1d48ef9ea005586a7f6850c4df"
+    },
+    "kernel/sound/soc/codecs/snd-soc-wcd-mbhc.ko": {
+      "bytes": 51561,
+      "mode": 384,
+      "sha256": "63105e2328fe388e1ce884a3863171d7e6970911f0ac4ae159a67fb31a91e148"
+    },
+    "kernel/sound/soc/codecs/snd-soc-wcd938x-sdw.ko": {
+      "bytes": 36481,
+      "mode": 384,
+      "sha256": "31c0ba7e1a173eaac2b69fe5338d1ace22d397ed7b0f6e1518f5193958bb4e76"
+    },
+    "kernel/sound/soc/codecs/snd-soc-wcd938x.ko": {
+      "bytes": 163401,
+      "mode": 384,
+      "sha256": "bc15f2d4013571725ee8060cd59de27be51a2a15e4b97c04fe2f8d11fa210e58"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6adm.ko": {
+      "bytes": 25713,
+      "mode": 384,
+      "sha256": "68035108e0b1efdfcb1065d8a1d37087201590153a6618cff0ffe5324834b7f6"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6afe-clocks.ko": {
+      "bytes": 14225,
+      "mode": 384,
+      "sha256": "cbfb27c739922f901bcc25680c36c736eb8ad719487dc49a6d49b91b2c48395b"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6afe-dai.ko": {
+      "bytes": 94569,
+      "mode": 384,
+      "sha256": "0d2092eb71fee2a22f647a913935be8975d3258aa95ea8abee9bb515eb6200ba"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6afe.ko": {
+      "bytes": 37665,
+      "mode": 384,
+      "sha256": "10a1a7baece9171489dd4ff52744b695727c038fdd6adea57f5ce0db1b9fc51c"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6apm-dai.ko": {
+      "bytes": 42553,
+      "mode": 384,
+      "sha256": "c33563bcb5187edfdee9bc2203b79f0d058b4b71117a7a261533fcefc730b32d"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6apm-lpass-dais.ko": {
+      "bytes": 19321,
+      "mode": 384,
+      "sha256": "43d8cfba502f1be9a1828ff2db3256f66554944ae0ccbb6e7801b8d09a0d1ca3"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6asm-dai.ko": {
+      "bytes": 55953,
+      "mode": 384,
+      "sha256": "58ea3a144647cc37bb2973e35eb06415160dfa5c08c0959e98a9d97fff3336f0"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6asm.ko": {
+      "bytes": 47769,
+      "mode": 384,
+      "sha256": "d46905f94ec5135c13aa8b66ddf194a8e90bf96d3b11ceb7863a3f9c46399d77"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6core.ko": {
+      "bytes": 18249,
+      "mode": 384,
+      "sha256": "cef74863e43a5018b32c328cb10fc96c81f02d6468634b846e1bf779eb1f4709"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6prm-clocks.ko": {
+      "bytes": 12761,
+      "mode": 384,
+      "sha256": "f18bcf6ef48073fbe6c1dd973da6b5b6022812a36ef8613d52c5c9fbb9e39671"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6prm.ko": {
+      "bytes": 15729,
+      "mode": 384,
+      "sha256": "a4bb2bb250a72300b1c03211a7467ad31a98ecc26347f04212a6e2575acd3aa7"
+    },
+    "kernel/sound/soc/qcom/qdsp6/q6routing.ko": {
+      "bytes": 594353,
+      "mode": 384,
+      "sha256": "d05d164aae16e7abfbf0dd0788a201d12a9acfbe4577cb8b350c24da7b37fd41"
+    },
+    "kernel/sound/soc/qcom/qdsp6/snd-q6apm.ko": {
+      "bytes": 80401,
+      "mode": 384,
+      "sha256": "31097f06e5f712973b135d1af88a64b0392609f4e90430b73c0b13c7c3fd56ba"
+    },
+    "kernel/sound/soc/qcom/qdsp6/snd-q6dsp-common.ko": {
+      "bytes": 55017,
+      "mode": 384,
+      "sha256": "7858423093f798e592c9dea49bb9a2ef4a1a191409ae0610028566337117161c"
+    },
+    "kernel/sound/soc/qcom/snd-soc-qcom-common.ko": {
+      "bytes": 18721,
+      "mode": 384,
+      "sha256": "a2abf0966baf96749142c5acc8983951b1e90df5d5f6a912b42b9b4e00e9d6da"
+    },
+    "kernel/sound/soc/qcom/snd-soc-qcom-sdw.ko": {
+      "bytes": 11401,
+      "mode": 384,
+      "sha256": "2e2f9f63c1d1f549394cd781f8a72a7655c41f6194f5bb02d1e060b307d70b30"
+    },
+    "kernel/sound/soc/qcom/snd-soc-sm8250.ko": {
+      "bytes": 14409,
+      "mode": 384,
+      "sha256": "4480f8985f07472457c4bb39ddb0e5cf1568662de9d71eddac5b78f73a803fbf"
+    },
+    "modules.alias": {
+      "bytes": 29244,
+      "mode": 420,
+      "sha256": "6d33f528c5f7c01dc80db139110c4dd791aa6967e2f96ad5c10e2502806a99de"
+    },
+    "modules.alias.bin": {
+      "bytes": 26246,
+      "mode": 420,
+      "sha256": "f1bb0966865d49198e682ce27c5af05fa8fbbecf53fe3a4474eeabceb7415f2d"
+    },
+    "modules.builtin": {
+      "bytes": 22046,
+      "mode": 384,
+      "sha256": "f967533e4428fed3b15cdb2343e43162e9b62668649a8bbda3d7f51e2f597cfc"
+    },
+    "modules.builtin.alias.bin": {
+      "bytes": 26379,
+      "mode": 420,
+      "sha256": "2867c12d8ac56fc5f01a78d4ccb51c914a6313aae809b7a2daf22c3e79a160f9"
+    },
+    "modules.builtin.bin": {
+      "bytes": 25885,
+      "mode": 420,
+      "sha256": "a73014c81793880934e530aed5be60b2eba391071f47144a10515bd3b7a97df8"
+    },
+    "modules.builtin.modinfo": {
+      "bytes": 168694,
+      "mode": 384,
+      "sha256": "1b1297a5ea932bb13eb4d7d25ced301f87eeff2e0f4500cc791a85e442a76d59"
+    },
+    "modules.dep": {
+      "bytes": 9595,
+      "mode": 420,
+      "sha256": "0731a90fb1ad28af8039faa317a209adf6076c5d2bcc2dee45c03c5ef1948218"
+    },
+    "modules.dep.bin": {
+      "bytes": 13508,
+      "mode": 420,
+      "sha256": "004323c253fd1a107ee504c202b629ea76ec256d7551d226b3a6d03781db84b3"
+    },
+    "modules.devname": {
+      "bytes": 75,
+      "mode": 420,
+      "sha256": "aa43bc07a3ce1403e0a2d7f30c5fa4d595148469bf873940493ee5e8f85d3d97"
+    },
+    "modules.order": {
+      "bytes": 3681,
+      "mode": 384,
+      "sha256": "5212403b8f41945250af8d9972f7473e18efdda50717380e4a1ee08064416e64"
+    },
+    "modules.softdep": {
+      "bytes": 55,
+      "mode": 420,
+      "sha256": "ac2de753255c506934be29e69261f1485f51ee9cf9c2bf467bcc0c4cf95f8713"
+    },
+    "modules.symbols": {
+      "bytes": 36006,
+      "mode": 420,
+      "sha256": "c766104a133e0997b20ff730b5ebed8540cf18fab9e786f531efe96e59a17431"
+    },
+    "modules.symbols.bin": {
+      "bytes": 42157,
+      "mode": 420,
+      "sha256": "3916704c7811e58b0cd94b70c702afcce010c195c78d48bb1cac8ea6082a2d54"
+    },
+    "modules.weakdep": {
+      "bytes": 55,
+      "mode": 420,
+      "sha256": "a1fffe1059d8150b5d402b3f284f507025a8d4b5881810cb17b3fda8b8ab9304"
+    }
+  },
+  "owner_native_linux_passes_added": 0,
+  "pinned_inputs": {
+    "/usr/bin/qemu-aarch64": {
+      "bytes": 16661520,
+      "mode": 493,
+      "sha256": "73cc2584f119f9e74c85c0a8549dbb6fd104ae3897a06a7500797f9e5b4d0943"
+    },
+    "/work/fedora-proot-src/src/proot": {
+      "bytes": 832232,
+      "mode": 493,
+      "sha256": "313e45ea76e65687f543c18d873216310969ec204390e2d817bec263d7b3168f"
+    },
+    "/work/fedora-system-integration-v1/fedora-system-integration.json": {
+      "bytes": 26899,
+      "mode": 420,
+      "sha256": "66ac854b2bc938aed147afe0355b57fcbba856c874e9d82cec4cad663b1c87d9"
+    },
+    "/work/fedora-system-integration-v1/runtime.json": {
+      "bytes": 28679,
+      "mode": 420,
+      "sha256": "10a373bfc3291aabe564c8f7af90265900763eadfe3167a7384cc4dcd596544b"
+    },
+    "/work/fedora-system-integration-v1/vm-verify-01/result.json": {
+      "bytes": 1641,
+      "mode": 420,
+      "sha256": "223f73b253a48995dd238575e64aad055e11f311c658aa03534b49c570095675"
+    }
+  },
+  "qualifier": {
+    "bytes": 16900,
+    "mode": 436,
+    "sha256": "5cd0c3f649ace02c1d8f7166ebefb3c9710f7d3eb7bb9f2b034cab5122eb7210"
+  },
+  "root_loader_built": false,
+  "root_module_report": {
+    "bytes": 27211,
+    "mode": 420,
+    "sha256": "4aa1a73e38558f03e688bb23f58269a92a99f1ae980b486e98459a1fc15beeed"
+  },
+  "runtime_signature_enforcement_verified": false,
+  "schema_version": 1,
+  "source_tree": {
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=10s",
+      "1800s",
+      "tar",
+      "--sort=name",
+      "--format=posix",
+      "--pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime",
+      "--numeric-owner",
+      "--acls",
+      "--selinux",
+      "--xattrs",
+      "--xattrs-include=*",
+      "-cf",
+      "-",
+      "-C",
+      "/work/fedora-system-integration-v1/rootfs",
+      "."
+    ],
+    "bytes": 1323141120,
+    "exit_code": 0,
+    "sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96",
+    "stderr_bytes": 0
+  },
+  "stage_source": {
+    "bytes": 14845,
+    "mode": 436,
+    "sha256": "4a4f8ea16a154b6ef2cfcb49766412c99df5d3ca3945cfc691841f3a8060fbfb"
+  },
+  "started_utc": "2026-11-23T22:27:15.223918+00:00",
+  "target_kmod": {
+    "bytes": 202456,
+    "mode": 493,
+    "sha256": "bbcc9efbb7f828e68eb8a9e6d81b0019e765e5f113d2c26262d9dcee4b42c6bf"
+  }
+}

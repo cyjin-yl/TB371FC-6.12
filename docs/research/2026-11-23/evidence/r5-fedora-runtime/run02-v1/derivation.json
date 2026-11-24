@@ -1,0 +1,164 @@
+{
+  "changed_v9_files": [
+    "assemble_system.py",
+    "guest_verify_system.py"
+  ],
+  "derived": {
+    "assemble_system.py": {
+      "bytes": 4955,
+      "mode": 420,
+      "sha256": "22824ff5c71d39332d1ad7dd6f1a5254fa5f0fe7011809f3fda9d913cb235ac3"
+    },
+    "boot_system_vm.py": {
+      "bytes": 40810,
+      "mode": 420,
+      "sha256": "4d1f59691bb4faccdcdbd791ae2120a89e56f7712fd63270f0a2204662842736"
+    },
+    "early_initramfs.py": {
+      "bytes": 18212,
+      "mode": 420,
+      "sha256": "f3d4871fb4347356a9254634243863a37a62f424fad186e13a4f9ad783299ced"
+    },
+    "guest_result_file.py": {
+      "bytes": 5302,
+      "mode": 420,
+      "sha256": "8d0ecba854e0d8c6303938c0253d79a72e3a03e2c1190e2ced0e17556f1a23b1"
+    },
+    "guest_transient_worker.py": {
+      "bytes": 8776,
+      "mode": 420,
+      "sha256": "2efabfc34473ff37f703f71346fa7f61d4666867bea822bb9a6c17a110693b10"
+    },
+    "guest_verify_system.py": {
+      "bytes": 41209,
+      "mode": 420,
+      "sha256": "3d57ed97a53959fd304c455f475fcbeaa2845132c53c29f927831e675769fa43"
+    },
+    "initrd-domain-proof.service": {
+      "bytes": 521,
+      "mode": 420,
+      "sha256": "1ac451e16abf1aeefa3191972370bed649060b1d21fba302a9fff047107d2631"
+    },
+    "initrd-domain-proof.sh": {
+      "bytes": 5312,
+      "mode": 493,
+      "sha256": "3b4b65784b3c8bd13fde728e780bcd101235986c5756ac1f24000d024cd50d95"
+    },
+    "probe_fd_route_v2.py": {
+      "bytes": 15438,
+      "mode": 420,
+      "sha256": "5ccc94fdc0bda5da5bf7cab46f6a195a86e51d6d85cddebcd31602daf3b19f5b"
+    },
+    "read_vm_result.py": {
+      "bytes": 8311,
+      "mode": 420,
+      "sha256": "e28f8a031c43e096bb0741a109ab03e8b1d725341ac3a71d1e5730cd10e2393d"
+    },
+    "stage_r5_fedora.py": {
+      "bytes": 14845,
+      "mode": 420,
+      "sha256": "4a4f8ea16a154b6ef2cfcb49766412c99df5d3ca3945cfc691841f3a8060fbfb"
+    },
+    "system_common.py": {
+      "bytes": 7603,
+      "mode": 420,
+      "sha256": "9306a5baece1e5495a632ebbadc5948593cde7b2eb0ef1324ac56807ca362289"
+    },
+    "transient_protocol.py": {
+      "bytes": 17436,
+      "mode": 420,
+      "sha256": "9504ad6c86730caa3e9f2dd571c50b57800e9aaeac2ff5322a6b201032f50cc5"
+    },
+    "verify_early_policy_initramfs.py": {
+      "bytes": 27585,
+      "mode": 420,
+      "sha256": "58a5dba0186174c7442f73c2f8f0a2333599e6cbbcb1cf332169e5df558bfd1e"
+    },
+    "verify_initramfs.py": {
+      "bytes": 20506,
+      "mode": 420,
+      "sha256": "263866a1943cd43116e69cb0a8b1081d6ccd1cc93ef98866a4b3eacc00bac58a"
+    },
+    "verify_runtime_policy_initramfs.py": {
+      "bytes": 30119,
+      "mode": 420,
+      "sha256": "9e36bf88b93aa3dda05ddc3ff235ab743ff4c2c80fe8e6b0694175b69e9f497a"
+    }
+  },
+  "old_recipe_written": false,
+  "originals": {
+    "assemble_system.py": {
+      "bytes": 6041,
+      "mode": 436,
+      "sha256": "9d698cf253edf526fa9cd81121f5e6d3e60789020fd2f5f5fab784113e8ab0c5"
+    },
+    "boot_system_vm.py": {
+      "bytes": 40810,
+      "mode": 436,
+      "sha256": "4d1f59691bb4faccdcdbd791ae2120a89e56f7712fd63270f0a2204662842736"
+    },
+    "early_initramfs.py": {
+      "bytes": 18212,
+      "mode": 436,
+      "sha256": "f3d4871fb4347356a9254634243863a37a62f424fad186e13a4f9ad783299ced"
+    },
+    "guest_result_file.py": {
+      "bytes": 5302,
+      "mode": 436,
+      "sha256": "8d0ecba854e0d8c6303938c0253d79a72e3a03e2c1190e2ced0e17556f1a23b1"
+    },
+    "guest_transient_worker.py": {
+      "bytes": 8776,
+      "mode": 436,
+      "sha256": "2efabfc34473ff37f703f71346fa7f61d4666867bea822bb9a6c17a110693b10"
+    },
+    "guest_verify_system.py": {
+      "bytes": 41210,
+      "mode": 436,
+      "sha256": "fc2dea25edc8ac4eb6a76ea77ecff799b8abf69e8cb47548bfefaef59eaaac16"
+    },
+    "initrd-domain-proof.service": {
+      "bytes": 521,
+      "mode": 436,
+      "sha256": "1ac451e16abf1aeefa3191972370bed649060b1d21fba302a9fff047107d2631"
+    },
+    "initrd-domain-proof.sh": {
+      "bytes": 5312,
+      "mode": 509,
+      "sha256": "3b4b65784b3c8bd13fde728e780bcd101235986c5756ac1f24000d024cd50d95"
+    },
+    "probe_fd_route_v2.py": {
+      "bytes": 15438,
+      "mode": 436,
+      "sha256": "5ccc94fdc0bda5da5bf7cab46f6a195a86e51d6d85cddebcd31602daf3b19f5b"
+    },
+    "read_vm_result.py": {
+      "bytes": 8311,
+      "mode": 436,
+      "sha256": "e28f8a031c43e096bb0741a109ab03e8b1d725341ac3a71d1e5730cd10e2393d"
+    },
+    "transient_protocol.py": {
+      "bytes": 17436,
+      "mode": 436,
+      "sha256": "9504ad6c86730caa3e9f2dd571c50b57800e9aaeac2ff5322a6b201032f50cc5"
+    },
+    "verify_early_policy_initramfs.py": {
+      "bytes": 27585,
+      "mode": 509,
+      "sha256": "58a5dba0186174c7442f73c2f8f0a2333599e6cbbcb1cf332169e5df558bfd1e"
+    },
+    "verify_initramfs.py": {
+      "bytes": 20506,
+      "mode": 509,
+      "sha256": "263866a1943cd43116e69cb0a8b1081d6ccd1cc93ef98866a4b3eacc00bac58a"
+    },
+    "verify_runtime_policy_initramfs.py": {
+      "bytes": 30119,
+      "mode": 436,
+      "sha256": "9e36bf88b93aa3dda05ddc3ff235ab743ff4c2c80fe8e6b0694175b69e9f497a"
+    }
+  },
+  "schema_version": 1,
+  "separate_r5_adapter": "system_common.py",
+  "vm_run": false
+}
