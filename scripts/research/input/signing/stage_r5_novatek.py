@@ -223,7 +223,7 @@ def stage(repo, kernel_root, signing_build, unsigned, work):
         require((now.st_dev, now.st_ino, now.st_size, now.st_mtime_ns) ==
                 (key_meta.st_dev, key_meta.st_ino, key_meta.st_size, key_meta.st_mtime_ns),
                 "signing key metadata changed")
-        report.update(complete=True, unsigned=want, stripped=common.identity(stripped),
+        report.update(unsigned=want, stripped=common.identity(stripped),
                       replacement=replacement, btf=btf_after, debug_sections_before=debug_before,
                       debug_sections_after=debug_after, imported_crcs=imports,
                       signer=old_info, public_certificate_sha256=CERT_SHA,
@@ -234,6 +234,7 @@ def stage(repo, kernel_root, signing_build, unsigned, work):
             "candidate_id": derived["candidate_id"], "kernel_release": RELEASE,
             "replacement_path": selected_path, "frozen_original": selected[MODULE],
             "replacement": replacement, "module_tree": tree})
+        report["complete"] = True
     except BaseException as exc:
         report["failure"] = str(exc)
         raise
