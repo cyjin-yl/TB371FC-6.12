@@ -76,6 +76,18 @@ def validate_members(members):
             "hardlinks": sum(v == "hardlink" for v in seen.values())}
 
 
+def extract_archive(work, archive, root):
+    with tarfile.open(archive, "r|gz") as stream:
+        layout = validate_members(stream)
+    root.mkdir()
+    common.run(work, "extract", ["tar", "--extract", "--gzip",
+        "--file", str(archive), "--directory", str(root),
+        "--numeric-owner", "--same-owner", "--same-permissions",
+        "--acls", "--xattrs", "--xattrs-include=*", "--selinux",
+        "--delay-directory-restore"], timeout=1800)
+    return layout
+
+
 def target(root, name):
     """Resolve guest symlinks without ever following a host absolute symlink."""
     pending = list(PurePosixPath(name).parts)
@@ -198,6 +210,10 @@ def stage(repo, work, archive):
         candidate = repo / "docs/research/2026-11-23/boot-candidate-r5.json"
         qualifier = repo / "scripts/research/qualify_boot_bundle.py"
         record["candidate"] = common.identity(candidate)
+        record["qualifier"] = common.identity(qualifier)
+        record["common_source"] = common.identity(Path(common.__file__))
+        record["firmware_manifest"] = common.check(
+            FIRMWARE / "stock-firmware-manifest.json", common.FW_PIN)
         contract = json.loads(candidate.read_text())
         modules = common.selected_modules(contract)
         common.run(work, "kernel-gate", [sys.executable, str(qualifier), "--repo", str(repo),
@@ -210,14 +226,7 @@ def stage(repo, work, archive):
             raise ValueError("not the retained Nura export")
         private_archive = work / "source.tar.gz"
         common.copy_exact(archive, private_archive, record["archive"])
-        with tarfile.open(private_archive, "r|gz") as stream:
-            record["archive_layout"] = validate_members(stream)
-        root.mkdir()
-        common.run(work, "extract", ["tar", "--extract", "--gzip",
-            "--file", str(private_archive), "--directory", str(root),
-            "--numeric-owner", "--same-owner", "--same-permissions",
-            "--acls", "--xattrs", "--xattrs-include=*", "--selinux",
-            "--delay-directory-restore"], timeout=1800)
+        record["archive_layout"] = extract_archive(work, private_archive, root)
         if common.identity(private_archive) != record["archive"]:
             raise ValueError("private archive changed")
         record["original_entries"] = verify_inventory(root, inventory)
@@ -253,8 +262,8 @@ def stage(repo, work, archive):
             header = f.read(20)
         if header[:6] != b"\x7fELF\x02\x01" or header[18:20] != b"\xb7\x00":
             raise ValueError("target kmod must be AArch64 ELF64")
-        for tool in (common.PROOT, common.QEMU):
-            common.check(tool, common.PINS[tool])
+        record["target_executor"] = {str(tool): common.check(tool, common.PINS[tool])
+                                     for tool in (common.PROOT, common.QEMU)}
         env = dict(os.environ, LD_LIBRARY_PATH=common.HOST_LIBS)
         wrapper = [str(common.PROOT), "-0", "-r", str(root), "-q", str(common.QEMU),
                    "-b", "/proc", "-b", "/dev/null", "-w", "/"]
