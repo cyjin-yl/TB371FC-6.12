@@ -2,6 +2,12 @@
 
 [Русский](README.md) · **English**
 
+Owner-fork direction, 2026-11-24: [mainline kernel and native-distribution strategy](docs/MAINLINE_STRATEGY.md),
+[driver reuse and remaining board work](docs/DRIVER_ROADMAP.md), and
+[shipping-source provenance / formal source request](docs/SOURCE_PROVENANCE.md).
+These documents extend the owner research branch; they do not add a physical
+Linux boot or hardware pass to the existing acceptance ledger.
+
 Update 2026-11-05: development is paused; contributors are welcome.
 Latest installed, device-tested profile: [R226 SD150 + USB3 peripheral](experimental/r226/README.md).
 See the [R227–R241 source handoff](experimental/community-handoff/README.md) and

@@ -1,0 +1,443 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-24",
+  "timezone": "Asia/Shanghai",
+  "evidence_class": "source_clue",
+  "scope": "Read-only, bounded inventory of selected upstream Linux paths and match tables. No kernel build or physical device test was performed for this inventory.",
+  "project_snapshot": {
+    "repository": "cyjin-yl/TB371FC-6.12",
+    "branch": "research/reproducible-build-gpu-20261123",
+    "commit": "ec42c48405eb3966ca2539e53d96d02a5e725059"
+  },
+  "upstream_snapshot": {
+    "repository": "torvalds/linux",
+    "ref_observed": "master",
+    "commit": "b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f",
+    "ref_url": "https://api.github.com/repos/torvalds/linux/git/ref/heads/master"
+  },
+  "kernel_org_release_listing": {
+    "url": "https://www.kernel.org/",
+    "observed_on": "2026-11-24",
+    "timezone": "Asia/Shanghai",
+    "entries": [
+      {
+        "channel": "mainline",
+        "version": "7.4-rc4",
+        "released": "2026-11-22"
+      },
+      {
+        "channel": "stable",
+        "version": "7.3.6",
+        "released": "2026-11-23"
+      },
+      {
+        "channel": "longterm",
+        "version": "6.18.65",
+        "released": "2026-11-23"
+      },
+      {
+        "channel": "longterm",
+        "version": "6.12.119",
+        "released": "2026-11-23"
+      }
+    ],
+    "limitation": "A release listing is not a board compatibility test; the file inventory below concerns the pinned master commit only."
+  },
+  "directory_observations": [
+    {
+      "path": "arch/arm64/boot/dts/qcom",
+      "url": "https://api.github.com/repos/torvalds/linux/contents/arch/arm64/boot/dts/qcom?ref=b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f",
+      "returned_entries": 664,
+      "below_contents_api_1000_entry_limit": true,
+      "query": "filename contains sm8250 or tb371fc",
+      "matches": [
+        {
+          "name": "sm8250-hdk.dts",
+          "path": "arch/arm64/boot/dts/qcom/sm8250-hdk.dts",
+          "git_blob_or_tree_sha": "c1c673086df5109d39326359cecd0d571173ea69"
+        },
+        {
+          "name": "sm8250-mtp.dts",
+          "path": "arch/arm64/boot/dts/qcom/sm8250-mtp.dts",
+          "git_blob_or_tree_sha": "14c8ca602110f2775933bff2d0b76b7da938d44d"
+        },
+        {
+          "name": "sm8250-samsung-common.dtsi",
+          "path": "arch/arm64/boot/dts/qcom/sm8250-samsung-common.dtsi",
+          "git_blob_or_tree_sha": "ef7ea4f72bf99927c69399aba20291132323fddb"
+        },
+        {
+          "name": "sm8250-samsung-r8q.dts",
+          "path": "arch/arm64/boot/dts/qcom/sm8250-samsung-r8q.dts",
+          "git_blob_or_tree_sha": "dc7c3816f156ae3248e5d3d8289e6938e1d034bb"
+        },
+        {
+          "name": "sm8250-samsung-x1q.dts",
+          "path": "arch/arm64/boot/dts/qcom/sm8250-samsung-x1q.dts",
+          "git_blob_or_tree_sha": "d6aeb5af2ba4558a1737cfe19b088fa13d100b4b"
+        },
+        {
+          "name": "sm8250-sony-xperia-edo-pdx203.dts",
+          "path": "arch/arm64/boot/dts/qcom/sm8250-sony-xperia-edo-pdx203.dts",
+          "git_blob_or_tree_sha": "b70bf9261ba981fb82702db4cc3f1ab49bf477b4"
+        },
+        {
+          "name": "sm8250-sony-xperia-edo-pdx206.dts",
+          "path": "arch/arm64/boot/dts/qcom/sm8250-sony-xperia-edo-pdx206.dts",
+          "git_blob_or_tree_sha": "58a521046f5f50ec1007ff10b536ea33b5148d2b"
+        },
+        {
+          "name": "sm8250-sony-xperia-edo.dtsi",
+          "path": "arch/arm64/boot/dts/qcom/sm8250-sony-xperia-edo.dtsi",
+          "git_blob_or_tree_sha": "51c0caaf4ea126cd51a250090d5e153c60e5e3ab"
+        },
+        {
+          "name": "sm8250-xiaomi-elish-boe.dts",
+          "path": "arch/arm64/boot/dts/qcom/sm8250-xiaomi-elish-boe.dts",
+          "git_blob_or_tree_sha": "de6101ddebe7d552fed84a8e0526458158c46850"
+        },
+        {
+          "name": "sm8250-xiaomi-elish-common.dtsi",
+          "path": "arch/arm64/boot/dts/qcom/sm8250-xiaomi-elish-common.dtsi",
+          "git_blob_or_tree_sha": "945127dacc8228f955fef4a91ec08502d0da68f6"
+        },
+        {
+          "name": "sm8250-xiaomi-elish-csot.dts",
+          "path": "arch/arm64/boot/dts/qcom/sm8250-xiaomi-elish-csot.dts",
+          "git_blob_or_tree_sha": "4cffe9c703df872e56dea51f0629d5f8f2ae04e4"
+        },
+        {
+          "name": "sm8250-xiaomi-pipa.dts",
+          "path": "arch/arm64/boot/dts/qcom/sm8250-xiaomi-pipa.dts",
+          "git_blob_or_tree_sha": "f11e4e244dffd30b38dccc77fc5be0710abeb2bc"
+        },
+        {
+          "name": "sm8250.dtsi",
+          "path": "arch/arm64/boot/dts/qcom/sm8250.dtsi",
+          "git_blob_or_tree_sha": "f975c2183269ac1c37d772e101370e596170a5fc"
+        }
+      ],
+      "bounded_negative": "No filename containing tb371fc in this returned directory."
+    },
+    {
+      "path": "drivers/input/touchscreen",
+      "url": "https://api.github.com/repos/torvalds/linux/contents/drivers/input/touchscreen?ref=b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f",
+      "returned_entries": 119,
+      "below_contents_api_1000_entry_limit": true,
+      "query": "filename contains nt36, novatek or nvt",
+      "matches": [
+        {
+          "name": "novatek-nvt-ts.c",
+          "path": "drivers/input/touchscreen/novatek-nvt-ts.c",
+          "git_blob_or_tree_sha": "fa718a99e2ba5f08ae7e4c3bffff136dcd516c0c"
+        }
+      ],
+      "bounded_negative": "No nt36523/nt36532-named file; novatek-nvt-ts.c requires separate transport and match-table review."
+    },
+    {
+      "path": "sound/soc/codecs",
+      "url": "https://api.github.com/repos/torvalds/linux/contents/sound/soc/codecs?ref=b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f",
+      "returned_entries": 740,
+      "below_contents_api_1000_entry_limit": true,
+      "query": "filename contains tfa98",
+      "matches": [
+        {
+          "name": "tfa9879.c",
+          "path": "sound/soc/codecs/tfa9879.c",
+          "git_blob_or_tree_sha": "70b306d8679e7570d1c480cb041a9a6165fd7ae2"
+        },
+        {
+          "name": "tfa9879.h",
+          "path": "sound/soc/codecs/tfa9879.h",
+          "git_blob_or_tree_sha": "66c88d0396fe648d8d8673c8d3b840995fbb56ae"
+        },
+        {
+          "name": "tfa989x.c",
+          "path": "sound/soc/codecs/tfa989x.c",
+          "git_blob_or_tree_sha": "7258f185278e2c5780120771ef1693ead01db4f8"
+        }
+      ],
+      "bounded_negative": null
+    },
+    {
+      "path": "drivers/power/supply",
+      "url": "https://api.github.com/repos/torvalds/linux/contents/drivers/power/supply?ref=b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f",
+      "returned_entries": 143,
+      "below_contents_api_1000_entry_limit": true,
+      "query": "filename contains mm8013, qcom_smb or smb139",
+      "matches": [
+        {
+          "name": "mm8013.c",
+          "path": "drivers/power/supply/mm8013.c",
+          "git_blob_or_tree_sha": "a8d4416e857fc09ba5ea3128b2da145af7f96ce9"
+        },
+        {
+          "name": "qcom_smbb.c",
+          "path": "drivers/power/supply/qcom_smbb.c",
+          "git_blob_or_tree_sha": "378c121e473e7cc9f2ecdc7fc4f684c4e85bc59d"
+        },
+        {
+          "name": "qcom_smbx.c",
+          "path": "drivers/power/supply/qcom_smbx.c",
+          "git_blob_or_tree_sha": "8a2f635a6ccb1e663ff171825142f6b20e619df7"
+        }
+      ],
+      "bounded_negative": null
+    },
+    {
+      "path": "drivers/media/radio",
+      "url": "https://api.github.com/repos/torvalds/linux/contents/drivers/media/radio?ref=b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f",
+      "returned_entries": 35,
+      "below_contents_api_1000_entry_limit": true,
+      "query": "filename contains 6226",
+      "matches": [],
+      "bounded_negative": "No filename containing 6226 in this directory; this is not a global code-search proof."
+    },
+    {
+      "path": "drivers/media/i2c",
+      "url": "https://api.github.com/repos/torvalds/linux/contents/drivers/media/i2c?ref=b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f",
+      "returned_entries": 201,
+      "below_contents_api_1000_entry_limit": true,
+      "query": "filename contains s5k4h7, hi1339 or gc08a3",
+      "matches": [
+        {
+          "name": "gc08a3.c",
+          "path": "drivers/media/i2c/gc08a3.c",
+          "git_blob_or_tree_sha": "9275ced8d6a82d8784983d9459ba3d392b042022"
+        }
+      ],
+      "bounded_negative": "s5k4h7 and hi1339 names were not present; gc08a3 exists, but owner camera silicon remains unconfirmed."
+    },
+    {
+      "path": "drivers/iio/imu",
+      "url": "https://api.github.com/repos/torvalds/linux/contents/drivers/iio/imu?ref=b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f",
+      "returned_entries": 27,
+      "below_contents_api_1000_entry_limit": true,
+      "query": "filename contains icm4 or bmi3",
+      "matches": [
+        {
+          "name": "bmi323",
+          "path": "drivers/iio/imu/bmi323",
+          "git_blob_or_tree_sha": "10db9017e674854ab1cce209e1770ddf3baebf12"
+        },
+        {
+          "name": "inv_icm42600",
+          "path": "drivers/iio/imu/inv_icm42600",
+          "git_blob_or_tree_sha": "6046ac157cdf05cfae93c449f122a3099bb1c10a"
+        },
+        {
+          "name": "inv_icm42607",
+          "path": "drivers/iio/imu/inv_icm42607",
+          "git_blob_or_tree_sha": "f01d10f808b9443555fb375888cfb1e8e4620e5f"
+        },
+        {
+          "name": "inv_icm45600",
+          "path": "drivers/iio/imu/inv_icm45600",
+          "git_blob_or_tree_sha": "46ad28abf49bbd09823ce8809332ea8db9322934"
+        }
+      ],
+      "bounded_negative": null
+    },
+    {
+      "path": "drivers/usb/typec/mux",
+      "url": "https://api.github.com/repos/torvalds/linux/contents/drivers/usb/typec/mux?ref=b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f",
+      "returned_entries": 12,
+      "below_contents_api_1000_entry_limit": true,
+      "query": "filename contains fsa4480, ps5169, nb7vp or ps883",
+      "matches": [
+        {
+          "name": "fsa4480.c",
+          "path": "drivers/usb/typec/mux/fsa4480.c",
+          "git_blob_or_tree_sha": "c3c629212574f2408019db73c2d115ee8fc89821"
+        },
+        {
+          "name": "nb7vpq904m.c",
+          "path": "drivers/usb/typec/mux/nb7vpq904m.c",
+          "git_blob_or_tree_sha": "d1856a3fd60cc7b1b73a05c2a21cd4b86d59195f"
+        },
+        {
+          "name": "ps883x.c",
+          "path": "drivers/usb/typec/mux/ps883x.c",
+          "git_blob_or_tree_sha": "66072a08d3bde2115207add9e3d6b32d871d1eda"
+        }
+      ],
+      "bounded_negative": "No ps5169-named file in this directory; a similar redriver is not evidence of compatibility."
+    }
+  ],
+  "file_observations": [
+    {
+      "path": "arch/arm64/boot/dts/qcom/sm8250.dtsi",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/arch/arm64/boot/dts/qcom/sm8250.dtsi",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "Existing SM8250 SoC descriptions for clocks, GENI buses, SCM, remote processors and device blocks; board-specific enablement/wiring remain separate."
+    },
+    {
+      "path": "arch/arm64/boot/dts/qcom/sm8250-xiaomi-pipa.dts",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/arch/arm64/boot/dts/qcom/sm8250-xiaomi-pipa.dts",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "A different SM8250 tablet has an upstream board DTS. It is a donor/reference, not the TB371FC DT or firmware contract."
+    },
+    {
+      "path": "drivers/gpu/drm/msm/adreno/a6xx_catalog.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/gpu/drm/msm/adreno/a6xx_catalog.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "A650 entry uses ADRENO_CHIP_IDS(0x06050002), a650_sqe.fw, a650_gmu.bin and default a650_zap.mdt."
+    },
+    {
+      "path": "drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_6_0_sm8250.h",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_6_0_sm8250.h",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "Existing SM8250 DPU catalogue; no TB371FC panel/timing qualification follows."
+    },
+    {
+      "path": "drivers/gpu/drm/panel/panel-novatek-nt36523.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/gpu/drm/panel/panel-novatek-nt36523.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "Existing NT36523 panel-family driver; inspected compatible table does not add TB371FC."
+    },
+    {
+      "path": "drivers/input/touchscreen/novatek-nvt-ts.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/input/touchscreen/novatek-nvt-ts.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "I2C match table has novatek,nt11205-ts and novatek,nt36672a-ts; not the owner's novatek,NVT-ts-spi transport."
+    },
+    {
+      "path": "drivers/hid/i2c-hid/i2c-hid-of.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/hid/i2c-hid/i2c-hid-of.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "Generic OF I2C-HID transport, power sequencing and HID descriptor handling are reusable."
+    },
+    {
+      "path": "drivers/net/wireless/ath/ath11k/pci.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/net/wireless/ath/ath11k/pci.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "QCA6390 PCI device ID 0x1101 and hw2.0 firmware family exist."
+    },
+    {
+      "path": "drivers/bluetooth/hci_qca.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/bluetooth/hci_qca.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "qcom,qca6390-bt match exists."
+    },
+    {
+      "path": "drivers/bluetooth/btqca.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/bluetooth/btqca.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "QCA_QCA6390 firmware setup cases exist; actual controller ROM/firmware selection still needs device evidence."
+    },
+    {
+      "path": "sound/soc/qcom/sm8250.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/sound/soc/qcom/sm8250.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "qcom,sm8250-sndcard machine path exists; it does not define TB371FC TFA routing/calibration."
+    },
+    {
+      "path": "sound/soc/codecs/tfa989x.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/sound/soc/codecs/tfa989x.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "Compatible table contains nxp,tfa9890, nxp,tfa9895 and nxp,tfa9897, not nxp,tfa9894."
+    },
+    {
+      "path": "drivers/power/supply/mm8013.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/power/supply/mm8013.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "mitsumi,mm8013 binding and standard power-supply properties exist; gauge support does not imply charger policy."
+    },
+    {
+      "path": "drivers/power/supply/qcom_smbb.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/power/supply/qcom_smbb.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "Inspected match table is qcom,pm8226-charger and qcom,pm8941-charger; not a PM8150B/SMB5 implementation."
+    },
+    {
+      "path": "drivers/power/supply/qcom_smbx.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/power/supply/qcom_smbx.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "Inspected match table is qcom,pmi8998-charger and qcom,pm660-charger; no PM8150B or SMB1396/SMB1398 match in that file."
+    },
+    {
+      "path": "drivers/usb/typec/tcpm/qcom/qcom_pmic_typec.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/usb/typec/tcpm/qcom/qcom_pmic_typec.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "qcom,pm8150b-typec exists; a TCPM Type-C match is not a complete TB371FC charger or charge-pump implementation."
+    },
+    {
+      "path": "drivers/phy/qualcomm/phy-qcom-qmp-combo.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/phy/qualcomm/phy-qcom-qmp-combo.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "qcom,sm8250-qmp-usb3-dp-phy and SM8250 PHY tables exist."
+    },
+    {
+      "path": "drivers/usb/typec/mux/fsa4480.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/usb/typec/mux/fsa4480.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "fcs,fsa4480 exists; owner's vendor qcom,fsa4480-i2c binding still needs board/property translation."
+    },
+    {
+      "path": "drivers/usb/typec/mux/ps883x.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/usb/typec/mux/ps883x.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "Inspected compatible is parade,ps8830; it is not evidence of PS5169 compatibility."
+    },
+    {
+      "path": "drivers/mmc/host/sdhci-msm.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/mmc/host/sdhci-msm.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "Existing Qualcomm SDHCI v4/v5 platform support; owner board/redriver/card timings still need qualification."
+    },
+    {
+      "path": "drivers/ufs/host/ufs-qcom.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/ufs/host/ufs-qcom.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "Existing qcom,ufshc support; owner boot/storage integrity is a separate hardware result."
+    },
+    {
+      "path": "drivers/remoteproc/qcom_q6v5_pas.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/remoteproc/qcom_q6v5_pas.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "SM8250 ADSP/CDSP/SLPI PAS resource matches exist; firmware authentication/board dependencies and protocol behavior remain separate."
+    },
+    {
+      "path": "drivers/media/platform/qcom/camss/camss.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/media/platform/qcom/camss/camss.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "qcom,sm8250-camss and SM8250 resource definitions exist; sensor/actuator/tuning and userspace pipeline remain separate."
+    },
+    {
+      "path": "drivers/media/platform/qcom/venus/core.c",
+      "url": "https://github.com/torvalds/linux/blob/b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f/drivers/media/platform/qcom/venus/core.c",
+      "acquisition": "raw UTF-8 source file via GitHub connector",
+      "inspected": "selected identifiers, resource definitions or compatible match table",
+      "finding": "qcom,sm8250-venus and SM8250 resource definitions exist; decode/encode/firmware behavior still requires hardware tests."
+    }
+  ],
+  "limitations": [
+    "Directory absence is bounded to the named directory and filename queries; it is not proof that no upstream patch, mailing-list series, branch or alternative implementation exists.",
+    "This inventory does not claim that every driver is present in Linux 6.12.114 or in every later stable release; exact backport and rebase analysis remains necessary.",
+    "A matching family or DT compatible does not prove a fitted chip, successful initialization, firmware equivalence, functional output or owner native-Linux acceptance.",
+    "No existing owner acceptance result is changed by this source inventory."
+  ]
+}

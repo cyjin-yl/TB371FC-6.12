@@ -1,0 +1,107 @@
+{
+  "collector_sha256": "67be886e17412bab28bea18cc7f317086ae65e3ef7967254072f407c7764160b",
+  "device_linux_tested": false,
+  "evidence_class": "device_android",
+  "firmware": [
+    {
+      "path": "/vendor/firmware/novatek_ts_fw_boe.bin",
+      "sha256": "04a199ea24a8f0c0a0281b4c4cf8c8bad4946f0040353f496166e8842d12b185",
+      "size": 245760
+    },
+    {
+      "path": "/vendor/firmware/novatek_ts_fw_boe_6.bin",
+      "sha256": "6611efef1126dad4ef588311a7bbbf54503d03afdf7d972d4bf14c44567bf3c4",
+      "size": 245760
+    },
+    {
+      "path": "/vendor/firmware/novatek_ts_mp_boe.bin",
+      "sha256": "5391d0aee8c23af65362b1bc7cb65acad2c46f416db4e8f7decb7c37287a7223",
+      "size": 245760
+    },
+    {
+      "path": "/vendor/firmware/novatek_ts_mp_boe_6.bin",
+      "sha256": "d7a0d94249a1837e77b9a48f39084bcb2ac14a9da47b9be18accd94961a5e315",
+      "size": 245760
+    },
+    {
+      "path": "/vendor/firmware/novatek_ts_tm_fw.bin",
+      "sha256": "1d15b14f4a5136a1769f63dee2d3c28ba82249806cda6a2f68bc659509a043f4",
+      "size": 245760
+    },
+    {
+      "path": "/vendor/firmware/novatek_ts_tm_fw_6.bin",
+      "sha256": "9e8642c6c0d2f27a99d64e318b9fefa41c507356008ead7c15bc4aba18c36574",
+      "size": 245760
+    },
+    {
+      "path": "/vendor/firmware/novatek_ts_tm_mp.bin",
+      "sha256": "cd9584682939b3201fd06fc8f700ec29b03ef9a755f38b592cc3537381cb52ae",
+      "size": 245760
+    },
+    {
+      "path": "/vendor/firmware/novatek_ts_tm_mp_6.bin",
+      "sha256": "5ffcc04d0823e7c12186e97db9fb2d5ffc9380f1b616558ddc5a3a418e549ce0",
+      "size": 245760
+    }
+  ],
+  "firmware_written_or_loaded": false,
+  "input_events_read": false,
+  "kernel_release": "4.19.157-perf+",
+  "model": "TB371FC",
+  "observed_at_utc": "2026-11-23T20:35:33.585160+00:00",
+  "schema_version": 1,
+  "touchscreen": {
+    "driver": "/sys/bus/spi/drivers/NVT-ts",
+    "modalias": "spi:NVT-ts-spi",
+    "of_node": "/sys/firmware/devicetree/base/soc/spi@880000/novatek@0",
+    "path": "/sys/bus/spi/devices/spi0.0",
+    "properties": {
+      "compatible": {
+        "strings": [
+          "novatek,NVT-ts-spi"
+        ]
+      },
+      "novatek,irq-gpio": {
+        "cells_be32": [
+          101,
+          68,
+          8193
+        ]
+      },
+      "novatek,pen-support": {
+        "present": true
+      },
+      "novatek,reset-gpio": {
+        "cells_be32": [
+          101,
+          56,
+          0
+        ]
+      },
+      "novatek,stylus-resol-double": {
+        "present": true
+      },
+      "panel": {
+        "cells_be32": [
+          1644,
+          1645
+        ]
+      },
+      "reg": {
+        "cells_be32": [
+          0
+        ]
+      },
+      "spi-max-frequency": {
+        "cells_be32": [
+          9600000
+        ]
+      },
+      "status": {
+        "strings": [
+          "ok"
+        ]
+      }
+    }
+  }
+}
