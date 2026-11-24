@@ -1,0 +1,15 @@
+name: Nura R5 isolated staging
+on:
+  pull_request:
+    paths:
+      - 'scripts/research/rootfs/stage_r5_nura.py'
+      - 'scripts/research/rootfs/test_stage_r5_nura.py'
+      - '.github/workflows/r5-nura-stage.yml'
+  workflow_dispatch:
+jobs:
+  offline-layout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject unsafe archive layouts and guest path escapes
+        run: python3 -O -m unittest discover -s scripts/research/rootfs -p test_stage_r5_nura.py -v
