@@ -1,0 +1,60 @@
+{
+  "completed": true,
+  "evidence_class": "ct102_build_and_host_regression",
+  "finished_utc": "2026-11-24T02:21:23.756191+00:00",
+  "module_installed": false,
+  "module_loaded": false,
+  "module_signed": false,
+  "owner_native_linux_passes_added": 0,
+  "passed": true,
+  "phases": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/work/novatek-history-job-17c61c2-20261124/source/TB371FC-6.12-17c61c20b7955f39c62c7f89d922b999562c9122/scripts/research/input/validate_novatek_history.py",
+        "--repo",
+        "/work/novatek-history-job-17c61c2-20261124/source/TB371FC-6.12-17c61c20b7955f39c62c7f89d922b999562c9122",
+        "--work",
+        "/work/novatek-history-job-17c61c2-20261124/regression"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-11-24T02:21:12.736378+00:00",
+      "name": "regression",
+      "started_utc": "2026-11-24T02:21:09.803414+00:00"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/work/novatek-history-job-17c61c2-20261124/source/TB371FC-6.12-17c61c20b7955f39c62c7f89d922b999562c9122/scripts/research/input/build_novatek_bounds.py",
+        "--baseline",
+        "/work/research5-services",
+        "--patch",
+        "/work/novatek-history-job-17c61c2-20261124/source/TB371FC-6.12-17c61c20b7955f39c62c7f89d922b999562c9122/mainline-port/backports/linux-6.12/0020-input-nt36523-validate-firmware-ranges.patch",
+        "--followup-patch",
+        "/work/novatek-history-job-17c61c2-20261124/source/TB371FC-6.12-17c61c20b7955f39c62c7f89d922b999562c9122/mainline-port/backports/linux-6.12/0021-input-nt36523-handle-wdt-history-failures.patch",
+        "--work",
+        "/work/novatek-history-job-17c61c2-20261124/arm64-build",
+        "--jobs",
+        "1"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-11-24T02:21:23.755668+00:00",
+      "name": "arm64-build",
+      "started_utc": "2026-11-24T02:21:12.736958+00:00"
+    }
+  ],
+  "physical_hardware_tested": false,
+  "schema": "tb371fc-novatek-history-execution-v1",
+  "source_archive": {
+    "bytes": 6406608,
+    "sha256": "97ec717d016dfdab62e91dcc2666ff0efc17942fe1eeb35a44184a9044f5f264",
+    "url": "https://codeload.github.com/cyjin-yl/TB371FC-6.12/tar.gz/17c61c20b7955f39c62c7f89d922b999562c9122"
+  },
+  "source_commit": "17c61c20b7955f39c62c7f89d922b999562c9122",
+  "source_files_sha256": {
+    "mainline-port/backports/linux-6.12/0021-input-nt36523-handle-wdt-history-failures.patch": "327a69231bbae9f462a48c36f34555f922d45b3bfc837d4da53d7c81eb6fc173",
+    "scripts/research/input/build_novatek_bounds.py": "ffbfa3e5504c7127142dfcbbf29aa530d78ed27cc0a5e9fcb895dba34a8480b7",
+    "scripts/research/input/validate_novatek_history.py": "59e728161c524317d08ad348642c0aa3d8752095e38ba87aa0ca3cfd6e1f9aea"
+  },
+  "started_utc": "2026-11-24T02:21:06.037192+00:00"
+}

@@ -1,0 +1,45 @@
+{
+  "code_ci_run": "https://github.com/cyjin-yl/TB371FC-6.12/actions/runs/45311508226",
+  "executed_source_commit": "17c61c20b7955f39c62c7f89d922b999562c9122",
+  "files": {
+    "arm64-build.log": {
+      "bytes": 1093,
+      "sha256": "6a60093bbea23009fd4d07e0b8d203b2d8658bc8b796b809b705d578a4bfed90"
+    },
+    "baseline-alloc-error.stderr": {
+      "bytes": 156,
+      "sha256": "a0e0bc200401bae59f723c1eccc0dd3580b9c576b9d35a560a95553fb01ff0e8"
+    },
+    "baseline-page-error.stderr": {
+      "bytes": 23,
+      "sha256": "605103ed35adc5856c19d0feb9c1625979c6288344c966c9899452c0589effee"
+    },
+    "baseline-read-error.stderr": {
+      "bytes": 23,
+      "sha256": "605103ed35adc5856c19d0feb9c1625979c6288344c966c9899452c0589effee"
+    },
+    "ct102-arm64-build.json": {
+      "bytes": 4427,
+      "sha256": "59f192ed6de7d735100cd39972c7823783ce15f1d5c8e5fd5d4a6737b17047ed"
+    },
+    "ct102-execution.json": {
+      "bytes": 2811,
+      "sha256": "445f540ecd392ecb72b6425fb73bd804c35d62e569ba5da7865a68c579db5cd8"
+    },
+    "ct102-regression.json": {
+      "bytes": 13178,
+      "sha256": "33aed37b936452b2aae0ae13e6f621b1f130aba830bed0a5c8ffdb55e6d52c6f"
+    },
+    "local-attempt01.json": {
+      "bytes": 2961,
+      "sha256": "6f994c8d006ed1d28eccf883adc76dbf9f0dd40f6cbe211613e67627063965cc"
+    },
+    "local-attempt01.stderr": {
+      "bytes": 222,
+      "sha256": "3db13b90546ad7ec659d20b69f18e01f0391896dd4c4eaad3c528238373a507f"
+    }
+  },
+  "owner_native_linux_passes_added": 0,
+  "retained_container_work": "/work/novatek-history-job-17c61c2-20261124",
+  "schema": "tb371fc-novatek-history-evidence-index-v1"
+}

@@ -1,0 +1,37 @@
+name: Novatek WDT history recovery
+
+on:
+  push:
+    branches: [fix/novatek-wdt-history-20261124]
+  pull_request:
+    paths:
+      - 'mainline-port/patches/0002-input-touchscreen-add-nt36523-spi-pen.patch'
+      - 'mainline-port/backports/linux-6.12/*input-nt36523*.patch'
+      - 'scripts/research/input/validate_novatek_history.py'
+      - '.github/workflows/novatek-wdt-history.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actual-c-failure-paths:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate the actual driver diagnostic and WDT caller
+        run: >-
+          python3 scripts/research/input/validate_novatek_history.py
+          --repo "$GITHUB_WORKSPACE"
+          --work "$RUNNER_TEMP/novatek-history"
+      - name: Preserve original checks and failure output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: novatek-history-regression
+          path: |
+            ${{ runner.temp }}/novatek-history/result.json
+            ${{ runner.temp }}/novatek-history/*.log
+            ${{ runner.temp }}/novatek-history/*.stdout
+            ${{ runner.temp }}/novatek-history/*.stderr

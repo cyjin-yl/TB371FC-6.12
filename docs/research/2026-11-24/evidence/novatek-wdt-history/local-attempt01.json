@@ -1,0 +1,72 @@
+{
+  "baseline_compile": {
+    "command": [
+      "/usr/bin/gcc",
+      "-std=c11",
+      "-O1",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fsanitize=address,undefined",
+      "-fno-sanitize-recover=all",
+      "-fno-omit-frame-pointer",
+      "-no-pie",
+      "/workspace/scratch/1dc2e90581da/novatek-history-local-run01/baseline.c",
+      "-o",
+      "/workspace/scratch/1dc2e90581da/novatek-history-local-run01/baseline/history-harness"
+    ],
+    "exit_code": 0,
+    "source_sha256": "931245e286793c8caec1921939dabf99dad4624ea4fe41c142a893c2d09838c1"
+  },
+  "baseline_nt36xxx_sha256": "c1bc7a07d67ec332a6154ca9403df7ee971e31efa0798c2cc8a611ed9c5035a0",
+  "compiler": "gcc (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "error": "regression failed: baseline-direct-success",
+  "evidence_class": "host_actual_c_fault_injection",
+  "finished_at_utc": "2026-11-24T02:16:46.085504+00:00",
+  "firmware_loaded": false,
+  "module_loaded": false,
+  "passed": false,
+  "patched_nt36xxx_sha256": "257dc1e1c5a35ef5833a4ed42ca825559e2bfe82247d981a9e25651d482f674b",
+  "patches": [
+    {
+      "path": "mainline-port/patches/0002-input-touchscreen-add-nt36523-spi-pen.patch",
+      "sha256": "7ce384059a725714cfc82ebf77bcac17f4d327c060947a202abd142a7dbede14"
+    },
+    {
+      "path": "mainline-port/backports/linux-6.12/0013-input-nt36523-preserve-gpio-irq-errors.patch",
+      "sha256": "7915efcbed2eb6e230524529b33a90588380788769ed8d15f9422c7cc35a11a6"
+    },
+    {
+      "path": "mainline-port/backports/linux-6.12/0018-input-nt36523-use-declared-physical-dimensions.patch",
+      "sha256": "790d13667f3ced31152f55a7e74db3517f8e0410a7a699d231ba6f7a9a621d7f"
+    },
+    {
+      "path": "mainline-port/backports/linux-6.12/0019-input-nt36523-fail-closed-and-release-resources.patch",
+      "sha256": "42739b19a7fd2a9797056b3fb93ba90fc49ea141162da5bc42e83f2078b42da6"
+    },
+    {
+      "path": "mainline-port/backports/linux-6.12/0020-input-nt36523-validate-firmware-ranges.patch",
+      "sha256": "5fb6ba1138e92cfa75ddda6d0ca2de1eb41f4afd1db07c2beea3d96bb7d372ac"
+    },
+    {
+      "path": "mainline-port/backports/linux-6.12/0021-input-nt36523-handle-wdt-history-failures.patch",
+      "sha256": "327a69231bbae9f462a48c36f34555f922d45b3bfc837d4da53d7c81eb6fc173"
+    }
+  ],
+  "physical_hardware_tested": false,
+  "runner_sha256": "59e728161c524317d08ad348642c0aa3d8752095e38ba87aa0ca3cfd6e1f9aea",
+  "runs": [
+    {
+      "case": "success",
+      "exit_code": 1,
+      "expected_failure": false,
+      "mode": "direct",
+      "source": "baseline",
+      "stderr_sha256": "3db13b90546ad7ec659d20b69f18e01f0391896dd4c4eaad3c528238373a507f",
+      "stdout": ""
+    }
+  ],
+  "schema_version": 1,
+  "started_at_utc": "2026-11-24T02:16:45.787549+00:00"
+}

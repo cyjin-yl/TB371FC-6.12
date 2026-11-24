@@ -1,0 +1,64 @@
+{
+  "baseline_hashes": {
+    "kernel-out/.config": "a4980121abcc3e2bac47f7020e63c8c00949c53c289019c22b67808d84cd3afa",
+    "kernel-out/Module.symvers": "bd99bf91ba0644a9f2d52de1cf5e390118569371644bc80484b88b0e555e8545",
+    "source-input/linux-6.12.114-input-integration/drivers/input/touchscreen/nt36523/nt36xxx.c": "c1bc7a07d67ec332a6154ca9403df7ee971e31efa0798c2cc8a611ed9c5035a0",
+    "source-input/linux-6.12.114-input-integration/drivers/input/touchscreen/nt36523/nt36xxx_fw_update.c": "8720c0a2fa1cc4311bb100d2d493e3bf697fb20e6d402589e102bfa1b6f33f77"
+  },
+  "baseline_hashes_after": {
+    "kernel-out/.config": "a4980121abcc3e2bac47f7020e63c8c00949c53c289019c22b67808d84cd3afa",
+    "kernel-out/Module.symvers": "bd99bf91ba0644a9f2d52de1cf5e390118569371644bc80484b88b0e555e8545",
+    "source-input/linux-6.12.114-input-integration/drivers/input/touchscreen/nt36523/nt36xxx.c": "c1bc7a07d67ec332a6154ca9403df7ee971e31efa0798c2cc8a611ed9c5035a0",
+    "source-input/linux-6.12.114-input-integration/drivers/input/touchscreen/nt36523/nt36xxx_fw_update.c": "8720c0a2fa1cc4311bb100d2d493e3bf697fb20e6d402589e102bfa1b6f33f77"
+  },
+  "baseline_unchanged": true,
+  "build_exit_code": 0,
+  "builder_sha256": "ffbfa3e5504c7127142dfcbbf29aa530d78ed27cc0a5e9fcb895dba34a8480b7",
+  "command": [
+    "make",
+    "-C",
+    "/work/research5-services/kernel-out",
+    "M=/work/novatek-history-job-17c61c2-20261124/arm64-build/source/drivers/input/touchscreen/nt36523",
+    "ARCH=arm64",
+    "LLVM=1",
+    "LLVM_IAS=1",
+    "CROSS_COMPILE=aarch64-linux-gnu-",
+    "-j1",
+    "modules"
+  ],
+  "device_linux_tested": false,
+  "elf_header": "ELF Header:\n  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 \n  Class:                             ELF64\n  Data:                              2's complement, little endian\n  Version:                           1 (current)\n  OS/ABI:                            UNIX - System V\n  ABI Version:                       0\n  Type:                              REL (Relocatable file)\n  Machine:                           AArch64\n  Version:                           0x1\n  Entry point address:               0x0\n  Start of program headers:          0 (bytes into file)\n  Start of section headers:          695312 (bytes into file)\n  Flags:                             0x0\n  Size of this header:               64 (bytes)\n  Size of program headers:           0 (bytes)\n  Number of program headers:         0\n  Size of section headers:           64 (bytes)\n  Number of section headers:         50\n  Section header string table index: 46\n",
+  "evidence_class": "host_build",
+  "finished_at_utc": "2026-11-24T02:21:23.663282+00:00",
+  "module": {
+    "path": "/work/novatek-history-job-17c61c2-20261124/arm64-build/source/drivers/input/touchscreen/nt36523/nt36523_ts.ko",
+    "sha256": "998623b5b8d5666493162b04b01e3b3453777b3586d644d2296b23674881dc69",
+    "signer": "",
+    "size": 698512,
+    "vermagic": "6.12.114-tb371fc-research5-services SMP preempt mod_unload modversions aarch64"
+  },
+  "module_installed": false,
+  "module_loaded": false,
+  "module_signed": false,
+  "module_source_hashes": {
+    "drivers/input/touchscreen/nt36523/Kconfig": "b7efd88e85bbb4c540c51be27ecc1e30a36ee14f4e57ffcddf651300b3090057",
+    "drivers/input/touchscreen/nt36523/Makefile": "963bf5a9051f750023ff201b39edec65a9b29ee19c4e869d1f70d5f615b5adc1",
+    "drivers/input/touchscreen/nt36523/nt36xxx.c": "257dc1e1c5a35ef5833a4ed42ca825559e2bfe82247d981a9e25651d482f674b",
+    "drivers/input/touchscreen/nt36523/nt36xxx.h": "e10d0e48c714c18dbb54b3b94f12fdedb015aa4595229329eec708971ebe54a8",
+    "drivers/input/touchscreen/nt36523/nt36xxx_fw_update.c": "fe306d3626e3092a0a301a0199a8389d769286cbffb474e1da19aa410e398c95",
+    "drivers/input/touchscreen/nt36523/nt36xxx_mem_map.h": "f44d26d96d60c7890ddc956378fbcd82f8fb7077dd3a2b7746bbf818c713eb0b"
+  },
+  "patch_sha256": "5fb6ba1138e92cfa75ddda6d0ca2de1eb41f4afd1db07c2beea3d96bb7d372ac",
+  "patches": [
+    {
+      "path": "/work/novatek-history-job-17c61c2-20261124/arm64-build/0020.patch",
+      "sha256": "5fb6ba1138e92cfa75ddda6d0ca2de1eb41f4afd1db07c2beea3d96bb7d372ac"
+    },
+    {
+      "path": "/work/novatek-history-job-17c61c2-20261124/arm64-build/followup-01.patch",
+      "sha256": "327a69231bbae9f462a48c36f34555f922d45b3bfc837d4da53d7c81eb6fc173"
+    }
+  ],
+  "schema_version": 1,
+  "started_at_utc": "2026-11-24T02:21:12.830921+00:00"
+}

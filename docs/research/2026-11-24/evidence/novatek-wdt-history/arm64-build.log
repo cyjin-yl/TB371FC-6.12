@@ -1,0 +1,10 @@
+make: Entering directory '/work/research5-services/kernel-out'
+  CC [M]  /work/novatek-history-job-17c61c2-20261124/arm64-build/source/drivers/input/touchscreen/nt36523/nt36xxx.o
+  CC [M]  /work/novatek-history-job-17c61c2-20261124/arm64-build/source/drivers/input/touchscreen/nt36523/nt36xxx_fw_update.o
+  LD [M]  /work/novatek-history-job-17c61c2-20261124/arm64-build/source/drivers/input/touchscreen/nt36523/nt36523_ts.o
+  MODPOST /work/novatek-history-job-17c61c2-20261124/arm64-build/source/drivers/input/touchscreen/nt36523/Module.symvers
+  CC [M]  /work/novatek-history-job-17c61c2-20261124/arm64-build/source/drivers/input/touchscreen/nt36523/nt36523_ts.mod.o
+  CC [M]  /work/novatek-history-job-17c61c2-20261124/arm64-build/source/drivers/input/touchscreen/nt36523/.module-common.o
+  LD [M]  /work/novatek-history-job-17c61c2-20261124/arm64-build/source/drivers/input/touchscreen/nt36523/nt36523_ts.ko
+  BTF [M] /work/novatek-history-job-17c61c2-20261124/arm64-build/source/drivers/input/touchscreen/nt36523/nt36523_ts.ko
+make: Leaving directory '/work/research5-services/kernel-out'

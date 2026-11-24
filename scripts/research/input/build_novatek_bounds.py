@@ -3,6 +3,7 @@
 """Build a separate Novatek candidate against the frozen research5 output.
 
 Copies only the module sources, checks/applies patch 0020 in that copy and
+then any explicitly supplied follow-up patches in their argument order. It
 uses normal external-module Kbuild. Never installs or loads the result, and
 does not sign it or alter the existing signed research5 module set.
 """
@@ -20,6 +21,7 @@ import subprocess
 SOURCE = Path("source-input/linux-6.12.114-input-integration")
 DRIVER = Path("drivers/input/touchscreen/nt36523")
 EXPECTED = {
+    str(SOURCE / DRIVER / "nt36xxx.c"): "c1bc7a07d67ec332a6154ca9403df7ee971e31efa0798c2cc8a611ed9c5035a0",
     str(SOURCE / DRIVER / "nt36xxx_fw_update.c"): "8720c0a2fa1cc4311bb100d2d493e3bf697fb20e6d402589e102bfa1b6f33f77",
     "kernel-out/.config": "a4980121abcc3e2bac47f7020e63c8c00949c53c289019c22b67808d84cd3afa",
     "kernel-out/Module.symvers": "bd99bf91ba0644a9f2d52de1cf5e390118569371644bc80484b88b0e555e8545",
@@ -34,6 +36,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--baseline", type=Path, required=True)
     ap.add_argument("--patch", type=Path, required=True)
+    ap.add_argument("--followup-patch", type=Path, action="append", default=[],
+                    help="apply after --patch in argument order; repeat as needed")
     ap.add_argument("--work", type=Path, required=True)
     ap.add_argument("--jobs", type=int, default=2)
     args = ap.parse_args()
@@ -49,8 +53,16 @@ def main():
     target.parent.mkdir(parents=True)
     shutil.copytree(base / SOURCE / DRIVER, target)
     shutil.copyfile(patch, work / "0020.patch")
-    subprocess.run(["git", "apply", "--check", str(work / "0020.patch")], cwd=source, check=True)
-    subprocess.run(["git", "apply", str(work / "0020.patch")], cwd=source, check=True)
+    patches = [work / "0020.patch"]
+    for index, extra in enumerate(args.followup_patch, start=1):
+        copied = work / ("followup-%02d.patch" % index)
+        shutil.copyfile(extra.resolve(), copied)
+        patches.append(copied)
+    for applied in patches:
+        subprocess.run(["git", "apply", "--check", str(applied)], cwd=source, check=True)
+        subprocess.run(["git", "apply", str(applied)], cwd=source, check=True)
+    source_hashes = {str(p.relative_to(source)): digest(p)
+                     for p in sorted(target.iterdir()) if p.is_file()}
     command = ["make", "-C", str(base / "kernel-out"), "M=" + str(target),
                "ARCH=arm64", "LLVM=1", "LLVM_IAS=1", "CROSS_COMPILE=aarch64-linux-gnu-",
                "-j" + str(max(1, min(args.jobs, 4))), "modules"]
@@ -62,6 +74,9 @@ def main():
               "finished_at_utc": datetime.now(timezone.utc).isoformat(),
               "evidence_class": "host_build", "command": command,
               "build_exit_code": result.returncode, "patch_sha256": digest(work / "0020.patch"),
+              "patches": [{"path": str(p), "sha256": digest(p)} for p in patches],
+              "module_source_hashes": source_hashes,
+              "builder_sha256": digest(Path(__file__)),
               "baseline_hashes": before, "baseline_hashes_after": after,
               "baseline_unchanged": before == after, "module_installed": False,
               "module_loaded": False, "module_signed": False, "device_linux_tested": False}

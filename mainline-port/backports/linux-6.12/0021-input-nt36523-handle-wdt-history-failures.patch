@@ -1,0 +1,97 @@
+From: TB371FC research contributors <tb371fc-research@localhost>
+Subject: [PATCH] input: nt36523: bound WDT history diagnostic failures
+
+WDT recovery with an 0xFD status dumps history before reloading firmware.
+The dump ignored page/read failures and formatted into an unchecked heap
+allocation. Memory pressure could therefore crash the IRQ thread before
+recovery, while a failed read produced a misleading zero/partial dump.
+
+Preserve the exact successful dump format, check each operation, return a
+signed errno and always attempt to restore the event page. Preserve the
+first failure if restoration also fails. Log diagnostic failure but keep
+calling the existing firmware-reload path. This does not qualify or change
+the broader WDT/ESD recovery transaction, pen restoration or IRQ policy.
+
+Applies after 0020-input-nt36523-validate-firmware-ranges.patch.
+
+diff --git a/drivers/input/touchscreen/nt36523/nt36xxx.c b/drivers/input/touchscreen/nt36523/nt36xxx.c
+--- a/drivers/input/touchscreen/nt36523/nt36xxx.c
++++ b/drivers/input/touchscreen/nt36523/nt36xxx.c
+@@ -976,9 +976,9 @@
+ 
+ #define PEN_DATA_LEN 14
+ #define FW_HISTORY_SIZE 128
+-static uint32_t nvt_dump_fw_history(void)
+-{
+-	int32_t ret = 0;
++static int nvt_dump_fw_history(void)
++{
++	int ret = 0, restore_ret;
+ 	uint8_t buf[FW_HISTORY_SIZE + 1 + DUMMY_BYTES] = {0};
+ 	int32_t i = 0;
+ 	char *tmp_dump = NULL;
+@@ -986,19 +986,26 @@
+ 
+ 	if (ts->mmap->FW_HISTORY_ADDR == 0) {
+ 		NVT_ERR("FW_HISTORY_ADDR not available!\n");
+-		ret = -1;
++		ret = -EOPNOTSUPP;
+ 		goto exit_nvt_dump_fw_history;
+ 	}
+-	nvt_set_page(ts->mmap->FW_HISTORY_ADDR);
++	ret = nvt_set_page(ts->mmap->FW_HISTORY_ADDR);
++	if (ret) {
++		NVT_ERR("Set FW history page failed.(%d)\n", ret);
++		goto exit_nvt_dump_fw_history;
++	}
+ 	buf[0] = ts->mmap->FW_HISTORY_ADDR & 0xFF;
+-	CTP_SPI_READ(ts->client, buf, FW_HISTORY_SIZE + 1);
++	ret = CTP_SPI_READ(ts->client, buf, FW_HISTORY_SIZE + 1);
+ 	if (ret) {
+ 		NVT_ERR("CTP_SPI_READ failed.(%d)\n", ret);
+-		ret = -1;
+ 		goto exit_nvt_dump_fw_history;
+-		}
+-
+-	tmp_dump = (char *)kzalloc(FW_HISTORY_SIZE * 4, GFP_KERNEL);
++	}
++
++	tmp_dump = kzalloc(FW_HISTORY_SIZE * 4, GFP_KERNEL);
++	if (!tmp_dump) {
++		ret = -ENOMEM;
++		goto exit_nvt_dump_fw_history;
++	}
+ 	for (i = 0; i < FW_HISTORY_SIZE; i++) {
+ 		sprintf(tmp_dump + i * 3 + line_cnt, "%02X ", buf[1 + i]);
+ 		if ((i + 1) % 16 == 0) {
+@@ -1009,11 +1016,14 @@
+ 	NVT_LOG("%s", tmp_dump);
+ 
+ exit_nvt_dump_fw_history:
+-	if (tmp_dump) {
+-		kfree(tmp_dump);
+-		tmp_dump = NULL;
+-	}
+-	nvt_set_page(ts->mmap->EVENT_BUF_ADDR);
++	kfree(tmp_dump);
++	/* A failed diagnostic must not leave the normal event page selected wrong. */
++	restore_ret = nvt_set_page(ts->mmap->EVENT_BUF_ADDR);
++	if (restore_ret) {
++		NVT_ERR("Restore event page failed.(%d)\n", restore_ret);
++		if (!ret)
++			ret = restore_ret;
++	}
+ 
+ 	return ret;
+ }
+@@ -1089,7 +1099,9 @@
+ 		NVT_ERR("Recover for fw reset, %02X\n", point_data[1]);
+ 		if (point_data[1] == 0xFD) {
+ 			NVT_ERR("Dump FW history:\n");
+-			nvt_dump_fw_history();
++			ret = nvt_dump_fw_history();
++			if (ret)
++				NVT_ERR("FW history unavailable: %d\n", ret);
+ 		}
+ 		nvt_update_firmware(ts->fw_name);
+ 		goto XFER_ERROR;
