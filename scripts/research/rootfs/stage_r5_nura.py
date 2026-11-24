@@ -263,9 +263,30 @@ def stage(repo, work, archive):
         if common.identity(kmod) != record["target_kmod"]:
             raise ValueError("target kmod changed during execution")
         common.run(work, "root-module-gate", [sys.executable, str(qualifier), "--repo", str(repo),
-            "--rootfs-root", str(root), "--gate", "rootfs",
+            "--rootfs-root", str(root), "--gate", "evidence",
             "--output", str(work / "root-module-report.json")])
+        report = json.loads((work / "root-module-report.json").read_text())
+        tree = report["root_module_tree"]
+        if not tree["passed"] or not tree["input_snapshot_stable"]:
+            raise ValueError("root module qualification did not pass")
         record["root_module_report"] = common.identity(work / "root-module-report.json")
+        record["module_tree"] = {p.relative_to(module_root).as_posix(): common.identity(p)
+                                 for p in sorted(module_root.rglob("*")) if p.is_file()}
+        for name, expected in modules.items():
+            if record["module_tree"].get(name) != expected:
+                raise ValueError("depmod changed a frozen module or Kbuild input")
+        for item in tree["indexes"]:
+            expected = {k: item[k] for k in ("sha256", "bytes", "mode")}
+            if record["module_tree"].get(item["path"]) != expected:
+                raise ValueError("depmod index changed after inspection")
+        record["depmod_receipts"] = {name: common.identity(work / name) for name in (
+            "target-depmod.json", "target-depmod.stdout", "target-depmod.stderr",
+            "target-depmod-version.json", "target-depmod-version.stdout",
+            "target-depmod-version.stderr")}
+        for name, expected in record["firmware"].items():
+            current = common.identity(common.under(root, "usr/" + name))
+            if any(current[k] != expected[k] for k in ("bytes", "sha256", "mode")):
+                raise ValueError("staged firmware changed: " + name)
         record["original_entries_after"] = verify_inventory(root, inventory, staged=True)
         if common.identity(archive) != record["archive"]:
             raise ValueError("retained source archive changed")
