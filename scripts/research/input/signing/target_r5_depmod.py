@@ -16,6 +16,7 @@ import os
 from pathlib import Path
 
 import stage_r5_novatek as stage
+import runtime_archive
 
 common = stage.common
 signing = stage.signing
@@ -112,13 +113,18 @@ def check_load_plan(text, dependency_text, selected):
             "module_loaded": False, "binary_index_lookup_executed": True}
 
 
-def run(repo, signed_stage, work):
+def run(repo, signed_stage, work, reference_runtime_archive=None):
     require(work.parent == Path("/work") and work.name.startswith("r5-novatek-depmod-"),
             "choose a new dedicated /work/r5-novatek-depmod-* directory")
     runtime = common.BASE / "rootfs"
     for path in (repo, signed_stage, runtime, work):
         require(not path.is_symlink(), "symlinked input/output root")
-    qualification.validate_output_destination(work, (repo, signed_stage, common.BASE))
+    protected = (repo, signed_stage, common.BASE)
+    if reference_runtime_archive is not None:
+        require(reference_runtime_archive.is_absolute() and not reference_runtime_archive.is_symlink(),
+                "ordinary absolute reference archive input required")
+        protected += (reference_runtime_archive,)
+    qualification.validate_output_destination(work, protected)
     require(not work.exists(), "retain prior attempt; choose a new output directory")
     candidate_path = repo / "docs/research/2026-11-23/boot-candidate-r5.json"
     original = qualification.read_candidate(candidate_path)
@@ -138,6 +144,7 @@ def run(repo, signed_stage, work):
               "kernel_release": RELEASE, "module_loaded": False,
               "physical_hardware_tested": False, "owner_native_linux_passes_added": 0,
               "native_boot_readiness": "blocked", "target_depmod_verified": False,
+              "runtime_comparison_mode": "reference_archive_unique_pax_order" if reference_runtime_archive else "raw_canonical",
               "signed_stage_receipt": receipt_identity, "pinned_tools": inputs,
               "target_kmod": tool_identity, "recipe": common.identity(Path(__file__))}
     try:
@@ -166,13 +173,27 @@ def run(repo, signed_stage, work):
                 "replacement BTF/debug sections differ from signing receipt")
         # The copied tool root prevents target commands from writing into the
         # retained Fedora runtime, including on an unexpected error path.
-        report["runtime_source"] = common.canonical(runtime, work / "runtime-source.stderr")
-        common.require_baseline(report["runtime_source"])
+        reference = None
+        if reference_runtime_archive is not None:
+            reference = runtime_archive.reference_archive(reference_runtime_archive,
+                work / "runtime-reference-before.stderr", expected_bytes=common.BASE_BYTES,
+                expected_sha256=common.BASE_DIGEST)
+            report["runtime_reference_before"] = reference
+
+        def check_runtime(tree, name):
+            if reference is None:
+                report[name] = common.canonical(tree, work / (name.replace("_", "-") + ".stderr"))
+                common.require_baseline(report[name])
+            else:
+                report[name] = runtime_archive.canonical_tree(tree,
+                    work / (name.replace("_", "-") + ".stderr"), maximum_bytes=common.BASE_BYTES)
+                runtime_archive.require_same_reference(report[name], reference)
+
+        check_runtime(runtime, "runtime_source")
         tool_root = work / "tool-root"
         common.run(work, "copy-runtime", ["cp", "-a", "--reflink=auto", "--",
                    str(runtime), str(tool_root)], timeout=1800)
-        report["runtime_copy"] = common.canonical(tool_root, work / "runtime-copy.stderr")
-        common.require_baseline(report["runtime_copy"])
+        check_runtime(tool_root, "runtime_copy")
         require(target_kmod(tool_root) == tool_identity, "copied target kmod changed")
         (tool_root / "candidate").mkdir()
         env = dict(os.environ, LD_LIBRARY_PATH=common.HOST_LIBS, SYSTEMD_OFFLINE="1")
@@ -213,8 +234,17 @@ def run(repo, signed_stage, work):
                 common.identity(certificate) == cert_before, "signed-stage evidence changed")
         require(target_kmod(runtime) == tool_identity and target_kmod(tool_root) == tool_identity,
                 "target runtime kmod changed")
-        report["runtime_source_after"] = common.canonical(runtime, work / "runtime-source-after.stderr")
-        common.require_baseline(report["runtime_source_after"])
+        check_runtime(runtime, "runtime_source_after")
+        if reference is not None:
+            after_reference = runtime_archive.reference_archive(reference_runtime_archive,
+                work / "runtime-reference-after.stderr", expected_bytes=common.BASE_BYTES,
+                expected_sha256=common.BASE_DIGEST)
+            report["runtime_reference_after"] = after_reference
+            require(after_reference["identity"] == reference["identity"] and
+                    after_reference["normalized_sha256"] == reference["normalized_sha256"],
+                    "reference archive identity changed")
+            report["runtime_source_raw_digest_stable"] = (
+                report["runtime_source"]["raw_sha256"] == report["runtime_source_after"]["raw_sha256"])
         report["command_receipts"] = {
             name + suffix: common.identity(work / (name + suffix))
             for name in commands for suffix in (".json", ".stdout", ".stderr")}
@@ -233,8 +263,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("repo", "signed-stage", "work"):
         parser.add_argument("--" + name, type=Path, required=True)
+    parser.add_argument("--reference-runtime-archive", type=Path,
+                        help="explicitly compare unique PAX record order against the exact frozen raw archive")
     args = parser.parse_args()
-    run(args.repo, args.signed_stage, args.work)
+    run(args.repo, args.signed_stage, args.work, args.reference_runtime_archive)
 
 
 if __name__ == "__main__":

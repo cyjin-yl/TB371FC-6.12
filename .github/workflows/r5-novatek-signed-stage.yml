@@ -18,3 +18,5 @@ jobs:
         run: python3 -O scripts/research/input/signing/test_stage_r5_novatek.py -v
       - name: Reject invalid target depmod provenance and load plans
         run: python3 -O scripts/research/input/signing/test_target_r5_depmod.py -v
+      - name: Preserve actual journal metadata across PAX record order
+        run: python3 -O scripts/research/input/signing/test_runtime_archive.py -v
