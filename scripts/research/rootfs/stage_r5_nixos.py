@@ -175,7 +175,11 @@ def stage(repo, work, kernel_root, fw_root):
                        "--option", "build-users-group", "", "store", "verify", "--recursive",
                        "--sigs-needed", "1", TOP], env=env, timeout=1800)
             report["clone_verified"] = True
-            modules, fw = copy_runtime(root, kernel_root, fw_root, contract)
+            previous_mask = os.umask(0o022)
+            try:
+                modules, fw = copy_runtime(root, kernel_root, fw_root, contract)
+            finally:
+                os.umask(previous_mask)
             report["module_count"] = len(modules) - len(common.METADATA)
             report["firmware_count"] = len(fw)
             # Use the actual Nix closure's target kmod, not host depmod or the
@@ -193,9 +197,15 @@ def stage(repo, work, kernel_root, fw_root):
                        "-w", "/"]
             guest_env = {"PATH": "/usr/sbin:/usr/bin:/sbin:/bin", "LC_ALL": "C",
                          "LD_LIBRARY_PATH": common.HOST_LIBS, "SYSTEMD_OFFLINE": "1"}
-            common.run(work, "target-depmod-version", wrapper + [guest, "depmod", "--version"],
+            # kmod is a multicall executable; the frozen package provides
+            # its depmod alias. Use the alias rather than relying on a host PATH.
+            depmod = KMOD + "/bin/depmod"
+            alias = common.under(root, depmod.lstrip("/"))
+            require(alias.is_symlink() and os.readlink(alias) in ("kmod", "./kmod", guest),
+                    "unexpected target depmod alias")
+            common.run(work, "target-depmod-version", wrapper + [depmod, "--version"],
                        env=guest_env)
-            common.run(work, "target-depmod", wrapper + [guest, "depmod", "-a", common.RELEASE],
+            common.run(work, "target-depmod", wrapper + [depmod, "-a", common.RELEASE],
                        env=guest_env)
             require(common.identity(executable) == report["target_kmod"], "kmod changed")
             common.run(work, "root-module-gate", [sys.executable, str(qualifier), "--repo", str(repo),
