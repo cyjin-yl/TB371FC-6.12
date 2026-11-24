@@ -1,0 +1,22 @@
+name: R5 run04 release identity
+on:
+  pull_request:
+    paths:
+      - 'scripts/research/rootfs/seal_r5_run04.py'
+      - 'scripts/research/rootfs/test_seal_r5_run04.py'
+      - 'scripts/research/rootfs/run_r5_vm_phase.py'
+      - 'docs/research/2026-11-24/evidence/r5-run04/**'
+      - '.github/workflows/r5-run04-seal.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  archived-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the exact run04 evidence and rejection tests
+        run: python3 -O -m unittest discover -s scripts/research/rootfs -p test_seal_r5_run04.py -v
+      - name: Verify archived evidence only (not live artifacts)
+        run: python3 -O scripts/research/rootfs/seal_r5_run04.py
