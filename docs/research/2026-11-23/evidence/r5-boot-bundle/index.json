@@ -1,0 +1,62 @@
+{
+  "current_kernel_files": 106,
+  "current_modules": 84,
+  "current_sidecars": 2,
+  "files": [
+    {
+      "bytes": 3617,
+      "path": "attempt-1-execution.json",
+      "raw_bytes_preserved": true,
+      "sha256": "daba0fab92b2e8fd58682540e0f1424318b759cc56c93319961385dbe7272ba3"
+    },
+    {
+      "bytes": 34527,
+      "path": "attempt-1-payload.json",
+      "raw_bytes_preserved": true,
+      "sha256": "23683102bcff2111a0c747c62ac41453d68a7270c08e0d5ec93de73dab7037cd"
+    },
+    {
+      "bytes": 3729,
+      "path": "attempt-2-execution.json",
+      "raw_bytes_preserved": true,
+      "sha256": "deb5c6f2cb057436e4b85cfa5d445fda079fb9f7b6c0091a3670d19be4c4d689"
+    },
+    {
+      "bytes": 34981,
+      "path": "attempt-2-payload.json",
+      "raw_bytes_preserved": true,
+      "sha256": "b0a7271c22422563cd1d9d3734fbc07f72683355b40ddbf9949f03cc5df396c7"
+    },
+    {
+      "bytes": 8608,
+      "path": "attempt-2-tests.log",
+      "raw_bytes_preserved": true,
+      "sha256": "c053799d6dcd86b9818d65f7401697eda6b27b7fa59bccee9319fd89a6d95517"
+    },
+    {
+      "bytes": 3967,
+      "path": "attempt-3-execution.json",
+      "raw_bytes_preserved": true,
+      "sha256": "09f1dacb28d9f69fcb233bb2011018c5fea11660fea4eeccff4c771375a52e6b"
+    },
+    {
+      "bytes": 37289,
+      "path": "attempt-3-payload.json",
+      "raw_bytes_preserved": true,
+      "sha256": "a39e20465d85d9fd2bafa3798a69aada2b70f8d6d4d731669d9423d966315f94"
+    },
+    {
+      "bytes": 8786,
+      "path": "attempt-3-tests.log",
+      "raw_bytes_preserved": true,
+      "sha256": "6cbae12832f4a6626953d5b23785df9fdbf2067cfbfa27556fe712da8872105d"
+    }
+  ],
+  "last_completed_utc": "2026-11-23T20:44:42.511714+00:00",
+  "native_boot_attempted": false,
+  "owner_native_linux_passes_added": 0,
+  "regression_tests": 60,
+  "schema_version": 1,
+  "scope": "Exact current R5 kernel payload and offline regression only; no rootfs/runtime/native boot acceptance",
+  "source_commit": "2a8b5b1bf2bc01416fa56c8340cdb97d289e741e"
+}

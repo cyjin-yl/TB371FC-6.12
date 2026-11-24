@@ -1,0 +1,40 @@
+{
+  "base_branch": "research/reproducible-build-gpu-20261123",
+  "branch": "feat/r5-boot-bundle-contract-20261123",
+  "candidate": "boot-candidate-r5.json",
+  "checkpoint_utc": "2026-11-23T20:44:42.511714+00:00",
+  "container": "tb371fc-build-20261123",
+  "container_host": "CT102",
+  "coordination": "This checkpoint adds a separate Linux lane; active QEMU wholeboard/UFS and UniXNU platform-link work are not reset or replaced.",
+  "execution_receipt": "evidence/r5-boot-bundle/attempt-3-execution.json",
+  "existing_loader_sources": [
+    "scripts/research/rootfs/assemble_image.py",
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/stage_system.py",
+    "scripts/research/input/system-integration/profiles/persistent-result-v9/assemble_system.py"
+  ],
+  "kernel_input_directory": "/work/research5-services-kernel-inputs-v1",
+  "kernel_release": "6.12.114-tb371fc-research5-services",
+  "module_enforcement": {
+    "configured_force": false,
+    "required_boot_argument": "module.sig_enforce=1",
+    "runtime_verified": false
+  },
+  "native_boot_readiness": "blocked",
+  "next_actions": [
+    "Read current jobs/worktrees and latest related PRs before claiming a build lane; do not overwrite existing Fedora v9 or QEMU/UniXNU work.",
+    "Create a new R5 Fedora profile/root from the existing qualified distribution seed, preserving source provenance/xattr/ACL and the recorded failures. Reuse dracut/systemd-initrd/rootfs-block rather than the old card-specific Arch loader.",
+    "Install the exact R5 kernel/module inputs, run the target distribution depmod, record its executable/version/argv plus the root-module inventory and generated indexes, then inspect with --rootfs-root.",
+    "Bind the available canonical firmware tree to the final R5 DT/config/root; keep WLAN board data and BT ROM selection unresolved until supported by actual evidence.",
+    "Build a new root-loading initramfs and ordinary-file ext4 image with a distinct generic-VM root selector; validate real switch-root/PID1/release/module enforcement/SELinux/shutdown. Preserve the existing v9 audit/production-vs-maintenance requirements.",
+    "Qualify actual native entry, root selector, layout and reachable recovery separately; generic VM success never increments owner physical acceptance."
+  ],
+  "owner_native_linux_passes_added": 0,
+  "payload_report": "evidence/r5-boot-bundle/attempt-3-payload.json",
+  "remote_evidence_directory": "/work/r5-boot-bundle-qualification-2a8b5b1",
+  "repository": "cyjin-yl/TB371FC-6.12",
+  "root_module_tree_inspection": "not_run_against_a_real_R5_root",
+  "rootloader_integration": "not_run",
+  "schema_version": 1,
+  "source_code_commit": "2a8b5b1bf2bc01416fa56c8340cdb97d289e741e",
+  "status": "kernel_payload_verified_rootloader_integration_next"
+}

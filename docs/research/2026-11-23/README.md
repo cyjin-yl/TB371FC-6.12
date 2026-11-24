@@ -13,6 +13,11 @@ The R226 installation/reproducibility limitations in
 
 ## Build follow-up and completion standard
 
+The [R5 boot-candidate contract](boot-bundle-contract.md) now provides executable
+checks for the frozen 106-file input set, current payload identities and final-root
+module dependencies. It keeps native entry/root-loader/recovery prerequisites
+explicitly open and does not add an owner-tablet Linux pass.
+
 **Latest construction checkpoint: [research5](research5-services-kernel.md) is
 built and transferred; the [first Fedora v9 image attempt](fedora-r4f-image-failed.md)
 fails before any VM. The latest actual production run remains
