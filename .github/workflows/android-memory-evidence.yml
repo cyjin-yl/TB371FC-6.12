@@ -1,0 +1,30 @@
+name: Android memory evidence
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/research/*android_memory*.py'
+      - 'docs/research/2026-11-24/android-memory-topology.md'
+      - 'docs/research/2026-11-24/evidence/android-memory/**'
+      - '.github/workflows/android-memory-evidence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-resource-accounting:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check resource-tree bounds and preserve unresolved ownership
+        run: python3 -O -m unittest discover -s scripts/research -p 'test_android_memory.py' -v
+      - name: Reproduce exact observed Android memory correlation
+        run: |
+          python3 -O scripts/research/correlate_android_memory.py \
+            --live-dt docs/research/2026-11-24/evidence/native-dt/live-android.json \
+            --memory-observation docs/research/2026-11-24/evidence/android-memory/observation.json \
+            > "$RUNNER_TEMP/android-memory-correlation.json"
+          cmp "$RUNNER_TEMP/android-memory-correlation.json" \
+            docs/research/2026-11-24/evidence/android-memory/correlation.json

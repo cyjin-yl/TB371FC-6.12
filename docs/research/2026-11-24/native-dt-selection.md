@@ -110,6 +110,13 @@ complete exclusion map, and subtracting them from RAM cannot prove a safe kernel
 load address. The Android initrd addresses are observed metadata for this boot,
 not automatically chosen addresses for the new R5 loader.
 
+The later [bounded Android memory observation](android-memory-topology.md)
+binds this exact FDT to a stable live resource tree. It accounts for all declared
+RAM except a 128-KiB unnamed gap after static `no-map` exclusions, and finds an
+exact aggregate match between eleven reusable dynamic requests, `CmaTotal` and
+one reserved resource range. Individual dynamic allocation boundaries/owners,
+safe load addresses and DMA quiescence remain unverified.
+
 ## Keep strict artifacts separate from live forensic interpretation
 
 The first live read failed strict FDT parsing. A more precise second diagnostic
