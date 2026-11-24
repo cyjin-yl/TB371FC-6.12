@@ -1,0 +1,36 @@
+name: R5 second-stage DTB offline contract
+on:
+  pull_request:
+    paths:
+      - 'scripts/research/derive_second_stage_dtb.py'
+      - 'scripts/research/test_second_stage_dtb.py'
+      - 'scripts/research/native_dt.py'
+      - 'scripts/research/boot_formats.py'
+      - 'docs/research/2026-11-24/evidence/native-dt/live-android.json'
+      - 'docs/research/2026-11-24/evidence/r5-second-stage-dtb/**'
+      - '.github/workflows/r5-second-stage-dtb.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-fixture-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install synthetic DT fixture tools
+        run: sudo apt-get update && sudo apt-get install -y device-tree-compiler
+      - name: Check retained evidence and exact source identities
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          index = json.loads(Path('docs/research/2026-11-24/evidence/r5-second-stage-dtb/index.json').read_text())
+          for entry in index['files'] + index['retained_dependency_identities']:
+              data = Path(entry['path']).read_bytes()
+              if len(data) != entry['bytes'] or hashlib.sha256(data).hexdigest() != entry['sha256']:
+                  raise SystemExit('retained input changed: ' + entry['path'])
+          print('Eight retained files and three source/input dependencies match their identities.')
+          PY
+      - name: Exercise bounded synthetic derivation under optimized Python
+        run: python3 -O scripts/research/test_second_stage_dtb.py -v

@@ -1,0 +1,28 @@
+test_delta_accepts_only_ram (test_second_stage_dtb.CandidateTests.test_delta_accepts_only_ram) ... ok
+test_delta_rejects_header_change (test_second_stage_dtb.CandidateTests.test_delta_rejects_header_change) ... ok
+test_delta_rejects_other_property_change (test_second_stage_dtb.CandidateTests.test_delta_rejects_other_property_change) ... ok
+test_delta_rejects_property_addition (test_second_stage_dtb.CandidateTests.test_delta_rejects_property_addition) ... FAIL
+test_delta_rejects_reserve_change (test_second_stage_dtb.CandidateTests.test_delta_rejects_reserve_change) ... ok
+test_delta_rejects_wrong_ram (test_second_stage_dtb.CandidateTests.test_delta_rejects_wrong_ram) ... ok
+test_exact_owner_observation (test_second_stage_dtb.CandidateTests.test_exact_owner_observation) ... ok
+test_fixed_reader_rejects_symlink (test_second_stage_dtb.CandidateTests.test_fixed_reader_rejects_symlink) ... ok
+test_synthetic_derivation_and_no_overwrite (test_second_stage_dtb.CandidateTests.test_synthetic_derivation_and_no_overwrite) ... ok
+test_wrong_board_hash_no_output (test_second_stage_dtb.CandidateTests.test_wrong_board_hash_no_output) ... ok
+
+======================================================================
+FAIL: test_delta_rejects_property_addition (test_second_stage_dtb.CandidateTests.test_delta_rejects_property_addition)
+----------------------------------------------------------------------
+native_dt.DTError: nonzero FDT property padding at offset 81 length 3 nonzero_count 3
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/work/r5-stage2-dtb-auto01/scripts/research/test_second_stage_dtb.py", line 66, in test_delta_rejects_property_addition
+    with self.assertRaisesRegex(ValueError, "property inventory"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "property inventory" does not match "nonzero FDT property padding at offset 81 length 3 nonzero_count 3"
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.082s
+
+FAILED (failures=1)
