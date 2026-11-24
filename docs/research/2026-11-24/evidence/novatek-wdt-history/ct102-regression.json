@@ -1,0 +1,336 @@
+{
+  "baseline_compile": {
+    "command": [
+      "/usr/bin/gcc",
+      "-std=c11",
+      "-O1",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fsanitize=address,undefined",
+      "-fno-sanitize-recover=all",
+      "-fno-omit-frame-pointer",
+      "-no-pie",
+      "/work/novatek-history-job-17c61c2-20261124/regression/baseline.c",
+      "-o",
+      "/work/novatek-history-job-17c61c2-20261124/regression/baseline/history-harness"
+    ],
+    "exit_code": 0,
+    "source_sha256": "931245e286793c8caec1921939dabf99dad4624ea4fe41c142a893c2d09838c1"
+  },
+  "baseline_defects_reproduced": 3,
+  "baseline_nt36xxx_sha256": "c1bc7a07d67ec332a6154ca9403df7ee971e31efa0798c2cc8a611ed9c5035a0",
+  "compiler": "gcc (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "evidence_class": "host_actual_c_fault_injection",
+  "finished_at_utc": "2026-11-24T02:21:12.710300+00:00",
+  "firmware_loaded": false,
+  "module_loaded": false,
+  "passed": true,
+  "patched_checks_passed": 24,
+  "patched_compile": {
+    "command": [
+      "/usr/bin/gcc",
+      "-std=c11",
+      "-O1",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fsanitize=address,undefined",
+      "-fno-sanitize-recover=all",
+      "-fno-omit-frame-pointer",
+      "-no-pie",
+      "/work/novatek-history-job-17c61c2-20261124/regression/patched.c",
+      "-o",
+      "/work/novatek-history-job-17c61c2-20261124/regression/patched/history-harness"
+    ],
+    "exit_code": 0,
+    "source_sha256": "a8346a2f50d76566f150c4e439735d47348dec6a5e721a485c5bde0ff1293e57"
+  },
+  "patched_nt36xxx_sha256": "257dc1e1c5a35ef5833a4ed42ca825559e2bfe82247d981a9e25651d482f674b",
+  "patches": [
+    {
+      "path": "mainline-port/patches/0002-input-touchscreen-add-nt36523-spi-pen.patch",
+      "sha256": "7ce384059a725714cfc82ebf77bcac17f4d327c060947a202abd142a7dbede14"
+    },
+    {
+      "path": "mainline-port/backports/linux-6.12/0013-input-nt36523-preserve-gpio-irq-errors.patch",
+      "sha256": "7915efcbed2eb6e230524529b33a90588380788769ed8d15f9422c7cc35a11a6"
+    },
+    {
+      "path": "mainline-port/backports/linux-6.12/0018-input-nt36523-use-declared-physical-dimensions.patch",
+      "sha256": "790d13667f3ced31152f55a7e74db3517f8e0410a7a699d231ba6f7a9a621d7f"
+    },
+    {
+      "path": "mainline-port/backports/linux-6.12/0019-input-nt36523-fail-closed-and-release-resources.patch",
+      "sha256": "42739b19a7fd2a9797056b3fb93ba90fc49ea141162da5bc42e83f2078b42da6"
+    },
+    {
+      "path": "mainline-port/backports/linux-6.12/0020-input-nt36523-validate-firmware-ranges.patch",
+      "sha256": "5fb6ba1138e92cfa75ddda6d0ca2de1eb41f4afd1db07c2beea3d96bb7d372ac"
+    },
+    {
+      "path": "mainline-port/backports/linux-6.12/0021-input-nt36523-handle-wdt-history-failures.patch",
+      "sha256": "327a69231bbae9f462a48c36f34555f922d45b3bfc837d4da53d7c81eb6fc173"
+    }
+  ],
+  "physical_hardware_tested": false,
+  "runner_sha256": "59e728161c524317d08ad348642c0aa3d8752095e38ba87aa0ca3cfd6e1f9aea",
+  "runs": [
+    {
+      "case": "success",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "direct",
+      "source": "baseline",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"direct\",\"case\":\"success\",\"return\":0,\"dump_bytes\":392,\"operations\":\"PRADFE\"}\n"
+    },
+    {
+      "case": "page-error",
+      "exit_code": 1,
+      "expected_failure": true,
+      "mode": "direct",
+      "source": "baseline",
+      "stderr_sha256": "605103ed35adc5856c19d0feb9c1625979c6288344c966c9899452c0589effee",
+      "stdout": ""
+    },
+    {
+      "case": "read-error",
+      "exit_code": 1,
+      "expected_failure": true,
+      "mode": "direct",
+      "source": "baseline",
+      "stderr_sha256": "605103ed35adc5856c19d0feb9c1625979c6288344c966c9899452c0589effee",
+      "stdout": ""
+    },
+    {
+      "case": "alloc-error",
+      "exit_code": 1,
+      "expected_failure": true,
+      "mode": "direct",
+      "source": "baseline",
+      "stderr_sha256": "a0e0bc200401bae59f723c1eccc0dd3580b9c576b9d35a560a95553fb01ff0e8",
+      "stdout": ""
+    },
+    {
+      "case": "success",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "direct",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"direct\",\"case\":\"success\",\"return\":0,\"dump_bytes\":392,\"operations\":\"PRADFE\"}\n"
+    },
+    {
+      "case": "no-history",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "direct",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"direct\",\"case\":\"no-history\",\"return\":-95,\"dump_bytes\":0,\"operations\":\"E\"}\n"
+    },
+    {
+      "case": "page-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "direct",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"direct\",\"case\":\"page-error\",\"return\":-110,\"dump_bytes\":0,\"operations\":\"PE\"}\n"
+    },
+    {
+      "case": "read-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "direct",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"direct\",\"case\":\"read-error\",\"return\":-5,\"dump_bytes\":0,\"operations\":\"PRE\"}\n"
+    },
+    {
+      "case": "alloc-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "direct",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"direct\",\"case\":\"alloc-error\",\"return\":-12,\"dump_bytes\":0,\"operations\":\"PRAE\"}\n"
+    },
+    {
+      "case": "restore-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "direct",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"direct\",\"case\":\"restore-error\",\"return\":-121,\"dump_bytes\":392,\"operations\":\"PRADFE\"}\n"
+    },
+    {
+      "case": "page-and-restore-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "direct",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"direct\",\"case\":\"page-and-restore-error\",\"return\":-110,\"dump_bytes\":0,\"operations\":\"PE\"}\n"
+    },
+    {
+      "case": "read-and-restore-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "direct",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"direct\",\"case\":\"read-and-restore-error\",\"return\":-5,\"dump_bytes\":0,\"operations\":\"PRE\"}\n"
+    },
+    {
+      "case": "alloc-and-restore-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "direct",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"direct\",\"case\":\"alloc-and-restore-error\",\"return\":-12,\"dump_bytes\":0,\"operations\":\"PRAE\"}\n"
+    },
+    {
+      "case": "no-history-and-restore-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "direct",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"direct\",\"case\":\"no-history-and-restore-error\",\"return\":-95,\"dump_bytes\":0,\"operations\":\"E\"}\n"
+    },
+    {
+      "case": "all-ff",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "direct",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"direct\",\"case\":\"all-ff\",\"return\":0,\"dump_bytes\":392,\"operations\":\"PRADFE\"}\n"
+    },
+    {
+      "case": "all-zero",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "direct",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"direct\",\"case\":\"all-zero\",\"return\":0,\"dump_bytes\":392,\"operations\":\"PRADFE\"}\n"
+    },
+    {
+      "case": "success",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "wdt",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"wdt\",\"case\":\"success\",\"return\":0,\"dump_bytes\":392,\"operations\":\"PRADFEU\"}\n"
+    },
+    {
+      "case": "no-history",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "wdt",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"wdt\",\"case\":\"no-history\",\"return\":-95,\"dump_bytes\":0,\"operations\":\"EU\"}\n"
+    },
+    {
+      "case": "page-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "wdt",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"wdt\",\"case\":\"page-error\",\"return\":-110,\"dump_bytes\":0,\"operations\":\"PEU\"}\n"
+    },
+    {
+      "case": "read-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "wdt",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"wdt\",\"case\":\"read-error\",\"return\":-5,\"dump_bytes\":0,\"operations\":\"PREU\"}\n"
+    },
+    {
+      "case": "alloc-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "wdt",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"wdt\",\"case\":\"alloc-error\",\"return\":-12,\"dump_bytes\":0,\"operations\":\"PRAEU\"}\n"
+    },
+    {
+      "case": "restore-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "wdt",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"wdt\",\"case\":\"restore-error\",\"return\":-121,\"dump_bytes\":392,\"operations\":\"PRADFEU\"}\n"
+    },
+    {
+      "case": "page-and-restore-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "wdt",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"wdt\",\"case\":\"page-and-restore-error\",\"return\":-110,\"dump_bytes\":0,\"operations\":\"PEU\"}\n"
+    },
+    {
+      "case": "read-and-restore-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "wdt",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"wdt\",\"case\":\"read-and-restore-error\",\"return\":-5,\"dump_bytes\":0,\"operations\":\"PREU\"}\n"
+    },
+    {
+      "case": "alloc-and-restore-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "wdt",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"wdt\",\"case\":\"alloc-and-restore-error\",\"return\":-12,\"dump_bytes\":0,\"operations\":\"PRAEU\"}\n"
+    },
+    {
+      "case": "no-history-and-restore-error",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "wdt",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"wdt\",\"case\":\"no-history-and-restore-error\",\"return\":-95,\"dump_bytes\":0,\"operations\":\"EU\"}\n"
+    },
+    {
+      "case": "all-ff",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "wdt",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"wdt\",\"case\":\"all-ff\",\"return\":0,\"dump_bytes\":392,\"operations\":\"PRADFEU\"}\n"
+    },
+    {
+      "case": "all-zero",
+      "exit_code": 0,
+      "expected_failure": false,
+      "mode": "wdt",
+      "source": "patched",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"mode\":\"wdt\",\"case\":\"all-zero\",\"return\":0,\"dump_bytes\":392,\"operations\":\"PRADFEU\"}\n"
+    }
+  ],
+  "schema_version": 1,
+  "started_at_utc": "2026-11-24T02:21:09.875427+00:00"
+}
