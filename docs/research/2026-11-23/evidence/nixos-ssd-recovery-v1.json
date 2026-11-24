@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "scope": "Actual isolated SSD-local Nix registered-root recovery; not a system boot",
+  "executed_source_commit": "9f04ed18f306f266172a641a4378e0f4b2f6a889",
+  "recipe_sha256": "fa3ebb5e3822f289e6636ffaddfaa5cfefe492eb11dc25872cda5d72da8b152d",
+  "builder": "CT102/tb371fc-build-ssd-20261123",
+  "work": "/work/nixos-ssd-recovery-20261124-v1",
+  "job_receipts": "/work/nixos-ssd-recovery-recipe-20261124-v1",
+  "started_utc": "2026-11-24T02:28:30Z",
+  "finished_utc": "2026-11-24T02:29:10Z",
+  "elapsed_seconds": 40.14566395903239,
+  "job_exit_code": 0,
+  "contract_self_checks_passed": 4,
+  "result": {
+    "bytes": 10350,
+    "sha256": "44d633777bf13b21964e3714ffc37d85daa7a356dc895564ef6dd7cc34e0397e"
+  },
+  "qualified_fields": {
+    "complete": true,
+    "cache_assembled": true,
+    "root_registered": true,
+    "require_sigs": true,
+    "cache_records": 894,
+    "cache_objects": 872,
+    "recovered_official_records": 1,
+    "newly_signed_local_records": 3,
+    "path_count": 894,
+    "nar_bytes": 3751712072,
+    "destination_content_signature_verify_exit_code": 0,
+    "independent_db_sha256": "9965e527bf77eb5a97db2487a38c88fe52f0d9102d9a9e269a145f2cb377e461",
+    "native_tool_report_sha256": "afaa0995663626f443a9bc5507f1873ea3043a8ec44b4576e8316798e436101b",
+    "entry_hashes": {
+      "activate": "8e8c85675ceca709cd0445f5211a556cb3d0edf52d94e63cd1ea1bdf989f2ea9",
+      "init": "d7440ba41d2fb1abdbe1a9a2a1267cde841deb9dd4bd088a59586b12a719becd"
+    },
+    "activation_executed": false,
+    "vm_started": false,
+    "physical_hardware_tested": false,
+    "old_cache_modified": false,
+    "source_store_modified": false,
+    "global_configuration_written": false
+  },
+  "command_receipts": [
+    {
+      "name": "generate-recovery-key",
+      "exit_code": 0,
+      "elapsed_seconds": 0.2168971669743769
+    },
+    {
+      "name": "derive-recovery-public-key",
+      "exit_code": 0,
+      "elapsed_seconds": 0.007886481005698442
+    },
+    {
+      "name": "sign-small-0",
+      "exit_code": 0,
+      "elapsed_seconds": 0.007765075017232448
+    },
+    {
+      "name": "sign-small-1",
+      "exit_code": 0,
+      "elapsed_seconds": 0.007695421052630991
+    },
+    {
+      "name": "sign-small-2",
+      "exit_code": 0,
+      "elapsed_seconds": 0.007919922994915396
+    },
+    {
+      "name": "nix-version",
+      "exit_code": 0,
+      "elapsed_seconds": 0.57260438404046
+    },
+    {
+      "name": "register-root",
+      "exit_code": 0,
+      "elapsed_seconds": 24.549525119015016
+    },
+    {
+      "name": "destination-inventory",
+      "exit_code": 0,
+      "elapsed_seconds": 0.34639661002438515
+    },
+    {
+      "name": "verify-destination",
+      "exit_code": 0,
+      "elapsed_seconds": 8.768314720015042
+    }
+  ],
+  "owner_native_linux_passes_added": 0,
+  "remaining": [
+    "Qualify the exact registered root for the existing NixOS assembly recipe; adapt to SSD root without mutating this retained result.",
+    "Build distinct R5 module/firmware/rootloader image and boot the actual NixOS stage1 and generated stage2 init in generic ARM64 QEMU.",
+    "Native tablet boot/recovery and all owner acceptance remain independent."
+  ]
+}
