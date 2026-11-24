@@ -11,6 +11,32 @@ import stage_signed as signing
 
 
 class ContractTests(unittest.TestCase):
+    def test_atomic_signer_replacement_preserves_frozen_mode(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            module = root / "module.ko"
+            module.write_bytes(b"unsigned payload")
+            module.chmod(0o600)
+            signer = root / "atomic-signer"
+            signer.write_text("#!/usr/bin/env python3\n"
+                              "from pathlib import Path\nimport sys\n"
+                              "p = Path(sys.argv[-1])\n"
+                              "temporary = p.with_suffix('.tmp')\n"
+                              "temporary.write_bytes(p.read_bytes() + b' signed trailer')\n"
+                              "temporary.chmod(0o644)\n"
+                              "temporary.replace(p)\n")
+            signer.chmod(0o700)
+            # Reproduce sign-file's actual atomic replacement side effect,
+            # independently of the process umask; this fixture is not CMS.
+            receipt = m.sign_preserving_mode(signer, root / "unused-key",
+                                             root / "unused-cert", module, 0o600)
+            self.assertEqual(receipt["before_mode"], 0o644)
+            self.assertEqual(receipt["after_mode"], 0o600)
+            self.assertEqual(module.stat().st_mode & 0o777, 0o600)
+            self.assertEqual(module.read_bytes(), b"unsigned payload signed trailer")
+            self.assertEqual(receipt["sha256_before"], receipt["sha256_after"])
+            self.assertTrue(receipt["signed_bytes_unchanged"])
+
     def test_crc_exact(self):
         imported = m.parse_versions("0x1234 module_layout\n0xabcd second\n")
         m.check_versions(imported, m.symvers("0x1234 module_layout vmlinux EXPORT_SYMBOL\n0xabcd second vmlinux EXPORT_SYMBOL\n"))

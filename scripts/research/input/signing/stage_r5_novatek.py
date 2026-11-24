@@ -117,6 +117,22 @@ def cms(work, name, data, cert):
     return payload, signing.verify_cms(s, p, cert)
 
 
+def sign_preserving_mode(sign_file, key, cert, module, mode):
+    signing.run([sign_file, "sha512", key, cert, module])
+    # sign-file can replace the destination through a temporary file, losing
+    # its pre-signing mode. Restore only this new candidate after signing.
+    before = common.identity(module)
+    module.chmod(mode)
+    after = common.identity(module)
+    require(after["mode"] == mode and
+            all(before[field] == after[field] for field in ("sha256", "bytes")),
+            "restoring signed-module mode changed its bytes or failed")
+    return {"before_mode": before["mode"], "after_mode": after["mode"],
+            "required_mode": mode, "signed_bytes": after["bytes"],
+            "sha256_before": before["sha256"], "sha256_after": after["sha256"],
+            "signed_bytes_unchanged": True}
+
+
 def stage(repo, kernel_root, signing_build, unsigned, work):
     require(work.parent == Path("/work") and work.name.startswith("r5-novatek-signed-"),
             "choose a new dedicated /work/r5-novatek-signed-* directory")
@@ -190,7 +206,8 @@ def stage(repo, kernel_root, signing_build, unsigned, work):
             else:
                 common.copy_exact(common.under(source, name), target, expected)
         new = dest / MODULE
-        signing.run([sign_file, "sha512", key, build_cert, new])
+        report["signed_mode_restoration"] = sign_preserving_mode(
+            sign_file, key, build_cert, new, selected[MODULE]["mode"])
         payload, report["replacement_cms"] = cms(verify, "replacement", new.read_bytes(), pem)
         require(payload == stripped.read_bytes(), "signing changed stripped module bytes")
         require(signing.module_info(new) == old_info, "replacement signing identity differs")
