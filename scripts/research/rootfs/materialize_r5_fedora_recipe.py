@@ -4,7 +4,7 @@
 
 Only an already independently staged R5 root can be configured. The old
 production/maintenance archive checkers and generic VM result gates stay
-unchanged; the guest root label is changed at exactly one reviewed location.
+unchanged. Guest and transient-worker identities bind to the exact R5 profile.
 """
 from __future__ import annotations
 
@@ -20,6 +20,7 @@ HERE = Path(__file__).resolve().parent
 PARENT = Path("scripts/research/input/system-integration")
 V9 = PARENT / "profiles/persistent-result-v9"
 LABEL = "tb371fc-r5-f45"
+PROFILE_NAME = "research5-services-fedora45-derived-v9"
 PINS = {
     "assemble_system.py": "9d698cf253edf526fa9cd81121f5e6d3e60789020fd2f5f5fab784113e8ab0c5",
     "boot_system_vm.py": "4d1f59691bb4faccdcdbd791ae2120a89e56f7712fd63270f0a2204662842736",
@@ -63,6 +64,23 @@ def derive_sources(repo, destination):
     values["guest_verify_system.py"] = replace_once(
         original_guest, "profile['root_label'] == 'tb371fc-r4f-f45'",
         "profile['root_label'] == '" + LABEL + "'").encode()
+    # The fixed worker executes inside the R5 VM too. Its independent guards
+    # must identify the same exact release/profile/label as its parent; keep
+    # the architecture, digest, nonce, generic-VM and FD-route guards intact.
+    worker = replace_once(values["guest_transient_worker.py"].decode(),
+        "PROFILE_NAME = 'research4-display-input-fedora45-v9-persistent-result'",
+        "PROFILE_NAME = '" + PROFILE_NAME + "'")
+    worker = replace_once(worker,
+        "uname.release == '6.12.114-tb371fc-research4-system'",
+        "uname.release == '" + s.RELEASE + "'")
+    worker = replace_once(worker,
+        "'worker is limited to the owned research4 ARM64 kernel'",
+        "'worker is limited to the owned research5 ARM64 kernel'")
+    worker = replace_once(worker,
+        "profile['profile'] == PROFILE_NAME and profile['root_label'] == 'tb371fc-r4f-f45' and",
+        "profile['profile'] == PROFILE_NAME and profile['root_label'] == '" + LABEL + "' and\n"
+        "            profile['kernel_release'] == uname.release == '" + s.RELEASE + "' and")
+    values["guest_transient_worker.py"] = worker.encode()
     assemble = replace_once(values["assemble_system.py"].decode(),
                             "tb371fc-research4-vm\\n", "tb371fc-research5-vm\\n")
     # Retain the exact configure and early_initramfs entry points. Replace
@@ -93,7 +111,8 @@ def derive_sources(repo, destination):
                 target.chmod(0o755)
     result = {"schema_version": 1, "originals": originals,
               "derived": {name: s.identity(destination / name) for name in sorted(values)},
-              "changed_v9_files": ["assemble_system.py", "guest_verify_system.py"],
+              "changed_v9_files": ["assemble_system.py", "guest_transient_worker.py",
+                                   "guest_verify_system.py"],
               "separate_r5_adapter": "system_common.py",
               "old_recipe_written": False, "vm_run": False}
     s.save(destination / "derivation.json", result)
@@ -196,7 +215,7 @@ def materialize(repo, work):
     s.copy_exact(work / "runtime.json", old / "runtime.json", s.identity(work / "runtime.json"))
     btf = artifacts["artifacts/kernel.btf"]
     profile = {
-        "schema_version": 1, "profile": "research5-services-fedora45-derived-v9",
+        "schema_version": 1, "profile": PROFILE_NAME,
         "kernel_release": s.RELEASE, "root_label": LABEL, "module_count": 84,
         "firmware_file_count": 69, "runtime_manifest_sha256": s.identity(work / "runtime.json")["sha256"],
         "kernel_image_sha256": artifacts["artifacts/Image"]["sha256"],
