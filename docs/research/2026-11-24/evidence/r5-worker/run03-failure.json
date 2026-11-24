@@ -1,0 +1,589 @@
+{
+  "schema_version": 1,
+  "source_revision": "28adcae4d9c5ed602a17225c68f5042cf494bd1f",
+  "physical_hardware_tested": false,
+  "files": {
+    "vm-label-01/result.json": {
+      "bytes": 3901,
+      "sha256": "25ef66282d0082c9642eeee68d3fffc1d626bdca88dd7bac3e7f2023ad358e9a",
+      "content": {
+        "audit_loss_signals": {
+          "any_kernel_callback_suppression": [
+            {
+              "line": 4375,
+              "text": "[   40.679113] kauditd_printk_skb: 36 callbacks suppressed"
+            },
+            {
+              "line": 7414,
+              "text": "[   52.152763] kauditd_printk_skb: 13 callbacks suppressed"
+            },
+            {
+              "line": 8720,
+              "text": "[   62.937799] kauditd_printk_skb: 77 callbacks suppressed"
+            },
+            {
+              "line": 10212,
+              "text": "[   78.402074] kauditd_printk_skb: 36 callbacks suppressed"
+            },
+            {
+              "line": 10810,
+              "text": "[   84.449356] kauditd_printk_skb: 22 callbacks suppressed"
+            },
+            {
+              "line": 11885,
+              "text": "[   95.865101] kauditd_printk_skb: 6 callbacks suppressed"
+            },
+            {
+              "line": 15650,
+              "text": "[  181.049887] kauditd_printk_skb: 39 callbacks suppressed"
+            }
+          ],
+          "audit_backlog_overflow": [],
+          "audit_loss_reason": [],
+          "audit_lost_positive": [],
+          "audit_printk_suppression": [
+            {
+              "line": 4375,
+              "text": "[   40.679113] kauditd_printk_skb: 36 callbacks suppressed"
+            },
+            {
+              "line": 7414,
+              "text": "[   52.152763] kauditd_printk_skb: 13 callbacks suppressed"
+            },
+            {
+              "line": 8720,
+              "text": "[   62.937799] kauditd_printk_skb: 77 callbacks suppressed"
+            },
+            {
+              "line": 10212,
+              "text": "[   78.402074] kauditd_printk_skb: 36 callbacks suppressed"
+            },
+            {
+              "line": 10810,
+              "text": "[   84.449356] kauditd_printk_skb: 22 callbacks suppressed"
+            },
+            {
+              "line": 11885,
+              "text": "[   95.865101] kauditd_printk_skb: 6 callbacks suppressed"
+            },
+            {
+              "line": 15650,
+              "text": "[  181.049887] kauditd_printk_skb: 39 callbacks suppressed"
+            }
+          ]
+        },
+        "audit_printk_observation_argument": null,
+        "board_dtb_used": false,
+        "compiled_module_sig_force": false,
+        "early_selinux_argument": null,
+        "elapsed_seconds": 188.7473482679925,
+        "expected_marker_seen": true,
+        "guest_file_status": null,
+        "guest_partial_progress": [],
+        "guest_reported_failure": null,
+        "host_filesystem_shared": false,
+        "initramfs_role": "maintenance-label-only",
+        "initramfs_sha256": "cc791b061ff20e40d9c49a417395640f1ce631d647da545bce4e9eddf2b2acbb",
+        "invalid_initramfs_seen": false,
+        "kernel_image_sha256": "d80bfce0feb5f6c0cec1b0b0dd4691323720ec3f34a373c7a109001e2cf42e76",
+        "kernel_panic_seen": false,
+        "kernel_rdinit_argument": null,
+        "log_limit_bytes": 8388608,
+        "marker_exact_line_count": 1,
+        "network": false,
+        "observed_warning_counts": {
+          "any_kernel_callback_suppression_count": 7,
+          "audit_backlog_overflow_count": 0,
+          "audit_loss_reason_count": 0,
+          "audit_lost_positive_count": 0,
+          "audit_printk_suppression_count": 7,
+          "autofs4_module_warning_count": 0,
+          "bpf_lsm_not_supported_count": 0,
+          "pids_max_read_warning_count": 0,
+          "selinux_avc_denial_count": 44,
+          "udev_event_fd_loss_count": 0,
+          "virtual_gpio_failure_count": 0
+        },
+        "passed": true,
+        "persistent_result_metadata": null,
+        "persistent_result_qualified": false,
+        "phase": "label",
+        "physical_device_passthrough": false,
+        "physical_hardware_tested": false,
+        "profile_sha256": "adff09eeb4359d806a2e83914e76368495e8696ce33f070f26057de8b86ec799",
+        "qemu_exit_code": 0,
+        "schema_version": 2,
+        "serial_log_bytes": 1095433,
+        "serial_log_sha256": "e7f526f4482253df97e7e380e4cef9f1c188d3492e472568166df126c5fad223",
+        "start_utc": "2026-11-24T01:26:18.756186+00:00",
+        "systemd_debug_logging_for_this_vm_only": true,
+        "systemd_lsm_bpf_attached_messages": [
+          "bpf-restrict-fs: LSM BPF program attached",
+          "bpf-restrict-fs: LSM BPF program attached"
+        ],
+        "termination_reason": null,
+        "timeout_seconds": 900,
+        "validation_failure_seen": false,
+        "vm_module_sig_enforce_argument": "module.sig_enforce=1"
+      }
+    },
+    "vm-verify-01/result.json": {
+      "bytes": 7352,
+      "sha256": "ae0ca5a0f4cf095fb749ccbd0e819bdc427e01a3d333f8e06bbece7f53654a1f",
+      "content": {
+        "actual_audit_printk_readback_gate": false,
+        "actual_pl061_binding_gate": false,
+        "actual_success_path_journal_sync_gate": false,
+        "audit_loss_signals": {
+          "any_kernel_callback_suppression": [],
+          "audit_backlog_overflow": [],
+          "audit_loss_reason": [],
+          "audit_lost_positive": [],
+          "audit_printk_suppression": []
+        },
+        "audit_printk_observation_argument": "rd.tb371fc.audit-printk-unlimited=1",
+        "behavioral_probe_gates": {
+          "actual_bpf_file_open_eperm": false,
+          "actual_tasks_max": false,
+          "same_boot_policy_export_record": false
+        },
+        "board_dtb_used": false,
+        "compiled_module_sig_force": false,
+        "early_bootstrap_lines": [
+          "TB371FC_EARLY_SELINUX_V4 AUDIT_PRINTK_UNLIMITED scope=generic-vm opt_in=1 compatible=linux,dummy-virt before=5 after=0 burst_before=10 burst_after=10 policy_load_attempted=0",
+          "TB371FC_EARLY_SELINUX_V4 POLICY_LOADED enforcing=1 context=system_u:system_r:kernel_t:s0",
+          "TB371FC_EARLY_SELINUX_V4 file=/usr/lib/systemd/systemd context=system_u:object_r:init_exec_t:s0",
+          "TB371FC_EARLY_SELINUX_V4 file=/usr/bin/udevadm context=system_u:object_r:udev_exec_t:s0",
+          "TB371FC_EARLY_SELINUX_V4 EXEC_SYSTEMD enforcing=1 flags=0x828c"
+        ],
+        "early_selinux_argument": "rd.tb371fc.early-selinux=1",
+        "elapsed_seconds": 144.92271729605272,
+        "expected_marker_seen": false,
+        "guest_file_status": null,
+        "guest_gates_match": false,
+        "guest_partial_progress": [],
+        "guest_reported_failure": null,
+        "guest_result": {},
+        "guest_result_count": 0,
+        "host_filesystem_shared": false,
+        "independent_same_boot_av_gates": {
+          "noop": false,
+          "pids": false,
+          "proc_read_baseline": false,
+          "proc_read_restricted": false
+        },
+        "independent_transient_route_gates": {
+          "noop": false,
+          "pids": false,
+          "proc_read_baseline": false,
+          "proc_read_restricted": false
+        },
+        "initramfs_role": "production-tmpfs-early-selinux",
+        "initramfs_sha256": "1386785b5e984f6a99b420e7511ac1394427be8aa9227e4f9b9ec52cb3a0bcfc",
+        "initrd_domain_records": [
+          {
+            "actual_journal_files_context": "system_u:object_r:syslogd_var_run_t:s0",
+            "actual_journal_files_count": 1,
+            "boot_id": "76456187-aa57-48df-afcd-82fe860ca1e3",
+            "early_api_contexts": {
+              "/dev/kmsg": "system_u:object_r:kmsg_device_t:s0",
+              "/dev/null": "system_u:object_r:null_device_t:s0",
+              "/run": "system_u:object_r:var_run_t:s0",
+              "/run/log": "system_u:object_r:syslogd_var_run_t:s0",
+              "/run/log/journal": "system_u:object_r:syslogd_var_run_t:s0"
+            },
+            "journald_context": "system_u:system_r:syslogd_t:s0",
+            "journald_pid": "67",
+            "kernel_rdinit": "/init.tmpfs",
+            "pid1_context": "system_u:system_r:init_t:s0",
+            "read_only_process_probe": true,
+            "root_device": "0:20",
+            "root_filesystem": "tmpfs",
+            "root_mount_options": "rw,relatime",
+            "root_source": "tb371fc-initroot",
+            "root_super_options": "rw,seclabel,size=196608k,mode=755",
+            "schema_version": 3,
+            "scope": "initrd before switch-root",
+            "tmpfs_root_opt_in": true,
+            "udevd_context": "system_u:system_r:udev_t:s0-s0:c0.c1023",
+            "udevd_pid": "79"
+          }
+        ],
+        "invalid_initramfs_seen": false,
+        "kernel_image_sha256": "d80bfce0feb5f6c0cec1b0b0dd4691323720ec3f34a373c7a109001e2cf42e76",
+        "kernel_panic_seen": false,
+        "kernel_rdinit_argument": "rdinit=/init.tmpfs",
+        "log_limit_bytes": 8388608,
+        "marker_exact_line_count": 0,
+        "native_audit_printk_observation": {
+          "burst_after": 10,
+          "burst_before": 10,
+          "interval_after": 0,
+          "interval_before": 5,
+          "line": 273,
+          "marker_count": 1,
+          "passed": false,
+          "scope": "explicit generic-VM-only pre-policy printk observation"
+        },
+        "network": false,
+        "observed_warning_counts": {
+          "any_kernel_callback_suppression_count": 0,
+          "audit_backlog_overflow_count": 0,
+          "audit_loss_reason_count": 0,
+          "audit_lost_positive_count": 0,
+          "audit_printk_suppression_count": 0,
+          "autofs4_module_warning_count": 0,
+          "bpf_lsm_not_supported_count": 0,
+          "pids_max_read_warning_count": 0,
+          "selinux_avc_denial_count": 0,
+          "udev_event_fd_loss_count": 0,
+          "virtual_gpio_failure_count": 0
+        },
+        "passed": false,
+        "persistent_result_error": {
+          "message": "debugfs did not return unambiguous inode metadata",
+          "type": "ValueError"
+        },
+        "persistent_result_metadata": null,
+        "persistent_result_qualified": false,
+        "phase": "verify",
+        "physical_device_passthrough": false,
+        "physical_hardware_tested": false,
+        "profile_sha256": "adff09eeb4359d806a2e83914e76368495e8696ce33f070f26057de8b86ec799",
+        "qemu_exit_code": 0,
+        "schema_version": 2,
+        "serial_log_bytes": 886498,
+        "serial_log_sha256": "27fd97e4c9e0cf244c53b18690b5f1cb2c6542681001043dc09b6df5cb79aba2",
+        "standard_systemd_early_reload": {
+          "passed": true,
+          "reload_error_lines": [],
+          "reload_success_lines": [
+            "Successfully loaded SELinux policy in 2.368434s."
+          ],
+          "scope": "standard systemd loader after native exec and before same-boot initrd proof",
+          "transition_error_lines": [],
+          "transition_success_lines": [
+            "Successfully switched to calculated init label 'system_u:system_r:init_t:s0'."
+          ]
+        },
+        "start_utc": "2026-11-24T01:29:52.037408+00:00",
+        "systemd_debug_logging_for_this_vm_only": true,
+        "systemd_lsm_bpf_attached_messages": [
+          "bpf-restrict-fs: LSM BPF program attached",
+          "bpf-restrict-fs: LSM BPF program attached"
+        ],
+        "termination_reason": "guest reported failure",
+        "timeout_seconds": 900,
+        "tmpfs_migration_proof": {
+          "domain_proof_line": 2192,
+          "exec_line": 287,
+          "new_device": "0:20",
+          "old_device": "0:2",
+          "passed": false,
+          "policy_line": 284,
+          "policy_load_count": 1,
+          "postexec_domain_proof_count": 1,
+          "stage0_count": 1,
+          "stage0_line": 271,
+          "stage1_count": 1,
+          "stage1_line": 272,
+          "systemd_exec_count": 1
+        },
+        "udev_event_serialization": {
+          "conditional_restore_gate_passed": true,
+          "handoff_lines": [
+            "\u001b[0;90m\u001b[0;38:5:245msystemd-udevd.service: Got notification message from PID 79: FDSTOREREMOVE=1, FDNAME=event-serialization\u001b[0m",
+            "\u001b[0;90m\u001b[0;38:5:245msystemd-udevd.service: Got notification message from PID 79: FDSTOREREMOVE=1, FDNAME=event-serialization\u001b[0m",
+            "\u001b[0;90m\u001b[0;38:5:245msystemd-udevd.service: Got notification message from PID 79: FDSTORE=1, FDNAME=event-serialization\u001b[0m",
+            "\u001b[0;90m\u001b[0;38:5:245msystemd-udevd.service: Added fd 53 (event-serialization) to fd store.\u001b[0m",
+            "\u001b[0;90m\u001b[0;38:5:245msystemd-udevd.service: Added fd 80 (event-serialization) to fd store.\u001b[0m",
+            "\u001b[0;90m\u001b[0;38:5:245msystemd-udevd.service: Got notification message from PID 196: FDSTOREREMOVE=1, FDNAME=event-serialization\u001b[0m",
+            "\u001b[0;90m\u001b[0;38:5:245msystemd-udevd.service: Got explicit request to remove fd 80 (event-serialization), closing.\u001b[0m"
+          ],
+          "positive_event_counts_equal": true,
+          "restored_counts": [],
+          "root_side_accepted_fd_lines": [
+            "\u001b[0;90m\u001b[0;38:5:245msystemd-udevd.service: Added fd 80 (event-serialization) to fd store.\u001b[0m"
+          ],
+          "serialized_counts": []
+        },
+        "validation_failure_seen": true,
+        "vm_module_sig_enforce_argument": "module.sig_enforce=1"
+      }
+    },
+    "vm-label-01/command.json": {
+      "bytes": 1002,
+      "sha256": "2ebbd827d523382d0a798b29d5a1a59a430b5bfb8f95ac93c6ed8f7cc34f2c7a",
+      "content": [
+        "/usr/bin/qemu-system-aarch64",
+        "-machine",
+        "virt",
+        "-cpu",
+        "cortex-a72",
+        "-smp",
+        "2",
+        "-m",
+        "2048",
+        "-display",
+        "none",
+        "-monitor",
+        "none",
+        "-serial",
+        "stdio",
+        "-nic",
+        "none",
+        "-no-reboot",
+        "-kernel",
+        "/work/fedora-r5-system-v3/rootfs/boot/Image-6.12.114-tb371fc-research5-services",
+        "-initrd",
+        "/work/fedora-r5-system-v3/rootfs/boot/initramfs-6.12.114-tb371fc-research5-services-maintenance.img",
+        "-append",
+        "console=ttyAMA0 root=LABEL=tb371fc-r5-f45 rootfstype=ext4 rw rd.luks=0 rd.lvm=0 rd.md=0 rd.dm=0 rd.neednet=0 module.sig_enforce=1 systemd.unit=tb371fc-r4f-validation.target systemd.show_status=yes systemd.log_target=console systemd.log_level=debug selinux=1 enforcing=0 tb371fc.r4f-phase=label tb371fc.r4f-profile=adff09eeb4359d806a2e83914e76368495e8696ce33f070f26057de8b86ec799",
+        "-drive",
+        "if=none,id=rootfs,format=raw,file=/work/fedora-r5-system-v3/fedora45-research5-services.ext4",
+        "-device",
+        "virtio-blk-device,drive=rootfs"
+      ]
+    },
+    "vm-verify-01/command.json": {
+      "bytes": 1097,
+      "sha256": "65c310b727e5d59670f23785a946d576722af85ce87a868a2881993080865dd7",
+      "content": [
+        "/usr/bin/qemu-system-aarch64",
+        "-machine",
+        "virt",
+        "-cpu",
+        "cortex-a72",
+        "-smp",
+        "2",
+        "-m",
+        "2048",
+        "-display",
+        "none",
+        "-monitor",
+        "none",
+        "-serial",
+        "stdio",
+        "-nic",
+        "none",
+        "-no-reboot",
+        "-kernel",
+        "/work/fedora-r5-system-v3/rootfs/boot/Image-6.12.114-tb371fc-research5-services",
+        "-initrd",
+        "/work/fedora-r5-system-v3/rootfs/boot/initramfs-6.12.114-tb371fc-research5-services.img",
+        "-append",
+        "console=ttyAMA0 root=LABEL=tb371fc-r5-f45 rootfstype=ext4 rw rd.luks=0 rd.lvm=0 rd.md=0 rd.dm=0 rd.neednet=0 module.sig_enforce=1 systemd.unit=tb371fc-r4f-validation.target systemd.show_status=yes systemd.log_target=console systemd.log_level=debug selinux=1 enforcing=1 rd.tb371fc.early-selinux=1 rd.tb371fc.tmpfs-root=1 rdinit=/init.tmpfs rd.tb371fc.audit-printk-unlimited=1 tb371fc.r4f-phase=verify tb371fc.r4f-profile=adff09eeb4359d806a2e83914e76368495e8696ce33f070f26057de8b86ec799",
+        "-drive",
+        "if=none,id=rootfs,format=raw,file=/work/fedora-r5-system-v3/fedora45-research5-services.ext4",
+        "-device",
+        "virtio-blk-device,drive=rootfs"
+      ]
+    },
+    "lineage-label/after.json": {
+      "bytes": 1373,
+      "sha256": "1325d30422de0745d6cb6734cb5d4963d8b2528fc13d023a3e51c0a4b8ac30a7",
+      "content": {
+        "before": {
+          "archives": {
+            "label": "cc791b061ff20e40d9c49a417395640f1ce631d647da545bce4e9eddf2b2acbb",
+            "verify": "1386785b5e984f6a99b420e7511ac1394427be8aa9227e4f9b9ec52cb3a0bcfc"
+          },
+          "image": {
+            "bytes": 4294967296,
+            "sha256": "c0aa752277f6b3b821bc05f7b0470ca8e05542b9e6c2c65bc5948bd874e3cdfa"
+          },
+          "image_manifest": {
+            "bytes": 702,
+            "sha256": "5b963dd22d9d2b7fce5672bba6af594a8c7589f15b741ad822169f6ad2406567"
+          },
+          "initramfs_sha256": "cc791b061ff20e40d9c49a417395640f1ce631d647da545bce4e9eddf2b2acbb",
+          "kernel_image_sha256": "d80bfce0feb5f6c0cec1b0b0dd4691323720ec3f34a373c7a109001e2cf42e76",
+          "original_image": {
+            "bytes": 4294967296,
+            "sha256": "c0aa752277f6b3b821bc05f7b0470ca8e05542b9e6c2c65bc5948bd874e3cdfa"
+          },
+          "profile_sha256": "adff09eeb4359d806a2e83914e76368495e8696ce33f070f26057de8b86ec799",
+          "runner": {
+            "bytes": 40810,
+            "sha256": "4d1f59691bb4faccdcdbd791ae2120a89e56f7712fd63270f0a2204662842736"
+          }
+        },
+        "image_after": {
+          "bytes": 4294967296,
+          "sha256": "a5a457f47e4af5abe21a67c10bfb5f164ebb9f874a88ed9ede5e7b9dcca7d601"
+        },
+        "passed": true,
+        "phase": "label",
+        "physical_hardware_tested": false,
+        "result": {
+          "bytes": 3901,
+          "sha256": "25ef66282d0082c9642eeee68d3fffc1d626bdca88dd7bac3e7f2023ad358e9a"
+        },
+        "runner_exit_code": 0
+      }
+    },
+    "lineage-verify/after.json": {
+      "bytes": 1375,
+      "sha256": "e1421f317e11cedb3c84db5c494e2c8eb7d2e6c2f546bbd07072c57426a27038",
+      "content": {
+        "before": {
+          "archives": {
+            "label": "cc791b061ff20e40d9c49a417395640f1ce631d647da545bce4e9eddf2b2acbb",
+            "verify": "1386785b5e984f6a99b420e7511ac1394427be8aa9227e4f9b9ec52cb3a0bcfc"
+          },
+          "image": {
+            "bytes": 4294967296,
+            "sha256": "a5a457f47e4af5abe21a67c10bfb5f164ebb9f874a88ed9ede5e7b9dcca7d601"
+          },
+          "image_manifest": {
+            "bytes": 702,
+            "sha256": "5b963dd22d9d2b7fce5672bba6af594a8c7589f15b741ad822169f6ad2406567"
+          },
+          "initramfs_sha256": "1386785b5e984f6a99b420e7511ac1394427be8aa9227e4f9b9ec52cb3a0bcfc",
+          "kernel_image_sha256": "d80bfce0feb5f6c0cec1b0b0dd4691323720ec3f34a373c7a109001e2cf42e76",
+          "original_image": {
+            "bytes": 4294967296,
+            "sha256": "c0aa752277f6b3b821bc05f7b0470ca8e05542b9e6c2c65bc5948bd874e3cdfa"
+          },
+          "profile_sha256": "adff09eeb4359d806a2e83914e76368495e8696ce33f070f26057de8b86ec799",
+          "runner": {
+            "bytes": 40810,
+            "sha256": "4d1f59691bb4faccdcdbd791ae2120a89e56f7712fd63270f0a2204662842736"
+          }
+        },
+        "image_after": {
+          "bytes": 4294967296,
+          "sha256": "1bc3aafaca4e53092a4a7ea7c4e08ee2f63f150b29d89602d94514965422e170"
+        },
+        "passed": false,
+        "phase": "verify",
+        "physical_hardware_tested": false,
+        "result": {
+          "bytes": 7352,
+          "sha256": "ae0ca5a0f4cf095fb749ccbd0e819bdc427e01a3d333f8e06bbece7f53654a1f"
+        },
+        "runner_exit_code": 1
+      }
+    }
+  },
+  "run_receipts": {
+    "label.exit": "0",
+    "verify.exit": "1",
+    "started-utc": "2026-11-24T01:26:05Z",
+    "finished-utc": "2026-11-24T01:32:33Z"
+  },
+  "serial_log": {
+    "bytes": 886498,
+    "sha256": "27fd97e4c9e0cf244c53b18690b5f1cb2c6542681001043dc09b6df5cb79aba2",
+    "markers": [
+      {
+        "line": 271,
+        "text": "TB371FC_TMPFS_STAGE0_V1 COPY_COMPLETE old_dev=0:2 new_dev=0:20 policy_load_attempted=0"
+      },
+      {
+        "line": 272,
+        "text": "TB371FC_TMPFS_STAGE1_V2 CLEANUP_COMPLETE old_dev=0:2 new_dev=0:20 cleanup_children=1 old_root_empty=1 policy_load_attempted=0"
+      },
+      {
+        "line": 273,
+        "text": "TB371FC_EARLY_SELINUX_V4 AUDIT_PRINTK_UNLIMITED scope=generic-vm opt_in=1 compatible=linux,dummy-virt before=5 after=0 burst_before=10 burst_after=10 policy_load_attempted=0"
+      },
+      {
+        "line": 284,
+        "text": "TB371FC_EARLY_SELINUX_V4 POLICY_LOADED enforcing=1 context=system_u:system_r:kernel_t:s0"
+      },
+      {
+        "line": 285,
+        "text": "TB371FC_EARLY_SELINUX_V4 file=/usr/lib/systemd/systemd context=system_u:object_r:init_exec_t:s0"
+      },
+      {
+        "line": 286,
+        "text": "TB371FC_EARLY_SELINUX_V4 file=/usr/bin/udevadm context=system_u:object_r:udev_exec_t:s0"
+      },
+      {
+        "line": 287,
+        "text": "TB371FC_EARLY_SELINUX_V4 EXEC_SYSTEMD enforcing=1 flags=0x828c"
+      },
+      {
+        "line": 2192,
+        "text": "TB371FC_R4F_INITRD_DOMAINS {\"schema_version\":3,\"scope\":\"initrd before switch-root\",\"boot_id\":\"76456187-aa57-48df-afcd-82fe860ca1e3\",\"pid1_context\":\"system_u:system_r:init_t:s0\",\"udevd_pid\":\"79\",\"udevd_context\":\"system_u:system_r:udev_t:s0-s0:c0.c1023\",\"read_only_process_probe\":true,\"kernel_rdinit\":\"/init.tmpfs\",\"tmpfs_root_opt_in\":true,\"root_filesystem\":\"tmpfs\",\"root_device\":\"0:20\",\"root_source\":\"tb371fc-initroot\",\"root_mount_options\":\"rw,relatime\",\"root_super_options\":\"rw,seclabel,size=196608k,mode=755\",\"early_api_contexts\":{\"/dev/null\":\"system_u:object_r:null_device_t:s0\",\"/dev/kmsg\":\"system_u:object_r:kmsg_device_t:s0\",\"/run\":\"system_u:object_r:var_run_t:s0\",\"/run/log\":\"system_u:object_r:syslogd_var_run_t:s0\",\"/run/log/journal\":\"system_u:object_r:syslogd_var_run_t:s0\"},\"journald_pid\":\"67\",\"journald_context\":\"system_u:system_r:syslogd_t:s0\",\"actual_journal_files_count\":1,\"actual_journal_files_context\":\"system_u:object_r:syslogd_var_run_t:s0\"}"
+      },
+      {
+        "line": 12172,
+        "text": "TB371FC_R4F_VM_PROGRESS seq=1 stage=audit_printk_readback END"
+      },
+      {
+        "line": 12181,
+        "text": "TB371FC_R4F_VM_PROGRESS seq=2 stage=early_initrd_domains END"
+      },
+      {
+        "line": 12572,
+        "text": "TB371FC_R4F_VM_PROGRESS seq=3 stage=system_bus_context END"
+      },
+      {
+        "line": 12628,
+        "text": "TB371FC_R4F_VM_PROGRESS seq=4 stage=actual_loaded_policy_export END"
+      },
+      {
+        "line": 13066,
+        "text": "TB371FC_R4F_VM_PROGRESS seq=5 stage=runtime_hashes_verified END"
+      },
+      {
+        "line": 13195,
+        "text": "TB371FC_R4F_VM_PROGRESS seq=6 stage=system_bus_context END"
+      },
+      {
+        "line": 13200,
+        "text": "TB371FC_R4F_VM_PROGRESS seq=7 stage=system_bus_get_id END"
+      },
+      {
+        "line": 13212,
+        "text": "TB371FC_R4F_VM_PROGRESS seq=8 stage=system_bus_manager_version END"
+      },
+      {
+        "line": 13362,
+        "text": "TB371FC_R4F_VM_PROGRESS seq=9 stage=same_boot_fd_policy_requested_worker_premise END"
+      },
+      {
+        "line": 13848,
+        "text": "TB371FC_R4F_VM_PROGRESS seq=10 stage=failure_context END"
+      },
+      {
+        "line": 13853,
+        "text": "TB371FC_R4F_VM_PROGRESS seq=11 stage=journal_sync END"
+      },
+      {
+        "line": 13858,
+        "text": "TB371FC_R4F_VM_PROGRESS seq=12 stage=broker_journal END"
+      },
+      {
+        "line": 13860,
+        "text": "TB371FC_R4F_VM_PROGRESS seq=13 stage=kernel_security_journal END"
+      },
+      {
+        "line": 13883,
+        "text": "TB371FC_R4F_VM_PROGRESS seq=14 stage=transport_journal END"
+      },
+      {
+        "line": 13888,
+        "text": "TB371FC_R4F_VM_PROGRESS seq=15 stage=failure_evidence_sync END"
+      },
+      {
+        "line": 13890,
+        "text": "TB371FC_R4F_VM_FILE status=fail boot_id=76456187-aa57-48df-afcd-82fe860ca1e3 profile_sha256=adff09eeb4359d806a2e83914e76368495e8696ce33f070f26057de8b86ec799 sha256=55bf241d7860241fdd93d552361a9a8b767d6c53d61e660943e61225108dabba bytes=36048 END"
+      },
+      {
+        "line": 13891,
+        "text": "[  141.817999] python3[267]: Traceback (most recent call last):"
+      },
+      {
+        "line": 13902,
+        "text": "[  141.871864] python3[267]: RuntimeError: owned worker reported an explicit protocol/guard error: TB371FC_R4F_WORKER_ERROR {\"message\":\"worker is limited to the owned research4 ARM64 kernel\",\"type\":\"RuntimeError\"}"
+      },
+      {
+        "line": 13903,
+        "text": "[  141.882673] python3[267]: TB371FC_R4F_VM_VALIDATION_FAILED"
+      }
+    ]
+  }
+}

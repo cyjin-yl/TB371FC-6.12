@@ -1,10 +1,13 @@
 # SPDX-License-Identifier: GPL-2.0-only
 from pathlib import Path
+import hashlib
+import importlib.util
 import json
 import os
 import struct
 import subprocess
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -40,7 +43,8 @@ class RecipeTests(unittest.TestCase):
             destination = Path(tmp) / "recipe"
             result = recipe.derive_sources(repo, destination)
             self.assertEqual(result["changed_v9_files"],
-                             ["assemble_system.py", "guest_verify_system.py"])
+                             ["assemble_system.py", "guest_transient_worker.py",
+                              "guest_verify_system.py"])
             for name in recipe.PINS.keys() | recipe.SUPPLEMENT.keys():
                 original = result["originals"][name]["sha256"]
                 actual = result["derived"][name]["sha256"]
@@ -57,6 +61,10 @@ class RecipeTests(unittest.TestCase):
             self.assertIn("from system_common import build_image", assemble)
             self.assertIn("install_policy_candidate()", assemble)
             self.assertIn("from early_initramfs import build", assemble)
+            worker = (destination / "guest_transient_worker.py").read_text()
+            self.assertNotIn("6.12.114-tb371fc-research4-system", worker)
+            self.assertNotIn("research4-display-input-fedora45-v9-persistent-result", worker)
+            self.assertNotIn("tb371fc-r4f-f45", worker)
             with self.assertRaises(FileExistsError):
                 recipe.derive_sources(repo, destination)
 
@@ -154,6 +162,85 @@ class RecipeTests(unittest.TestCase):
                 common.create_ext4(root, image, "tb371fc-r5-f45",
                                    size_bytes=64 * 1024**2, mkfs_timeout=60)
             self.assertEqual(result["sha256"], s.identity(image)["sha256"])
+
+
+class WorkerIdentityTests(unittest.TestCase):
+    """Execute the real derived worker guards with synthetic VM identity.
+
+    Only the noop mode runs, with FD observation and GO replaced by fixtures.
+    This is not evidence of a VM boot, SELinux routing or behavior probes.
+    """
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.repo = Path(__file__).resolve().parents[3]
+        self.derived = self.root / "recipe"
+        recipe.derive_sources(self.repo, self.derived)
+
+    def run_worker(self, source, *, release=s.RELEASE, machine="aarch64",
+                   overrides=None, nonce="a" * 32, digest=None):
+        spec = importlib.util.spec_from_file_location("identity_fixture_worker", source)
+        worker = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(worker)
+        profile = {"profile": recipe.PROFILE_NAME, "root_label": recipe.LABEL,
+                   "kernel_release": s.RELEASE,
+                   "validation_selinux_context": worker.CONTEXT,
+                   "transient_selinux_context": worker.CONTEXT}
+        profile.update(overrides or {})
+        raw = json.dumps(profile).encode()
+        path = self.root / "profile.json"
+        path.write_bytes(raw)
+        supplied_digest = hashlib.sha256(raw).hexdigest() if digest is None else digest
+        compatible = SimpleNamespace(read_bytes=lambda: b"linux,dummy-virt\0")
+        with patch("sys.argv", [str(source), "noop", "--nonce", nonce,
+                                "--profile-sha256", supplied_digest]), \
+                patch.object(worker.os, "uname", return_value=SimpleNamespace(
+                    machine=machine, release=release)), \
+                patch.object(worker.os, "getuid", return_value=0), \
+                patch.object(worker.os, "geteuid", return_value=0), \
+                patch.object(worker, "PROFILE", path), \
+                patch.object(worker, "Path", return_value=compatible), \
+                patch.object(worker, "descriptor", side_effect=lambda fd: {"fd": fd}), \
+                patch.object(worker, "await_go") as go, \
+                patch.object(worker, "emit") as emit:
+            status = worker.main()
+        return status, go, emit
+
+    def test_frozen_worker_reproduces_observed_r5_rejection(self):
+        with self.assertRaisesRegex(RuntimeError, "owned research4 ARM64 kernel"):
+            self.run_worker(self.repo / recipe.V9 / "guest_transient_worker.py")
+
+    def test_derived_worker_accepts_exact_r5_contract(self):
+        status, go, emit = self.run_worker(self.derived / "guest_transient_worker.py")
+        self.assertEqual(status, 0)
+        go.assert_called_once_with("a" * 32)
+        self.assertEqual([call.args[0] for call in emit.call_args_list],
+                         ["TB371FC_R4F_WORKER_READY ", "TB371FC_R4F_WORKER_RESULT "])
+        ready = emit.call_args_list[0].args[1]
+        self.assertEqual(ready["kernel_release"], s.RELEASE)
+        self.assertEqual(ready["nonce"], "a" * 32)
+        self.assertTrue(ready["own_context_and_cgroup_must_be_observed_by_parent"])
+
+    def test_derived_worker_rejects_wrong_kernel_arch_or_profile(self):
+        cases = [
+            {"release": "6.12.114-tb371fc-research4-system"},
+            {"release": s.RELEASE + "-unqualified"},
+            {"machine": "x86_64"},
+            {"overrides": {"profile": "research4-display-input-fedora45-v9-persistent-result"}},
+            {"overrides": {"root_label": "tb371fc-r4f-f45"}},
+            {"overrides": {"kernel_release": "6.12.114-tb371fc-research4-system"}},
+            {"overrides": {"transient_selinux_context": "unconfined_u:unconfined_r:unconfined_t:s0"}},
+        ]
+        for case in cases:
+            with self.subTest(case=case), self.assertRaises(RuntimeError):
+                self.run_worker(self.derived / "guest_transient_worker.py", **case)
+
+    def test_derived_worker_preserves_nonce_and_profile_digest_guards(self):
+        for case in ({"nonce": "not-a-nonce"}, {"digest": "b" * 64}):
+            with self.subTest(case=case), self.assertRaises(RuntimeError):
+                self.run_worker(self.derived / "guest_transient_worker.py", **case)
 
 
 if __name__ == "__main__":
