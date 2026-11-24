@@ -16,3 +16,5 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y clang llvm openssl
       - name: Exercise actual ARM64 ELF stripping and CMS rejection
         run: python3 -O scripts/research/input/signing/test_stage_r5_novatek.py -v
+      - name: Reject invalid target depmod provenance and load plans
+        run: python3 -O scripts/research/input/signing/test_target_r5_depmod.py -v
