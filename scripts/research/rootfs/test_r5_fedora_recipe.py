@@ -6,6 +6,7 @@ import struct
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import materialize_r5_fedora_recipe as recipe
 import r5_system_common as common
@@ -88,6 +89,24 @@ class RecipeTests(unittest.TestCase):
         self.assertNotEqual(acl_semantics(header + named(12345)), acl_semantics(header + named(12346)))
         with self.assertRaises(ValueError):
             acl_semantics(header + short(12345))
+
+    def test_guest_tmpdir_does_not_inherit_host_job_path(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "root"
+            (root / "var/tmp").mkdir(parents=True)
+            with patch.object(common, "ROOT", root), \
+                    patch.object(common, "qualified_stage"), \
+                    patch.dict(os.environ, {"TMPDIR": "/host/job", "TMP": "/host/tmp",
+                                            "TEMP": "/host/temp"}), \
+                    patch.object(common.subprocess, "run") as run:
+                common.run_guest(["/usr/bin/dracut"], timeout=900)
+                env = run.call_args.kwargs["env"]
+                for key in ("TMPDIR", "TMP", "TEMP"):
+                    self.assertEqual(env[key], "/var/tmp")
+                self.assertEqual(os.environ["TMPDIR"], "/host/job")
+                self.assertEqual(run.call_args.kwargs["timeout"], 900)
+                self.assertTrue(run.call_args.kwargs["check"])
+                self.assertEqual(run.call_args.args[0][-1], "/usr/bin/dracut")
 
     def test_real_ordinary_ext4_fixture(self):
         with tempfile.TemporaryDirectory() as tmp:
