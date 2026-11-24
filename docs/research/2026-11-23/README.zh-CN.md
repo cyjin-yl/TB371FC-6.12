@@ -6,6 +6,11 @@
 
 ## 构建进展与完成标准
 
+新增 [Novatek 固件边界修补 0020](novatek-firmware-bounds.md)：已连接真机核对
+八份原厂固件，16 组真实固件软件/硬件 CRC 路径及 18 项边界判断通过，
+R5 AArch64 模块编译成功。修前修后的有效分区信息和离线复制字节一致；
+候选模块尚未签名、装载或做实机触控/笔验收。
+
 **最新构建检查：[research5](research5-services-kernel.md) 已编译并完成传输；
 [首次 Fedora v9 镜像尝试](fedora-r4f-image-failed.md) 在任何 VM 之前失败。
 最近一次实际生产启动仍是 [v8](fedora-r4e-persistent-result-failed.md)：guest

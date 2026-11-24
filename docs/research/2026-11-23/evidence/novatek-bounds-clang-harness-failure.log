@@ -1,0 +1,7 @@
+/work/novatek-stock-validation-20261123/patched.c:226:17: warning: comparison of integers of different signs: 'uint32_t' (aka 'unsigned int') and 'int32_t' (aka 'int') [-Wsign-compare]
+  226 |         for (i = 0 ; i < count ; i++) {
+      |                      ~ ^ ~~~~~
+1 warning generated.
+/usr/bin/ld: cannot find /usr/lib/llvm-19/lib/clang/19/lib/x86_64-pc-linux-gnu/libclang_rt.asan_static.a: No such file or directory
+/usr/bin/ld: cannot find /usr/lib/llvm-19/lib/clang/19/lib/x86_64-pc-linux-gnu/libclang_rt.asan.a: No such file or directory
+clang: error: linker command failed with exit code 1 (use -v to see invocation)

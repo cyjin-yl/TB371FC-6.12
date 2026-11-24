@@ -1,0 +1,734 @@
+{
+  "archive_sha256": "fc331d84ed585457b4183b08f799a49d9839d3114bf5ec2f281a725b87fe5f92",
+  "baseline": {
+    "binary_sha256": "32cbf2650ae70c6931e9631f510264928a97942e5e15b5afabcceddf81676b58",
+    "driver_source_sha256": "8720c0a2fa1cc4311bb100d2d493e3bf697fb20e6d402589e102bfa1b6f33f77",
+    "extracted_harness_sha256": "e86c53c278882419822f8248b439a3536034bb8b48bb2ebc8d8b5bb411374d85",
+    "sanitizers": []
+  },
+  "cases": [
+    {
+      "copied_payload_sha256": "613308a149eb062d5bda1bb37768e1dbe915411671443d0204e9a7e01fb881d8",
+      "copied_payloads_equal": true,
+      "crc_mode": "software",
+      "firmware": "novatek_ts_fw_boe.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 4284795777,
+            "encoded_size": 101731,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 4291440072,
+            "encoded_size": 82271,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 4294961478,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130848
+          },
+          {
+            "checksum": 4294960844,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131104
+          }
+        ],
+        "copied_bytes": 184516,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "1399ed0d0837937e"
+      },
+      "sha256": "04a199ea24a8f0c0a0281b4c4cf8c8bad4946f0040353f496166e8842d12b185"
+    },
+    {
+      "copied_payload_sha256": "613308a149eb062d5bda1bb37768e1dbe915411671443d0204e9a7e01fb881d8",
+      "copied_payloads_equal": true,
+      "crc_mode": "hardware",
+      "firmware": "novatek_ts_fw_boe.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 2666887147,
+            "encoded_size": 101731,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 3725063663,
+            "encoded_size": 82271,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 635905838,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130848
+          },
+          {
+            "checksum": 2464136581,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131104
+          }
+        ],
+        "copied_bytes": 184516,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "1399ed0d0837937e"
+      },
+      "sha256": "04a199ea24a8f0c0a0281b4c4cf8c8bad4946f0040353f496166e8842d12b185"
+    },
+    {
+      "copied_payload_sha256": "c62dbe0e22414f11d50298ff2ab1193a64b70dd0dc6c5439f7fb7a738d15fe10",
+      "copied_payloads_equal": true,
+      "crc_mode": "software",
+      "firmware": "novatek_ts_fw_boe_6.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 4283517434,
+            "encoded_size": 114131,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 4291428974,
+            "encoded_size": 82287,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 4294961435,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130864
+          },
+          {
+            "checksum": 4294960953,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131120
+          }
+        ],
+        "copied_bytes": 196932,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "2eae8f500ce04ae9"
+      },
+      "sha256": "6611efef1126dad4ef588311a7bbbf54503d03afdf7d972d4bf14c44567bf3c4"
+    },
+    {
+      "copied_payload_sha256": "c62dbe0e22414f11d50298ff2ab1193a64b70dd0dc6c5439f7fb7a738d15fe10",
+      "copied_payloads_equal": true,
+      "crc_mode": "hardware",
+      "firmware": "novatek_ts_fw_boe_6.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 1837036238,
+            "encoded_size": 114131,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 1825903254,
+            "encoded_size": 82287,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 14127264,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130864
+          },
+          {
+            "checksum": 1926753738,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131120
+          }
+        ],
+        "copied_bytes": 196932,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "2eae8f500ce04ae9"
+      },
+      "sha256": "6611efef1126dad4ef588311a7bbbf54503d03afdf7d972d4bf14c44567bf3c4"
+    },
+    {
+      "copied_payload_sha256": "3896808724a560ac88462c8fbf12b466fbf0b21fad5bfdb965521d9698dd467d",
+      "copied_payloads_equal": true,
+      "crc_mode": "software",
+      "firmware": "novatek_ts_mp_boe.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 4284935026,
+            "encoded_size": 99847,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 4291442990,
+            "encoded_size": 82231,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 4294962132,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130808
+          },
+          {
+            "checksum": 4294961948,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131064
+          }
+        ],
+        "copied_bytes": 182592,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "19640d79330f9c7b"
+      },
+      "sha256": "5391d0aee8c23af65362b1bc7cb65acad2c46f416db4e8f7decb7c37287a7223"
+    },
+    {
+      "copied_payload_sha256": "3896808724a560ac88462c8fbf12b466fbf0b21fad5bfdb965521d9698dd467d",
+      "copied_payloads_equal": true,
+      "crc_mode": "hardware",
+      "firmware": "novatek_ts_mp_boe.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 1141981691,
+            "encoded_size": 99847,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 3357650300,
+            "encoded_size": 82231,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 2553794562,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130808
+          },
+          {
+            "checksum": 789531305,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131064
+          }
+        ],
+        "copied_bytes": 182592,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "19640d79330f9c7b"
+      },
+      "sha256": "5391d0aee8c23af65362b1bc7cb65acad2c46f416db4e8f7decb7c37287a7223"
+    },
+    {
+      "copied_payload_sha256": "5727c03d999019a9251499dc1361c7a2de1d656b70d4f4ae658316ce6d4db3f8",
+      "copied_payloads_equal": true,
+      "crc_mode": "software",
+      "firmware": "novatek_ts_mp_boe_6.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 4283758991,
+            "encoded_size": 112451,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 4291432151,
+            "encoded_size": 82247,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 4294961811,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130824
+          },
+          {
+            "checksum": 4294961577,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131080
+          }
+        ],
+        "copied_bytes": 195212,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "1f9fb50db2025529"
+      },
+      "sha256": "d7a0d94249a1837e77b9a48f39084bcb2ac14a9da47b9be18accd94961a5e315"
+    },
+    {
+      "copied_payload_sha256": "5727c03d999019a9251499dc1361c7a2de1d656b70d4f4ae658316ce6d4db3f8",
+      "copied_payloads_equal": true,
+      "crc_mode": "hardware",
+      "firmware": "novatek_ts_mp_boe_6.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 3056247040,
+            "encoded_size": 112451,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 486193728,
+            "encoded_size": 82247,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 952014572,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130824
+          },
+          {
+            "checksum": 1254026118,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131080
+          }
+        ],
+        "copied_bytes": 195212,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "1f9fb50db2025529"
+      },
+      "sha256": "d7a0d94249a1837e77b9a48f39084bcb2ac14a9da47b9be18accd94961a5e315"
+    },
+    {
+      "copied_payload_sha256": "dae4380b09f3db147ee4a14fdc403b3491584801bada3b72f87fa1ea8581bf8b",
+      "copied_payloads_equal": true,
+      "crc_mode": "software",
+      "firmware": "novatek_ts_tm_fw.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 4284737054,
+            "encoded_size": 102211,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 4291437719,
+            "encoded_size": 82271,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 4294961941,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130848
+          },
+          {
+            "checksum": 4294961505,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131104
+          }
+        ],
+        "copied_bytes": 184996,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "df7c5bca772a38b4"
+      },
+      "sha256": "1d15b14f4a5136a1769f63dee2d3c28ba82249806cda6a2f68bc659509a043f4"
+    },
+    {
+      "copied_payload_sha256": "dae4380b09f3db147ee4a14fdc403b3491584801bada3b72f87fa1ea8581bf8b",
+      "copied_payloads_equal": true,
+      "crc_mode": "hardware",
+      "firmware": "novatek_ts_tm_fw.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 2235457898,
+            "encoded_size": 102211,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 1845668262,
+            "encoded_size": 82271,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 3298645100,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130848
+          },
+          {
+            "checksum": 1940246215,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131104
+          }
+        ],
+        "copied_bytes": 184996,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "df7c5bca772a38b4"
+      },
+      "sha256": "1d15b14f4a5136a1769f63dee2d3c28ba82249806cda6a2f68bc659509a043f4"
+    },
+    {
+      "copied_payload_sha256": "403d917bd47a490ccfce0b2812e1abefa109101641ee6b0d8cee51f982ba590b",
+      "copied_payloads_equal": true,
+      "crc_mode": "software",
+      "firmware": "novatek_ts_tm_fw_6.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 4283444366,
+            "encoded_size": 114763,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 4291428349,
+            "encoded_size": 82287,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 4294961543,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130864
+          },
+          {
+            "checksum": 4294961387,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131120
+          }
+        ],
+        "copied_bytes": 197564,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "903e0f4b085db5ae"
+      },
+      "sha256": "9e8642c6c0d2f27a99d64e318b9fefa41c507356008ead7c15bc4aba18c36574"
+    },
+    {
+      "copied_payload_sha256": "403d917bd47a490ccfce0b2812e1abefa109101641ee6b0d8cee51f982ba590b",
+      "copied_payloads_equal": true,
+      "crc_mode": "hardware",
+      "firmware": "novatek_ts_tm_fw_6.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 2798817540,
+            "encoded_size": 114763,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 4091394561,
+            "encoded_size": 82287,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 4013044544,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130864
+          },
+          {
+            "checksum": 2637319722,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131120
+          }
+        ],
+        "copied_bytes": 197564,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "903e0f4b085db5ae"
+      },
+      "sha256": "9e8642c6c0d2f27a99d64e318b9fefa41c507356008ead7c15bc4aba18c36574"
+    },
+    {
+      "copied_payload_sha256": "f2f772d86075ae0397d7677d96a6e0089e202a31ebd4f2b3b6a61d90fec5e3c7",
+      "copied_payloads_equal": true,
+      "crc_mode": "software",
+      "firmware": "novatek_ts_tm_mp.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 4284877778,
+            "encoded_size": 100331,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 4291440637,
+            "encoded_size": 82231,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 4294961645,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130808
+          },
+          {
+            "checksum": 4294961885,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131064
+          }
+        ],
+        "copied_bytes": 183076,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "21d6b90f1bb20bb8"
+      },
+      "sha256": "cd9584682939b3201fd06fc8f700ec29b03ef9a755f38b592cc3537381cb52ae"
+    },
+    {
+      "copied_payload_sha256": "f2f772d86075ae0397d7677d96a6e0089e202a31ebd4f2b3b6a61d90fec5e3c7",
+      "copied_payloads_equal": true,
+      "crc_mode": "hardware",
+      "firmware": "novatek_ts_tm_mp.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 2032817698,
+            "encoded_size": 100331,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 2907372130,
+            "encoded_size": 82231,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 3116218283,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130808
+          },
+          {
+            "checksum": 243608832,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131064
+          }
+        ],
+        "copied_bytes": 183076,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "21d6b90f1bb20bb8"
+      },
+      "sha256": "cd9584682939b3201fd06fc8f700ec29b03ef9a755f38b592cc3537381cb52ae"
+    },
+    {
+      "copied_payload_sha256": "fcb7c6df1f855d91ed32bfca105a21bea36db777c2568dc6acf7a51b540b893f",
+      "copied_payloads_equal": true,
+      "crc_mode": "software",
+      "firmware": "novatek_ts_tm_mp_6.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 4283687773,
+            "encoded_size": 113059,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 4291431526,
+            "encoded_size": 82247,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 4294961597,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130824
+          },
+          {
+            "checksum": 4294961405,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131080
+          }
+        ],
+        "copied_bytes": 195820,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "97897d7fc0ce5202"
+      },
+      "sha256": "5ffcc04d0823e7c12186e97db9fb2d5ffc9380f1b616558ddc5a3a418e549ce0"
+    },
+    {
+      "copied_payload_sha256": "fcb7c6df1f855d91ed32bfca105a21bea36db777c2568dc6acf7a51b540b893f",
+      "copied_payloads_equal": true,
+      "crc_mode": "hardware",
+      "firmware": "novatek_ts_tm_mp_6.bin",
+      "matches_baseline": true,
+      "result": {
+        "active_partitions": [
+          {
+            "checksum": 1154321183,
+            "encoded_size": 113059,
+            "file_offset": 512,
+            "name": "ILM",
+            "sram_offset": 0
+          },
+          {
+            "checksum": 2417425856,
+            "encoded_size": 82247,
+            "file_offset": 139264,
+            "name": "DLM",
+            "sram_offset": 1048576
+          },
+          {
+            "checksum": 570742746,
+            "encoded_size": 255,
+            "file_offset": 0,
+            "name": "Header",
+            "sram_offset": 1130824
+          },
+          {
+            "checksum": 1342483120,
+            "encoded_size": 255,
+            "file_offset": 256,
+            "name": "Header",
+            "sram_offset": 1131080
+          }
+        ],
+        "copied_bytes": 195820,
+        "copy_calls": 6,
+        "partition_count": 16,
+        "payload_fnv1a64": "97897d7fc0ce5202"
+      },
+      "sha256": "5ffcc04d0823e7c12186e97db9fb2d5ffc9380f1b616558ddc5a3a418e549ce0"
+    }
+  ],
+  "compiler": "gcc (Debian 14.2.0-19) 14.2.0",
+  "device_linux_tested": false,
+  "evidence_class": "host_execution",
+  "firmware_written_or_loaded": false,
+  "live_capture_sha256": "150f8d8b1cfb2146d55c3bf7e5cfdff2046c8944ae75a8bebc90db9ba0d7c828",
+  "passed": 16,
+  "patched": {
+    "binary_sha256": "6c00707f655aacbb8085eb0b1812340030bdc8ff12b36bd7372e6667672caf4c",
+    "driver_source_sha256": "fe306d3626e3092a0a301a0199a8389d769286cbffb474e1da19aa410e398c95",
+    "extracted_harness_sha256": "75974d7a4074c1a88ee5fc64f3c9f7b56cda4671b2408260c98f6b5dc1d3e849",
+    "sanitizers": [
+      "address",
+      "undefined"
+    ]
+  },
+  "range_checks": {
+    "range_predicates_passed": 18
+  },
+  "schema_version": 1
+}
