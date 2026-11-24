@@ -1,0 +1,167 @@
+{
+  "attempt": "2026-11-24-owner-bound-attempt-01",
+  "bounds": {
+    "configured_sigalrm_seconds": 12,
+    "copy_bytes": 2097152,
+    "cpu_seconds_soft_hard_read_back": [
+      5,
+      6
+    ],
+    "fixture_bytes": 2097152,
+    "hard_timeout_path_exercised": false,
+    "helper_scope": "Existing su performs fixed reads of MemAvailable, battery temperature and capacity before/after; wrapper separately reads ro.product.model using absolute /system/bin/getprop.",
+    "live_arrays_bytes": 4194304,
+    "maximum_allowed_cpu_count": 8,
+    "rlimit_as_changed": false,
+    "self_affinity_pid_argument": 0,
+    "trials_per_allowed_cpu": 3,
+    "wall_limit_evidence": "SIGALRM configuration and hard-exit handler are in the verified actual stdin; the successful run did not reach the deadline",
+    "whole_process_rss_cap_claimed": false,
+    "workload_concurrent_workers": 1,
+    "workload_processes": 1
+  },
+  "capture_nonce": "38395c9c6a26431736df7269c48c8fc6",
+  "command_relation": "actual-command.txt is the recorded single quoted heredoc command containing actual-stdin.py verbatim, with no subsequent command that could mask the Python exit status",
+  "evidence_class": "owner_android_bounded_userspace_correctness_smoke",
+  "execution": {
+    "capture_utc": "2026-11-24T11:12:50.841685+00:00",
+    "completed_utc": "2026-11-24T11:12:52.089945+00:00",
+    "core_elapsed_seconds": 1.144031,
+    "egid": 10290,
+    "euid": 10290,
+    "gid": 10290,
+    "kernel_release": "4.19.157-perf+",
+    "model": "TB371FC",
+    "python": "3.12.11",
+    "python_bytecode_disabled": true,
+    "python_isolated": true,
+    "python_site_disabled": true,
+    "stderr_bytes": 0,
+    "timestamp_scope": "UTC timestamps reported inside the actual Android process; elapsed fields use its monotonic clock",
+    "tool_exit_code": 0,
+    "tool_is_error": false,
+    "tool_request_timeout_ms": 20000,
+    "tool_response_contains_outer_start_end_times": false,
+    "uid": 10290,
+    "uptime_sampled": false,
+    "wrapper_elapsed_seconds": 1.248316,
+    "wrapper_exit_code_to_return": 0
+  },
+  "input_bytes_relation": "actual-stdin.py equals reviewed-runner.py followed by exactly one LF byte",
+  "legacy_receipt": {
+    "git_blob_sha": "722531ef9b240d484b15ba3c6f94511b2041b7d4",
+    "independent_execution_provenance_verified": false,
+    "internal_checksum_rows_consistent": true,
+    "missing_provenance": [
+      "recorded command",
+      "UTC capture interval",
+      "actual tool exit/stdout/stderr",
+      "executing UID",
+      "source/runner hash binding"
+    ],
+    "path": "docs/research/2026-11-24/evidence/android-cpu-memory-smoke.json",
+    "preserved_without_modification": true,
+    "sha256": "28b62112e95121665acba7d277dec92c49016464bcdab6ec8833a7217c729783",
+    "size_bytes": 6383,
+    "used_for_this_attempt_verdict": false
+  },
+  "observed_result": {
+    "affinity_after": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "affinity_before": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "affinity_restored": true,
+    "all_requested_checks_passed": true,
+    "allowed_cpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "checksum_trials": 24,
+    "conditions_after": {
+      "available_bytes": 2357432320,
+      "battery_percent": 100,
+      "battery_temp_deci_c": 264
+    },
+    "conditions_before": {
+      "available_bytes": 2362114048,
+      "battery_percent": 100,
+      "battery_temp_deci_c": 264
+    },
+    "unavailable_cpus": []
+  },
+  "raw_file_manifest": {
+    "actual-command.txt": {
+      "git_blob_sha": "d3c51ccecef4cb381c5d81cfcb094c1d5723783b",
+      "sha256": "b2e5987d8c5e01aaa61e0bb7d0168ad9f0ec6ac4cfdd5f0d68627b8f5d5cc07f",
+      "size_bytes": 9735
+    },
+    "actual-stdin.py": {
+      "git_blob_sha": "d3125e51fce5dd8948e07e43db7cf32218cf725f",
+      "sha256": "b9eba4636f53e4bfc5dd582be5c6c950f644bc59beb255fc4cc7e3b6f980be0c",
+      "size_bytes": 9639
+    },
+    "reviewed-runner.py": {
+      "git_blob_sha": "cdf294726e47cf7d958b0ef3305edd3caac6b43b",
+      "sha256": "1f2c361f45a7926104d9e323497e0cedac4bc3187d0dd2c8662c2476814d18bf",
+      "size_bytes": 9638
+    },
+    "stderr.log": {
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "stdout.json": {
+      "git_blob_sha": "869b4766300dd2259d3b506bc179bbad13de462d",
+      "sha256": "45cb736707de894c15874645bb02c72988dcb296f6afbbdf691da22b1796cddb",
+      "size_bytes": 6781
+    },
+    "tool-result.json": {
+      "git_blob_sha": "f8241ded8b515303badae0b2d77a2cf2027f5d56",
+      "sha256": "4dbd6736ec46d1cf54f63e8be9e0db2530ffd9e596a9e0dfc9bf51c793f04620",
+      "size_bytes": 7377
+    }
+  },
+  "schema": "tb371fc-android-cpu-memory-attempt-binding-v1",
+  "scope_limits": {
+    "global_affinity_or_cgroup_changed": false,
+    "memory_geometry_or_reserved_owner_inference": false,
+    "memory_usage_note": "4 MiB bounds the two active arrays, not interpreter/helper RSS; MemAvailable changes are not attributed to this process.",
+    "mutation_scope": "Private memory is copied/reversed and only the workload process affinity changes; no persistent output file, block/register write or global policy change is requested by the command or source.",
+    "native_SYS_04_accepted": false,
+    "native_linux_passes_added": 0,
+    "parallel_or_sustained_workload_qualified": false,
+    "post_suspend_or_soak_qualified": false,
+    "temperature_note": "Two battery-sensor endpoint readings do not establish thermal stability.",
+    "throughput_or_thermal_stability_qualified": false
+  },
+  "source": {
+    "embedded_actual_source_matches_repository_bytes": true,
+    "git_blob_sha": "1013d6d08c6183ab75cb3cd1884493e55f879879",
+    "path": "scripts/research/android_cpu_memory_smoke.py",
+    "revision": "c461ca2f1b9fd4a6758011e2216ef2855d1142ef",
+    "sha256": "771f751d9e7bb7b0712186d242cb17dfa7853511204acf8d20b90fcbe079460e",
+    "size_bytes": 3454
+  }
+}
