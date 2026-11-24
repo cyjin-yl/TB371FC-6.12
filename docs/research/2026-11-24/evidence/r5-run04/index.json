@@ -1,0 +1,48 @@
+{
+  "bindings_verified": {
+    "all_phase_exit_codes_zero": true,
+    "host_result_matches_lineage_identity": true,
+    "label_output_equals_verify_input": true,
+    "original_image_identical_across_phases": true,
+    "profile_kernel_archives_match_results": true
+  },
+  "files": {
+    "collected-build-and-lineage.json": {
+      "bytes": 26030,
+      "sha256": "a2acb928750670fd356a0fd0f49e25ee9943b99f37760cddd3b9cee509b39122"
+    },
+    "initrd.stderr": {
+      "bytes": 232,
+      "sha256": "0ea652cd4cee591c050be455ad79c0afd868df5c6dc1c2f4878dc1e833a22eb4"
+    },
+    "run.sh": {
+      "bytes": 2326,
+      "sha256": "a350134be7acfb44f827ab24c69098bb2c48367bbeb6dbae21ed9e218630f419"
+    },
+    "verify-result.json": {
+      "bytes": 675980,
+      "sha256": "9f67a541172b9711fd05fdc76e6501ad6ddd956464aa86c43d515da086144c5f"
+    }
+  },
+  "finished_utc": "2026-11-24T02:17:32Z",
+  "job": "/work/r5-fedora-job-6b24e66-run04",
+  "owner_native_linux_passes_added": 0,
+  "physical_hardware_tested": false,
+  "raw_guest_result_receipt": {
+    "boot_id": "a595fc89-3095-4f47-9b6f-5387aaa08865",
+    "profile_sha256": "b4895772ff512baad132216a988de13bfe928d113c16cbe369b1aa9ee2525bec",
+    "sha256": "aa0fa8b3ba2394bad9394ad0dd3c7c279f4f209027770756300fbd5b973d07e9",
+    "size": 413725,
+    "status": "pass"
+  },
+  "raw_guest_result_retained_on_builder": "/work/fedora-r5-system-v4/vm-verify-01/guest-result.json",
+  "record_formats": {
+    "collected-build-and-lineage.json": "Collection of parsed original records with original byte lengths and SHA-256 values, all job phase receipts and additional original-file identities. Embedded content is not claimed to preserve original JSON whitespace.",
+    "initrd.stderr": "Exact original build stderr, including dracut logger and ldconfig warnings; not removed after successful archive/cache validation.",
+    "run.sh": "Exact executed pipeline script bytes; fixed run04 paths, source revision and expected Git blob IDs retained.",
+    "verify-result.json": "Exact original complete host result bytes, including the expanded guest result, retained-file receipt/metadata, behavioral and source-binding proofs."
+  },
+  "schema_version": 1,
+  "source_revision": "6b24e66087e80c6847f0a759e1f6e9a2b9bd4f0d",
+  "work": "/work/fedora-r5-system-v4"
+}

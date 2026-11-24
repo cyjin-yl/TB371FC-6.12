@@ -15,14 +15,17 @@ The R226 installation/reproducibility limitations in
 
 The [R5 boot-candidate contract](boot-bundle-contract.md) now provides executable
 checks for the frozen 106-file input set, current payload identities and final-root
-module dependencies. It keeps native entry/root-loader/recovery prerequisites
+module dependencies. It keeps native entry/board-root-selection/recovery prerequisites
 explicitly open and does not add an owner-tablet Linux pass.
 
-**Latest construction checkpoint: [research5](research5-services-kernel.md) is
-built and transferred; the [first Fedora v9 image attempt](fedora-r4f-image-failed.md)
-fails before any VM. The latest actual production run remains
-[v8](fedora-r4e-persistent-result-failed.md), whose guest checks pass but one
-Enforcing AVC fails overall. Owner-tablet Linux remains at 0 runs and 0 passes.**
+**Current follow-up: the [2026-11-24 R5 runtime checkpoint](../2026-11-24/r5-runtime.md)
+records successful run04 construction and both maintenance and production VM
+phases. The repaired R5 system reached systemd multi-user with SELinux Enforcing,
+runtime module-signature enforcement and all existing production gates passed.
+Run03's worker-identity failure remains retained, together with the earlier
+[v8 AVC failure](fedora-r4e-persistent-result-failed.md) and
+[first v9 image timeout](fedora-r4f-image-failed.md) remain historical failures.
+Owner-tablet Linux remains at 0 runs and 0 passes.**
 
 The new `6.12.114-tb371fc-research1` Image, matching modules and native board
 DTB have now compiled in an isolated CT102 container. A generic ARM64 VM boot
@@ -234,6 +237,7 @@ changing `require-sigs`, extending that attempt or scoring an incomplete root.
 | --- | --- | --- |
 | Fedora, frozen research1 system | Full systemd multi-user boot with Enforcing, 83 modules and 69 firmware hashes checked | Baseline resource/GPIO notices remain; no physical tablet |
 | Fedora, research3/research4 follow-up | Both 84-module kernels; v8 completes early labels, real FD/TasksMax/BPF behavior, PL061 binding and normal-shutdown result transport | v8 remains failed; the first v9 image times out before any VM; later runtime/finalization and tablet tests remain open |
+| [Fedora, R5 run04](../2026-11-24/r5-runtime.md) | New root/initramfs/image; maintenance and production phases pass, with multi-user, Enforcing, signature enforcement, actual TasksMax/BPF behavior and qualified persistent result | Generic virt only; no Lenovo board DT or physical passthrough; native entry, recovery and hardware acceptance remain open |
 | NixOS | Full 894-path `system.build.toplevel`; ARM version/syntax checks; separate R5 service-prerequisite build | First signed-cache copy times out after source verification; no qualified root/image, activation or PID 1 boot |
 | Nura/postmarketOS experiment | ARM builder installed 382 target packages and exported a checked rootfs; actual BusyBox/OpenRC entry inventory and separate R5 prerequisite build | Target not booted; only 371 versions retained in its earlier offline cache; full reconstruction and hardware integration remain open |
 

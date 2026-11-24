@@ -5,7 +5,7 @@
 Owner-fork direction, 2026-11-24: [mainline kernel and native-distribution strategy](docs/MAINLINE_STRATEGY.md),
 [driver reuse and remaining board work](docs/DRIVER_ROADMAP.md), and
 [shipping-source provenance / formal source request](docs/SOURCE_PROVENANCE.md).
-These documents extend the owner research branch; they do not add a physical
+The reviewed research work is now integrated into this fork's `main`; it does not add a physical
 Linux boot or hardware pass to the existing acceptance ledger.
 
 Update 2026-11-05: development is paused; contributors are welcome.
@@ -27,9 +27,13 @@ private firmware staging, input-driver fixes and an
 [owner-specific rescue-controller correction](docs/research/2026-11-23/first-stage-owner-udc.md).
 The follow-up [research5 kernel](docs/research/2026-11-23/research5-services-kernel.md)
 has a full build and 84 signed modules for the original Nix/Nura service prerequisites.
-The latest actual Fedora production run remains v8, whose complete guest checks
-still fail the overall zero-AVC gate; the [first v9 image attempt](docs/research/2026-11-23/fedora-r4f-image-failed.md)
-times out before any VM. The first [Nix registered-root preparation](docs/research/2026-11-23/nixos-store-preparation-failed.md)
+The [2026-11-24 R5 runtime checkpoint](docs/research/2026-11-24/r5-runtime.md)
+records successful run04 construction and both maintenance and production VM
+phases. The repaired R5 system reached systemd multi-user with SELinux Enforcing,
+runtime module-signature enforcement and all existing production gates passed.
+Run03's inherited-worker failure, the earlier v8 AVC failure and
+[first v9 image timeout](docs/research/2026-11-23/fedora-r4f-image-failed.md) remain retained.
+The first [Nix registered-root preparation](docs/research/2026-11-23/nixos-store-preparation-failed.md)
 also times out during signed-cache copying after source verification; no NixOS
 image or PID1 boot was reached. Nix/Nura target-system boot and physical entry remain open.
 The dated overview keeps these construction, runtime and retained-failure scopes separate.

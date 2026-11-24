@@ -1,0 +1,186 @@
+{
+  "attempt": {
+    "archives": {
+      "label": "4b09577be4a3848361617de47e4a4e8c9c8a5593057ff19538eb5328944d71c8",
+      "verify": "6f63a7048f6664d1ff4473c0ddf580412172b50f9495073a4e7af5cd23465321"
+    },
+    "candidate": "/work/fedora-r5-system-v4",
+    "construction_warning_scope": "Original dracut/ldconfig warning log retained at evidence/r5-run04/initrd.stderr; complete phase/archive/cache gates passed, not a warning-free build.",
+    "container": "tb371fc-build-20261123",
+    "distribution_release_finalizer_executed": false,
+    "evidence_index": "evidence/r5-run04/index.json",
+    "final_result_available": true,
+    "finished_utc": "2026-11-24T02:17:32Z",
+    "generic_vm_passed": true,
+    "guest_summary": {
+      "all_runtime_hashes_verified": true,
+      "autofs_loaded": true,
+      "failed_units": [],
+      "firmware_files_verified": 69,
+      "kernel_release": "6.12.114-tb371fc-research5-services",
+      "kernel_tainted": 0,
+      "module_files_verified": 84,
+      "module_sig_enforce_sysfs": "Y",
+      "module_signature_enforced": true,
+      "multi_user_target": "active",
+      "pid1": "/usr/lib/systemd/systemd",
+      "pid1_selinux_context": "system_u:system_r:init_t:s0",
+      "root_label": "tb371fc-r5-f45",
+      "root_source": "/dev/vda",
+      "root_type": "ext4",
+      "selinux": "Enforcing"
+    },
+    "host": "CT102",
+    "host_result": "evidence/r5-run04/verify-result.json",
+    "host_result_identity": {
+      "bytes": 675980,
+      "sha256": "9f67a541172b9711fd05fdc76e6501ad6ddd956464aa86c43d515da086144c5f"
+    },
+    "id": "run04",
+    "image_lineage": {
+      "after_label": {
+        "bytes": 4294967296,
+        "sha256": "cac37e6d1fdc8cd4517eed49c55b8e2232e2d5a29153ef9718c7029ff009742d"
+      },
+      "after_verify": {
+        "bytes": 4294967296,
+        "sha256": "f3d260f5e91ed6a2b67e84fd4f7b3d07b1ff2dda5c88be43d1dac242774043ad"
+      },
+      "original": {
+        "bytes": 4294967296,
+        "sha256": "42908e1e4c2932bd5a4873c13e4a890bb1cced14bb82245c6f1f207ff203e51f"
+      }
+    },
+    "job": "/work/r5-fedora-job-6b24e66-run04",
+    "job_exit_code": 0,
+    "kernel_image_sha256": "d80bfce0feb5f6c0cec1b0b0dd4691323720ec3f34a373c7a109001e2cf42e76",
+    "kernel_release": "6.12.114-tb371fc-research5-services",
+    "maintenance_warning_counts": {
+      "any_kernel_callback_suppression_count": 8,
+      "audit_backlog_overflow_count": 0,
+      "audit_loss_reason_count": 0,
+      "audit_lost_positive_count": 0,
+      "audit_printk_suppression_count": 8,
+      "autofs4_module_warning_count": 0,
+      "bpf_lsm_not_supported_count": 0,
+      "pids_max_read_warning_count": 0,
+      "selinux_avc_denial_count": 44,
+      "udev_event_fd_loss_count": 0,
+      "virtual_gpio_failure_count": 0
+    },
+    "pipeline_script": "evidence/r5-run04/run.sh",
+    "production_gates": {
+      "actual_audit_printk_readback_gate": true,
+      "actual_pl061_binding_gate": true,
+      "actual_success_path_journal_sync_gate": true,
+      "behavioral_probe_gates": {
+        "actual_bpf_file_open_eperm": true,
+        "actual_tasks_max": true,
+        "same_boot_policy_export_record": true
+      },
+      "guest_file_status": "pass",
+      "guest_gates_match": true,
+      "independent_same_boot_av_gates": {
+        "noop": true,
+        "pids": true,
+        "proc_read_baseline": true,
+        "proc_read_restricted": true
+      },
+      "independent_transient_route_gates": {
+        "noop": true,
+        "pids": true,
+        "proc_read_baseline": true,
+        "proc_read_restricted": true
+      },
+      "observed_warning_counts": {
+        "any_kernel_callback_suppression_count": 0,
+        "audit_backlog_overflow_count": 0,
+        "audit_loss_reason_count": 0,
+        "audit_lost_positive_count": 0,
+        "audit_printk_suppression_count": 0,
+        "autofs4_module_warning_count": 0,
+        "bpf_lsm_not_supported_count": 0,
+        "pids_max_read_warning_count": 0,
+        "selinux_avc_denial_count": 0,
+        "udev_event_fd_loss_count": 0,
+        "virtual_gpio_failure_count": 0
+      },
+      "passed": true,
+      "persistent_result_qualified": true
+    },
+    "profile_sha256": "b4895772ff512baad132216a988de13bfe928d113c16cbe369b1aa9ee2525bec",
+    "reported_phase_exit_codes": {
+      "configure": 0,
+      "download": 0,
+      "extract": 0,
+      "image": 0,
+      "initrd": 0,
+      "label": 0,
+      "materialize": 0,
+      "regression": 0,
+      "stage": 0,
+      "verify": 0
+    },
+    "result_scope": {
+      "board_dtb_used": false,
+      "gpu_acceleration_tested": false,
+      "machine": "generic ARM64 virt",
+      "physical_device_passthrough": false
+    },
+    "source": "/work/r5-fedora-source-6b24e66-run04",
+    "source_revision": "6b24e66087e80c6847f0a759e1f6e9a2b9bd4f0d",
+    "started_utc": "2026-11-24T02:04:00Z",
+    "status": "generic_vm_passed"
+  },
+  "checkpoint_utc": "2026-11-24T02:17:32Z",
+  "date_timezone": "Asia/Shanghai",
+  "integration": {
+    "main_merge": "9b5b34ee43123eca48a1f512747abf21b3af1883",
+    "merged_prs": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "research_head": "811b5f427d775876130213ca25bc29ca34eb8d04",
+    "tree": "3e0c70c219a0f60f7e26bb1a6442a85b4f32a5f0"
+  },
+  "kind": "tb371fc-r5-runtime-continuation",
+  "native_boot_readiness": "blocked",
+  "next_actions": [
+    "Preserve the completed v4 image, exact source, job receipts and full result; do not rerun or overwrite the accepted attempt.",
+    "Bind the qualified generic R5 root-loader and rootfs artifacts to a separate native candidate with an actual root selector, layout and reachable recovery.",
+    "Qualify owner-native entry and hardware independently; generic virt used no Lenovo DT or physical passthrough.",
+    "Keep Novatek 0020 outside the frozen R5 signed module inventory until a new complete signed/ABI/manifest candidate is produced.",
+    "Continue the existing Nix/Nura and board-driver lanes from their latest independently qualified checkpoints."
+  ],
+  "owner_native_linux_passes_added": 0,
+  "physical_hardware_tested": false,
+  "previous_checkpoint": "../2026-11-23/r5-boot-bundle-checkpoint.json",
+  "prior_attempt": {
+    "candidate": "/work/fedora-r5-system-v3",
+    "failure": "inherited R4 transient worker identity rejected the R5 VM",
+    "id": "run03",
+    "label_exit_code": 0,
+    "passed": false,
+    "persistent_result_extraction_passed": false,
+    "record": "evidence/r5-worker/run03-failure.json",
+    "rescored": false,
+    "source_revision": "28adcae4d9c5ed602a17225c68f5042cf494bd1f",
+    "verify_exit_code": 1
+  },
+  "repository": "cyjin-yl/TB371FC-6.12",
+  "schema_version": 1,
+  "source_validation": {
+    "recipe_tests_passed": 10,
+    "revision": "6b24e66087e80c6847f0a759e1f6e9a2b9bd4f0d",
+    "run_id": 45309157177,
+    "scope": "source/unit/ext4 fixture; not a VM acceptance result",
+    "staging_tests_passed": 15,
+    "url": "https://github.com/cyjin-yl/TB371FC-6.12/actions/runs/45309157177"
+  }
+}
