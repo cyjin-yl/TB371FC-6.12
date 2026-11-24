@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "/work/native-dt-libfdt-20261124-02-source/verify_native_dt_libfdt.py",
+    "--archive",
+    "/work/native-dt-inspection-20261124-0217/inputs/current-boot.tar.gz",
+    "--work",
+    "/work/native-dt-libfdt-20261124-02",
+    "--fdtget",
+    "/usr/bin/fdtget",
+    "--fdtoverlay",
+    "/usr/bin/fdtoverlay",
+    "--inspection-report",
+    "/work/native-dt-inspection-20261124-0217/backup-final.json",
+    "--live-report",
+    "/work/native-dt-libfdt-20261124-02-source/live-android.json"
+  ],
+  "started_utc": "2026-11-24T02:35:01.500255+00:00",
+  "source_sha256": "985daf5a491cde0bc9903f0cf2152ca6e61260e798d4bcf58ac7a0751063366d",
+  "exit_code": 0,
+  "finished_utc": "2026-11-24T02:35:27.659272+00:00"
+}

@@ -1,0 +1,3649 @@
+{
+  "base_dt_by_reported_index": {
+    "bundle_sha256": "7827766497a13ce96161ab3e38b2db4f7238dba3a056793299e911334a1732a4",
+    "bytes": 538388,
+    "compatible_list_equal": false,
+    "identity": {
+      "bytes": 538388,
+      "compatible": [
+        "qcom,kona"
+      ],
+      "model": "Qualcomm Technologies, Inc. kona v2.1 SoC",
+      "qcom_ids": {
+        "qcom,board-id": [
+          0,
+          0
+        ],
+        "qcom,msm-id": [
+          356,
+          131073
+        ]
+      },
+      "sha256": "9ded79854f0db23503b3592417c1e5cd61d98d84cab8dc5e213d3a9b868c7019"
+    },
+    "index": 0,
+    "memory_comparison": {
+      "candidate": {
+        "bank_bytes_sum": 0,
+        "bank_union": [],
+        "banks": [],
+        "dynamic_reservations": [
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/adsp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 12582912
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/sdsp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 8388608
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/cdsp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 4194304
+          },
+          {
+            "alignment": null,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/mem_dump_region",
+            "reg": [],
+            "reusable": true,
+            "size": 41943040
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/sp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 16777216
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/user_contig_region",
+            "reg": [],
+            "reusable": true,
+            "size": 16777216
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/qseecom_region",
+            "reg": [],
+            "reusable": true,
+            "size": 20971520
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/qseecom_ta_region",
+            "reg": [],
+            "reusable": true,
+            "size": 16777216
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/secure_display_region",
+            "reg": [],
+            "reusable": true,
+            "size": 171966464
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/cnss_wlan_region",
+            "reg": [],
+            "reusable": true,
+            "size": 20971520
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/linux,cma",
+            "reg": [],
+            "reusable": true,
+            "size": 33554432
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/mailbox_region",
+            "reg": [],
+            "reusable": false,
+            "size": 131072
+          }
+        ],
+        "issues": [
+          "memory-node-type-or-reg-unresolved",
+          "no-positive-enabled-memory-reg",
+          "overlapping-reservation-declarations",
+          "reserved-memory-allocation-unresolved"
+        ],
+        "reservation_nodes": {
+          "/reserved-memory/adsp_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/adsp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 12582912
+          },
+          "/reserved-memory/boot_log_region@0": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/boot_log_region@0",
+            "reg": [
+              {
+                "size": 524288,
+                "start": 2952790016
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/cdsp_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/cdsp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 4194304
+          },
+          "/reserved-memory/cdsp_secure_heap@8bf00000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/cdsp_secure_heap@8bf00000",
+            "reg": [
+              {
+                "size": 73400320,
+                "start": 2347761664
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/cnss_wlan_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/cnss_wlan_region",
+            "reg": [],
+            "reusable": true,
+            "size": 20971520
+          },
+          "/reserved-memory/cont_splash_region@9c000000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/cont_splash_region@9c000000",
+            "reg": [
+              {
+                "size": 36700160,
+                "start": 2617245696
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/dfps_data_region@9e300000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/dfps_data_region@9e300000",
+            "reg": [
+              {
+                "size": 1048576,
+                "start": 2653945856
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/disp_rdump_region@9c000000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/disp_rdump_region@9c000000",
+            "reg": [
+              {
+                "size": 8388608,
+                "start": 2617245696
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/hyp_region@80000000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/hyp_region@80000000",
+            "reg": [
+              {
+                "size": 6291456,
+                "start": 2147483648
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/linux,cma": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/linux,cma",
+            "reg": [],
+            "reusable": true,
+            "size": 33554432
+          },
+          "/reserved-memory/mailbox_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/mailbox_region",
+            "reg": [],
+            "reusable": false,
+            "size": 131072
+          },
+          "/reserved-memory/mem_dump_region": {
+            "alignment": null,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/mem_dump_region",
+            "reg": [],
+            "reusable": true,
+            "size": 41943040
+          },
+          "/reserved-memory/pil_adsp_region@8a100000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_adsp_region@8a100000",
+            "reg": [
+              {
+                "size": 30408704,
+                "start": 2316304384
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_camera_region@86200000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_camera_region@86200000",
+            "reg": [
+              {
+                "size": 5242880,
+                "start": 2250244096
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_cdsp_region@87800000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_cdsp_region@87800000",
+            "reg": [
+              {
+                "size": 20971520,
+                "start": 2273312768
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_cvp_region@87300000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_cvp_region@87300000",
+            "reg": [
+              {
+                "size": 5242880,
+                "start": 2268069888
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_gpu_region@8681a000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_gpu_region@8681a000",
+            "reg": [
+              {
+                "size": 8192,
+                "start": 2256642048
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_ipa_fw_region@86800000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_ipa_fw_region@86800000",
+            "reg": [
+              {
+                "size": 65536,
+                "start": 2256535552
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_ipa_gsi_region@86810000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_ipa_gsi_region@86810000",
+            "reg": [
+              {
+                "size": 40960,
+                "start": 2256601088
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_npu_region@86900000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_npu_region@86900000",
+            "reg": [
+              {
+                "size": 5242880,
+                "start": 2257584128
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_slpi_region@88c00000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_slpi_region@88c00000",
+            "reg": [
+              {
+                "size": 22020096,
+                "start": 2294284288
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_spss_region@8be00000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_spss_region@8be00000",
+            "reg": [
+              {
+                "size": 1048576,
+                "start": 2346713088
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_video_region@86e00000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_video_region@86e00000",
+            "reg": [
+              {
+                "size": 5242880,
+                "start": 2262827008
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_wlan_fw_region@86700000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_wlan_fw_region@86700000",
+            "reg": [
+              {
+                "size": 1048576,
+                "start": 2255486976
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/qseecom_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/qseecom_region",
+            "reg": [],
+            "reusable": true,
+            "size": 20971520
+          },
+          "/reserved-memory/qseecom_ta_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/qseecom_ta_region",
+            "reg": [],
+            "reusable": true,
+            "size": 16777216
+          },
+          "/reserved-memory/removed_region@80b00000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/removed_region@80b00000",
+            "reg": [
+              {
+                "size": 87031808,
+                "start": 2159017984
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/res_xbl_uefi_log_region@80880000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/res_xbl_uefi_log_region@80880000",
+            "reg": [
+              {
+                "size": 81920,
+                "start": 2156396544
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/reserved-memory@80860000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/reserved-memory@80860000",
+            "reg": [
+              {
+                "size": 131072,
+                "start": 2156265472
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/sdsp_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/sdsp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 8388608
+          },
+          "/reserved-memory/secure_display_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/secure_display_region",
+            "reg": [],
+            "reusable": true,
+            "size": 171966464
+          },
+          "/reserved-memory/smem_region@80900000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/smem_region@80900000",
+            "reg": [
+              {
+                "size": 2097152,
+                "start": 2156920832
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/sp_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/sp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 16777216
+          },
+          "/reserved-memory/user_contig_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/user_contig_region",
+            "reg": [],
+            "reusable": true,
+            "size": 16777216
+          },
+          "/reserved-memory/xbl_aop_region@80700000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/xbl_aop_region@80700000",
+            "reg": [
+              {
+                "size": 1441792,
+                "start": 2154823680
+              }
+            ],
+            "reusable": false,
+            "size": null
+          }
+        },
+        "reservation_overlaps": [
+          {
+            "left": "/reserved-memory/disp_rdump_region@9c000000",
+            "right": "/reserved-memory/cont_splash_region@9c000000",
+            "size": 8388608,
+            "start": 2617245696
+          }
+        ],
+        "static_exclusion_union": [
+          {
+            "size": 6291456,
+            "start": 2147483648
+          },
+          {
+            "size": 1654784,
+            "start": 2154823680
+          },
+          {
+            "size": 89128960,
+            "start": 2156920832
+          },
+          {
+            "size": 6406144,
+            "start": 2250244096
+          },
+          {
+            "size": 163577856,
+            "start": 2257584128
+          },
+          {
+            "size": 37748736,
+            "start": 2617245696
+          },
+          {
+            "size": 524288,
+            "start": 2952790016
+          }
+        ],
+        "zero_size_placeholders": [
+          {
+            "path": "/memory",
+            "size": 0,
+            "start": 0
+          }
+        ]
+      },
+      "candidate_bank_ranges_not_in_live": [],
+      "candidate_static_exclusions_not_in_live": [],
+      "changed_reservation_nodes": [],
+      "live": {
+        "bank_bytes_sum": 8517582848,
+        "bank_union": [
+          {
+            "size": 1001390080,
+            "start": 2147483648
+          },
+          {
+            "size": 7516192768,
+            "start": 3221225472
+          }
+        ],
+        "banks": [
+          {
+            "size": 1001390080,
+            "start": 2147483648
+          },
+          {
+            "size": 7516192768,
+            "start": 3221225472
+          }
+        ],
+        "dynamic_reservations": [
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/adsp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 12582912
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/sdsp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 8388608
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/cdsp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 4194304
+          },
+          {
+            "alignment": null,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/mem_dump_region",
+            "reg": [],
+            "reusable": true,
+            "size": 41943040
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/sp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 16777216
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/user_contig_region",
+            "reg": [],
+            "reusable": true,
+            "size": 16777216
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/qseecom_region",
+            "reg": [],
+            "reusable": true,
+            "size": 20971520
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/qseecom_ta_region",
+            "reg": [],
+            "reusable": true,
+            "size": 16777216
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/secure_display_region",
+            "reg": [],
+            "reusable": true,
+            "size": 171966464
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/cnss_wlan_region",
+            "reg": [],
+            "reusable": true,
+            "size": 20971520
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/linux,cma",
+            "reg": [],
+            "reusable": true,
+            "size": 33554432
+          },
+          {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/mailbox_region",
+            "reg": [],
+            "reusable": false,
+            "size": 131072
+          }
+        ],
+        "issues": [
+          "overlapping-reservation-declarations",
+          "reserved-memory-allocation-unresolved"
+        ],
+        "reservation_nodes": {
+          "/reserved-memory/adsp_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/adsp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 12582912
+          },
+          "/reserved-memory/boot_log_region@0": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/boot_log_region@0",
+            "reg": [
+              {
+                "size": 524288,
+                "start": 2952790016
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/cdsp_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/cdsp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 4194304
+          },
+          "/reserved-memory/cdsp_secure_heap@8bf00000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/cdsp_secure_heap@8bf00000",
+            "reg": [
+              {
+                "size": 73400320,
+                "start": 2347761664
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/cnss_wlan_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/cnss_wlan_region",
+            "reg": [],
+            "reusable": true,
+            "size": 20971520
+          },
+          "/reserved-memory/cont_splash_region@9c000000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/cont_splash_region@9c000000",
+            "reg": [
+              {
+                "size": 36700160,
+                "start": 2617245696
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/dfps_data_region@9e300000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/dfps_data_region@9e300000",
+            "reg": [
+              {
+                "size": 1048576,
+                "start": 2653945856
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/disp_rdump_region@9c000000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/disp_rdump_region@9c000000",
+            "reg": [
+              {
+                "size": 8388608,
+                "start": 2617245696
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/hyp_region@80000000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/hyp_region@80000000",
+            "reg": [
+              {
+                "size": 6291456,
+                "start": 2147483648
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/linux,cma": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/linux,cma",
+            "reg": [],
+            "reusable": true,
+            "size": 33554432
+          },
+          "/reserved-memory/mailbox_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/mailbox_region",
+            "reg": [],
+            "reusable": false,
+            "size": 131072
+          },
+          "/reserved-memory/mem_dump_region": {
+            "alignment": null,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/mem_dump_region",
+            "reg": [],
+            "reusable": true,
+            "size": 41943040
+          },
+          "/reserved-memory/pil_adsp_region@8a100000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_adsp_region@8a100000",
+            "reg": [
+              {
+                "size": 30408704,
+                "start": 2316304384
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_camera_region@86200000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_camera_region@86200000",
+            "reg": [
+              {
+                "size": 5242880,
+                "start": 2250244096
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_cdsp_region@87800000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_cdsp_region@87800000",
+            "reg": [
+              {
+                "size": 20971520,
+                "start": 2273312768
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_cvp_region@87300000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_cvp_region@87300000",
+            "reg": [
+              {
+                "size": 5242880,
+                "start": 2268069888
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_gpu_region@8681a000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_gpu_region@8681a000",
+            "reg": [
+              {
+                "size": 8192,
+                "start": 2256642048
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_ipa_fw_region@86800000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_ipa_fw_region@86800000",
+            "reg": [
+              {
+                "size": 65536,
+                "start": 2256535552
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_ipa_gsi_region@86810000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_ipa_gsi_region@86810000",
+            "reg": [
+              {
+                "size": 40960,
+                "start": 2256601088
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_npu_region@86900000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_npu_region@86900000",
+            "reg": [
+              {
+                "size": 5242880,
+                "start": 2257584128
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_slpi_region@88c00000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_slpi_region@88c00000",
+            "reg": [
+              {
+                "size": 22020096,
+                "start": 2294284288
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_spss_region@8be00000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_spss_region@8be00000",
+            "reg": [
+              {
+                "size": 1048576,
+                "start": 2346713088
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_video_region@86e00000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_video_region@86e00000",
+            "reg": [
+              {
+                "size": 5242880,
+                "start": 2262827008
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/pil_wlan_fw_region@86700000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/pil_wlan_fw_region@86700000",
+            "reg": [
+              {
+                "size": 1048576,
+                "start": 2255486976
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/qseecom_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/qseecom_region",
+            "reg": [],
+            "reusable": true,
+            "size": 20971520
+          },
+          "/reserved-memory/qseecom_ta_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/qseecom_ta_region",
+            "reg": [],
+            "reusable": true,
+            "size": 16777216
+          },
+          "/reserved-memory/removed_region@80b00000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/removed_region@80b00000",
+            "reg": [
+              {
+                "size": 87031808,
+                "start": 2159017984
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/res_xbl_uefi_log_region@80880000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/res_xbl_uefi_log_region@80880000",
+            "reg": [
+              {
+                "size": 81920,
+                "start": 2156396544
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/reserved-memory@80860000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/reserved-memory@80860000",
+            "reg": [
+              {
+                "size": 131072,
+                "start": 2156265472
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/sdsp_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/sdsp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 8388608
+          },
+          "/reserved-memory/secure_display_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/secure_display_region",
+            "reg": [],
+            "reusable": true,
+            "size": 171966464
+          },
+          "/reserved-memory/smem_region@80900000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/smem_region@80900000",
+            "reg": [
+              {
+                "size": 2097152,
+                "start": 2156920832
+              }
+            ],
+            "reusable": false,
+            "size": null
+          },
+          "/reserved-memory/sp_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/sp_region",
+            "reg": [],
+            "reusable": true,
+            "size": 16777216
+          },
+          "/reserved-memory/user_contig_region": {
+            "alignment": 4194304,
+            "alloc_ranges": [
+              {
+                "size": 4294967295,
+                "start": 0
+              }
+            ],
+            "allocation": "dynamic",
+            "enabled": true,
+            "no_map": false,
+            "path": "/reserved-memory/user_contig_region",
+            "reg": [],
+            "reusable": true,
+            "size": 16777216
+          },
+          "/reserved-memory/xbl_aop_region@80700000": {
+            "alignment": null,
+            "alloc_ranges": [],
+            "allocation": "static",
+            "enabled": true,
+            "no_map": true,
+            "path": "/reserved-memory/xbl_aop_region@80700000",
+            "reg": [
+              {
+                "size": 1441792,
+                "start": 2154823680
+              }
+            ],
+            "reusable": false,
+            "size": null
+          }
+        },
+        "reservation_overlaps": [
+          {
+            "left": "/reserved-memory/disp_rdump_region@9c000000",
+            "right": "/reserved-memory/cont_splash_region@9c000000",
+            "size": 8388608,
+            "start": 2617245696
+          }
+        ],
+        "static_exclusion_union": [
+          {
+            "size": 6291456,
+            "start": 2147483648
+          },
+          {
+            "size": 1654784,
+            "start": 2154823680
+          },
+          {
+            "size": 89128960,
+            "start": 2156920832
+          },
+          {
+            "size": 6406144,
+            "start": 2250244096
+          },
+          {
+            "size": 163577856,
+            "start": 2257584128
+          },
+          {
+            "size": 37748736,
+            "start": 2617245696
+          },
+          {
+            "size": 524288,
+            "start": 2952790016
+          }
+        ],
+        "zero_size_placeholders": []
+      },
+      "live_bank_ranges_not_in_candidate": [
+        {
+          "size": 1001390080,
+          "start": 2147483648
+        },
+        {
+          "size": 7516192768,
+          "start": 3221225472
+        }
+      ],
+      "live_static_exclusions_not_in_candidate": [],
+      "reservation_nodes_only_in_candidate": [],
+      "reservation_nodes_only_in_live": [],
+      "scope": "set arithmetic on separately recorded declarations; no overlay application, free-memory claim or allocation permission"
+    },
+    "model_equal": false,
+    "offset": 0,
+    "partition": "boot_a",
+    "partition_sha256": "78ba0f4f75bec85a80155a9e9ea8fa19546bbd88598a7923a16b069404899a9a",
+    "root_id_comparison": {
+      "qcom,board-id": {
+        "candidate": [
+          0,
+          0
+        ],
+        "live": [
+          11,
+          0
+        ],
+        "state": "different"
+      },
+      "qcom,msm-id": {
+        "candidate": [
+          356,
+          131073
+        ],
+        "live": [
+          356,
+          131073
+        ],
+        "state": "equal"
+      }
+    },
+    "runtime_selection_verified": false,
+    "sha256": "9ded79854f0db23503b3592417c1e5cd61d98d84cab8dc5e213d3a9b868c7019",
+    "unmodified_blob_sha_equals_live": false
+  },
+  "correlation_status": "reported_indices_consistent",
+  "inputs": {
+    "backup": {
+      "archive_sha256": "6fb0d1964bef82d0b1bcb91282da48a6223910f5987ab1c8466d5746e7ead8e2",
+      "bytes": 590004,
+      "sha256": "3ac35a67582837d4eb7009e224dd8e4beb69377a2c832549466eb4cc3f21d5e6",
+      "source_sha256": "e9a4529e4950ff5d8e8f6641cc657932287b5ef8a513f047f871d2cfa1f07e50"
+    },
+    "live": {
+      "bytes": 16114,
+      "fdt_sha256": "5114262a0dea5ef82b53db69b3d489ddbe57040e1a50b57365e87a28d2946207",
+      "sha256": "e071f91b43a063ff6f96cb401269469e20703ab695e64dd37a1d5b86113ba745",
+      "source_sha256": "18f93cff68fd444021f1f234eb52dd0a30979a900a62cca4bb4edc0c8d4178cd"
+    }
+  },
+  "interpretation": "reported indices locate backup entries; root IDs and memory differences are metadata comparisons, not proof of ABL's byte-for-byte selection or final native layout",
+  "issues": [],
+  "live_format": {
+    "diagnostic_nonzero_padding_allowed": true,
+    "format_compliance_scope": "bounded binary FDT profile; not complete binding validation",
+    "format_compliant": false,
+    "format_issues": [
+      {
+        "length": 3,
+        "nonzero_count": 1,
+        "offset": 821109
+      },
+      {
+        "length": 3,
+        "nonzero_count": 1,
+        "offset": 821537
+      }
+    ]
+  },
+  "live_identity": {
+    "bytes": 973052,
+    "compatible": [
+      "qcom,kona-qrd",
+      "qcom,kona",
+      "qcom,qrd"
+    ],
+    "model": "Qualcomm Technologies, Inc. kona QRD",
+    "qcom_ids": {
+      "qcom,board-id": [
+        11,
+        0
+      ],
+      "qcom,msm-id": [
+        356,
+        131073
+      ]
+    },
+    "sha256": "5114262a0dea5ef82b53db69b3d489ddbe57040e1a50b57365e87a28d2946207"
+  },
+  "live_memory": {
+    "bank_bytes_sum": 8517582848,
+    "bank_union": [
+      {
+        "size": 1001390080,
+        "start": 2147483648
+      },
+      {
+        "size": 7516192768,
+        "start": 3221225472
+      }
+    ],
+    "banks": [
+      {
+        "size": 1001390080,
+        "start": 2147483648
+      },
+      {
+        "size": 7516192768,
+        "start": 3221225472
+      }
+    ],
+    "dynamic_reservations": [
+      {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/adsp_region",
+        "reg": [],
+        "reusable": true,
+        "size": 12582912
+      },
+      {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/sdsp_region",
+        "reg": [],
+        "reusable": true,
+        "size": 8388608
+      },
+      {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/cdsp_region",
+        "reg": [],
+        "reusable": true,
+        "size": 4194304
+      },
+      {
+        "alignment": null,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/mem_dump_region",
+        "reg": [],
+        "reusable": true,
+        "size": 41943040
+      },
+      {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/sp_region",
+        "reg": [],
+        "reusable": true,
+        "size": 16777216
+      },
+      {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/user_contig_region",
+        "reg": [],
+        "reusable": true,
+        "size": 16777216
+      },
+      {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/qseecom_region",
+        "reg": [],
+        "reusable": true,
+        "size": 20971520
+      },
+      {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/qseecom_ta_region",
+        "reg": [],
+        "reusable": true,
+        "size": 16777216
+      },
+      {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/secure_display_region",
+        "reg": [],
+        "reusable": true,
+        "size": 171966464
+      },
+      {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/cnss_wlan_region",
+        "reg": [],
+        "reusable": true,
+        "size": 20971520
+      },
+      {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/linux,cma",
+        "reg": [],
+        "reusable": true,
+        "size": 33554432
+      },
+      {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/mailbox_region",
+        "reg": [],
+        "reusable": false,
+        "size": 131072
+      }
+    ],
+    "issues": [
+      "overlapping-reservation-declarations",
+      "reserved-memory-allocation-unresolved"
+    ],
+    "reservation_nodes": {
+      "/reserved-memory/adsp_region": {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/adsp_region",
+        "reg": [],
+        "reusable": true,
+        "size": 12582912
+      },
+      "/reserved-memory/boot_log_region@0": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/boot_log_region@0",
+        "reg": [
+          {
+            "size": 524288,
+            "start": 2952790016
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/cdsp_region": {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/cdsp_region",
+        "reg": [],
+        "reusable": true,
+        "size": 4194304
+      },
+      "/reserved-memory/cdsp_secure_heap@8bf00000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/cdsp_secure_heap@8bf00000",
+        "reg": [
+          {
+            "size": 73400320,
+            "start": 2347761664
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/cnss_wlan_region": {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/cnss_wlan_region",
+        "reg": [],
+        "reusable": true,
+        "size": 20971520
+      },
+      "/reserved-memory/cont_splash_region@9c000000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/cont_splash_region@9c000000",
+        "reg": [
+          {
+            "size": 36700160,
+            "start": 2617245696
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/dfps_data_region@9e300000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/dfps_data_region@9e300000",
+        "reg": [
+          {
+            "size": 1048576,
+            "start": 2653945856
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/disp_rdump_region@9c000000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/disp_rdump_region@9c000000",
+        "reg": [
+          {
+            "size": 8388608,
+            "start": 2617245696
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/hyp_region@80000000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/hyp_region@80000000",
+        "reg": [
+          {
+            "size": 6291456,
+            "start": 2147483648
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/linux,cma": {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/linux,cma",
+        "reg": [],
+        "reusable": true,
+        "size": 33554432
+      },
+      "/reserved-memory/mailbox_region": {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/mailbox_region",
+        "reg": [],
+        "reusable": false,
+        "size": 131072
+      },
+      "/reserved-memory/mem_dump_region": {
+        "alignment": null,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/mem_dump_region",
+        "reg": [],
+        "reusable": true,
+        "size": 41943040
+      },
+      "/reserved-memory/pil_adsp_region@8a100000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/pil_adsp_region@8a100000",
+        "reg": [
+          {
+            "size": 30408704,
+            "start": 2316304384
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/pil_camera_region@86200000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/pil_camera_region@86200000",
+        "reg": [
+          {
+            "size": 5242880,
+            "start": 2250244096
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/pil_cdsp_region@87800000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/pil_cdsp_region@87800000",
+        "reg": [
+          {
+            "size": 20971520,
+            "start": 2273312768
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/pil_cvp_region@87300000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/pil_cvp_region@87300000",
+        "reg": [
+          {
+            "size": 5242880,
+            "start": 2268069888
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/pil_gpu_region@8681a000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/pil_gpu_region@8681a000",
+        "reg": [
+          {
+            "size": 8192,
+            "start": 2256642048
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/pil_ipa_fw_region@86800000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/pil_ipa_fw_region@86800000",
+        "reg": [
+          {
+            "size": 65536,
+            "start": 2256535552
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/pil_ipa_gsi_region@86810000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/pil_ipa_gsi_region@86810000",
+        "reg": [
+          {
+            "size": 40960,
+            "start": 2256601088
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/pil_npu_region@86900000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/pil_npu_region@86900000",
+        "reg": [
+          {
+            "size": 5242880,
+            "start": 2257584128
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/pil_slpi_region@88c00000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/pil_slpi_region@88c00000",
+        "reg": [
+          {
+            "size": 22020096,
+            "start": 2294284288
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/pil_spss_region@8be00000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/pil_spss_region@8be00000",
+        "reg": [
+          {
+            "size": 1048576,
+            "start": 2346713088
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/pil_video_region@86e00000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/pil_video_region@86e00000",
+        "reg": [
+          {
+            "size": 5242880,
+            "start": 2262827008
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/pil_wlan_fw_region@86700000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/pil_wlan_fw_region@86700000",
+        "reg": [
+          {
+            "size": 1048576,
+            "start": 2255486976
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/qseecom_region": {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/qseecom_region",
+        "reg": [],
+        "reusable": true,
+        "size": 20971520
+      },
+      "/reserved-memory/qseecom_ta_region": {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/qseecom_ta_region",
+        "reg": [],
+        "reusable": true,
+        "size": 16777216
+      },
+      "/reserved-memory/removed_region@80b00000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/removed_region@80b00000",
+        "reg": [
+          {
+            "size": 87031808,
+            "start": 2159017984
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/res_xbl_uefi_log_region@80880000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/res_xbl_uefi_log_region@80880000",
+        "reg": [
+          {
+            "size": 81920,
+            "start": 2156396544
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/reserved-memory@80860000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/reserved-memory@80860000",
+        "reg": [
+          {
+            "size": 131072,
+            "start": 2156265472
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/sdsp_region": {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/sdsp_region",
+        "reg": [],
+        "reusable": true,
+        "size": 8388608
+      },
+      "/reserved-memory/secure_display_region": {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/secure_display_region",
+        "reg": [],
+        "reusable": true,
+        "size": 171966464
+      },
+      "/reserved-memory/smem_region@80900000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/smem_region@80900000",
+        "reg": [
+          {
+            "size": 2097152,
+            "start": 2156920832
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      "/reserved-memory/sp_region": {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/sp_region",
+        "reg": [],
+        "reusable": true,
+        "size": 16777216
+      },
+      "/reserved-memory/user_contig_region": {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "allocation": "dynamic",
+        "enabled": true,
+        "no_map": false,
+        "path": "/reserved-memory/user_contig_region",
+        "reg": [],
+        "reusable": true,
+        "size": 16777216
+      },
+      "/reserved-memory/xbl_aop_region@80700000": {
+        "alignment": null,
+        "alloc_ranges": [],
+        "allocation": "static",
+        "enabled": true,
+        "no_map": true,
+        "path": "/reserved-memory/xbl_aop_region@80700000",
+        "reg": [
+          {
+            "size": 1441792,
+            "start": 2154823680
+          }
+        ],
+        "reusable": false,
+        "size": null
+      }
+    },
+    "reservation_overlaps": [
+      {
+        "left": "/reserved-memory/disp_rdump_region@9c000000",
+        "right": "/reserved-memory/cont_splash_region@9c000000",
+        "size": 8388608,
+        "start": 2617245696
+      }
+    ],
+    "static_exclusion_union": [
+      {
+        "size": 6291456,
+        "start": 2147483648
+      },
+      {
+        "size": 1654784,
+        "start": 2154823680
+      },
+      {
+        "size": 89128960,
+        "start": 2156920832
+      },
+      {
+        "size": 6406144,
+        "start": 2250244096
+      },
+      {
+        "size": 163577856,
+        "start": 2257584128
+      },
+      {
+        "size": 37748736,
+        "start": 2617245696
+      },
+      {
+        "size": 524288,
+        "start": 2952790016
+      }
+    ],
+    "zero_size_placeholders": []
+  },
+  "native_load_layout_verified": false,
+  "overlay_application_performed": false,
+  "overlays_by_reported_indices": {
+    "entries": [
+      {
+        "bytes": 502232,
+        "compatible_list_equal": true,
+        "identity": {
+          "bytes": 502232,
+          "compatible": [
+            "qcom,kona-qrd",
+            "qcom,kona",
+            "qcom,qrd"
+          ],
+          "model": "Qualcomm Technologies, Inc. kona QRD",
+          "qcom_ids": {
+            "qcom,board-id": [
+              11,
+              0
+            ]
+          },
+          "sha256": "696cbe86a0ce5683edbad9bb330e909dcc44f33aa8e242933afd19d9177cdfc1"
+        },
+        "index": 2,
+        "memory_comparison": {
+          "candidate": {
+            "bank_bytes_sum": 0,
+            "bank_union": [],
+            "banks": [],
+            "dynamic_reservations": [],
+            "issues": [
+              "no-positive-enabled-memory-reg",
+              "overlay-not-applied"
+            ],
+            "reservation_nodes": {},
+            "reservation_overlaps": [],
+            "static_exclusion_union": [],
+            "zero_size_placeholders": []
+          },
+          "candidate_bank_ranges_not_in_live": [],
+          "candidate_static_exclusions_not_in_live": [],
+          "changed_reservation_nodes": [],
+          "live": {
+            "bank_bytes_sum": 8517582848,
+            "bank_union": [
+              {
+                "size": 1001390080,
+                "start": 2147483648
+              },
+              {
+                "size": 7516192768,
+                "start": 3221225472
+              }
+            ],
+            "banks": [
+              {
+                "size": 1001390080,
+                "start": 2147483648
+              },
+              {
+                "size": 7516192768,
+                "start": 3221225472
+              }
+            ],
+            "dynamic_reservations": [
+              {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/adsp_region",
+                "reg": [],
+                "reusable": true,
+                "size": 12582912
+              },
+              {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/sdsp_region",
+                "reg": [],
+                "reusable": true,
+                "size": 8388608
+              },
+              {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/cdsp_region",
+                "reg": [],
+                "reusable": true,
+                "size": 4194304
+              },
+              {
+                "alignment": null,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/mem_dump_region",
+                "reg": [],
+                "reusable": true,
+                "size": 41943040
+              },
+              {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/sp_region",
+                "reg": [],
+                "reusable": true,
+                "size": 16777216
+              },
+              {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/user_contig_region",
+                "reg": [],
+                "reusable": true,
+                "size": 16777216
+              },
+              {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/qseecom_region",
+                "reg": [],
+                "reusable": true,
+                "size": 20971520
+              },
+              {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/qseecom_ta_region",
+                "reg": [],
+                "reusable": true,
+                "size": 16777216
+              },
+              {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/secure_display_region",
+                "reg": [],
+                "reusable": true,
+                "size": 171966464
+              },
+              {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/cnss_wlan_region",
+                "reg": [],
+                "reusable": true,
+                "size": 20971520
+              },
+              {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/linux,cma",
+                "reg": [],
+                "reusable": true,
+                "size": 33554432
+              },
+              {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/mailbox_region",
+                "reg": [],
+                "reusable": false,
+                "size": 131072
+              }
+            ],
+            "issues": [
+              "overlapping-reservation-declarations",
+              "reserved-memory-allocation-unresolved"
+            ],
+            "reservation_nodes": {
+              "/reserved-memory/adsp_region": {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/adsp_region",
+                "reg": [],
+                "reusable": true,
+                "size": 12582912
+              },
+              "/reserved-memory/boot_log_region@0": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/boot_log_region@0",
+                "reg": [
+                  {
+                    "size": 524288,
+                    "start": 2952790016
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/cdsp_region": {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/cdsp_region",
+                "reg": [],
+                "reusable": true,
+                "size": 4194304
+              },
+              "/reserved-memory/cdsp_secure_heap@8bf00000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/cdsp_secure_heap@8bf00000",
+                "reg": [
+                  {
+                    "size": 73400320,
+                    "start": 2347761664
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/cnss_wlan_region": {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/cnss_wlan_region",
+                "reg": [],
+                "reusable": true,
+                "size": 20971520
+              },
+              "/reserved-memory/cont_splash_region@9c000000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/cont_splash_region@9c000000",
+                "reg": [
+                  {
+                    "size": 36700160,
+                    "start": 2617245696
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/dfps_data_region@9e300000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/dfps_data_region@9e300000",
+                "reg": [
+                  {
+                    "size": 1048576,
+                    "start": 2653945856
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/disp_rdump_region@9c000000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/disp_rdump_region@9c000000",
+                "reg": [
+                  {
+                    "size": 8388608,
+                    "start": 2617245696
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/hyp_region@80000000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/hyp_region@80000000",
+                "reg": [
+                  {
+                    "size": 6291456,
+                    "start": 2147483648
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/linux,cma": {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/linux,cma",
+                "reg": [],
+                "reusable": true,
+                "size": 33554432
+              },
+              "/reserved-memory/mailbox_region": {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/mailbox_region",
+                "reg": [],
+                "reusable": false,
+                "size": 131072
+              },
+              "/reserved-memory/mem_dump_region": {
+                "alignment": null,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/mem_dump_region",
+                "reg": [],
+                "reusable": true,
+                "size": 41943040
+              },
+              "/reserved-memory/pil_adsp_region@8a100000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/pil_adsp_region@8a100000",
+                "reg": [
+                  {
+                    "size": 30408704,
+                    "start": 2316304384
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/pil_camera_region@86200000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/pil_camera_region@86200000",
+                "reg": [
+                  {
+                    "size": 5242880,
+                    "start": 2250244096
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/pil_cdsp_region@87800000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/pil_cdsp_region@87800000",
+                "reg": [
+                  {
+                    "size": 20971520,
+                    "start": 2273312768
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/pil_cvp_region@87300000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/pil_cvp_region@87300000",
+                "reg": [
+                  {
+                    "size": 5242880,
+                    "start": 2268069888
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/pil_gpu_region@8681a000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/pil_gpu_region@8681a000",
+                "reg": [
+                  {
+                    "size": 8192,
+                    "start": 2256642048
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/pil_ipa_fw_region@86800000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/pil_ipa_fw_region@86800000",
+                "reg": [
+                  {
+                    "size": 65536,
+                    "start": 2256535552
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/pil_ipa_gsi_region@86810000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/pil_ipa_gsi_region@86810000",
+                "reg": [
+                  {
+                    "size": 40960,
+                    "start": 2256601088
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/pil_npu_region@86900000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/pil_npu_region@86900000",
+                "reg": [
+                  {
+                    "size": 5242880,
+                    "start": 2257584128
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/pil_slpi_region@88c00000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/pil_slpi_region@88c00000",
+                "reg": [
+                  {
+                    "size": 22020096,
+                    "start": 2294284288
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/pil_spss_region@8be00000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/pil_spss_region@8be00000",
+                "reg": [
+                  {
+                    "size": 1048576,
+                    "start": 2346713088
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/pil_video_region@86e00000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/pil_video_region@86e00000",
+                "reg": [
+                  {
+                    "size": 5242880,
+                    "start": 2262827008
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/pil_wlan_fw_region@86700000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/pil_wlan_fw_region@86700000",
+                "reg": [
+                  {
+                    "size": 1048576,
+                    "start": 2255486976
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/qseecom_region": {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/qseecom_region",
+                "reg": [],
+                "reusable": true,
+                "size": 20971520
+              },
+              "/reserved-memory/qseecom_ta_region": {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/qseecom_ta_region",
+                "reg": [],
+                "reusable": true,
+                "size": 16777216
+              },
+              "/reserved-memory/removed_region@80b00000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/removed_region@80b00000",
+                "reg": [
+                  {
+                    "size": 87031808,
+                    "start": 2159017984
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/res_xbl_uefi_log_region@80880000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/res_xbl_uefi_log_region@80880000",
+                "reg": [
+                  {
+                    "size": 81920,
+                    "start": 2156396544
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/reserved-memory@80860000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/reserved-memory@80860000",
+                "reg": [
+                  {
+                    "size": 131072,
+                    "start": 2156265472
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/sdsp_region": {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/sdsp_region",
+                "reg": [],
+                "reusable": true,
+                "size": 8388608
+              },
+              "/reserved-memory/secure_display_region": {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/secure_display_region",
+                "reg": [],
+                "reusable": true,
+                "size": 171966464
+              },
+              "/reserved-memory/smem_region@80900000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/smem_region@80900000",
+                "reg": [
+                  {
+                    "size": 2097152,
+                    "start": 2156920832
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              },
+              "/reserved-memory/sp_region": {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/sp_region",
+                "reg": [],
+                "reusable": true,
+                "size": 16777216
+              },
+              "/reserved-memory/user_contig_region": {
+                "alignment": 4194304,
+                "alloc_ranges": [
+                  {
+                    "size": 4294967295,
+                    "start": 0
+                  }
+                ],
+                "allocation": "dynamic",
+                "enabled": true,
+                "no_map": false,
+                "path": "/reserved-memory/user_contig_region",
+                "reg": [],
+                "reusable": true,
+                "size": 16777216
+              },
+              "/reserved-memory/xbl_aop_region@80700000": {
+                "alignment": null,
+                "alloc_ranges": [],
+                "allocation": "static",
+                "enabled": true,
+                "no_map": true,
+                "path": "/reserved-memory/xbl_aop_region@80700000",
+                "reg": [
+                  {
+                    "size": 1441792,
+                    "start": 2154823680
+                  }
+                ],
+                "reusable": false,
+                "size": null
+              }
+            },
+            "reservation_overlaps": [
+              {
+                "left": "/reserved-memory/disp_rdump_region@9c000000",
+                "right": "/reserved-memory/cont_splash_region@9c000000",
+                "size": 8388608,
+                "start": 2617245696
+              }
+            ],
+            "static_exclusion_union": [
+              {
+                "size": 6291456,
+                "start": 2147483648
+              },
+              {
+                "size": 1654784,
+                "start": 2154823680
+              },
+              {
+                "size": 89128960,
+                "start": 2156920832
+              },
+              {
+                "size": 6406144,
+                "start": 2250244096
+              },
+              {
+                "size": 163577856,
+                "start": 2257584128
+              },
+              {
+                "size": 37748736,
+                "start": 2617245696
+              },
+              {
+                "size": 524288,
+                "start": 2952790016
+              }
+            ],
+            "zero_size_placeholders": []
+          },
+          "live_bank_ranges_not_in_candidate": [
+            {
+              "size": 1001390080,
+              "start": 2147483648
+            },
+            {
+              "size": 7516192768,
+              "start": 3221225472
+            }
+          ],
+          "live_static_exclusions_not_in_candidate": [
+            {
+              "size": 6291456,
+              "start": 2147483648
+            },
+            {
+              "size": 1654784,
+              "start": 2154823680
+            },
+            {
+              "size": 89128960,
+              "start": 2156920832
+            },
+            {
+              "size": 6406144,
+              "start": 2250244096
+            },
+            {
+              "size": 163577856,
+              "start": 2257584128
+            },
+            {
+              "size": 37748736,
+              "start": 2617245696
+            },
+            {
+              "size": 524288,
+              "start": 2952790016
+            }
+          ],
+          "reservation_nodes_only_in_candidate": [],
+          "reservation_nodes_only_in_live": [
+            "/reserved-memory/adsp_region",
+            "/reserved-memory/boot_log_region@0",
+            "/reserved-memory/cdsp_region",
+            "/reserved-memory/cdsp_secure_heap@8bf00000",
+            "/reserved-memory/cnss_wlan_region",
+            "/reserved-memory/cont_splash_region@9c000000",
+            "/reserved-memory/dfps_data_region@9e300000",
+            "/reserved-memory/disp_rdump_region@9c000000",
+            "/reserved-memory/hyp_region@80000000",
+            "/reserved-memory/linux,cma",
+            "/reserved-memory/mailbox_region",
+            "/reserved-memory/mem_dump_region",
+            "/reserved-memory/pil_adsp_region@8a100000",
+            "/reserved-memory/pil_camera_region@86200000",
+            "/reserved-memory/pil_cdsp_region@87800000",
+            "/reserved-memory/pil_cvp_region@87300000",
+            "/reserved-memory/pil_gpu_region@8681a000",
+            "/reserved-memory/pil_ipa_fw_region@86800000",
+            "/reserved-memory/pil_ipa_gsi_region@86810000",
+            "/reserved-memory/pil_npu_region@86900000",
+            "/reserved-memory/pil_slpi_region@88c00000",
+            "/reserved-memory/pil_spss_region@8be00000",
+            "/reserved-memory/pil_video_region@86e00000",
+            "/reserved-memory/pil_wlan_fw_region@86700000",
+            "/reserved-memory/qseecom_region",
+            "/reserved-memory/qseecom_ta_region",
+            "/reserved-memory/removed_region@80b00000",
+            "/reserved-memory/res_xbl_uefi_log_region@80880000",
+            "/reserved-memory/reserved-memory@80860000",
+            "/reserved-memory/sdsp_region",
+            "/reserved-memory/secure_display_region",
+            "/reserved-memory/smem_region@80900000",
+            "/reserved-memory/sp_region",
+            "/reserved-memory/user_contig_region",
+            "/reserved-memory/xbl_aop_region@80700000"
+          ],
+          "scope": "set arithmetic on separately recorded declarations; no overlay application, free-memory claim or allocation permission"
+        },
+        "model_equal": true,
+        "offset": 431842,
+        "root_id_comparison": {
+          "qcom,board-id": {
+            "candidate": [
+              11,
+              0
+            ],
+            "live": [
+              11,
+              0
+            ],
+            "state": "equal"
+          },
+          "qcom,msm-id": {
+            "candidate": null,
+            "live": [
+              356,
+              131073
+            ],
+            "state": "absent_in_candidate"
+          }
+        },
+        "runtime_selection_verified": false,
+        "sha256": "696cbe86a0ce5683edbad9bb330e909dcc44f33aa8e242933afd19d9177cdfc1",
+        "unmodified_blob_sha_equals_live": false
+      }
+    ],
+    "partition": "dtbo_a",
+    "partition_sha256": "d82c51b5b85c8a9c7d8a163d4fc24e61f7abbd93f5728a7235dcfb809e3b8b17",
+    "table_sha256": "279910628e61cad149ccdb16ae0aa0a3a2f46441e21132ac3a1323e565219679"
+  },
+  "owner_native_linux_passes_added": 0,
+  "parser_sha256": "d805f5f6be2ae96e2fb4555a7d7a380ea48f1ebb1a4918966ab75fc0c4828e9d",
+  "per_byte_runtime_selection_verified": false,
+  "physical_mainline_linux_tested": false,
+  "reported_selection": {
+    "dtb_idx": {
+      "issues": [],
+      "observations": [
+        {
+          "source": "ro.boot.dtb_idx",
+          "state": "valid",
+          "value": [
+            0
+          ]
+        },
+        {
+          "source": "/proc/cmdline[0]",
+          "state": "valid",
+          "value": [
+            0
+          ]
+        },
+        {
+          "source": "/proc/bootconfig",
+          "state": "unavailable"
+        }
+      ],
+      "scope": "available allowlisted reports only; not loader replay",
+      "state": "consistent",
+      "value": [
+        0
+      ]
+    },
+    "dtbo_idx": {
+      "issues": [],
+      "observations": [
+        {
+          "source": "ro.boot.dtbo_idx",
+          "state": "valid",
+          "value": [
+            2
+          ]
+        },
+        {
+          "source": "/proc/cmdline[0]",
+          "state": "valid",
+          "value": [
+            2
+          ]
+        },
+        {
+          "source": "/proc/bootconfig",
+          "state": "unavailable"
+        }
+      ],
+      "scope": "available allowlisted reports only; not loader replay",
+      "state": "consistent",
+      "value": [
+        2
+      ]
+    },
+    "slot_suffix": {
+      "issues": [],
+      "observations": [
+        {
+          "source": "ro.boot.slot_suffix",
+          "state": "valid",
+          "value": "_a"
+        },
+        {
+          "source": "/proc/cmdline[0]",
+          "state": "valid",
+          "value": "_a"
+        },
+        {
+          "source": "/proc/bootconfig",
+          "state": "unavailable"
+        }
+      ],
+      "scope": "available allowlisted reports only; not loader replay",
+      "state": "consistent",
+      "value": "_a"
+    }
+  },
+  "runtime_abl_replayed": false,
+  "schema": "tb371fc-native-dt-correlation-v1",
+  "source_sha256": "e4d4af106a5f30b764d38ca5170262ad784f6257b33243fb9facd4abd7a33680"
+}
