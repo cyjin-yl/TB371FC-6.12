@@ -1,0 +1,30 @@
+name: Native DT input evidence
+
+on:
+  push:
+    branches: [feat/native-preflight-20261124]
+  pull_request:
+    paths:
+      - 'scripts/research/*native_dt*.py'
+      - 'docs/research/2026-11-24/evidence/native-dt/**'
+      - '.github/workflows/native-dt-evidence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-parsers-and-correlation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exercise exact parsing and ambiguous observation failures
+        run: python3 -O -m unittest discover -s scripts/research -p 'test_*native_dt*.py' -v
+      - name: Reproduce the exact public correlation record
+        run: |
+          python3 -O scripts/research/correlate_native_dt.py \
+            --backup docs/research/2026-11-24/evidence/native-dt/backup-final.json \
+            --live docs/research/2026-11-24/evidence/native-dt/live-android.json \
+            --output "$RUNNER_TEMP/native-correlation.json"
+          cmp "$RUNNER_TEMP/native-correlation.json" docs/research/2026-11-24/evidence/native-dt/correlation.json

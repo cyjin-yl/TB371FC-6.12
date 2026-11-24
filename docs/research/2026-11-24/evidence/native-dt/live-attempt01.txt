@@ -1,0 +1,11 @@
+exit_code: 1
+stdout:
+
+stderr:
+Traceback (most recent call last):
+  File "<string>", line 7, in <module>
+  File "<collect_native_dt_inline>", line 114, in collect
+  File "<native_dt_inline>", line 280, in inspect_fdt
+  File "<native_dt_inline>", line 183, in _parse_tree
+  File "<native_dt_inline>", line 56, in _need
+native_dt.DTError: FDT property extent/padding outside structure

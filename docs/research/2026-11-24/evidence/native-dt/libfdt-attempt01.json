@@ -1,0 +1,3365 @@
+{
+  "archive_sha256": "6fb0d1964bef82d0b1bcb91282da48a6223910f5987ab1c8466d5746e7ead8e2",
+  "base": {
+    "bytes": 538388,
+    "compatible": [
+      "qcom,kona"
+    ],
+    "memory": [
+      {
+        "path": "/memory",
+        "reg": [
+          {
+            "size": 0,
+            "start": 0
+          }
+        ]
+      }
+    ],
+    "model": "Qualcomm Technologies, Inc. kona v2.1 SoC",
+    "qcom_ids": {
+      "qcom,board-id": [
+        0,
+        0
+      ],
+      "qcom,msm-id": [
+        356,
+        131073
+      ]
+    },
+    "reserved_memory": [
+      {
+        "alignment": null,
+        "alloc_ranges": [],
+        "no_map": true,
+        "path": "/reserved-memory/hyp_region@80000000",
+        "reg": [
+          {
+            "size": 6291456,
+            "start": 2147483648
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      {
+        "alignment": null,
+        "alloc_ranges": [],
+        "no_map": true,
+        "path": "/reserved-memory/xbl_aop_region@80700000",
+        "reg": [
+          {
+            "size": 1441792,
+            "start": 2154823680
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      {
+        "alignment": null,
+        "alloc_ranges": [],
+        "no_map": true,
+        "path": "/reserved-memory/removed_region@80b00000",
+        "reg": [
+          {
+            "size": 87031808,
+            "start": 2159017984
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      {
+        "alignment": null,
+        "alloc_ranges": [],
+        "no_map": false,
+        "path": "/reserved-memory/cont_splash_region@9c000000",
+        "reg": [
+          {
+            "size": 36700160,
+            "start": 2617245696
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      {
+        "alignment": null,
+        "alloc_ranges": [],
+        "no_map": false,
+        "path": "/reserved-memory/disp_rdump_region@9c000000",
+        "reg": [
+          {
+            "size": 8388608,
+            "start": 2617245696
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      {
+        "alignment": null,
+        "alloc_ranges": [],
+        "no_map": false,
+        "path": "/reserved-memory/dfps_data_region@9e300000",
+        "reg": [
+          {
+            "size": 1048576,
+            "start": 2653945856
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      {
+        "alignment": null,
+        "alloc_ranges": [],
+        "no_map": true,
+        "path": "/reserved-memory/boot_log_region@0",
+        "reg": [
+          {
+            "size": 524288,
+            "start": 2952790016
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "no_map": false,
+        "path": "/reserved-memory/linux,cma",
+        "reg": [],
+        "reusable": true,
+        "size": 33554432
+      }
+    ],
+    "reserved_memory_cells": {
+      "address": 2,
+      "empty_ranges": true,
+      "size": 2
+    },
+    "root_cells": {
+      "address": 2,
+      "size": 2
+    },
+    "sha256": "9ded79854f0db23503b3592417c1e5cd61d98d84cab8dc5e213d3a9b868c7019"
+  },
+  "bootloader_acceptance_tested": false,
+  "bootloader_selection_replayed": false,
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-V"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "09cb5810e23f0837e17f6c7b727a50324e4a8ea537ef51e3d5145e168460eb5f"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/",
+        "#address-cells"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "979055478c109fc3ceab7bece61dd40a0cae4b01dcff3cb897f95524ad46aa55"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/",
+        "#size-cells"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "979055478c109fc3ceab7bece61dd40a0cae4b01dcff3cb897f95524ad46aa55"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/",
+        "model"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2982b1469ab984da86dd35816e4fdc376f705b5420cf816108437336ebcbc609"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/",
+        "compatible"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "286a0f814bd081654e61ae099c60fa275c980f84f62309d914e5bf3a459ef32a"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/",
+        "qcom,msm-id"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "05035f18139b3e24811c49636d5d24abcbf5bc24935fe9d2d4ff70eb042ab100"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/",
+        "qcom,board-id"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "45734a50f578b67da5eea31d6336ab8125226661206188893d3119de56b21b40"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/",
+        "qcom,pmic-id"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "1fe2aa936c2c3c625b9bfd188886619d685b1d96d83af967e883858f43f9b0c8",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/",
+        "qcom,pmic-id-size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "3624f5b85e30a1cf59ca28cb629ac909c07cf10b423949964b9bcb4725cf826b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-l",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "b11daf48ee1200e99f2c1dfe802ab2bc6bf548ec550fbf8ce2d700fb566b87d5"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/memory",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "52b1f5821ec0b8965119c6b9b8cb1580668990240ec7fd91b23191b6a078e7b1"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory",
+        "#address-cells"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "979055478c109fc3ceab7bece61dd40a0cae4b01dcff3cb897f95524ad46aa55"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory",
+        "#size-cells"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "979055478c109fc3ceab7bece61dd40a0cae4b01dcff3cb897f95524ad46aa55"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory",
+        "ranges"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-l",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "3aa528629b40e81959c363a7baf70b899d486af618e6fb287c64eb6f1888a353"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/hyp_region@80000000",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "6786919ef655f527a6919d97b1406e83c9bea29300530326b217308e20698520"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/hyp_region@80000000",
+        "size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "2fea010b73dbf6090d3ebcc3405b4cdc3fde203f13ae46430d220ed1dd54bc02",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/hyp_region@80000000",
+        "alignment"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "c03834466fac86d7a6665330c21c54290f5348b449ed2df64a8f98ca151e8edd",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/hyp_region@80000000",
+        "alloc-ranges"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "84d48ee47842726913d8111be350449ca9f87f2d26f557f2a9445a2e4e23999b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/hyp_region@80000000",
+        "no-map"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/hyp_region@80000000",
+        "reusable"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "a451584a685c0f3a0c09c049aa8fdf400253c131db131d19273873e212ec998f",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/xbl_aop_region@80700000",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "38f389fdf2ff6c0189645c4c5665e335caffeecc4b02c2722e28bd3ec39821e3"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/xbl_aop_region@80700000",
+        "size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "2fea010b73dbf6090d3ebcc3405b4cdc3fde203f13ae46430d220ed1dd54bc02",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/xbl_aop_region@80700000",
+        "alignment"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "c03834466fac86d7a6665330c21c54290f5348b449ed2df64a8f98ca151e8edd",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/xbl_aop_region@80700000",
+        "alloc-ranges"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "84d48ee47842726913d8111be350449ca9f87f2d26f557f2a9445a2e4e23999b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/xbl_aop_region@80700000",
+        "no-map"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/xbl_aop_region@80700000",
+        "reusable"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "a451584a685c0f3a0c09c049aa8fdf400253c131db131d19273873e212ec998f",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/removed_region@80b00000",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e7d0cdc64876e991fb2d1835282557d7cf2e1d33547c1926dc78730de9d26423"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/removed_region@80b00000",
+        "size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "2fea010b73dbf6090d3ebcc3405b4cdc3fde203f13ae46430d220ed1dd54bc02",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/removed_region@80b00000",
+        "alignment"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "c03834466fac86d7a6665330c21c54290f5348b449ed2df64a8f98ca151e8edd",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/removed_region@80b00000",
+        "alloc-ranges"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "84d48ee47842726913d8111be350449ca9f87f2d26f557f2a9445a2e4e23999b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/removed_region@80b00000",
+        "no-map"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/removed_region@80b00000",
+        "reusable"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "a451584a685c0f3a0c09c049aa8fdf400253c131db131d19273873e212ec998f",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/cont_splash_region@9c000000",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "b967ac371fc436a90f954a078e87a2d50ecffc1f5da0a49866ac1c0f842a1370"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/cont_splash_region@9c000000",
+        "size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "2fea010b73dbf6090d3ebcc3405b4cdc3fde203f13ae46430d220ed1dd54bc02",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/cont_splash_region@9c000000",
+        "alignment"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "c03834466fac86d7a6665330c21c54290f5348b449ed2df64a8f98ca151e8edd",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/cont_splash_region@9c000000",
+        "alloc-ranges"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "84d48ee47842726913d8111be350449ca9f87f2d26f557f2a9445a2e4e23999b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/cont_splash_region@9c000000",
+        "no-map"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "ddf539a2e1eac871e665712d221f7c81458dbfba1776e859d40740ebc2573cae",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/cont_splash_region@9c000000",
+        "reusable"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "a451584a685c0f3a0c09c049aa8fdf400253c131db131d19273873e212ec998f",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/disp_rdump_region@9c000000",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "a8c357069b3d90d6d4760152b72360d3bea5485af7eef72b86b2bef855744463"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/disp_rdump_region@9c000000",
+        "size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "2fea010b73dbf6090d3ebcc3405b4cdc3fde203f13ae46430d220ed1dd54bc02",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/disp_rdump_region@9c000000",
+        "alignment"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "c03834466fac86d7a6665330c21c54290f5348b449ed2df64a8f98ca151e8edd",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/disp_rdump_region@9c000000",
+        "alloc-ranges"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "84d48ee47842726913d8111be350449ca9f87f2d26f557f2a9445a2e4e23999b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/disp_rdump_region@9c000000",
+        "no-map"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "ddf539a2e1eac871e665712d221f7c81458dbfba1776e859d40740ebc2573cae",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/disp_rdump_region@9c000000",
+        "reusable"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "a451584a685c0f3a0c09c049aa8fdf400253c131db131d19273873e212ec998f",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/dfps_data_region@9e300000",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "7e0ec0e241bf3f2b2b91ffa393539d954f361e5314d8f71640ff7c6d38f563eb"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/dfps_data_region@9e300000",
+        "size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "2fea010b73dbf6090d3ebcc3405b4cdc3fde203f13ae46430d220ed1dd54bc02",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/dfps_data_region@9e300000",
+        "alignment"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "c03834466fac86d7a6665330c21c54290f5348b449ed2df64a8f98ca151e8edd",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/dfps_data_region@9e300000",
+        "alloc-ranges"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "84d48ee47842726913d8111be350449ca9f87f2d26f557f2a9445a2e4e23999b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/dfps_data_region@9e300000",
+        "no-map"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "ddf539a2e1eac871e665712d221f7c81458dbfba1776e859d40740ebc2573cae",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/dfps_data_region@9e300000",
+        "reusable"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "a451584a685c0f3a0c09c049aa8fdf400253c131db131d19273873e212ec998f",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/boot_log_region@0",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "76699d5e40c795d07f6c9664df561f1d4642614a78dd0a581555dd3640b4ed7e"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/boot_log_region@0",
+        "size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "2fea010b73dbf6090d3ebcc3405b4cdc3fde203f13ae46430d220ed1dd54bc02",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/boot_log_region@0",
+        "alignment"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "c03834466fac86d7a6665330c21c54290f5348b449ed2df64a8f98ca151e8edd",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/boot_log_region@0",
+        "alloc-ranges"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "84d48ee47842726913d8111be350449ca9f87f2d26f557f2a9445a2e4e23999b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/boot_log_region@0",
+        "no-map"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/boot_log_region@0",
+        "reusable"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "a451584a685c0f3a0c09c049aa8fdf400253c131db131d19273873e212ec998f",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/linux,cma",
+        "reg"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "e4405e6cc01edacbc46007e4b66ea8c99459ab0505b179405cd5c2cad0cff67a",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/linux,cma",
+        "size"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2b91bf20c99a1aaaa4579029238b53117c3cfc8f6c05b1f9836d0ad18807ff1f"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/linux,cma",
+        "alignment"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "df3fa67203dad1d404589aa88a11db5654949178c7d9f4bcfb636361c98c91b5"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/linux,cma",
+        "alloc-ranges"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "9f363ba1a53480c2e9edb1e0d95bc4cbb9fae44d6c9ee0003fd20690e4a71872"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/linux,cma",
+        "no-map"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "ddf539a2e1eac871e665712d221f7c81458dbfba1776e859d40740ebc2573cae",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "/reserved-memory/linux,cma",
+        "reusable"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/overlay-index2.dtbo",
+        "/",
+        "#address-cells"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "5928e10e0b6d7a8eed8697c463cc5fffbfbdcc5a56338a39b28d850dc5235d99",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/overlay-index2.dtbo",
+        "/",
+        "#size-cells"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "7ca2d2e680bdfb546180dcd7811d517e4849f01ab3f080d2ab601222f8ab6617",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/overlay-index2.dtbo",
+        "/",
+        "model"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "eba6e1e212cdb7903ddc444fae75045f5ae8817f54f4281ad092711d9b15d1f0"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/overlay-index2.dtbo",
+        "/",
+        "compatible"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "1e335986befeae8bbede939dd82d285aa53938375ba3ea2cf4c2ec946ad89d53"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/overlay-index2.dtbo",
+        "/",
+        "qcom,msm-id"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "3fa4f0d3c22a5d8d29ff1b798ba22c76c74cffec7bc375f6812abde58526bec8",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/overlay-index2.dtbo",
+        "/",
+        "qcom,board-id"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "6d79d59e8bf3c24944b88bea464486b7b36fc9730d91ec748201cced6e7d525e"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/overlay-index2.dtbo",
+        "/",
+        "qcom,pmic-id"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "1fe2aa936c2c3c625b9bfd188886619d685b1d96d83af967e883858f43f9b0c8",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/overlay-index2.dtbo",
+        "/",
+        "qcom,pmic-id-size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "3624f5b85e30a1cf59ca28cb629ac909c07cf10b423949964b9bcb4725cf826b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-l",
+        "/work/native-dt-libfdt-20261124-01/private/overlay-index2.dtbo",
+        "/"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "83824701ee0d623aa5c380b88536a02a8503030f5cc89f47cbc4a090f17905da"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtoverlay",
+        "-V"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "09cb5810e23f0837e17f6c7b727a50324e4a8ea537ef51e3d5145e168460eb5f"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtoverlay",
+        "-i",
+        "/work/native-dt-libfdt-20261124-01/private/base-index0.dtb",
+        "-o",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/work/native-dt-libfdt-20261124-01/private/overlay-index2.dtbo"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/",
+        "#address-cells"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "979055478c109fc3ceab7bece61dd40a0cae4b01dcff3cb897f95524ad46aa55"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/",
+        "#size-cells"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "979055478c109fc3ceab7bece61dd40a0cae4b01dcff3cb897f95524ad46aa55"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/",
+        "model"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2982b1469ab984da86dd35816e4fdc376f705b5420cf816108437336ebcbc609"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/",
+        "compatible"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "286a0f814bd081654e61ae099c60fa275c980f84f62309d914e5bf3a459ef32a"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/",
+        "qcom,msm-id"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "05035f18139b3e24811c49636d5d24abcbf5bc24935fe9d2d4ff70eb042ab100"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/",
+        "qcom,board-id"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "45734a50f578b67da5eea31d6336ab8125226661206188893d3119de56b21b40"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/",
+        "qcom,pmic-id"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "1fe2aa936c2c3c625b9bfd188886619d685b1d96d83af967e883858f43f9b0c8",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/",
+        "qcom,pmic-id-size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "3624f5b85e30a1cf59ca28cb629ac909c07cf10b423949964b9bcb4725cf826b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-l",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "b11daf48ee1200e99f2c1dfe802ab2bc6bf548ec550fbf8ce2d700fb566b87d5"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/memory",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "52b1f5821ec0b8965119c6b9b8cb1580668990240ec7fd91b23191b6a078e7b1"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory",
+        "#address-cells"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "979055478c109fc3ceab7bece61dd40a0cae4b01dcff3cb897f95524ad46aa55"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory",
+        "#size-cells"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "979055478c109fc3ceab7bece61dd40a0cae4b01dcff3cb897f95524ad46aa55"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory",
+        "ranges"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-l",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "3aa528629b40e81959c363a7baf70b899d486af618e6fb287c64eb6f1888a353"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/hyp_region@80000000",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "6786919ef655f527a6919d97b1406e83c9bea29300530326b217308e20698520"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/hyp_region@80000000",
+        "size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "2fea010b73dbf6090d3ebcc3405b4cdc3fde203f13ae46430d220ed1dd54bc02",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/hyp_region@80000000",
+        "alignment"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "c03834466fac86d7a6665330c21c54290f5348b449ed2df64a8f98ca151e8edd",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/hyp_region@80000000",
+        "alloc-ranges"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "84d48ee47842726913d8111be350449ca9f87f2d26f557f2a9445a2e4e23999b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/hyp_region@80000000",
+        "no-map"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/hyp_region@80000000",
+        "reusable"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "a451584a685c0f3a0c09c049aa8fdf400253c131db131d19273873e212ec998f",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/xbl_aop_region@80700000",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "38f389fdf2ff6c0189645c4c5665e335caffeecc4b02c2722e28bd3ec39821e3"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/xbl_aop_region@80700000",
+        "size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "2fea010b73dbf6090d3ebcc3405b4cdc3fde203f13ae46430d220ed1dd54bc02",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/xbl_aop_region@80700000",
+        "alignment"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "c03834466fac86d7a6665330c21c54290f5348b449ed2df64a8f98ca151e8edd",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/xbl_aop_region@80700000",
+        "alloc-ranges"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "84d48ee47842726913d8111be350449ca9f87f2d26f557f2a9445a2e4e23999b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/xbl_aop_region@80700000",
+        "no-map"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/xbl_aop_region@80700000",
+        "reusable"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "a451584a685c0f3a0c09c049aa8fdf400253c131db131d19273873e212ec998f",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/removed_region@80b00000",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e7d0cdc64876e991fb2d1835282557d7cf2e1d33547c1926dc78730de9d26423"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/removed_region@80b00000",
+        "size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "2fea010b73dbf6090d3ebcc3405b4cdc3fde203f13ae46430d220ed1dd54bc02",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/removed_region@80b00000",
+        "alignment"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "c03834466fac86d7a6665330c21c54290f5348b449ed2df64a8f98ca151e8edd",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/removed_region@80b00000",
+        "alloc-ranges"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "84d48ee47842726913d8111be350449ca9f87f2d26f557f2a9445a2e4e23999b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/removed_region@80b00000",
+        "no-map"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/removed_region@80b00000",
+        "reusable"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "a451584a685c0f3a0c09c049aa8fdf400253c131db131d19273873e212ec998f",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/cont_splash_region@9c000000",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "b967ac371fc436a90f954a078e87a2d50ecffc1f5da0a49866ac1c0f842a1370"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/cont_splash_region@9c000000",
+        "size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "2fea010b73dbf6090d3ebcc3405b4cdc3fde203f13ae46430d220ed1dd54bc02",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/cont_splash_region@9c000000",
+        "alignment"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "c03834466fac86d7a6665330c21c54290f5348b449ed2df64a8f98ca151e8edd",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/cont_splash_region@9c000000",
+        "alloc-ranges"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "84d48ee47842726913d8111be350449ca9f87f2d26f557f2a9445a2e4e23999b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/cont_splash_region@9c000000",
+        "no-map"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "ddf539a2e1eac871e665712d221f7c81458dbfba1776e859d40740ebc2573cae",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/cont_splash_region@9c000000",
+        "reusable"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "a451584a685c0f3a0c09c049aa8fdf400253c131db131d19273873e212ec998f",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/disp_rdump_region@9c000000",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "a8c357069b3d90d6d4760152b72360d3bea5485af7eef72b86b2bef855744463"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/disp_rdump_region@9c000000",
+        "size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "2fea010b73dbf6090d3ebcc3405b4cdc3fde203f13ae46430d220ed1dd54bc02",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/disp_rdump_region@9c000000",
+        "alignment"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "c03834466fac86d7a6665330c21c54290f5348b449ed2df64a8f98ca151e8edd",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/disp_rdump_region@9c000000",
+        "alloc-ranges"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "84d48ee47842726913d8111be350449ca9f87f2d26f557f2a9445a2e4e23999b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/disp_rdump_region@9c000000",
+        "no-map"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "ddf539a2e1eac871e665712d221f7c81458dbfba1776e859d40740ebc2573cae",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/disp_rdump_region@9c000000",
+        "reusable"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "a451584a685c0f3a0c09c049aa8fdf400253c131db131d19273873e212ec998f",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/dfps_data_region@9e300000",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "7e0ec0e241bf3f2b2b91ffa393539d954f361e5314d8f71640ff7c6d38f563eb"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/dfps_data_region@9e300000",
+        "size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "2fea010b73dbf6090d3ebcc3405b4cdc3fde203f13ae46430d220ed1dd54bc02",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/dfps_data_region@9e300000",
+        "alignment"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "c03834466fac86d7a6665330c21c54290f5348b449ed2df64a8f98ca151e8edd",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/dfps_data_region@9e300000",
+        "alloc-ranges"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "84d48ee47842726913d8111be350449ca9f87f2d26f557f2a9445a2e4e23999b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/dfps_data_region@9e300000",
+        "no-map"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "ddf539a2e1eac871e665712d221f7c81458dbfba1776e859d40740ebc2573cae",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/dfps_data_region@9e300000",
+        "reusable"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "a451584a685c0f3a0c09c049aa8fdf400253c131db131d19273873e212ec998f",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/boot_log_region@0",
+        "reg"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "76699d5e40c795d07f6c9664df561f1d4642614a78dd0a581555dd3640b4ed7e"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/boot_log_region@0",
+        "size"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "2fea010b73dbf6090d3ebcc3405b4cdc3fde203f13ae46430d220ed1dd54bc02",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/boot_log_region@0",
+        "alignment"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "c03834466fac86d7a6665330c21c54290f5348b449ed2df64a8f98ca151e8edd",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/boot_log_region@0",
+        "alloc-ranges"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "84d48ee47842726913d8111be350449ca9f87f2d26f557f2a9445a2e4e23999b",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/boot_log_region@0",
+        "no-map"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/boot_log_region@0",
+        "reusable"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "a451584a685c0f3a0c09c049aa8fdf400253c131db131d19273873e212ec998f",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/linux,cma",
+        "reg"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "e4405e6cc01edacbc46007e4b66ea8c99459ab0505b179405cd5c2cad0cff67a",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/linux,cma",
+        "size"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2b91bf20c99a1aaaa4579029238b53117c3cfc8f6c05b1f9836d0ad18807ff1f"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/linux,cma",
+        "alignment"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "df3fa67203dad1d404589aa88a11db5654949178c7d9f4bcfb636361c98c91b5"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/linux,cma",
+        "alloc-ranges"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "9f363ba1a53480c2e9edb1e0d95bc4cbb9fae44d6c9ee0003fd20690e4a71872"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/linux,cma",
+        "no-map"
+      ],
+      "exit_code": 1,
+      "stderr_sha256": "ddf539a2e1eac871e665712d221f7c81458dbfba1776e859d40740ebc2573cae",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/usr/bin/fdtget",
+        "-t",
+        "bx",
+        "/work/native-dt-libfdt-20261124-01/private/offline-composed.dtb",
+        "/reserved-memory/linux,cma",
+        "reusable"
+      ],
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    }
+  ],
+  "container_metadata": {
+    "boot_a_dtb_component_offset": 38752256,
+    "bundle_entries": [
+      {
+        "bytes": 538388,
+        "index": 0,
+        "offset": 0,
+        "sha256": "9ded79854f0db23503b3592417c1e5cd61d98d84cab8dc5e213d3a9b868c7019"
+      },
+      {
+        "bytes": 538616,
+        "index": 1,
+        "offset": 538388,
+        "sha256": "2a2ac9ccc1ceeba63ed7412059d991207bfdc15e5327fce911f3409569b74fd9"
+      },
+      {
+        "bytes": 531698,
+        "index": 2,
+        "offset": 1077004,
+        "sha256": "ed944b0bfd0f7144ec19b136e3be4f4b54f40578a5211c3069550d4a3c851249"
+      },
+      {
+        "bytes": 173,
+        "index": 3,
+        "offset": 1608702,
+        "sha256": "4bc0f86fbe594986713c4458d5a90a35c814e27ef5c8acc855a6f1ea064aa08d"
+      }
+    ],
+    "bundle_sha256": "7827766497a13ce96161ab3e38b2db4f7238dba3a056793299e911334a1732a4",
+    "dtb_index": 0,
+    "dtbo_index": 2,
+    "selection_scope": "fixed profile matching reported Android observations; no loader execution",
+    "slot": "_a",
+    "table_entries": [
+      {
+        "bytes": 178952,
+        "custom": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": 0,
+        "index": 0,
+        "offset": 480,
+        "rev": 0,
+        "sha256": "065ef05d4f351ebe68a0bf4cfc104d5dc8260db9847e2edcb881cd8a7ed8d90c"
+      },
+      {
+        "bytes": 252410,
+        "custom": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": 0,
+        "index": 1,
+        "offset": 179432,
+        "rev": 0,
+        "sha256": "8dcc22d4dcf52c7074f5fa7e45dfda70ccccc339f8934a03927ae9b96b94a499"
+      },
+      {
+        "bytes": 502232,
+        "custom": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": 0,
+        "index": 2,
+        "offset": 431842,
+        "rev": 0,
+        "sha256": "696cbe86a0ce5683edbad9bb330e909dcc44f33aa8e242933afd19d9177cdfc1"
+      },
+      {
+        "bytes": 253233,
+        "custom": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": 0,
+        "index": 3,
+        "offset": 934074,
+        "rev": 0,
+        "sha256": "2b00f389cb536013aa70408a4f79ea8cb19ea410b30391f89d59e1a2f4cd0658"
+      },
+      {
+        "bytes": 295329,
+        "custom": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": 0,
+        "index": 4,
+        "offset": 1187307,
+        "rev": 0,
+        "sha256": "f45801e624a881921cd25e763963b2a4e60dd805872a72d20e753ce200e43f8c"
+      },
+      {
+        "bytes": 315883,
+        "custom": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": 0,
+        "index": 5,
+        "offset": 1482636,
+        "rev": 0,
+        "sha256": "c9645d99b5bb1d80fe72301ceaa4d2e4661391223723cdb5677cbf94606d758a"
+      },
+      {
+        "bytes": 304421,
+        "custom": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": 0,
+        "index": 6,
+        "offset": 1798519,
+        "rev": 0,
+        "sha256": "069e389124702bb507fbedeaad2a2d63a0ce32857bb53c4be14e47d7da019101"
+      },
+      {
+        "bytes": 505767,
+        "custom": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": 0,
+        "index": 7,
+        "offset": 2102940,
+        "rev": 0,
+        "sha256": "c045b2133457ac87435481b37fa73167b84dec7e479f6bd76f5fab78b8613d7f"
+      },
+      {
+        "bytes": 314530,
+        "custom": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": 0,
+        "index": 8,
+        "offset": 2608707,
+        "rev": 0,
+        "sha256": "0b2dc9728c55a7ed59be896644c6bf12135a1c8ff903f017e46df45f7d0d6b81"
+      },
+      {
+        "bytes": 295457,
+        "custom": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": 0,
+        "index": 9,
+        "offset": 2923237,
+        "rev": 0,
+        "sha256": "e24d3a694b511f6ed0e2e995167bc5d214096830cf0a6548c4ff0be5408f79f0"
+      },
+      {
+        "bytes": 261292,
+        "custom": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": 0,
+        "index": 10,
+        "offset": 3218694,
+        "rev": 0,
+        "sha256": "3745757969694acffb241964cfff291f7f4fb7a8aeda4c765a8d0b79c4f77733"
+      },
+      {
+        "bytes": 271669,
+        "custom": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": 0,
+        "index": 11,
+        "offset": 3479986,
+        "rev": 0,
+        "sha256": "308e4be4e8481defc31d855a3a23991fcd5319cf5160a006321eb18012edc8e6"
+      },
+      {
+        "bytes": 295200,
+        "custom": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": 0,
+        "index": 12,
+        "offset": 3751655,
+        "rev": 0,
+        "sha256": "add0b827624737507f6be88d95e290e1522ea46b9d1bd7a8e9a44b0745c28724"
+      },
+      {
+        "bytes": 253108,
+        "custom": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "id": 0,
+        "index": 13,
+        "offset": 4046855,
+        "rev": 0,
+        "sha256": "71def50ddcf9f35bc225c323da78e9075f31ddd8c9fdc3edeb0890184cdc3f11"
+      }
+    ],
+    "table_sha256": "279910628e61cad149ccdb16ae0aa0a3a2f46441e21132ac3a1323e565219679"
+  },
+  "finished_utc": "2026-11-24T02:31:54.964749+00:00",
+  "independent_property_readback_passed": true,
+  "inspection_report_sha256": "3ac35a67582837d4eb7009e224dd8e4beb69377a2c832549466eb4cc3f21d5e6",
+  "live_report_sha256": "e071f91b43a063ff6f96cb401269469e20703ab695e64dd37a1d5b86113ba745",
+  "native_memory_layout_qualified": false,
+  "offline_composed": {
+    "bytes": 1001350,
+    "compatible": [
+      "qcom,kona"
+    ],
+    "memory": [
+      {
+        "path": "/memory",
+        "reg": [
+          {
+            "size": 0,
+            "start": 0
+          }
+        ]
+      }
+    ],
+    "model": "Qualcomm Technologies, Inc. kona v2.1 SoC",
+    "qcom_ids": {
+      "qcom,board-id": [
+        0,
+        0
+      ],
+      "qcom,msm-id": [
+        356,
+        131073
+      ]
+    },
+    "reserved_memory": [
+      {
+        "alignment": null,
+        "alloc_ranges": [],
+        "no_map": true,
+        "path": "/reserved-memory/hyp_region@80000000",
+        "reg": [
+          {
+            "size": 6291456,
+            "start": 2147483648
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      {
+        "alignment": null,
+        "alloc_ranges": [],
+        "no_map": true,
+        "path": "/reserved-memory/xbl_aop_region@80700000",
+        "reg": [
+          {
+            "size": 1441792,
+            "start": 2154823680
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      {
+        "alignment": null,
+        "alloc_ranges": [],
+        "no_map": true,
+        "path": "/reserved-memory/removed_region@80b00000",
+        "reg": [
+          {
+            "size": 87031808,
+            "start": 2159017984
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      {
+        "alignment": null,
+        "alloc_ranges": [],
+        "no_map": false,
+        "path": "/reserved-memory/cont_splash_region@9c000000",
+        "reg": [
+          {
+            "size": 36700160,
+            "start": 2617245696
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      {
+        "alignment": null,
+        "alloc_ranges": [],
+        "no_map": false,
+        "path": "/reserved-memory/disp_rdump_region@9c000000",
+        "reg": [
+          {
+            "size": 8388608,
+            "start": 2617245696
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      {
+        "alignment": null,
+        "alloc_ranges": [],
+        "no_map": false,
+        "path": "/reserved-memory/dfps_data_region@9e300000",
+        "reg": [
+          {
+            "size": 1048576,
+            "start": 2653945856
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      {
+        "alignment": null,
+        "alloc_ranges": [],
+        "no_map": true,
+        "path": "/reserved-memory/boot_log_region@0",
+        "reg": [
+          {
+            "size": 524288,
+            "start": 2952790016
+          }
+        ],
+        "reusable": false,
+        "size": null
+      },
+      {
+        "alignment": 4194304,
+        "alloc_ranges": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "no_map": false,
+        "path": "/reserved-memory/linux,cma",
+        "reg": [],
+        "reusable": true,
+        "size": 33554432
+      }
+    ],
+    "reserved_memory_cells": {
+      "address": 2,
+      "empty_ranges": true,
+      "size": 2
+    },
+    "root_cells": {
+      "address": 2,
+      "size": 2
+    },
+    "sha256": "20f9f5404f4769c978056c2b0de3cdea293f6e8abaddb55f155997d2f8b8b9ac"
+  },
+  "offline_to_live_comparison": [
+    {
+      "equal": false,
+      "field": "compatible",
+      "libfdt": [
+        "qcom,kona"
+      ],
+      "reference": [
+        "qcom,kona-qrd",
+        "qcom,kona",
+        "qcom,qrd"
+      ]
+    },
+    {
+      "equal": false,
+      "field": "model",
+      "libfdt": "Qualcomm Technologies, Inc. kona v2.1 SoC",
+      "reference": "Qualcomm Technologies, Inc. kona QRD"
+    },
+    {
+      "equal": false,
+      "field": "qcom_ids",
+      "libfdt": {
+        "qcom,board-id": [
+          0,
+          0
+        ],
+        "qcom,msm-id": [
+          356,
+          131073
+        ]
+      },
+      "reference": {
+        "qcom,board-id": [
+          11,
+          0
+        ],
+        "qcom,msm-id": [
+          356,
+          131073
+        ]
+      }
+    },
+    {
+      "equal": true,
+      "field": "root_cells.address",
+      "libfdt": 2,
+      "reference": 2
+    },
+    {
+      "equal": true,
+      "field": "root_cells.size",
+      "libfdt": 2,
+      "reference": 2
+    },
+    {
+      "equal": true,
+      "field": "memory.selected-paths",
+      "libfdt": [
+        "/memory"
+      ],
+      "reference": [
+        "/memory"
+      ]
+    },
+    {
+      "equal": false,
+      "field": "/memory:reg",
+      "libfdt": [
+        {
+          "size": 0,
+          "start": 0
+        }
+      ],
+      "reference": [
+        {
+          "size": 1001390080,
+          "start": 2147483648
+        },
+        {
+          "size": 7516192768,
+          "start": 3221225472
+        }
+      ]
+    },
+    {
+      "equal": true,
+      "field": "reserved_memory.selected-paths",
+      "libfdt": [
+        "/reserved-memory/boot_log_region@0",
+        "/reserved-memory/cont_splash_region@9c000000",
+        "/reserved-memory/dfps_data_region@9e300000",
+        "/reserved-memory/disp_rdump_region@9c000000",
+        "/reserved-memory/hyp_region@80000000",
+        "/reserved-memory/linux,cma",
+        "/reserved-memory/removed_region@80b00000",
+        "/reserved-memory/xbl_aop_region@80700000"
+      ],
+      "reference": [
+        "/reserved-memory/boot_log_region@0",
+        "/reserved-memory/cont_splash_region@9c000000",
+        "/reserved-memory/dfps_data_region@9e300000",
+        "/reserved-memory/disp_rdump_region@9c000000",
+        "/reserved-memory/hyp_region@80000000",
+        "/reserved-memory/linux,cma",
+        "/reserved-memory/removed_region@80b00000",
+        "/reserved-memory/xbl_aop_region@80700000"
+      ]
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/hyp_region@80000000:reg",
+      "libfdt": [
+        {
+          "size": 6291456,
+          "start": 2147483648
+        }
+      ],
+      "reference": [
+        {
+          "size": 6291456,
+          "start": 2147483648
+        }
+      ]
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/hyp_region@80000000:size",
+      "libfdt": null,
+      "reference": null
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/hyp_region@80000000:alignment",
+      "libfdt": null,
+      "reference": null
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/hyp_region@80000000:alloc_ranges",
+      "libfdt": [],
+      "reference": []
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/hyp_region@80000000:no_map",
+      "libfdt": true,
+      "reference": true
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/hyp_region@80000000:reusable",
+      "libfdt": false,
+      "reference": false
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/xbl_aop_region@80700000:reg",
+      "libfdt": [
+        {
+          "size": 1441792,
+          "start": 2154823680
+        }
+      ],
+      "reference": [
+        {
+          "size": 1441792,
+          "start": 2154823680
+        }
+      ]
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/xbl_aop_region@80700000:size",
+      "libfdt": null,
+      "reference": null
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/xbl_aop_region@80700000:alignment",
+      "libfdt": null,
+      "reference": null
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/xbl_aop_region@80700000:alloc_ranges",
+      "libfdt": [],
+      "reference": []
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/xbl_aop_region@80700000:no_map",
+      "libfdt": true,
+      "reference": true
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/xbl_aop_region@80700000:reusable",
+      "libfdt": false,
+      "reference": false
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/removed_region@80b00000:reg",
+      "libfdt": [
+        {
+          "size": 87031808,
+          "start": 2159017984
+        }
+      ],
+      "reference": [
+        {
+          "size": 87031808,
+          "start": 2159017984
+        }
+      ]
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/removed_region@80b00000:size",
+      "libfdt": null,
+      "reference": null
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/removed_region@80b00000:alignment",
+      "libfdt": null,
+      "reference": null
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/removed_region@80b00000:alloc_ranges",
+      "libfdt": [],
+      "reference": []
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/removed_region@80b00000:no_map",
+      "libfdt": true,
+      "reference": true
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/removed_region@80b00000:reusable",
+      "libfdt": false,
+      "reference": false
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/cont_splash_region@9c000000:reg",
+      "libfdt": [
+        {
+          "size": 36700160,
+          "start": 2617245696
+        }
+      ],
+      "reference": [
+        {
+          "size": 36700160,
+          "start": 2617245696
+        }
+      ]
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/cont_splash_region@9c000000:size",
+      "libfdt": null,
+      "reference": null
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/cont_splash_region@9c000000:alignment",
+      "libfdt": null,
+      "reference": null
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/cont_splash_region@9c000000:alloc_ranges",
+      "libfdt": [],
+      "reference": []
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/cont_splash_region@9c000000:no_map",
+      "libfdt": false,
+      "reference": false
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/cont_splash_region@9c000000:reusable",
+      "libfdt": false,
+      "reference": false
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/disp_rdump_region@9c000000:reg",
+      "libfdt": [
+        {
+          "size": 8388608,
+          "start": 2617245696
+        }
+      ],
+      "reference": [
+        {
+          "size": 8388608,
+          "start": 2617245696
+        }
+      ]
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/disp_rdump_region@9c000000:size",
+      "libfdt": null,
+      "reference": null
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/disp_rdump_region@9c000000:alignment",
+      "libfdt": null,
+      "reference": null
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/disp_rdump_region@9c000000:alloc_ranges",
+      "libfdt": [],
+      "reference": []
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/disp_rdump_region@9c000000:no_map",
+      "libfdt": false,
+      "reference": false
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/disp_rdump_region@9c000000:reusable",
+      "libfdt": false,
+      "reference": false
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/dfps_data_region@9e300000:reg",
+      "libfdt": [
+        {
+          "size": 1048576,
+          "start": 2653945856
+        }
+      ],
+      "reference": [
+        {
+          "size": 1048576,
+          "start": 2653945856
+        }
+      ]
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/dfps_data_region@9e300000:size",
+      "libfdt": null,
+      "reference": null
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/dfps_data_region@9e300000:alignment",
+      "libfdt": null,
+      "reference": null
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/dfps_data_region@9e300000:alloc_ranges",
+      "libfdt": [],
+      "reference": []
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/dfps_data_region@9e300000:no_map",
+      "libfdt": false,
+      "reference": false
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/dfps_data_region@9e300000:reusable",
+      "libfdt": false,
+      "reference": false
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/boot_log_region@0:reg",
+      "libfdt": [
+        {
+          "size": 524288,
+          "start": 2952790016
+        }
+      ],
+      "reference": [
+        {
+          "size": 524288,
+          "start": 2952790016
+        }
+      ]
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/boot_log_region@0:size",
+      "libfdt": null,
+      "reference": null
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/boot_log_region@0:alignment",
+      "libfdt": null,
+      "reference": null
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/boot_log_region@0:alloc_ranges",
+      "libfdt": [],
+      "reference": []
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/boot_log_region@0:no_map",
+      "libfdt": true,
+      "reference": true
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/boot_log_region@0:reusable",
+      "libfdt": false,
+      "reference": false
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/linux,cma:reg",
+      "libfdt": [],
+      "reference": []
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/linux,cma:size",
+      "libfdt": 33554432,
+      "reference": 33554432
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/linux,cma:alignment",
+      "libfdt": 4194304,
+      "reference": 4194304
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/linux,cma:alloc_ranges",
+      "libfdt": [
+        {
+          "size": 4294967295,
+          "start": 0
+        }
+      ],
+      "reference": [
+        {
+          "size": 4294967295,
+          "start": 0
+        }
+      ]
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/linux,cma:no_map",
+      "libfdt": false,
+      "reference": false
+    },
+    {
+      "equal": true,
+      "field": "/reserved-memory/linux,cma:reusable",
+      "libfdt": true,
+      "reference": true
+    }
+  ],
+  "offline_to_live_scope": "selected public fields only; differences retained, not a whole-DT match or bootloader replay",
+  "overlay": {
+    "bytes": 502232,
+    "compatible": [
+      "qcom,kona-qrd",
+      "qcom,kona",
+      "qcom,qrd"
+    ],
+    "memory": [],
+    "model": "Qualcomm Technologies, Inc. kona QRD",
+    "qcom_ids": {
+      "qcom,board-id": [
+        11,
+        0
+      ]
+    },
+    "reserved_memory": [],
+    "root_cells": {
+      "address": 2,
+      "size": 1
+    },
+    "sha256": "696cbe86a0ce5683edbad9bb330e909dcc44f33aa8e242933afd19d9177cdfc1"
+  },
+  "overlay_composition": {
+    "attempted": true,
+    "exit_code": 0,
+    "scope": "libfdt offline base0 plus overlay2 only; no ABL fixups or runtime handoff"
+  },
+  "owner_native_linux_passes_added": 0,
+  "parser_crosscheck_performed": true,
+  "pass_scope": "selected libfdt property reads and any explicitly requested cross-check/composition only",
+  "passed": true,
+  "physical_mainline_linux_tested": false,
+  "project_dt_parser_imported": false,
+  "reported_selection_observations_consistent": true,
+  "same_input_parser_comparisons": {
+    "base": [
+      {
+        "equal": true,
+        "field": "compatible",
+        "libfdt": [
+          "qcom,kona"
+        ],
+        "reference": [
+          "qcom,kona"
+        ]
+      },
+      {
+        "equal": true,
+        "field": "model",
+        "libfdt": "Qualcomm Technologies, Inc. kona v2.1 SoC",
+        "reference": "Qualcomm Technologies, Inc. kona v2.1 SoC"
+      },
+      {
+        "equal": true,
+        "field": "qcom_ids",
+        "libfdt": {
+          "qcom,board-id": [
+            0,
+            0
+          ],
+          "qcom,msm-id": [
+            356,
+            131073
+          ]
+        },
+        "reference": {
+          "qcom,board-id": [
+            0,
+            0
+          ],
+          "qcom,msm-id": [
+            356,
+            131073
+          ]
+        }
+      },
+      {
+        "equal": true,
+        "field": "root_cells.address",
+        "libfdt": 2,
+        "reference": 2
+      },
+      {
+        "equal": true,
+        "field": "root_cells.size",
+        "libfdt": 2,
+        "reference": 2
+      },
+      {
+        "equal": true,
+        "field": "memory.selected-paths",
+        "libfdt": [
+          "/memory"
+        ],
+        "reference": [
+          "/memory"
+        ]
+      },
+      {
+        "equal": true,
+        "field": "/memory:reg",
+        "libfdt": [
+          {
+            "size": 0,
+            "start": 0
+          }
+        ],
+        "reference": [
+          {
+            "size": 0,
+            "start": 0
+          }
+        ]
+      },
+      {
+        "equal": true,
+        "field": "reserved_memory.selected-paths",
+        "libfdt": [
+          "/reserved-memory/boot_log_region@0",
+          "/reserved-memory/cont_splash_region@9c000000",
+          "/reserved-memory/dfps_data_region@9e300000",
+          "/reserved-memory/disp_rdump_region@9c000000",
+          "/reserved-memory/hyp_region@80000000",
+          "/reserved-memory/linux,cma",
+          "/reserved-memory/removed_region@80b00000",
+          "/reserved-memory/xbl_aop_region@80700000"
+        ],
+        "reference": [
+          "/reserved-memory/boot_log_region@0",
+          "/reserved-memory/cont_splash_region@9c000000",
+          "/reserved-memory/dfps_data_region@9e300000",
+          "/reserved-memory/disp_rdump_region@9c000000",
+          "/reserved-memory/hyp_region@80000000",
+          "/reserved-memory/linux,cma",
+          "/reserved-memory/removed_region@80b00000",
+          "/reserved-memory/xbl_aop_region@80700000"
+        ]
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/hyp_region@80000000:reg",
+        "libfdt": [
+          {
+            "size": 6291456,
+            "start": 2147483648
+          }
+        ],
+        "reference": [
+          {
+            "size": 6291456,
+            "start": 2147483648
+          }
+        ]
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/hyp_region@80000000:size",
+        "libfdt": null,
+        "reference": null
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/hyp_region@80000000:alignment",
+        "libfdt": null,
+        "reference": null
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/hyp_region@80000000:alloc_ranges",
+        "libfdt": [],
+        "reference": []
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/hyp_region@80000000:no_map",
+        "libfdt": true,
+        "reference": true
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/hyp_region@80000000:reusable",
+        "libfdt": false,
+        "reference": false
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/xbl_aop_region@80700000:reg",
+        "libfdt": [
+          {
+            "size": 1441792,
+            "start": 2154823680
+          }
+        ],
+        "reference": [
+          {
+            "size": 1441792,
+            "start": 2154823680
+          }
+        ]
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/xbl_aop_region@80700000:size",
+        "libfdt": null,
+        "reference": null
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/xbl_aop_region@80700000:alignment",
+        "libfdt": null,
+        "reference": null
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/xbl_aop_region@80700000:alloc_ranges",
+        "libfdt": [],
+        "reference": []
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/xbl_aop_region@80700000:no_map",
+        "libfdt": true,
+        "reference": true
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/xbl_aop_region@80700000:reusable",
+        "libfdt": false,
+        "reference": false
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/removed_region@80b00000:reg",
+        "libfdt": [
+          {
+            "size": 87031808,
+            "start": 2159017984
+          }
+        ],
+        "reference": [
+          {
+            "size": 87031808,
+            "start": 2159017984
+          }
+        ]
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/removed_region@80b00000:size",
+        "libfdt": null,
+        "reference": null
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/removed_region@80b00000:alignment",
+        "libfdt": null,
+        "reference": null
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/removed_region@80b00000:alloc_ranges",
+        "libfdt": [],
+        "reference": []
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/removed_region@80b00000:no_map",
+        "libfdt": true,
+        "reference": true
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/removed_region@80b00000:reusable",
+        "libfdt": false,
+        "reference": false
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/cont_splash_region@9c000000:reg",
+        "libfdt": [
+          {
+            "size": 36700160,
+            "start": 2617245696
+          }
+        ],
+        "reference": [
+          {
+            "size": 36700160,
+            "start": 2617245696
+          }
+        ]
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/cont_splash_region@9c000000:size",
+        "libfdt": null,
+        "reference": null
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/cont_splash_region@9c000000:alignment",
+        "libfdt": null,
+        "reference": null
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/cont_splash_region@9c000000:alloc_ranges",
+        "libfdt": [],
+        "reference": []
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/cont_splash_region@9c000000:no_map",
+        "libfdt": false,
+        "reference": false
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/cont_splash_region@9c000000:reusable",
+        "libfdt": false,
+        "reference": false
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/disp_rdump_region@9c000000:reg",
+        "libfdt": [
+          {
+            "size": 8388608,
+            "start": 2617245696
+          }
+        ],
+        "reference": [
+          {
+            "size": 8388608,
+            "start": 2617245696
+          }
+        ]
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/disp_rdump_region@9c000000:size",
+        "libfdt": null,
+        "reference": null
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/disp_rdump_region@9c000000:alignment",
+        "libfdt": null,
+        "reference": null
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/disp_rdump_region@9c000000:alloc_ranges",
+        "libfdt": [],
+        "reference": []
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/disp_rdump_region@9c000000:no_map",
+        "libfdt": false,
+        "reference": false
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/disp_rdump_region@9c000000:reusable",
+        "libfdt": false,
+        "reference": false
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/dfps_data_region@9e300000:reg",
+        "libfdt": [
+          {
+            "size": 1048576,
+            "start": 2653945856
+          }
+        ],
+        "reference": [
+          {
+            "size": 1048576,
+            "start": 2653945856
+          }
+        ]
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/dfps_data_region@9e300000:size",
+        "libfdt": null,
+        "reference": null
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/dfps_data_region@9e300000:alignment",
+        "libfdt": null,
+        "reference": null
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/dfps_data_region@9e300000:alloc_ranges",
+        "libfdt": [],
+        "reference": []
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/dfps_data_region@9e300000:no_map",
+        "libfdt": false,
+        "reference": false
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/dfps_data_region@9e300000:reusable",
+        "libfdt": false,
+        "reference": false
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/boot_log_region@0:reg",
+        "libfdt": [
+          {
+            "size": 524288,
+            "start": 2952790016
+          }
+        ],
+        "reference": [
+          {
+            "size": 524288,
+            "start": 2952790016
+          }
+        ]
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/boot_log_region@0:size",
+        "libfdt": null,
+        "reference": null
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/boot_log_region@0:alignment",
+        "libfdt": null,
+        "reference": null
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/boot_log_region@0:alloc_ranges",
+        "libfdt": [],
+        "reference": []
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/boot_log_region@0:no_map",
+        "libfdt": true,
+        "reference": true
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/boot_log_region@0:reusable",
+        "libfdt": false,
+        "reference": false
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/linux,cma:reg",
+        "libfdt": [],
+        "reference": []
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/linux,cma:size",
+        "libfdt": 33554432,
+        "reference": 33554432
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/linux,cma:alignment",
+        "libfdt": 4194304,
+        "reference": 4194304
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/linux,cma:alloc_ranges",
+        "libfdt": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ],
+        "reference": [
+          {
+            "size": 4294967295,
+            "start": 0
+          }
+        ]
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/linux,cma:no_map",
+        "libfdt": false,
+        "reference": false
+      },
+      {
+        "equal": true,
+        "field": "/reserved-memory/linux,cma:reusable",
+        "libfdt": true,
+        "reference": true
+      }
+    ],
+    "overlay": [
+      {
+        "equal": true,
+        "field": "compatible",
+        "libfdt": [
+          "qcom,kona-qrd",
+          "qcom,kona",
+          "qcom,qrd"
+        ],
+        "reference": [
+          "qcom,kona-qrd",
+          "qcom,kona",
+          "qcom,qrd"
+        ]
+      },
+      {
+        "equal": true,
+        "field": "model",
+        "libfdt": "Qualcomm Technologies, Inc. kona QRD",
+        "reference": "Qualcomm Technologies, Inc. kona QRD"
+      },
+      {
+        "equal": true,
+        "field": "qcom_ids",
+        "libfdt": {
+          "qcom,board-id": [
+            11,
+            0
+          ]
+        },
+        "reference": {
+          "qcom,board-id": [
+            11,
+            0
+          ]
+        }
+      },
+      {
+        "equal": true,
+        "field": "root_cells.address",
+        "libfdt": 2,
+        "reference": 2
+      },
+      {
+        "equal": true,
+        "field": "root_cells.size",
+        "libfdt": 1,
+        "reference": 1
+      },
+      {
+        "equal": true,
+        "field": "memory.selected-paths",
+        "libfdt": [],
+        "reference": []
+      },
+      {
+        "equal": true,
+        "field": "reserved_memory.selected-paths",
+        "libfdt": [],
+        "reference": []
+      }
+    ]
+  },
+  "schema": "tb371fc-libfdt-independent-dt-check-v1",
+  "source_sha256": "29ab0310b8ed6d6be19ebd3959dc5ffc56ab6c95d2916e4cc05286035a72505d",
+  "started_utc": "2026-11-24T02:31:26.365252+00:00",
+  "tools": {
+    "fdtget": {
+      "bytes": 26944,
+      "path": "/usr/bin/fdtget",
+      "sha256": "e35762888837cc0bab37d373dd69c1cb8b5b271dcab8e0a290dfebb7ae24f7cc",
+      "version": "Version: DTC 1.7.2"
+    },
+    "fdtoverlay": {
+      "bytes": 26944,
+      "path": "/usr/bin/fdtoverlay",
+      "sha256": "857805f5be30aa8cd62716cec22d21a705d62ca51593e6245db32b9885805c13",
+      "version": "Version: DTC 1.7.2"
+    }
+  }
+}

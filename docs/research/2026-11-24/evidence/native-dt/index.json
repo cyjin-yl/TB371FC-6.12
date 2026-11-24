@@ -1,0 +1,114 @@
+{
+  "current_sources": {
+    "collect_native_dt.py": {
+      "bytes": 5508,
+      "sha256": "18f93cff68fd444021f1f234eb52dd0a30979a900a62cca4bb4edc0c8d4178cd"
+    },
+    "correlate_native_dt.py": {
+      "bytes": 26861,
+      "sha256": "e4d4af106a5f30b764d38ca5170262ad784f6257b33243fb9facd4abd7a33680"
+    },
+    "inspect_native_dt_backup.py": {
+      "bytes": 6926,
+      "sha256": "e9a4529e4950ff5d8e8f6641cc657932287b5ef8a513f047f871d2cfa1f07e50"
+    },
+    "native_dt.py": {
+      "bytes": 27586,
+      "sha256": "d805f5f6be2ae96e2fb4555a7d7a380ea48f1ebb1a4918966ab75fc0c4828e9d"
+    },
+    "test_correlate_native_dt.py": {
+      "bytes": 11362,
+      "sha256": "125a76903697b5c53ca6526c86cb9caa6f4bcea3081eb9b014cb8cb215da9d79"
+    },
+    "test_native_dt.py": {
+      "bytes": 19754,
+      "sha256": "aa7be5525dfebca1293f877bd10772f5f2a01cc8a8cd9a595cbc082d0458ddf9"
+    },
+    "test_native_dt_inputs.py": {
+      "bytes": 2688,
+      "sha256": "90d2ac76d59a96b751e11150dc12eed40bd2e1d4aa1659cf08ee373f3a870602"
+    },
+    "verify_native_dt_libfdt.py": {
+      "bytes": 20858,
+      "sha256": "985daf5a491cde0bc9903f0cf2152ca6e61260e798d4bcf58ac7a0751063366d"
+    }
+  },
+  "files": {
+    "backup-attempt01.json": {
+      "bytes": 571949,
+      "sha256": "b314f556ef62d08ae2653da9fa7507b849cf5831d63a63ed16c529902f3f5d38"
+    },
+    "backup-attempt02-execution.json": {
+      "bytes": 1323,
+      "sha256": "385c6ab55522de9dafb3426c3c37dfe7b5895bb4a6d1fb1fc821b5760ea83d65"
+    },
+    "backup-final.json": {
+      "bytes": 590004,
+      "sha256": "3ac35a67582837d4eb7009e224dd8e4beb69377a2c832549466eb4cc3f21d5e6"
+    },
+    "correlation.json": {
+      "bytes": 105118,
+      "sha256": "ac050fe46cf5df81b672cd22fe45605f4962ae6dbc905ca3ee9791089b69c654"
+    },
+    "libfdt-attempt01-execution.json": {
+      "bytes": 749,
+      "sha256": "51530abbbd95783de8d2495c3212025d097b594627cf4cb90e4e8e307e4a134c"
+    },
+    "libfdt-attempt01.json": {
+      "bytes": 95408,
+      "sha256": "b423f59181168720db1a59d1aeafa3960e0148e305bb697d3a7182698c3f27d3"
+    },
+    "libfdt-final-execution.json": {
+      "bytes": 749,
+      "sha256": "b973260403ca265d1fe0b9a1cd135f2cefd57ee9ad1cd817c6a6babd6a6c7266"
+    },
+    "libfdt-final.json": {
+      "bytes": 95408,
+      "sha256": "49286ad739400926b17b1dd6732a09b6be1686f0f63809d5f40ba0fbdd0a6f35"
+    },
+    "live-android.json": {
+      "bytes": 16114,
+      "sha256": "e071f91b43a063ff6f96cb401269469e20703ab695e64dd37a1d5b86113ba745"
+    },
+    "live-attempt01.txt": {
+      "bytes": 382,
+      "sha256": "8d76bf90b597a0053add4156091c6e49559d0ba9345b6e6f7ef624039e619b47"
+    },
+    "live-attempt02.txt": {
+      "bytes": 20,
+      "sha256": "e75eaf358e5b148a7f5190e7e74450cf4d3b2230ce3084b64d58518778a1f5e5"
+    },
+    "live-attempt03.txt": {
+      "bytes": 407,
+      "sha256": "0b42fd9e70143a306442fb56fffae9ca00de205d747da4765bd640ee8f401c27"
+    },
+    "source-attempt01.json": {
+      "bytes": 629,
+      "sha256": "c8b5670ef67065516ae823e9580acef5c92bddbccb5218bd074c6a435356aa12"
+    },
+    "source-attempt02.json": {
+      "bytes": 629,
+      "sha256": "025d6f66057bf215122cfcb2b991df964cf235ade5fbf90742688e701cf7be3c"
+    }
+  },
+  "ledger": {
+    "blocked": 12,
+    "not_run": 32,
+    "passed": 0,
+    "total": 44
+  },
+  "owner_native_linux_passes_added": 0,
+  "physical_mainline_linux_tested": false,
+  "retained_attempts": {
+    "backup-attempt01": "successful exact backup inspection before explicit live forensic option",
+    "backup-final": "successful final strict artifact reader and dependency identities",
+    "libfdt-attempt01": "successful independent run before type-sensitive JSON equality fix",
+    "libfdt-final": "successful final-source independent rerun",
+    "live-android": "explicit forensic capture, two nonconformant padding regions retained",
+    "live-attempt01": "strict parse failure; original coarse extent/padding error",
+    "live-attempt02": "device disconnected; no result inferred",
+    "live-attempt03": "strict parse failure; one nonzero alignment-padding byte localized"
+  },
+  "schema": "tb371fc-native-dt-evidence-index-v1",
+  "scope": "owner Android observation, existing backup metadata, reported-index correlation and offline libfdt checks"
+}

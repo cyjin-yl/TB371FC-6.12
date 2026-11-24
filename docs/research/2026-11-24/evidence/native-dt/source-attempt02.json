@@ -1,0 +1,18 @@
+{
+  "scripts/research/native_dt.py": {
+    "sha256": "d805f5f6be2ae96e2fb4555a7d7a380ea48f1ebb1a4918966ab75fc0c4828e9d",
+    "bytes": 27586
+  },
+  "scripts/research/inspect_native_dt_backup.py": {
+    "sha256": "e9a4529e4950ff5d8e8f6641cc657932287b5ef8a513f047f871d2cfa1f07e50",
+    "bytes": 6926
+  },
+  "scripts/research/inspect_boot_backup.py": {
+    "sha256": "b24f1c36248cd1203347549be500ef7e3274d1586a4e00bbb9db1a3fc9da87b4",
+    "bytes": 5887
+  },
+  "docs/research/2026-11-23/evidence/boot-backup-off-device.json": {
+    "sha256": "c95a47c36a491f4924f90285953550f060bcb986d05f1ecaafedbfa26f067bf4",
+    "bytes": 2052
+  }
+}
