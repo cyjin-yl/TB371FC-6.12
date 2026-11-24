@@ -2,10 +2,11 @@
 import os
 from pathlib import Path
 import tarfile
+import subprocess
 import tempfile
 import unittest
 
-from stage_r5_nura import validate_members, target, verify_inventory
+from stage_r5_nura import extract_archive, validate_members, target, verify_inventory
 
 
 def member(name, kind=tarfile.REGTYPE, link="", size=0):
@@ -59,6 +60,49 @@ class LayoutTest(unittest.TestCase):
     def test_expanded_bound(self):
         with self.assertRaises(ValueError):
             validate_members([member(".", tarfile.DIRTYPE), member("large", size=4*1024**3+1)])
+
+
+class ActualArchiveTest(unittest.TestCase):
+    def test_gnu_tar_roundtrip_metadata_links_and_payload(self):
+        with tempfile.TemporaryDirectory() as d:
+            work = Path(d)
+            source = work / "source"
+            (source / "usr/bin").mkdir(parents=True)
+            original = source / "usr/bin/busybox"
+            original.write_bytes(b"synthetic ARM userspace fixture")
+            original.chmod(0o751)
+            os.setxattr(original, "user.tb371fc-fixture", b"preserve")
+            os.link(original, source / "usr/bin/busybox-copy")
+            (source / "bin").symlink_to("usr/bin")
+            (source / "usr/bin/init").symlink_to("/bin/busybox")
+            archive = work / "test.tar.gz"
+            subprocess.run(["tar", "--sort=name", "--format=posix",
+                            "--numeric-owner", "--acls", "--xattrs",
+                            "--xattrs-include=*", "-czf", str(archive),
+                            "-C", str(source), "."], check=True)
+            root = work / "root"
+            layout = extract_archive(work, archive, root)
+            actual, unused = target(root, "bin/init")
+            self.assertEqual(actual.read_bytes(), original.read_bytes())
+            self.assertEqual(actual.stat().st_mode & 0o777, 0o751)
+            self.assertEqual(actual.stat().st_uid, original.stat().st_uid)
+            self.assertEqual(os.getxattr(actual, "user.tb371fc-fixture"), b"preserve")
+            self.assertEqual(actual.stat().st_ino, (root / "usr/bin/busybox-copy").stat().st_ino)
+            self.assertEqual(layout["hardlinks"], 1)
+            self.assertTrue((work / "extract.json").is_file())
+
+    def test_bad_archive_never_creates_output_root(self):
+        with tempfile.TemporaryDirectory() as d:
+            work = Path(d)
+            archive = work / "bad.tar.gz"
+            with tarfile.open(archive, "w:gz") as stream:
+                stream.addfile(member(".", tarfile.DIRTYPE))
+                stream.addfile(member("link", tarfile.SYMTYPE, "/tmp"))
+                stream.addfile(member("link/forbidden"))
+            root = work / "root"
+            with self.assertRaises(ValueError):
+                extract_archive(work, archive, root)
+            self.assertFalse(root.exists())
 
 
 class GuestPathTest(unittest.TestCase):
