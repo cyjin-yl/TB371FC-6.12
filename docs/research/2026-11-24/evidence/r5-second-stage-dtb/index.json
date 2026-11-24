@@ -1,0 +1,109 @@
+{
+  "binary_candidate_published": false,
+  "binary_candidate_read_for_publication": false,
+  "files": [
+    {
+      "bytes": 8488,
+      "original_relative_path": "scripts/research/derive_second_stage_dtb.py",
+      "path": "scripts/research/derive_second_stage_dtb.py",
+      "sha256": "b397f68b753e04d386e6deedeec63685477559fbc55c499cbf70eb9535cafec0"
+    },
+    {
+      "bytes": 4838,
+      "original_relative_path": "scripts/research/test_second_stage_dtb.py",
+      "path": "scripts/research/test_second_stage_dtb.py",
+      "sha256": "ff11e1bde4ab0a06e2a776e48c4158872fc3c17c066f9b263c9a3ce3094d8460"
+    },
+    {
+      "bytes": 4851,
+      "original_relative_path": "test_second_stage_dtb-attempt01.py",
+      "path": "docs/research/2026-11-24/evidence/r5-second-stage-dtb/test_second_stage_dtb-attempt01.py",
+      "sha256": "3b7f3172c0564a89e236f2a3a80c21d9ba5c0be0f0caaaf79c212a85dc9dccc1"
+    },
+    {
+      "bytes": 49765,
+      "original_relative_path": "candidate/receipt.json",
+      "path": "docs/research/2026-11-24/evidence/r5-second-stage-dtb/receipt.json",
+      "sha256": "5d1f6141efbd89f5197cc91c429c0aaba1a3a39fe992f5579884023726ed8d14"
+    },
+    {
+      "bytes": 1239,
+      "original_relative_path": "tests.log",
+      "path": "docs/research/2026-11-24/evidence/r5-second-stage-dtb/tests.log",
+      "sha256": "42584e2ad74bd9f3303de51e1b0056514d17d0200cdb71740d8053beaee4ee6a"
+    },
+    {
+      "bytes": 2,
+      "original_relative_path": "tests.exit",
+      "path": "docs/research/2026-11-24/evidence/r5-second-stage-dtb/tests.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 2093,
+      "original_relative_path": "tests-attempt01.log",
+      "path": "docs/research/2026-11-24/evidence/r5-second-stage-dtb/tests-attempt01.log",
+      "sha256": "2205840480a756eed8f3c041f91538ad1c363034a1c0c7f90c0ec1a8132029b3"
+    },
+    {
+      "bytes": 2,
+      "original_relative_path": "tests-attempt01.exit",
+      "path": "docs/research/2026-11-24/evidence/r5-second-stage-dtb/tests-attempt01.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    }
+  ],
+  "generation_exit_receipt_present": false,
+  "generation_reexecuted_for_publication": false,
+  "historical_tests_reexecuted_for_publication": false,
+  "original_private_work_directory": "/work/r5-stage2-dtb-auto01",
+  "owner_native_linux_passes_added": 0,
+  "physical_boot_verified": false,
+  "physical_load_addresses_selected": false,
+  "reported_candidate_dtb": {
+    "bytes": 126893,
+    "compatible": [
+      "lenovo,tb371fc",
+      "qcom,sm8250"
+    ],
+    "sha256": "7092d992582a2f49b65e8eb1a4209fede3b41ccbbacb3abc28d29b649b33423c"
+  },
+  "reported_source_dtb": {
+    "bytes": 126877,
+    "sha256": "af80b06f38b73ea42cb669a2897721ba7ecc5a99a8aa3d6d9c1e9ba132597730"
+  },
+  "retained_dependency_identities": [
+    {
+      "bytes": 27586,
+      "path": "scripts/research/native_dt.py",
+      "sha256": "d805f5f6be2ae96e2fb4555a7d7a380ea48f1ebb1a4918966ab75fc0c4828e9d"
+    },
+    {
+      "bytes": 17028,
+      "path": "scripts/research/boot_formats.py",
+      "sha256": "b0936334329df6bab43fe47a5536c3cb4e279804163ffb880987530166c3d64e"
+    },
+    {
+      "bytes": 16114,
+      "path": "docs/research/2026-11-24/evidence/native-dt/live-android.json",
+      "sha256": "e071f91b43a063ff6f96cb401269469e20703ab695e64dd37a1d5b86113ba745"
+    }
+  ],
+  "retained_tests": {
+    "attempt01": {
+      "exit_code": 1,
+      "failure": "strict parser rejected nonzero property padding before the fixture reached its expected added-property check",
+      "failures": 1,
+      "fix": "use a 4-byte NUL-terminated fixture value; production parser unchanged",
+      "log": "tests-attempt01.log",
+      "source": "test_second_stage_dtb-attempt01.py",
+      "tests": 10
+    },
+    "final": {
+      "exit_code": 0,
+      "log": "tests.log",
+      "tests": 10
+    }
+  },
+  "runtime_memory_map_verified": false,
+  "schema": "tb371fc-r5-second-stage-dtb-publication-v1",
+  "scope": "retained offline candidate metadata and source; no native boot evidence"
+}
