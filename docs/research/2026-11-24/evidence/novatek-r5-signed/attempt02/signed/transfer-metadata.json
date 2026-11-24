@@ -1,0 +1,41 @@
+{
+  "files": [
+    {
+      "bytes": 22669,
+      "path": "r5-novatek-signed-c1296-run02/r5-novatek-stage.json",
+      "sha256": "405e92520d641dbf967630935c886ce664a013ced959926a13cdf25ca6606683"
+    },
+    {
+      "bytes": 37241,
+      "path": "r5-novatek-signed-c1296-run02/frozen-kernel-gate.json",
+      "sha256": "583ce5d886476db8633649b54d5cd002b150844455d2b282b15e6d7a983f78e4"
+    },
+    {
+      "bytes": 20712,
+      "path": "r5-novatek-signed-c1296-run02/derived-root-module-gate.json",
+      "sha256": "5e9a60983b4353ef8f552d1d6caa5b0cd6d72fbaffda074a566237753e6c2c27"
+    },
+    {
+      "bytes": 18231,
+      "path": "r5-novatek-signed-c1296-run02/derived-module-inventory.json",
+      "sha256": "7205357e66b32a9eb14975745576c99d28405a2ecfb1b41f702528eb6d62c579"
+    },
+    {
+      "bytes": 0,
+      "path": "r5-novatek-signed-c1296-run02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 2,
+      "path": "r5-novatek-signed-c1296-run02.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    }
+  ],
+  "python_version": "3.13.5 (main, Aug 10 2026, 12:06:59) [GCC 14.2.0]",
+  "readback_utc": "2026-11-24T10:38:54.621737+00:00",
+  "schema": "recovered-transfer-file-manifest-v1",
+  "source": "Recovered original tool result file values; each content file verified against its saved byte count and SHA-256",
+  "source_head": "adaa672e3ebb515ae304749ab4895370ebed05a6",
+  "source_tracked_status": "",
+  "source_tree": "190c3a47e6bfe314b038b1e47c7767e0aaaa7d88"
+}

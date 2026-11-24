@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/work/r5-novatek-source-c1296/scripts/research/input/signing/target_r5_depmod.py", line 241, in <module>
+    main()
+    ~~~~^^
+  File "/work/r5-novatek-source-c1296/scripts/research/input/signing/target_r5_depmod.py", line 237, in main
+    run(args.repo, args.signed_stage, args.work)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/r5-novatek-source-c1296/scripts/research/input/signing/target_r5_depmod.py", line 128, in run
+    contract = derived_contract(original, signed_receipt)
+  File "/work/r5-novatek-source-c1296/scripts/research/input/signing/target_r5_depmod.py", line 49, in derived_contract
+    require(set(replacement) == {"sha256", "bytes", "mode"} and
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            replacement["sha256"] != stage.BASE_MODULE_SHA and
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            replacement["mode"] == selected[MODULE]["mode"],
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "replacement must be a distinct module with the frozen mode")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/r5-novatek-source-c1296/scripts/research/input/signing/stage_r5_novatek.py", line 41, in require
+    raise ValueError(message)
+ValueError: replacement must be a distinct module with the frozen mode

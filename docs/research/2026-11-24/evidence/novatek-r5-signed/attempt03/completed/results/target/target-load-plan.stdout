@@ -1,0 +1,1 @@
+insmod /candidate/lib/modules/6.12.114-tb371fc-research5-services/kernel/drivers/input/touchscreen/nt36523/nt36523_ts.ko 

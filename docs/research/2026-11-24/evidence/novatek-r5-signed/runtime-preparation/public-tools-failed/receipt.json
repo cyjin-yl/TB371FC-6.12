@@ -1,0 +1,13 @@
+{
+  "schema": "tb371fc-public-tool-copy-v1",
+  "started_utc": "2026-11-24T11:25:57.580074+00:00",
+  "complete": false,
+  "inputs": {},
+  "copied_private_key": false,
+  "extract_exit_code": 0,
+  "failure": {
+    "type": "RuntimeError",
+    "message": "public tool extraction failed or emitted diagnostics"
+  },
+  "finished_utc": "2026-11-24T11:25:58.983165+00:00"
+}

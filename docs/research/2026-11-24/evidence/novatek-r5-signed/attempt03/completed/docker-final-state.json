@@ -1,0 +1,17 @@
+{
+  "captured_utc": "2026-11-24T12:29:59.692667+00:00",
+  "container_id": "6d2faf7e40305934917fb5f40e64d9f9f09536db932532e8d3063b2e67c9504e",
+  "state": {
+    "Dead": false,
+    "Error": "",
+    "ExitCode": 0,
+    "FinishedAt": "2026-11-24T12:27:08.224783574Z",
+    "OOMKilled": false,
+    "Paused": false,
+    "Pid": 0,
+    "Restarting": false,
+    "Running": false,
+    "StartedAt": "2026-11-24T12:25:45.903430548Z",
+    "Status": "exited"
+  }
+}

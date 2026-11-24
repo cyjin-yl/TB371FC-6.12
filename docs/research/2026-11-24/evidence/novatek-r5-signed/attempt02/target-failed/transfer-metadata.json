@@ -1,0 +1,37 @@
+{
+  "files": [
+    {
+      "bytes": 2,
+      "path": "r5-novatek-depmod-c1296-run02.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "bytes": 949,
+      "path": "r5-novatek-depmod-c1296-run02.log",
+      "sha256": "93a19d4a0951277580e40cbbea1079d8059670032fe7e2c5b3ebcda0428936ba"
+    },
+    {
+      "bytes": 32418,
+      "path": "r5-novatek-depmod-c1296-run02/derived-candidate.json",
+      "sha256": "395a2b81be08cabec8882efb52b2991d0b765e45335b9f88709bfbd97785abf3"
+    },
+    {
+      "bytes": 2108,
+      "path": "r5-novatek-depmod-c1296-run02/r5-novatek-target-depmod.json",
+      "sha256": "d034e43f8a8cb163f0d9d8c2732b05b30b935fd2d7d3dafd96111092802d58ad"
+    },
+    {
+      "bytes": 0,
+      "path": "r5-novatek-depmod-c1296-run02/runtime-source.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 20712,
+      "path": "r5-novatek-depmod-c1296-run02/signed-input-gate.json",
+      "sha256": "5e9a60983b4353ef8f552d1d6caa5b0cd6d72fbaffda074a566237753e6c2c27"
+    }
+  ],
+  "readback_utc": "2026-11-24T11:08:16.115873+00:00",
+  "schema": "recovered-transfer-file-manifest-v1",
+  "source": "Recovered original tool result file values; each content file verified against its saved byte count and SHA-256"
+}

@@ -1,0 +1,367 @@
+{
+  "captured_utc": "2026-11-24T12:29:59.692667+00:00",
+  "description": "Original remote file bytes preserved; this metadata manifest is generated from the recovered tool result.",
+  "files": [
+    {
+      "bytes": 2,
+      "name": "resume-launch.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/resume-launch.exit"
+    },
+    {
+      "bytes": 16803,
+      "name": "resume-launch.json",
+      "sha256": "7d9e2b20b608a343071ca90bf382c03a851a3187886104cc23337ef088e5c461",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/resume-launch.json"
+    },
+    {
+      "bytes": 73,
+      "name": "resume-launch.log",
+      "sha256": "17947cf634ee887b0ac5395fc0cf9a9e8496e8db37c750f08081dcfd6768a445",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/resume-launch.log"
+    },
+    {
+      "bytes": 224,
+      "name": "results/preparation/archive-sha256.json",
+      "sha256": "0f7233ac9466e438e20e597522ab8684e5dee253b3ce33c4d62cf494d95754ea",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/archive-sha256.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/preparation/archive-sha256.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/archive-sha256.stderr"
+    },
+    {
+      "bytes": 96,
+      "name": "results/preparation/archive-sha256.stdout",
+      "sha256": "00047587c81d32325a70ad0cd49e0f21dfd053489f0c483fc20c5a4a2b051be3",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/archive-sha256.stdout"
+    },
+    {
+      "bytes": 492,
+      "name": "results/preparation/extract-runtime.json",
+      "sha256": "b2754ff61e352866ef2ca3a1f0e503ed674ea9a5f5752f6ead651c7670e71c29",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/extract-runtime.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/preparation/extract-runtime.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/extract-runtime.stderr"
+    },
+    {
+      "bytes": 0,
+      "name": "results/preparation/extract-runtime.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/extract-runtime.stdout"
+    },
+    {
+      "bytes": 322,
+      "name": "results/preparation/source-head.json",
+      "sha256": "a6a748f450536f42969b0f09633f6969d134607e71df9d66dc764113d31fd74f",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/source-head.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/preparation/source-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/source-head.stderr"
+    },
+    {
+      "bytes": 41,
+      "name": "results/preparation/source-head.stdout",
+      "sha256": "48924ff62aa26ac254806fd525cc41342b3fcb5d9466ceab2adece43c64b687c",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/source-head.stdout"
+    },
+    {
+      "bytes": 354,
+      "name": "results/preparation/source-status.json",
+      "sha256": "fd4155ec47bc91ea76dcea9db09332e8542680f17ed2ed57fec142dfec46de40",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/source-status.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/preparation/source-status.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/source-status.stderr"
+    },
+    {
+      "bytes": 0,
+      "name": "results/preparation/source-status.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/source-status.stdout"
+    },
+    {
+      "bytes": 329,
+      "name": "results/preparation/source-tree.json",
+      "sha256": "d746091f9b3f57b52cfab9f010758ff510008f0f77c4a1e25bea0fd213b79d2e",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/source-tree.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/preparation/source-tree.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/source-tree.stderr"
+    },
+    {
+      "bytes": 41,
+      "name": "results/preparation/source-tree.stdout",
+      "sha256": "9bd316797936475dea10887735a6991a7c075e9470aa23ca4c0ee4bc96a2bf47",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/source-tree.stdout"
+    },
+    {
+      "bytes": 499,
+      "name": "results/preparation/target-gate.json",
+      "sha256": "31d64bbdc9ba8f080882f03079c151f8cae46d44026e236e0de5252afa85e54a",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/target-gate.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/preparation/target-gate.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/target-gate.stderr"
+    },
+    {
+      "bytes": 0,
+      "name": "results/preparation/target-gate.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/preparation/target-gate.stdout"
+    },
+    {
+      "bytes": 2,
+      "name": "results/runner.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/runner.exit"
+    },
+    {
+      "bytes": 19226,
+      "name": "results/runner.json",
+      "sha256": "2bc5eecd22843ec152739c52ce7a00cc59831b66fae49194561d0238301052db",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/runner.json"
+    },
+    {
+      "bytes": 325,
+      "name": "results/target/copy-runtime.json",
+      "sha256": "1f84653d440fc16be062fd4b914333084938e5863862fee9a4d9b89b951f986a",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/copy-runtime.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/copy-runtime.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/copy-runtime.stderr"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/copy-runtime.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/copy-runtime.stdout"
+    },
+    {
+      "bytes": 32418,
+      "name": "results/target/derived-candidate.json",
+      "sha256": "395a2b81be08cabec8882efb52b2991d0b765e45335b9f88709bfbd97785abf3",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/derived-candidate.json"
+    },
+    {
+      "bytes": 34486,
+      "name": "results/target/r5-novatek-target-depmod.json",
+      "sha256": "e43372c19d3ae4af72835fbfd47c9a1d81b472504ce3d78f60fb5800d0849598",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/r5-novatek-target-depmod.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/runtime-copy.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/runtime-copy.stderr"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/runtime-reference-after.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/runtime-reference-after.stderr"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/runtime-reference-before.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/runtime-reference-before.stderr"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/runtime-source-after.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/runtime-source-after.stderr"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/runtime-source.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/runtime-source.stderr"
+    },
+    {
+      "bytes": 20697,
+      "name": "results/target/signed-input-gate.json",
+      "sha256": "e4c283d766c501946ed812fac830100fa588d4dd35c4fbf5589d8ed4fe10e6cb",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/signed-input-gate.json"
+    },
+    {
+      "bytes": 589,
+      "name": "results/target/target-depmod-version.json",
+      "sha256": "1ef1fd2f49f0e0a2228ab9838d7d09d44009fa60ffc820c07739d1dcbf8d6e60",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-depmod-version.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/target-depmod-version.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-depmod-version.stderr"
+    },
+    {
+      "bytes": 45,
+      "name": "results/target/target-depmod-version.stdout",
+      "sha256": "9260633fb503b27b01585a3423b89286e90dd602a425828d898b80fffe8122eb",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-depmod-version.stdout"
+    },
+    {
+      "bytes": 653,
+      "name": "results/target/target-depmod.json",
+      "sha256": "8f661f68f3cf9684814f3995597290779d2542b602f58a84d98dc790f182ac63",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-depmod.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/target-depmod.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-depmod.stderr"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/target-depmod.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-depmod.stdout"
+    },
+    {
+      "bytes": 722,
+      "name": "results/target/target-load-plan.json",
+      "sha256": "0fd32153cfae12e99fd431a5a45abeaee4ff6dbc14cf2b9c78d04ba0d0d87baa",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-load-plan.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/target-load-plan.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-load-plan.stderr"
+    },
+    {
+      "bytes": 122,
+      "name": "results/target/target-load-plan.stdout",
+      "sha256": "1a4646083407cc05290be1e95c8fd0307ee5be677777e24aa4a2419037b59cba",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-load-plan.stdout"
+    },
+    {
+      "bytes": 724,
+      "name": "results/target/target-modinfo-sig_hashalgo.json",
+      "sha256": "2c18cedc4ab2fd74bca320e7fb3cfef1ea03675f04bb190a981dbba05d5e77ce",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-modinfo-sig_hashalgo.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/target-modinfo-sig_hashalgo.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-modinfo-sig_hashalgo.stderr"
+    },
+    {
+      "bytes": 7,
+      "name": "results/target/target-modinfo-sig_hashalgo.stdout",
+      "sha256": "722f6029e0eab200f0bae0040199c7d12f1e3c361a5f514788a778bf84ecc6ec",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-modinfo-sig_hashalgo.stdout"
+    },
+    {
+      "bytes": 719,
+      "name": "results/target/target-modinfo-sig_key.json",
+      "sha256": "54fad4369c30389ac5f2bb254c9124c0a878f99cf4ffd3bad3e82c5777de436c",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-modinfo-sig_key.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/target-modinfo-sig_key.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-modinfo-sig_key.stderr"
+    },
+    {
+      "bytes": 60,
+      "name": "results/target/target-modinfo-sig_key.stdout",
+      "sha256": "b239ddfc5c1843f730bb068fb1063c299d889dba0499ef60aa6b2993c8115fea",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-modinfo-sig_key.stdout"
+    },
+    {
+      "bytes": 718,
+      "name": "results/target/target-modinfo-signer.json",
+      "sha256": "7364681cfdde58e5b997331d5059dd7400b0e2d74e043498a2198731e0200b12",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-modinfo-signer.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/target-modinfo-signer.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-modinfo-signer.stderr"
+    },
+    {
+      "bytes": 36,
+      "name": "results/target/target-modinfo-signer.stdout",
+      "sha256": "79c9d2b44f876286786c07df753485bd4fa89a79d1c386a771b5111f77a327bb",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-modinfo-signer.stdout"
+    },
+    {
+      "bytes": 720,
+      "name": "results/target/target-modinfo-vermagic.json",
+      "sha256": "b344039e7b6d4bf1d310c7001923b04ad84257c6460847542d6b6cde1b041c45",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-modinfo-vermagic.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/target-modinfo-vermagic.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-modinfo-vermagic.stderr"
+    },
+    {
+      "bytes": 79,
+      "name": "results/target/target-modinfo-vermagic.stdout",
+      "sha256": "edfcd0f433dcaf0f9b98afd0b7095be69f91912f3a8134a6a23d486a387deca2",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-modinfo-vermagic.stdout"
+    },
+    {
+      "bytes": 721,
+      "name": "results/target/target-modversions.json",
+      "sha256": "c9c487ffe7815eb26b7370d8c6dba5aeb24fcf26c8468d9527ba97e1752b3da2",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-modversions.json"
+    },
+    {
+      "bytes": 0,
+      "name": "results/target/target-modversions.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-modversions.stderr"
+    },
+    {
+      "bytes": 1780,
+      "name": "results/target/target-modversions.stdout",
+      "sha256": "756b93df9a055561dc5598161170e26c5648f373dbf7626a4243c52b13e67fdd",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-modversions.stdout"
+    },
+    {
+      "bytes": 20712,
+      "name": "results/target/target-root-module-gate.json",
+      "sha256": "daf1d65940bab8e6d70d81fd1e98419d5191a4dd249d2dffac392e3f0f42fbe5",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target/target-root-module-gate.json"
+    },
+    {
+      "bytes": 5824,
+      "name": "results/target-export.json",
+      "sha256": "98aaa071987311b6298a8b92d5f98ac12a29518a0105efe565af355b65333621",
+      "source": "/tank/hot/tb371fc-build-20261123/r5-novatek-tmpfs-evidence-c1296-run03/results/target-export.json"
+    }
+  ],
+  "schema": "recovered-transfer-file-manifest-v1"
+}

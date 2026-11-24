@@ -1,0 +1,10 @@
+{
+  "complete": false,
+  "elapsed_seconds": 3182.9039784660563,
+  "expected_bytes": 1323141120,
+  "phase": "extract",
+  "received_bytes": 1323141120,
+  "saved_bytes": 1323141120,
+  "sha256_so_far": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96",
+  "utc": "2026-11-24T12:08:30.253951+00:00"
+}

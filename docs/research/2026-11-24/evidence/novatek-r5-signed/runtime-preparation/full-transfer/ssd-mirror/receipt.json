@@ -1,0 +1,70 @@
+{
+  "archive": {
+    "bytes": 1323141120,
+    "path": "runtime.canonical.tar",
+    "sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96"
+  },
+  "archive_file_bytes_at_finish": 1323141120,
+  "archive_identity_verified": true,
+  "complete": false,
+  "elapsed_seconds": 3182.8924029280315,
+  "expected_bytes": 1323141120,
+  "expected_sha256": "1b3f7bd2630bd4721650dd08fd63d14fd44867cc1ee5bdf7ade8a25f28207b96",
+  "extract": {
+    "argv": [
+      "/usr/bin/tar",
+      "--extract",
+      "--file",
+      "/work/r5-novatek-runtime-mirror-c1296-01/runtime.canonical.tar",
+      "--directory",
+      "/work/r5-novatek-runtime-mirror-c1296-01/rootfs",
+      "--numeric-owner",
+      "--same-owner",
+      "--same-permissions",
+      "--acls",
+      "--selinux",
+      "--xattrs",
+      "--xattrs-include=*",
+      "--delay-directory-restore"
+    ],
+    "exit_code": 0,
+    "extract.stderr": {
+      "bytes": 3773902,
+      "sha256": "3dc093f080d725e76bf4cb2795b8b77fd0e833e52e49d0f3a8fab7aafa82db4d"
+    },
+    "extract.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "finished_utc": "2026-11-24T12:08:28.896596+00:00",
+    "started_utc": "2026-11-24T12:08:17.194274+00:00",
+    "timeout_seconds": 600
+  },
+  "extract_timeout_seconds": 600,
+  "extracted_tree_canonical_verified": false,
+  "failure": {
+    "message": "extraction emitted diagnostics; inspect before qualifying the mirror",
+    "type": "ValueError"
+  },
+  "finished_utc": "2026-11-24T12:08:30.242344+00:00",
+  "free_bytes_before": 66777513984,
+  "free_bytes_before_extract": 66162393088,
+  "minimum_free_bytes": 6442450944,
+  "module_loaded": false,
+  "phase": "extract",
+  "physical_hardware_tested": false,
+  "program_from_rootfs_executed": false,
+  "receive_finished_utc": "2026-11-24T12:08:17.184006+00:00",
+  "receive_timeout_seconds": 3650,
+  "received_bytes": 1323141120,
+  "receiver_source": {
+    "bytes": 9142,
+    "sha256": "63cb331c63ca2fd1e659811fefa614955e0fdd6a331aaa7b873370e478cdc1c2"
+  },
+  "saved_bytes": 1323141120,
+  "schema": "tb371fc-fedora-runtime-mirror-preparation-v1",
+  "started_utc": "2026-11-24T11:15:27.348135+00:00",
+  "tar_version": "tar (GNU tar) 1.35\nCopyright (C) 2023 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n\nWritten by John Gilmore and Jay Fenlason.",
+  "target_gate_executed": false,
+  "work_directory": "/work/r5-novatek-runtime-mirror-c1296-01"
+}

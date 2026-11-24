@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'scripts/research/input/signing/**'
+      - 'docs/research/2026-11-24/novatek-r5-signed-integration.md'
+      - 'docs/research/2026-11-24/evidence/novatek-r5-signed/**'
       - '.github/workflows/r5-novatek-signed-stage.yml'
   workflow_dispatch:
 permissions:
@@ -12,6 +14,70 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 8
+      - name: Bind retained evidence to original bytes and executed source
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          import subprocess
+
+          base = Path('docs/research/2026-11-24/evidence/novatek-r5-signed')
+          index = json.loads((base / 'index.json').read_text())
+
+          def check(data, expected, name):
+              if len(data) != expected['bytes'] or hashlib.sha256(data).hexdigest() != expected['sha256']:
+                  raise SystemExit('evidence identity differs: ' + name)
+
+          expected_paths = set()
+          for item in index['files']:
+              check((base / item['path']).read_bytes(), item, item['path'])
+              expected_paths.add(item['path'])
+          actual_paths = {str(path.relative_to(base)) for path in base.rglob('*')
+                          if path.is_file() and path != base / 'index.json'}
+          if actual_paths != expected_paths:
+              raise SystemExit('evidence inventory must cover the exact archive')
+          for contract in ('historical_source_contract', 'execution_source_contract'):
+              source = index[contract]
+              for item in source['files']:
+                  data = subprocess.check_output(['git', 'show', source['commit'] + ':' + item['path']])
+                  check(data, item, item['path'])
+          for binding in index['recipe_bindings']:
+              report = json.loads((base / binding['report']).read_text())
+              data = subprocess.check_output(['git', 'show', binding['source_commit'] + ':' + binding['source_path']])
+              check(data, report['recipe'], binding['report'])
+          for binding in index['archived_recipe_bindings']:
+              expected = json.loads((base / binding['report']).read_text())
+              for field in binding['identity_fields']:
+                  expected = expected[field]
+              check((base / binding['source']).read_bytes(), expected, binding['source'])
+          completed = base / 'attempt03/completed'
+          worker = json.loads((completed / 'results/runner.json').read_text())
+          resume = json.loads((completed / 'resume-launch.json').read_text())
+          binding = json.loads((base / 'attempt03/source-binding.json').read_text())
+          source = index['execution_source_contract']
+          files = {item['path']: {'bytes': item['bytes'], 'sha256': item['sha256']}
+                   for item in source['files']}
+          if files != worker['source_files'] or files != binding['source_files']:
+              raise SystemExit('executed source identities differ')
+          if source['commit'] != worker['source_head'] or source['commit'] != binding['source_commit']:
+              raise SystemExit('executed source commit differs')
+          tree = subprocess.check_output(['git', 'rev-parse', source['commit'] + '^{tree}'], text=True).strip()
+          if tree != worker['source_tree'] or tree != binding['source_tree']:
+              raise SystemExit('executed source tree differs')
+          check((completed / 'results/target/r5-novatek-target-depmod.json').read_bytes(),
+                worker['target_result'], 'target to worker receipt')
+          check((completed / 'results/runner.json').read_bytes(),
+                resume['worker_receipt'], 'worker to resume receipt')
+          export = json.loads((completed / 'results/target-export.json').read_text())
+          for item in export['files']:
+              check((completed / 'results/target' / item['name']).read_bytes(), item, item['name'])
+          if export['total_bytes'] != sum(item['bytes'] for item in export['files']):
+              raise SystemExit('target export total differs')
+          print('Retained raw bytes, source trees, original recipes and receipt chain verified')
+          PY
       - name: Install fixture tools
         run: sudo apt-get update && sudo apt-get install -y clang llvm openssl
       - name: Exercise actual ARM64 ELF stripping and CMS rejection

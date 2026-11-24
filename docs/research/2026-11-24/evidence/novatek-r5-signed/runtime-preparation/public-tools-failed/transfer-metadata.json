@@ -1,0 +1,27 @@
+{
+  "files": [
+    {
+      "bytes": 365,
+      "path": "r5-novatek-public-tools-c1296-01/receipt.json",
+      "sha256": "d912890830432e396f14ae1420ede0dc0310a4b1d929e4b14f1a660e5a81a070"
+    },
+    {
+      "bytes": 109,
+      "path": "r5-novatek-public-tools-c1296-01/pipeline.json",
+      "sha256": "327ba060a41e3000cf9331d4faf56e1c2d6632389c946f732ca183dfcef11570"
+    },
+    {
+      "bytes": 0,
+      "path": "r5-novatek-public-tools-c1296-01/extract.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 3386,
+      "path": "r5-novatek-public-tools-c1296-01/extract.stderr",
+      "sha256": "e74a00e39c0ecd2e297e76373dbb5bfb10d6672ba2e4775f9bd9bae4820b4ecd"
+    }
+  ],
+  "readback_utc": "2026-11-24T12:01:01.838167+00:00",
+  "schema": "recovered-transfer-file-manifest-v1",
+  "source": "Recovered original tool result file values; each content file verified against its saved byte count and SHA-256"
+}
