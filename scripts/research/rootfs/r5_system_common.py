@@ -97,7 +97,12 @@ def profile():
 
 def run_guest(arguments, capture=False, timeout=600):
     qualified_stage()
-    env = dict(os.environ, LD_LIBRARY_PATH=staging.HOST_LIBS, SYSTEMD_OFFLINE="1")
+    # PRoot translates guest paths; the caller's host-only job TMPDIR is
+    # not a valid guest path. Dracut retains its tree under guest /var/tmp,
+    # which the unchanged early-initramfs recipe subsequently inspects.
+    staging.ordinary_dir(ROOT / "var/tmp")
+    env = dict(os.environ, LD_LIBRARY_PATH=staging.HOST_LIBS, SYSTEMD_OFFLINE="1",
+               TMPDIR="/var/tmp", TMP="/var/tmp", TEMP="/var/tmp")
     return subprocess.run([str(PROOT), "-0", "-r", str(ROOT), "-q", str(QEMU),
                            "-b", "/proc", "-b", "/dev/null", "-b", "/dev/zero",
                            "-b", "/dev/random", "-b", "/dev/urandom", "-w", "/", *arguments],
