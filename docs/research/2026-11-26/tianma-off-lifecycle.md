@@ -99,7 +99,8 @@ The harness also accepts
 `--drm-panel-source /path/to/linux/drivers/gpu/drm/drm_panel.c` to verify
 the same upstream bytes in the actual build tree.
 
-This receipt establishes the host lifecycle regression only. ARM64
-kernel/module construction, the actual bonded transport, panel-off,
-suspend/resume and power-failure recovery require separate evidence.
+This receipt establishes the host lifecycle regression only. The completed
+[fresh ARM64 build and 84 offline module-signature checks](tianma-r6-build.md)
+have their own later source/artifact receipts. Actual bonded transport,
+panel-off, suspend/resume and power-failure recovery remain unverified.
 Owner-native passes added: zero.

@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "/work/linux612-ec332-20261126/panel/scripts/research/display/verify_module_signatures.py",
+    "--modules",
+    "/work/tianma-r6-build-ec332-01/modules",
+    "--certificate",
+    "/work/tianma-r6-build-ec332-01/artifacts/signing-cert.der",
+    "--expected-count",
+    "84",
+    "--output",
+    "/work/tianma-r6-build-ec332-01/module-signatures.json"
+  ],
+  "exit_code": 0,
+  "finished_utc": "2026-11-25T19:00:59.267647+00:00",
+  "log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "report": {
+    "bytes": 94541,
+    "sha256": "ab6e20a596985377ab112f6a258f861fdb28c307cb88342166fc54d29f1f5dfa"
+  },
+  "started_utc": "2026-11-25T19:00:53.476797+00:00",
+  "timeout_seconds": 600,
+  "verifier_source": {
+    "bytes": 13706,
+    "sha256": "8e7fb179b500bf13cfadd3843fdb3104a5740005f1cd394f2be8112732ee0082"
+  }
+}

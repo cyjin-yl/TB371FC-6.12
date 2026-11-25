@@ -5,9 +5,13 @@ on:
       - 'mainline-port/backports/linux-6.12/panel-novatek-nt36523.c'
       - 'mainline-port/backports/linux-6.12/0022-drm-panel-tb371fc-tianma-off-sequence.patch'
       - 'scripts/research/display/test_tianma_off.py'
+      - 'scripts/research/display/build_tianma_candidate.py'
+      - 'scripts/research/display/verify_module_signatures.py'
+      - 'scripts/research/display/test_verify_module_signatures.py'
       - 'scripts/research/display/fixtures/**'
       - 'docs/research/2026-11-24/evidence/tianma-off/**'
       - 'docs/research/2026-11-26/evidence/tianma-off-lifecycle/**'
+      - 'docs/research/2026-11-26/evidence/tianma-r6-build/**'
       - '.github/workflows/tianma-off.yml'
   workflow_dispatch:
 permissions:
@@ -39,3 +43,80 @@ jobs:
           python3 -O scripts/research/display/test_tianma_off.py --pre-fix
       - name: Exercise corrected OFF sequence and actual DRM panel core
         run: python3 -O scripts/research/display/test_tianma_off.py
+      - name: Exercise detached signature checks with crypto negative controls
+        run: python3 -O -m unittest discover -s scripts/research/display -p 'test_verify_module_signatures.py' -v
+      - name: Verify retained ARM64 build and signature evidence (no kernel build)
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, subprocess
+          from pathlib import Path
+          root = Path('docs/research/2026-11-26/evidence/tianma-r6-build')
+          def identity(data):
+              return {'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data)}
+          def require(ok, message):
+              if not ok:
+                  raise SystemExit(message)
+          index = json.loads((root / 'index.json').read_bytes())
+          phases = ['copy-source', 'apply-panel', 'actual-core-regression', 'olddefconfig',
+                    'kernel-modules', 'device-tree', 'modules-install']
+          required_files = {name + '.log' for name in phases} | {'build-result.json',
+                  'module-signatures.json', 'module-signatures-command.json', 'module-signatures.log',
+                  'kernel.config', 'kernel.release', 'signing-cert.pem'}
+          verifier = 'scripts/research/display/verify_module_signatures.py'
+          patch = 'mainline-port/backports/linux-6.12/0022-drm-panel-tb371fc-tianma-off-sequence.patch'
+          required_sources = {verifier, patch, 'scripts/research/display/build_tianma_candidate.py',
+                  'scripts/research/display/test_tianma_off.py',
+                  'scripts/research/display/fixtures/linux-v6.12.114-drm_panel.c'}
+          require(set(index['files']) == required_files and set(index['source_files']) == required_sources,
+                  'retained evidence/source inventory is incomplete or unexpected')
+          require(index['postbuild_verifier'] == verifier, 'verifier source path differs')
+          for name, expected in index['files'].items():
+              require(identity((root / name).read_bytes()) == expected, 'retained file differs: ' + name)
+          for name, expected in index['source_files'].items():
+              require(identity(Path(name).read_bytes()) == expected, 'retained source differs: ' + name)
+          build = json.loads((root / 'build-result.json').read_bytes())
+          signed = json.loads((root / 'module-signatures.json').read_bytes())
+          command = json.loads((root / 'module-signatures-command.json').read_bytes())
+          require(build['passed'] and build['baseline_source_verified'] and
+                  build['retained_r5_inputs_reverified'] and build['makeflags'] == '-j2', 'build completion differs')
+          require([row['name'] for row in build['commands']] == phases,
+                  'build phases differ')
+          for row in build['commands']:
+              require(row['exit_code'] == 0 and row['log'] == index['files'][row['name'] + '.log'],
+                      'build command did not succeed or its log differs')
+          require(build['module_count'] == signed['module_count'] == signed['expected_count'] == 84 and
+                  signed['passed'] and signed['input_snapshot_stable'], 'module verification did not pass')
+          require(len(signed['modules']) == len(build['modules']) == 84, 'actual module receipt count differs')
+          require(build['inputs']['candidate_patch'] == index['source_files'][patch], 'built patch identity differs')
+          cert = build['artifacts']['signing-cert.der']
+          require({key: signed['public_certificate'][key] for key in ('sha256', 'bytes')} == cert and
+                  signed['public_certificate']['der_sha256'] == cert['sha256'], 'verified public certificate differs')
+          cert_der = subprocess.check_output(['openssl', 'x509', '-in', str(root / 'signing-cert.pem'), '-outform', 'DER'])
+          require(identity(cert_der) == cert, 'retained PEM does not encode the built public certificate')
+          modules = {}
+          for row in signed['modules']:
+              name = 'modules/' + row['path']
+              require(name not in modules and row['passed'] and row['openssl_exit_code'] == 0 and
+                      row['verified_content_matches'] and row['verified_signer_der_sha256'] == cert['sha256'],
+                      'module signature receipt differs: ' + name)
+              modules[name] = {key: row[key] for key in ('sha256', 'bytes')}
+          require(modules == build['modules'], 'signatures do not cover the exact installed module set')
+          require(command['exit_code'] == 0 and command['log'] == index['files']['module-signatures.log'] and
+                  command['report'] == index['files']['module-signatures.json'], 'postbuild command receipt differs')
+          require(command['verifier_source'] == signed['verifier_source'] == index['source_files'][verifier],
+                  'executed verifier differs from retained source')
+          work = Path(index['artifact_directory'])
+          require(signed['modules_root'] == str(work / 'modules'), 'verified module tree differs')
+          require(command['argv'] == ['python3', '-B', '/work/linux612-ec332-20261126/panel/' + verifier,
+                  '--modules', str(work / 'modules'), '--certificate', str(work / 'artifacts/signing-cert.der'),
+                  '--expected-count', '84', '--output', str(work / 'module-signatures.json')],
+                  'actual signature-check command differs')
+          require(build['native_hardware_passes_added'] == index['native_hardware_passes_added'] == 0 and
+                  build['runtime_signature_enforcement_verified'] is False and
+                  signed['runtime_signature_enforcement_verified'] is False and
+                  signed['kernel_keyring_trust_verified'] is False, 'evidence scope changed')
+          for name in ('kernel.config', 'kernel.release'):
+              require(index['files'][name] == build['artifacts'][name], 'exported build artifact differs: ' + name)
+          require((root / 'kernel.release').read_text().strip() == build['kernel_release'], 'kernel release differs')
+          print('Retained ARM64 build/signature identities are consistent; no kernel build or target boot ran in CI.')
+          PY

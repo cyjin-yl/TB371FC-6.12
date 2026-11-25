@@ -1,0 +1,570 @@
+{
+  "artifacts": {
+    "Image": {
+      "bytes": 41091080,
+      "sha256": "0732ed1bbfcf616140e4ee20964faa0fb93db96b6e6e150c6e1711a3e90386b4"
+    },
+    "Module.symvers": {
+      "bytes": 838926,
+      "sha256": "bd99bf91ba0644a9f2d52de1cf5e390118569371644bc80484b88b0e555e8545"
+    },
+    "System.map": {
+      "bytes": 5656953,
+      "sha256": "05081f6d3398f2a543ffa490671397d67baaeb6e6731c65a30fc4f968be0519a"
+    },
+    "board.dtb": {
+      "bytes": 126877,
+      "sha256": "af80b06f38b73ea42cb669a2897721ba7ecc5a99a8aa3d6d9c1e9ba132597730"
+    },
+    "kernel.config": {
+      "bytes": 223397,
+      "sha256": "5a8ec0c9e1c8eccb10fd12f25a05268b0d739f8bc77d9536a9e664f24bae0e72"
+    },
+    "kernel.release": {
+      "bytes": 38,
+      "sha256": "158ffa5284f3e6ab7f2e28c27bc2b018e42836d8db49ede545dae91f60eb19c1"
+    },
+    "signing-cert.der": {
+      "bytes": 1324,
+      "sha256": "0ef0ef0c4bfbd0291e76a451b03d05b9c601d6c40a882e54dcf06ab1f9065107"
+    }
+  },
+  "baseline_source_verification_scope": "pinned assembled source files, baseline ABI inputs and input recipe manifests",
+  "baseline_source_verified": true,
+  "candidate_config": {
+    "bytes": 223397,
+    "sha256": "5a8ec0c9e1c8eccb10fd12f25a05268b0d739f8bc77d9536a9e664f24bae0e72"
+  },
+  "commands": [
+    {
+      "argv": [
+        "cp",
+        "-a",
+        "--reflink=auto",
+        "/work/research5-services/source-input/linux-6.12.114-input-integration",
+        "/work/tianma-r6-build-ec332-01/linux"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-11-25T18:16:06.922404+00:00",
+      "log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "name": "copy-source",
+      "started_utc": "2026-11-25T18:15:55.065542+00:00"
+    },
+    {
+      "argv": [
+        "patch",
+        "--batch",
+        "--fuzz=0",
+        "-d",
+        "/work/tianma-r6-build-ec332-01/linux",
+        "-p1",
+        "-i",
+        "/work/linux612-ec332-20261126/panel/mainline-port/backports/linux-6.12/0022-drm-panel-tb371fc-tianma-off-sequence.patch"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-11-25T18:16:06.927140+00:00",
+      "log": {
+        "bytes": 60,
+        "sha256": "1592e27da52b89ca1eb45e0edf7cb74b4cb4e0e7bd0dc0f9237399600e9723d4"
+      },
+      "name": "apply-panel",
+      "started_utc": "2026-11-25T18:16:06.923178+00:00"
+    },
+    {
+      "argv": [
+        "python3",
+        "-O",
+        "/work/linux612-ec332-20261126/panel/scripts/research/display/test_tianma_off.py",
+        "--repo",
+        "/work/linux612-ec332-20261126/panel",
+        "--drm-panel-source",
+        "/work/tianma-r6-build-ec332-01/linux/drivers/gpu/drm/drm_panel.c"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-11-25T18:16:15.977218+00:00",
+      "log": {
+        "bytes": 403,
+        "sha256": "c4e0275bd5496c88df5ed7359e0d5cebcad615a9030150ffc9858023380729fa"
+      },
+      "name": "actual-core-regression",
+      "started_utc": "2026-11-25T18:16:06.927495+00:00"
+    },
+    {
+      "argv": [
+        "make",
+        "-C",
+        "/work/tianma-r6-build-ec332-01/linux",
+        "O=/work/tianma-r6-build-ec332-01/out",
+        "KCONFIG_CONFIG=.config",
+        "ARCH=arm64",
+        "LLVM=1",
+        "CC=clang --sysroot=/work/research5-services/target-sysroot",
+        "olddefconfig"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-11-25T18:16:44.915382+00:00",
+      "log": {
+        "bytes": 764,
+        "sha256": "dbb1200f9e9f847a7668ed2910666a2a2f7dc715fe9790038d0fd2218b70d5f5"
+      },
+      "name": "olddefconfig",
+      "started_utc": "2026-11-25T18:16:15.985511+00:00"
+    },
+    {
+      "argv": [
+        "make",
+        "-C",
+        "/work/tianma-r6-build-ec332-01/linux",
+        "O=/work/tianma-r6-build-ec332-01/out",
+        "KCONFIG_CONFIG=.config",
+        "ARCH=arm64",
+        "LLVM=1",
+        "CC=clang --sysroot=/work/research5-services/target-sysroot",
+        "Image",
+        "modules"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-11-25T19:00:04.425901+00:00",
+      "log": {
+        "bytes": 185292,
+        "sha256": "1973d4cf50ff3aef64a20d861e6837e5d050cd39fe4fd08d346c3b34eb0b0a61"
+      },
+      "name": "kernel-modules",
+      "started_utc": "2026-11-25T18:16:44.965372+00:00"
+    },
+    {
+      "argv": [
+        "make",
+        "-C",
+        "/work/tianma-r6-build-ec332-01/linux",
+        "O=/work/tianma-r6-build-ec332-01/out",
+        "KCONFIG_CONFIG=.config",
+        "ARCH=arm64",
+        "LLVM=1",
+        "CC=clang --sysroot=/work/research5-services/target-sysroot",
+        "qcom/sm8250-lenovo-tb371fc-display-input-test-6.12.dtb"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-11-25T19:00:07.342678+00:00",
+      "log": {
+        "bytes": 341,
+        "sha256": "636caa0c5db2d1ea3cf77a72292a47a07f032c87d8dadf6810e11b0ee415a40a"
+      },
+      "name": "device-tree",
+      "started_utc": "2026-11-25T19:00:05.168531+00:00"
+    },
+    {
+      "argv": [
+        "make",
+        "-C",
+        "/work/tianma-r6-build-ec332-01/linux",
+        "O=/work/tianma-r6-build-ec332-01/out",
+        "KCONFIG_CONFIG=.config",
+        "ARCH=arm64",
+        "LLVM=1",
+        "CC=clang --sysroot=/work/research5-services/target-sysroot",
+        "INSTALL_MOD_PATH=/work/tianma-r6-build-ec332-01/modules",
+        "INSTALL_MOD_STRIP=1",
+        "modules_install"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-11-25T19:00:09.882363+00:00",
+      "log": {
+        "bytes": 36802,
+        "sha256": "fb423060dc4cc4dc39b2fc4f3a828c514147f8fb647bf44e08cbe1219aca8f62"
+      },
+      "name": "modules-install",
+      "started_utc": "2026-11-25T19:00:07.362144+00:00"
+    }
+  ],
+  "elapsed_seconds": 2658.797449564998,
+  "finished_utc": "2026-11-25T19:00:10.297168+00:00",
+  "inputs": {
+    "baseline_recipe": {
+      "bytes": 14314,
+      "sha256": "053178a79838a69440a5e18f01f4fc9a9dc8a81c11347f1689c8e062d530439a"
+    },
+    "candidate_patch": {
+      "bytes": 3662,
+      "sha256": "071a4fa269a539023bbbd41e0298418c351b64bdb2c3dc8ac8c3b82a061183ea"
+    },
+    "panel": {
+      "bytes": 75627,
+      "sha256": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33"
+    },
+    "r5_config": {
+      "bytes": 223395,
+      "sha256": "a4980121abcc3e2bac47f7020e63c8c00949c53c289019c22b67808d84cd3afa"
+    },
+    "r5_source_manifest": {
+      "bytes": 7108,
+      "sha256": "5beb548c33bad0f487241984097216f33a478719826f368d34fb50d04304cdf0"
+    }
+  },
+  "kernel_release": "6.12.114-tb371fc-research6-tianma-off",
+  "makeflags": "-j2",
+  "module_count": 84,
+  "module_signatures_appended": true,
+  "modules": {
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/crypto/michael_mic.ko": {
+      "bytes": 9569,
+      "sha256": "3c11f84b4195597ddb8caaa5406b81ade92ec3e083912d5c66efeffa647e06ab"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/base/regmap/regmap-sdw.ko": {
+      "bytes": 14385,
+      "sha256": "8df24752f2f6e156c9d17822b4873471ddbc7035e66bd1381d693f05ecf1fadb"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/bluetooth/btqca.ko": {
+      "bytes": 42601,
+      "sha256": "56eca53a518241fd525aa30df7cf243887edbf5c8d7f4fc62f81fd5b4bd21c5c"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/bluetooth/hci_uart.ko": {
+      "bytes": 140473,
+      "sha256": "b7d72efdb053fa5b164c06a27bbeb4f55fc978d095a06bcf421f1b5eaac73903"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/clk/qcom/camcc-sm8250.ko": {
+      "bytes": 75497,
+      "sha256": "00d1a088d1ba902f9e919e5138ccd2a932503ce7d8dc70463548215d469f1adf"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/clk/qcom/dispcc-sm8250.ko": {
+      "bytes": 49585,
+      "sha256": "79c97f7f5f380d28f100c9d1aa3640f0762bf0b6d5c1e37a8a819f76f97c6809"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/clk/qcom/videocc-sm8250.ko": {
+      "bytes": 24441,
+      "sha256": "d1ffc187f8606d4aa1d53ff29171c28dba42bd7636765851d6962db5444ce766"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/gpu/drm/panel/panel-novatek-nt36523.ko": {
+      "bytes": 218497,
+      "sha256": "fe2f5d305227b8eaee4e6015c6eedae8ae1bab849c31440ba3dc9229f47c1aec"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/gpu/drm/virtio/virtio-gpu.ko": {
+      "bytes": 160137,
+      "sha256": "42cbcba87a680db60909baab893f65b632957c854bf01781d593575226f913da"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/i2c/busses/i2c-qcom-cci.ko": {
+      "bytes": 27017,
+      "sha256": "ce2e09141f7fae7d0df340b507232f55b3d6c31809afd5649ae26b4a3ca5481f"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/input/misc/pm8941-pwrkey.ko": {
+      "bytes": 21537,
+      "sha256": "ad1cda13ab7b9a19976f61980f88c755ec12b197516548a322976b542a79a32e"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/input/touchscreen/novatek-nvt-ts.ko": {
+      "bytes": 16801,
+      "sha256": "511b3b4174eae7d859149747e2b4dccbd8f42bf84a53a7193fbd7b77f0defc35"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/input/touchscreen/nt36523/nt36523_ts.ko": {
+      "bytes": 103433,
+      "sha256": "16c6c006ddb6c0a4715d2e82f368a87df49f024430cb42a9afff3acf09d59b9a"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/interconnect/qcom/icc-bcm-voter.ko": {
+      "bytes": 17409,
+      "sha256": "cb1876ce2c950685370fe6ec5952758d1efaac22323521d0002b0a0c2a670e1a"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/interconnect/qcom/icc-rpmh.ko": {
+      "bytes": 17393,
+      "sha256": "262cad41450c001f1b59d8d533e6aa89f2720a42bc056e6fe4af0687ac8233cf"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/interconnect/qcom/interconnect_qcom.ko": {
+      "bytes": 7209,
+      "sha256": "bc0d3df53daf3ef85b495a35de70b6004cd89896a8f399937982ed18002873ce"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/interconnect/qcom/qnoc-sm8250.ko": {
+      "bytes": 96841,
+      "sha256": "f547267fe2eb7c1c10d57a8ad2c9d65c25827bdc4c063b5b2b6d5fc39f9fea79"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/media/common/videobuf2/videobuf2-dma-contig.ko": {
+      "bytes": 29369,
+      "sha256": "c687e88d2a4a7b12bf8217c6ba742806ee1c1a71ad126053d75ca73855d9e2d3"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/media/i2c/gc08a3.ko": {
+      "bytes": 37121,
+      "sha256": "936aeb3b087dd45903b7c6bdb405f8d90872d1cbe734fd72148ae9b2d6698f87"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/media/platform/qcom/camss/qcom-camss.ko": {
+      "bytes": 405249,
+      "sha256": "4696b6874f17a69a415330036b9d08bc4cf65d6fe9c05ff315c6fc7fa2597723"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/media/platform/qcom/venus/venus-core.ko": {
+      "bytes": 252217,
+      "sha256": "4e1ca9ec95d2e90cb01d95a328df7c813702fb675437c958dc1e49c4cabfd365"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/media/platform/qcom/venus/venus-dec.ko": {
+      "bytes": 71609,
+      "sha256": "e756ff1f8efe356c6bb69638ac195305e93006bd6fa62a9c9b49a029b980f54e"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/media/platform/qcom/venus/venus-enc.ko": {
+      "bytes": 71009,
+      "sha256": "624d2e60d13638dee165cde1f5e07b6da1b954c6125b5dccae3995a5c87911fc"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/media/v4l2-core/v4l2-cci.ko": {
+      "bytes": 11553,
+      "sha256": "59e0b6089a3eed6989c190f233ec12a343ec63a2898ebe368956ad32f34a1d36"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/media/v4l2-core/v4l2-mem2mem.ko": {
+      "bytes": 69409,
+      "sha256": "d26e97fa817f722da24cd73d74a24edbd1a2f4f798d0a1e8d4438f55f5f4cf2b"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/net/usb/r8152.ko": {
+      "bytes": 219857,
+      "sha256": "0bf7749f97051900952ef30c4eb1f4198bb9a08c1231e42f04a968e3a3873d62"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/net/usb/r8153_ecm.ko": {
+      "bytes": 12169,
+      "sha256": "5afead8a4ccf37f8917803fe8f18d4f5b4099e88dc354171108160a81fcdef10"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/net/wireless/ath/ath.ko": {
+      "bytes": 91961,
+      "sha256": "8aba333a9fc5e4a8d9e01eb5992331c3d285c43e1effc55909ddcccc972035fa"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/net/wireless/ath/ath11k/ath11k.ko": {
+      "bytes": 1051057,
+      "sha256": "389ee3680e48243457a051f877c7be0a6814f80192a649b6868d3f905bb70c70"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/net/wireless/ath/ath11k/ath11k_pci.ko": {
+      "bytes": 108121,
+      "sha256": "2ccedebfe84562a33a79b0b9ba56db550f5948b6487a615763ccb1bbb6962149"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/net/wireless/ath/wil6210/wil6210.ko": {
+      "bytes": 898817,
+      "sha256": "b22f9bc88e4d0ee7434e29c6d411777b4b0beb5c49464f837c92c37103f872c0"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/pci/pwrctl/pci-pwrctl-core.ko": {
+      "bytes": 12361,
+      "sha256": "6a06a994c14c000f7dfe2bece66bd0495d74c4fa67166e5b91b82b0dffbe5ad7"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/pci/pwrctl/pci-pwrctl-pwrseq.ko": {
+      "bytes": 12593,
+      "sha256": "19297dec823b4e7b4ba83b24bad588dc339133359015860085c91210142703bc"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/phy/qualcomm/phy-qcom-qmp-pcie.ko": {
+      "bytes": 199553,
+      "sha256": "1a3d911a03a247f24ccbf6a126b0c4bc8274811e66224ed1a7ba563c8f0f1870"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/phy/qualcomm/phy-qcom-snps-femto-v2.ko": {
+      "bytes": 26257,
+      "sha256": "a7064f2f7e4ca962df5bebabb79676009c366761a607ab8b38b5a5eaf6414d06"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/pinctrl/qcom/pinctrl-lpass-lpi.ko": {
+      "bytes": 22265,
+      "sha256": "c98a806054b9350ac8e7042e1410e82ae0f308418f0710e377185b65ab7b2c46"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/pinctrl/qcom/pinctrl-sm8250-lpass-lpi.ko": {
+      "bytes": 15241,
+      "sha256": "0d63ad58f35523c165f42b4efd6692a9f3168638b07621f30f58aef2fa614db9"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/power/sequencing/pwrseq-core.ko": {
+      "bytes": 35985,
+      "sha256": "3e04582bc5207fd8892216d2c131a49ae96fd9e85fb18ba4b4a37f60cb4678be"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/power/sequencing/pwrseq-qcom-wcn.ko": {
+      "bytes": 20625,
+      "sha256": "fd72d183a41d96aea2c16463d8bbcf0d499b8d0f2c38f4c8747d2c1d45b2c60f"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/regulator/qcom-rpmh-regulator.ko": {
+      "bytes": 106065,
+      "sha256": "d333da1313fe4b5e2556ce99d06d45002ba11a175c817fdb5c4f960a3bde832b"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/remoteproc/qcom_common.ko": {
+      "bytes": 26257,
+      "sha256": "c36a3f9106263e043e85366bdb4273b74f08990a51f168cb274ae2373b5d2dc4"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/remoteproc/qcom_pil_info.ko": {
+      "bytes": 10769,
+      "sha256": "bd0eb4a8e94e6a0f8f12f1a28a7e1ad93115ae4082e6c4ef1a52ed8e8cb324ae"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/remoteproc/qcom_q6v5.ko": {
+      "bytes": 19329,
+      "sha256": "0c0060255fa377b2248c216648e5ebe7545008403b2b361a0d1078a6a9c93357"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/remoteproc/qcom_q6v5_pas.ko": {
+      "bytes": 71841,
+      "sha256": "d5455c10880269d71ae1dd09713f2949be823dc72045c0ae59a6200db00ea0d4"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/remoteproc/qcom_sysmon.ko": {
+      "bytes": 32161,
+      "sha256": "b0bd40bcf20796219c97df847f66636b58162aa29b0568a3b8d0e1b16e4b1106"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/soc/qcom/apr.ko": {
+      "bytes": 31825,
+      "sha256": "17d45bbac715fdcbf26a46f3813f7853ec0177aa33959182dca0b75a7ea0afe6"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/soc/qcom/pdr_interface.ko": {
+      "bytes": 29057,
+      "sha256": "209794014ea7b7b00e53ec7083e087681507dad1a7b1624f3147d8e3a73740fa"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/soc/qcom/qcom_pdr_msg.ko": {
+      "bytes": 13097,
+      "sha256": "eb5325a3b3eece05b7113344bb6a07bea97ce383b77f586faaaef7622b963200"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/soc/qcom/qmi_helpers.ko": {
+      "bytes": 35473,
+      "sha256": "ad425c947992f90b8de1b8a5f85050365f3a734e9c4373765a2cf9ac5ed2bc33"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/soundwire/soundwire-bus.ko": {
+      "bytes": 184801,
+      "sha256": "a80978cb6f9f841d88be61ba70b85acc5359f01e12c97f05cefe0e39cc1a37f6"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/soundwire/soundwire-qcom.ko": {
+      "bytes": 57721,
+      "sha256": "0e7ad70efbe9528d63647d2ce67867babfa4969466013647f722d1758ae0ea1a"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/usb/dwc3/dwc3-qcom.ko": {
+      "bytes": 31161,
+      "sha256": "b360352877d630d2cdf4fdbc341578eab6992d115ed0f94b2b878acc8e7c389c"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/video/backlight/tb371fc-ktz8866.ko": {
+      "bytes": 14233,
+      "sha256": "1b24df776b769bd4a75f38521fa2dc2ed54f776bd01b597fb8695ebadf5d8a8b"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/virtio/virtio_dma_buf.ko": {
+      "bytes": 8561,
+      "sha256": "79892790c6ad7bb7bba08a6b6ff639a118649e20c9aa4cc0e6ffb026a0e9089b"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/watchdog/qcom-wdt.ko": {
+      "bytes": 18505,
+      "sha256": "fcbb38dce85f76a93a9d93115691d6abb8e62777314f42be5380bd05ceca554e"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/drivers/watchdog/watchdog.ko": {
+      "bytes": 61649,
+      "sha256": "3f63c85740fea35e39c8f63599cf3f1b30758d27a975a842babb1a8bd3d43018"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/fs/autofs/autofs4.ko": {
+      "bytes": 96713,
+      "sha256": "01fc100e5314621afd8928d150b6a885631fd06999f3d4077440d2d57b9f2fbc"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/net/mac80211/mac80211.ko": {
+      "bytes": 1821601,
+      "sha256": "554e0f4214bd87350122038175d3811f9f151fd28382da30ce37ac275043e681"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/net/wireless/cfg80211.ko": {
+      "bytes": 1842561,
+      "sha256": "193b3120cb4aa8af16c52434a0aec995ad0d57a26abba4eb46bb74cd9fde0899"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/codecs/snd-soc-lpass-macro-common.ko": {
+      "bytes": 11737,
+      "sha256": "0e5266a61adf09d7264feacbb072f1d500c7dd1fe1446eb26f660a4178b75563"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/codecs/snd-soc-lpass-rx-macro.ko": {
+      "bytes": 172529,
+      "sha256": "bd7ae4ed42a1905702f54bc5b32ef2ee01c47c3bb3e9869276891e2d90615bd8"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/codecs/snd-soc-lpass-tx-macro.ko": {
+      "bytes": 156321,
+      "sha256": "b3112e6978e2ed201fa403b76bad7f0783c750b3fdb8e4ba8fff95c6cfa940ec"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/codecs/snd-soc-lpass-va-macro.ko": {
+      "bytes": 82481,
+      "sha256": "a4e404bfe10bc68d6b4bc4520831967c9a7cec817cd559dc92e7d5e9901cfc8e"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/codecs/snd-soc-wcd-classh.ko": {
+      "bytes": 23193,
+      "sha256": "19e15bb52fdff227adcf25c744ea2e7d84274cbe3b5431e48c4f3e9e153e119c"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/codecs/snd-soc-wcd-mbhc.ko": {
+      "bytes": 51561,
+      "sha256": "cf686fba6af6e57c7cb285cc20c14a9898f668949a0fc271e6f773d3e84791bb"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/codecs/snd-soc-wcd938x-sdw.ko": {
+      "bytes": 36481,
+      "sha256": "788047b047656ef069780ed477fa9a9221ebf2186b4cd61d7787b90c2cc5c52b"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/codecs/snd-soc-wcd938x.ko": {
+      "bytes": 163401,
+      "sha256": "69712a85dfb7ced94b7ded9ac8a43544f6b7b3a7038d27b95e0e52197281788a"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/qdsp6/q6adm.ko": {
+      "bytes": 25713,
+      "sha256": "a3e5c5b89c2e5e70570b9bbb42922517cb5edd2f5f3593d7d030399da52e08f5"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/qdsp6/q6afe-clocks.ko": {
+      "bytes": 14225,
+      "sha256": "3d6210253ca66cebd4e752beaf2a78095d197b4ef53e1148ed850daeb05ce305"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/qdsp6/q6afe-dai.ko": {
+      "bytes": 94569,
+      "sha256": "8d7671ae702c66da5c6f033c104e0ae25e1a6f217f9a4d8a23b38b3f5dd4e7b1"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/qdsp6/q6afe.ko": {
+      "bytes": 37665,
+      "sha256": "3f7c8dd10c8566dfc32157e8631c2accc3d49b1c76c49c34015c4287b96bda70"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/qdsp6/q6apm-dai.ko": {
+      "bytes": 42553,
+      "sha256": "081e6cbb80a3e78e81eeb50e55bff75b1d9889b36ae73d534d3866203aa1a512"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/qdsp6/q6apm-lpass-dais.ko": {
+      "bytes": 19321,
+      "sha256": "cb123186680781692a86b091916d1a8743ae6bdbce407a8726bcc82911ebd3b9"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/qdsp6/q6asm-dai.ko": {
+      "bytes": 55953,
+      "sha256": "b1b6b792daafbe76190504a0126165ca2454ae9c3f86bc960b0330ba556fe66e"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/qdsp6/q6asm.ko": {
+      "bytes": 47769,
+      "sha256": "d13a8c4929a9b5a900f213630318ecb21fbd8d3db034c1037e89cf607fa91965"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/qdsp6/q6core.ko": {
+      "bytes": 18249,
+      "sha256": "e01a30d0a1f1b61a06bd22b90f77b293a83b209150975cd3bb40d0c25d49bbbb"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/qdsp6/q6prm-clocks.ko": {
+      "bytes": 12761,
+      "sha256": "b786549e4991defdd65cacd03acab9cbb2e9ea4c689378da56f24975b437c96d"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/qdsp6/q6prm.ko": {
+      "bytes": 15729,
+      "sha256": "baa637681c369ac76a16d83bfa319aa4808bc130ee572d24a68fb236419bfc91"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/qdsp6/q6routing.ko": {
+      "bytes": 594353,
+      "sha256": "e2b1e8ccb981b3359a14d469b0465bbbb0d62c2451aacb1f493835b3c8a98ef7"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/qdsp6/snd-q6apm.ko": {
+      "bytes": 80401,
+      "sha256": "126f388106ed17c50b653d1ef8044d15b5a427bde5298f232ce9cc32a02f799c"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/qdsp6/snd-q6dsp-common.ko": {
+      "bytes": 55017,
+      "sha256": "6c4c5f60240cc58145440653d237666904a5b9464dcd08b137adc6fd6a33b90e"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/snd-soc-qcom-common.ko": {
+      "bytes": 18721,
+      "sha256": "440232dd707d48e28218d44d3f84aff624f01bd669b7e5ec2878e6d106683a7b"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/snd-soc-qcom-sdw.ko": {
+      "bytes": 11401,
+      "sha256": "5ab3ea244fe13a1360c4f83a9997cebfcdb8fcd0e1533ec4d5b4058579a672e8"
+    },
+    "modules/lib/modules/6.12.114-tb371fc-research6-tianma-off/kernel/sound/soc/qcom/snd-soc-sm8250.ko": {
+      "bytes": 14409,
+      "sha256": "096949a55da55132f586f016e7b4a7e65a1d3ae39ebe21c43ca21fb5370adae6"
+    }
+  },
+  "native_hardware_passes_added": 0,
+  "new_signing_certificate": {
+    "bytes": 1324,
+    "sha256": "0ef0ef0c4bfbd0291e76a451b03d05b9c601d6c40a882e54dcf06ab1f9065107"
+  },
+  "old_objects_copied": false,
+  "old_private_key_copied": false,
+  "passed": true,
+  "patched_panel": {
+    "bytes": 76971,
+    "sha256": "9bc1c7fb376af05823bc933bbd730f0dcdc45807da383dc47e266509f75ed149"
+  },
+  "retained_r5_inputs_reverified": true,
+  "runtime_signature_enforcement_verified": false,
+  "scope": "isolated ARM64 kernel/module/DTB construction",
+  "started_utc": "2026-11-25T18:15:51.504728+00:00",
+  "toolchain": {
+    "clang": "Debian clang version 19.1.7 (3+b1)",
+    "ld.lld": "Debian LLD 19.1.7 (compatible with GNU linkers)",
+    "pahole": "v1.30"
+  }
+}

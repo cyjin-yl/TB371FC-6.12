@@ -1,0 +1,103 @@
+{
+  "artifact_container": "tb371fc-build-ssd-20261123",
+  "artifact_directory": "/work/tianma-r6-build-ec332-01",
+  "artifacts_rehashed_after_build": true,
+  "build_source_files_match_published_commit": true,
+  "build_source_paths": [
+    "scripts/research/display/build_tianma_candidate.py",
+    "scripts/research/display/test_tianma_off.py",
+    "scripts/research/display/fixtures/linux-v6.12.114-drm_panel.c",
+    "mainline-port/backports/linux-6.12/0022-drm-panel-tb371fc-tianma-off-sequence.patch"
+  ],
+  "execution_source_note": "staged working-tree inputs, individually matched to the published source commit; not a clean checkout claim",
+  "files": {
+    "actual-core-regression.log": {
+      "bytes": 403,
+      "sha256": "c4e0275bd5496c88df5ed7359e0d5cebcad615a9030150ffc9858023380729fa"
+    },
+    "apply-panel.log": {
+      "bytes": 60,
+      "sha256": "1592e27da52b89ca1eb45e0edf7cb74b4cb4e0e7bd0dc0f9237399600e9723d4"
+    },
+    "build-result.json": {
+      "bytes": 26141,
+      "sha256": "f37fbe20624e7f49bdf09eeda28b536fe4da24f9379143efeac598da5a110cc7"
+    },
+    "copy-source.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "device-tree.log": {
+      "bytes": 341,
+      "sha256": "636caa0c5db2d1ea3cf77a72292a47a07f032c87d8dadf6810e11b0ee415a40a"
+    },
+    "kernel-modules.log": {
+      "bytes": 185292,
+      "sha256": "1973d4cf50ff3aef64a20d861e6837e5d050cd39fe4fd08d346c3b34eb0b0a61"
+    },
+    "kernel.config": {
+      "bytes": 223397,
+      "sha256": "5a8ec0c9e1c8eccb10fd12f25a05268b0d739f8bc77d9536a9e664f24bae0e72"
+    },
+    "kernel.release": {
+      "bytes": 38,
+      "sha256": "158ffa5284f3e6ab7f2e28c27bc2b018e42836d8db49ede545dae91f60eb19c1"
+    },
+    "module-signatures-command.json": {
+      "bytes": 913,
+      "sha256": "a294f66bc26e494e22dc44534de639d2cdc2412401c5dc3e2e5d78cd9b583e5d"
+    },
+    "module-signatures.json": {
+      "bytes": 94541,
+      "sha256": "ab6e20a596985377ab112f6a258f861fdb28c307cb88342166fc54d29f1f5dfa"
+    },
+    "module-signatures.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "modules-install.log": {
+      "bytes": 36802,
+      "sha256": "fb423060dc4cc4dc39b2fc4f3a828c514147f8fb647bf44e08cbe1219aca8f62"
+    },
+    "olddefconfig.log": {
+      "bytes": 764,
+      "sha256": "dbb1200f9e9f847a7668ed2910666a2a2f7dc715fe9790038d0fd2218b70d5f5"
+    },
+    "signing-cert.pem": {
+      "bytes": 1850,
+      "sha256": "7664a05cfad6d35464ebb2a3ed491d6dabd4a557ae0e4503c070794d8d817f78"
+    }
+  },
+  "modules_rehashed_after_build": true,
+  "native_hardware_passes_added": 0,
+  "observed_utc": "2026-11-25T19:02:49.981339+00:00",
+  "observed_worktree_head_after_build": "0acacec10d2864dca3fc44f57d27b853493363f9",
+  "postbuild_verifier": "scripts/research/display/verify_module_signatures.py",
+  "postbuild_verifier_added_after_build_started": true,
+  "published_build_source_commit": "4d640cfea2e46df297311eecbcf8a211603e3ef0",
+  "runtime_signature_enforcement_verified": false,
+  "schema_version": 1,
+  "scope": "retained isolated ARM64 construction and offline module signature receipts",
+  "source_files": {
+    "mainline-port/backports/linux-6.12/0022-drm-panel-tb371fc-tianma-off-sequence.patch": {
+      "bytes": 3662,
+      "sha256": "071a4fa269a539023bbbd41e0298418c351b64bdb2c3dc8ac8c3b82a061183ea"
+    },
+    "scripts/research/display/build_tianma_candidate.py": {
+      "bytes": 10508,
+      "sha256": "226393ac5b102fd359658adba25019a0e38697bbcf30f39b46aeadc871646dc1"
+    },
+    "scripts/research/display/fixtures/linux-v6.12.114-drm_panel.c": {
+      "bytes": 16788,
+      "sha256": "b6deca77d92c2395952114154dd1674e9ee812064318d9a1b15ccb7113588d5a"
+    },
+    "scripts/research/display/test_tianma_off.py": {
+      "bytes": 13037,
+      "sha256": "e8f174da818dacf1b9eb458db51572d15f65817bea10e787a0117e091aa96df2"
+    },
+    "scripts/research/display/verify_module_signatures.py": {
+      "bytes": 13706,
+      "sha256": "8e7fb179b500bf13cfadd3843fdb3104a5740005f1cd394f2be8112732ee0082"
+    }
+  }
+}
