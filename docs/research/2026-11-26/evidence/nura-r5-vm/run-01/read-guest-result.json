@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "/usr/sbin/debugfs",
+    "-R",
+    "dump /var/lib/tb371fc/nura-r5-vm-result.json /work/nura-r5-vm-ec332-01/run-01/guest-result.json",
+    "/work/nura-r5-vm-ec332-01/run-01/rootfs.ext4"
+  ],
+  "exit_code": 0,
+  "finished_utc": "2026-11-25T18:26:38.575630+00:00",
+  "started_utc": "2026-11-25T18:26:38.128208+00:00",
+  "timeout_seconds": 60
+}

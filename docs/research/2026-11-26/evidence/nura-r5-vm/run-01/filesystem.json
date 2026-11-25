@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "/usr/sbin/e2fsck",
+    "-fn",
+    "/work/nura-r5-vm-ec332-01/run-01/rootfs.ext4"
+  ],
+  "exit_code": 0,
+  "finished_utc": "2026-11-25T18:26:38.127835+00:00",
+  "started_utc": "2026-11-25T18:26:37.612754+00:00",
+  "timeout_seconds": 600
+}

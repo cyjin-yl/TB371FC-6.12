@@ -1,0 +1,372 @@
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
+[    0.000000] Linux version 6.12.114-tb371fc-research5-services (tb371fc-research@isolated-builder) (Debian clang version 19.1.7 (3+b1), Debian LLD 19.1.7) #1 SMP PREEMPT 2026-11-23 00:00:00 +0000
+[    0.000000] random: crng init done
+[    0.000000] Machine model: linux,dummy-virt
+[    0.000000] OF: reserved mem: Reserved memory: No reserved-memory node in the DT
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] cma: Reserved 16 MiB at 0x00000000bc800000 on node -1
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.0
+[    0.000000] percpu: Embedded 31 pages/cpu s88344 r8192 d30440 u126976
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: Spectre-v2
+[    0.000000] CPU features: detected: Spectre-v4
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: detected: ARM erratum 1742098
+[    0.000000] CPU features: detected: ARM errata 1165522, 1319367, or 1530923
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: console=ttyAMA0 root=/dev/vda rootfstype=ext4 rootwait rw init=/sbin/init module.sig_enforce=1 tb371fc.nura-vm=5cc9424db648a3977415511fce69576d tb371fc.nura-run=run-01
+[    0.000000] printk: log_buf_len individual max cpu contribution: 131072 bytes
+[    0.000000] printk: log_buf_len total cpu_extra contributions: 131072 bytes
+[    0.000000] printk: log_buf_len min size: 131072 bytes
+[    0.000000] printk: log_buf_len: 262144 bytes
+[    0.000000] printk: early log buf free: 129064(98%)
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 524288
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] software IO TLB: SWIOTLB bounce buffer size adjusted to 2MB
+[    0.000000] software IO TLB: area num 2.
+[    0.000000] software IO TLB: mapped [mem 0x00000000bc500000-0x00000000bc700000] (2MB)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000] ftrace: allocating 59015 entries in 232 pages
+[    0.000000] ftrace: allocated 232 pages with 4 groups
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=8 to nr_cpu_ids=2.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Rude variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+[    0.000000] RCU Tasks: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.
+[    0.000000] RCU Tasks Rude: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.
+[    0.000000] RCU Tasks Trace: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv2m: range[mem 0x08020000-0x08020fff], SPI[80:143]
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.000000] arch_timer: cp15 timer(s) running at 62.50MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1ffffffffffffff max_cycles: 0x1cd42e208c, max_idle_ns: 881590405314 ns
+[    0.000105] sched_clock: 57 bits at 63MHz, resolution 16ns, wraps every 4398046511096ns
+[    0.010941] Console: colour dummy device 80x4
+[    0.012647] Calibrating delay loop (skipped), value calculated using timer frequency.. 125.00 BogoMIPS (lpj=250000)
+[    0.012845] pid_max: default: 32768 minimum: 301
+[    0.015456] LSM: initializing lsm=capability,selinux,bpf
+[    0.016458] SELinux:  Initializing.
+[    0.017329] LSM support for eBPF active
+[    0.019351] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.019417] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.074738] rcu: Hierarchical SRCU implementation.
+[    0.074801] rcu: 	Max phase no-delay instances is 1000.
+[    0.077185] Timer migration: 1 hierarchy levels; 8 children per group; 1 crossnode level
+[    0.086758] smp: Bringing up secondary CPUs ...
+[    0.095598] Detected PIPT I-cache on CPU1
+[    0.097028] CPU1: Booted secondary processor 0x0000000001 [0x410fd083]
+[    0.102603] smp: Brought up 1 node, 2 CPUs
+[    0.102660] SMP: Total of 2 processors activated.
+[    0.102722] CPU: All CPU(s) started at EL1
+[    0.102897] CPU features: detected: 32-bit EL0 Support
+[    0.103022] CPU features: detected: CRC32 instructions
+[    0.125109] alternatives: applying system-wide alternatives
+[    0.132250] CPU features: emulated: Privileged Access Never (PAN) using TTBR0_EL1 switching
+[    0.150103] Memory: 1989556K/2097152K available (20096K kernel code, 2368K rwdata, 16004K rodata, 1536K init, 1545K bss, 86236K reserved, 16384K cma-reserved)
+[    0.193100] devtmpfs: initialized
+[    0.224735] futex hash table entries: 512 (order: 3, 32768 bytes, linear)
+[    0.227201] 22336 pages in range for non-PLT usage
+[    0.227313] 513856 pages in range for PLT usage
+[    0.231417] pinctrl core: initialized pinctrl subsystem
+[    0.263161] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.279193] DMA: preallocated 256 KiB GFP_KERNEL pool for atomic allocations
+[    0.280820] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.282121] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.282551] audit: initializing netlink subsys (disabled)
+[    0.285971] audit: type=2000 audit(0.260:1): state=initialized audit_enabled=0 res=1
+[    0.290943] thermal_sys: Registered thermal governor 'step_wise'
+[    0.291027] thermal_sys: Registered thermal governor 'user_space'
+[    0.291910] cpuidle: using governor menu
+[    0.292740] NET: Registered PF_QIPCRTR protocol family
+[    0.299819] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.301559] ASID allocator initialised with 65536 entries
+[    0.304108] Serial: AMBA PL011 UART driver
+[    0.358101] 9000000.pl011: ttyAMA0 at MMIO 0x9000000 (irq = 13, base_baud = 0) is a PL011 rev1
+[    0.361751] printk: legacy console [ttyAMA0] enabled
+[    0.537981] raid6: neonx8   gen()  1735 MB/s
+[    0.625015] raid6: neonx4   gen()  2392 MB/s
+[    0.695639] raid6: neonx2   gen()  1891 MB/s
+[    0.764617] raid6: neonx1   gen()   998 MB/s
+[    0.833587] raid6: int64x8  gen()  1322 MB/s
+[    0.902611] raid6: int64x4  gen()  1770 MB/s
+[    0.971561] raid6: int64x2  gen()  1456 MB/s
+[    1.040666] raid6: int64x1  gen()  1098 MB/s
+[    1.041193] raid6: using algorithm neonx4 gen() 2392 MB/s
+[    1.110045] raid6: .... xor() 906 MB/s, rmw enabled
+[    1.110647] raid6: using neon recovery algorithm
+[    1.114184] iommu: Default domain type: Translated
+[    1.114714] iommu: DMA domain TLB invalidation policy: strict mode
+[    1.117589] SCSI subsystem initialized
+[    1.119305] usbcore: registered new interface driver usbfs
+[    1.120358] usbcore: registered new interface driver hub
+[    1.121133] usbcore: registered new device driver usb
+[    1.122774] mc: Linux media interface: v0.10
+[    1.123411] videodev: Linux video capture interface: v2.00
+[    1.124190] pps_core: LinuxPPS API ver. 1 registered
+[    1.124686] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    1.125638] PTP clock support registered
+[    1.126323] EDAC MC: Ver: 3.0.0
+[    1.131379] Advanced Linux Sound Architecture Driver Initialized.
+[    1.148700] Bluetooth: Core ver 2.22
+[    1.149455] NET: Registered PF_BLUETOOTH protocol family
+[    1.150019] Bluetooth: HCI device and connection manager initialized
+[    1.150783] Bluetooth: HCI socket layer initialized
+[    1.151342] Bluetooth: L2CAP socket layer initialized
+[    1.152034] Bluetooth: SCO socket layer initialized
+[    1.152714] NetLabel: Initializing
+[    1.153119] NetLabel:  domain hash size = 128
+[    1.153599] NetLabel:  protocols = UNLABELED CIPSOv4 CALIPSO
+[    1.155235] NetLabel:  unlabeled traffic allowed by default
+[    1.157910] vgaarb: loaded
+[    1.159806] clocksource: Switched to clocksource arch_sys_counter
+[    1.165199] VFS: Disk quotas dquot_6.6.0
+[    1.165738] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    1.206790] NET: Registered PF_INET protocol family
+[    1.209400] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    1.320661] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    1.321648] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    1.322691] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    1.323945] TCP bind hash table entries: 16384 (order: 7, 524288 bytes, linear)
+[    1.325157] TCP: Hash tables configured (established 16384 bind 16384)
+[    1.326876] UDP hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    1.328231] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    1.330523] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    1.331733] PCI: CLS 0 bytes, default 64
+[    1.342886] Initialise system trusted keyrings
+[    1.345678] workingset: timestamp_bits=46 max_order=19 bucket_order=0
+[    1.353260] fuse: init (API version 7.41)
+[    1.404065] xor: measuring software checksum speed
+[    1.405893]    8regs           :  2875 MB/sec
+[    1.407351]    32regs          :  3364 MB/sec
+[    1.409722]    arm64_neon      :  1841 MB/sec
+[    1.410258] xor: using function: 32regs (3364 MB/sec)
+[    1.410999] Key type asymmetric registered
+[    1.411823] Asymmetric key parser 'x509' registered
+[    1.412862] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 247)
+[    1.413829] io scheduler mq-deadline registered
+[    1.414503] io scheduler kyber registered
+[    1.415561] io scheduler bfq registered
+[    1.427666] pl061_gpio 9030000.pl061: PL061 GPIO chip registered
+[    1.482983] brd: module loaded
+[    1.514706] loop: module loaded
+[    1.516396] virtio_blk virtio0: 1/0/0 default/read/poll queues
+[    1.522201] virtio_blk virtio0: [vda] 4194304 512-byte logical blocks (2.15 GB/2.00 GiB)
+[    1.539817] zram: Added device: zram0
+[    1.541129] SCSI Media Changer driver v0.25 
+[    1.555267] tun: Universal TUN/TAP device driver, 1.6
+[    1.557535] CAN device driver interface
+[    1.558000] igb: Intel(R) Gigabit Ethernet Network Driver
+[    1.558521] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    1.559229] sky2: driver version 1.30
+[    1.560376] PPP generic driver version 2.4.2
+[    1.561610] PPP BSD Compression module registered
+[    1.562195] PPP Deflate Compression module registered
+[    1.562922] PPP MPPE Compression module registered
+[    1.563565] NET: Registered PF_PPPOX protocol family
+[    1.564118] PPTP driver version 0.8.5
+[    1.565345] usbcore: registered new interface driver lan78xx
+[    1.566065] usbcore: registered new interface driver asix
+[    1.566722] usbcore: registered new interface driver ax88179_178a
+[    1.567700] usbcore: registered new interface driver cdc_ether
+[    1.568471] usbcore: registered new interface driver net1080
+[    1.569198] usbcore: registered new interface driver cdc_subset
+[    1.569909] usbcore: registered new interface driver zaurus
+[    1.570685] usbcore: registered new interface driver cdc_ncm
+[    1.575112] usbcore: registered new interface driver cdc_acm
+[    1.575946] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+[    1.576947] usbcore: registered new interface driver usb-storage
+[    1.578039] usbcore: registered new interface driver cp210x
+[    1.578981] usbserial: USB Serial support registered for cp210x
+[    1.579925] usbcore: registered new interface driver ftdi_sio
+[    1.580570] usbserial: USB Serial support registered for FTDI USB Serial Device
+[    1.581434] usbcore: registered new interface driver usb_ehset_test
+[    1.582351] usbcore: registered new interface driver lvs
+[    1.585576] usbcore: registered new interface driver xpad
+[    1.586316] usbcore: registered new interface driver usb_acecad
+[    1.587106] usbcore: registered new interface driver aiptek
+[    1.588070] usbcore: registered new interface driver hanwang
+[    1.588772] usbcore: registered new interface driver kbtab
+[    1.594960] rtc-pl031 9010000.pl031: registered as rtc0
+[    1.596509] rtc-pl031 9010000.pl031: setting system clock to 2026-11-25T18:24:59 UTC (1795631099)
+[    1.598598] i2c_dev: i2c /dev entries driver
+[    1.599978] usbcore: registered new interface driver uvcvideo
+[    1.601782] device-mapper: uevent: version 1.0.3
+[    1.603315] device-mapper: ioctl: 4.48.0-ioctl (2023-03-01) initialised: dm-devel@lists.linux.dev
+[    1.607363] sdhci: Secure Digital Host Controller Interface driver
+[    1.608434] sdhci: Copyright(c) Pierre Ossman
+[    1.608889] sdhci-pltfm: SDHCI platform and OF driver helper
+[    1.610305] hid: raw HID events driver (C) Jiri Kosina
+[    1.614978] usbcore: registered new interface driver usbhid
+[    1.615777] usbhid: USB HID core driver
+[    1.622318] hw perfevents: enabled with armv8_pmuv3 PMU driver, 7 (0,8000003f) counters available
+[    1.625226]  cs_system_cfg: CoreSight Configuration manager initialised
+[    1.630597] usbcore: registered new interface driver snd-usb-audio
+[    1.633680] GACT probability NOT on
+[    1.634409] Mirror/redirect action on
+[    1.635169] netem: version 1.3
+[    1.635683] u32 classifier
+[    1.636044]     input device check on
+[    1.636403]     Actions configured
+[    1.646348] xt_time: kernel timezone is -0000
+[    1.647197] gre: GRE over IPv4 demultiplexor driver
+[    1.647953] IPv4 over IPsec tunneling driver
+[    1.652947] Initializing XFRM netlink socket
+[    1.653563] IPsec XFRM device driver
+[    1.654813] NET: Registered PF_INET6 protocol family
+[    1.666619] Segment Routing with IPv6
+[    1.667231] In-situ OAM (IOAM) with IPv6
+[    1.668840] mip6: Mobile IPv6
+[    1.672468] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    1.676662] NET: Registered PF_PACKET protocol family
+[    1.677326] NET: Registered PF_KEY protocol family
+[    1.678458] can: controller area network core
+[    1.679573] NET: Registered PF_CAN protocol family
+[    1.680114] can: raw protocol
+[    1.680658] can: broadcast manager protocol
+[    1.681234] can: netlink gateway - max_hops=1
+[    1.682675] Bluetooth: RFCOMM socket layer initialized
+[    1.683645] Bluetooth: RFCOMM ver 1.11
+[    1.684162] Bluetooth: HIDP (Human Interface Emulation) ver 1.2
+[    1.684889] Bluetooth: HIDP socket layer initialized
+[    1.685598] l2tp_core: L2TP core driver, V2.0
+[    1.686282] l2tp_ppp: PPPoL2TP kernel driver, V2.0
+[    1.686820] l2tp_ip: L2TP IP encapsulation support (L2TPv3)
+[    1.687645] l2tp_netlink: L2TP netlink interface
+[    1.688410] l2tp_eth: L2TP ethernet pseudowire support (L2TPv3)
+[    1.689230] l2tp_ip6: L2TP IP encapsulation support for IPv6 (L2TPv3)
+[    1.690437] sctp: Hash tables configured (bind 256/256)
+[    1.734548] registered taskstats version 1
+[    1.738684] Loading compiled-in X.509 certificates
+[    1.756411] Loaded X.509 cert 'Build time autogenerated kernel key: 5a23f7fd3f8a288cb9d81bff500ae29851ff3568'
+[    1.790760] Btrfs loaded, zoned=no, fsverity=yes
+[    1.802953] input: gpio-keys as /devices/platform/gpio-keys/input/input0
+[    1.857930] clk: Disabling unused clocks
+[    1.858759] PM: genpd: Disabling unused power domains
+[    1.859372] ALSA device list:
+[    1.859936]   No soundcards found.
+[    2.070958] EXT4-fs (vda): mounted filesystem ad8880fb-7b24-45e7-91d1-f6937989f3c4 r/w with ordered data mode. Quota mode: none.
+[    2.073395] VFS: Mounted root (ext4 filesystem) on device 254:0.
+[    2.081847] devtmpfs: mounted
+[    2.150431] Freeing unused kernel memory: 1536K
+[    2.153036] Run /sbin/init as init process
+
+   OpenRC 0.63.2 is starting up Linux 6.12.114-tb371fc-research5-services (aarch64)
+
+ * Mounting /proc ... [ ok ]
+ * Mounting /run ... [ ok ]
+ * /run/openrc: creating directory
+ * /run/lock: creating directory
+ * /run/lock: correcting owner
+Error: swap is the name of a real and virtual service.
+ * Caching service dependencies ... [ ok ]
+ * Remounting devtmpfs on /dev ... [ ok ]
+ * Mounting /dev/pts ... [ ok ]
+ * Mounting /dev/shm ... [ ok ]
+ * Mounting /sys ... [ ok ]
+ * Mounting security filesystem ... [ ok ]
+ * Mounting debug filesystem ... [ ok ]
+ * Mounting trace filesystem ... [ ok ]
+ * Mounting config filesystem ... [ ok ]
+ * Mounting fuse control filesystem ... [ ok ]
+ * Mounting SELinux filesystem ... [ ok ]
+ * Mounting persistent storage (pstore) filesystem ... [ ok ]
+ * Mounting bpf filesystem ... [ ok ]
+ * Starting udev ... [ ok ]
+ * Generating a rule to create a /dev/root symlink ... [ ok ]
+ * Populating /dev with existing devices through uevents ... [ ok ]
+ * Checking local filesystems  ... [ ok ]
+ * Remounting filesystems ... * fstabinfo: empty fstab
+ [ ok ]
+ * Mounting local filesystems ... [ ok ]
+ * Creating system users from sysusers.d ... [ ok ]
+ * Gracefully populating /dev from tmpfiles.d ... [ ok ]
+ * Populating /dev from tmpfiles.d ... [ ok ]
+ * Waiting for uevents to be processed ... [ ok ]
+ * Starting plymouthd ... [ ok ]
+ * Loading modules ... [ ok ]
+ * Setting system clock using the hardware clock [UTC] ... [ ok ]
+ * Configuring kernel parameters ... [ ok ]
+ * Creating user login records ... [ ok ]
+ * Cleaning /tmp directory ... [ ok ]
+ * Setting hostname to nura-qemu-research from /etc/hostname ... [ ok ]
+ * Starting logbookd ...Cannot restore /var/log/logbookd.db
+ [ ok ]
+ * Creating temporary files and directories from tmpfiles.d ... [ ok ]
+ * Starting unudhcpd.usb0 ... [ ok ]
+ * Activating swap file ...Configured swap file size is 0, skipping creation.
+ [ ok ]
+ * Starting zram swap ...ZRAM swap device /dev/zram0 activated using zstd and size 2947 MB
+ [ ok ]
+ * /run/dbus: creating directory
+ * /run/dbus: correcting owner
+ * Starting System Message Bus ... [ ok ]
+ * Loading nftables rules and starting firewall ... [ ok ]
+ * Starting haveged ... [ ok ]
+ * wpa_supplicant is running in root, it will default to non-root after 3.25
+ * Set command_user=wpa_supplicant in /etc/conf.d/wpa_supplicant to use a dedicated user (this will become the default)
+ * Could not find a wireless interface
+ * /var/run/wpa_supplicant: creating directory
+ * Starting WPA Supplicant ... [ ok ]
+ * Starting networkmanager ... [ ok ]
+ * Starting chronyd ... [ ok ]
+ * Restoring rfkill configuration ... [ ok ]
+ * Starting routewrangler ... [ ok ]
+ * Starting sleep-inhibitor ... [ ok ]
+ * Starting tb371fc-nura-r5-vm ... [ ok ]
+ * Starting local ... [ ok ]
+
+Welcome to Nura! 
+Kernel 6.12.114-tb371fc-research5-services on an aarch64 (/dev/ttyAMA0)
+[9;5]nura-qemu-research login: TB371FC_NURA_R5_RESULT 5cc9424db648a3977415511fce69576d 5ac109386a8b38064b16f227954b5a16dba8861f28b989f6253300e3b30ed36b
+TB371FC_NURA_R5_CORE PASS
+ * Starting plymouthd ... [ ok ]
+ * Stopping local ... [ ok ]
+ * Stopping unudhcpd.usb0 ... [ ok ]
+ * Stopping tb371fc-nura-r5-vm ... * start-stop-daemon: no matching processes found
+ [ ok ]
+ * Stopping sleep-inhibitor ... [ ok ]
+ * Stopping routewrangler ... [ ok ]
+ * Storing rfkill configuration ... [ ok ]
+ * Stopping chronyd ... [ ok ]
+ * Stopping networkmanager ... [ ok ]
+ * Stopping haveged ... [ ok ]
+ * Stopping System Message Bus ... [ ok ]
+ * Stopping firewall ... [ ok ]
+ * Stopping logbookd ... [ ok ]
+ * Deactivating swap file ... [ ok ]
+ * Stopping zram swap ... [ ok ]
+ * Unmounting loop devices
+ * Unmounting filesystems
+ * Setting hardware clock using the system clock [UTC] ... [ ok ]
+ * Stopping udev ... [ ok ]
+ * Terminating remaining processes ... [ ok ]
+ * Killing remaining processes ... [ ok ]
+ * /var/cache/rc: creating directory
+ * Saving dependency cache ... [ ok ]
+ * Removing temporary files and directories ... [ ok ]
+ * Remounting remaining filesystems read-only ... *   Remounting / read only ... [ ok ]
+ [ ok ]
+The system is going down NOW!
+Sent SIGTERM to all processes
+Sent SIGKILL to all processes
+Requesting system poweroff
+[   99.789038] reboot: Power down
