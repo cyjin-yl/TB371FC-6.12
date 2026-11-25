@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "/work/fedora-proot-src/src/proot",
+    "-0",
+    "-r",
+    "/work/nura-r5-stage-ec332-01/rootfs",
+    "-q",
+    "/usr/bin/qemu-aarch64",
+    "-b",
+    "/proc",
+    "-b",
+    "/dev/null",
+    "-w",
+    "/",
+    "/sbin/depmod",
+    "-a",
+    "6.12.114-tb371fc-research5-services"
+  ],
+  "exit_code": 0,
+  "finished_utc": "2026-11-25T18:08:21.162042+00:00",
+  "started_utc": "2026-11-25T18:08:20.597199+00:00",
+  "timeout_seconds": 600
+}

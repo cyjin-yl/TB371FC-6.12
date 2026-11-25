@@ -3,7 +3,12 @@ on:
   pull_request:
     paths:
       - 'scripts/research/rootfs/stage_r5_nura.py'
+      - 'scripts/research/rootfs/stage_r5_fedora.py'
+      - 'scripts/research/rootfs/r5_system_common.py'
       - 'scripts/research/rootfs/test_stage_r5_nura.py'
+      - 'scripts/research/rootfs/nura_r5_vm.py'
+      - 'scripts/research/rootfs/nura_r5_guest.py'
+      - 'scripts/research/rootfs/test_nura_r5_vm.py'
       - '.github/workflows/r5-nura-stage.yml'
   workflow_dispatch:
 jobs:
@@ -11,5 +16,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Reject unsafe archive layouts and guest path escapes
-        run: python3 -O -m unittest discover -s scripts/research/rootfs -p test_stage_r5_nura.py -v
+      - name: Check archive, guest paths and direct-root evidence contracts
+        run: python3 -O -m unittest discover -s scripts/research/rootfs -p 'test_*nura*.py' -v
