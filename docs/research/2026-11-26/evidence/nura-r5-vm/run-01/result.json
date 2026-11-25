@@ -1,0 +1,253 @@
+{
+  "board_dtb_used": false,
+  "default_runlevel_all_services_started": true,
+  "elapsed_seconds": 101.54856497299625,
+  "finished_utc": "2026-11-25T18:26:42.570981+00:00",
+  "guest_result": {
+    "added_files": {
+      "files": 2,
+      "mismatches": [],
+      "passed": true
+    },
+    "blkid": {
+      "argv": [
+        "/bin/blkid",
+        "-s",
+        "LABEL",
+        "-o",
+        "value",
+        "/dev/vda"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "tb371fc-nura-r5\n"
+    },
+    "board_dtb_used": false,
+    "core_boot_passed": true,
+    "dbus_roundtrip": {
+      "argv": [
+        "/usr/bin/dbus-send",
+        "--system",
+        "--print-reply",
+        "--dest=org.freedesktop.DBus",
+        "/org/freedesktop/DBus",
+        "org.freedesktop.DBus.ListNames"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "method return time=1795631147.447199 sender=org.freedesktop.DBus -> destination=:1.4 serial=3 reply_serial=2\n   array [\n      string \"org.freedesktop.DBus\"\n      string \":1.3\"\n      string \":1.4\"\n      string \":1.0\"\n      string \":1.1\"\n      string \"fi.w1.wpa_supplicant1\"\n      string \"org.freedesktop.NetworkManager\"\n   ]\n"
+    },
+    "default_runlevel_all_services_started": true,
+    "gates": {
+      "added_files": true,
+      "dbus": true,
+      "dbus_roundtrip": true,
+      "kernel_release": true,
+      "openrc_default": true,
+      "original_files": true,
+      "pid1": true,
+      "root_device": true,
+      "root_label": true,
+      "root_type": true,
+      "runtime_files": true,
+      "service_status_complete": true,
+      "signature_enforced": true,
+      "signed_module_loaded": true,
+      "udev": true
+    },
+    "kernel_release": "6.12.114-tb371fc-research5-services",
+    "module_probe": {
+      "argv": [
+        "/sbin/modprobe",
+        "autofs4"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    "network": false,
+    "nonce": "5cc9424db648a3977415511fce69576d",
+    "openrc_crashed": {
+      "argv": [
+        "/sbin/rc-status",
+        "--crashed",
+        "--nocolor"
+      ],
+      "exit_code": 1,
+      "stderr": "",
+      "stdout": ""
+    },
+    "openrc_runlevel": "default",
+    "openrc_runlevel_command": {
+      "argv": [
+        "/sbin/rc-status",
+        "--runlevel"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "default\n"
+    },
+    "openrc_status": {
+      "argv": [
+        "/sbin/rc-status",
+        "--all",
+        "--nocolor"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "Runlevel: nonetwork\nRunlevel: shutdown\n savecache                                                         [  stopped  ]\n killprocs                                                         [  stopped  ]\n systemd-tmpfiles-clean                                            [  stopped  ]\n mount-ro                                                          [  stopped  ]\nRunlevel: boot\n modules                                                           [  started  ]\n hwclock                                                           [  started  ]\n sysctl                                                            [  started  ]\n tmpfs                                                             [  started  ]\n bootmisc                                                          [  started  ]\n unudhcpd.usb0                                         [  started 00:00:20 (0) ]\n systemd-tmpfiles-setup                                            [  started  ]\n hostname                                                          [  started  ]\n logbookd                                                          [  started  ]\nRunlevel: default\n swapfile                                                          [  started  ]\n postmarketos-zram-swap                                            [  started  ]\n haveged                                                           [  started  ]\n dbus                                                              [  started  ]\n nftables                                                          [  started  ]\n wpa_supplicant                                        [  started 00:00:13 (0) ]\n networkmanager                                        [  started 00:00:12 (0) ]\n cgroups                                                           [  started  ]\n chronyd                                                           [  started  ]\n rfkill                                                            [  started  ]\n routewrangler                                         [  started 00:00:09 (0) ]\n sleep-inhibitor                                       [  started 00:00:08 (0) ]\n tb371fc-nura-r5-vm                                                [  started  ]\n udev-postmount                                                    [  started  ]\n local                                                             [  started  ]\nRunlevel: sysinit\n devfs                                                             [  started  ]\n udev                                                              [  started  ]\n dmesg                                                             [  started  ]\n udev-trigger                                                      [  started  ]\n udev-settle                                                       [  started  ]\n systemd-tmpfiles-setup-dev-early                                  [  started  ]\n systemd-sysusers                                                  [  started  ]\n systemd-tmpfiles-setup-dev                                        [  started  ]\nDynamic Runlevel: hotplugged\nDynamic Runlevel: needed/wanted\n sysfs                                                             [  started  ]\n fsck                                                              [  started  ]\n root                                                              [  started  ]\n localmount                                                        [  started  ]\nDynamic Runlevel: manual\n"
+    },
+    "original_files": {
+      "files": 49,
+      "mismatches": [],
+      "passed": true
+    },
+    "original_service_states": {
+      "bootmisc": [
+        "started"
+      ],
+      "cgroups": [
+        "started"
+      ],
+      "chronyd": [
+        "started"
+      ],
+      "dbus": [
+        "started"
+      ],
+      "devfs": [
+        "started"
+      ],
+      "dmesg": [
+        "started"
+      ],
+      "haveged": [
+        "started"
+      ],
+      "hostname": [
+        "started"
+      ],
+      "hwclock": [
+        "started"
+      ],
+      "local": [
+        "started"
+      ],
+      "logbookd": [
+        "started"
+      ],
+      "modules": [
+        "started"
+      ],
+      "networkmanager": [
+        "started"
+      ],
+      "nftables": [
+        "started"
+      ],
+      "postmarketos-zram-swap": [
+        "started"
+      ],
+      "rfkill": [
+        "started"
+      ],
+      "routewrangler": [
+        "started"
+      ],
+      "sleep-inhibitor": [
+        "started"
+      ],
+      "swapfile": [
+        "started"
+      ],
+      "sysctl": [
+        "started"
+      ],
+      "systemd-sysusers": [
+        "started"
+      ],
+      "systemd-tmpfiles-setup": [
+        "started"
+      ],
+      "systemd-tmpfiles-setup-dev": [
+        "started"
+      ],
+      "systemd-tmpfiles-setup-dev-early": [
+        "started"
+      ],
+      "tmpfs": [
+        "started"
+      ],
+      "udev": [
+        "started"
+      ],
+      "udev-postmount": [
+        "started"
+      ],
+      "udev-settle": [
+        "started"
+      ],
+      "udev-trigger": [
+        "started"
+      ],
+      "unudhcpd.usb0": [
+        "started"
+      ],
+      "wpa_supplicant": [
+        "started"
+      ]
+    },
+    "owner_native_linux_passes_added": 0,
+    "physical_hardware_tested": false,
+    "pid1": "/usr/bin/busybox",
+    "profile_sha256": "9cf389cdd49d6c5a186630799d252a544bb5a650ce30a41fdd105b9ce8d8d871",
+    "root_label": "tb371fc-nura-r5",
+    "root_loader_built": false,
+    "root_source": "/dev/root",
+    "root_type": "ext4",
+    "run": "run-01",
+    "runtime_files": {
+      "files": 167,
+      "mismatches": [],
+      "passed": true
+    },
+    "schema_version": 1,
+    "scope": "generic ARM64 direct-root core boot only",
+    "security": {
+      "fedora_selinux_equivalence_claimed": false,
+      "pid1_lsm_context": "kernel\u0000",
+      "selinux_enforce": "0"
+    },
+    "signature_enforced": true
+  },
+  "guest_result_identity": {
+    "bytes": 7824,
+    "mode": 420,
+    "sha256": "5ac109386a8b38064b16f227954b5a16dba8861f28b989f6253300e3b30ed36b"
+  },
+  "kernel_panic_seen": false,
+  "network": false,
+  "owner_native_linux_passes_added": 0,
+  "passed": true,
+  "physical_hardware_tested": false,
+  "profile_sha256": "9cf389cdd49d6c5a186630799d252a544bb5a650ce30a41fdd105b9ce8d8d871",
+  "qemu": {
+    "bytes": 34073536,
+    "mode": 493,
+    "sha256": "2e7fe3008a900980493a85e606036793fd162153edac0228477579988c53e1f5"
+  },
+  "qemu_exit_code": 0,
+  "qemu_pid": 129,
+  "root_loader_built": false,
+  "run": "run-01",
+  "schema_version": 1,
+  "scope": "generic ARM64 direct-root core boot only",
+  "serial": {
+    "bytes": 21552,
+    "mode": 420,
+    "sha256": "436a0352f24488beee68e2136b2027d87bf78e02a54c8581e7f6e558e87a30e5"
+  },
+  "started_utc": "2026-11-25T18:24:38.569333+00:00",
+  "target_booted": true,
+  "timeout_seconds": 600
+}

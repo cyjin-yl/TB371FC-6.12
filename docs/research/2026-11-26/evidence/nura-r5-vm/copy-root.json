@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "cp",
+    "-a",
+    "--reflink=auto",
+    "--",
+    "/work/nura-r5-stage-ec332-01/rootfs",
+    "/work/nura-r5-vm-ec332-01/rootfs"
+  ],
+  "exit_code": 0,
+  "finished_utc": "2026-11-25T18:23:04.953651+00:00",
+  "started_utc": "2026-11-25T18:22:12.779959+00:00",
+  "timeout_seconds": 1800
+}

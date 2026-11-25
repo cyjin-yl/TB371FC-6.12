@@ -35,7 +35,9 @@ Run03's inherited-worker failure, the earlier v8 AVC failure and
 [first v9 image timeout](docs/research/2026-11-23/fedora-r4f-image-failed.md) remain retained.
 The first [Nix registered-root preparation](docs/research/2026-11-23/nixos-store-preparation-failed.md)
 also times out during signed-cache copying after source verification; no NixOS
-image or PID1 boot was reached. Nix/Nura target-system boot and physical entry remain open.
+image or PID1 boot was reached. The independent [Nura/OpenRC R5 direct-root VM](docs/research/2026-11-26/nura-r5-vm-result.md)
+now boots the original BusyBox/OpenRC system, passes all 15 core checks and shuts down
+normally. This generic VM uses no board DT; NixOS boot and owner-tablet physical entry remain open.
 The dated overview keeps these construction, runtime and retained-failure scopes separate.
 These results add no owner physical-tablet pass; see the
 [all-device acceptance contract](docs/research/2026-11-23/acceptance.md).

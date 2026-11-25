@@ -1,0 +1,76 @@
+{
+  "board_dtb_used": false,
+  "complete": true,
+  "finished_utc": "2026-11-25T18:24:34.037027+00:00",
+  "guest_source": {
+    "bytes": 8040,
+    "mode": 420,
+    "sha256": "08e1432060119fec53f510ad7e5014b028bb23cdc6ed9c29e9d95b11fba14084"
+  },
+  "host_source": {
+    "bytes": 19259,
+    "mode": 420,
+    "sha256": "47d1b4fedd928df4add89d380676dd4e24793e014d51a27cea4ca310970053b5"
+  },
+  "image": {
+    "filesystem": "ext4",
+    "label": "tb371fc-nura-r5",
+    "mkfs_timeout_seconds": 2400,
+    "path": "/work/nura-r5-vm-ec332-01/prepared.ext4",
+    "physical_block_device_used": false,
+    "scope": "host ordinary-file construction and read-only fsck; not a guest boot",
+    "sha256": "e5bde2836d0916751c17bf8cea6b9641d5e449126a08d6c938c43449984a1724",
+    "size_bytes": 2147483648
+  },
+  "kernel": {
+    "bytes": 41091080,
+    "mode": 420,
+    "sha256": "d80bfce0feb5f6c0cec1b0b0dd4691323720ec3f34a373c7a109001e2cf42e76"
+  },
+  "network": false,
+  "owner_native_linux_passes_added": 0,
+  "physical_hardware_tested": false,
+  "profile": {
+    "bytes": 45418,
+    "mode": 420,
+    "sha256": "9cf389cdd49d6c5a186630799d252a544bb5a650ce30a41fdd105b9ce8d8d871"
+  },
+  "root_loader_built": false,
+  "schema_version": 1,
+  "scope": "generic ARM64 direct-root core boot only",
+  "source_receipt": {
+    "bytes": 46873,
+    "mode": 420,
+    "sha256": "7d3affd17192de37fe257099dfe2f26c1f819a4e639a3d28cf97c0900b0f9595"
+  },
+  "source_stage": "/work/nura-r5-stage-ec332-01",
+  "source_tree": {
+    "argv": [
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=10s",
+      "1800s",
+      "tar",
+      "--sort=name",
+      "--format=posix",
+      "--pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime",
+      "--numeric-owner",
+      "--acls",
+      "--selinux",
+      "--xattrs",
+      "--xattrs-include=*",
+      "-cf",
+      "-",
+      "-C",
+      "/work/nura-r5-stage-ec332-01/rootfs",
+      "."
+    ],
+    "bytes": 785121280,
+    "exit_code": 0,
+    "sha256": "f0ea619346be161c82a7c824b4f1972895e43005eb0e9654703b1759572a68c1",
+    "stderr_bytes": 0
+  },
+  "source_tree_unchanged": true,
+  "started_utc": "2026-11-25T18:16:41.498070+00:00",
+  "target_booted": false
+}

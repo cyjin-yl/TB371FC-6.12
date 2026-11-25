@@ -9,6 +9,8 @@ on:
       - 'scripts/research/rootfs/nura_r5_vm.py'
       - 'scripts/research/rootfs/nura_r5_guest.py'
       - 'scripts/research/rootfs/test_nura_r5_vm.py'
+      - 'docs/research/2026-11-26/evidence/nura-r5-stage/**'
+      - 'docs/research/2026-11-26/evidence/nura-r5-vm/**'
       - '.github/workflows/r5-nura-stage.yml'
   workflow_dispatch:
 jobs:
@@ -18,3 +20,39 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check archive, guest paths and direct-root evidence contracts
         run: python3 -O -m unittest discover -s scripts/research/rootfs -p 'test_*nura*.py' -v
+      - name: Verify retained VM evidence identities (does not boot a VM)
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts/research/rootfs')
+          import stage_r5_fedora as common
+          from nura_r5_vm import guest_acceptance
+          root = Path('docs/research/2026-11-26/evidence/nura-r5-vm')
+          prepared = json.loads((root / 'prepare.json').read_text())
+          profile = json.loads((root / 'profile.json').read_text())
+          run = root / 'run-01'
+          result = json.loads((run / 'result.json').read_text())
+          guest = json.loads((run / 'guest-result.json').read_text())
+          for path, expected in (
+              (Path('scripts/research/rootfs/nura_r5_vm.py'), prepared['host_source']),
+              (Path('scripts/research/rootfs/nura_r5_guest.py'), prepared['guest_source']),
+              (root / 'profile.json', prepared['profile']),
+              (run / 'guest-result.json', result['guest_result_identity']),
+              (run / 'serial.log', result['serial']),
+          ):
+              if common.identity(path) != expected:
+                  raise SystemExit('retained evidence identity differs: ' + str(path))
+          if not (prepared['complete'] and prepared['source_tree_unchanged'] and
+                  result['passed'] and result['target_booted'] and
+                  result['qemu_exit_code'] == 0 and not result['kernel_panic_seen'] and
+                  not result.get('termination_reason') and result['guest_result'] == guest):
+              raise SystemExit('retained VM did not satisfy its completion contract')
+          guest_acceptance(guest, profile, prepared['profile']['sha256'], 'run-01')
+          marker = 'TB371FC_NURA_R5_RESULT ' + profile['nonce'] + ' ' + result['guest_result_identity']['sha256']
+          if marker not in (run / 'serial.log').read_text():
+              raise SystemExit('persisted guest result lacks matching serial receipt')
+          if json.loads((run / 'filesystem.json').read_text())['exit_code'] != 0:
+              raise SystemExit('post-shutdown filesystem check failed')
+          print('Retained Nura VM evidence identities and acceptance are consistent; no VM executed in CI.')
+          PY

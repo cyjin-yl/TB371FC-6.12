@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/usr/sbin/mkfs.ext4",
+    "-F",
+    "-L",
+    "tb371fc-nura-r5",
+    "-E",
+    "lazy_itable_init=0,lazy_journal_init=0",
+    "-d",
+    "/work/nura-r5-vm-ec332-01/rootfs",
+    "/work/nura-r5-vm-ec332-01/prepared.ext4"
+  ],
+  "exit_code": 0,
+  "finished_utc": "2026-11-25T18:24:24.609200+00:00",
+  "started_utc": "2026-11-25T18:24:08.756405+00:00",
+  "timeout_seconds": 2400
+}
