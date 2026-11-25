@@ -1,6 +1,6 @@
 # TB371FC driver roadmap: reuse upstream code, close board gaps
 
-Date: **2026-11-24, Asia/Shanghai**. Project evidence baseline:
+Original roadmap record: **2026-11-24, Asia/Shanghai**. Project evidence baseline:
 `ec42c48405eb3966ca2539e53d96d02a5e725059`.
 
 This roadmap implements the direction in [MAINLINE_STRATEGY](MAINLINE_STRATEGY.md).
@@ -8,6 +8,72 @@ It does not label every driver missing and does not award new hardware passes.
 Use the existing [44-case owner ledger](research/2026-11-23/acceptance.md) for
 results. The classifications below describe engineering work, not readiness
 to flash or a percentage of completed hardware.
+
+## Current continuation — 2026-11-26 (Asia/Shanghai)
+
+This checkpoint uses `main` at
+`5c9431bb28327d41948049911cf8c13cb03264bb`. The original device matrix
+below preserves its 2026-11-24 evidence; use this checkpoint and the linked
+later receipts for the next work.
+
+Merged [PR19](https://github.com/cyjin-yl/TB371FC-6.12/pull/19) now includes
+[actual Nura R5 direct-root startup](research/2026-11-26/nura-r5-vm-result.md)
+through the original BusyBox/OpenRC chain, 15 passing core checks and clean
+shutdown. Its guest reports SELinux `enforce=0`, and no dedicated
+root-loader/initramfs or board-DT execution is claimed.
+[Fedora R5 run04](research/2026-11-24/r5-runtime.md) already completed its
+initrd/switch-root path with SELinux Enforcing. These are separate completed
+generic-VM results, not outstanding attempts to repeat.
+
+Merged [PR18](https://github.com/cyjin-yl/TB371FC-6.12/pull/18) has 34
+passing host C sequence/lifecycle/legacy cases. Its [fresh R6 ARM64
+Image/modules/DTB build](research/2026-11-26/tianma-r6-build.md) completed,
+and all 84 installed modules passed offline signature verification against
+the new public certificate. R6 has not been booted; runtime signing trust
+and actual module loading remain unverified. The native ledger is unchanged:
+**44 cases, 12 blocked, 32 not run, zero native runs and zero passes**.
+
+### Three entry contracts still to close
+
+| Contract | Established input | Missing proof |
+| --- | --- | --- |
+| Physical load layout and memory ownership | [PR16's retained second-stage DTB](research/2026-11-24/r5-second-stage-dtb.md) already supplies both observed RAM banks and preserves the intended board compatible. [Android memory accounting](research/2026-11-24/android-memory-topology.md) also resolves the resource-tree totals and aggregate CMA geometry | Individual ownership of 12 dynamic reservations, the remaining mainline/Android reservation differences, firmware/loader exclusions and DMA quiescence. Aggregate size matches are not permission to place the Image, DTB or initrd in those ranges |
+| Reachable entry and recovery | [Current-partition backups and the entry audit](research/2026-11-23/boot-readiness.md) exist; [the fixed primary-UDC rescue selector](research/2026-11-23/first-stage-owner-udc.md) was qualified in mocks/reference-kernel execution | Actual ABL/temporary-entry acceptance, the conflicting lock-state observations, physical rescue transport and return to the known baseline. The retained shipping-kernel capture has `CONFIG_KEXEC=n`; the public 4.19 bridge still has no published successful board-entry result |
+| One identified board handoff | R5 kernels and both successful distribution VM routes are available; Fedora's root loader already ran, while Nura currently uses direct-root boot | Execute the final Lenovo DT with one exact Image/initrd/root/module/firmware contract and verify the entry state and resulting PID1. Nura's dedicated root-loader remains a separate route-specific task; generic `virt` success cannot qualify the board path |
+
+These are **SYS-01 / SYS-04** dependencies. They build on the completed R5
+runtime results and R6 construction. A coherent R6 runtime still needs its
+own matching root, module set and signing acceptance. The [acceptance ledger](research/2026-11-23/acceptance.json)
+continues to require owner-native evidence for physical passes.
+
+### Next executable simulation step
+
+Add a second-stage load-layout verifier that the board-model QEMU launcher
+actually consumes. Reuse the Image/FDT parsers in
+[`boot_formats.py`](../scripts/research/boot_formats.py), the pinned
+[DTB derivation contract](../scripts/research/derive_second_stage_dtb.py)
+and the recorded memory observations. Bind the selected completed kernel
+build and root artifacts by their own identities. Carry one matching release
+and certificate through the Image, installed module tree and selected root;
+R6 construction alone does not qualify an R6 runtime.
+
+For an explicitly chosen **simulated** layout, check the ARM64 header's
+`image_size` and `text_offset` separately from file length, address bounds
+and alignment, Image/DTB/initrd overlap, known reserved ranges, final board
+compatible and the unique effective `module.sig_enforce=1` argument.
+Keep structural layout validity separate from physical ownership:
+unresolved firmware/loader/DMA conditions must leave native load readiness
+blocked.
+
+Then coordinate the existing QEMU owner to consume that checked layout in a
+Lenovo board-DT second-stage experiment, retaining the final FDT identity,
+entry parameters, early memory/console observations and intended PID1 result.
+This is new simulated handoff work, not another Nura staging or direct-root
+run, and not a physical boot acceptance result.
+
+For this continuation, stay in isolated host/VM environments: **do not flash,
+change partitions or boot slots, alter the boot chain, or reboot the physical
+tablet**.
 
 ## Evidence to use first
 
