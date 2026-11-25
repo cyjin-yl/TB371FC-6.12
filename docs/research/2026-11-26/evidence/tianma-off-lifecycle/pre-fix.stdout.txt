@@ -1,0 +1,66 @@
+source sha256: dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33
+patch sha256: 13debad44edec82adf21f864e1512302da1612642f0024bf293c3417987e5913
+Linux 6.12.114 panel core sha256: b6deca77d92c2395952114154dd1674e9ee812064318d9a1b15ccb7113588d5a
+patching file drivers/gpu/drm/panel/panel-novatek-nt36523.c
+FAIL: disable completes despite a transport error
+FAIL: panel enabled cleared
+FAIL: callback reports the first error
+FAIL: backlight restored after a full power cycle
+FAIL: disable completes despite a transport error
+FAIL: panel enabled cleared
+FAIL: callback reports the first error
+FAIL: backlight restored after a full power cycle
+FAIL: disable completes despite a transport error
+FAIL: panel enabled cleared
+FAIL: callback reports the first error
+FAIL: backlight restored after a full power cycle
+FAIL: disable completes despite a transport error
+FAIL: panel enabled cleared
+FAIL: callback reports the first error
+FAIL: backlight restored after a full power cycle
+FAIL: disable completes despite a transport error
+FAIL: panel enabled cleared
+FAIL: callback reports the first error
+FAIL: backlight restored after a full power cycle
+FAIL: disable completes despite a transport error
+FAIL: panel enabled cleared
+FAIL: callback reports the first error
+FAIL: backlight restored after a full power cycle
+FAIL: disable completes despite a transport error
+FAIL: panel enabled cleared
+FAIL: callback reports the first error
+FAIL: backlight restored after a full power cycle
+FAIL: disable completes despite a transport error
+FAIL: panel enabled cleared
+FAIL: callback reports the first error
+FAIL: backlight restored after a full power cycle
+FAIL: disable completes despite a transport error
+FAIL: panel enabled cleared
+FAIL: callback reports the first error
+FAIL: backlight restored after a full power cycle
+FAIL: disable completes despite a transport error
+FAIL: panel enabled cleared
+FAIL: callback reports the first error
+FAIL: backlight restored after a full power cycle
+FAIL: disable completes despite a transport error
+FAIL: panel enabled cleared
+FAIL: callback reports the first error
+FAIL: backlight restored after a full power cycle
+FAIL: disable completes despite a transport error
+FAIL: panel enabled cleared
+FAIL: callback reports the first error
+FAIL: backlight restored after a full power cycle
+FAIL: disable completes despite a transport error
+FAIL: panel enabled cleared
+FAIL: callback reports the first error
+FAIL: backlight restored after a full power cycle
+FAIL: disable completes despite a transport error
+FAIL: panel enabled cleared
+FAIL: callback reports the first error
+FAIL: backlight restored after a full power cycle
+FAIL: disable completes despite a transport error
+FAIL: panel enabled cleared
+FAIL: callback reports the first error
+FAIL: backlight restored after a full power cycle
+60 failed predicates
+Pre-fix lifecycle failure reproduced (expected).

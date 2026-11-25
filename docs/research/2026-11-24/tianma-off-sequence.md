@@ -1,5 +1,11 @@
 # Tianma OFF transport: independent driver candidate
 
+Historical checkpoint: the results below belong to initial PR18 commit
+`0acacec10d2864dca3fc44f57d27b853493363f9`. The patch and test have since
+advanced; the original evidence index is retained unchanged. The
+[2026-11-26 lifecycle correction](../2026-11-26/tianma-off-lifecycle.md)
+records the subsequent DRM state-handling fix and its separate evidence.
+
 2026-11-24 UTC. The owner [display investigation](../2026-11-23/display.md), D4, identifies a concrete mismatch. The owner DT OFF table (SHA-256 `2c9fd13b1258217b536c969db415c4becaa18f21c3a1b10e5dd6977b5c856374`) requests HS Display Off, 15 ms, HS Enter Sleep, 60 ms. The existing panel source instead uses its LP flag, two adjacent command phases, one 70 ms delay, and discards the per-link error state.
 
 The new [candidate patch](../../../mainline-port/backports/linux-6.12/0022-drm-panel-tb371fc-tianma-off-sequence.patch) applies after copying the exact existing 6.12 panel backport. It is deliberately not added to a frozen R5 recipe. Only the fitted Tianma descriptor changes: both hosts are attempted for each stage, the previous flags are restored after every helper invocation, and the first error is returned after the final wait. Other panels (including the unmeasured BOE variant) retain their original behavior. No new vendor register writes or invented pen commands are included.

@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "evidence_class": "host_c_regression",
+  "host": "ChatGPT coding workspace",
+  "machine": "x86_64",
+  "python": "3.12.14",
+  "compiler": "cc (Debian 14.2.0-19) 14.2.0",
+  "scope": "Actual extracted driver OFF functions and Linux 6.12.114 DRM panel-core lifecycle functions; DSI transport, waits, power and backlight side effects are mocks",
+  "input_identity_index": {
+    "path": "docs/research/2026-11-26/evidence/tianma-off-lifecycle/source-identities.json",
+    "bytes": 1169,
+    "sha256": "e626d1b4ee26a48457583a4ad902696f54d1692ec07d8387119a62cd552d14be"
+  },
+  "runs": [
+    {
+      "name": "original",
+      "command": [
+        "python3",
+        "-O",
+        "scripts/research/display/test_tianma_off.py",
+        "--original"
+      ],
+      "started_at_utc": "2026-11-25T18:05:33.038059+00:00",
+      "elapsed_seconds": 0.461068,
+      "wrapper_exit_code": 0,
+      "validated_harness_exit_code": 1,
+      "stdout": {
+        "path": "docs/research/2026-11-26/evidence/tianma-off-lifecycle/original.stdout.txt",
+        "bytes": 7460,
+        "sha256": "5b41db4d1e4f7cf8f098afdd9a20b45bdf55477d7b57a6cbf49acba64368bd60"
+      },
+      "stderr": {
+        "path": "docs/research/2026-11-26/evidence/tianma-off-lifecycle/original.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "pre-fix",
+      "command": [
+        "python3",
+        "-O",
+        "scripts/research/display/test_tianma_off.py",
+        "--pre-fix"
+      ],
+      "started_at_utc": "2026-11-25T18:05:33.499460+00:00",
+      "elapsed_seconds": 0.346329,
+      "wrapper_exit_code": 0,
+      "validated_harness_exit_code": 1,
+      "stdout": {
+        "path": "docs/research/2026-11-26/evidence/tianma-off-lifecycle/pre-fix.stdout.txt",
+        "bytes": 2893,
+        "sha256": "c29ab996ea0a990fe7843bf111594013c2ad53e0fe6aa947ca7ce28e4e561e61"
+      },
+      "stderr": {
+        "path": "docs/research/2026-11-26/evidence/tianma-off-lifecycle/pre-fix.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "candidate",
+      "command": [
+        "python3",
+        "-O",
+        "scripts/research/display/test_tianma_off.py"
+      ],
+      "started_at_utc": "2026-11-25T18:05:33.846158+00:00",
+      "elapsed_seconds": 0.365671,
+      "wrapper_exit_code": 0,
+      "validated_harness_exit_code": 0,
+      "stdout": {
+        "path": "docs/research/2026-11-26/evidence/tianma-off-lifecycle/candidate.stdout.txt",
+        "bytes": 403,
+        "sha256": "c4e0275bd5496c88df5ed7359e0d5cebcad615a9030150ffc9858023380729fa"
+      },
+      "stderr": {
+        "path": "docs/research/2026-11-26/evidence/tianma-off-lifecycle/candidate.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "candidate_cases_passed": 34,
+  "kernel_module_build": false,
+  "native_hardware_passes_added": 0
+}

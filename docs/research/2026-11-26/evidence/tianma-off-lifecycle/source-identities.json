@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "previous_pr_head": "0acacec10d2864dca3fc44f57d27b853493363f9",
+  "upstream_core_git_blob": "fd8fa2e0ef6fac9f201d74baf838f09564b05680",
+  "inputs": [
+    {
+      "path": "mainline-port/backports/linux-6.12/panel-novatek-nt36523.c",
+      "bytes": 75627,
+      "sha256": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33"
+    },
+    {
+      "path": "mainline-port/backports/linux-6.12/0022-drm-panel-tb371fc-tianma-off-sequence.patch",
+      "bytes": 3662,
+      "sha256": "071a4fa269a539023bbbd41e0298418c351b64bdb2c3dc8ac8c3b82a061183ea"
+    },
+    {
+      "path": "scripts/research/display/test_tianma_off.py",
+      "bytes": 13037,
+      "sha256": "e8f174da818dacf1b9eb458db51572d15f65817bea10e787a0117e091aa96df2"
+    },
+    {
+      "path": "scripts/research/display/fixtures/linux-v6.12.114-drm_panel.c",
+      "bytes": 16788,
+      "sha256": "b6deca77d92c2395952114154dd1674e9ee812064318d9a1b15ccb7113588d5a"
+    },
+    {
+      "path": "scripts/research/display/fixtures/tianma-off-pr18-0acacec1.patch",
+      "bytes": 3100,
+      "sha256": "13debad44edec82adf21f864e1512302da1612642f0024bf293c3417987e5913"
+    }
+  ]
+}
