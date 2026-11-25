@@ -1,8 +1,36 @@
 # TB371FC: make upstream Linux the long-term platform
 
-Date: **2026-11-24, Asia/Shanghai**. Reviewed project snapshot:
+Original strategy record: **2026-11-24, Asia/Shanghai**. Reviewed project snapshot:
 `ec42c48405eb3966ca2539e53d96d02a5e725059` on
 `research/reproducible-build-gpu-20261123`.
+
+## Current checkpoint — 2026-11-26 (Asia/Shanghai)
+
+This continuation uses `main` at
+`5c9431bb28327d41948049911cf8c13cb03264bb`, including merged
+[PR19](https://github.com/cyjin-yl/TB371FC-6.12/pull/19) and
+[PR18](https://github.com/cyjin-yl/TB371FC-6.12/pull/18). The original
+2026-11-24 strategy and its historical evidence remain below; their earlier
+distribution failures and pending items are not the current execution queue.
+
+| Area | Current evidence | Remaining boundary |
+| --- | --- | --- |
+| Fedora R5 | [Run04](research/2026-11-24/r5-runtime.md) completed construction and both generic-VM phases, switched to the real ext4 root, and reached systemd multi-user with SELinux Enforcing and actual module-signature enforcement | The initrd/switch-root path exists and ran; it did not execute the Lenovo board DT or boot the tablet |
+| Nura R5 / PR19 | [The completed direct-root run](research/2026-11-26/nura-r5-vm-result.md) reached the original BusyBox PID1 and OpenRC default; all 15 core checks, normal shutdown and read-only filesystem check passed | Generic `virt` only; SELinux `enforce=0`, PID1 context `kernel`. No dedicated root-loader/initramfs was built and no board DT was used |
+| Second-stage RAM declaration / PR16 | [The retained candidate](research/2026-11-24/r5-second-stage-dtb.md), SHA-256 `7092d992582a2f49b65e8eb1a4209fede3b41ccbbacb3abc28d29b649b33423c`, already replaces the zero-size RAM placeholder while retaining `lenovo,tb371fc` and `qcom,sm8250` | RAM declarations and strict DT parsing do not establish memory ownership, safe load addresses or DMA quiescence |
+| Tianma OFF / PR18 | [Merged PR18](https://github.com/cyjin-yl/TB371FC-6.12/pull/18) fixes the DRM recovery state and passes 34 host C cases. [The completed R6 build](research/2026-11-26/tianma-r6-build.md) supplies the ARM64 Image, DTB and 84 installed modules; all 84 offline signatures match its new public certificate | R6 has not been booted. Runtime keyring trust, enforced signatures, module loading, native panel-off and suspend/resume remain unverified; the R5 VM results do not establish R6 runtime acceptance |
+
+The [owner ledger](research/2026-11-23/acceptance.json) remains **44 cases:
+12 blocked, 32 not run; zero owner native-Linux runs and zero passes**.
+The current gap is the final board entry, memory/load contract and reachable
+recovery path. Nura additionally needs its dedicated root-loader if that route
+is selected; this does not reopen Fedora's completed generic-VM switch-root.
+
+The [current continuation in the driver roadmap](DRIVER_ROADMAP.md#current-continuation--2026-11-26-asiashanghai)
+narrows the next simulated work to a checked second-stage load layout and
+board handoff. Continue in isolated host/VM environments: **do not flash,
+change partitions or boot slots, alter the boot chain, or reboot the physical
+tablet as part of this continuation**.
 
 ## Recommendation
 
@@ -118,7 +146,11 @@ lane, and preserve NixOS as a declarative system integration lane. Keep the
 author's Arch Linux ARM setup as a hardware/reference baseline. This choice
 does not predict battery life or graphics performance before measurement.
 
-| Route | Existing project result at the pinned snapshot | Intended role and remaining work |
+The following table preserves the original `ec42c484` snapshot. For the
+completed Fedora and Nura results and current remaining work, use the
+2026-11-26 checkpoint above.
+
+| Route | Historical result at the original pinned snapshot | Intended role and remaining work at that snapshot |
 | --- | --- | --- |
 | Fedora 45 AArch64 | Frozen research1 reached systemd multi-user with SELinux Enforcing in generic ARM64 QEMU; later v8 exercised FD transfer, TasksMax and BPF behavior but failed its complete gate on one AVC; first v9 image creation timed out before a VM | First normal desktop candidate. Finish the separately recorded system integration, then use the same hardware contract on the tablet |
 | Nura / postmarketOS | 382-package rootfs export and BusyBox/OpenRC entry inventory; R5 compiled prerequisites for its original services | Device packaging, firmware maps and an upstream port. No TB371FC device-package or target PID 1 pass follows from the qemu-profile export |
