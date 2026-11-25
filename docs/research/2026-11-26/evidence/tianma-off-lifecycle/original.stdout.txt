@@ -1,0 +1,244 @@
+source sha256: dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33
+patch sha256: 071a4fa269a539023bbbd41e0298418c351b64bdb2c3dc8ac8c3b82a061183ea
+Linux 6.12.114 panel core sha256: b6deca77d92c2395952114154dd1674e9ee812064318d9a1b15ccb7113588d5a
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: first transfer error
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: first transfer error
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: first transfer error
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: first transfer error
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: first transfer error
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: first transfer error
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: first transfer error
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: first transfer error
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: first transfer error
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: first transfer error
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: first transfer error
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: first transfer error
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: first transfer error
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: first transfer error
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: first transfer error
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+FAIL: both device calls and both delays
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: OFF/Sleep ordering
+FAIL: HS and other flags preserved
+FAIL: HS and other flags preserved
+239 failed predicates
+Original behavior rejected by the new gate (expected).

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "evidence_class": "host_build",
+  "scope": "actual C functions extracted from isolated patch application; mocked DSI transport and delays",
+  "base_commit": "18e6a55b1aa044c35294a56bc062b0c94e6d2215",
+  "source": {
+    "path": "mainline-port/backports/linux-6.12/panel-novatek-nt36523.c",
+    "git_blob": "0c87f945b5d377a95cb719bd7ca0a4d030b4afd2",
+    "sha256": "dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33"
+  },
+  "files": [
+    {
+      "path": "mainline-port/backports/linux-6.12/0022-drm-panel-tb371fc-tianma-off-sequence.patch",
+      "bytes": 3100,
+      "sha256": "13debad44edec82adf21f864e1512302da1612642f0024bf293c3417987e5913"
+    },
+    {
+      "path": "scripts/research/display/test_tianma_off.py",
+      "bytes": 5939,
+      "sha256": "c4812a2b119d8bc24016be38f390e926681f9decf94bf82a1b0d98e889d7143f"
+    }
+  ],
+  "execution": {
+    "date_utc": "2026-11-24",
+    "host": "doesvm",
+    "work_directory": "/tmp/tb371fc-tianma-off-20261124.VPDCgW",
+    "compiler": "GCC 14.2.0 (Debian 14.2.0-19)",
+    "python": "3.13.5",
+    "sanitizer": "undefined, no recovery",
+    "original_wrapper_exit": 0,
+    "original_harness_exit": 1,
+    "original_failed_predicates": 127,
+    "candidate_exit": 0,
+    "candidate_cases_passed": 18,
+    "observed_original_log_tail": [
+      "127 failed predicates",
+      "Original behavior rejected by the new gate (expected)."
+    ],
+    "observed_candidate_log": [
+      "source sha256: dadab139e6ea0a0e8cf58da0020d9182fd7a604aebd58c54efb2e4182fdb6c33",
+      "patch sha256: 13debad44edec82adf21f864e1512302da1612642f0024bf293c3417987e5913",
+      "patching file drivers/gpu/drm/panel/panel-novatek-nt36523.c",
+      "PASS: 16 Tianma transfer-fault combinations + BOE and single-link legacy cases"
+    ],
+    "original_log_sha256": "b17d2b8bdcbe66de371a13b81cf6a5c25bd2c11d8522aa860c97dbb263e60ae8",
+    "candidate_log_sha256": "e52bc0dbf8cc7e18d22085c85818afe605b61ad9977e55ba9e6f0fa7bfd9d28c",
+    "raw_logs_archived": false,
+    "raw_log_readback": "readback unavailable; retained log digests and observed output only; no reconstructed raw files"
+  },
+  "kernel_module_built": false,
+  "native_hardware_passes_added": 0
+}

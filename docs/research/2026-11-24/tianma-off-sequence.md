@@ -1,0 +1,15 @@
+# Tianma OFF transport: independent driver candidate
+
+Historical checkpoint: the results below belong to initial PR18 commit
+`0acacec10d2864dca3fc44f57d27b853493363f9`. The patch and test have since
+advanced; the original evidence index is retained unchanged. The
+[2026-11-26 lifecycle correction](../2026-11-26/tianma-off-lifecycle.md)
+records the subsequent DRM state-handling fix and its separate evidence.
+
+2026-11-24 UTC. The owner [display investigation](../2026-11-23/display.md), D4, identifies a concrete mismatch. The owner DT OFF table (SHA-256 `2c9fd13b1258217b536c969db415c4becaa18f21c3a1b10e5dd6977b5c856374`) requests HS Display Off, 15 ms, HS Enter Sleep, 60 ms. The existing panel source instead uses its LP flag, two adjacent command phases, one 70 ms delay, and discards the per-link error state.
+
+The new [candidate patch](../../../mainline-port/backports/linux-6.12/0022-drm-panel-tb371fc-tianma-off-sequence.patch) applies after copying the exact existing 6.12 panel backport. It is deliberately not added to a frozen R5 recipe. Only the fitted Tianma descriptor changes: both hosts are attempted for each stage, the previous flags are restored after every helper invocation, and the first error is returned after the final wait. Other panels (including the unmeasured BOE variant) retain their original behavior. No new vendor register writes or invented pen commands are included.
+
+Actual host verification on doesvm used the exact base panel blob `0c87f945b5d377a95cb719bd7ca0a4d030b4afd2`, patch applied with zero fuzz, GCC 14.2.0, Python 3.13.5 and UBSan. The [test harness](../../../scripts/research/display/test_tianma_off.py) compiles the actual source functions and substitutes a deterministic DSI transport and delay recorder. Original behavior failed 127 predicates (expected counterexample); the patched code passed all 16 possible transfer failure masks plus two legacy panel cases. The test checks first-error retention, both phases and links, exact delay order, HS flag policy, preservation of other flags and restoration on failure. The [execution summary and identity index](evidence/tianma-off/index.json) retains the actual returned output, log digests and source identities. Source and test bytes match the observed hashes. Raw logs were produced in the independent work directory but not recovered for publication; they are not reconstructed.
+
+The result is host C regression only, not a complete kernel module build, measured on-wire synchronization, actual panel OFF, verified DRM caller error handling, cold power sequence or suspend qualification. Actual delay duration, PHY/host behavior and partial-failure recovery still need target verification. No physical tablet or existing frozen kernel/root/image was changed; owner-native passes added: zero.

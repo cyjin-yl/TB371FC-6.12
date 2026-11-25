@@ -1,0 +1,5 @@
+make: Entering directory '/work/tianma-r6-build-ec332-01/linux'
+make[1]: Entering directory '/work/tianma-r6-build-ec332-01/out'
+  DTC     arch/arm64/boot/dts/qcom/sm8250-lenovo-tb371fc-display-input-test-6.12.dtb
+make[1]: Leaving directory '/work/tianma-r6-build-ec332-01/out'
+make: Leaving directory '/work/tianma-r6-build-ec332-01/linux'
