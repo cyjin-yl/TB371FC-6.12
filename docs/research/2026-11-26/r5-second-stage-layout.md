@@ -100,8 +100,38 @@ QMP process under `python3 -O`. It also includes the existing second-stage DT
 derivation fixtures. Public CI cannot reproduce the private payload qualification
 or claim a new board execution from these tests.
 
-## Actual experiment result
+## Actual experiment: retained QEMU 23e84312
 
-Pending integration of the independently recorded host run. This section must
-be filled from its exact source/input identities, result receipt, and observed
-serial output; no board execution result is claimed by the source tests above.
+The first host attempt used Linux source `ea40eb660376f043bbf06ace795cce243610b4aa`
+and the separately qualified QEMU `23e84312f14cfe6f9b6033b83b026cf5bbf7e4cc`
+binary (SHA-256 `30e20c1befb5dc546a4d9ef060e0e8050ad592496386198e0433a0cad837541d`).
+The [unmodified result](evidence/r5-second-stage-layout/attempt-01/result.json)
+records successful qualification of 106 kernel-bundle files, including 84 modules,
+and complete identity checks on the completed root and launch inputs.
+
+| Loaded payload | Actual start | Stored bytes |
+| --- | --- | ---: |
+| Image | `0xa0200000` | 41,091,080 |
+| initrd | `0xa8000000` | 32,535,823 |
+| final DTB | `0xaa000000` | 273,786 |
+
+The Image's effective memory extent is 42,729,472 bytes. Independently rehashed
+copies of the complete loaded Image and initrd match the frozen source files.
+The [ROM map](evidence/r5-second-stage-layout/attempt-01/roms.txt) and
+[forensic diagnosis](evidence/r5-second-stage-layout/attempt-01/fdt-diagnosis.json)
+preserve those observations.
+
+The strict gate failed before `cont`: QEMU's final FDT had nonzero property
+padding at offsets 367, 511 and 2854. A separately labelled forensic parse
+also showed that the loader had removed all nine `/psci` power-domain children,
+including their phandles. The original candidate had eight CPU domains and
+one cluster domain. The QEMU child exited normally after the controller's quit,
+all original input identities remained unchanged, and no guest CPU was resumed.
+
+The producer repairs must zero property-alignment padding and preserve the
+original PSCI topology while updating QEMU's known ABI fields. The stricter
+consumer remains unchanged on padding; its updated topology contract requires
+every original extra property and descendant to survive byte-for-byte.
+The padding issue is independently described by the upstream
+[libfdt fix](https://qemu.googlesource.com/dtc/+/ce51dcbd84209527eb82a64a3ce831bcac82d166).
+A fixed-producer board execution result is still pending.

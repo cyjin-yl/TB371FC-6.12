@@ -205,14 +205,22 @@ def check_dtb_delta(before_nodes, after_nodes, before_meta, after_meta, ram):
         require(before_nodes[FIRMWARE_HOLE] == after_nodes.get(FIRMWARE_HOLE),
                 "pre-existing firmware-hole properties changed")
 
-    require(after_nodes.get("/psci") == PSCI_PROPERTIES,
+    final_psci = after_nodes.get("/psci", {})
+    require(all(final_psci.get(name) == raw for name, raw in PSCI_PROPERTIES.items()),
             "final PSCI node differs from the explicit AArch64 SMC model")
-    if "/psci" in before_nodes:
-        require(set(before_nodes["/psci"]) <= set(PSCI_PROPERTIES),
-                "PSCI replacement would discard unsupported properties")
-    for nodes in (before_nodes, after_nodes):
-        require(not any(path.startswith("/psci/") for path in nodes),
-                "PSCI replacement has unsupported child nodes")
+    original_psci = before_nodes.get("/psci", {})
+    original_extra = {name: raw for name, raw in original_psci.items()
+                      if name not in PSCI_PROPERTIES}
+    final_extra = {name: raw for name, raw in final_psci.items()
+                   if name not in PSCI_PROPERTIES}
+    require(original_extra == final_extra,
+            "PSCI fixup added, removed or changed an unrelated property")
+    original_children = {path: props for path, props in before_nodes.items()
+                         if path.startswith("/psci/")}
+    final_children = {path: props for path, props in after_nodes.items()
+                      if path.startswith("/psci/")}
+    require(original_children == final_children,
+            "PSCI fixup added, removed or changed a descendant")
 
     allowed_paths = old_memory | new_memory | {"/chosen", "/psci", FIRMWARE_HOLE}
     if "/reserved-memory" not in before_nodes and expected_hole is not None:
@@ -248,6 +256,12 @@ def check_dtb_delta(before_nodes, after_nodes, before_meta, after_meta, ram):
     return {"property_changes": changes,
             "memreserve_additions": [{"start": pair[0], "size": pair[1]}
                                      for pair in sorted(additions)],
+            "psci_preservation": {
+                "unrelated_properties": sorted(original_extra),
+                "descendant_count": len(original_children),
+                "descendant_paths": sorted(original_children),
+                "descendant_properties_unchanged": True,
+            },
             "input_memory_nodes": sorted(old_memory),
             "final_memory_nodes": sorted(new_memory)}
 

@@ -1,0 +1,4 @@
+addr=00000000a0000000 size=0x000028 mem=ram name="bootloader"
+addr=00000000a0200000 size=0x2730008 mem=ram name="/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/research5-services-kernel-inputs-v1/artifacts/Image"
+addr=00000000a8000000 size=0x1f0750f mem=ram name="/tank/docker/doescontainer/docker/volumes/tb371fc-build-20261123/_data/fedora-r5-system-v4/initramfs-production-qualified.img"
+addr=00000000aa000000 size=0x042d7a mem=ram name="dtb"

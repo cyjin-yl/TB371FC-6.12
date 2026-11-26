@@ -27,7 +27,8 @@ CONFIG_CMDLINE_FROM_BOOTLOADER=y
 def dt(*, final=False, compatible=None, child_compatible=False, ram=None,
        reserved=(), dynamic=False, memreserve=(), bootargs=BOOTARGS,
        initrd_start=0xA8000000, initrd_end=0xA8000010, unrelated=b"okay\0",
-       extra_chosen=False, psci=None, hole=True, nested=False, usable_memory=False):
+       extra_chosen=False, psci=None, hole=True, nested=False, usable_memory=False,
+       psci_children=None, cpu_domains=None):
     tree = Tree().begin("")
     tree.prop("compatible", compatible or b"lenovo,tb371fc\0qcom,sm8250\0")
     tree.prop("#address-cells", struct.pack(">I", 2))
@@ -62,14 +63,47 @@ def dt(*, final=False, compatible=None, child_compatible=False, ram=None,
     props = (PSCI_PROPERTIES if final else {"compatible": b"arm,psci-1.0\0", "method": b"smc\0"}) if psci is None else psci
     for key, value in props.items():
         tree.prop(key, value)
+    for name, props in (psci_children or {}).items():
+        tree.begin(name)
+        for key, value in props.items():
+            tree.prop(key, value)
+        tree.end()
     if nested:
         tree.begin("child").end()
     tree.end()
+    if cpu_domains is not None:
+        tree.begin("cpus").prop("#address-cells", struct.pack(">I", 2))
+        tree.prop("#size-cells", struct.pack(">I", 0))
+        for i, domain in enumerate(cpu_domains):
+            tree.begin("cpu@" + str(i)).prop("device_type", b"cpu\0")
+            tree.prop("reg", struct.pack(">Q", i)).prop("enable-method", b"psci\0")
+            tree.prop("power-domains", struct.pack(">I", domain)).end()
+        tree.end()
     tree.begin("soc").prop("status", unrelated)
     if child_compatible:
         tree.prop("compatible", b"lenovo,tb371fc\0")
     tree.end().end()
     return tree.finish(reservations=memreserve)
+
+
+def psci_domains():
+    """Synthetic eight CPU domains plus their shared cluster domain.
+
+    Explicit phandles and both CPU-to-domain and domain-to-cluster links model
+    the retained R5 topology shape; these are not captured private DT bytes.
+    """
+    children = {"power-domain-cluster": {
+        "#power-domain-cells": struct.pack(">I", 0),
+        "phandle": struct.pack(">I", 0x100),
+        "domain-name": b"cluster\0",
+    }}
+    for i in range(8):
+        children["power-domain-cpu" + str(i)] = {
+            "#power-domain-cells": struct.pack(">I", 0),
+            "phandle": struct.pack(">I", 0x101 + i),
+            "power-domains": struct.pack(">I", 0x100),
+        }
+    return children
 
 
 def observed(**changes):
@@ -220,6 +254,73 @@ class PausedLayoutTests(unittest.TestCase):
         for final in (dt(final=True, psci=psci), dt(final=True, hole=False), dt(final=True, nested=True)):
             with self.assertRaises(ValueError):
                 validate(final_dtb=final)
+
+    def test_nine_psci_power_domains_and_unknown_parent_metadata_are_preserved(self):
+        children = psci_domains()
+        links = list(range(0x101, 0x109))
+        extra = {"phandle": struct.pack(">I", 0x200),
+                 "qcom,board-metadata": b"retained\0", "status": b"okay\0"}
+        before = {"compatible": b"arm,psci-1.0\0", "method": b"smc\0", **extra}
+        after = {**PSCI_PROPERTIES, **extra}
+        result = validate(input_dtb=dt(psci=before, psci_children=children, cpu_domains=links),
+                          final_dtb=dt(final=True, psci=after, psci_children=children, cpu_domains=links))
+        preserved = result["dtb_fixups"]["psci_preservation"]
+        self.assertEqual(preserved["descendant_count"], 9)
+        self.assertEqual(preserved["unrelated_properties"], sorted(extra))
+        self.assertTrue(preserved["descendant_properties_unchanged"])
+        self.assertTrue(all(row["path"] not in preserved["descendant_paths"]
+                            for row in result["dtb_fixups"]["property_changes"]))
+
+    def test_old_whole_psci_deletion_still_fails_with_realistic_domain_links(self):
+        links = list(range(0x101, 0x109))
+        with self.assertRaisesRegex(ValueError, "PSCI.*descendant"):
+            validate(input_dtb=dt(psci_children=psci_domains(), cpu_domains=links),
+                     final_dtb=dt(final=True, cpu_domains=links))
+
+    def test_added_removed_and_mutated_psci_children_are_rejected(self):
+        original = psci_domains()
+        missing = copy.deepcopy(original)
+        del missing["power-domain-cpu4"]
+        changed = copy.deepcopy(original)
+        changed["power-domain-cpu4"]["phandle"] = struct.pack(">I", 0x999)
+        changed_link = copy.deepcopy(original)
+        changed_link["power-domain-cpu4"]["power-domains"] = struct.pack(">I", 0x999)
+        added = copy.deepcopy(original)
+        added["unexpected-domain"] = {"phandle": struct.pack(">I", 0x999)}
+        links = list(range(0x101, 0x109))
+        for candidate in (missing, changed, changed_link, added):
+            with self.subTest(candidate=candidate), self.assertRaisesRegex(ValueError, "PSCI.*descendant"):
+                validate(input_dtb=dt(psci_children=original, cpu_domains=links),
+                         final_dtb=dt(final=True, psci_children=candidate, cpu_domains=links))
+
+    def test_added_removed_and_mutated_unknown_psci_properties_are_rejected(self):
+        before = {"compatible": b"arm,psci-1.0\0", "method": b"smc\0",
+                  "phandle": struct.pack(">I", 0x200), "qcom,board-metadata": b"old\0"}
+        preserved = {**PSCI_PROPERTIES, "phandle": struct.pack(">I", 0x200),
+                     "qcom,board-metadata": b"old\0"}
+        missing = dict(preserved)
+        del missing["qcom,board-metadata"]
+        mutated = dict(preserved, phandle=struct.pack(">I", 0x201))
+        added = {**preserved, "qcom,new-property": b"new\0"}
+        for after in (missing, mutated, added):
+            with self.subTest(after=after), self.assertRaisesRegex(ValueError, "PSCI.*unrelated property"):
+                validate(input_dtb=dt(psci=before), final_dtb=dt(final=True, psci=after))
+
+    def test_cpu_domain_links_outside_psci_remain_byte_exact(self):
+        children = psci_domains()
+        original_links = list(range(0x101, 0x109))
+        changed_links = list(original_links)
+        changed_links[3] = 0x999
+        with self.assertRaisesRegex(ValueError, "unexpected FDT property change at /cpus/cpu@3"):
+            validate(input_dtb=dt(psci_children=children, cpu_domains=original_links),
+                     final_dtb=dt(final=True, psci_children=children, cpu_domains=changed_links))
+
+    def test_nonzero_fdt_alignment_padding_is_still_rejected(self):
+        final = bytearray(dt(final=True, unrelated=b"xx\0"))
+        offset = final.index(b"xx\0\0")
+        final[offset + 3] = 0xA5
+        with self.assertRaisesRegex(ValueError, "nonzero FDT property padding"):
+            validate(input_dtb=dt(unrelated=b"xx\0"), final_dtb=bytes(final))
 
     def test_legacy_image_and_empty_initrd_fail(self):
         with self.assertRaises(ValueError):
