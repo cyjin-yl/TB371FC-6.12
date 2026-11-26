@@ -1,0 +1,99 @@
+{
+  "changed_properties": [
+    {
+      "path": "/chosen",
+      "property": "bootargs"
+    },
+    {
+      "path": "/chosen",
+      "property": "linux,initrd-end"
+    },
+    {
+      "path": "/chosen",
+      "property": "linux,initrd-start"
+    },
+    {
+      "path": "/psci",
+      "property": "compatible"
+    },
+    {
+      "path": "/psci",
+      "property": "cpu_off"
+    },
+    {
+      "path": "/psci",
+      "property": "cpu_on"
+    },
+    {
+      "path": "/psci",
+      "property": "cpu_suspend"
+    },
+    {
+      "path": "/psci",
+      "property": "migrate"
+    }
+  ],
+  "final_dtb": {
+    "bytes": 273786,
+    "sha256": "8d7d82a4aa1b83478005a4a396fd835e64fb989f094e75447b11fab620a48e03"
+  },
+  "format_compliant": false,
+  "format_issues": [
+    {
+      "length": 1,
+      "nonzero_count": 1,
+      "offset": 367
+    },
+    {
+      "length": 1,
+      "nonzero_count": 1,
+      "offset": 511
+    },
+    {
+      "length": 2,
+      "nonzero_count": 2,
+      "offset": 2854
+    }
+  ],
+  "input_dtb": {
+    "bytes": 126893,
+    "sha256": "7092d992582a2f49b65e8eb1a4209fede3b41ccbbacb3abc28d29b649b33423c"
+  },
+  "loaded_payloads": {
+    "initrd": {
+      "bytes": 32535823,
+      "matches_frozen_input": true,
+      "sha256": "6f63a7048f6664d1ff4473c0ddf580412172b50f9495073a4e7af5cd23465321"
+    },
+    "kernel": {
+      "bytes": 41091080,
+      "matches_frozen_input": true,
+      "sha256": "d80bfce0feb5f6c0cec1b0b0dd4691323720ec3f34a373c7a109001e2cf42e76"
+    }
+  },
+  "physical_boot_verified": false,
+  "psci_final_descendants": [],
+  "psci_input_descendants": [
+    "/psci/power-domain-cpu-cluster0",
+    "/psci/power-domain-cpu0",
+    "/psci/power-domain-cpu1",
+    "/psci/power-domain-cpu2",
+    "/psci/power-domain-cpu3",
+    "/psci/power-domain-cpu4",
+    "/psci/power-domain-cpu5",
+    "/psci/power-domain-cpu6",
+    "/psci/power-domain-cpu7"
+  ],
+  "removed_nodes": [
+    "/psci/power-domain-cpu-cluster0",
+    "/psci/power-domain-cpu0",
+    "/psci/power-domain-cpu1",
+    "/psci/power-domain-cpu2",
+    "/psci/power-domain-cpu3",
+    "/psci/power-domain-cpu4",
+    "/psci/power-domain-cpu5",
+    "/psci/power-domain-cpu6",
+    "/psci/power-domain-cpu7"
+  ],
+  "scope": "forensic diagnosis only; strict pause gate failed and guest never continued"
+}
