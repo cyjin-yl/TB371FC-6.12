@@ -142,12 +142,59 @@ consumer remains unchanged on padding; its updated topology contract requires
 every original extra property and descendant to survive byte-for-byte.
 The padding issue is independently described by the upstream
 [libfdt fix](https://qemu.googlesource.com/dtc/+/ce51dcbd84209527eb82a64a3ce831bcac82d166).
-A fixed-producer board execution result is still pending.
 
-The producer repair is tracked in
-[QEMU PR #50](https://github.com/cyjin-yl/qemu-tb371fc/pull/50).
-The repeated experiment will use the exact push artifact from the separate
-`d46f660a464e850b94ed483a5f823a11196dfd49` integration, which retains all 115
-previous component/Linux gates and adds 17 actual-function producer fixtures.
-The complete artifact and its receipts must pass an independent audit before
-the next launch. The original R5 payloads and command line remain fixed.
+## Fixed producer and independently qualified replacement
+
+[QEMU PR #50](https://github.com/cyjin-yl/qemu-tb371fc/pull/50) was merged as
+`1e84aa1eeeb6cf58a1615286cbec150ed9a0830f` after both jobs in
+[run 45889294881](https://github.com/cyjin-yl/qemu-tb371fc/actions/runs/45889294881)
+passed. Its merge tree equals the tested producer-fix tree.
+
+The separate integration `d46f660a464e850b94ed483a5f823a11196dfd49` retains the
+previously qualified board source and all 115 component/Linux gates. Both jobs
+in its exact [push run 45889546070](https://github.com/cyjin-yl/qemu-tb371fc/actions/runs/45889546070)
+passed, including the 17 new actual-function producer fixtures. The independent
+[artifact qualification summary](evidence/r5-second-stage-layout/qemu-d46f660a-qualification.json)
+binds the source/tree, nine actual source files, required job steps, ZIP digest,
+all 115 ordered cases, all suite inventory hashes, producer fixture contents,
+DSU evidence and the extra UFS continuation receipts to the deployed executable.
+The full private audit receipt's identity is retained in that summary.
+
+| Replacement artifact | Identity |
+| --- | --- |
+| Core artifact | `15152197800`, 87,987,387 bytes |
+| ZIP SHA256 | `71ca01177f849d90092d64fe472719643de8bb08996a75566f7bd26281d4aef8` |
+| QEMU executable | 64,040,880 bytes |
+| QEMU SHA256 | `e97b5500bf534c51ac9e7e91bdd1df403dea44b822438a21311f731b9b43efcc` |
+| Full audit receipt SHA256 | `7a33168c3925c825550c09216e06a66da8bb072b8f5505d7ed9ed0e749545ef2` |
+
+The audit did not execute a guest. Architecture-job success was checked against
+the exact GitHub API records; its separate architecture ZIP was not independently
+audited. The selected executable is from the board/core ZIP.
+
+## Repeated board observation: execution checkpoint
+
+The repeated experiment is prepared against Linux source
+`4b1700e1ab814696dbbe73e852bd71525a9f6f08`. Its public
+[CI run 45891384595](https://github.com/cyjin-yl/TB371FC-6.12/actions/runs/45891384595)
+passed all 79 second-stage fixtures. The original R5 manifest is preserved
+except for the independently qualified QEMU entry; its bootargs, kernel,
+DTB, initrd, root image, configuration and certificate are unchanged.
+
+The first two execution-admission controllers expired without starting their
+worker, cloning `source2`, creating `attempt-02`, or executing a guest. Their
+exclusive markers and logs remain preserved. A subsequent isolated controller
+uses the original five-slot admission tool's nonblocking form, with a bounded
+wait and 15-second polling. It retries only an exit-75 non-admission with no
+worker/source/output present; a started worker is never replayed. No shared
+capacity setting, lock inode or other owner's process is modified.
+
+At this checkpoint, a fixed-producer R5 board result is still pending resource
+admission. Qualified CI and an audit receipt do not supply that missing result.
+
+Source/config inspection also found that both R5 and R6 omit the RPMh clock
+driver despite their native DT's GCC/UFS clock references. The isolated
+[R7 profile proposal in PR #22](https://github.com/cyjin-yl/TB371FC-6.12/pull/22)
+enables `CONFIG_QCOM_CLK_RPMH` over the complete qualified R6 config, while
+preserving the native DT and existing module selections. It has no R7 build,
+root/initrd qualification or runtime result yet.
