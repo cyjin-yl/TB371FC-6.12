@@ -38,6 +38,13 @@ MAX_DTB = 2 * MIB
 MAX_LOG_SCAN = 32 * MIB
 QMP_LINE_LIMIT = MIB
 QMP_TOTAL_LIMIT = 8 * MIB
+DIAGNOSTIC_SECONDS = 12
+DIAGNOSTIC_CALL_TIMEOUT = .75
+DIAGNOSTIC_RESULT_LIMIT = 128 * 1024
+UART_DIAGNOSTIC_PROPERTIES = (
+    "se-clock-period", "m-ahb-clock-period", "s-ahb-clock-period",
+    "reset-held", "tx-active", "tx-sent", "tx-count",
+)
 ROM_LINE = re.compile(
     r'addr=(?:0x)?([0-9a-fA-F]+) size=0x([0-9a-fA-F]+) '
     r'mem=(ram|rom) name="([^\r\n]*)"')
@@ -355,6 +362,76 @@ def log_observations(out):
             "boot_completed_verified": False}
 
 
+def end_observation_diagnostics(qmp, process, interrupts):
+    """Freeze the observed model and collect a bounded optional snapshot."""
+    started = time.monotonic()
+    deadline = started + DIAGNOSTIC_SECONDS
+    result = {"schema": "tb371fc-post-observation-diagnostics-v1",
+              "scope": "Paused simulated board state after bounded observation",
+              "started_utc": utc_now(), "budget_seconds": DIAGNOSTIC_SECONDS,
+              "status": "partial", "stop_requested": False,
+              "paused_confirmed": False, "calls": [],
+              "physical_boot_verified": False, "userspace_verified": False,
+              "boot_completed_verified": False, "owner_native_linux_passes_added": 0}
+    retained_bytes = 0
+
+    def call(label, name, arguments=None):
+        nonlocal retained_bytes
+        row = {"label": label, "execute": name, "status": "unavailable"}
+        if arguments is not None:
+            row["arguments"] = arguments
+        result["calls"].append(row)
+        remaining = deadline - time.monotonic()
+        if interrupts["signal"] is not None:
+            row["error"] = "interrupted"
+        elif process.poll() is not None:
+            row["error"] = "QEMU exited before this diagnostic"
+        elif remaining <= 0:
+            row["error"] = "diagnostic time budget exhausted"
+        else:
+            # QMP.command permits up to one timeout for sending and another
+            # for receiving; reserve both within the remaining total budget.
+            row["timeout_seconds"] = min(DIAGNOSTIC_CALL_TIMEOUT, remaining / 2)
+            try:
+                value = qmp.command(name, arguments, timeout=row["timeout_seconds"])
+                raw = json.dumps(value, separators=(",", ":")).encode("utf-8")
+                if len(raw) > DIAGNOSTIC_RESULT_LIMIT - retained_bytes:
+                    row.update(error="diagnostic result byte budget exceeded",
+                               returned_bytes=len(raw), returned_sha256=digest(raw))
+                else:
+                    retained_bytes += len(raw)
+                    row.update(status="collected", **{"return": value})
+                    return value
+            except (OSError, ValueError, EOFError, TimeoutError) as error:
+                row["error"] = (type(error).__name__ + ": " + str(error))[:2000]
+        return None
+
+    before = call("status-before-freeze", "query-status")
+    # If the initial status is unavailable, request stop conservatively and
+    # require an independent paused status before reading CPUs or devices.
+    if not isinstance(before, dict) or before.get("running") is not False:
+        result["stop_requested"] = True
+        call("freeze", "stop")
+    after = call("status-after-freeze", "query-status")
+    if isinstance(after, dict) and after.get("running") is False:
+        result["paused_confirmed"] = True
+        call("cpus", "query-cpus-fast")
+        for index in (0, 4):
+            call("registers-cpu-" + str(index), "human-monitor-command",
+                 {"command-line": "info registers", "cpu-index": index})
+        for prop in UART_DIAGNOSTIC_PROPERTIES:
+            call("uart." + prop, "qom-get", {"path": "/machine/uart", "property": prop})
+        call("ufs.link-state", "qom-get", {"path": "/machine/ufs", "property": "link-state"})
+        call("blockstats", "query-blockstats")
+        if all(row["status"] == "collected" for row in result["calls"]):
+            result["status"] = "collected"
+    else:
+        result["reason"] = "paused state was not confirmed; CPU and device reads skipped"
+    result["elapsed_seconds"] = time.monotonic() - started
+    result["retained_result_bytes"] = retained_bytes
+    return result
+
+
 def cleanup_child(process, qmp):
     cleanup = {"quit_requested": False, "terminate_sent": False,
                "kill_sent": False, "child_reaped": process is None, "errors": []}
@@ -473,6 +550,10 @@ def _run_prepared(inputs, out, run_seconds=0, *, process_factory=subprocess.Pope
                             record["stop_reason"] = "qemu_exited_during_observation"
                             if process.returncode != 0:
                                 errors.append("QEMU exited nonzero during observation")
+                        elif (record["stop_reason"] == "observation_deadline" and
+                              interrupts["signal"] is None):
+                            record["end_diagnostics"] = end_observation_diagnostics(
+                                qmp, process, interrupts)
                     record["status"] = "simulated_layout_verified"
                 finally:
                     record["cleanup"] = cleanup_child(process, qmp)

@@ -9,6 +9,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 
 import launch_second_stage as launch
 from test_boot_formats import Tree, image
@@ -53,12 +54,15 @@ class FakeProcess:
 class FakeQMP:
     def __init__(self, process, inputs, out, *, corrupt_kernel=False,
                  duplicate_kernel=False, missing_initrd=False, dump_error=False,
-                 panic=False, exit_after_gate=False):
+                 panic=False, exit_after_gate=False, stay_alive=False,
+                 missing_uart_property=None, stop_error=False):
         self.process, self.out = process, out
         self.messages, self.commands = [], []
         self.closed = False
         self.dump_error, self.panic = dump_error, panic
         self.exit_after_gate, self.status_queries = exit_after_gate, 0
+        self.stay_alive, self.running = stay_alive, False
+        self.missing_uart_property, self.stop_error = missing_uart_property, stop_error
         base = inputs["kernel_load_base"]
         kernel_start = base + 2 * launch.MIB
         initrd_start = base + 128 * launch.MIB
@@ -89,10 +93,12 @@ class FakeQMP:
             self.status_queries += 1
             if self.exit_after_gate and self.status_queries == 2:
                 self.process.returncode = 17
-            return {"running": False, "status": "prelaunch"}
+            return {"running": self.running, "status": "running" if self.running else "paused"}
         if name == "query-cpus-fast":
             return [{"cpu-index": index} for index in range(8)]
         if name == "human-monitor-command":
+            if arguments["command-line"] == "info registers":
+                return "CPU#%d\nPC=00000000a0200000\n" % arguments["cpu-index"]
             return "\n".join('addr={start:x} size=0x{size:x} mem=ram name="{name}"'.format(**r)
                               for r in self.roms) + "\n"
         if name == "pmemsave":
@@ -105,8 +111,23 @@ class FakeQMP:
             if self.panic:
                 text += "Kernel panic - not syncing: fixture failure\nCall trace:\n"
             (self.out / "serial.log").write_text(text)
-            self.process.returncode = 0
+            self.running = True
+            if not self.stay_alive:
+                self.process.returncode = 0
             return {}
+        if name == "stop":
+            if self.stop_error:
+                raise ValueError("fixture stop failure")
+            self.running = False
+            return {}
+        if name == "qom-get":
+            if arguments["property"] == self.missing_uart_property:
+                raise ValueError("fixture optional property unavailable")
+            if arguments["property"] == "link-state":
+                return "down"
+            return 0
+        if name == "query-blockstats":
+            return [{"device": "stage2-root", "stats": {"rd_operations": 0}}]
         if name == "quit":
             self.process.returncode = 0
             return {}
@@ -163,6 +184,8 @@ class LauncherTests(unittest.TestCase):
         self.assertNotIn("cont", [name for name, args in self.qmp.commands])
         self.assertTrue(result["cleanup"]["child_reaped"])
         self.assertTrue(self.qmp.closed)
+        self.assertNotIn("end_diagnostics", result)
+        self.assertNotIn("stop", [name for name, args in self.qmp.commands])
 
     def test_command_consumes_explicit_loader_dtb_and_snapshot_root(self):
         command = launch.make_command(self.inputs, self.out, Path("/tmp/fixture/qmp.sock"))
@@ -243,6 +266,68 @@ class LauncherTests(unittest.TestCase):
         self.assertTrue(result["runtime_observation"]["fatal_detected"])
         self.assertFalse(result["boot_completed_verified"])
         self.assertFalse(result["userspace_verified"])
+        self.assertNotIn("end_diagnostics", result)
+
+    def test_end_diagnostics_freeze_once_and_keep_optional_errors_separate(self):
+        with mock.patch.object(launch.time, "monotonic", side_effect=(i / 10 for i in range(1000))):
+            result = self.run_fixture(run_seconds=1, stay_alive=True,
+                                      missing_uart_property="tx-count")
+        self.assertEqual(result["exit_code"], 0, result["controller_errors"])
+        self.assertEqual(result["controller_errors"], [])
+        diagnostics = result["end_diagnostics"]
+        self.assertTrue(diagnostics["paused_confirmed"])
+        self.assertTrue(diagnostics["stop_requested"])
+        self.assertEqual(diagnostics["status"], "partial")
+        self.assertLessEqual(len(diagnostics["calls"]), 15)
+        rows = {row["label"]: row for row in diagnostics["calls"]}
+        self.assertEqual(rows["uart.tx-count"]["status"], "unavailable")
+        self.assertEqual(rows["ufs.link-state"]["return"], "down")
+        self.assertEqual(rows["blockstats"]["status"], "collected")
+        self.assertEqual(rows["registers-cpu-0"]["arguments"]["cpu-index"], 0)
+        self.assertEqual(rows["registers-cpu-4"]["arguments"]["cpu-index"], 4)
+        names = [name for name, args in self.qmp.commands]
+        self.assertEqual(names.count("cont"), 1)
+        self.assertEqual(names.count("stop"), 1)
+        self.assertLess(names.index("cont"), names.index("stop"))
+        self.assertLess(names.index("stop"), names.index("qom-get"))
+        self.assertLess(names.index("query-blockstats"), names.index("quit"))
+        self.assertFalse(result["userspace_verified"])
+        self.assertFalse(result["physical_boot_verified"])
+        self.assertEqual(result["owner_native_linux_passes_added"], 0)
+
+    def test_failed_freeze_skips_cpu_and_device_snapshot_without_boot_verdict(self):
+        with mock.patch.object(launch.time, "monotonic", side_effect=(i / 10 for i in range(1000))):
+            result = self.run_fixture(run_seconds=1, stay_alive=True, stop_error=True)
+        self.assertEqual(result["exit_code"], 0, result["controller_errors"])
+        diagnostics = result["end_diagnostics"]
+        self.assertFalse(diagnostics["paused_confirmed"])
+        self.assertIn("paused state was not confirmed", diagnostics["reason"])
+        self.assertEqual([name for name, args in self.qmp.commands].count("query-cpus-fast"), 1)
+        self.assertNotIn("qom-get", [name for name, args in self.qmp.commands])
+        self.assertTrue(result["cleanup"]["child_reaped"])
+        self.assertFalse(result["boot_completed_verified"])
+
+    def test_diagnostics_total_budget_bounds_send_and_receive_timeouts(self):
+        qmp = FakeQMP(self.process, self.inputs, self.out)
+        qmp.running = True
+        clock = [0.0]
+        original = qmp.command
+        timeouts = []
+
+        def bounded_command(name, arguments=None, timeout=15):
+            timeouts.append(timeout)
+            value = original(name, arguments, timeout)
+            clock[0] += 2 * timeout
+            return value
+
+        with mock.patch.object(qmp, "command", side_effect=bounded_command), \
+             mock.patch.object(launch.time, "monotonic", side_effect=lambda: clock[0]):
+            result = launch.end_observation_diagnostics(qmp, self.process, {"signal": None})
+        self.assertLessEqual(result["elapsed_seconds"], launch.DIAGNOSTIC_SECONDS)
+        self.assertTrue(all(0 < value <= .75 for value in timeouts))
+        self.assertTrue(any(row.get("error") == "diagnostic time budget exhausted"
+                            for row in result["calls"]))
+        self.assertNotIn("query-blockstats", [name for name, args in qmp.commands])
 
     def test_fresh_output_refusal_survives_optimized_python(self):
         self.out.mkdir()

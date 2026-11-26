@@ -87,6 +87,14 @@ observations in the private output directory, then reaps its own QEMU child.
 Exit `0` describes the simulated layout/controller result; exit `3` preserves
 a detected kernel failure. Neither exit code is a boot-completion verdict.
 
+After a positive-duration observation reaches its deadline, a live model is
+stopped and independently confirmed paused before an optional diagnostic
+snapshot. It records CPU 0/4 registers, all CPU identities, UART clock/reset/TX
+state, UFS link state and block statistics. The snapshot has a 12-second total
+budget, short per-command timeouts and a bounded retained size. Missing getters
+remain explicit unavailable observations; they do not supply or erase a boot
+verdict. Failed pre-cont gates and paused-only runs never enter this phase.
+
 ## Native readiness and validation scope
 
 The owner's independent Android observation still has twelve unresolved dynamic
@@ -135,3 +143,11 @@ every original extra property and descendant to survive byte-for-byte.
 The padding issue is independently described by the upstream
 [libfdt fix](https://qemu.googlesource.com/dtc/+/ce51dcbd84209527eb82a64a3ce831bcac82d166).
 A fixed-producer board execution result is still pending.
+
+The producer repair is tracked in
+[QEMU PR #50](https://github.com/cyjin-yl/qemu-tb371fc/pull/50).
+The repeated experiment will use the exact push artifact from the separate
+`d46f660a464e850b94ed483a5f823a11196dfd49` integration, which retains all 115
+previous component/Linux gates and adds 17 actual-function producer fixtures.
+The complete artifact and its receipts must pass an independent audit before
+the next launch. The original R5 payloads and command line remain fixed.
