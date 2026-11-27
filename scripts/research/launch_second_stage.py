@@ -241,7 +241,16 @@ def open_qmp(path, process, timeout=15):
         raise
 
 
-def make_command(inputs, out, qmp_path, firmware_profile="none"):
+def hyp_timer_arguments(ppi):
+    """An explicit independent machine setting; None preserves old QEMU compatibility."""
+    if ppi is None:
+        return ""
+    require(type(ppi) is int and ppi in (10, 12),
+            "hyp-timer-ppi must be an integer 10 or 12")
+    return ",hyp-timer-ppi=" + str(ppi)
+
+
+def make_command(inputs, out, qmp_path, firmware_profile="none", hyp_timer_ppi=None):
     paths = {name: str(path) for name, path in inputs["paths"].items()}
     root = paths["rootfs"]
     require(not any(c in root for c in (",", "\n", "\r", "\0")),
@@ -250,6 +259,7 @@ def make_command(inputs, out, qmp_path, firmware_profile="none"):
     require(type(base) is int and RAM_BASE <= base < RAM_END and
             base % (2 * MIB) == 0, "invalid explicit kernel load base")
     machine_suffix, global_arguments = profile_arguments(firmware_profile)
+    machine_suffix += hyp_timer_arguments(hyp_timer_ppi)
     return [paths["qemu"], "-M", "tb371fc,kernel-load-base=" + hex(base) + machine_suffix,
             *global_arguments,
             "-accel", "tcg,thread=multi", "-m", "8G", "-smp", "8",
@@ -279,10 +289,20 @@ def guest_copy(qmp, row, destination, maximum):
     return data
 
 
-def check_paused_layout(inputs, out, qmp, validator, firmware_profile="none"):
+def check_paused_layout(inputs, out, qmp, validator, firmware_profile="none", hyp_timer_ppi=None):
     profile_arguments(firmware_profile)
+    hyp_timer_arguments(hyp_timer_ppi)
     status = qmp.command("query-status")
     require(status.get("running") is False, "QEMU must remain paused during layout validation")
+    timer_configuration = None
+    if hyp_timer_ppi is not None:
+        observed_ppi = qmp.command("qom-get", {"path": "/machine", "property": "hyp-timer-ppi"})
+        require(type(observed_ppi) is int and observed_ppi == hyp_timer_ppi,
+                "actual HYP timer PPI differs from the explicit machine setting")
+        timer_configuration = {"qom_path": "/machine", "property": "hyp-timer-ppi",
+            "requested_ppi": hyp_timer_ppi, "observed_ppi": observed_ppi,
+            "configured_intid": 16 + observed_ppi, "checked_while_paused": True,
+            "scope": "machine property readback only"}
     cpus = qmp.command("query-cpus-fast")
     require(isinstance(cpus, list) and len(cpus) == 8, "expected eight simulated CPUs")
     text = qmp.command("human-monitor-command", {"command-line": "info roms"})
@@ -352,6 +372,8 @@ def check_paused_layout(inputs, out, qmp, validator, firmware_profile="none"):
             "loaded_kernel": identity(loaded_kernel), "loaded_initrd": identity(loaded_initrd),
             "input_dtb": identity(raw["dtb"]), "final_dtb": identity(final_dtb),
             "validation": layout}
+    if timer_configuration is not None:
+        result["hyp_timer_configuration"] = timer_configuration
     if firmware is not None:
         result["reference_firmware"] = firmware
         result["memory_bytes_read"] += firmware["memory_bytes_read"]
@@ -451,9 +473,18 @@ def end_observation_diagnostics(qmp, process, interrupts):
     if isinstance(after, dict) and after.get("running") is False:
         result["paused_confirmed"] = True
         call("cpus", "query-cpus-fast")
-        for index in (0, 4):
-            call("registers-cpu-" + str(index), "human-monitor-command",
-                 {"command-line": "info registers", "cpu-index": index})
+        call("registers-all-cpus", "human-monitor-command",
+             {"command-line": "info registers -a"})
+        # Exact6287 GICv3 reads: no acknowledge, deactivate or writes.
+        # DT HYP physical INTID26 and model INTID28 are both retained.
+        call("gicd.ctlr", "human-monitor-command",
+             {"command-line": "xp /1xw 0x17a00000"})
+        for index in range(8):
+            redistributor = 0x17a60000 + index * 0x20000
+            for name, offset in (("isenabler0", 0x10100),
+                                 ("ispendr0", 0x10200), ("isactiver0", 0x10300)):
+                call("gicr-cpu-" + str(index) + "." + name, "human-monitor-command",
+                     {"command-line": "xp /1xw " + hex(redistributor + offset)})
         for prop in UART_DIAGNOSTIC_PROPERTIES:
             call("uart." + prop, "qom-get", {"path": "/machine/uart", "property": prop})
         call("ufs.link-state", "qom-get", {"path": "/machine/ufs", "property": "link-state"})
@@ -504,20 +535,21 @@ def cleanup_child(process, qmp):
 
 def run_prepared(inputs, out, run_seconds=0, *, process_factory=subprocess.Popen,
                  qmp_factory=open_qmp, unchanged=None, validator=None,
-                 firmware_profile="none"):
+                 firmware_profile="none", hyp_timer_ppi=None):
     with record_interrupts() as interrupts:
         return _run_prepared(inputs, out, run_seconds, process_factory=process_factory,
                              qmp_factory=qmp_factory, unchanged=unchanged,
                              validator=validator, interrupts=interrupts,
-                             firmware_profile=firmware_profile)
+                             firmware_profile=firmware_profile, hyp_timer_ppi=hyp_timer_ppi)
 
 
 def _run_prepared(inputs, out, run_seconds=0, *, process_factory=subprocess.Popen,
                   qmp_factory=open_qmp, unchanged=None, validator=None, interrupts,
-                  firmware_profile="none"):
+                  firmware_profile="none", hyp_timer_ppi=None):
     require(type(run_seconds) is int and 0 <= run_seconds <= 120,
             "run-seconds must be an integer in 0..120")
     profile_arguments(firmware_profile)
+    hyp_timer_arguments(hyp_timer_ppi)
     out = Path(out)
     # Exclusive creation is deliberate and remains active under python -O.
     out.mkdir(mode=0o700, parents=False, exist_ok=False)
@@ -535,7 +567,7 @@ def _run_prepared(inputs, out, run_seconds=0, *, process_factory=subprocess.Pope
     record = {"schema": "tb371fc-second-stage-qmp-run-v1", "started_utc": utc_now(),
               "status": "failed", "layout_gate_passed": False, "cont_issued": False,
               "run_seconds": run_seconds, "source_identities": sources,
-              "firmware_profile": firmware_profile,
+              "firmware_profile": firmware_profile, "hyp_timer_ppi": hyp_timer_ppi,
               "inputs": inputs.get("identities", {}), "release": inputs["release"],
               "kernel_bundle_qualification": inputs.get("kernel_bundle_qualification"),
               "evidence_bindings": inputs.get("evidence_bindings"),
@@ -546,7 +578,7 @@ def _run_prepared(inputs, out, run_seconds=0, *, process_factory=subprocess.Pope
     errors = []
     try:
         with tempfile.TemporaryDirectory(prefix="tb-stage2-", dir="/tmp") as runtime:
-            command = make_command(inputs, out, Path(runtime) / "qmp.sock", firmware_profile)
+            command = make_command(inputs, out, Path(runtime) / "qmp.sock", firmware_profile, hyp_timer_ppi)
             record["command"] = command
             (out / "command.json").write_text(json.dumps(command, indent=2) + "\n")
             unchanged(inputs)
@@ -558,7 +590,8 @@ def _run_prepared(inputs, out, run_seconds=0, *, process_factory=subprocess.Pope
                                               start_new_session=True)
                     qmp = qmp_factory(Path(runtime) / "qmp.sock", process, 15)
                     record["qemu_version"] = qmp.command("query-version")
-                    record["layout"] = check_paused_layout(inputs, out, qmp, validator, firmware_profile)
+                    record["layout"] = check_paused_layout(
+                        inputs, out, qmp, validator, firmware_profile, hyp_timer_ppi)
                     unchanged(inputs)
                     require(selected_source_identities(inputs) == sources, "validation source changed before cont")
                     status = qmp.command("query-status")
@@ -657,6 +690,8 @@ def main(argv=None):
     parser.add_argument("--input-contract-sha256", help="Explicit SHA-256 pin for the reviewed R7 contract")
     parser.add_argument("--firmware-profile", choices=PROFILES, default="none",
                         help="Explicit synthetic model handoff; default keeps existing machine settings")
+    parser.add_argument("--hyp-timer-ppi", type=int, choices=(10, 12), default=None,
+                        help="Explicit model timer route, independent of firmware profile; default keeps machine default")
     args = parser.parse_args(argv)
     if not 0 <= args.run_seconds <= 120:
         parser.error("--run-seconds must be 0..120")
@@ -672,7 +707,8 @@ def main(argv=None):
         else:
             from second_stage_inputs import verify_inputs
             inputs = verify_inputs(args.manifest)
-        result = run_prepared(inputs, args.out, args.run_seconds, firmware_profile=args.firmware_profile)
+        result = run_prepared(inputs, args.out, args.run_seconds,
+                              firmware_profile=args.firmware_profile, hyp_timer_ppi=args.hyp_timer_ppi)
     except (OSError, ValueError, KeyError, TypeError) as error:
         print(json.dumps({"status": "preflight_failed", "error": str(error),
                           "physical_boot_verified": False}), file=sys.stderr)
