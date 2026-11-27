@@ -160,6 +160,39 @@ class ConstructionTests(unittest.TestCase):
         b = {build.PANEL: {"sha256": build.R6_PANEL_SHA}, "Makefile": {"sha256": "same"}}
         build.compare_sources(a, b)
 
+    def test_candidate_exact_early_pgtable_delta(self):
+        a = {build.EARLY_PGTABLE_SOURCE: {"type": "file", "executable": False, **build.EARLY_PGTABLE_BASE},
+             "Makefile": {"sha256": "same"}}
+        b = {build.EARLY_PGTABLE_SOURCE: {"type": "file", "executable": False, **build.EARLY_PGTABLE_CANDIDATE},
+             "Makefile": {"sha256": "same"}}
+        build.compare_candidate_sources(a, b)
+
+    def test_candidate_rejects_extra_source_delta(self):
+        a = {build.EARLY_PGTABLE_SOURCE: {"type": "file", "executable": False, **build.EARLY_PGTABLE_BASE},
+             "Makefile": {"sha256": "old"}}
+        b = {build.EARLY_PGTABLE_SOURCE: {"type": "file", "executable": False, **build.EARLY_PGTABLE_CANDIDATE},
+             "Makefile": {"sha256": "changed"}}
+        with self.assertRaisesRegex(ValueError, "exceeds"):
+            build.compare_candidate_sources(a, b)
+
+    def test_candidate_rejects_changed_mmu_permissions(self):
+        a = {build.EARLY_PGTABLE_SOURCE: {"type": "file", "executable": False, **build.EARLY_PGTABLE_BASE}}
+        b = {build.EARLY_PGTABLE_SOURCE: {"type": "file", "executable": True, **build.EARLY_PGTABLE_CANDIDATE}}
+        with self.assertRaisesRegex(ValueError, "candidate early-page-table source differs"):
+            build.compare_candidate_sources(a, b)
+
+    def test_candidate_rejects_unpatched_source(self):
+        a = {build.EARLY_PGTABLE_SOURCE: {"type": "file", "executable": False, **build.EARLY_PGTABLE_BASE}}
+        with self.assertRaisesRegex(ValueError, "exceeds"):
+            build.compare_candidate_sources(a, copy.deepcopy(a))
+
+    def test_candidate_rejects_other_mmu_content(self):
+        a = {build.EARLY_PGTABLE_SOURCE: {"type": "file", "executable": False, **build.EARLY_PGTABLE_BASE}}
+        b = {build.EARLY_PGTABLE_SOURCE: {"type": "file", "executable": False, **build.EARLY_PGTABLE_CANDIDATE}}
+        b[build.EARLY_PGTABLE_SOURCE]["sha256"] = "00" * 32
+        with self.assertRaisesRegex(ValueError, "candidate early-page-table source differs"):
+            build.compare_candidate_sources(a, b)
+
     def test_work_requires_fresh_canonical_prefix(self):
         with self.assertRaisesRegex(ValueError, "fresh /work"):
             build.build(Path("/tmp"), Path("/tmp"), Path("/tmp"), Path("/tmp/r7-wrong"))

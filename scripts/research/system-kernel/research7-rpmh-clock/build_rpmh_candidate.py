@@ -35,10 +35,18 @@ R6_SIGNATURE_SHA = "ab6e20a596985377ab112f6a258f861fdb28c307cb88342166fc54d29f1f
 R5_RECIPE_SHA = "053178a79838a69440a5e18f01f4fc9a9dc8a81c11347f1689c8e062d530439a"
 SIGNATURE_VERIFIER_SHA = "8e7fb179b500bf13cfadd3843fdb3104a5740005f1cd394f2be8112732ee0082"
 PANEL_TEST_SHA = "e8f174da818dacf1b9eb458db51572d15f65817bea10e787a0117e091aa96df2"
+EARLY_PGTABLE_SOURCE = "arch/arm64/mm/mmu.c"
+EARLY_PGTABLE_BASE = {"bytes": 44729, "sha256": "b03413247434f6c2abd500036e2aca226f49156ebb726949c25f3a925ab1ca44"}
+EARLY_PGTABLE_CANDIDATE = {"bytes": 45429, "sha256": "27cf3be8c966c1cfe84f5c3cb715aedd3c3d4a8f5ef522c5737212476dc8a0fb"}
+EARLY_PGTABLE_PATCH = "mainline-port/backports/linux-6.12/0023-arm64-tb371fc-explicit-memblock-page-tables.patch"
+EARLY_PGTABLE_PATCH_SHA = "297c52bf389f50759d15422e8e51023e0e92d0548f6be6234c9622724a74a50a"
+EARLY_PGTABLE_TEST_SHA = "79be6d3fd8c9cf8a1fb48c1823c346267574b07cc5c20a385eae45a4d21c35ae"
 DTB = "qcom/sm8250-lenovo-tb371fc-display-input-test-6.12.dtb"
 DTB_SHA = "af80b06f38b73ea42cb669a2897721ba7ecc5a99a8aa3d6d9c1e9ba132597730"
 TOOLCHAIN = {"clang": "Debian clang version 19.1.7 (3+b1)",
              "ld.lld": "Debian LLD 19.1.7 (compatible with GNU linkers)", "pahole": "v1.30"}
+TOOLCHAIN_TIMEOUT_SECONDS = 120
+TOOLCHAIN_LOG_LIMIT_BYTES = 65536
 
 
 def require(condition, message):
@@ -120,6 +128,17 @@ def compare_sources(r5, r6):
             "panel repair identity differs")
 
 
+def compare_candidate_sources(r6, candidate):
+    require(r6.keys() == candidate.keys(), "candidate source inventory differs from retained R6")
+    differences = [name for name in r6 if r6[name] != candidate[name]]
+    require(differences == [EARLY_PGTABLE_SOURCE],
+            "candidate source delta exceeds the explicit early-page-table selector: " + repr(differences[:20]))
+    require(r6[EARLY_PGTABLE_SOURCE] == {"type": "file", "executable": False, **EARLY_PGTABLE_BASE},
+            "retained early-page-table source differs")
+    require(candidate[EARLY_PGTABLE_SOURCE] == {"type": "file", "executable": False, **EARLY_PGTABLE_CANDIDATE},
+            "candidate early-page-table source differs")
+
+
 def installed_module_order(raw):
     lines = raw.decode("ascii").splitlines()
     require(lines and len(lines) == len(set(lines)) and all(line.endswith(".o")
@@ -180,9 +199,12 @@ def build(repo, r5, baseline, work):
             raise InterruptedError("candidate build interrupted by signal " + str(cancellation_signal))
     handlers = {sig: signal.signal(sig, interrupted) for sig in (signal.SIGTERM, signal.SIGINT, signal.SIGHUP)}
 
-    def run(name, argv, timeout=7200, extra_env=None):
+    def run(name, argv, timeout=7200, extra_env=None, max_log_bytes=None):
         check_cancelled()
-        row = {"name": name, "argv": [str(x) for x in argv], "started_utc": now()}
+        row = {"name": name, "argv": [str(x) for x in argv], "started_utc": now(),
+               "timeout_seconds": timeout}
+        if max_log_bytes is not None:
+            row["log_limit_bytes"] = max_log_bytes
         record["commands"].append(row)
         path = work / (name + ".log")
         print(json.dumps({"phase_started": name, "argv": row["argv"], "started_utc": row["started_utc"]}), flush=True)
@@ -205,10 +227,12 @@ def build(repo, r5, baseline, work):
                                 if not chunk:
                                     poller.unregister(key.fileobj)
                                     continue
-                                log.write(chunk)
+                                captured = chunk if max_log_bytes is None else chunk[:max(0, max_log_bytes - log.tell())]
+                                log.write(captured)
                                 log.flush()
-                                sys.stdout.buffer.write(chunk)
+                                sys.stdout.buffer.write(captured)
                                 sys.stdout.buffer.flush()
+                                require(len(captured) == len(chunk), name + " exceeded bounded diagnostic log")
                     while True:
                         check_cancelled()
                         if time.monotonic() >= deadline:
@@ -219,7 +243,8 @@ def build(repo, r5, baseline, work):
                         except subprocess.TimeoutExpired:
                             pass
                     check_cancelled()
-                except BaseException:
+                except BaseException as error:
+                    row["error"] = repr(error)
                     # Only our command's process group is stopped. The caller
                     # must retain host admission until this child is reaped.
                     try:
@@ -238,10 +263,13 @@ def build(repo, r5, baseline, work):
                     except ProcessLookupError:
                         pass
                     proc.wait()
+                    row["exit_code"] = proc.returncode
+                    row["child_reaped"] = True
                     raise
                 finally:
                     proc.stdout.close()
                 row["exit_code"] = proc.returncode
+                row["child_reaped"] = True
                 require(proc.returncode == 0, name + " failed; inspect " + str(path))
         finally:
             row["finished_utc"] = now()
@@ -254,17 +282,30 @@ def build(repo, r5, baseline, work):
         recipe_inputs = {Path(__file__): record["recipe"],
                          Path(__file__).with_name("verify_module_abi.py"): identity(Path(__file__).with_name("verify_module_abi.py")),
                          Path(__file__).with_name("system.config"): identity(Path(__file__).with_name("system.config"))}
-        tools = {name: subprocess.check_output([name, "--version"], env=env, text=True, timeout=10).splitlines()[0]
-                 for name in TOOLCHAIN}
+        tools = {}
+        record["toolchain"] = tools
+        for name in TOOLCHAIN:
+            phase = "toolchain-" + name
+            run(phase, [name, "--version"], timeout=TOOLCHAIN_TIMEOUT_SECONDS,
+                max_log_bytes=TOOLCHAIN_LOG_LIMIT_BYTES)
+            lines = (work / (phase + ".log")).read_text(encoding="utf-8").splitlines()
+            require(lines, "empty toolchain version output: " + name)
+            tools[name] = lines[0]
         require(tools == TOOLCHAIN, "qualified R6 toolchain differs: " + repr(tools))
         record["toolchain"] = tools
         record["makeflags"] = env["MAKEFLAGS"]
         signature_verifier = repo / "scripts/research/display/verify_module_signatures.py"
         panel_test = repo / "scripts/research/display/test_tianma_off.py"
+        early_pgtable_patch = repo / EARLY_PGTABLE_PATCH
+        early_pgtable_test = Path(__file__).with_name("test_early_pgtable.py")
         record["inputs"]["signature_verifier"] = pinned(signature_verifier, SIGNATURE_VERIFIER_SHA)
         record["inputs"]["panel_test"] = pinned(panel_test, PANEL_TEST_SHA)
+        record["inputs"]["early_pgtable_patch"] = pinned(early_pgtable_patch, EARLY_PGTABLE_PATCH_SHA)
+        record["inputs"]["early_pgtable_test"] = pinned(early_pgtable_test, EARLY_PGTABLE_TEST_SHA)
         recipe_inputs.update({signature_verifier: record["inputs"]["signature_verifier"],
-                              panel_test: record["inputs"]["panel_test"]})
+                              panel_test: record["inputs"]["panel_test"],
+                              early_pgtable_patch: record["inputs"]["early_pgtable_patch"],
+                              early_pgtable_test: record["inputs"]["early_pgtable_test"]})
         record["inputs"]["r5_recipe"] = pinned(r5 / "recipe-v1/build_system.py", R5_RECIPE_SHA)
         namespace = runpy.run_path(str(r5 / "recipe-v1/build_system.py"))
         namespace["verify_source"](r5)
@@ -278,15 +319,24 @@ def build(repo, r5, baseline, work):
         r6_inventory = source_inventory(baseline / "linux")
         compare_sources(r5_inventory, r6_inventory)
         check_cancelled()
-        write_new(work / "source-inventory.json", r6_inventory)
-        record["source_inventory"] = identity(work / "source-inventory.json")
+        write_new(work / "baseline-source-inventory.json", r6_inventory)
+        record["retained_source_inventory"] = identity(work / "baseline-source-inventory.json")
         record["retained_source_delta"] = [PANEL]
         out = work / "out"
         target = work / "linux"
         out.mkdir()
         run("copy-source", ["cp", "-a", "--reflink=auto", baseline / "linux", target])
         require(source_inventory(target) == r6_inventory, "copied R6 source differs")
+        run("patch-early-pgtable", ["patch", "--batch", "--fuzz=0", "--no-backup-if-mismatch", "-p1",
+                                  "--directory", target, "--input", early_pgtable_patch], timeout=120)
+        candidate_inventory = source_inventory(target)
+        compare_candidate_sources(r6_inventory, candidate_inventory)
+        write_new(work / "source-inventory.json", candidate_inventory)
+        record["source_inventory"] = identity(work / "source-inventory.json")
+        record["candidate_source_delta"] = [EARLY_PGTABLE_SOURCE]
         check_cancelled()
+        run("actual-early-pgtable-regression", ["python3", "-B", "-O", early_pgtable_test,
+                                              "--kernel-source", target], timeout=120)
         run("actual-core-regression", ["python3", "-B", "-O", panel_test, "--repo", repo,
                                        "--drm-panel-source", target / "drivers/gpu/drm/drm_panel.c"])
         fragment = Path(__file__).with_name("system.config")
@@ -358,7 +408,7 @@ def build(repo, r5, baseline, work):
         for name, path in outputs.items():
             shutil.copyfile(path, artifacts / name)
         record["artifacts"] = {name: identity(artifacts / name) for name in [*outputs, "kernel.btf"]}
-        require(source_inventory(target) == r6_inventory, "Kbuild changed copied source")
+        require(source_inventory(target) == candidate_inventory, "Kbuild changed patched candidate source")
         require(source_inventory(baseline / "linux") == r6_inventory, "retained R6 source changed")
         require(source_inventory(r5 / R5_SOURCE) == r5_inventory, "retained R5 source changed")
         baseline_receipts(baseline)

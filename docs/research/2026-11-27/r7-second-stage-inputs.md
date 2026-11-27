@@ -34,11 +34,11 @@ available. The pre-label phase is a separately identified construction
 diagnostic, not evidence that the SELinux-labelled system has booted.
 
 The generic receipt must bind wrapper source
-`5143a5b371fcbac58b820af9dc9b747106b24a74f082d20d34164d53da7a16e1`
+`5deaaa2619979af919b8047ee0410fe40f96257267c7acb5c2d2187626c27750`
 and unchanged inherited driver
 `4d1f59691bb4faccdcdbd791ae2120a89e56f7712fd63270f0a2204662842736`.
 It uses the same constructor
-`2b46c5f8d27d85409f513b99c6607784c78b93ac7695f4e33b93cc72d1eda54a`
+`f556256e8764b7c6060b05ffe5e7350046055d87e1393ed2acd9ef4c00126042`
 as the construction evidence. The input verifier checks the retained
 results, exact generic-QEMU argv, log identities, extracted same-boot guest
 result and independently reparsed gates. It does not execute another generic
@@ -152,7 +152,14 @@ rd.tb371fc.tmpfs-root=1
 enforcing=1
 module.sig_enforce=1
 root=LABEL=tb371fc-r7-f45
+tb371fc.early_pgtable=memblock
 ```
+
+The allocator option selects the upstream memblock path for the explicit
+board-model experiment. The native-compatible default embedded allocator
+remains unchanged, and this option is not added to the generic VM command.
+The observed reason for the mode is recorded in
+[`early-page-table-pool-attempt04.md`](early-page-table-pool-attempt04.md).
 
 Aliases that conflict after hyphen/underscore normalization are rejected.
 The R7 path also rejects `lsm=` and `security=` overrides, along with the
@@ -162,7 +169,7 @@ does not change the frozen R5 parser.
 ## Immutable build and DT relationships
 
 The verifier requires the reviewed R7 builder
-`5ce8082edec44e8657c3938f7dcfbf34953604186429367921af49d0079dc839`,
+`509aa9cb8f3b43292ae6708622066bec1d22eb92330d6dfb090a286534c2b5d6`,
 the exact R7 config (223386 bytes,
 `84747cefce945deaf0134e52c3b1a8a2bf771f3082853d6903be59ab6d5a92a4`),
 the same 84 relative module paths as the frozen R6/R7 build, and identical

@@ -355,6 +355,24 @@ class R7InputsTests(unittest.TestCase):
             with self.subTest(args=bad), self.assertRaises(ValueError):
                 r7.validate_manifest(manifest, self.fx.contract)
 
+    def test_board_simulation_requires_one_explicit_memblock_allocator(self):
+        original = self.fx.manifest['bootargs']
+        option = 'tb371fc.early_pgtable=memblock'
+        self.assertEqual(original.split().count(option), 1)
+        r7.validate_manifest(self.fx.manifest, self.fx.contract)
+        for bad in (original.replace(option, ''),
+                    original.replace(option, 'tb371fc.early_pgtable'),
+                    original.replace(option, 'tb371fc.early_pgtable=pool'),
+                    original.replace(option, 'tb371fc.early_pgtable=unknown'),
+                    original + ' ' + option,
+                    original + ' tb371fc.early-pgtable=memblock',
+                    original + ' tb371fc.early-pgtable=pool',
+                    original.replace(option, 'tb371fc.early-pgtable=memblock')):
+            manifest = copy.deepcopy(self.fx.manifest)
+            manifest['bootargs'] = bad
+            with self.subTest(args=bad), self.assertRaisesRegex(ValueError, 'tb371fc.early_pgtable'):
+                r7.validate_manifest(manifest, self.fx.contract)
+
     def test_incomplete_or_wrong_source_build_is_rejected(self):
         for key, value in (('passed', 1), ('retained_inputs_reverified', False),
                            ('offline_modules_qualified', False), ('module_count', 83),

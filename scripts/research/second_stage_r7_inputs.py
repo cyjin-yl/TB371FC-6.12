@@ -26,7 +26,7 @@ INPUT_PROFILE = 'r7-rpmh-v1'
 CONTRACT_SCHEMA = 'tb371fc-r7-second-stage-input-contract-v1'
 ROOTFS_PHASE = 'constructed-unbooted-prelabel-v1'
 GENERIC_VM_PHASE = 'generic-vm-verified-v1'
-GENERIC_VM_WRAPPER_SHA = '5143a5b371fcbac58b820af9dc9b747106b24a74f082d20d34164d53da7a16e1'
+GENERIC_VM_WRAPPER_SHA = '5deaaa2619979af919b8047ee0410fe40f96257267c7acb5c2d2187626c27750'
 GENERIC_VM_DRIVER_SHA = '4d1f59691bb4faccdcdbd791ae2120a89e56f7712fd63270f0a2204662842736'
 GENERIC_VM_TOOLS = {
     '/usr/bin/qemu-system-aarch64': {'bytes': 34073536, 'sha256': '2e7fe3008a900980493a85e606036793fd162153edac0228477579988c53e1f5'},
@@ -37,8 +37,8 @@ LABEL = 'tb371fc-r7-f45'
 SYSTEM_PROFILE = 'research7-rpmh-clock-fedora45-derived-v9'
 PREFIX = 'modules/lib/modules/' + RELEASE + '/'
 ROOTFS_BYTES = 4 * 1024**3
-BUILD_RECIPE_SHA = '5ce8082edec44e8657c3938f7dcfbf34953604186429367921af49d0079dc839'
-CONSTRUCTOR_SHA = '2b46c5f8d27d85409f513b99c6607784c78b93ac7695f4e33b93cc72d1eda54a'
+BUILD_RECIPE_SHA = '509aa9cb8f3b43292ae6708622066bec1d22eb92330d6dfb090a286534c2b5d6'
+CONSTRUCTOR_SHA = 'f556256e8764b7c6060b05ffe5e7350046055d87e1393ed2acd9ef4c00126042'
 SIGNATURE_VERIFIER_SHA = '8e7fb179b500bf13cfadd3843fdb3104a5740005f1cd394f2be8112732ee0082'
 ABI_VERIFIER_SHA = '8e207831577a1537eec3e7a6d6f1ee0eeb0bd610db44c48f3736bf6af28734b9'
 # Sorted module-relative paths, one ASCII path per line including final newline;
@@ -75,7 +75,8 @@ SUPPLIERS = {'kernel/drivers/regulator/qcom-rpmh-regulator.ko',
              'kernel/drivers/interconnect/qcom/interconnect_qcom.ko'}
 REQUIRED_ARGS = {'rdinit': '/init.tmpfs', 'rd.tb371fc.early-selinux': '1',
                  'rd.tb371fc.tmpfs-root': '1', 'enforcing': '1',
-                 'module.sig_enforce': '1', 'root': 'LABEL=' + LABEL}
+                 'module.sig_enforce': '1', 'root': 'LABEL=' + LABEL,
+                 'tb371fc.early_pgtable': 'memblock'}
 
 
 def exact(value, keys, label):

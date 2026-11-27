@@ -1,8 +1,11 @@
-# R7 RPMh clock candidate proposal
+# R7 RPMh clock and explicit model page-table candidate
 
-Status: guarded construction helper and offline qualification are staged;
-no R7 kernel build or boot result is recorded here.
-The unchanged R5 board observation is tracked separately in Linux PR #21.
+Status: the first retained R7 construction stopped before compilation when
+`clang --version` exceeded its former 10-second limit. The revision below
+records each tool probe with a 120-second limit and a 64 KiB diagnostic cap.
+No completed R7 kernel or boot pass is asserted here. The actual R5 board
+observation and early mapping panic are recorded in
+[`early-page-table-pool-attempt04.md`](../../../../docs/research/2026-11-27/early-page-table-pool-attempt04.md).
 
 ## Configuration and source lineage
 
@@ -22,6 +25,11 @@ The source baseline is the completed R6 candidate at
 `/work/tianma-r6-build-ec332-01/linux`. It already contains the qualified Tianma
 OFF-sequence repair. Copy that source into a new work directory and use a new
 Kbuild output directory. Do not copy the R6 output, modules or signing key.
+The new candidate applies the reviewed
+`0023-arm64-tb371fc-explicit-memblock-page-tables.patch` only to
+`arch/arm64/mm/mmu.c`. Complete source inventories bind both the unchanged
+R6 baseline and the patched candidate, including file modes. No other new
+kernel source change is accepted.
 
 The frozen R5 recipe at
 `scripts/research/system-kernel/research5-services/recipe-v1/` and the executed
@@ -50,13 +58,14 @@ admission guard, with a fresh work directory and `MAKEFLAGS=-j2`:
 python3 -B "$R7_REPO/scripts/research/system-kernel/research7-rpmh-clock/build_rpmh_candidate.py" \
   --repo "$R7_REPO" --r5 /work/research5-services \
   --baseline /work/tianma-r6-build-ec332-01 \
-  --work /work/r7-rpmh-clock-406f-01
+  --work /work/r7-rpmh-clock-406f-02
 ```
 
 The helper rechecks the published R6 build and signature receipts and every
 retained payload; compares the complete R6 source inventory with R5, permitting
-only the byte-pinned Tianma repair; and copies only that source into fresh
-output and module directories. It requires the exact toolchain and full
+only the byte-pinned Tianma repair. It copies that source into a fresh
+output, applies the byte-pinned MMU patch, and requires exactly that one
+additional source delta before creating the new module artifacts. It requires the exact toolchain and full
 resolved configuration, then builds and installs all 84 modules with a new
 signing certificate. Actual command output appears in the caller's pane and
 per-command logs. Signal cancellation stops and reaps the owned command group;
@@ -68,7 +77,7 @@ After the existing cryptographic signature verifier,
 vermagic, each recorded imported symbol CRC and every undefined strong import,
 retained BTF sections with bounded nonoverlapping header ranges, and absence
 of DWARF debug sections. This does not semantically validate every BTF type or
-load any module. Twenty focused positive and negative cases run with:
+load any module. Twenty-five focused positive and negative cases run with:
 
 ```bash
 python3 -B -O "$R7_REPO/scripts/research/system-kernel/research7-rpmh-clock/test_rpmh_candidate.py"
@@ -79,92 +88,31 @@ The ABI verifier was also replayed read-only against all 84 retained R6 modules:
 of the verifier against existing R6 artifacts; R7 still needs its own completed
 build and qualification receipts.
 
-## Exact underlying build recipe
+## Explicit board-model allocator
 
-The following is the inside-container recipe. The owner must first refresh
-active-job/worktree ownership, retain the original admission wrapper, and
-select fresh source and output paths. It uses the same two-job build envelope
-and toolchain arguments as the accepted R6 build: LLVM/Clang and LLD 19.1.7,
-with pahole 1.30. Keep all blocks in the same admitted Bash environment and
-retain that toolchain throughout. The source checkout containing this profile
-supplies `R7_REPO`. The guarded helper above performs these steps and the
-input/output checks around them.
+The retained board workaround uses 256 embedded page-table pages and remains
+unchanged by default. With the current 4 KiB granule and full read-only-data
+protection, the simulated RAM map requires thousands of PTE pages. R7 adds
+`tb371fc.early_pgtable=memblock` to select the existing upstream memblock
+allocation path for this explicit model experiment. The option is parsed
+before `paging_init`; missing or unknown values are rejected by its parser.
 
-Set `R7_BASE=/work/tianma-r6-build-ec332-01`,
-`R7_WORK=/work/r7-rpmh-clock-406f-01`, and `MAKEFLAGS=-j2` in that environment.
-Before creating `R7_WORK`, verify the input identities above, the R6 build and
-84-module signature receipts, and that the copied source contains no generated
-Kbuild output, signing keys, absolute symlinks or symlinks escaping its root.
-`R7_WORK` must not exist.
+The `r7-rpmh-v1` launcher contract requires exactly one canonical option and
+rejects duplicate, aliased, or conflicting tokens before guest execution.
+The generic `virt` control keeps its original command line and follows the
+existing non-TB371FC allocator branch. This change does not enlarge the
+embedded pool or claim that memblock allocation is qualified for a physical
+vendor-kernel handoff. Native-default behavior and native acceptance remain
+unverified.
 
-```bash
-set -euo pipefail
-: "${R7_REPO:?set the reviewed source checkout}"
-: "${R7_BASE:?set the qualified R6 baseline}"
-: "${R7_WORK:?set the fresh R7 work directory}"
-test "${MAKEFLAGS-}" = '-j2'
-python3 -B - <<'PY_R7_TOOLCHAIN'
-import subprocess
-expected = {
-    "clang": "Debian clang version 19.1.7 (3+b1)",
-    "ld.lld": "Debian LLD 19.1.7 (compatible with GNU linkers)",
-    "pahole": "v1.30",
-}
-for tool, version in expected.items():
-    actual = subprocess.check_output(
-        [tool, "--version"], text=True, timeout=10).splitlines()[0]
-    if actual != version:
-        raise SystemExit(f"R6 toolchain differs: {tool}: {actual}")
-PY_R7_TOOLCHAIN
-
-mkdir -m 700 "$R7_WORK"
-mkdir "$R7_WORK/out"
-cp -a --reflink=auto "$R7_BASE/linux" "$R7_WORK/linux"
-cp "$R7_BASE/artifacts/kernel.config" "$R7_WORK/out/base.config"
-
-python3 -O "$R7_REPO/scripts/research/display/test_tianma_off.py" \
-  --repo "$R7_REPO" \
-  --drm-panel-source "$R7_WORK/linux/drivers/gpu/drm/drm_panel.c"
-
-KCONFIG_CONFIG="$R7_WORK/out/.config" \
-  bash "$R7_WORK/linux/scripts/kconfig/merge_config.sh" -m \
-  -O "$R7_WORK/out" "$R7_WORK/out/base.config" \
-  "$R7_REPO/scripts/research/system-kernel/research7-rpmh-clock/system.config"
-
-make -C "$R7_WORK/linux" O="$R7_WORK/out" KCONFIG_CONFIG=.config \
-  ARCH=arm64 LLVM=1 \
-  'CC=clang --sysroot=/work/research5-services/target-sysroot' olddefconfig
-```
-
-The merge sets `KCONFIG_CONFIG` explicitly because an ambient value overrides
-`merge_config.sh -O` when selecting its output file.
-
-At this boundary, require the entire resulting `.config` to match the expected
-R7 identity above. Verify the copied panel source identity again. Then use the
-same `make` prefix for these existing targets, recording each argv, log, exit
-code and input identity separately:
-
-```bash
-set -euo pipefail
-make -C "$R7_WORK/linux" O="$R7_WORK/out" KCONFIG_CONFIG=.config \
-  ARCH=arm64 LLVM=1 \
-  'CC=clang --sysroot=/work/research5-services/target-sysroot' Image modules
-
-make -C "$R7_WORK/linux" O="$R7_WORK/out" KCONFIG_CONFIG=.config \
-  ARCH=arm64 LLVM=1 \
-  'CC=clang --sysroot=/work/research5-services/target-sysroot' \
-  qcom/sm8250-lenovo-tb371fc-display-input-test-6.12.dtb
-
-make -C "$R7_WORK/linux" O="$R7_WORK/out" KCONFIG_CONFIG=.config \
-  ARCH=arm64 LLVM=1 \
-  'CC=clang --sysroot=/work/research5-services/target-sysroot' \
-  INSTALL_MOD_PATH="$R7_WORK/modules" INSTALL_MOD_STRIP=1 modules_install
-
-python3 -B "$R7_REPO/scripts/research/display/verify_module_signatures.py" \
-  --modules "$R7_WORK/modules" \
-  --certificate "$R7_WORK/out/certs/signing_key.x509" \
-  --expected-count 84 --output "$R7_WORK/module-signatures.json"
-```
+The executable recipe is `build_rpmh_candidate.py`; the invocation above is
+the supported entry. Its receipts preserve the exact source patch, original
+and patched MMU identities, complete candidate source inventory, command
+arguments and bounded toolchain probes. It runs the MMU regression against
+the actual copied source before Kbuild. It then derives the full config,
+builds Image and all modules, builds the unchanged native DTB, installs with
+`INSTALL_MOD_STRIP=1`, and performs the signature and ABI checks below.
+The retained R5 and R6 recipes are never edited or replayed in place.
 
 ## Required resulting evidence
 
@@ -205,5 +153,6 @@ continue rejecting an R7 substitution until that separate contract is reviewed.
   the existing `merge_config.sh -m` plus `olddefconfig` configuration workflow.
 - Upstream Linux `v6.12.114`, `drivers/clk/qcom/Kconfig`, `QCOM_CLK_RPMH`.
 
-At preparation, all 26 public branches and the single open PR21 were inspected;
-no R7/research7/RPMh-clock lane was present. Recheck before claiming a build.
+Use a new work directory and an exact reviewed source revision for every
+construction attempt. Preserve failed terminal receipts and inspect actual
+completion and cleanup before starting a successor.
