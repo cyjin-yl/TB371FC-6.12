@@ -162,7 +162,7 @@ The observed reason for the mode is recorded in
 [`early-page-table-pool-attempt04.md`](early-page-table-pool-attempt04.md).
 
 Aliases that conflict after hyphen/underscore normalization are rejected.
-The R7 path also rejects `lsm=` and `security=` overrides, along with the
+The R7 path also rejects `lsm=`, `security=` and `rodata=` overrides, along with the
 existing init, SELinux, memory, firmware and FDT override exclusions. This
 does not change the frozen R5 parser.
 

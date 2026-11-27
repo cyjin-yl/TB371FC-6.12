@@ -348,6 +348,7 @@ class R7InputsTests(unittest.TestCase):
                     original.replace(r7.LABEL, 'tb371fc-r5-f45'),
                     original + ' module.sig-enforce=0', original + ' rdinit=/bin/sh',
                     original + ' selinux=0', original + ' security=apparmor', original + ' lsm=capability',
+                    original + ' rodata=off', original + ' rodata=on',
                     original + ' init=/bin/sh', original + ' -- enforcing=0',
                     original + ' mem=2G', original.replace('rdinit=/init.tmpfs', 'rdinit=/init')):
             manifest = copy.deepcopy(self.fx.manifest)

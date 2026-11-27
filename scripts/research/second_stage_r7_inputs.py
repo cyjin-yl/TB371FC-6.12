@@ -176,7 +176,7 @@ def validate_manifest(manifest, contract):
         matches = [token for token in tokens if token.split('=', 1)[0].replace('-', '_') == key.replace('-', '_')]
         require(matches == [key + '=' + value], 'missing or conflicting R7 argument: ' + key)
     require(not any(token.split('=', 1)[0].replace('-', '_') in
-                    {'init', 'selinux', 'security', 'lsm', 'mem', 'memmap', 'efi', 'acpi', 'dtb', 'fdt'} for token in tokens),
+                    {'init', 'selinux', 'security', 'lsm', 'rodata', 'mem', 'memmap', 'efi', 'acpi', 'dtb', 'fdt'} for token in tokens),
             'unsupported handoff override in command line')
     return manifest
 
