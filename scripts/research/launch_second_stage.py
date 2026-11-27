@@ -27,6 +27,10 @@ import time
 
 from boot_formats import parse_arm64_image
 from native_dt import _parse_tree
+from second_stage_firmware import (
+    PROFILES, REFERENCE_PROFILE, REFERENCE_REGIONS, profile_arguments,
+    check_reference_roms, validate_reference_firmware,
+)
 
 
 MIB = 1 << 20
@@ -107,7 +111,8 @@ def source_identities():
     root = Path(__file__).resolve().parent
     names = ("launch_second_stage.py", "second_stage_layout.py",
              "second_stage_inputs.py", "boot_formats.py", "native_dt.py",
-             "qualify_boot_bundle.py", "derive_boot_candidate.py")
+             "qualify_boot_bundle.py", "derive_boot_candidate.py",
+             "second_stage_firmware.py")
     return {name: identity(read_ordinary(root / name, MIB))
             for name in names if (root / name).exists()}
 
@@ -226,7 +231,7 @@ def open_qmp(path, process, timeout=15):
         raise
 
 
-def make_command(inputs, out, qmp_path):
+def make_command(inputs, out, qmp_path, firmware_profile="none"):
     paths = {name: str(path) for name, path in inputs["paths"].items()}
     root = paths["rootfs"]
     require(not any(c in root for c in (",", "\n", "\r", "\0")),
@@ -234,7 +239,9 @@ def make_command(inputs, out, qmp_path):
     base = inputs["kernel_load_base"]
     require(type(base) is int and RAM_BASE <= base < RAM_END and
             base % (2 * MIB) == 0, "invalid explicit kernel load base")
-    return [paths["qemu"], "-M", "tb371fc,kernel-load-base=" + hex(base),
+    machine_suffix, global_arguments = profile_arguments(firmware_profile)
+    return [paths["qemu"], "-M", "tb371fc,kernel-load-base=" + hex(base) + machine_suffix,
+            *global_arguments,
             "-accel", "tcg,thread=multi", "-m", "8G", "-smp", "8",
             "-display", "none", "-monitor", "none", "-nic", "none",
             "-serial", "file:" + str(out / "serial.log"), "-no-reboot",
@@ -262,7 +269,8 @@ def guest_copy(qmp, row, destination, maximum):
     return data
 
 
-def check_paused_layout(inputs, out, qmp, validator):
+def check_paused_layout(inputs, out, qmp, validator, firmware_profile="none"):
+    profile_arguments(firmware_profile)
     status = qmp.command("query-status")
     require(status.get("running") is False, "QEMU must remain paused during layout validation")
     cpus = qmp.command("query-cpus-fast")
@@ -274,6 +282,9 @@ def check_paused_layout(inputs, out, qmp, validator):
     initrd = only_rom(entries, str(inputs["paths"]["initrd"]))
     dtb = only_rom(entries, "dtb")
     stub = only_rom(entries, "bootloader")
+    baseline_rom_names = (kernel["name"], initrd["name"], dtb["name"], stub["name"])
+    if firmware_profile == REFERENCE_PROFILE:
+        check_reference_roms(entries, baseline_rom_names)
     raw = inputs["raw"]
     require(kernel["size"] == len(raw["kernel"]), "actual kernel ROM length differs from pinned Image")
     require(initrd["size"] == len(raw["initrd"]), "actual initrd ROM length differs from pinned archive")
@@ -314,13 +325,27 @@ def check_paused_layout(inputs, out, qmp, validator):
                        raw["initrd"], raw["config"], observed)
     require(layout.get("status") == "simulated_layout_valid",
             "validator did not establish a simulated layout")
-    return {"paused_status": status, "cpu_count": len(cpus),
+    firmware = None
+    if firmware_profile == REFERENCE_PROFILE:
+        # These are actual address-space reads, not host-generated replacements.
+        # Keep the original payload and full DT/PSCI checks above unchanged.
+        captured = {r["name"]: guest_copy(qmp, r, out / ("reference-" + r["name"] + ".bin"),
+                                           r["size"]) for r in REFERENCE_REGIONS}
+        after = qmp.command("query-status")
+        require(after.get("running") is False, "QEMU resumed during reference firmware capture")
+        firmware = validate_reference_firmware(raw["dtb"], final_dtb, entries,
+                                               baseline_rom_names, captured)
+    result = {"paused_status": status, "cpu_count": len(cpus),
             "rom_entries": entries, "observed": observed, "header": header,
             "complete_loaded_payloads_verified": True,
             "memory_bytes_read": len(loaded_kernel) + len(loaded_initrd) + len(final_dtb),
             "loaded_kernel": identity(loaded_kernel), "loaded_initrd": identity(loaded_initrd),
             "input_dtb": identity(raw["dtb"]), "final_dtb": identity(final_dtb),
             "validation": layout}
+    if firmware is not None:
+        result["reference_firmware"] = firmware
+        result["memory_bytes_read"] += firmware["memory_bytes_read"]
+    return result
 
 
 def log_observations(out):
@@ -468,17 +493,21 @@ def cleanup_child(process, qmp):
 
 
 def run_prepared(inputs, out, run_seconds=0, *, process_factory=subprocess.Popen,
-                 qmp_factory=open_qmp, unchanged=None, validator=None):
+                 qmp_factory=open_qmp, unchanged=None, validator=None,
+                 firmware_profile="none"):
     with record_interrupts() as interrupts:
         return _run_prepared(inputs, out, run_seconds, process_factory=process_factory,
                              qmp_factory=qmp_factory, unchanged=unchanged,
-                             validator=validator, interrupts=interrupts)
+                             validator=validator, interrupts=interrupts,
+                             firmware_profile=firmware_profile)
 
 
 def _run_prepared(inputs, out, run_seconds=0, *, process_factory=subprocess.Popen,
-                  qmp_factory=open_qmp, unchanged=None, validator=None, interrupts):
+                  qmp_factory=open_qmp, unchanged=None, validator=None, interrupts,
+                  firmware_profile="none"):
     require(type(run_seconds) is int and 0 <= run_seconds <= 120,
             "run-seconds must be an integer in 0..120")
+    profile_arguments(firmware_profile)
     out = Path(out)
     # Exclusive creation is deliberate and remains active under python -O.
     out.mkdir(mode=0o700, parents=False, exist_ok=False)
@@ -493,6 +522,7 @@ def _run_prepared(inputs, out, run_seconds=0, *, process_factory=subprocess.Pope
     record = {"schema": "tb371fc-second-stage-qmp-run-v1", "started_utc": utc_now(),
               "status": "failed", "layout_gate_passed": False, "cont_issued": False,
               "run_seconds": run_seconds, "source_identities": sources,
+              "firmware_profile": firmware_profile,
               "inputs": inputs.get("identities", {}), "release": inputs["release"],
               "kernel_bundle_qualification": inputs.get("kernel_bundle_qualification"),
               "evidence_bindings": inputs.get("evidence_bindings"),
@@ -503,7 +533,7 @@ def _run_prepared(inputs, out, run_seconds=0, *, process_factory=subprocess.Pope
     errors = []
     try:
         with tempfile.TemporaryDirectory(prefix="tb-stage2-", dir="/tmp") as runtime:
-            command = make_command(inputs, out, Path(runtime) / "qmp.sock")
+            command = make_command(inputs, out, Path(runtime) / "qmp.sock", firmware_profile)
             record["command"] = command
             (out / "command.json").write_text(json.dumps(command, indent=2) + "\n")
             unchanged(inputs)
@@ -515,7 +545,7 @@ def _run_prepared(inputs, out, run_seconds=0, *, process_factory=subprocess.Pope
                                               start_new_session=True)
                     qmp = qmp_factory(Path(runtime) / "qmp.sock", process, 15)
                     record["qemu_version"] = qmp.command("query-version")
-                    record["layout"] = check_paused_layout(inputs, out, qmp, validator)
+                    record["layout"] = check_paused_layout(inputs, out, qmp, validator, firmware_profile)
                     unchanged(inputs)
                     require(source_identities() == sources, "validation source changed before cont")
                     status = qmp.command("query-status")
@@ -608,13 +638,15 @@ def main(argv=None):
     parser.add_argument("--manifest", required=True, type=Path)
     parser.add_argument("--out", required=True, type=Path)
     parser.add_argument("--run-seconds", type=int, default=0)
+    parser.add_argument("--firmware-profile", choices=PROFILES, default="none",
+                        help="Explicit synthetic model handoff; default keeps existing machine settings")
     args = parser.parse_args(argv)
     if not 0 <= args.run_seconds <= 120:
         parser.error("--run-seconds must be 0..120")
     try:
         from second_stage_inputs import verify_inputs
         inputs = verify_inputs(args.manifest)
-        result = run_prepared(inputs, args.out, args.run_seconds)
+        result = run_prepared(inputs, args.out, args.run_seconds, firmware_profile=args.firmware_profile)
     except (OSError, ValueError, KeyError, TypeError) as error:
         print(json.dumps({"status": "preflight_failed", "error": str(error),
                           "physical_boot_verified": False}), file=sys.stderr)
