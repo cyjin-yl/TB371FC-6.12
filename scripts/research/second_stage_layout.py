@@ -111,8 +111,10 @@ def parse_config(raw):
             key, value = line[2:-len(" is not set")], "n"
         else:
             continue
-        require(re.fullmatch(r"CONFIG_[A-Z0-9_]+", key) is not None,
-                "invalid kernel configuration key")
+        # Kconfig symbol names are case-sensitive and may contain lowercase
+        # letters: the frozen R5 configuration includes FONT_TER16x32.
+        require(re.fullmatch(r"CONFIG_[A-Za-z0-9_]+", key) is not None,
+                "invalid kernel configuration key: " + repr(key))
         require(key not in values, "duplicate kernel configuration key: " + key)
         values[key] = value
     return values
