@@ -34,6 +34,7 @@ from second_stage_firmware import (
 
 
 MIB = 1 << 20
+INPUT_PROFILES = ('r5-frozen-v1', 'r7-rpmh-v1')
 RAM_BASE = 0x80000000
 RAM_END = 0x280000000
 BOARD_RAM = [{"start": RAM_BASE, "size": 0x3bb00000},
@@ -115,6 +116,15 @@ def source_identities():
              "second_stage_firmware.py")
     return {name: identity(read_ordinary(root / name, MIB))
             for name in names if (root / name).exists()}
+
+
+def selected_source_identities(inputs):
+    sources = source_identities()
+    if inputs.get('input_profile') == 'r7-rpmh-v1':
+        root = Path(__file__).resolve().parent
+        for name in ('second_stage_r7_inputs.py', 'derive_second_stage_dtb.py'):
+            sources[name] = identity(read_ordinary(root / name, MIB))
+    return sources
 
 
 def parse_roms(text):
@@ -513,12 +523,15 @@ def _run_prepared(inputs, out, run_seconds=0, *, process_factory=subprocess.Pope
     out.mkdir(mode=0o700, parents=False, exist_ok=False)
     out = out.resolve(strict=True)
     if unchanged is None:
-        from second_stage_inputs import verify_unchanged
+        if inputs.get('input_profile') == 'r7-rpmh-v1':
+            from second_stage_r7_inputs import verify_unchanged
+        else:
+            from second_stage_inputs import verify_unchanged
         unchanged = verify_unchanged
     if validator is None:
         from second_stage_layout import validate_observed_layout
         validator = validate_observed_layout
-    sources = source_identities()
+    sources = selected_source_identities(inputs)
     record = {"schema": "tb371fc-second-stage-qmp-run-v1", "started_utc": utc_now(),
               "status": "failed", "layout_gate_passed": False, "cont_issued": False,
               "run_seconds": run_seconds, "source_identities": sources,
@@ -547,7 +560,7 @@ def _run_prepared(inputs, out, run_seconds=0, *, process_factory=subprocess.Pope
                     record["qemu_version"] = qmp.command("query-version")
                     record["layout"] = check_paused_layout(inputs, out, qmp, validator, firmware_profile)
                     unchanged(inputs)
-                    require(source_identities() == sources, "validation source changed before cont")
+                    require(selected_source_identities(inputs) == sources, "validation source changed before cont")
                     status = qmp.command("query-status")
                     require(status.get("running") is False, "QEMU resumed before gate completed")
                     require(interrupts["signal"] is None, "interrupted before layout gate completed")
@@ -600,7 +613,7 @@ def _run_prepared(inputs, out, run_seconds=0, *, process_factory=subprocess.Pope
                 record["qmp_messages"] = qmp.messages
         try:
             unchanged(inputs)
-            require(source_identities() == sources, "validation source changed during observation")
+            require(selected_source_identities(inputs) == sources, "validation source changed during observation")
             record["inputs_unchanged_after"] = True
         except Exception as error:
             errors.append("post-run stability: " + str(error))
@@ -638,14 +651,27 @@ def main(argv=None):
     parser.add_argument("--manifest", required=True, type=Path)
     parser.add_argument("--out", required=True, type=Path)
     parser.add_argument("--run-seconds", type=int, default=0)
+    parser.add_argument("--input-profile", choices=INPUT_PROFILES, default='r5-frozen-v1')
+    parser.add_argument("--input-contract", type=Path,
+                        help="Reviewed versioned R7 receipt contract; only with r7-rpmh-v1")
+    parser.add_argument("--input-contract-sha256", help="Explicit SHA-256 pin for the reviewed R7 contract")
     parser.add_argument("--firmware-profile", choices=PROFILES, default="none",
                         help="Explicit synthetic model handoff; default keeps existing machine settings")
     args = parser.parse_args(argv)
     if not 0 <= args.run_seconds <= 120:
         parser.error("--run-seconds must be 0..120")
+    if args.input_profile == 'r7-rpmh-v1':
+        if args.input_contract is None or args.input_contract_sha256 is None:
+            parser.error('r7-rpmh-v1 requires --input-contract and --input-contract-sha256')
+    elif args.input_contract is not None or args.input_contract_sha256 is not None:
+        parser.error('R5 uses its existing frozen contract; R7 contract flags require r7-rpmh-v1')
     try:
-        from second_stage_inputs import verify_inputs
-        inputs = verify_inputs(args.manifest)
+        if args.input_profile == 'r7-rpmh-v1':
+            from second_stage_r7_inputs import verify_inputs
+            inputs = verify_inputs(args.manifest, args.input_contract, args.input_contract_sha256)
+        else:
+            from second_stage_inputs import verify_inputs
+            inputs = verify_inputs(args.manifest)
         result = run_prepared(inputs, args.out, args.run_seconds, firmware_profile=args.firmware_profile)
     except (OSError, ValueError, KeyError, TypeError) as error:
         print(json.dumps({"status": "preflight_failed", "error": str(error),
