@@ -7,7 +7,7 @@ import unittest
 
 from second_stage_layout import (
     BOARD_COMPATIBLE, FIRMWARE_HOLE, PSCI_PROPERTIES, LayoutError,
-    validate_observed_layout,
+    parse_config, validate_observed_layout,
 )
 from test_boot_formats import Tree, image
 
@@ -239,6 +239,38 @@ class PausedLayoutTests(unittest.TestCase):
         for start, end in ((0xA8000001, 0xA8000010), (0xA8000000, 0xA8000011)):
             with self.assertRaisesRegex(ValueError, "initrd interval"):
                 validate(final_dtb=dt(final=True, initrd_start=start, initrd_end=end))
+
+    def test_actual_r5_mixed_case_kconfig_symbol_does_not_block_handoff(self):
+        # This exact line in the frozen R5 kernel.config blocked attempt-02
+        # before cont; it is a valid font symbol, not a malformed setting.
+        config = CONFIG + b"CONFIG_FONT_TER16x32=y\n"
+        self.assertEqual(parse_config(config)["CONFIG_FONT_TER16x32"], "y")
+        result = validate(kernel_config=config)
+        self.assertEqual(result["status"], "simulated_layout_valid")
+        self.assertEqual(result["owner_native_linux_passes_added"], 0)
+
+    def test_mixed_case_unset_symbols_and_case_sensitive_names_are_preserved(self):
+        config = (CONFIG + b"# CONFIG_FONT_TER16x32 is not set\n"
+                  b"CONFIG_FONT_TER16X32=y\n")
+        parsed = parse_config(config)
+        self.assertEqual(parsed["CONFIG_FONT_TER16x32"], "n")
+        self.assertEqual(parsed["CONFIG_FONT_TER16X32"], "y")
+        self.assertEqual(validate(kernel_config=config)["status"], "simulated_layout_valid")
+
+    def test_duplicate_mixed_case_kconfig_symbols_remain_rejected(self):
+        for second in (b"CONFIG_FONT_TER16x32=y\n", b"CONFIG_FONT_TER16x32=m\n",
+                       b"# CONFIG_FONT_TER16x32 is not set\n"):
+            with self.subTest(second=second), self.assertRaisesRegex(
+                    LayoutError, "duplicate kernel configuration key: CONFIG_FONT_TER16x32"):
+                validate(kernel_config=CONFIG + b"CONFIG_FONT_TER16x32=y\n" + second)
+
+    def test_invalid_kconfig_symbol_punctuation_and_empty_names_remain_rejected(self):
+        for key in (b"CONFIG_", b"CONFIG_BAD-NAME", b"CONFIG_BAD.NAME",
+                    b"CONFIG_bad name", b"CONFIG_bad/name", b"CONFIG_bad\tname"):
+            for line in (key + b"=y\n", b"# " + key + b" is not set\n"):
+                with self.subTest(line=line), self.assertRaisesRegex(
+                        LayoutError, "invalid kernel configuration key"):
+                    validate(kernel_config=CONFIG + line)
 
     def test_preserved_crash_memory_restriction_is_not_ignored(self):
         with self.assertRaisesRegex(ValueError, "memory restrictions"):
