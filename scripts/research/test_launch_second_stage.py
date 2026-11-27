@@ -55,7 +55,7 @@ class FakeQMP:
     def __init__(self, process, inputs, out, *, corrupt_kernel=False,
                  duplicate_kernel=False, missing_initrd=False, dump_error=False,
                  panic=False, exit_after_gate=False, stay_alive=False,
-                 missing_uart_property=None, stop_error=False):
+                 missing_uart_property=None, stop_error=False, hyp_timer_readback=10, hyp_timer_error=False):
         self.process, self.out = process, out
         self.messages, self.commands = [], []
         self.closed = False
@@ -63,6 +63,7 @@ class FakeQMP:
         self.exit_after_gate, self.status_queries = exit_after_gate, 0
         self.stay_alive, self.running = stay_alive, False
         self.missing_uart_property, self.stop_error = missing_uart_property, stop_error
+        self.hyp_timer_readback, self.hyp_timer_error = hyp_timer_readback, hyp_timer_error
         base = inputs["kernel_load_base"]
         kernel_start = base + 2 * launch.MIB
         initrd_start = base + 128 * launch.MIB
@@ -99,6 +100,10 @@ class FakeQMP:
         if name == "human-monitor-command":
             if arguments["command-line"] == "info registers":
                 return "CPU#%d\nPC=00000000a0200000\n" % arguments["cpu-index"]
+            if arguments["command-line"] == "info registers -a":
+                return "".join("CPU#%d\nPC=00000000a0200000\n" % index for index in range(8))
+            if arguments["command-line"].startswith("xp /1xw "):
+                return arguments["command-line"].split()[-1] + ": 0x00000000\n"
             return "\n".join('addr={start:x} size=0x{size:x} mem=ram name="{name}"'.format(**r)
                               for r in self.roms) + "\n"
         if name == "pmemsave":
@@ -121,6 +126,10 @@ class FakeQMP:
             self.running = False
             return {}
         if name == "qom-get":
+            if arguments == {"path": "/machine", "property": "hyp-timer-ppi"}:
+                if self.hyp_timer_error:
+                    raise ValueError("fixture HYP timer property unavailable")
+                return self.hyp_timer_readback
             if arguments["property"] == self.missing_uart_property:
                 raise ValueError("fixture optional property unavailable")
             if arguments["property"] == "link-state":
@@ -163,7 +172,7 @@ class LauncherTests(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
 
-    def run_fixture(self, *, run_seconds=0, unchanged=None, reject_layout=False, **options):
+    def run_fixture(self, *, run_seconds=0, unchanged=None, reject_layout=False, hyp_timer_ppi=None, **options):
         def qmp_factory(path, process, timeout):
             self.qmp = FakeQMP(process, self.inputs, self.out, **options)
             return self.qmp
@@ -177,7 +186,8 @@ class LauncherTests(unittest.TestCase):
         return launch.run_prepared(self.inputs, self.out, run_seconds,
                                    process_factory=lambda *args, **kwargs: self.process,
                                    qmp_factory=qmp_factory,
-                                   unchanged=unchanged or (lambda inputs: None), validator=validator)
+                                   unchanged=unchanged or (lambda inputs: None), validator=validator,
+                                   hyp_timer_ppi=hyp_timer_ppi)
 
     def assert_never_continued(self, result):
         self.assertFalse(result["cont_issued"])
@@ -207,6 +217,62 @@ class LauncherTests(unittest.TestCase):
         self.assertFalse(result["userspace_verified"])
         self.assertFalse(result["physical_boot_verified"])
         self.assertEqual(result["owner_native_linux_passes_added"], 0)
+
+    def test_unspecified_hyp_timer_preserves_old_machine_and_qmp_path(self):
+        result = self.run_fixture(run_seconds=1, hyp_timer_error=True)
+        self.assertEqual(result["exit_code"], 0, result["controller_errors"])
+        self.assertTrue(result["cont_issued"])
+        self.assertIsNone(result["hyp_timer_ppi"])
+        self.assertNotIn("hyp-timer-ppi", " ".join(result["command"]))
+        self.assertNotIn("hyp_timer_configuration", result["layout"])
+        self.assertNotIn("qom-get", [name for name, args in self.qmp.commands])
+
+    def test_explicit_hyp_timer_routes_are_read_back_before_cont(self):
+        for ppi in (10, 12):
+            with self.subTest(ppi=ppi):
+                self.out = self.root / ("route-" + str(ppi))
+                self.process = FakeProcess()
+                result = self.run_fixture(run_seconds=1, hyp_timer_ppi=ppi, hyp_timer_readback=ppi)
+                self.assertEqual(result["exit_code"], 0, result["controller_errors"])
+                self.assertTrue(result["cont_issued"])
+                command = result["command"]
+                self.assertEqual(command[command.index("-M") + 1],
+                                 "tb371fc,kernel-load-base=0xa0000000,hyp-timer-ppi=" + str(ppi))
+                self.assertEqual(result["layout"]["hyp_timer_configuration"], {
+                    "qom_path": "/machine", "property": "hyp-timer-ppi",
+                    "requested_ppi": ppi, "observed_ppi": ppi, "configured_intid": 16 + ppi,
+                    "checked_while_paused": True, "scope": "machine property readback only"})
+                names = [name for name, args in self.qmp.commands]
+                self.assertLess(names.index("qom-get"), names.index("cont"))
+                self.assertEqual(names.count("cont"), 1)
+                self.assertTrue(result["cleanup"]["child_reaped"])
+
+    def test_wrong_typed_or_missing_hyp_timer_readback_never_continues(self):
+        cases = [(12, False), ("10", False), (True, False), (10.0, False), (10, True)]
+        for index, (readback, missing) in enumerate(cases):
+            with self.subTest(readback=readback, missing=missing):
+                self.out = self.root / ("bad-route-" + str(index))
+                self.process = FakeProcess()
+                result = self.run_fixture(run_seconds=1, hyp_timer_ppi=10,
+                                          hyp_timer_readback=readback, hyp_timer_error=missing)
+                self.assertEqual(result["exit_code"], 1)
+                self.assertFalse(result["layout_gate_passed"])
+                self.assert_never_continued(result)
+
+    def test_invalid_hyp_timer_setting_rejected_before_output_or_spawn(self):
+        for ppi in (True, 10.0, "10", 0, 26):
+            with self.subTest(ppi=ppi), self.assertRaises(ValueError):
+                self.run_fixture(run_seconds=1, hyp_timer_ppi=ppi)
+            self.assertFalse(self.out.exists())
+            self.assertIsNone(self.qmp)
+
+    def test_hyp_timer_option_is_independent_of_firmware_profile(self):
+        command = launch.make_command(self.inputs, self.out, Path("/tmp/fixture/qmp.sock"),
+                                      firmware_profile="linux-reference-v1", hyp_timer_ppi=10)
+        self.assertEqual(command[command.index("-M") + 1],
+                         'tb371fc,kernel-load-base=0xa0000000,rpmh-profile=reference,rpmh-boot-configured=on,aop-profile=reference-qdss-vote,smem-profile=reference-empty,hyp-timer-ppi=10')
+        self.assertEqual(command[command.index("-global") + 1],
+                         "qcom-tcsr-mutex.boot-unlocked-reference=on")
 
     def test_failed_layout_never_continues(self):
         result = self.run_fixture(run_seconds=1, reject_layout=True)
@@ -278,13 +344,18 @@ class LauncherTests(unittest.TestCase):
         self.assertTrue(diagnostics["paused_confirmed"])
         self.assertTrue(diagnostics["stop_requested"])
         self.assertEqual(diagnostics["status"], "partial")
-        self.assertLessEqual(len(diagnostics["calls"]), 15)
+        self.assertLessEqual(len(diagnostics["calls"]), 39)
         rows = {row["label"]: row for row in diagnostics["calls"]}
         self.assertEqual(rows["uart.tx-count"]["status"], "unavailable")
         self.assertEqual(rows["ufs.link-state"]["return"], "down")
         self.assertEqual(rows["blockstats"]["status"], "collected")
-        self.assertEqual(rows["registers-cpu-0"]["arguments"]["cpu-index"], 0)
-        self.assertEqual(rows["registers-cpu-4"]["arguments"]["cpu-index"], 4)
+        self.assertEqual(rows["registers-all-cpus"]["arguments"], {"command-line": "info registers -a"})
+        self.assertEqual(rows["registers-all-cpus"]["return"].count("CPU#"), 8)
+        self.assertEqual(rows["gicd.ctlr"]["arguments"], {"command-line": "xp /1xw 0x17a00000"})
+        for index in range(8):
+            for register, offset in (("isenabler0", 0x10100), ("ispendr0", 0x10200), ("isactiver0", 0x10300)):
+                row = rows["gicr-cpu-" + str(index) + "." + register]
+                self.assertEqual(row["arguments"], {"command-line": "xp /1xw " + hex(0x17a60000 + index * 0x20000 + offset)})
         names = [name for name, args in self.qmp.commands]
         self.assertEqual(names.count("cont"), 1)
         self.assertEqual(names.count("stop"), 1)

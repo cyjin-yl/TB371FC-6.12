@@ -1,0 +1,234 @@
+{
+  "end_diagnostics": {
+    "cpu0_pc": "ffff800080018e04",
+    "cpu4_pc": "0000000000000000",
+    "paused_confirmed": true,
+    "root_blockstats": [
+      {
+        "device": "stage2-root",
+        "rd_bytes": 0,
+        "rd_operations": 0,
+        "wr_bytes": 0,
+        "wr_operations": 0
+      }
+    ],
+    "scope": "Paused model state after the 45-second observation",
+    "ufs_link_state": "down"
+  },
+  "executed_qemu_commit": "d46f660a464e850b94ed483a5f823a11196dfd49",
+  "input_identities": {
+    "certificate": {
+      "bytes": 1324,
+      "sha256": "07a54ba929080f3c5d74cb485afeca7d7acf7c920fde0b26cf003ba45fd57627"
+    },
+    "config": {
+      "bytes": 223395,
+      "sha256": "a4980121abcc3e2bac47f7020e63c8c00949c53c289019c22b67808d84cd3afa"
+    },
+    "dtb": {
+      "bytes": 126893,
+      "sha256": "7092d992582a2f49b65e8eb1a4209fede3b41ccbbacb3abc28d29b649b33423c"
+    },
+    "initrd": {
+      "bytes": 32535823,
+      "sha256": "6f63a7048f6664d1ff4473c0ddf580412172b50f9495073a4e7af5cd23465321"
+    },
+    "kernel": {
+      "bytes": 41091080,
+      "sha256": "d80bfce0feb5f6c0cec1b0b0dd4691323720ec3f34a373c7a109001e2cf42e76"
+    },
+    "qemu": {
+      "bytes": 64040880,
+      "sha256": "e97b5500bf534c51ac9e7e91bdd1df403dea44b822438a21311f731b9b43efcc"
+    },
+    "rootfs": {
+      "bytes": 4294967296,
+      "sha256": "f3d260f5e91ed6a2b67e84fd4f7b3d07b1ff2dda5c88be43d1dac242774043ad"
+    }
+  },
+  "inspected_allocator_source": {
+    "bytes": 44729,
+    "path": "arch/arm64/mm/mmu.c",
+    "sha256": "b03413247434f6c2abd500036e2aca226f49156ebb726949c25f3a925ab1ca44"
+  },
+  "layout": {
+    "complete_loaded_payloads_verified": true,
+    "final_dtb": {
+      "bytes": 273786,
+      "sha256": "3c27312372c2e767e21939153cce002687ccec2a183c6d42e127c4f84946a6f3"
+    },
+    "loaded_initrd": {
+      "bytes": 32535823,
+      "sha256": "6f63a7048f6664d1ff4473c0ddf580412172b50f9495073a4e7af5cd23465321"
+    },
+    "loaded_kernel": {
+      "bytes": 41091080,
+      "sha256": "d80bfce0feb5f6c0cec1b0b0dd4691323720ec3f34a373c7a109001e2cf42e76"
+    }
+  },
+  "linux_launch_commit": "aa7795fc8d35518df297239cfe270f0962fc3c97",
+  "model_ram": [
+    {
+      "size": 1001390080,
+      "start": 2147483648
+    },
+    {
+      "size": 7516192768,
+      "start": 3221225472
+    }
+  ],
+  "native_ledger": {
+    "blocked": 12,
+    "native_passes": 0,
+    "not_run": 32,
+    "total": 44
+  },
+  "observation": {
+    "boot_completed_verified": false,
+    "cleanup": {
+      "child_reaped": true,
+      "errors": [],
+      "kill_sent": false,
+      "qemu_returncode": 0,
+      "quit_requested": true,
+      "terminate_sent": false
+    },
+    "completed_utc": "2026-11-27T10:36:24.429559+00:00",
+    "cont_issued": true,
+    "controller_errors": [],
+    "exit_code": 3,
+    "exit_scope": "0 verifies the simulated layout and controller only; 3 preserves an observed kernel failure; neither is a boot pass",
+    "inputs_unchanged_after": true,
+    "layout_gate_passed": true,
+    "owner_native_linux_passes_added": 0,
+    "physical_boot_verified": false,
+    "release": "6.12.114-tb371fc-research5-services",
+    "rootfs_snapshot_mode": true,
+    "run_seconds": 45,
+    "runtime_observation": {
+      "boot_completed_verified": false,
+      "fatal_detected": true,
+      "fatal_lines": [
+        {
+          "file": "serial.log",
+          "line": "[    0.000000] Kernel panic - not syncing: TB371FC embedded early page-table pool exhausted"
+        },
+        {
+          "file": "serial.log",
+          "line": "[    0.000000] Call trace:"
+        }
+      ],
+      "logs": {
+        "qemu-stderr.log": {
+          "bytes": 0,
+          "matches": {
+            "call_trace": 0,
+            "fatal_exception": 0,
+            "kernel_banner": 0,
+            "panic": 0
+          },
+          "present": true,
+          "scan_complete": true,
+          "scanned_bytes": 0,
+          "scanned_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "qemu-stdout.log": {
+          "bytes": 0,
+          "matches": {
+            "call_trace": 0,
+            "fatal_exception": 0,
+            "kernel_banner": 0,
+            "panic": 0
+          },
+          "present": true,
+          "scan_complete": true,
+          "scanned_bytes": 0,
+          "scanned_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "serial.log": {
+          "bytes": 1406,
+          "matches": {
+            "call_trace": 1,
+            "fatal_exception": 0,
+            "kernel_banner": 1,
+            "panic": 1
+          },
+          "present": true,
+          "scan_complete": true,
+          "scanned_bytes": 1406,
+          "scanned_sha256": "201c0a6836bec013d9c99484ebb5812a5c2a04a9ffbafabc15a1ebc4bfa52d29"
+        }
+      },
+      "userspace_verified": false
+    },
+    "schema": "tb371fc-second-stage-qmp-run-v1",
+    "started_utc": "2026-11-27T10:35:37.156361+00:00",
+    "status": "simulated_layout_verified",
+    "stop_reason": "observation_deadline",
+    "userspace_verified": false
+  },
+  "original_result": {
+    "bytes": 83796,
+    "sha256": "89a6b602d520efba2bec73a2c049a6e94e5155a777d929af0b7b94bf5929646b"
+  },
+  "qemu_binary": {
+    "bytes": 64040880,
+    "sha256": "e97b5500bf534c51ac9e7e91bdd1df403dea44b822438a21311f731b9b43efcc"
+  },
+  "record_scope": "Selected factual fields from a retained board-model runtime result; no new execution",
+  "reserved_union": [
+    {
+      "size": 6291456,
+      "start": 2147483648
+    },
+    {
+      "size": 1572864,
+      "start": 2154823680
+    },
+    {
+      "size": 89128960,
+      "start": 2156920832
+    },
+    {
+      "size": 6406144,
+      "start": 2250244096
+    },
+    {
+      "size": 163577856,
+      "start": 2257584128
+    },
+    {
+      "size": 36700160,
+      "start": 2617245696
+    },
+    {
+      "size": 40,
+      "start": 2684354560
+    },
+    {
+      "size": 72351744,
+      "start": 3148873728
+    }
+  ],
+  "schema": "tb371fc-attempt04-public-observation-v1",
+  "separate_qemu_qualification": {
+    "artifact_id": 15165425834,
+    "child_reaped": true,
+    "ci_run": 45920669404,
+    "guest_executed": false,
+    "process_group_gone": true,
+    "producer_cases": 17,
+    "qemu_binary": {
+      "bytes": 64083920,
+      "sha256": "c087daf03d581ddc542dad1414080e7db44a8a1c16486ecd0a26cc9292a1e560"
+    },
+    "qemu_commit": "6287cd9a41e5114de6cf3a4ac38b0fd85872ee06",
+    "qualification": {
+      "bytes": 1636059,
+      "sha256": "ac35d17e57bf29b1c564ac5c9b5cb2283ba6267add4567ecb4aa61824145897e"
+    },
+    "qualified": true,
+    "required_gates": 116,
+    "worker_exit_code": 0
+  }
+}

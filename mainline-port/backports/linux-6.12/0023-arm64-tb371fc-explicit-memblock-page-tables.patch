@@ -1,0 +1,67 @@
+Subject: [PATCH] arm64: allow explicit memblock page tables for TB371FC QEMU
+
+The TB371FC vendor-kernel handoff workaround uses a 256-page embedded
+page-table pool. The retained R5 board-QEMU boot with rodata_full enabled
+exhausts that pool while mapping RAM: the high 7 GiB bank alone requires
+3584 PTE-table pages with 4 KiB granules.
+
+Keep the native default, its bounded pool and its exhaustion panic. Add
+an explicit early parameter, tb371fc.early_pgtable=memblock, for the
+isolated second-stage simulator, which does not inherit vendor DMA
+state. This uses the existing upstream memblock allocator and its
+allocation-failure check. Non-TB371FC behavior remains unchanged.
+
+The option is an explicit operator selection, not hardware detection.
+The simulator input contract must require one exact option and reject
+duplicates. This change does not validate physical handoff or relax
+rodata, SELinux, module signatures or reserved-memory handling.
+
+Apply after the retained R6 source, including patch 0017.
+
+diff --git a/arch/arm64/mm/mmu.c b/arch/arm64/mm/mmu.c
+--- a/arch/arm64/mm/mmu.c
++++ b/arch/arm64/mm/mmu.c
+@@ -26,6 +26,7 @@
+ #include <linux/set_memory.h>
+ #include <linux/kfence.h>
+ #include <linux/of_fdt.h>
++#include <linux/string.h>
+ #include <linux/pkeys.h>
+ 
+ #include <asm/barrier.h>
+@@ -113,6 +114,22 @@
+ static u8 tb371fc_early_pgtable_pool
+ 	[TB371FC_EARLY_PGTABLE_POOL_PAGES * PAGE_SIZE] __aligned(PAGE_SIZE);
+ static unsigned int tb371fc_early_pgtable_pool_used;
++static bool tb371fc_early_pgtable_memblock __initdata;
++
++/*
++ * The isolated QEMU second-stage does not inherit vendor-kernel DMA state.
++ * Opt in to the upstream allocator there, without changing the native default
++ * or disabling page-granular read-only protection of the linear map.
++ */
++static int __init parse_tb371fc_early_pgtable(char *arg)
++{
++	if (!arg || strcmp(arg, "memblock"))
++		return -EINVAL;
++
++	tb371fc_early_pgtable_memblock = true;
++	return 0;
++}
++early_param("tb371fc.early_pgtable", parse_tb371fc_early_pgtable);
+ 
+ static phys_addr_t __init early_pgtable_alloc(int shift)
+ {
+@@ -123,8 +140,11 @@
+ 	 * The vendor-kernel handoff workaround is specific to this board.
+ 	 * The live OF tree is not available at this early boot stage.
+ 	 */
+-	if (!initial_boot_params ||
++	if (tb371fc_early_pgtable_memblock || !initial_boot_params ||
+ 	    !of_flat_dt_is_compatible(of_get_flat_dt_root(), "lenovo,tb371fc")) {
++		if (tb371fc_early_pgtable_memblock)
++			pr_info_once("TB371FC early page tables: explicit memblock allocator\n");
++
+ 		phys = memblock_phys_alloc_range(PAGE_SIZE, PAGE_SIZE, 0,
+ 						 MEMBLOCK_ALLOC_NOLEAKTRACE);
+ 		if (!phys)
