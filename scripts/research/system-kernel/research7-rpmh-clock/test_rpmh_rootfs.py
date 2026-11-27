@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-2.0-only
 """Receipt/derivation regressions; these fixtures do not claim an R7 build."""
+import ast
 import copy
 import importlib.util
 import json
@@ -127,10 +128,41 @@ class DerivationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as name:
             directory = Path(name)
             derived = rootfs.derive_recipe(REPO, directory / "template", directory / "recipe", materializer, stage)
-            self.assertEqual(derived["changed_from_r5_template"], ["assemble_system.py", "early_initramfs.py",
+            self.assertEqual(derived["changed_from_r5_template"], ["assemble_system.py", "boot_system_vm.py", "early_initramfs.py",
                 "guest_transient_worker.py", "guest_verify_system.py", "system_common.py"])
             for file in derived["byte_identical_acceptance_sources"]:
                 self.assertEqual((directory / "template" / file).read_bytes(), (directory / "recipe" / file).read_bytes())
+            # The R7 failure path may close its evidence filesystem, but all
+            # serial/behavior gates and final pass predicates stay unchanged.
+            def functions(text, excluded=()):
+                return {node.name: ast.dump(node, include_attributes=False)
+                        for node in ast.parse(text).body
+                        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+                        and node.name not in excluded}
+
+            def pass_assignments(text):
+                return [ast.dump(node, include_attributes=False)
+                        for node in ast.walk(ast.parse(text))
+                        if isinstance(node, ast.Assign) and any(
+                            isinstance(target, ast.Subscript)
+                            and isinstance(target.value, ast.Name)
+                            and target.value.id == "record"
+                            and isinstance(target.slice, ast.Constant)
+                            and target.slice.value == "passed"
+                            for target in node.targets)]
+
+            original_boot = (directory / "template/boot_system_vm.py").read_text()
+            repaired_boot = (directory / "recipe/boot_system_vm.py").read_text()
+            self.assertEqual(functions(original_boot, ("main",)), functions(repaired_boot, ("main",)))
+            self.assertEqual(pass_assignments(original_boot), pass_assignments(repaired_boot))
+            self.assertTrue(pass_assignments(original_boot))
+            original_guest = (directory / "template/guest_verify_system.py").read_text().replace(
+                "profile['root_label'] == 'tb371fc-r5-f45'",
+                "profile['root_label'] == '" + rootfs.LABEL + "'")
+            self.assertEqual(functions(original_guest), functions(
+                (directory / "recipe/guest_verify_system.py").read_text()))
+            self.assertEqual(set(derived["failure_shutdown_derivation"]["derived"]),
+                             {"boot_system_vm.py", "guest_verify_system.py"})
             worker = (directory / "recipe/guest_transient_worker.py").read_text()
             self.assertEqual(worker.count(rootfs.RELEASE), 2)
             self.assertNotIn(rootfs.R5_RELEASE, worker)

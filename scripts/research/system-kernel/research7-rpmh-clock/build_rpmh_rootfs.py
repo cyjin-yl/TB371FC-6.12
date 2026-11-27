@@ -5,11 +5,12 @@
 Run only inside the established build container under the owner's original
 heavy-job admission, after the exact R7 build receipt has passed. All output
 is new ordinary files; this program does not boot, mount, flash or load modules.
-The frozen R5 and v9 archive/runtime acceptance programs remain unchanged.
+The frozen R5/v9 inputs and archive/runtime acceptance gates remain unchanged.
 """
 from __future__ import annotations
 
 import argparse
+import contextlib
 import hashlib
 import importlib.util
 import json
@@ -103,6 +104,96 @@ def once(text, old, new):
     return text.replace(old, new, 1)
 
 
+def machine_id_permissions(work, expected=None):
+    """Restore only the new empty machine-id to its retained backup's 0644."""
+    require(work.is_absolute() and work.name.startswith("fedora-r7-system-")
+            and work.resolve(strict=True) == work, "canonical R7 work directory required")
+    root, etc = work / "rootfs", work / "rootfs/etc"
+    names = ("machine-id", "machine-id.before-research7-integration")
+    fields = ("st_dev", "st_ino", "st_mode", "st_uid", "st_gid", "st_nlink",
+              "st_size", "st_mtime_ns", "st_ctime_ns")
+    directories = {}
+    with contextlib.ExitStack() as stack:
+        parent = None
+        for path in (work, root, etc):
+            require(path.resolve(strict=True) == path, "machine-id parent escaped new root")
+            fd = os.open(path if parent is None else path.name,
+                         os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW | os.O_CLOEXEC,
+                         dir_fd=parent)
+            stack.callback(os.close, fd)
+            info, named = os.fstat(fd), path.lstat()
+            require(stat.S_ISDIR(info.st_mode) and info.st_uid == info.st_gid == 0 and
+                    (info.st_dev, info.st_ino) == (named.st_dev, named.st_ino),
+                    "ordinary root-owned machine-id parent required")
+            directories[str(path)] = {key: getattr(info, key) for key in
+                                      ("st_dev", "st_ino", "st_mode", "st_uid", "st_gid")}
+            parent = fd
+        opened = {}
+        for name in names:
+            fd = os.open(name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK |
+                         os.O_NOATIME | os.O_CLOEXEC, dir_fd=parent)
+            stack.callback(os.close, fd)
+            opened[name] = fd
+
+        def observe(name):
+            fd = opened[name]
+            before = os.fstat(fd)
+            require(stat.S_ISREG(before.st_mode) and before.st_uid == before.st_gid == 0 and
+                    before.st_nlink == 1 and before.st_size == 0,
+                    "empty single-link root-owned machine-id file required: " + name)
+            attrs = {}
+            for key in os.listxattr(fd):
+                raw = os.getxattr(fd, key)
+                attrs[key] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+            after = os.fstat(fd)
+            named = os.stat(name, dir_fd=parent, follow_symlinks=False)
+            require(all(getattr(before, key) == getattr(after, key) == getattr(named, key)
+                        for key in fields), "machine-id identity changed while observing: " + name)
+            return {"metadata": {key: getattr(after, key) for key in fields},
+                    "identity": {"bytes": 0, "sha256": hashlib.sha256(b"").hexdigest()}, "xattrs": attrs}
+
+        before, backup = (observe(name) for name in names)
+        require(stat.S_IMODE(backup["metadata"]["st_mode"]) == 0o644,
+                "retained empty machine-id backup must be mode 0644")
+        require((before["metadata"]["st_dev"], before["metadata"]["st_ino"]) !=
+                (backup["metadata"]["st_dev"], backup["metadata"]["st_ino"]),
+                "new machine-id must be distinct from retained backup")
+        require("system.posix_acl_access" not in before["xattrs"],
+                "fresh machine-id must not have a named access ACL")
+        if expected is None:
+            require(stat.S_IMODE(before["metadata"]["st_mode"]) == 0o600,
+                    "fresh configured machine-id must retain the observed empty 0600 prestate")
+            os.fchmod(opened[names[0]], 0o644)
+            os.fsync(opened[names[0]])
+            after = observe(names[0])
+            require(stat.S_IMODE(after["metadata"]["st_mode"]) == 0o644 and
+                    after["identity"] == before["identity"] and after["xattrs"] == before["xattrs"] and
+                    all(after["metadata"][key] == before["metadata"][key]
+                        for key in fields if key not in ("st_mode", "st_ctime_ns")),
+                    "machine-id repair changed more than the file mode")
+            require(observe(names[1]) == backup, "retained machine-id backup changed")
+            proof = {"schema": "tb371fc-r7-machine-id-permissions-v1", "path": str(etc / names[0]),
+                     "backup_path": str(etc / names[1]), "directories": directories,
+                     "before": before, "after": after, "retained_backup": backup,
+                     "restored_mode": "0644", "mode_source": "retained pre-research7 configuration",
+                     "content_written": False, "backup_changed": False, "global_umask_changed": False}
+        else:
+            require(stat.S_IMODE(before["metadata"]["st_mode"]) == 0o644 and
+                    expected["schema"] == "tb371fc-r7-machine-id-permissions-v1" and
+                    expected["restored_mode"] == "0644" and
+                    expected["path"] == str(etc / names[0]) and expected["backup_path"] == str(etc / names[1]) and
+                    expected["directories"] == directories and expected["after"] == before and
+                    expected["retained_backup"] == backup,
+                    "machine-id permissions or retained backup changed during construction")
+            proof = {"passed": True, "path": str(etc / names[0]), "after": before,
+                     "retained_backup": backup, "read_only_reverification": True}
+        for path in (work, root, etc):
+            require(path.resolve(strict=True) == path and
+                    all(getattr(path.lstat(), key) == value for key, value in directories[str(path)].items()),
+                    "machine-id parent identity changed")
+        return proof
+
+
 def validate_evidence(build, signatures, abi):
     require(build.get("passed") is True and build.get("kernel_release") == RELEASE
             and build.get("recipe", {}).get("sha256") == BUILD_RECIPE_SHA
@@ -191,7 +282,34 @@ def derive_recipe(repo, template, recipe, materializer, staging):
     guest = once(values["guest_verify_system.py"].decode(),
                  "profile['root_label'] == 'tb371fc-r5-f45'",
                  "profile['root_label'] == '" + LABEL + "'")
+    # R7-only failure shutdown derivation; the frozen v9/R5 sources stay pinned.
+    guest_before = {"bytes": len(guest.encode()), "sha256": hashlib.sha256(guest.encode()).hexdigest()}
+    require(guest_before["sha256"] == "31c4aab964d9a771893509bdf680f18f4f1068a50287154e3f3744cc238b2a6c",
+            "R7 guest base before failure-shutdown derivation differs")
+    guest = once(guest, "        print('TB371FC_R4F_VM_VALIDATION_FAILED', flush=True)\n        sys.exit(1)\n",
+                 "        print('TB371FC_R4F_VM_VALIDATION_FAILED', flush=True)\n        if DIAGNOSTICS_READY and RESULT_IDENTITY is not None:\n            # The exact isolated VM/root/profile and Enforcing guards passed.\n            # Keep the failure, but let the evidence filesystem close cleanly.\n            try:\n                subprocess.run(['/usr/bin/systemctl', '--no-block', 'poweroff'], check=True, timeout=30)\n            except Exception as error:\n                print('TB371FC_R4F_FAILURE_POWEROFF_ERROR ' + type(error).__name__ + ': ' +\n                      str(error)[:1024], file=sys.stderr, flush=True)\n        sys.exit(1)\n")
     values["guest_verify_system.py"] = guest.encode()
+    require(hashlib.sha256(values["guest_verify_system.py"]).hexdigest() ==
+            "79529ba8d7ee80e7195e8a0e250e5eda701fa62e7eafb231e8294909aa3f258b",
+            "R7 guest failure-shutdown derivation differs")
+    boot = values["boot_system_vm.py"].decode()
+    boot_before = {"bytes": len(boot.encode()), "sha256": hashlib.sha256(boot.encode()).hexdigest()}
+    require(boot_before["sha256"] == "4d1f59691bb4faccdcdbd791ae2120a89e56f7712fd63270f0a2204662842736",
+            "frozen VM driver before failure-shutdown derivation differs")
+    boot = once(boot, 'cancelled = None\n',
+                'cancelled = None\nFAILURE_SHUTDOWN_GRACE_SECONDS = 60.0\n')
+    boot = once(boot, '    reason = None\n    child = None\n',
+                '    reason = None\n    failure_shutdown_deadline = None\n    child = None\n')
+    boot = once(boot, "                if b'TB371FC_R4F_VM_VALIDATION_FAILED' in tail or b'Kernel panic - not syncing' in tail:\n                    reason = 'guest reported failure'\n                    break\n",
+                "                if b'Kernel panic - not syncing' in tail:\n                    reason = 'guest reported failure'\n                    break\n                if failure_shutdown_deadline is None and b'TB371FC_R4F_VM_VALIDATION_FAILED' in tail:\n                    # Preserve failure while the isolated guest closes its evidence\n                    # filesystem. Repeated markers never extend the original bound.\n                    reason = 'guest reported failure'\n                    failure_shutdown_deadline = min(start + 900, time.monotonic() +\n                                                    FAILURE_SHUTDOWN_GRACE_SECONDS)\n                if failure_shutdown_deadline is not None and time.monotonic() >= failure_shutdown_deadline:\n                    reason = 'guest reported failure; shutdown grace expired'\n                    break\n")
+    values["boot_system_vm.py"] = boot.encode()
+    require(hashlib.sha256(values["boot_system_vm.py"]).hexdigest() ==
+            "1843945b757fafd2c3d50753886faa21b13a0aced0f3a4bd894645be4bf038da",
+            "VM driver failure-shutdown derivation differs")
+    failure_shutdown = {"scope": "R7 failure evidence shutdown only; acceptance gates unchanged",
+        "base": {"guest_verify_system.py": guest_before, "boot_system_vm.py": boot_before},
+        "derived": {name: {"bytes": len(values[name]), "sha256": hashlib.sha256(values[name]).hexdigest()}
+                    for name in ("guest_verify_system.py", "boot_system_vm.py")}}
     worker = once(values["guest_transient_worker.py"].decode(),
                   "PROFILE_NAME = 'research5-services-fedora45-derived-v9'", "PROFILE_NAME = '" + PROFILE + "'")
     require(worker.count(R5_RELEASE) == 2, "R5 worker release guards changed")
@@ -228,14 +346,15 @@ def derive_recipe(repo, template, recipe, materializer, staging):
         (recipe / name).chmod(stat.S_IMODE((template / name).stat().st_mode))
     unchanged = ("verify_initramfs.py", "verify_early_policy_initramfs.py", "verify_runtime_policy_initramfs.py",
                  "initrd-domain-proof.sh", "initrd-domain-proof.service", "guest_result_file.py",
-                 "read_vm_result.py", "transient_protocol.py", "probe_fd_route_v2.py", "boot_system_vm.py")
+                 "read_vm_result.py", "transient_protocol.py", "probe_fd_route_v2.py")
     for name in unchanged:
         require(values[name] == (template / name).read_bytes(), "frozen acceptance source changed: " + name)
     result = {"schema_version": 1, "r5_template_derivation": identity(template / "derivation.json"),
               "kernel_release": RELEASE, "root_label": LABEL, "profile": PROFILE,
               "derived": {name: staging.identity(recipe / name) for name in sorted(values)},
               "changed_from_r5_template": [name for name in sorted(values) if values[name] != (template / name).read_bytes()],
-              "byte_identical_acceptance_sources": list(unchanged), "supplier_drivers": drivers.split(),
+              "byte_identical_acceptance_sources": list(unchanged), "failure_shutdown_derivation": failure_shutdown,
+              "supplier_drivers": drivers.split(),
               "frozen_recipe_written": False, "runtime_acceptance_verified": False}
     save(recipe / "derivation.json", result)
     return result
@@ -512,6 +631,9 @@ def construct(repo, kernel, expected_build_sha, work):
         staging.copy_exact(work / "system-profile.json", old / "system-profile.json", staging.identity(work / "system-profile.json"))
         phase_env = dict(os.environ, PYTHONDONTWRITEBYTECODE="1")
         run("configure", [sys.executable, "-B", "-O", recipe / "assemble_system.py", "configure"], env=phase_env)
+        record["machine_id_permissions"] = machine_id_permissions(work)
+        save(work / "machine-id-permissions.json", record["machine_id_permissions"])
+        record["machine_id_permissions_proof"] = identity(work / "machine-id-permissions.json")
         run("initrd", [sys.executable, "-B", "-O", recipe / "assemble_system.py", "initrd"], env=phase_env, timeout=3600)
         archive_reports = {}
         for role, name in (("production", "initramfs-production-qualified.img"), ("maintenance", "initramfs-maintenance-qualified.img")):
@@ -527,6 +649,8 @@ def construct(repo, kernel, expected_build_sha, work):
         pinned(Path(__file__), record["constructor"])
         for name, expected in derived["derived"].items():
             require(staging.identity(recipe / name) == expected, "derived recipe changed: " + name)
+        pinned(work / "machine-id-permissions.json", record["machine_id_permissions_proof"])
+        record["machine_id_permissions_reverification"] = machine_id_permissions(work, record["machine_id_permissions"])
         cancelled()
         image = work / "fedora45-research7-rpmh-clock.ext4"
         record.update(complete=True, rootfs={"path": str(image), **identity(image), "label": LABEL},

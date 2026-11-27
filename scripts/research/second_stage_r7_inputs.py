@@ -26,8 +26,8 @@ INPUT_PROFILE = 'r7-rpmh-v1'
 CONTRACT_SCHEMA = 'tb371fc-r7-second-stage-input-contract-v1'
 ROOTFS_PHASE = 'constructed-unbooted-prelabel-v1'
 GENERIC_VM_PHASE = 'generic-vm-verified-v1'
-GENERIC_VM_WRAPPER_SHA = 'e6854aa69c1e02966f520e347782720018a5a0935e788b65522aa1ffa1839bf6'
-GENERIC_VM_DRIVER_SHA = '4d1f59691bb4faccdcdbd791ae2120a89e56f7712fd63270f0a2204662842736'
+GENERIC_VM_WRAPPER_SHA = 'e4dc49f19360ddee8f69723f10829302c58104b84c1cb6b2aa47bf3cd7becbd3'
+GENERIC_VM_DRIVER_SHA = '1843945b757fafd2c3d50753886faa21b13a0aced0f3a4bd894645be4bf038da'
 GENERIC_VM_TOOLS = {
     '/usr/bin/qemu-system-aarch64': {'bytes': 34073536, 'sha256': '2e7fe3008a900980493a85e606036793fd162153edac0228477579988c53e1f5'},
     '/usr/sbin/debugfs': {'bytes': 255824, 'sha256': 'deb37b9515718738f369dfe0546a50a74fdd7d5837046adac272ef6a3381ccee'},
@@ -38,7 +38,7 @@ SYSTEM_PROFILE = 'research7-rpmh-clock-fedora45-derived-v9'
 PREFIX = 'modules/lib/modules/' + RELEASE + '/'
 ROOTFS_BYTES = 4 * 1024**3
 BUILD_RECIPE_SHA = 'dcf48c7491181343406f3d60053c80a3f1fef768040b17e912952aa653d23213'
-CONSTRUCTOR_SHA = '8786cd5da535ea2ff007eb6a3eef2e393b6ef582fca52890e8adc040315be3ff'
+CONSTRUCTOR_SHA = 'da3ff4fd7a9af60cf61db7878fdf6c466b147ae89db93f064fd0b2ced3461d6d'
 SIGNATURE_VERIFIER_SHA = '8e7fb179b500bf13cfadd3843fdb3104a5740005f1cd394f2be8112732ee0082'
 ABI_VERIFIER_SHA = '8e207831577a1537eec3e7a6d6f1ee0eeb0bd610db44c48f3736bf6af28734b9'
 # Sorted module-relative paths, one ASCII path per line including final newline;
