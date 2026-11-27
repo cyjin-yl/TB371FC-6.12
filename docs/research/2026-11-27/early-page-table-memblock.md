@@ -128,6 +128,15 @@ actual-source modes passed locally, including invocation with Python `-O`.
 The C assertions remain active because the harness is compiled without
 `NDEBUG`.
 
+The actual build 02 copied and patched the candidate successfully, but its
+actual-source regression hit the former 120-second outer deadline with no
+output. That result does not identify a failed C assertion or the stalled
+setup step. The [retained runtime report](r7-build02-regression-timeout.md)
+records the failure and complete process cleanup. The revised harness logs
+source validation, host compilation and each case immediately, with 300
+seconds for compilation, 30 seconds per C case, and a 1200-second enclosing
+builder command. Its C program, input identities and assertions are unchanged.
+
 These checks validate source identity, selection and failure handling.
 A fresh complete kernel/module build, generic VM verification and a new
 board-simulator observation are still required to prove runtime progress.

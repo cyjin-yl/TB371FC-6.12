@@ -1,9 +1,14 @@
 # R7 RPMh clock and explicit model page-table candidate
 
 Status: the first retained R7 construction stopped before compilation when
-`clang --version` exceeded its former 10-second limit. The revision below
-records each tool probe with a 120-second limit and a 64 KiB diagnostic cap.
-No completed R7 kernel or boot pass is asserted here. The actual R5 board
+`clang --version` exceeded its former 10-second limit. Build 02 passed the
+revised tool probes, complete source comparison, source copy and MMU patch,
+then reached the 120-second outer limit of the actual-source C regression
+without a diagnostic line. Its terminal and cleanup receipts are retained in
+the [build 02 report](../../../../docs/research/2026-11-27/r7-build02-regression-timeout.md).
+Each tool probe retains its 120-second limit and 64 KiB diagnostic cap.
+The C regression now has flushed step diagnostics and a separate coherent
+1200-second outer limit. No completed R7 kernel or boot pass is asserted here. The actual R5 board
 observation and early mapping panic are recorded in
 [`early-page-table-pool-attempt04.md`](../../../../docs/research/2026-11-27/early-page-table-pool-attempt04.md).
 
@@ -58,7 +63,7 @@ admission guard, with a fresh work directory and `MAKEFLAGS=-j2`:
 python3 -B "$R7_REPO/scripts/research/system-kernel/research7-rpmh-clock/build_rpmh_candidate.py" \
   --repo "$R7_REPO" --r5 /work/research5-services \
   --baseline /work/tianma-r6-build-ec332-01 \
-  --work /work/r7-rpmh-clock-406f-02
+  --work /work/r7-rpmh-clock-406f-03
 ```
 
 The helper rechecks the published R6 build and signature receipts and every
@@ -109,7 +114,15 @@ The executable recipe is `build_rpmh_candidate.py`; the invocation above is
 the supported entry. Its receipts preserve the exact source patch, original
 and patched MMU identities, complete candidate source inventory, command
 arguments and bounded toolchain probes. It runs the MMU regression against
-the actual copied source before Kbuild. It then derives the full config,
+the actual copied source before Kbuild. The harness permits 300 seconds for
+host compilation and 30 seconds for each of its 16 C cases (780 seconds in
+total); the 1200-second enclosing command allows additional startup and
+setup time. The fixture-only patch command remains bounded at 30 seconds.
+Each validation, compilation and case step emits flushed progress with
+elapsed time and useful bounded diagnostics on failure. The compiled C,
+source hashes and assertions are unchanged. The enclosing command still
+uses the existing owned-process cleanup, and the original 10800-second
+builder and 11000-second host limits are unchanged. It then derives the full config,
 builds Image and all modules, builds the unchanged native DTB, installs with
 `INSTALL_MOD_STRIP=1`, and performs the signature and ABI checks below.
 The retained R5 and R6 recipes are never edited or replayed in place.

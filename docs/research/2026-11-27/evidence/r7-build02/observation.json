@@ -1,0 +1,119 @@
+{
+  "actual_regression_log_bytes": 0,
+  "build_receipt": {
+    "bytes": 6204,
+    "sha256": "14e372086eca20aef1fd766f3debe225f4a018d600c5008523b56a96178889d2"
+  },
+  "c_assertion_failure_observed": false,
+  "candidate_source_delta": [
+    "arch/arm64/mm/mmu.c"
+  ],
+  "candidate_source_inventory": {
+    "bytes": 17407164,
+    "sha256": "95ad54b6a39a61d113931159ee63fc445e9bee946b3443243497c80f91310622"
+  },
+  "early_pgtable_patch": {
+    "bytes": 2651,
+    "sha256": "297c52bf389f50759d15422e8e51023e0e92d0548f6be6234c9622724a74a50a"
+  },
+  "early_pgtable_test": {
+    "bytes": 10473,
+    "sha256": "79be6d3fd8c9cf8a1fb48c1823c346267574b07cc5c20a385eae45a4d21c35ae"
+  },
+  "error": "TimeoutExpired(['python3', '-B', '-O', '/work/r7-source-0712f053-406f-02/scripts/research/system-kernel/research7-rpmh-clock/test_early_pgtable.py', '--kernel-source', '/work/r7-rpmh-clock-406f-02/linux'], 120)",
+  "exact_stalled_step_known": false,
+  "guest_executed": false,
+  "kernel_compilation_started": false,
+  "native_hardware_passes_added": 0,
+  "passed": false,
+  "phases": [
+    {
+      "child_reaped": true,
+      "elapsed_seconds": 51.394795,
+      "exit_code": 0,
+      "finished_utc": "2026-11-27T11:45:37.730712+00:00",
+      "log": {
+        "bytes": 118,
+        "sha256": "d55fcb3e9abb393ac95ffffa5fe52c13c79abead018abb911a0f46a324b0f91d"
+      },
+      "name": "toolchain-clang",
+      "started_utc": "2026-11-27T11:44:46.335917+00:00",
+      "timeout_seconds": 120
+    },
+    {
+      "child_reaped": true,
+      "elapsed_seconds": 2.386622,
+      "exit_code": 0,
+      "finished_utc": "2026-11-27T11:45:40.117815+00:00",
+      "log": {
+        "bytes": 48,
+        "sha256": "e3d624696544a4d73ac6c4f364ddf6f6fbcd9b1b959025c7997f02fe2ffa4a13"
+      },
+      "name": "toolchain-ld.lld",
+      "started_utc": "2026-11-27T11:45:37.731193+00:00",
+      "timeout_seconds": 120
+    },
+    {
+      "child_reaped": true,
+      "elapsed_seconds": 3.70164,
+      "exit_code": 0,
+      "finished_utc": "2026-11-27T11:45:43.819939+00:00",
+      "log": {
+        "bytes": 6,
+        "sha256": "fc151023d2b883ab5535ed5fde59110788a12fa1e6f179a30992d81bee72c311"
+      },
+      "name": "toolchain-pahole",
+      "started_utc": "2026-11-27T11:45:40.118299+00:00",
+      "timeout_seconds": 120
+    },
+    {
+      "child_reaped": true,
+      "elapsed_seconds": 14.800379,
+      "exit_code": 0,
+      "finished_utc": "2026-11-27T11:46:56.320709+00:00",
+      "log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "name": "copy-source",
+      "started_utc": "2026-11-27T11:46:41.520330+00:00",
+      "timeout_seconds": 7200
+    },
+    {
+      "child_reaped": true,
+      "elapsed_seconds": 2.88952,
+      "exit_code": 0,
+      "finished_utc": "2026-11-27T11:47:26.204901+00:00",
+      "log": {
+        "bytes": 34,
+        "sha256": "e8208e5d8bba0c26ad47635df23d71c15f786c1d7f74757e3b5a16411fb4a4e7"
+      },
+      "name": "patch-early-pgtable",
+      "started_utc": "2026-11-27T11:47:23.315381+00:00",
+      "timeout_seconds": 120
+    },
+    {
+      "child_reaped": true,
+      "elapsed_seconds": 120.694103,
+      "error": "TimeoutExpired(['python3', '-B', '-O', '/work/r7-source-0712f053-406f-02/scripts/research/system-kernel/research7-rpmh-clock/test_early_pgtable.py', '--kernel-source', '/work/r7-rpmh-clock-406f-02/linux'], 120)",
+      "exit_code": -15,
+      "finished_utc": "2026-11-27T11:49:52.735770+00:00",
+      "log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "name": "actual-early-pgtable-regression",
+      "started_utc": "2026-11-27T11:47:52.041667+00:00",
+      "timeout_seconds": 120
+    }
+  ],
+  "physical_boot_verified": false,
+  "schema": "tb371fc-r7-build02-runtime-observation-v1",
+  "source_commit": "0712f053a4518a3a3512d053763d584283fb3d4b",
+  "toolchain": {
+    "clang": "Debian clang version 19.1.7 (3+b1)",
+    "ld.lld": "Debian LLD 19.1.7 (compatible with GNU linkers)",
+    "pahole": "v1.30"
+  },
+  "userspace_verified": false
+}

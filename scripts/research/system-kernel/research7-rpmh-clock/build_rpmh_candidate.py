@@ -40,12 +40,13 @@ EARLY_PGTABLE_BASE = {"bytes": 44729, "sha256": "b03413247434f6c2abd500036e2aca2
 EARLY_PGTABLE_CANDIDATE = {"bytes": 45429, "sha256": "27cf3be8c966c1cfe84f5c3cb715aedd3c3d4a8f5ef522c5737212476dc8a0fb"}
 EARLY_PGTABLE_PATCH = "mainline-port/backports/linux-6.12/0023-arm64-tb371fc-explicit-memblock-page-tables.patch"
 EARLY_PGTABLE_PATCH_SHA = "297c52bf389f50759d15422e8e51023e0e92d0548f6be6234c9622724a74a50a"
-EARLY_PGTABLE_TEST_SHA = "79be6d3fd8c9cf8a1fb48c1823c346267574b07cc5c20a385eae45a4d21c35ae"
+EARLY_PGTABLE_TEST_SHA = "4a4a5526ea9a89fe6372172de79539627d2cdb6d284a8e35e71b96aa863716ee"
 DTB = "qcom/sm8250-lenovo-tb371fc-display-input-test-6.12.dtb"
 DTB_SHA = "af80b06f38b73ea42cb669a2897721ba7ecc5a99a8aa3d6d9c1e9ba132597730"
 TOOLCHAIN = {"clang": "Debian clang version 19.1.7 (3+b1)",
              "ld.lld": "Debian LLD 19.1.7 (compatible with GNU linkers)", "pahole": "v1.30"}
 TOOLCHAIN_TIMEOUT_SECONDS = 120
+EARLY_PGTABLE_TIMEOUT_SECONDS = 1200
 TOOLCHAIN_LOG_LIMIT_BYTES = 65536
 
 
@@ -336,7 +337,7 @@ def build(repo, r5, baseline, work):
         record["candidate_source_delta"] = [EARLY_PGTABLE_SOURCE]
         check_cancelled()
         run("actual-early-pgtable-regression", ["python3", "-B", "-O", early_pgtable_test,
-                                              "--kernel-source", target], timeout=120)
+                                              "--kernel-source", target], timeout=EARLY_PGTABLE_TIMEOUT_SECONDS)
         run("actual-core-regression", ["python3", "-B", "-O", panel_test, "--repo", repo,
                                        "--drm-panel-source", target / "drivers/gpu/drm/drm_panel.c"])
         fragment = Path(__file__).with_name("system.config")

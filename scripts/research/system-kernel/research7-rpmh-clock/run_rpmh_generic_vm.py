@@ -30,7 +30,7 @@ PROFILE = 'research7-rpmh-clock-fedora45-derived-v9'
 SCHEMA = 'tb371fc-r7-generic-vm-v1'
 ROOTFS_PHASE = 'generic-vm-verified-v1'
 CONSTRUCTOR = 'scripts/research/system-kernel/research7-rpmh-clock/build_rpmh_rootfs.py'
-CONSTRUCTOR_SHA = 'f556256e8764b7c6060b05ffe5e7350046055d87e1393ed2acd9ef4c00126042'
+CONSTRUCTOR_SHA = '8786cd5da535ea2ff007eb6a3eef2e393b6ef582fca52890e8adc040315be3ff'
 DRIVER_SHA = '4d1f59691bb4faccdcdbd791ae2120a89e56f7712fd63270f0a2204662842736'
 TOOLS = {
     '/usr/bin/qemu-system-aarch64': {'bytes': 34073536, 'sha256': '2e7fe3008a900980493a85e606036793fd162153edac0228477579988c53e1f5'},

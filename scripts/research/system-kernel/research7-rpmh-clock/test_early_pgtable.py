@@ -8,12 +8,18 @@ This checks allocator selection and failure behavior; it is not a guest boot.
 """
 from __future__ import annotations
 
+if __name__ == "__main__":
+    print('TB371FC_EARLY_PGTABLE_PROGRESS {"phase":"module-entry","event":"start"}', flush=True)
+
 import argparse
+from contextlib import contextmanager
 import hashlib
+import json
 from pathlib import Path
 import shutil
 import subprocess
 import tempfile
+import time
 import unittest
 
 BASE_SHA = "b03413247434f6c2abd500036e2aca226f49156ebb726949c25f3a925ab1ca44"
@@ -22,6 +28,10 @@ PATCH_SHA = "297c52bf389f50759d15422e8e51023e0e92d0548f6be6234c9622724a74a50a"
 PATCH_REL = "mainline-port/backports/linux-6.12/0023-arm64-tb371fc-explicit-memblock-page-tables.patch"
 FIXTURE_NAME = "linux-v6.12.114-tb371fc-mmu.c"
 OPTIONS = argparse.Namespace(kernel_source=None, cc=None)
+COMPILE_TIMEOUT_SECONDS = 300
+CASE_TIMEOUT_SECONDS = 30
+FIXTURE_PATCH_TIMEOUT_SECONDS = 30
+PROGRESS_STARTED = time.monotonic()
 
 PREAMBLE = r'''
 #include <assert.h>
@@ -189,6 +199,49 @@ int main(int argc, char **argv)
 '''
 
 
+def progress(phase, event, started, **fields):
+    now = time.monotonic()
+    print("TB371FC_EARLY_PGTABLE_PROGRESS " + json.dumps({
+        "phase": phase, "event": event,
+        "elapsed_seconds": round(now - PROGRESS_STARTED, 3),
+        "phase_elapsed_seconds": round(now - started, 3), **fields}, sort_keys=True),
+        flush=True)
+
+
+if __name__ == "__main__":
+    progress("imports", "ready", PROGRESS_STARTED)
+
+
+def output_tail(value):
+    if value is None:
+        return None
+    raw = value.encode("utf-8", "replace") if isinstance(value, str) else value
+    return raw[-4096:].decode("utf-8", "replace")
+
+
+@contextmanager
+def progress_phase(phase, **fields):
+    started = time.monotonic()
+    progress(phase, "start", started, **fields)
+    state = {}
+    try:
+        yield state
+    except Exception as error:
+        result = state.get("result")
+        stderr = getattr(error, "stderr", None)
+        stdout = getattr(error, "stdout", None)
+        progress(phase, "complete", started, **fields,
+                 status="timeout" if isinstance(error, subprocess.TimeoutExpired) else "failed",
+                 error_type=type(error).__name__, error=str(error)[:1024],
+                 returncode=getattr(error, "returncode", getattr(result, "returncode", None)),
+                 stderr_tail=output_tail(stderr if stderr is not None else getattr(result, "stderr", None)),
+                 stdout_tail=output_tail(stdout if stdout is not None else getattr(result, "stdout", None)))
+        raise
+    else:
+        progress(phase, "complete", started, **fields, status="passed",
+                 returncode=getattr(state.get("result"), "returncode", None))
+
+
 def pin(path, expected):
     raw = path.read_bytes()
     actual = hashlib.sha256(raw).hexdigest()
@@ -209,8 +262,10 @@ def prepared_source(directory):
     target = directory / "arch/arm64/mm/mmu.c"
     target.parent.mkdir(parents=True)
     target.write_bytes(raw)
-    subprocess.run(["patch", "--batch", "--fuzz=0", "-p1", "-d", str(directory),
-                    "-i", str(patch)], check=True, capture_output=True, timeout=30)
+    with progress_phase("fixture-patch", timeout_seconds=FIXTURE_PATCH_TIMEOUT_SECONDS) as state:
+        state["result"] = subprocess.run(["patch", "--batch", "--fuzz=0", "-p1", "-d", str(directory),
+                                         "-i", str(patch)], check=True, capture_output=True,
+                                        timeout=FIXTURE_PATCH_TIMEOUT_SECONDS)
     return pin(target, PATCHED_SHA)
 
 
@@ -220,7 +275,8 @@ class EarlyPageTableTests(unittest.TestCase):
         cls.temp = tempfile.TemporaryDirectory(prefix="tb371fc-pgtable-")
         cls.addClassCleanup(cls.temp.cleanup)
         directory = Path(cls.temp.name)
-        raw = prepared_source(directory)
+        with progress_phase("source-validation", source_mode="kernel-source" if OPTIONS.kernel_source else "fixture"):
+            raw = prepared_source(directory)
         source = raw.decode("utf-8")
         start = "#define TB371FC_EARLY_PGTABLE_POOL_PAGES 256"
         end = "\nbool pgattr_change_is_safe("
@@ -233,15 +289,18 @@ class EarlyPageTableTests(unittest.TestCase):
         compiler = OPTIONS.cc or shutil.which("clang") or shutil.which("cc")
         if not compiler:
             raise RuntimeError("a host C compiler is required")
-        subprocess.run([compiler, "-std=c11", "-O2", "-Wall", "-Wextra", "-Werror",
-                        "-Wno-unused-parameter", str(program), "-o", str(cls.binary)],
-                       check=True, capture_output=True, timeout=90)
+        with progress_phase("compile", compiler=compiler, timeout_seconds=COMPILE_TIMEOUT_SECONDS) as state:
+            state["result"] = subprocess.run([compiler, "-std=c11", "-O2", "-Wall", "-Wextra", "-Werror",
+                                             "-Wno-unused-parameter", str(program), "-o", str(cls.binary)],
+                                            check=True, capture_output=True, timeout=COMPILE_TIMEOUT_SECONDS)
 
     def case(self, *args):
-        result = subprocess.run([str(self.binary), *args], capture_output=True,
-                                text=True, timeout=10)
-        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertEqual(result.stdout, "allocator case passed\n")
+        with progress_phase("case", test=self.id(), arguments=list(args), timeout_seconds=CASE_TIMEOUT_SECONDS) as state:
+            result = subprocess.run([str(self.binary), *args], capture_output=True,
+                                    text=True, timeout=CASE_TIMEOUT_SECONDS)
+            state["result"] = result
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertEqual(result.stdout, "allocator case passed\n")
 
     def test_native_default_retains_bounded_pool_and_exhaustion(self):
         self.case("default-board")
