@@ -1,0 +1,24 @@
+name: R7 RPMh clock construction guards
+
+on:
+  push:
+    paths:
+      - scripts/research/system-kernel/research7-rpmh-clock/**
+      - docs/research/2026-11-26/evidence/tianma-r6-build/kernel.config
+      - .github/workflows/r7-rpmh-clock.yml
+  pull_request:
+    paths:
+      - scripts/research/system-kernel/research7-rpmh-clock/**
+      - docs/research/2026-11-26/evidence/tianma-r6-build/kernel.config
+      - .github/workflows/r7-rpmh-clock.yml
+
+permissions:
+  contents: read
+
+jobs:
+  construction-guards:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check R7 config, source boundaries and offline module ABI negatives
+        run: python3 -B -O scripts/research/system-kernel/research7-rpmh-clock/test_rpmh_candidate.py

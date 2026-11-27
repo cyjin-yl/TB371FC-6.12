@@ -1,0 +1,55 @@
+name: R5 second-stage layout
+
+on:
+  push:
+    paths:
+      - 'scripts/research/*second_stage*.py'
+      - 'scripts/research/boot_formats.py'
+      - 'scripts/research/native_dt.py'
+      - 'scripts/research/qualify_boot_bundle.py'
+      - 'scripts/research/derive_boot_candidate.py'
+      - 'scripts/research/boot_rootfs.py'
+      - 'scripts/research/test_boot_formats.py'
+      - 'scripts/research/test_boot_bundle.py'
+      - 'docs/research/2026-11-23/boot-candidate-r5.json'
+      - 'docs/research/2026-11-24/evidence/native-dt/live-android.json'
+      - 'docs/research/2026-11-26/r5-second-stage-layout.md'
+      - '.github/workflows/r5-second-stage-layout.yml'
+  pull_request:
+    paths:
+      - 'scripts/research/*second_stage*.py'
+      - 'scripts/research/boot_formats.py'
+      - 'scripts/research/native_dt.py'
+      - 'scripts/research/qualify_boot_bundle.py'
+      - 'scripts/research/derive_boot_candidate.py'
+      - 'scripts/research/boot_rootfs.py'
+      - 'scripts/research/test_boot_formats.py'
+      - 'scripts/research/test_boot_bundle.py'
+      - 'docs/research/2026-11-23/boot-candidate-r5.json'
+      - 'docs/research/2026-11-24/evidence/native-dt/live-android.json'
+      - 'docs/research/2026-11-26/r5-second-stage-layout.md'
+      - '.github/workflows/r5-second-stage-layout.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: r5-second-stage-layout-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  offline-layout-and-launcher:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install synthetic DT fixture tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y device-tree-compiler
+      - name: Exercise offline layout, input-binding and paused-launch failures
+        working-directory: scripts/research
+        run: python3 -O -m unittest discover -s . -p 'test_*second_stage*.py' -v
+      # Tests use synthetic files and a fake QMP process. This job does not
+      # possess private R5 payloads, start a real board VM, or test the tablet.

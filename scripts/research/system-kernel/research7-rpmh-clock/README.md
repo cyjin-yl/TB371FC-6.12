@@ -1,6 +1,7 @@
 # R7 RPMh clock candidate proposal
 
-Status: reviewed build recipe; no R7 kernel build or boot result is recorded.
+Status: guarded construction helper and offline qualification are staged;
+no R7 kernel build or boot result is recorded here.
 The unchanged R5 board observation is tracked separately in Linux PR #21.
 
 ## Configuration and source lineage
@@ -39,7 +40,46 @@ The expected R7 config identity is an offline derivation from the published R6
 config. It is an expectation for `olddefconfig`, not a completed Kconfig result.
 Reject any other resolved configuration change.
 
-## Exact build recipe to stage after the trace
+## Guarded construction
+
+`build_rpmh_candidate.py` implements the recipe below. Run it inside the
+established `tb371fc-build-ssd-20261123` container through the unchanged host
+admission guard, with a fresh work directory and `MAKEFLAGS=-j2`:
+
+```bash
+python3 -B "$R7_REPO/scripts/research/system-kernel/research7-rpmh-clock/build_rpmh_candidate.py" \
+  --repo "$R7_REPO" --r5 /work/research5-services \
+  --baseline /work/tianma-r6-build-ec332-01 \
+  --work /work/r7-rpmh-clock-406f-01
+```
+
+The helper rechecks the published R6 build and signature receipts and every
+retained payload; compares the complete R6 source inventory with R5, permitting
+only the byte-pinned Tianma repair; and copies only that source into fresh
+output and module directories. It requires the exact toolchain and full
+resolved configuration, then builds and installs all 84 modules with a new
+signing certificate. Actual command output appears in the caller's pane and
+per-command logs. Signal cancellation stops and reaps the owned command group;
+the outer host driver must retain admission until container ownership is
+resolved. A `build-result.json` terminal receipt preserves success or failure.
+
+After the existing cryptographic signature verifier,
+`verify_module_abi.py` checks the exact module path set, release/profile
+vermagic, each recorded imported symbol CRC and every undefined strong import,
+retained BTF sections with bounded nonoverlapping header ranges, and absence
+of DWARF debug sections. This does not semantically validate every BTF type or
+load any module. Twenty focused positive and negative cases run with:
+
+```bash
+python3 -B -O "$R7_REPO/scripts/research/system-kernel/research7-rpmh-clock/test_rpmh_candidate.py"
+```
+
+The ABI verifier was also replayed read-only against all 84 retained R6 modules:
+4,308 versioned imports matched the retained `Module.symvers`. This is a check
+of the verifier against existing R6 artifacts; R7 still needs its own completed
+build and qualification receipts.
+
+## Exact underlying build recipe
 
 The following is the inside-container recipe. The owner must first refresh
 active-job/worktree ownership, retain the original admission wrapper, and
@@ -47,7 +87,8 @@ select fresh source and output paths. It uses the same two-job build envelope
 and toolchain arguments as the accepted R6 build: LLVM/Clang and LLD 19.1.7,
 with pahole 1.30. Keep all blocks in the same admitted Bash environment and
 retain that toolchain throughout. The source checkout containing this profile
-supplies `R7_REPO`; no new executable builder is claimed here.
+supplies `R7_REPO`. The guarded helper above performs these steps and the
+input/output checks around them.
 
 Set `R7_BASE=/work/tianma-r6-build-ec332-01`,
 `R7_WORK=/work/r7-rpmh-clock-406f-01`, and `MAKEFLAGS=-j2` in that environment.
@@ -131,9 +172,9 @@ Require release `6.12.114-tb371fc-research7-rpmh-clock`; the expected complete
 config; the same native DTB; and exactly the R6 set of 84 module-relative paths
 under the new release. Rebuild all modules. The existing signature-verifier
 command checks AArch64 ELF, module count and CMS signatures using the new public
-certificate. It does not check vermagic, imported symbol CRCs or BTF. Keep those
-as separate future bundle-qualification checks, together with confirmation
-that BTF is retained and DWARF debug information is stripped.
+certificate. The complementary ABI verifier then checks vermagic, imported
+symbol CRCs, retained BTF sections and stripped DWARF data. These remain offline
+checks; a later runtime must establish actual module loading and enforcement.
 `INSTALL_MOD_STRIP=1` performs debug stripping before Kbuild signs the installed
 modules. Check that the generated certificate differs from R5 and R6 and that
 retained source/config/certificate identities are unchanged afterward.
