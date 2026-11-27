@@ -194,6 +194,145 @@ def machine_id_permissions(work, expected=None):
         return proof
 
 
+def public_config_permissions(work, expected=None):
+    """Repair only five exact public configure outputs; preserve every backup."""
+    require(os.getuid() == os.geteuid() == 0, "real root identity required for public configuration repair")
+    require(work.is_absolute() and work.name.startswith("fedora-r7-system-") and
+            work.resolve(strict=True) == work, "canonical R7 work directory required")
+    specs = {
+        "etc/fstab": {
+            "current": {"bytes": 100, "sha256": "a55ad27e8d07817b56a07aeea0cc08b50016e95919b2fcb96d6e98fc5dc916a4"},
+            "backup": {"bytes": 96, "sha256": "f00dfaeea89a9a0714156c7a22dbbaa0f3e0094d77a51361f4447dcb1478d5a5"}},
+        "etc/hostname": {
+            "current": {"bytes": 21, "sha256": "faaf03bc6b7f123e1f819b6b81899c131b9e3c20b0c6fba6535623700707fc3a"},
+            "backup": {"bytes": 20, "sha256": "7c70d1463a4c3ffc07e819b2806c22b78340b9f56b945ebde39ead9ba4241833"}},
+        "etc/systemd/system/tb371fc-r4f-validation.service": {
+            "current": {"bytes": 404, "sha256": "b4afa5de72ce2d06fdde24b4946ccd5e19db0f4d98e446382941c1acd675f4bc"},
+            "backup": None},
+        "etc/systemd/system/tb371fc-r4f-validation.target": {
+            "current": {"bytes": 192, "sha256": "fd07459acd60a29855d0321ec062919a242f47db136168789787b35acb431f1f"},
+            "backup": None},
+        "etc/dracut.conf.d/90-tb371fc-research.conf": {
+            "current": {"bytes": 228, "sha256": "1d062625e78db81c5726bcdd0a51eb7c0243e855e57012d8ffd270bc0add1563"},
+            "backup": {"bytes": 228, "sha256": "1d062625e78db81c5726bcdd0a51eb7c0243e855e57012d8ffd270bc0add1563"}},
+    }
+    suffix = ".before-research7-integration"
+    fields = ("st_dev", "st_ino", "st_mode", "st_uid", "st_gid", "st_nlink",
+              "st_size", "st_mtime_ns", "st_ctime_ns")
+    directory_fields = ("st_dev", "st_ino", "st_mode", "st_uid", "st_gid")
+    root = work / "rootfs"
+    directories, directory_fds, opened = {}, {}, {}
+    with contextlib.ExitStack() as stack:
+        for path in (work, root, root / "etc", root / "etc/systemd",
+                     root / "etc/systemd/system", root / "etc/dracut.conf.d"):
+            require(path.resolve(strict=True) == path, "public configuration parent escaped new root")
+            parent = directory_fds.get(path.parent)
+            fd = os.open(path if parent is None else path.name,
+                         os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW | os.O_CLOEXEC,
+                         dir_fd=parent)
+            stack.callback(os.close, fd)
+            info, named = os.fstat(fd), path.lstat()
+            require(stat.S_ISDIR(info.st_mode) and info.st_uid == info.st_gid == 0 and
+                    (info.st_dev, info.st_ino) == (named.st_dev, named.st_ino),
+                    "ordinary root-owned public configuration parent required")
+            directory_fds[path] = fd
+            directories[str(path)] = {key: getattr(info, key) for key in directory_fields}
+
+        def observe(relative, wanted):
+            path = root / relative
+            parent = directory_fds[path.parent]
+            if wanted is None:
+                try:
+                    os.stat(path.name, dir_fd=parent, follow_symlinks=False)
+                except FileNotFoundError:
+                    return {"exists": False}
+                raise ValueError("unexpected retained public configuration backup: " + relative)
+            if relative not in opened:
+                fd = os.open(path.name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK |
+                             os.O_NOATIME | os.O_CLOEXEC, dir_fd=parent)
+                stack.callback(os.close, fd)
+                opened[relative] = fd
+            fd = opened[relative]
+            before = os.fstat(fd)
+            require(stat.S_ISREG(before.st_mode) and before.st_uid == before.st_gid == 0 and
+                    before.st_nlink == 1 and before.st_size == wanted["bytes"],
+                    "exact single-link root-owned public configuration required: " + relative)
+            os.lseek(fd, 0, os.SEEK_SET)
+            content = os.read(fd, wanted["bytes"] + 1)
+            actual = {"bytes": len(content), "sha256": hashlib.sha256(content).hexdigest()}
+            require(actual == wanted, "public configuration content differs: " + relative)
+            attrs = {}
+            for key in os.listxattr(fd):
+                raw = os.getxattr(fd, key)
+                attrs[key] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+            require(not any(key.startswith("system.posix_acl_") for key in attrs),
+                    "public configuration must not carry an ACL: " + relative)
+            after, named = os.fstat(fd), os.stat(path.name, dir_fd=parent, follow_symlinks=False)
+            require(all(getattr(before, key) == getattr(after, key) == getattr(named, key) for key in fields),
+                    "public configuration identity changed while observing: " + relative)
+            return {"exists": True, "metadata": {key: getattr(after, key) for key in fields},
+                    "identity": actual, "xattrs": attrs}
+
+        def check_directories():
+            for path, fd in directory_fds.items():
+                require(path.resolve(strict=True) == path and
+                        all(getattr(os.fstat(fd), key) == getattr(path.lstat(), key) == value
+                            for key, value in directories[str(path)].items()),
+                        "public configuration parent identity changed")
+
+        before, backups = {}, {}
+        for relative, spec in specs.items():
+            before[relative] = observe(relative, spec["current"])
+            require(stat.S_IMODE(before[relative]["metadata"]["st_mode"]) ==
+                    (0o600 if expected is None else 0o644),
+                    "public configuration mode differs from exact prestate: " + relative)
+            backups[relative] = observe(relative + suffix, spec["backup"])
+            if backups[relative]["exists"]:
+                require(stat.S_IMODE(backups[relative]["metadata"]["st_mode"]) == 0o644,
+                        "retained public configuration backup must be mode 0644: " + relative)
+        identities = [(row["metadata"]["st_dev"], row["metadata"]["st_ino"])
+                      for row in list(before.values()) + list(backups.values()) if row["exists"]]
+        require(len(set(identities)) == len(identities), "public configuration or backup aliases another input")
+        check_directories()
+        if expected is not None:
+            require(expected["schema"] == "tb371fc-r7-public-config-permissions-v1" and
+                    expected["root"] == str(root) and expected["specifications"] == specs and
+                    expected["directories"] == directories and expected["after"] == before and
+                    expected["retained_backups"] == backups and expected["restored_mode"] == "0644",
+                    "public configuration or retained backup changed during construction")
+            proof = {"passed": True, "root": str(root), "after": before,
+                     "retained_backups": backups, "read_only_reverification": True}
+        else:
+            # All five current files and all five backup states are checked before the first write.
+            for relative, spec in specs.items():
+                require(observe(relative, spec["current"]) == before[relative] and
+                        observe(relative + suffix, spec["backup"]) == backups[relative],
+                        "public configuration changed before permission repair")
+            after = {}
+            for relative, spec in specs.items():
+                os.fchmod(opened[relative], 0o644)
+                os.fsync(opened[relative])
+                after[relative] = observe(relative, spec["current"])
+                old, new = before[relative], after[relative]
+                require(stat.S_IMODE(new["metadata"]["st_mode"]) == 0o644 and
+                        old["identity"] == new["identity"] and old["xattrs"] == new["xattrs"] and
+                        all(old["metadata"][key] == new["metadata"][key]
+                            for key in fields if key not in ("st_mode", "st_ctime_ns")),
+                        "public configuration repair changed more than the file mode")
+            for relative, spec in specs.items():
+                require(observe(relative + suffix, spec["backup"]) == backups[relative] and
+                        observe(relative, spec["current"]) == after[relative],
+                        "public configuration or retained backup changed during permission repair")
+            proof = {"schema": "tb371fc-r7-public-config-permissions-v1", "root": str(root),
+                     "specifications": specs, "directories": directories, "before": before, "after": after,
+                     "retained_backups": backups, "restored_mode": "0644",
+                     "mode_scope": "five exact public configure outputs; three retained 0644 backups and two new systemd units",
+                     "all_inputs_checked_before_first_write": True, "content_written": False,
+                     "backups_changed": False, "global_umask_changed": False}
+        check_directories()
+        return proof
+
+
 def validate_evidence(build, signatures, abi):
     require(build.get("passed") is True and build.get("kernel_release") == RELEASE
             and build.get("recipe", {}).get("sha256") == BUILD_RECIPE_SHA
@@ -634,6 +773,9 @@ def construct(repo, kernel, expected_build_sha, work):
         record["machine_id_permissions"] = machine_id_permissions(work)
         save(work / "machine-id-permissions.json", record["machine_id_permissions"])
         record["machine_id_permissions_proof"] = identity(work / "machine-id-permissions.json")
+        record["public_config_permissions"] = public_config_permissions(work)
+        save(work / "public-config-permissions.json", record["public_config_permissions"])
+        record["public_config_permissions_proof"] = identity(work / "public-config-permissions.json")
         run("initrd", [sys.executable, "-B", "-O", recipe / "assemble_system.py", "initrd"], env=phase_env, timeout=3600)
         archive_reports = {}
         for role, name in (("production", "initramfs-production-qualified.img"), ("maintenance", "initramfs-maintenance-qualified.img")):
@@ -651,6 +793,8 @@ def construct(repo, kernel, expected_build_sha, work):
             require(staging.identity(recipe / name) == expected, "derived recipe changed: " + name)
         pinned(work / "machine-id-permissions.json", record["machine_id_permissions_proof"])
         record["machine_id_permissions_reverification"] = machine_id_permissions(work, record["machine_id_permissions"])
+        pinned(work / "public-config-permissions.json", record["public_config_permissions_proof"])
+        record["public_config_permissions_reverification"] = public_config_permissions(work, record["public_config_permissions"])
         cancelled()
         image = work / "fedora45-research7-rpmh-clock.ext4"
         record.update(complete=True, rootfs={"path": str(image), **identity(image), "label": LABEL},
